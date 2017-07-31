@@ -198,12 +198,19 @@ Pos_yanzhengmaframe=[Px_yanzhengmaframe,Py_yanzhengmaframe]
 #提供所需截图位置
 #计算最低成交价位置
 #最低成交价位置，大小
-px_lowestprice=159    #206   209 208 #截图相对位置
-py_lowestprice=416   #412  416
+# px_lowestprice=159    #206   209 208 #截图相对位置
+# py_lowestprice=416   #412  416
+px_lowestprice=0    #206   209 208 #截图相对位置
+py_lowestprice=0   #412  416
+
+
 Px_lowestprice=Px+px_lowestprice
 Py_lowestprice=Py+py_lowestprice
-lowestprice_sizex=48 #截图范围 41
+lowestprice_sizex=41 #截图范围 41
 lowestprice_sizey=16
+
+px_relative=49  #查找出来位置反算相对位置
+py_relative=0
 #计算确认键位置
 px_confirm=656
 py_confirm=475
@@ -379,11 +386,16 @@ def findpos(targetimg):
 
     res = cv2.matchTemplate(img, template, cv2.TM_CCOEFF_NORMED)
     min_val, max_val, min_loc, max_loc = cv2.minMaxLoc(res)
-    print(min_val)
-    print(max_val)
-    print(min_loc)
-    print(max_loc)
-
+    # print(min_val)
+    # print(max_val)
+    # print(min_loc)
+    # print(max_loc)
+    global px_lowestprice,py_lowestprice,px_relative,py_relative,Px_lowestprice,Py_lowestprice,Px,Py
+    px_lowestprice = max_loc[0]+px_relative
+    py_lowestprice = max_loc[1]+py_relative
+    Px_lowestprice=px_lowestprice
+    Py_lowestprice=py_lowestprice
+    print(px_lowestprice,py_lowestprice)
 
 # --------------------------------------------------------------------------------
 # # 89700
@@ -757,8 +769,8 @@ class TopFrame(wx.Frame):
         self.Bind(wx.EVT_TIMER, self.Lowest_price, self.timer3)#设置一个截屏取价
         self.timer3.Start(100)
         #显示最低成交价
-        # self.lowestframe = LowestpriceFrame()
-        # self.lowestframe.Show(False)
+        self.lowestframe = LowestpriceFrame()
+        self.lowestframe.Show(False)
         #登录确认器  ,放入独立进程管理
         # self.timer3=wx.Timer(self)
         # self.timer3.Start(90000)  #设定时间间隔，1分半执行一次
@@ -819,7 +831,7 @@ class TopFrame(wx.Frame):
                                    lowestprice_sizex, lowestprice_sizey))
         global num
         num+=1
-        lowestprice.save("%d.png"%num)
+        # lowestprice.save("%d.png"%num)
         price_hash = imagehash.dhash(lowestprice)
         # hash = dhash(sc)
         # print("截图成功")
@@ -1363,13 +1375,13 @@ class TopFrame(wx.Frame):
             except:
                 pass
         if web_on:
-            # self.lowestframe.Show(True)
+            self.lowestframe.Show(True)
             try:
                 self.operationframe.Show(True)
             except:
                 pass
         else:
-            # self.lowestframe.Show(False)
+            self.lowestframe.Show(False)
             try:
                 self.operationframe.Show(False)
             except:
@@ -1881,7 +1893,7 @@ class AdFrame(wx.Frame):
 
 class WebFrame(wx.Frame):
     def __init__(self,px,py,ad,name):   #name:窗口显示名称
-        wx.Frame.__init__(self, None, -1, name, size=(websize[0], websize[1]), style=wx.SIMPLE_BORDER, pos=(px, py))
+        wx.Frame.__init__(self, None, -1, name, size=(websize[0], websize[1]), pos=(px, py))
 
         # wx.Frame.__init__(self,None, -1,title="大师拍牌 QQ 178456661 - 3.663",size=(websize[0], websize[1]),\
         #  pos=(px, py),style=wx.DEFAULT_FRAME_STYLE|wx.STAY_ON_TOP&~(wx.RESIZE_BORDER))
