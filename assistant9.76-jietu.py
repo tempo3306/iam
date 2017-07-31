@@ -216,7 +216,7 @@ Pos_yanzhengmaframe=[Px_yanzhengmaframe,Py_yanzhengmaframe]
 # py_lowestprice=412
 Px_lowestprice=Px+px_lowestprice
 Py_lowestprice=Py+py_lowestprice
-lowestprice_sizex=39   #41 #截图范围
+lowestprice_sizex=75  #41 #截图范围
 lowestprice_sizey=16
 #计算确认键位置
 
@@ -819,9 +819,9 @@ class TopFrame(wx.Frame):
     def Price_hash():
         lowestprice = pg.screenshot(region=(Px_lowestprice, Py_lowestprice,
                                    lowestprice_sizex, lowestprice_sizey))
-        # global num
-        # num+=1
-        # lowestprice.save("%d.png"%num)
+        global num
+        num+=1
+        lowestprice.save("%d.png"%num)
         price_hash = imagehash.dhash(lowestprice)
         # hash = dhash(sc)
         # print("截图成功")

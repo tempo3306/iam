@@ -6,7 +6,7 @@
 '''
 ####################
 #参数
-version='1.0'
+version='1.1'
 num=0
 ############全局变量参数表##96.22#######
 host_ali="121.196.220.94"
@@ -63,7 +63,7 @@ delay_time=0.5 #延迟大小设置
 login_result=False #登录成功与否
 
 
-
+findpos_on=True  #控制是否找位置
 
 
 
@@ -126,6 +126,7 @@ Py=(Pxy[1]-websize[1])/2
 #创建位置数据
 #0:加价  1：出价 2：提交  3：刷新   4 ：确认   5：验证码    6:验证码输入框     7：取消
 P_relative=[[343, -66], [346, 40], [96, 121], [92, 43], [201, 100],[281, 40],[221,37],[282,118]]  #各按钮相对于WEB位置
+P_relative2=[[647, -98], [650, 8], [400, 89], [396, 11], [505, 68], [585, 8], [525, 5], [586, 86]]
 Position=[[0,0] for i in range(len(P_relative))]
 for i in range(len(Position)):
     Position[i][0] = Px1 + P_relative[i][0]
@@ -397,6 +398,11 @@ def findpos():
     Px_lowestprice=px_lowestprice
     Py_lowestprice=py_lowestprice
     print(px_lowestprice,py_lowestprice)
+    global Position
+    for i in range(len(Position)):
+        Position[i][0] = Px_lowestprice + P_relative2[i][0]
+        Position[i][1] = Py_lowestprice + P_relative2[i][1]
+
 
 # --------------------------------------------------------------------------------
 # # 89700
@@ -756,9 +762,9 @@ class TopFrame(wx.Frame):
         self.timer1.Start(500)  #设定时间间隔
 
 ##########控制操作台
-        self.timer4=wx.Timer(self)
-        self.Bind(wx.EVT_TIMER, self.MainControl, self.timer4)#绑定一个定时器事件，主判断
-        self.timer4.Start(100)  #设定时间间隔
+        self.timer2=wx.Timer(self)
+        self.Bind(wx.EVT_TIMER, self.MainControl, self.timer2)#绑定一个定时器事件，主判断
+        self.timer2.Start(100)  #设定时间间隔
 
         #设计间隔
         # self.timer2=wx.Timer(self)
@@ -769,6 +775,11 @@ class TopFrame(wx.Frame):
         self.timer3=wx.Timer(self)
         self.Bind(wx.EVT_TIMER, self.Lowest_price, self.timer3)#设置一个截屏取价
         self.timer3.Start(100)
+        #自动定位
+        self.timer4=wx.Timer(self)
+        self.Bind(wx.EVT_TIMER, self.Find_pos, self.timer4)#设置一个截屏取价
+        self.timer4.Start(100)
+
         #显示最低成交价
         self.lowestframe = LowestpriceFrame()
         self.lowestframe.Show(False)
@@ -790,17 +801,24 @@ class TopFrame(wx.Frame):
 #-----------------------------------------------------------------------------
 ####截屏取价 暂时放在一起
     def Lowest_price(self, event):  #
-        global lowest_price
+        global lowest_price,findpos_on
+        if not findpos_on:
+            price_hash = TopFrame.Price_hash()  # 获取当前最低价hash
+            # 处理价格
+            if price_hash in dick_hash:  # 字典查找
+                lowest_price = dick_hash[price_hash]
+            else:
+                findpos_on=True
+            # findposThread()
 
-        price_hash = TopFrame.Price_hash()  # 获取当前最低价hash
-        # 处理价格
-        if price_hash in dick_hash:  # 字典查找
-            lowest_price = dick_hash[price_hash]
-        else:
-            pass
             # logging.info("NONEHASH")
             # 处理确认
-
+#自动定位
+    def Find_pos(self,event):
+        global findpos_on
+        if findpos_on:
+            findpos()
+            findpos_on=False
 
 
 
@@ -3126,6 +3144,18 @@ class HashThread(Thread):
         Create_hash()
         # wx.Sleep(15)
         # TopFrame.Refresh_hash()
+
+
+#创建一个确认进程
+class findposThread(Thread):
+    def __init__(self):
+        Thread.__init__(self)
+        self.setDaemon(True)
+        self.start()
+
+    def run(self):
+        findpos()
+
 #创建一个确认进程
 class confirmThread(Thread):
     def __init__(self):
