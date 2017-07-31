@@ -376,12 +376,13 @@ def setText(aString):
     win32clipboard.CloseClipboard()
 
 #查找位置
-def findpos(targetimg):
+def findpos():
     # targetimg="target.png"
     sc = ImageGrab.grab()
     sc.save("sc.png")
     img=cv2.imread("sc.png",0)
-    template = cv2.imread(targetimg, 0)  # 要寻找对象的对象
+    with open("target.tkl",'rb')  as tar:
+        template=pickle.load(tar)  # 要寻找对象的对象
     w, h = template.shape[::-1]
 
     res = cv2.matchTemplate(img, template, cv2.TM_CCOEFF_NORMED)
@@ -1129,7 +1130,7 @@ class TopFrame(wx.Frame):
         Position[0][0]=po[0]
         Position[0][1]=po[1]
         print(Position[0][0], "  ",Position[0][1])
-        findpos("target.png")
+        findpos()
 
 
     @staticmethod
