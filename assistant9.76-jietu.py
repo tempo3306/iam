@@ -1202,7 +1202,9 @@ class TopFrame(wx.Frame):
         global tijiao_on,tijiao_OK,tijiao_num
         Click(Position[2][0],Position[2][1])
         tijiao_OK=False  #需要按E解锁，自动提交
-
+        global confirm_one
+        if not confirm_one:    #激活确认
+            confirmthread=confirmThread()
     # @staticmethod
     # def OnClick_Jiajia():
     #     global web_on

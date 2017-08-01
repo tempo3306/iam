@@ -6,7 +6,7 @@
 '''
 ####################
 #参数
-version='1.1'
+version='1.2'
 num=0
 ############全局变量参数表##96.22#######
 host_ali="121.196.220.94"
@@ -77,6 +77,11 @@ def Create_hash():
     with open('cf.btn','rb') as cf:
         global cf_hash
         cf_hash=pickle.load(cf)   #read confirm and refresh
+
+    with open("target.tkl",'rb')  as tar:
+        global dick_target
+        dick_target=pickle.load(tar)  # 要寻找对象的对象
+
 
 #######################################
 #策略相关参数
@@ -158,6 +163,10 @@ py_mini=40
 Pricesize=[400,80]
 #时间框大小
 Timesize=[200,50]
+
+#刷新、确认所在区域  [396, 11], [505, 68]
+refresh_area=[396-80,11-50,396+80,11+50]
+confirm_area=[505-80,68-50,505+80,68+50]
 
 
 #-------------------------------------------------------------------
@@ -379,11 +388,10 @@ def setText(aString):
 #查找位置
 def findpos():
     # targetimg="target.png"
-    sc = ImageGrab.grab()
-    sc.save("sc.png")
-    img=cv2.imread("sc.png",0)
-    with open("target.tkl",'rb')  as tar:
-        template=pickle.load(tar)  # 要寻找对象的对象
+    sc = ImageGrab.grab().convert('L')
+    img=numpy.asarray(sc)
+    global dick_target
+    template=dick_target[2]
     w, h = template.shape[::-1]
 
     res = cv2.matchTemplate(img, template, cv2.TM_CCOEFF_NORMED)
@@ -397,11 +405,41 @@ def findpos():
     py_lowestprice = max_loc[1]+py_relative
     Px_lowestprice=px_lowestprice
     Py_lowestprice=py_lowestprice
-    print(px_lowestprice,py_lowestprice)
-    global Position
+    # print(px_lowestprice,py_lowestprice)
+    global Position,refresh_area,confirm_area
     for i in range(len(Position)):
         Position[i][0] = Px_lowestprice + P_relative2[i][0]
         Position[i][1] = Py_lowestprice + P_relative2[i][1]
+    refresh_area = [396 - 80+Px_lowestprice, 11 - 50+Py_lowestprice, 396 + 80+Px_lowestprice, 11 + 50+Py_lowestprice]
+    confirm_area = [505 - 80+Px_lowestprice, 68 - 50+Py_lowestprice, 505 + 80+Px_lowestprice, 68 + 50+Py_lowestprice]
+    #关闭触发
+    global findpos_on
+    findpos_on=False
+
+def findrefresh():
+    global dick_target,refresh_on,Position,refresh_area,confirm_area
+    template=dick_target[0]
+    sc = ImageGrab.grab(refresh_area).convert('L')
+    img = numpy.asarray(sc)
+    w, h = template.shape[::-1]
+    res = cv2.matchTemplate(img, template, cv2.TM_CCOEFF_NORMED)
+    min_val, max_val, min_loc, max_loc = cv2.minMaxLoc(res)
+    # print(max_val)
+    if max_val>=0.9:
+        refresh_on=True
+
+
+def findconfirm():
+    global dick_target,confirm_on,Position
+    template=dick_target[1]
+    sc = ImageGrab.grab(confirm_area).convert('L')
+    img = numpy.asarray(sc)
+    w, h = template.shape[::-1]
+    res = cv2.matchTemplate(img, template, cv2.TM_CCOEFF_NORMED)
+    min_val, max_val, min_loc, max_loc = cv2.minMaxLoc(res)
+    print(max_val)
+    if max_val>=0.9:
+        confirm_on=True
 
 
 # --------------------------------------------------------------------------------
@@ -778,7 +816,7 @@ class TopFrame(wx.Frame):
         #自动定位
         self.timer4=wx.Timer(self)
         self.Bind(wx.EVT_TIMER, self.Find_pos, self.timer4)#设置一个截屏取价
-        self.timer4.Start(100)
+        self.timer4.Start(150)
 
         #显示最低成交价
         self.lowestframe = LowestpriceFrame()
@@ -818,7 +856,6 @@ class TopFrame(wx.Frame):
         global findpos_on
         if findpos_on:
             findpos()
-            findpos_on=False
 
 
 
@@ -1207,9 +1244,7 @@ class TopFrame(wx.Frame):
         global web_on,tijiao_on,one_delay,second_delay,tijiao_num
         global tijiao_on,chujia_on,confirm_one,confirm_need
         confirm_need=True
-        if not confirm_one:    #激活确认
-            confirmthread=confirmThread()
-            confirm_one=False
+
         if  tijiao_num == 1:
             timer = threading.Timer(one_delay,cls.Tijiao )
             timer.start()
@@ -1233,7 +1268,10 @@ class TopFrame(wx.Frame):
         global tijiao_on,tijiao_OK,tijiao_num
         Click(Position[2][0],Position[2][1])
         tijiao_OK=False  #需要按E解锁，自动提交
-
+        global confirm_one
+        if not confirm_one:    #激活确认
+            confirmthread=confirmThread()
+            confirm_one=False
     # @staticmethod
     # def OnClick_Jiajia():
     #     global web_on
@@ -1248,6 +1286,7 @@ class TopFrame(wx.Frame):
 
     @staticmethod
     def OnClick_confirm():
+        print(Position[4][0],Position[4][1])
         Click(Position[4][0], Position[4][1])
 
     @staticmethod
@@ -1256,10 +1295,8 @@ class TopFrame(wx.Frame):
         global tijiao_num,own_price1,own_price2,one_diff,second_diff
         global tijiao_on,chujia_on
         global refresh_need,refresh_one,chujia_interval
-        print("准备出价")
         print(chujia_interval)
         if not chujia_interval:
-            print("到这里")
             print(tijiao_num,twice)
             chujia_interval=True
             tijiao_on=True     #激活自动出价
@@ -1584,12 +1621,8 @@ class TopFrame(wx.Frame):
     # 获取出价信息
     def Screen_shot(self):
         global Pricesize
-        pg.screenshot("sc.png")
-        sc = Image.open("sc.png")
         box = Pos_price
-        # print("截图位置")
-        # print(Pos_price)
-        region = sc.crop(box)
+        region = ImageGrab.grab(box)
         region.resize(Pricesize, Image.ANTIALIAS).save("sc_new.png")
 
     # 删除此图
@@ -3130,7 +3163,7 @@ class TimeThread(Thread):
 #     timer.start()
 
 #---------------------------------------
-#创建hash进程
+#创建hash进程，初始化
 class HashThread(Thread):
     def __init__(self):
         """Init Worker Thread Class."""
@@ -3168,8 +3201,10 @@ class confirmThread(Thread):
         global confirm_need, confirm_on ,confirm_one,chujia_on
         for i in range(100):
             wx.Sleep(0.1)
+            # print(confirm_need)
             if confirm_need:
-                TopFrame.Confirm()
+                print("开启查找")
+                findconfirm()
                 if confirm_on:
                     TopFrame.OnClick_confirm()
                     confirm_need=False
@@ -3189,9 +3224,8 @@ class refreshThread(Thread):
         global refresh_need, refresh_on,refresh_one
         for i in range(50):
             if refresh_need:
-                TopFrame.Refresh()
+                findrefresh()
                 if refresh_on:
-                    print("刷新识别中")
                     TopFrame.OnClick_Shuaxin()  # 刷新验证码
                     refresh_on = False
                     refresh_need = False
