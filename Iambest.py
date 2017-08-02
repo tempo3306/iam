@@ -6,7 +6,7 @@
 '''
 ####################
 #参数
-version='1.2'
+version='1.3'
 num=0
 ############全局变量参数表##96.22#######
 host_ali="121.196.220.94"
@@ -65,7 +65,7 @@ login_result=False #登录成功与否
 
 findpos_on=True  #控制是否找位置
 
-
+pricelist=[80000+i*100  for i in range(200)]
 
 ######################################################
 import pyautogui as pg
@@ -119,9 +119,9 @@ enter_on=False #表示回车激活tijiao_Ok
 
 twice=False #开启两次出价
 tijiao_num=1    #开启二次出价，设置为2，执行一次之后，减1
-tijiao_one=True  #第一次出价之后开闭
+tijiao_one=False #第一次出价之后开闭
 #---------------------------------------------------------------
-#计算浏览器位置，左上角
+#计算浏览器位置，左上角s
 websize=[1024,768]   #浏览器大小
 Pxy = pg.size()  # 分辨率
 Px1 = Pxy[0] / 2 #屏幕中心位置
@@ -260,80 +260,79 @@ import wx
 import pickle
 import wx.adv
 from PIL import Image
-import numpy
 import imagehash
-#创建替代算法
-def _binary_array_to_hex(arr):
-	"""
-	internal function to make a hex string out of a binary array.
-
-	binary array might be created from comparison - for example, in
-	average hash, each pixel in the image is compared with the average pixel value.
-	If the pixel's value is less than the average it gets a 0 and if it's more it gets a 1.
-	Then we treat this like a string of bits and convert it to hexadecimal.
-	"""
-	h = 0
-	s = []
-	for i, v in enumerate(arr.flatten()):
-		if v:
-			h += 2**(i % 8)
-		if (i % 8) == 7:
-			s.append(hex(h)[2:].rjust(2, '0'))
-			h = 0
-	return "".join(s)
-
-
-class ImageHash(object):
-	"""
-	Hash encapsulation. Can be used for dictionary keys and comparisons.
-	"""
-	def __init__(self, binary_array):
-		self.hash = binary_array
-
-	def __str__(self):
-		return _binary_array_to_hex(self.hash.flatten())
-
-	def __repr__(self):
-		return repr(self.hash)
-
-	def __sub__(self, other):
-		if other is None:
-			raise TypeError('Other hash must not be None.')
-		if self.hash.size != other.hash.size:
-			raise TypeError('ImageHashes must be of the same shape.', self.hash.shape, other.hash.shape)
-		return numpy.count_nonzero(self.hash != other.hash)
-
-	def __eq__(self, other):
-		if other is None:
-			return False
-		return numpy.array_equal(self.hash.flatten(), other.hash.flatten())
-
-	def __ne__(self, other):
-		if other is None:
-			return False
-		return not numpy.array_equal(self.hash.flatten(), other.hash.flatten())
-
-	def __hash__(self):
-		# this returns a 8 bit integer, intentionally shortening the information
-		return sum([2**(i % 8) for i, v in enumerate(self.hash.flatten()) if v])
+# #创建替代算法
+# def _binary_array_to_hex(arr):
+# 	"""
+# 	internal function to make a hex string out of a binary array.
+#
+# 	binary array might be created from comparison - for example, in
+# 	average hash, each pixel in the image is compared with the average pixel value.
+# 	If the pixel's value is less than the average it gets a 0 and if it's more it gets a 1.
+# 	Then we treat this like a string of bits and convert it to hexadecimal.
+# 	"""
+# 	h = 0
+# 	s = []
+# 	for i, v in enumerate(arr.flatten()):
+# 		if v:
+# 			h += 2**(i % 8)
+# 		if (i % 8) == 7:
+# 			s.append(hex(h)[2:].rjust(2, '0'))
+# 			h = 0
+# 	return "".join(s)
 #
 #
-def dhash(image, hash_size=8):
-    """
-    Difference Hash computation.
-
-    following http://www.hackerfactor.com/blog/index.php?/archives/529-Kind-of-Like-That.html
-
-    computes differences horizontally
-
-    @image must be a PIL instance.
-    """
-    # resize(w, h), but numpy.array((h, w))
-    image = image.convert("L").resize((hash_size + 1, hash_size), Image.ANTIALIAS)
-    pixels = numpy.array(image.getdata(), dtype=numpy.float).reshape((hash_size, hash_size + 1))
-    # compute differences between columns
-    diff = pixels[:, 1:] > pixels[:, :-1]
-    return ImageHash(diff)
+# class ImageHash(object):
+# 	"""
+# 	Hash encapsulation. Can be used for dictionary keys and comparisons.
+# 	"""
+# 	def __init__(self, binary_array):
+# 		self.hash = binary_array
+#
+# 	def __str__(self):
+# 		return _binary_array_to_hex(self.hash.flatten())
+#
+# 	def __repr__(self):
+# 		return repr(self.hash)
+#
+# 	def __sub__(self, other):
+# 		if other is None:
+# 			raise TypeError('Other hash must not be None.')
+# 		if self.hash.size != other.hash.size:
+# 			raise TypeError('ImageHashes must be of the same shape.', self.hash.shape, other.hash.shape)
+# 		return numpy.count_nonzero(self.hash != other.hash)
+#
+# 	def __eq__(self, other):
+# 		if other is None:
+# 			return False
+# 		return numpy.array_equal(self.hash.flatten(), other.hash.flatten())
+#
+# 	def __ne__(self, other):
+# 		if other is None:
+# 			return False
+# 		return not numpy.array_equal(self.hash.flatten(), other.hash.flatten())
+#
+# 	def __hash__(self):
+# 		# this returns a 8 bit integer, intentionally shortening the information
+# 		return sum([2**(i % 8) for i, v in enumerate(self.hash.flatten()) if v])
+# #
+#
+# def dhash(image, hash_size=8):
+#     """
+#     Difference Hash computation.
+#
+#     following http://www.hackerfactor.com/blog/index.php?/archives/529-Kind-of-Like-That.html
+#
+#     computes differences horizontally
+#
+#     @image must be a PIL instance.
+#     """
+#     # resize(w, h), but numpy.array((h, w))
+#     image = image.convert("L").resize((hash_size + 1, hash_size), Image.ANTIALIAS)
+#     pixels = numpy.array(image.getdata(), dtype=numpy.float).reshape((hash_size, hash_size + 1))
+#     # compute differences between columns
+#     diff = pixels[:, 1:] > pixels[:, :-1]
+#     return ImageHash(diff)
 
 
 # --------------------------------------------------------------------------------
@@ -389,7 +388,7 @@ def setText(aString):
 def findpos():
     # targetimg="target.png"
     sc = ImageGrab.grab().convert('L')
-    img=numpy.asarray(sc)
+    img=np.asarray(sc)
     global dick_target
     template=dick_target[2]
     w, h = template.shape[::-1]
@@ -420,7 +419,7 @@ def findrefresh():
     global dick_target,refresh_on,Position,refresh_area,confirm_area
     template=dick_target[0]
     sc = ImageGrab.grab(refresh_area).convert('L')
-    img = numpy.asarray(sc)
+    img = np.asarray(sc)
     w, h = template.shape[::-1]
     res = cv2.matchTemplate(img, template, cv2.TM_CCOEFF_NORMED)
     min_val, max_val, min_loc, max_loc = cv2.minMaxLoc(res)
@@ -433,13 +432,65 @@ def findconfirm():
     global dick_target,confirm_on,Position
     template=dick_target[1]
     sc = ImageGrab.grab(confirm_area).convert('L')
-    img = numpy.asarray(sc)
+    img = np.asarray(sc)
     w, h = template.shape[::-1]
     res = cv2.matchTemplate(img, template, cv2.TM_CCOEFF_NORMED)
     min_val, max_val, min_loc, max_loc = cv2.minMaxLoc(res)
     print(max_val)
     if max_val>=0.9:
         confirm_on=True
+
+
+########图像识别###########
+SZ=20
+bin_n = 16 # Number of bins
+import numpy as np
+
+#hog特征
+def hog(img):
+    gx = cv2.Sobel(img, cv2.CV_32F, 1, 0)
+    gy = cv2.Sobel(img, cv2.CV_32F, 0, 1)
+    mag, ang = cv2.cartToPolar(gx, gy)
+    bins = np.int32(bin_n * ang / (2 * np.pi))  # quantizing binvalues in (0...16)
+    bin_cells = bins[:10, :10], bins[10:, :10], bins[:10, 10:], bins[10:, 10:]
+    mag_cells = mag[:10, :10], mag[10:, :10], mag[:10, 10:], mag[10:, 10:]
+    hists = [np.bincount(b.ravel(), m.ravel(), bin_n) for b, m in zip(bin_cells, mag_cells)]
+    hist = np.hstack(hists)  # hist is a 64 bit vector
+    return hist
+
+
+#二值化，切割
+def cut(img):
+    ret,thresh1=cv2.threshold(img,127,255,cv2.THRESH_BINARY_INV)
+    # image,contours,hierarchy = cv2.findContours(thresh1,cv2.RETR_EXTERNAL,cv2.CHAIN_APPROX_NONE)
+    image,contours,hierarchy = cv2.findContours(thresh1,cv2.RETR_EXTERNAL,cv2.CHAIN_APPROX_NONE)
+    imgn=[]
+    xy=[]
+    for i in range(len(contours)):
+        cnt = contours[i]
+        x, y, w, h = cv2.boundingRect(cnt)
+        # print(x, y, w, h)
+        xy.append([x, y, w, h])
+
+    xy = sorted(xy)
+    for i in range(len(contours)):
+        x, y, w, h = xy[i]
+        imgn.append(image[y:y + h, x:x + w])
+    return imgn
+
+def readpic(img):
+    try:
+        svm=cv2.ml.SVM_load('maindata.xml')
+        testData=cut(img)
+        testData=list(map(hog,testData))
+        testData = np.float32(testData).reshape(-1,64)
+        result = svm.predict(testData)
+        result=result[1].reshape(-1).astype(int).astype(str)
+        price="".join(list(result))
+        return price   #返回的是price str
+    except:
+        return False
+
 
 
 # --------------------------------------------------------------------------------
@@ -841,12 +892,23 @@ class TopFrame(wx.Frame):
     def Lowest_price(self, event):  #
         global lowest_price,findpos_on
         if not findpos_on:
-            price_hash = TopFrame.Price_hash()  # 获取当前最低价hash
+            price = int(TopFrame.Price_read())  # 获取当前最低价hash
             # 处理价格
-            if price_hash in dick_hash:  # 字典查找
-                lowest_price = dick_hash[price_hash]
+            if price in  pricelist:  # 字典查找
+                lowest_price=price
             else:
                 findpos_on=True
+
+#原来方法识别
+    # def Lowest_price(self, event):  #
+    #     global lowest_price,findpos_on
+    #     if not findpos_on:
+    #         price_hash = TopFrame.Price_hash()  # 获取当前最低价hash
+    #         # 处理价格
+    #         if price_hash in dick_hash:  # 字典查找
+    #             lowest_price = dick_hash[price_hash]
+    #         else:
+    #             findpos_on=True
             # findposThread()
 
             # logging.info("NONEHASH")
@@ -881,6 +943,21 @@ class TopFrame(wx.Frame):
 
 ############################################################
     #image read
+    @staticmethod
+    def Price_read():
+        lowestprice=ImageGrab.grab((Px_lowestprice, Py_lowestprice,
+                                   lowestprice_sizex+Px_lowestprice, lowestprice_sizey+Py_lowestprice)).convert('L')
+
+        # global num
+        # num+=1
+        # lowestprice.save("%s.png"%num)
+
+        lowestprice=np.asarray(lowestprice)
+        price=readpic(lowestprice)
+        # print(price)
+        return price
+
+
     @staticmethod
     def Price_hash():
         lowestprice = pg.screenshot(region=(Px_lowestprice, Py_lowestprice,
@@ -3300,7 +3377,7 @@ class TijiaoThread(Thread):
             # print(tijiao_on,strategy_on,guopai_on)
             # print(a_time, final_tijiao)
             #触发提交
-            if tijiao_on and strategy_on and guopai_on  and tijiao_OK and tijiao_on:     #判断是否需要提交,国拍开启状态方可触发
+            if tijiao_on and strategy_on and guopai_on  and tijiao_OK :     #判断是否需要提交,国拍开启状态方可触发
                 # print(a_time,final_tijiao)
                 if tijiao_num == 1 and a_time>=one_real_time2 and not tijiao_one:  #判断是否满足条件
                     tijiao_on=False
@@ -3359,9 +3436,11 @@ class MoniTijiaoThread(Thread):
         global tijiao_num, tijiao_OK,one_advance,second_advance,tijiao_one
         for i in range(10000000):
             time.sleep(0.1)  #间隔0.1秒判断一次
-            # print(strategy_on,moni_on,moni_second,tijiao_on,tijiao_num)
-            # print(lowest_price,own_price1,own_price2)
-            if tijiao_on and strategy_on and moni_on and tijiao_OK and tijiao_on:     #判断是否需要提交，模拟开启方可触发
+
+            if tijiao_on and strategy_on and moni_on and tijiao_OK :     #判断是否需要提交，模拟开启方可触发
+                print(tijiao_on, strategy_on, moni_on, tijiao_OK)
+                print(tijiao_num,moni_second,one_time2,tijiao_one)
+                print(lowest_price, own_price1, own_price2)
                 if tijiao_num == 1 and moni_second>=one_time2 and not tijiao_one:  #判断是否满足条件
                     TopFrame.OnClick_Tijiao()     #调用方法
                     logging.info("moni one_tijiao %s %s %s %s" % (tijiao_on,strategy_on, moni_on,  tijiao_OK))
