@@ -65,11 +65,7 @@ login_result=False #登录成功与否
 
 findpos_on=True  #控制是否找位置
 
-pricelist=[80000+i*100  for i in range(200)]   #用于验证识别
-IDnumber=0  #身份证号
-account=0   #标书号
-passwd=0    #密码
-
+pricelist=[80000+i*100  for i in range(200)]
 
 ######################################################
 import pyautogui as pg
@@ -2168,11 +2164,9 @@ class OperationFrame(wx.Frame):
         #策略保存与恢复
         self.strategy_save=wx.Button(panel,label="保存策略",size=(60,35))
         self.strategy_load=wx.Button(panel,label="载入策略",size=(60,35))
-        self.save_info=wx.Button(panel,label="用户信息",size=(60,35))
         hbox4= wx.BoxSizer(wx.HORIZONTAL)
         hbox4.Add(self.strategy_save)
         hbox4.Add(self.strategy_load)
-        hbox4.Add(self.save_info)
         vb1.Add(hbox4)
 
 
@@ -2300,7 +2294,6 @@ class OperationFrame(wx.Frame):
         self.Bind(wx.EVT_CHOICE, self.Confirmchoice,self.confirm_choice)
         self.Bind(wx.EVT_BUTTON,self.Strategy_save,self.strategy_save)
         self.Bind(wx.EVT_BUTTON,self.Strategy_load,self.strategy_load)
-        self.Bind(wx.EVT_BUTTON,self.Save_info,self.save_info)
 
         self.Bind(wx.EVT_CHOICE, self.Refresh_panel,self.select_stractagy)
         # self.Bind(wx.EVT_SPINCTRLDOUBLE, self.Jiajia_time,self.jiajia_time)
@@ -2884,8 +2877,6 @@ class OperationFrame(wx.Frame):
                     L.append(os.path.join(root, file))
         return L
 
-    def Save_info(self,event):
-        pass
 
 
 #############时间换算###############
@@ -3493,27 +3484,19 @@ class MoniTijiaoThread(Thread):
                     logging.info("moni second_chujia %s %s" %(second_time1,moni_second))
 
 
-class Infoframe(wx.Frame):
-    def __init__(self, name, user,psd):  ##########版本号
-        wx.Frame.__init__(self, None, -1, name,size=(300, 240), style= wx.CAPTION | wx.CLOSE_BOX)
-        self.Bind(wx.EVT_CLOSE, self.OnClose)
-        self.panel = wx.Panel(self, size=(300, 220))
-        self.icon = wx.Icon(mainicon, wx.BITMAP_TYPE_ICO)
-        self.SetIcon(self.icon)
-
 
 class SketchApp(wx.App):
     def OnInit(self):
-        # try:
-        #     bitmap = wx.Bitmap('start.png', wx.BITMAP_TYPE_PNG)
-        #
-        #     wx.adv.SplashScreen(bitmap, wx.adv.SPLASH_CENTRE_ON_SCREEN | wx.adv.SPLASH_TIMEOUT,
-        #                                  1500, None, -1, wx.DefaultPosition, size=(300,240),
-        #                                 style=wx.BORDER_SIMPLE | wx.STAY_ON_TOP)
-        #
-        #     wx.Yield()
-        # except:
-        #     pass
+        try:
+            bitmap = wx.Bitmap('start.png', wx.BITMAP_TYPE_PNG)
+
+            wx.adv.SplashScreen(bitmap, wx.adv.SPLASH_CENTRE_ON_SCREEN | wx.adv.SPLASH_TIMEOUT,
+                                         1500, None, -1, wx.DefaultPosition, size=(300,240),
+                                        style=wx.BORDER_SIMPLE | wx.STAY_ON_TOP)
+
+            wx.Yield()
+        except:
+            pass
         try:
             with open("your.name", 'rb') as name:
                 namepsd = pickle.load(name)

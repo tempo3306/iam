@@ -1,0 +1,4 @@
+Wed, 02 Aug 2017 12:38:31 new_1.py[line:171] DEBUG This is debug message
+Wed, 02 Aug 2017 12:38:31 new_1.py[line:172] INFO This is info message
+Wed, 02 Aug 2017 12:38:31 new_1.py[line:173] WARNING This is warning message
+Wed, 02 Aug 2017 12:38:31 new_1.py[line:174] ERROR This is error message
