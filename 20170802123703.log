@@ -1,9 +1,0 @@
-Wed, 02 Aug 2017 12:37:03 ces2.py[line:353] DEBUG This is debug message
-Wed, 02 Aug 2017 12:37:03 ces2.py[line:354] INFO This is info message
-Wed, 02 Aug 2017 12:37:03 ces2.py[line:355] WARNING This is warning message
-Wed, 02 Aug 2017 12:37:03 ces2.py[line:356] ERROR This is error message
-Wed, 02 Aug 2017 12:37:07 ces2.py[line:556] INFO 发送信息 ["12345617", "1"]
-Wed, 02 Aug 2017 12:37:07 ces2.py[line:560] INFO Submit Complete
-Wed, 02 Aug 2017 12:37:07 ces2.py[line:569] INFO 登录成功 success
-Wed, 02 Aug 2017 12:37:07 ces2.py[line:3327] INFO login success
-Wed, 02 Aug 2017 12:37:09 ces2.py[line:607] INFO Submit Log Out Complete

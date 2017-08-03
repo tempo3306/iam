@@ -2844,9 +2844,9 @@ class OperationFrame(wx.Frame):
             self.tijiao_time2.SetValue(osl[7])
             self.jiajia_price2.SetValue(osl[8])
             self.yanchi_time2.SetValue(osl[9])
-            if osl[5] == 100:
+            if osl[10] == 100:
                 self.select_tijiao2.SetSelection(0)
-            elif osl[5] == 200:
+            elif osl[10] == 200:
                 self.select_tijiao2.SetSelection(1)
             else:
                 self.select_tijiao2.SetSelection(2)

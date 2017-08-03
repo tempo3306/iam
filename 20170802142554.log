@@ -1,8 +1,0 @@
-Wed, 02 Aug 2017 14:25:54 Iambest.py[line:357] DEBUG This is debug message
-Wed, 02 Aug 2017 14:25:54 Iambest.py[line:358] INFO This is info message
-Wed, 02 Aug 2017 14:25:54 Iambest.py[line:359] WARNING This is warning message
-Wed, 02 Aug 2017 14:25:54 Iambest.py[line:360] ERROR This is error message
-Wed, 02 Aug 2017 14:25:59 Iambest.py[line:560] INFO 发送信息 ["12345619", "1"]
-Wed, 02 Aug 2017 14:25:59 Iambest.py[line:564] INFO Submit Complete
-Wed, 02 Aug 2017 14:25:59 Iambest.py[line:573] INFO 登录成功 success
-Wed, 02 Aug 2017 14:25:59 Iambest.py[line:3336] INFO login success
