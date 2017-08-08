@@ -6,7 +6,7 @@
 '''
 ####################
 #参数
-version='1.3'
+version='1.4'
 num=0
 ############全局变量参数表##96.22#######
 host_ali="121.196.220.94"
@@ -554,7 +554,7 @@ def ConfirmUser():
         # sys.exit(1)
 
 #发送激活码
-    data = [Username,Password]
+    data = ['login',Username,Password]
     data=json.dumps(data)
     data = bytes(data, encoding="utf-8")  #转化为BYTE
     logging.info('发送信息 %s' % str(data,encoding="utf-8"))
@@ -564,20 +564,29 @@ def ConfirmUser():
     logging.info("Submit Complete")
     print("Submit Complete")
     try:
+
         login_reply = s.recv(1024)  # 收到回复
+        print(login_reply)
         login_reply = str(login_reply, encoding="utf-8")#接受反馈
         login_reply = json.loads(login_reply)      #json转列表
-        # print(login_reply)
+        print(login_reply)
         buf=login_reply[0]
         if buf == 'success':                  #判断是否成功
             logging.info('登录成功 %s' % buf)
             global url2
             url2=login_reply[1]   #修改为最新网址
             return 'login success'  #登录成功，给予返回值
+        elif buf == 'wrong password':
+            logging.warning('密码错误 %s' %buf)
+            return 'wrong password'
+        elif buf == "wrong account":
+            logging.warning('账号错误 %s' %buf)
+            return 'wrong account'
         elif buf == 'repeat':
             logging.warning('账号错误 %s' % buf)
             return 'repeat'
     except:
+        print("连接失败")
         logging.warning('连接失败 ' )
         return False
 
@@ -588,7 +597,6 @@ def Logout():
     # data = raw_input("Plz imput what you want to submit:")
     port = 8080
     global Username
-    Username=Username   #软件关闭的时候将这个激活码释放
     s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
     try:
         s.connect((host, port))
@@ -602,10 +610,11 @@ def Logout():
         # sys.exit(1)
 
     # 发送登出信息
-    data = 'logout'+Username
-    data = json.dumps(data)
-    data = bytes(data, encoding="utf-8")  # 转化为BYTE
-    s.send(data)  # 发送
+    data = ['logout',Username,Password]
+    data=json.dumps(data)
+    data = bytes(data, encoding="utf-8")  #转化为BYTE
+    logging.info('发送信息 %s' % str(data,encoding="utf-8"))
+    s.send(data)
     s.shutdown(1)
     print("Submit Log Out Complete")
     logging.info("Submit Log Out Complete")
@@ -617,7 +626,6 @@ def Keeplogin():
     # data = raw_input("Plz imput what you want to submit:")
     port = 8080
     global Username
-    Username=Username   #软件关闭的时候将这个激活码释放
     s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
     try:
         s.connect((host, port))
@@ -631,10 +639,12 @@ def Keeplogin():
         # sys.exit(1)
 
     # 发送确认信息
-    data = 'keep'+Username
+    data = ['keep',Username,Password]
     data=json.dumps(data)
-    data = bytes(data, encoding="utf-8")  # 转化为BYTE
-    s.send(data)  # 发送
+    data = bytes(data, encoding="utf-8")  #转化为BYTE
+    logging.info('发送信息 %s' % str(data,encoding="utf-8"))
+    s.send(data)
+
     s.shutdown(1)
     print("Submit keep Complete")
     logging.info("Submit keep Complete")
@@ -3068,6 +3078,10 @@ class LoginFrame(wx.Frame):
             wx.MessageBox('连接服务器失败', '用户登录', wx.OK | wx.ICON_ERROR)
         elif login_result=='repeat':
             wx.MessageBox('重复登录，稍后再试', '用户登录', wx.OK | wx.ICON_ERROR)
+        elif login_result=='wrong account':
+            wx.MessageBox('账号错误', '用户登录', wx.OK | wx.ICON_ERROR)
+        elif login_result=='wrong password':
+            wx.MessageBox('密码错误', '用户登录', wx.OK | wx.ICON_ERROR)
         else:
             wx.MessageBox('登录失败', '用户登录', wx.OK | wx.ICON_ERROR)
 
@@ -3104,7 +3118,7 @@ class LoginFrame(wx.Frame):
             self.passText.SetFocus()
             # loginthread=TestThread()
         else:
-            Username=username
+            Username=username     #保存用户输入的账号密码
             Password=password
             self.loginthread=LoginThread()
             namepsd=[username,password]
