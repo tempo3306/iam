@@ -6,7 +6,7 @@
 '''
 ####################
 #参数
-version='1.4'
+version='1.5s'
 num=0
 ############全局变量参数表##96.22#######
 host_ali="121.196.220.94"
@@ -151,10 +151,15 @@ px_price=770-171
 py_price=260
 #price框放置位置
 px_priceframe=220-191
-py_priceframe=510
+py_priceframe=480
 #time放置位置
-px_timeframe=400-35
-py_timeframe=460 #460
+px_timeframe=245
+py_timeframe=350 #460
+#最低成交价框显示位置
+px_lowestpriceframe=245
+py_lowestpriceframe=290
+lowestpriceframe_pos=[px_lowestpriceframe,py_lowestpriceframe]
+
 #验证码位置
 px_yanzhengmaframe=400-215
 py_yanzhengmaframe=460
@@ -859,10 +864,10 @@ class TopFrame(wx.Frame):
         # pub.subscribe(TopFrame.CTijiao, "tijiao_click")
         # pub.subscribe(TopFrame.OnCClick_second, "second_click")
 #########定时器
-        #显示价格
-        self.timer1=wx.Timer(self)
-        self.Bind(wx.EVT_TIMER, self.Price_view, self.timer1)#绑定一个定时器事件，主判断
-        self.timer1.Start(500)  #设定时间间隔
+        # #显示价格
+        # self.timer1=wx.Timer(self)
+        # self.Bind(wx.EVT_TIMER, self.Price_view, self.timer1)#绑定一个定时器事件，主判断
+        # self.timer1.Start(500)  #设定时间间隔
 
 ##########控制操作台
         self.timer2=wx.Timer(self)
@@ -883,9 +888,7 @@ class TopFrame(wx.Frame):
         self.Bind(wx.EVT_TIMER, self.Find_pos, self.timer4)#设置一个截屏取价
         self.timer4.Start(150)
 
-        #显示最低成交价
-        self.lowestframe = LowestpriceFrame()
-        self.lowestframe.Show(False)
+
         #登录确认器  ,放入独立进程管理
         # self.timer3=wx.Timer(self)
         # self.timer3.Start(90000)  #设定时间间隔，1分半执行一次
@@ -1382,7 +1385,7 @@ class TopFrame(wx.Frame):
 
     @staticmethod
     def OnClick_chujia():
-        global price_view,price_count,web_on,lowest_price
+        global web_on,lowest_price
         global tijiao_num,own_price1,own_price2,one_diff,second_diff
         global tijiao_on,chujia_on
         global refresh_need,refresh_one,chujia_interval
@@ -1422,11 +1425,18 @@ class TopFrame(wx.Frame):
                     refreshthread = refreshThread()
                     refresh_one = True
 
-        # Click(Position[4][0], Position[4][1], button='left')
-        # Click(Position[0][0], Position[0][1], button='left')
-        # Click(Position[1][0], Position[1][1], button='left')
-        # price_view = True
-        # price_count = 0
+    @staticmethod
+    def selfChujia():
+        global price_view,price_count
+        Click(Position[4][0], Position[4][1])
+        Click(Position[0][0], Position[0][1])
+        Click(Position[1][0], Position[1][1])
+        price_view = True
+        price_count = 0
+    @staticmethod
+    def selfTijiao():
+        OperationFrame.Del_shot()
+        Click(Position[2][0],Position[2][1])
 
 
     # @classmethod
@@ -1490,45 +1500,18 @@ class TopFrame(wx.Frame):
     def OnClick_Backspace():
         pg.press('backspace')
 
-#动态显示价格
-    def Price_view(self,event):
-        global price_view,web_on,price_on,view_time
-        pass
-        # if price_view and price_count>=4:
-        #     try:
-        #         self.Price_close()
-        #     except:
-        #         pass
-        #     self.Screen_shot()
-        #     image="sc_new.png"
-        #     self.priceframe=PriceFrame(image)
-        #     self.priceframe.Show(True)
-        #     price_view=False
-        #     price_on=True
-
 
 
     def MainControl(self,event):
-        if not web_on and price_on:
-            self.Price_close()
-        if price_on and not tijiao_on:
-            self.Price_close()
+        #####
         if not web_on and time_on:  #网页关就把时间关掉
             self.operationframe.Closetime()
-        file='sc_new.png'
-        if not os.path.exists(file):
-            try:
-                self.Price_close()
-            except:
-                pass
         if web_on:
-            self.lowestframe.Show(True)
             try:
                 self.operationframe.Show(True)
             except:
                 pass
         else:
-            self.lowestframe.Show(False)
             try:
                 self.operationframe.Show(False)
             except:
@@ -1595,18 +1578,13 @@ class TopFrame(wx.Frame):
 
 
 
-#关闭显示
-    def Price_close(self):
-        try:
-            self.priceframe.Destroy()
-        except:
-            pass
 
 
-#设定间隔辅助
-    def Price_count(self,event):
-        global price_count
-        price_count+=1
+
+# #设定间隔辅助
+#     def Price_count(self,event):
+#         global price_count
+#         price_count+=1
 
 
 
@@ -1656,8 +1634,8 @@ class TopFrame(wx.Frame):
             HOTKEY_ACTIONS = {
                 1: TopFrame.handle_Jiajia, 2: TopFrame.handle_Chujia, 3: TopFrame.handle_Tijiao,
                 4: TopFrame.handle_Shuaxin, 5: TopFrame.handle_Confirm,
-                6: TopFrame.handle_Yanzhengma, 7: TopFrame.OnClick_Shuaxin, 8: TopFrame.OnClick_Tijiao,
-                9: TopFrame.OnClick_chujia, 10: TopFrame.OnClick_Backspace,11:TopFrame.tijiao_ok,12:TopFrame.tijiao_ok2,
+                6: TopFrame.handle_Yanzhengma, 7: TopFrame.OnClick_Shuaxin, 8: TopFrame.selfTijiao,
+                9: TopFrame.selfChujia, 10: TopFrame.OnClick_Backspace,11:TopFrame.tijiao_ok,12:TopFrame.tijiao_ok2,
                  13:TopFrame.query}
             user32 = ctypes.windll.user32
             msg = wintypes.MSG()
@@ -1709,19 +1687,7 @@ class TopFrame(wx.Frame):
 
     # 截图处理，此次出价
 
-    # 获取出价信息
-    def Screen_shot(self):
-        global Pricesize
-        box = Pos_price
-        region = ImageGrab.grab(box)
-        region.resize(Pricesize, Image.ANTIALIAS).save("sc_new.png")
 
-    # 删除此图
-    def Del_shot(self):
-        try:
-            os.remove("sc_new.png")
-        finally:
-            pass
 
 
 # #############修改时间###########
@@ -2036,7 +2002,7 @@ class AdFrame(wx.Frame):
 
 class WebFrame(wx.Frame):
     def __init__(self,px,py,ad,name):   #name:窗口显示名称
-        wx.Frame.__init__(self, None, -1, name, size=(websize[0], websize[1]), pos=(px, py))
+        wx.Frame.__init__(self, None, -1, name, size=(websize[0], websize[1]), pos=(px, py),style=wx.SIMPLE_BORDER)
 
         # wx.Frame.__init__(self,None, -1,title="大师拍牌 QQ 178456661 - 3.663",size=(websize[0], websize[1]),\
         #  pos=(px, py),style=wx.DEFAULT_FRAME_STYLE|wx.STAY_ON_TOP&~(wx.RESIZE_BORDER))
@@ -2126,6 +2092,19 @@ class OperationFrame(wx.Frame):
         one_real_time2 = self.gettime(one_time2)
         second_real_time1 = self.gettime(second_time1)
         second_real_time2 = self.gettime(second_time2)
+        #显示价格
+        self.timer1=wx.Timer(self)
+        self.Bind(wx.EVT_TIMER, self.Price_view, self.timer1)#绑定一个定时器事件，主判断
+        self.timer1.Start(500)  #设定时间间隔
+        #设定间隔
+        self.timer2=wx.Timer(self)
+        self.Bind(wx.EVT_TIMER, self.Price_count, self.timer2)#
+        self.timer2.Start(100)  #设定时间间隔
+        #显示最低成交价
+        self.lowestframe = LowestpriceFrame()
+        self.lowestframe.Show(False)
+
+#############################
         ####布局
         panel = wx.Panel(self, -1, size=(300, 380))
 
@@ -2343,6 +2322,66 @@ class OperationFrame(wx.Frame):
         self.operationtimer = wx.Timer(self)
         self.Bind(wx.EVT_TIMER, self.opt, self.operationtimer)
         self.operationtimer.Start(3000)
+
+    # 动态显示价格
+    def Price_view(self, event):
+        global price_view, web_on, price_on, view_time
+        print(price_view, price_count)
+        if price_view and price_count >= 4:
+            try:
+                self.Price_close()
+            except:
+                pass
+            self.Screen_shot()
+            image = "sc_new.png"
+            self.priceframe = PriceFrame(image)
+            self.priceframe.Show(True)
+            price_view = False
+            price_on = True
+            print("到这5")
+
+    def Price_count(self,event):
+        #设计手动显示价格的判定器，制作显示间隔
+        global price_count
+        price_count+=1
+        file='sc_new.png'
+        if web_on and strategy_on:
+            self.lowestframe.Show(True)
+        if not os.path.exists(file):
+            try:
+                self.Price_close()
+            except:
+                pass
+        #手动关闭最低价显示
+        if not strategy_on or not web_on:
+            self.lowestframe.Show(False)
+
+
+
+    # 获取出价信息
+    def Screen_shot(self):
+        global Pricesize
+        box = Pos_price
+        region = ImageGrab.grab(box)
+        region.resize(Pricesize, Image.ANTIALIAS).save("sc_new.png")
+
+    # 删除此图
+    @staticmethod
+    def Del_shot():
+        try:
+            os.remove("sc_new.png")
+        except:
+            pass
+            # 关闭显示
+
+    def Price_close(self):
+        try:
+            self.priceframe.Destroy()
+        except:
+            pass
+
+
+
     def opt(self,event):
         global tijiao_num,tijiao_one,chujia_on
         global strategy_on  # 策略开启
@@ -2956,7 +2995,7 @@ class LowestpriceWindow(wx.Panel):
 
 class LowestpriceFrame(wx.Frame):
     def __init__(self):
-         wx.Frame.__init__(self, None, title="wx.Timer", size=(200, 50), pos=(300,300),
+         wx.Frame.__init__(self, None, title="wx.Timer", size=(200, 50), pos=lowestpriceframe_pos,
                               style=wx.FRAME_TOOL_WINDOW | wx.STAY_ON_TOP)
             # wx.Frame.__init__(self, None, -1,'Time',size=(400,160), pos=Pos_timeframe,
             #                   style=wx.FRAME_TOOL_WINDOW|wx.STAY_ON_TOP)
