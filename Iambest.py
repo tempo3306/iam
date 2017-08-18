@@ -1116,7 +1116,7 @@ class TopFrame(wx.Frame):
                 moni_on = True  # 模拟打开
                 ad_view=True
                 web_on=True
-                self.fr=WebFrame(Px,Py,False,'沪牌模拟')
+                self.fr=WebFrame(Px,Py,False,'小鲜肉模拟')
                 self.operationframe.Show(True) #开启控制面板显示
                 #查看时间框是否应该显示
                 if time_on:
@@ -1210,7 +1210,7 @@ class TopFrame(wx.Frame):
             if do:
                 ad_view=True
                 guopai_on=True
-                self.fr=WebFrame(Px,Py,False,'国拍网')    #暂时关闭广告
+                self.fr=WebFrame(Px,Py,False,'小鲜肉代拍 国拍')    #暂时关闭广告
                 self.operationframe.Show(True)  # 开启控制面板显示
                 #查看时间框是否应该显示
                 if time_on:
@@ -1251,7 +1251,7 @@ class TopFrame(wx.Frame):
 
 
         aboutInfo = wx.adv.AboutDialogInfo()
-        aboutInfo.SetName("沪牌第一枪")
+        aboutInfo.SetName("小鲜肉拍牌")
         aboutInfo.SetVersion(licence)
         #aboutInfo.SetDescription("最好的拍牌软件!")
         # aboutInfo.SetCopyright("(C) 2017-2022")
@@ -1995,7 +1995,7 @@ class AdFrame(wx.Frame):
                                 (15, 60)))
         t1.append(wx.StaticText(panel, -1, "关注微信公众号",
                                 (15, 110)))
-        t1.append(wx.StaticText(panel, -1, " 沪牌第一枪",
+        t1.append(wx.StaticText(panel, -1, " 小鲜肉拍牌",
                                 (15, 160)))
         for i in range(len(t1)):
             t1[i].SetFont(font)
@@ -2084,7 +2084,7 @@ class ControlFrame(wx.Frame):  #为webframe提供控制操作
 #功能窗口#
 class OperationFrame(wx.Frame):
     def __init__(self):  # name:窗口显示名称
-        wx.Frame.__init__(self, None, -1, pos=(1070,100),size=(300, 410),\
+        wx.Frame.__init__(self, None, -1,title="小鲜肉代拍", pos=(1070,100),size=(300, 425),\
                           style=wx.FRAME_NO_TASKBAR|wx.CAPTION)  # wx.FRAME_TOOL_WINDOW|   |wx.STAY_ON_TOP
         # 初始化real_time
         global one_real_time1, second_real_time1, one_real_time2, second_real_time2
@@ -2265,8 +2265,11 @@ class OperationFrame(wx.Frame):
 
         #加横线
         title=wx.StaticText(panel,-1,label=u"拍牌功能设置")
+        warning=wx.StaticText(panel,-1,label=u"10点半需要进行第一次出价")
+        warning.SetForegroundColour('red')
         line=wx.StaticLine(panel, -1  )
         self.vbox1.Add(title,0,wx.ALL | wx.LEFT, 10)
+        self.vbox1.Add(warning,0,wx.LEFT, 10)
         self.vbox1.Add(line,flag=wx.EXPAND|wx.BOTTOM,border=10)
         self.vbox1.Add(self.stractagySizer, 0 ,wx.ALL | wx.CENTER, 5)
         self.vbox1.Add(self.oneshotSizer, 0,wx.ALL | wx.CENTER, 5)
@@ -2639,7 +2642,7 @@ class OperationFrame(wx.Frame):
             self.oneshotsizer_Shown=True
         self.secondsizer_Shown = True
         self.oneshotSizer_Shown = True
-        self.SetClientSize((280, 560))  # 更新面板尺寸
+        self.SetClientSize((280, 575))  # 更新面板尺寸
         self.Secondshot_reset()
         self.Layout()
 
@@ -2652,7 +2655,7 @@ class OperationFrame(wx.Frame):
             self.vbox1.Show(self.oneshotSizer)
         self.secondsizer_Shown = False
         self.oneshotSizer_Shown = True
-        self.SetClientSize((280, 360))  # 更新面板尺寸
+        self.SetClientSize((280, 375))  # 更新面板尺寸
         self.Oneshot_reset()
         self.Layout()
 
@@ -2664,7 +2667,7 @@ class OperationFrame(wx.Frame):
 
         self.oneshotsizer_Shown = False
         self.secondsizer_Shown = False
-        self.SetClientSize((280, 240))
+        self.SetClientSize((280, 255))
         self.Layout()
 
     def Oneshot_reset(self):
@@ -3110,7 +3113,7 @@ class LoginFrame(wx.Frame):
         global login_result
         if login_result=='login success':
             self.Destroy()
-            self.topframe = TopFrame('沪牌第一枪', version)
+            self.topframe = TopFrame('小鲜肉拍牌', version)
             self.topframe.Show(True)
             # event.Skip()
         elif login_result=='net error':
@@ -3575,7 +3578,7 @@ class SketchApp(wx.App):
         except:
             user = '123456'  # 关闭
             psd = 0
-        loginframe = LoginFrame('沪牌第一枪', user, psd)
+        loginframe = LoginFrame('小鲜肉拍牌', user, psd)
         loginframe.Show(True)
         return True
 
