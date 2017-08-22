@@ -14,7 +14,7 @@ host_ali="121.196.220.94"
 # host_ali="127.0.0.1"
 #网址
 url1="http://moni.51hupai.org/"
-url2="https://paimai.alltobid.com/bid/2017052001/login.htm"
+url2="www.baidu.com"
 #icon路径
 mainicon='ico.ico'
 
@@ -127,11 +127,11 @@ tijiao_num=1    #开启二次出价，设置为2，执行一次之后，减1
 tijiao_one=False #第一次出价之后开闭
 #---------------------------------------------------------------
 #计算浏览器位置，左上角s
-websize=[950,740]   #浏览器大小
+websize=[902,700]   #浏览器大小
 Pxy = pg.size()  # 分辨率
 Px1 = Pxy[0] / 2 #屏幕中心位置
 Py2 = Pxy[1] / 2
-Px=(Pxy[0]-websize[0])/2
+Px=(Pxy[0]-websize[0])/2-80
 Py=(Pxy[1]-websize[1])/2
 #创建位置数据
 #0:加价  1：出价 2：提交  3：刷新   4 ：确认   5：验证码    6:验证码输入框     7：取消
@@ -466,7 +466,7 @@ def findconfirm():
     if max_val>=0.9:
         confirm_on=True
 
-
+#------------------------------------------------------------------------------------
 ########图像识别###########
 SZ=20
 bin_n = 16 # Number of bins
@@ -520,16 +520,140 @@ def readpic(img):
 
 
 # --------------------------------------------------------------------------------
-# # 89700
-# 89600
-#     global Pricesize
-#     pg.screenshot("sc.png")
-#     sc = Image.open("sc.png")
-#     box = Pos_price
-#     # print("截图位置")
-#     # print(Pos_price)
-#     region = sc.crop(box)
-#     region.resize(Pricesize, Image.ANTIALIAS).save("sc_new.png")
+#PING网速测试
+import os
+import socket
+import struct
+import select
+import time
+
+ICMP_ECHO_REQUEST = 8  # Platform specific
+DEFAULT_TIMEOUT = 2
+DEFAULT_COUNT = 1
+
+
+class Pinger(object):
+    """ Pings to a host -- the Pythonic way"""
+
+    def __init__(self, target_host, count=DEFAULT_COUNT, timeout=DEFAULT_TIMEOUT):
+        self.target_host = target_host
+        self.count = count
+        self.timeout = timeout
+
+
+    def do_checksum(self, source_string):
+        """  Verify the packet integritity """
+        sum = 0
+        max_count = (len(source_string) / 2) * 2
+        count = 0
+        while count < max_count:  # 分割数据每两比特(16bit)为一组
+            val = source_string[count + 1]* 256 + source_string[count]
+            sum = sum + val
+            sum = sum & 0xffffffff
+            count = count + 2
+
+        if max_count < len(source_string):   # 如果数据长度为基数,则将最后一位单独相加
+            sum = sum + source_string[len(source_string) - 1]
+            sum = sum & 0xffffffff
+        sum = (sum >> 16) + (sum & 0xffff)  # 将高16位与低16位相加直到高16位为0
+        sum = sum + (sum >> 16)
+        answer = ~sum
+        answer = answer & 0xffff
+        answer = answer >> 8 | (answer << 8 & 0xff00)
+        return answer  # 返回的是十进制整数
+
+    def receive_ping(self, sock, ID, timeout):
+        time_remaining = timeout
+        while True:
+            start_time = time.time()
+            readable = select.select([sock], [], [], time_remaining)
+            time_spent = (time.time() - start_time)
+            if readable[0] == []:  # Timeout
+                return
+
+            time_received = time.time()
+            recv_packet, addr = sock.recvfrom(1024)
+            icmp_header = recv_packet[20:28]
+            type, code, checksum, packet_ID, sequence = struct.unpack(
+                "bbHHh", icmp_header
+            )
+            if packet_ID == ID:
+                bytes_In_double = struct.calcsize("d")
+                time_sent = struct.unpack("d", recv_packet[28:28 + bytes_In_double])[0]
+                return time_received - time_sent
+
+            time_remaining = time_remaining - time_spent
+            if time_remaining <= 0:
+                return
+
+    def send_ping(self, sock, ID):
+        """
+        Send ping to the target host
+        """
+        target_addr = socket.gethostbyname(self.target_host)
+
+        my_checksum = 0
+
+        # Create a dummy heder with a 0 checksum.
+        header = struct.pack("bbHHh", ICMP_ECHO_REQUEST, 0, my_checksum, ID, 1)
+        bytes_In_double = struct.calcsize("d")
+        data = (192 - bytes_In_double) * "Q"
+        data = struct.pack("d", time.time()) + bytes(data,encoding="utf-8")
+
+        # Get the checksum on the data and the dummy header.
+        my_checksum = self.do_checksum(header + data)
+        header = struct.pack(
+            "bbHHh", ICMP_ECHO_REQUEST, 0, socket.htons(my_checksum), ID, 1
+        )
+        packet = header + data
+        sock.sendto(packet, (target_addr, 1))
+
+    def ping_once(self):
+        """
+        Returns the delay (in seconds) or none on timeout.
+        """
+        icmp = socket.getprotobyname("icmp")
+        try:
+            sock = socket.socket(socket.AF_INET, socket.SOCK_RAW, icmp)
+        except socket.error as er:
+            if er[0] == 1:
+                # Not superuser, so operation not permitted
+                er[1] += "ICMP messages can only be sent from root user processes"
+                raise socket.error(er[1])
+        except Exception as e:
+            print ("Exception: %s" % (e))
+
+
+        my_ID = os.getpid() & 0xFFFF
+
+        self.send_ping(sock, my_ID)
+        delay = self.receive_ping(sock, my_ID, self.timeout)
+        sock.close()
+        return delay
+
+    def ping(self):
+        """
+        Run the ping process
+        """
+        for i in range(self.count):
+            print("Ping to %s..." % self.target_host)
+            try:
+                delay = self.ping_once()
+            except socket.gaierror as e:
+                print ("Ping failed. (socket error: '%s')" % e)
+                return "timeout"
+
+            if delay == None:
+                print("Ping failed. (timeout within %ssec.)" % self.timeout)
+                return "timeout"
+
+            else:
+                delay = delay * 1000
+                print("Get ping in %0.4fms" % delay)
+                return int(delay)
+#定义类
+pinger=Pinger(url2)
+pingnow=pinger.ping()
 
 # --------------------------------------------------------------------------------
 #采集用户信息
@@ -1144,7 +1268,7 @@ class TopFrame(wx.Frame):
                     strategy_repeat = True
 
 
-                browser=wx.html2.WebView.New(self.fr,size=(websize[0],websize[1]),pos=(0,0))
+                browser=wx.html2.WebView.New(self.fr,size=(websize[0]+48,websize[1]+40),pos=(-17,0),style=wx.BORDER_NONE)
                 browser.LoadURL(url1)
                 browser.CanSetZoomType(False)
                 self.fr.Show()
@@ -1237,7 +1361,7 @@ class TopFrame(wx.Frame):
                     self.tijiaothread = TijiaoThread()  # 开启模拟自动出价
                     strategy_repeat = True
 
-                browser=wx.html2.WebView.New(self.fr,size=(websize[0],websize[1]))
+                browser=wx.html2.WebView.New(self.fr,size=(websize[0]+48,websize[1]+40),pos=(-17,0))
                 browser.LoadURL(url2)
                 browser.CanSetZoomType(False)
                 self.fr.Show()
@@ -2034,7 +2158,7 @@ class AdFrame(wx.Frame):
 
 class WebFrame(wx.Frame):
     def __init__(self,px,py,ad,name):   #name:窗口显示名称
-        wx.Frame.__init__(self, None, -1, name, size=(websize[0]+300, websize[1]), pos=(px, py),style=wx.SIMPLE_BORDER)
+        wx.Frame.__init__(self, None, -1, name, size=(websize[0], websize[1]), pos=(px, py),style=wx.SIMPLE_BORDER)
 
         # wx.Frame.__init__(self,None, -1,title="大师拍牌 QQ 178456661 - 3.663",size=(websize[0], websize[1]),\
         #  pos=(px, py),style=wx.DEFAULT_FRAME_STYLE|wx.STAY_ON_TOP&~(wx.RESIZE_BORDER))
@@ -2044,7 +2168,7 @@ class WebFrame(wx.Frame):
             self.adframe.Show(True)
         self.Bind(wx.EVT_CLOSE, self.OnClose)
         self.ad2=ad
-        self.control=ControlFrame(name)
+        self.control=ControlFrame()
         self.control.Show(True)
         # panel = wx.Panel(self, -1)
         # panel.Bind(wx.EVT_KEY_DOWN, self.OnKeyDown)
@@ -2102,17 +2226,54 @@ class WebFrame(wx.Frame):
 
 #控制小窗
 class ControlFrame(wx.Frame):  #为webframe提供控制操作
-    def __init__(self,name):   #name:窗口显示名称
-        wx.Frame.__init__(self, None, -1, size=(380, 300), style=wx.NO_BORDER|wx.STAY_ON_TOP|wx.FRAME_NO_TASKBAR, \
-                          pos=(Px+76, Py+480) )
-        self.panel=wx.Panel(self,-1,size=(380, 300))
-        self.button1=wx.Button(self.panel,pos=(0,0),size=(50,25),label="关闭")
-        self.Bind(wx.EVT_BUTTON, self.o_closeweb, self.button1)
+    def __init__(self):   #name:窗口显示名称
+        wx.Frame.__init__(self, None, -1, size=(330, 270), style=wx.NO_BORDER|wx.STAY_ON_TOP|wx.FRAME_NO_TASKBAR, \
+                          pos=(Px+40, Py+480) )
+        self.panel=wx.Panel(self,-1,size=(330, 270))
+        # self.button1=wx.Button(self.panel,pos=(0,0),size=(50,25),label="关闭")
+        # self.Bind(wx.EVT_BUTTON, self.o_closeweb, self.button1)
+        font1=wx.Font(25, wx.SWISS, wx.NORMAL, wx.NORMAL)
+        font2=wx.Font(15, wx.SWISS, wx.NORMAL, wx.NORMAL)
+        self.adtext=wx.StaticText(self.panel,label=u"小鲜肉代拍",pos=(90,20))
+        self.adtext.SetFont(font1)
+        self.pricetext=wx.StaticText(self.panel,label=u"最低成交价:",pos=(50,90))
+        self.pricetext.SetFont(font2)
+        self.price=wx.StaticText(self.panel,pos=(190,90))
+        self.price.SetFont(font2)
+        self.timetext = wx.StaticText(self.panel, label=u"当前时间:",pos=(50,130))
+        self.timetext.SetFont(font2)
+        self.time=wx.StaticText(self.panel,pos=(190,130))
+        self.time.SetFont(font2)
 
+        self.netstattext=wx.StaticText(self.panel,pos=(80,170),label=u"网速")
+        self.netstattext.SetFont(font2)
+        self.netstat=wx.StaticText(self.panel,pos=(190,170))
+
+        # dc.SetFont(wx.Font(30, wx.SWISS, wx.NORMAL, wx.NORMAL))
+        #定时器
+        self.timetimer1=wx.Timer(self)
+        self.Bind(wx.EVT_TIMER,self.Timego,self.timetimer1)
+        self.timetimer1.Start(100)
     def o_closeweb(self,event):
         wx.CallAfter(pub.sendMessage, "close web")
         self.Destroy()
         event.Skip()
+
+    def Timego(self,event):
+        global lowest_price,moni_second,a_time
+        self.price.SetLabel("%s"%lowest_price)
+        if moni_on:
+            self.time.SetLabel("11:29:%s"%int(moni_second))
+        else:
+            timestr1=time.localtime(a_time)
+            timestr2=time.strftime("%H:%M:%S",timestr1)
+            self.time.SetLabel(timestr2)
+        global pinger
+        pingnow=pinger.ping()
+        if pingnow == "timeout":
+            self.netstat.SetLabel("%s"%pingnow)
+        else:
+            self.netstat.SetLabel("%sms" % pingnow)
 ##################
 #功能窗口#
 class OperationFrame(wx.Frame):

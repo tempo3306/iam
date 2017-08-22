@@ -1,0 +1,4 @@
+Tue, 22 Aug 2017 09:37:23 Iambest1.6.py[line:364] DEBUG This is debug message
+Tue, 22 Aug 2017 09:37:23 Iambest1.6.py[line:365] INFO This is info message
+Tue, 22 Aug 2017 09:37:23 Iambest1.6.py[line:366] WARNING This is warning message
+Tue, 22 Aug 2017 09:37:23 Iambest1.6.py[line:367] ERROR This is error message
