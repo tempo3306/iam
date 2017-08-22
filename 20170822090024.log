@@ -1,0 +1,10 @@
+Tue, 22 Aug 2017 09:00:24 Iambest.py[line:364] DEBUG This is debug message
+Tue, 22 Aug 2017 09:00:24 Iambest.py[line:365] INFO This is info message
+Tue, 22 Aug 2017 09:00:24 Iambest.py[line:366] WARNING This is warning message
+Tue, 22 Aug 2017 09:00:24 Iambest.py[line:367] ERROR This is error message
+Tue, 22 Aug 2017 09:00:27 Iambest.py[line:582] INFO 发送信息 ["login", "shooter2", "123456"]
+Tue, 22 Aug 2017 09:00:27 Iambest.py[line:586] INFO Submit Complete
+Tue, 22 Aug 2017 09:00:27 Iambest.py[line:597] INFO 登录成功 success
+Tue, 22 Aug 2017 09:00:27 Iambest.py[line:3425] INFO login success
+Tue, 22 Aug 2017 09:00:39 Iambest.py[line:638] INFO 发送信息 ["logout", "shooter2", "123456"]
+Tue, 22 Aug 2017 09:00:39 Iambest.py[line:642] INFO Submit Log Out Complete

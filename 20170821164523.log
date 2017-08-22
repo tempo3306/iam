@@ -1,0 +1,8 @@
+Mon, 21 Aug 2017 16:45:23 Iambest.py[line:362] DEBUG This is debug message
+Mon, 21 Aug 2017 16:45:23 Iambest.py[line:363] INFO This is info message
+Mon, 21 Aug 2017 16:45:23 Iambest.py[line:364] WARNING This is warning message
+Mon, 21 Aug 2017 16:45:23 Iambest.py[line:365] ERROR This is error message
+Mon, 21 Aug 2017 16:45:26 Iambest.py[line:570] INFO 发送信息 ["login", "shooter2", "123456"]
+Mon, 21 Aug 2017 16:45:26 Iambest.py[line:574] INFO Submit Complete
+Mon, 21 Aug 2017 16:45:26 Iambest.py[line:585] INFO 登录成功 success
+Mon, 21 Aug 2017 16:45:26 Iambest.py[line:3407] INFO login success
