@@ -1,8 +1,0 @@
-Tue, 22 Aug 2017 15:19:30 fabu.py[line:173] DEBUG This is debug message
-Tue, 22 Aug 2017 15:19:30 fabu.py[line:174] INFO This is info message
-Tue, 22 Aug 2017 15:19:30 fabu.py[line:175] WARNING This is warning message
-Tue, 22 Aug 2017 15:19:30 fabu.py[line:176] ERROR This is error message
-Tue, 22 Aug 2017 15:19:32 fabu.py[line:420] INFO 发送信息 ["login", "shooter2", "123456"]
-Tue, 22 Aug 2017 15:19:32 fabu.py[line:423] INFO Submit Complete
-Tue, 22 Aug 2017 15:19:33 fabu.py[line:433] INFO 登录成功 success
-Tue, 22 Aug 2017 15:19:33 fabu.py[line:2174] INFO login success

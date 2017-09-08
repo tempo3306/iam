@@ -6,12 +6,13 @@
 '''
 ####################
 #参数
-#id Topframe 1    Operationframe 2  guopaiweb 3 moniweb 4
+#id Topframe 1    Operationframe 2  guopaiweb 3 controlframe 4
 
-version='1.6'
+version='1.72'
 num=0
 avt=0
 ############全局变量参数表##96.22#######
+
 host_ali="121.196.220.94"
 # host_ali="127.0.0.1"
 #网址
@@ -157,8 +158,8 @@ py_price=260
 px_priceframe=220-191
 py_priceframe=480
 #time放置位置
-px_timeframe=245
-py_timeframe=350 #460
+px_timeframe=22
+py_timeframe=350
 #最低成交价框显示位置
 px_lowestpriceframe=245
 py_lowestpriceframe=290
@@ -209,9 +210,12 @@ Py_priceframe=Py+py_priceframe
 Pos_priceframe=[Px_priceframe,Py_priceframe]
 
 #计算time放置位置
-Px_timeframe=px_timeframe
-Py_timeframe=py_timeframe
+Px_timeframe=px_timeframe+Px
+Py_timeframe=py_timeframe+Py
 Pos_timeframe=[Px_timeframe,Py_timeframe]
+print(Pos_timeframe)
+#time放置位置
+Pos_controlframe=[Px+40, Py+480]
 
 #计算验证码位置
 Px_yanzhengmaframe=Px+px_yanzhengmaframe
@@ -433,13 +437,18 @@ def findpos():
     py_lowestprice = max_loc[1]+py_relative
     Px_lowestprice=px_lowestprice
     Py_lowestprice=py_lowestprice
+    print("位置")
+    print(Px_lowestprice)
+    print(Py_lowestprice)
     # print(px_lowestprice,py_lowestprice)
-    global Position,refresh_area,confirm_area
+    global Position,refresh_area,confirm_area,Pos_timeframe,Pos_controlframe
     for i in range(len(Position)):
         Position[i][0] = Px_lowestprice + P_relative2[i][0]
         Position[i][1] = Py_lowestprice + P_relative2[i][1]
     refresh_area = [396 - 150+Px_lowestprice, 11 - 100+Py_lowestprice, 396 + 150+Px_lowestprice, 11 + 100+Py_lowestprice]
     confirm_area = [505 - 80+Px_lowestprice, 68 - 50+Py_lowestprice, 505 + 80+Px_lowestprice, 68 + 50+Py_lowestprice]
+    Pos_controlframe=[192-344+Px_lowestprice, 514-183+Py_lowestprice]
+    # Pos_timeframe=[245 - 344+Px_lowestprice, 299- 183+Py_lowestprice]
     #关闭触发
     global findpos_on
     findpos_on=False
@@ -660,8 +669,8 @@ pinger=Pinger(url2)
 
 #---------------------------------------------------------------------------------
 #打开浏览器
-import winreg,re
-needpath='C:\Program Files (x86)\Internet Explorer\iexplore.exe'
+import winreg,re,subprocess
+needpath=r'C:\Program Files (x86)\Internet Explorer\iexplore.exe'
 path1='C:\Program Files (x86)'
 path2='C:\Program Files'
 def getwebpath():
@@ -673,7 +682,8 @@ def getwebpath():
         pattern = re.compile("\"*(.+\.exe)")
         result = re.findall(pattern, value)
         if result:
-            needpath='"'+result[0]+'"'
+            needpath=result[0]
+            # needpath='"'+result[0]+'"'
     except:
         pass
     if not os.path.exists(needpath):
@@ -681,8 +691,10 @@ def getwebpath():
             pass
             # os.walk()
 def openweb(url):
-    command="\""+needpath+"\"" +" "+url  #需要加个空格
-    os.system(command)
+    global needpath
+    # command="\""+needpath+"\"" +" "+url  #需要加个空格
+    # path=r'C:\Program Files (x86)\Internet Explorer\iexplore.exe www.baidu.com'
+    subprocess.Popen([needpath,url])
 # --------------------------------------------------------------------------------
 #采集用户信息
 import smtplib
@@ -743,7 +755,7 @@ def ConfirmUser():
         print(login_reply)
         login_reply = str(login_reply, encoding="utf-8")#接受反馈
         login_reply = json.loads(login_reply)      #json转列表
-        print(login_reply)
+        print("login_reply%s"%login_reply)
         buf=login_reply[0]
         if buf == 'success':                  #判断是否成功
             logging.info('登录成功 %s' % buf)
@@ -958,11 +970,11 @@ class TopFrame(wx.Frame):
 
         self.hbox3=wx.BoxSizer(wx.HORIZONTAL)
         self.advanceset = wx.Button(panel, label='策略设置')
-        self.timeautoset = wx.Button(panel, label='comming soon')
+        self.posautoset = wx.Button(panel, label= '刷新定位')
         self.Bind(wx.EVT_BUTTON, self.Advanceset, self.advanceset)
-        self.Bind(wx.EVT_BUTTON, self.Timeautoset,self.timeautoset)
+        self.Bind(wx.EVT_BUTTON, self.Posautoset,self.posautoset)
         self.hbox3.Add(self.advanceset, 0 ,wx.ALL | wx.CENTER, 5)
-        self.hbox3.Add(self.timeautoset, 0 ,wx.ALL | wx.CENTER, 5)
+        self.hbox3.Add(self.posautoset, 0 ,wx.ALL | wx.CENTER, 5)
         self.setsizer.Add(self.hbox3, 0 ,wx.ALL | wx.CENTER, 5)
 
         self.vbox=wx.BoxSizer(wx.VERTICAL)
@@ -1035,7 +1047,7 @@ class TopFrame(wx.Frame):
                 ad_view = True
                 web_on = True
                 self.fr = WebFrame(Px, Py, False, '小鲜肉模拟')
-                self.operationframe.Show(True)  # 开启控制面板显示
+                # self.operationframe.Show(True)  # 开启控制面板显示
                 # 查看时间框是否应该显示
                 if time_on:
                     self.operationframe.Opentime()
@@ -1081,7 +1093,7 @@ class TopFrame(wx.Frame):
                 ad_view = True
                 guopai_on = True
                 self.fr = WebFrame(Px, Py, False, '小鲜肉代拍 国拍')  # 暂时关闭广告
-                self.operationframe.Show(True)  # 开启控制面板显示
+                # self.operationframe.Show(True)  # 开启控制面板显示
                 # 查看时间框是否应该显示
                 if time_on:
                     self.operationframe.Opentime()
@@ -1128,10 +1140,10 @@ class TopFrame(wx.Frame):
         wx.adv.AboutBox(aboutInfo)
 #打开帮助和规定
     def rule(self,event):
-        url="http://121.196.220.94/coursestudy"
+        url="http://121.196.220.94/rules"
         OpenwebThread(url)
     def help(self,event):
-        url="http://121.196.220.94/rules"
+        url="http://121.196.220.94/coursestudy"
         OpenwebThread(url)
         # 验证码练习
     def Yan_practice(self, event):
@@ -1150,6 +1162,8 @@ class TopFrame(wx.Frame):
         setting=self.FindWindowById(2)
         setting.Show(True)
 
+    def Posautoset(self,event):
+        findpos()
 
     def Timeautoset(self,event):
         pass
@@ -2112,7 +2126,7 @@ class AdFrame(wx.Frame):
 
 class WebFrame(wx.Frame):
     def __init__(self,px,py,ad,name):   #name:窗口显示名称
-        wx.Frame.__init__(self, None, -1, name, size=(websize[0], websize[1]), pos=(px, py),style=wx.SIMPLE_BORDER)
+        wx.Frame.__init__(self, None, 3, name, size=(websize[0], websize[1]), pos=(px, py),style=wx.SIMPLE_BORDER)
 
         # wx.Frame.__init__(self,None, -1,title="大师拍牌 QQ 178456661 - 3.663",size=(websize[0], websize[1]),\
         #  pos=(px, py),style=wx.DEFAULT_FRAME_STYLE|wx.STAY_ON_TOP&~(wx.RESIZE_BORDER))
@@ -2153,10 +2167,14 @@ class WebFrame(wx.Frame):
         global web_on,view_time,moni_on,guopai_on,strategy_repeat
         web_on=False
         view_time=False
+
         moni_on=False
         guopai_on=False
         TopFrame.Close()
         file="sc_new.png"
+        #控制窗
+
+        self.control.Destroy()
         if  os.path.exists(file):
             os.remove(file)
         self.Destroy()
@@ -2181,8 +2199,8 @@ class WebFrame(wx.Frame):
 #控制小窗
 class ControlFrame(wx.Frame):  #为webframe提供控制操作
     def __init__(self):   #name:窗口显示名称
-        wx.Frame.__init__(self, None, -1, size=(330, 270), style=wx.NO_BORDER|wx.STAY_ON_TOP|wx.FRAME_NO_TASKBAR, \
-                          pos=(Px+40, Py+480) )
+        wx.Frame.__init__(self, None, 4, size=(330, 200), style=wx.NO_BORDER|wx.STAY_ON_TOP|wx.FRAME_NO_TASKBAR, \
+                          pos=(Px+40, Py+480) ,name="control")
         self.panel=wx.Panel(self,-1,size=(330, 270))
         # self.button1=wx.Button(self.panel,pos=(0,0),size=(50,25),label="关闭")
         # self.Bind(wx.EVT_BUTTON, self.o_closeweb, self.button1)
@@ -2500,7 +2518,7 @@ class OperationFrame(wx.Frame):
         price_count+=1
         file='sc_new.png'
         if web_on and strategy_on:
-            self.lowestframe.Show(True)
+            self.lowestframe.Show(False)
         if not os.path.exists(file):
             try:
                 self.Price_close()
