@@ -8,7 +8,7 @@
 #参数
 #id Topframe 1    Operationframe 2  guopaiweb 3 controlframe 4
 
-version='1.74'
+version='1.8'
 num=0
 avt=0
 ############全局变量参数表##96.22#######
@@ -16,11 +16,12 @@ avt=0
 host_ali="121.196.220.94"
 # host_ali="127.0.0.1"
 #网址
-url1="http://moni.51hupai.org/"
+url1="http://121.196.220.94/Moni"
 
 url2="www.baidu.com"   #电信
 url3="www.baidu.com"   #非电信
 url4="http://127.0.0.1:5000/Moni"
+# url4="http://121.196.220.94/Moni"
 
 #icon路径
 mainicon='ico.ico'
@@ -238,7 +239,8 @@ py_lowestprice=0   #412  416
 
 Px_lowestprice=Px+px_lowestprice
 Py_lowestprice=Py+py_lowestprice
-lowestprice_sizex=41 #截图范围 41
+lowestprice_sizex=82 #截图范围 41
+# lowestprice_sizex=41 #截图范围 41
 lowestprice_sizey=16
 
 px_relative=49  #查找出来位置反算相对位置
@@ -408,6 +410,16 @@ def Paste():  #ctrl + V
     win32api.keybd_event(86, 0, 0, 0)  # v的键位码是86
     win32api.keybd_event(86, 0, win32con.KEYEVENTF_KEYUP, 0)  # 释放按键
     win32api.keybd_event(17, 0, win32con.KEYEVENTF_KEYUP, 0)
+
+def Paste_moni(x,y):
+    win32api.SetCursorPos((x,y))
+    win32api.mouse_event(win32con.MOUSEEVENTF_RIGHTDOWN, x, y, 0, 0)
+    win32api.mouse_event(win32con.MOUSEEVENTF_RIGHTUP, x, y, 0, 0)
+    win32api.keybd_event(80, 0, 0, 0)  # P
+    win32api.keybd_event(80, 0, win32con.KEYEVENTF_KEYUP, 0)  # 释放按键
+
+
+
 #操作粘贴板
 def setText(aString):
     aString=aString.encode('utf-8')
@@ -464,7 +476,7 @@ def findrefresh():
     w, h = template.shape[::-1]
     res = cv2.matchTemplate(img, template, cv2.TM_CCOEFF_NORMED)
     min_val, max_val, min_loc, max_loc = cv2.minMaxLoc(res)
-    print(max_val)
+    # print(max_val)
     if max_val>=0.6:
         refresh_on=True
 
@@ -1172,7 +1184,7 @@ class TopFrame(wx.Frame):
                     strategy_repeat = True
 
                 browser = wx.html2.WebView.New(self.fr, size=(websize[0] + 48, websize[1] + 40), pos=(-17, 0))
-                browser.LoadURL(url4)
+                browser.LoadURL(url3)
                 browser.CanSetZoomType(False)
                 self.fr.Show()
                 # 价格显示
@@ -1298,7 +1310,7 @@ class TopFrame(wx.Frame):
     def Price_read():
         lowestprice=ImageGrab.grab((Px_lowestprice, Py_lowestprice,
                                    lowestprice_sizex+Px_lowestprice, lowestprice_sizey+Py_lowestprice)).convert('L')
-
+        #
         # global num
         # num+=1
         # lowestprice.save("%s.png"%num)
@@ -1502,7 +1514,10 @@ class TopFrame(wx.Frame):
         Click2(Position[6][0], Position[6][1])
         Click2(Position[6][0], Position[6][1])
         Delete()
-        Paste()  # 粘贴
+        if moni_on:
+            Paste_moni(Position[6][0], Position[6][1])
+        else:
+            Paste()  # 粘贴
 
     @staticmethod
     def selfChujia():
@@ -1575,7 +1590,11 @@ class TopFrame(wx.Frame):
             setText(str(1000000))  # 出一定超出的价格
             Click(Position[6][0], Position[6][1])
             Click(Position[6][0], Position[6][1])
-            Paste()
+            if moni_on:
+                print("moni")
+                Paste_moni()
+            else:
+                Paste()  # 粘贴
             Click(Position[1][0], Position[1][1])
             timer1 = threading.Timer(3, cls.query_sleep3)
             timer1.start()
@@ -1649,7 +1668,7 @@ class TopFrame(wx.Frame):
                 4: TopFrame.handle_Shuaxin, 5: TopFrame.handle_Confirm,
                 6: TopFrame.handle_Yanzhengma, 7: TopFrame.OnClick_Shuaxin, 8: TopFrame.selfTijiao,
                 9:(lambda :TopFrame.selfChujia()), 10: TopFrame.OnClick_Backspace, 11: TopFrame.tijiao_ok, 12: TopFrame.tijiao_ok2,
-                13: TopFrame.query}
+                13: TopFrame.OnClick_chujia}   #TopFrame.query
             user32 = ctypes.windll.user32
             msg = wintypes.MSG()
             byref = ctypes.byref
