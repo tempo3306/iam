@@ -639,7 +639,7 @@ class TopFrame (wx .Frame ):#line:729
  啊
  啊"""%version #line:1249
         OO00O00OOO00OO0OO =wx .adv .AboutDialogInfo ()#line:1252
-        OO00O00OOO00OO0OO .SetName ("小鲜肉拍牌")#line:1253
+        OO00O00OOO00OO0OO .SetName ("小鲜肉辅助")#line:1253
         OO00O00OOO00OO0OO .SetVersion (OOOO0OOOO0O000O00 )#line:1254
         OO00O00OOO00OO0OO .AddDeveloper ("ZS")#line:1258
         wx .adv .AboutBox (OO00O00OOO00OO0OO )#line:1259

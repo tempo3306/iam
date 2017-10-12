@@ -1,0 +1,10 @@
+Tue, 10 Oct 2017 14:43:36 Iambest1.8.py[line:382] DEBUG This is debug message
+Tue, 10 Oct 2017 14:43:36 Iambest1.8.py[line:383] INFO This is info message
+Tue, 10 Oct 2017 14:43:36 Iambest1.8.py[line:384] WARNING This is warning message
+Tue, 10 Oct 2017 14:43:36 Iambest1.8.py[line:385] ERROR This is error message
+Tue, 10 Oct 2017 14:43:39 Iambest1.8.py[line:768] INFO 发送信息 ["login", "shooter2", "123456"]
+Tue, 10 Oct 2017 14:43:39 Iambest1.8.py[line:772] INFO Submit Complete
+Tue, 10 Oct 2017 14:43:39 Iambest1.8.py[line:782] INFO 登录成功 success
+Tue, 10 Oct 2017 14:43:39 Iambest1.8.py[line:3709] INFO login success
+Tue, 10 Oct 2017 14:44:02 Iambest1.8.py[line:3858] INFO moni one_chujia True True
+Tue, 10 Oct 2017 14:44:02 Iambest1.8.py[line:3859] INFO moni one_chujia 48 48.06585419465969

@@ -1,0 +1,12 @@
+Tue, 10 Oct 2017 14:28:25 Iambest1.8.py[line:381] DEBUG This is debug message
+Tue, 10 Oct 2017 14:28:25 Iambest1.8.py[line:382] INFO This is info message
+Tue, 10 Oct 2017 14:28:25 Iambest1.8.py[line:383] WARNING This is warning message
+Tue, 10 Oct 2017 14:28:25 Iambest1.8.py[line:384] ERROR This is error message
+Tue, 10 Oct 2017 14:28:30 Iambest1.8.py[line:767] INFO 发送信息 ["login", "shooter2", "123456"]
+Tue, 10 Oct 2017 14:28:30 Iambest1.8.py[line:771] INFO Submit Complete
+Tue, 10 Oct 2017 14:28:30 Iambest1.8.py[line:781] INFO 登录成功 success
+Tue, 10 Oct 2017 14:28:30 Iambest1.8.py[line:3702] INFO login success
+Tue, 10 Oct 2017 14:28:45 Iambest1.8.py[line:1719] INFO close assistant success
+Tue, 10 Oct 2017 14:28:49 Iambest1.8.py[line:1719] INFO close assistant success
+Tue, 10 Oct 2017 14:30:00 Iambest1.8.py[line:852] INFO 发送信息 ["keep", "shooter2", "123456"]
+Tue, 10 Oct 2017 14:30:00 Iambest1.8.py[line:857] INFO Submit keep Complete
