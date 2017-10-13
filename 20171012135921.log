@@ -1,0 +1,11 @@
+Thu, 12 Oct 2017 13:59:21 fabu.py[line:180] DEBUG This is debug message
+Thu, 12 Oct 2017 13:59:21 fabu.py[line:181] INFO This is info message
+Thu, 12 Oct 2017 13:59:21 fabu.py[line:182] WARNING This is warning message
+Thu, 12 Oct 2017 13:59:21 fabu.py[line:183] ERROR This is error message
+Thu, 12 Oct 2017 13:59:27 fabu.py[line:452] INFO 发送信息 ["login", "shooter2", "123456"]
+Thu, 12 Oct 2017 13:59:27 fabu.py[line:455] INFO Submit Complete
+Thu, 12 Oct 2017 13:59:27 fabu.py[line:465] INFO 登录成功 success
+Thu, 12 Oct 2017 13:59:27 fabu.py[line:2349] INFO login success
+Thu, 12 Oct 2017 13:59:52 fabu.py[line:1108] INFO close assistant success
+Thu, 12 Oct 2017 13:59:55 fabu.py[line:499] INFO 发送信息 ["logout", "shooter2", "123456"]
+Thu, 12 Oct 2017 13:59:55 fabu.py[line:503] INFO Submit Log Out Complete

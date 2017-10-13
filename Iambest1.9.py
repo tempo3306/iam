@@ -8,7 +8,7 @@
 #参数
 #id Topframe 1    Operationframe 2  guopaiweb 3 controlframe 4
 
-version='1.9'
+version='1.93'
 num=0
 avt=0
 
@@ -194,7 +194,7 @@ Timesize=[200,50]
 #刷新、确认所在区域  [396, 11], [505, 68]   价格387    440  325    412  375    431
 lowestprice_area=[179-80+Px,424-50+Py,179+80+Px,424+50+Py]
 refresh_area=[396-150,11-100,396+150,11+100]
-confirm_area=[505-80,68-50,505+80,68+50]
+confirm_area=[505-300,68-150,505+300,68+150]
 
 
 #-------------------------------------------------------------------
@@ -400,7 +400,7 @@ def Click(x, y):  # 鼠标点击
     win32api.SetCursorPos((x, y))
     win32api.mouse_event(win32con.MOUSEEVENTF_LEFTDOWN, x, y, 0, 0)
     win32api.mouse_event(win32con.MOUSEEVENTF_LEFTUP, x, y, 0, 0)
-    # win32api.SetCursorPos(a)
+    win32api.SetCursorPos(a)
 def Click2(x, y):  # 鼠标点击
     a = win32gui.GetCursorPos()
     x=int(x)
@@ -419,7 +419,8 @@ def Paste():  #ctrl + V
     win32api.keybd_event(86, 0, win32con.KEYEVENTF_KEYUP, 0)  # 释放按键
     win32api.keybd_event(17, 0, win32con.KEYEVENTF_KEYUP, 0)
 
-def Paste_moni(x,y):
+# def Paste_moni(x,y):
+def Paste_moni():
     win32api.keybd_event(17, 0, 0, 0)  # ctrl的键位码是17
     win32api.keybd_event(86, 0, 0, 0)  # v的键位码是86
     win32api.keybd_event(86, 0, win32con.KEYEVENTF_KEYUP, 0)  # 释放按键
@@ -488,16 +489,13 @@ def findrefresh():
     w, h = template.shape[::-1]
     res = cv2.matchTemplate(img, template, cv2.TM_CCOEFF_NORMED)
     min_val, max_val, min_loc, max_loc = cv2.minMaxLoc(res)
-    print(max_val)
-    if max_val>=0.7:
+    # print(max_val)
+    if max_val>=0.8:
         refresh_on=True
-    else:
-        refresh_on = False
-        refresh_need = False
-        refresh_one = False
 
 
 def findconfirm():
+    # print("触发确认")
     global dick_target,confirm_on,Position
     template=dick_target[1]
     sc = ImageGrab.grab(confirm_area).convert('L')
@@ -505,8 +503,9 @@ def findconfirm():
     w, h = template.shape[::-1]
     res = cv2.matchTemplate(img, template, cv2.TM_CCOEFF_NORMED)
     min_val, max_val, min_loc, max_loc = cv2.minMaxLoc(res)
-    print(max_val)
+    # print(max_val)
     if max_val>=0.9:
+        # print("找到确认")
         confirm_on=True
 
 #------------------------------------------------------------------------------------
@@ -1478,14 +1477,16 @@ class TopFrame(wx.Frame):
     #智能提交，动态策略1号
     @classmethod
     def SmartTijiao(cls):
-        global tijiao_on, tijiao_OK, tijiao_num
+        global tijiao_on, tijiao_OK, tijiao_num ,  confirm_need
+        confirm_need=True
         if moni_on:
             interval=moni_second-changetime
         else:
             interval = a_time - changetime
+        if tijiao_num == 2:  #说明是第二次出价
 
-        if lowest_price>own_price1:  #说明是第二次出价
-            if lowest_price >= own_price2-600:
+            if lowest_price <= own_price2-600:
+                print("触发延迟")
                 tijiao_num = 0
                 timer = threading.Timer(0.5, cls.Tijiao)
                 timer.start()
@@ -1500,8 +1501,14 @@ class TopFrame(wx.Frame):
                 tijiao_num = 0
                 cls.Tijiao()
                 tijiao_on = False
-        else:
-            if lowest_price >= own_price1 - 600:
+        elif tijiao_num == 1:
+            print("tijioa_num")
+            print(tijiao_num)
+            print(lowest_price)
+            print(own_price1)
+            print(interval)
+            if lowest_price <= own_price1 - 600:
+                print("触发延迟")
                 timer = threading.Timer(0.5, cls.Tijiao)
                 timer.start()
                 tijiao_on = False
@@ -1546,7 +1553,6 @@ class TopFrame(wx.Frame):
         global refresh_need, refresh_one, chujia_interval
         print(chujia_interval)
         if not chujia_interval:
-            print(tijiao_num, twice)
             chujia_interval = True
             tijiao_on = True  # 激活自动出价
             refresh_need = True  # 激活刷新验证码
@@ -1562,7 +1568,9 @@ class TopFrame(wx.Frame):
 
                 if not refresh_one:  # 激活确认
                     refreshthread = refreshThread()
-                    refresh_one = True
+                    refresh_one = True  #同时只存在一个进程
+
+
             elif tijiao_num == 2 and twice:
                 # print("第二次")
                 own_price2 = lowest_price + second_diff
@@ -1582,7 +1590,8 @@ class TopFrame(wx.Frame):
         Click2(Position[6][0], Position[6][1])
         Delete()
         if moni_on:
-            Paste_moni(Position[6][0], Position[6][1])
+            Paste_moni()
+            # Paste_moni(Position[6][0], Position[6][1])
         else:
             Paste()  # 粘贴
 
@@ -1658,14 +1667,9 @@ class TopFrame(wx.Frame):
             query_on = True
             query_interval = True
             setText(str(1000000))  # 出一定超出的价格
-            Click(Position[6][0], Position[6][1])
-            Click(Position[6][0], Position[6][1])
-            if moni_on:
-                print("moni")
-                Paste_moni()
-            else:
-                Paste()  # 粘贴
+            TopFrame.selfdelete()
             Click(Position[1][0], Position[1][1])
+
             timer1 = threading.Timer(3, cls.query_sleep3)
             timer1.start()
             timer2 = threading.Timer(5, cls.query_sleep5)
@@ -1702,7 +1706,7 @@ class TopFrame(wx.Frame):
             VK_CODE = {'0': 0x30, '1': 0x31, '2': 0x32, '3': 0x33, '4': 0x34, '5': 0x35, '6': 0x36, '7': 0x37,
                        '8': 0x38,
                        '9': 0x39, 'a': 0x41, 'b': 0x42, 'c': 0x43, 'd': 0x44, 'e': 0x45, 'f': 0x46, 's': 0x53,
-                       'q': 0x51}
+                       'q': 0x51  ,'h':0x48}
             user32 = ctypes.windll.user32
             HOTKEYS1 = {1: (VK_CODE['2'], win32con.MOD_ALT), 2: (VK_CODE['3'], win32con.MOD_ALT),
                         3: (VK_CODE['4'], win32con.MOD_ALT), 4: (VK_CODE['5'], win32con.MOD_ALT),
@@ -1710,7 +1714,7 @@ class TopFrame(wx.Frame):
                         }
             HOTKEYS2 = {7: (VK_CODE['s'], 0x4000), 8: (VK_CODE['f'], 0x4000), 9: (VK_CODE['d'], 0x4000),
                         10: (win32con.VK_SPACE, 0x4000), 11: (VK_CODE['e'], 0x4000), 12: (win32con.VK_RETURN, 0x4000),
-                        13: (VK_CODE['q'], 0x4000)}
+                        13: (VK_CODE['q'], 0x4000) ,14: (VK_CODE['h'], 0x4000)}
             # 注册快捷键
             for id, (vk, modifiers) in HOTKEYS1.items():
                 if not user32.RegisterHotKey(None, id, modifiers, vk):
@@ -1732,13 +1736,13 @@ class TopFrame(wx.Frame):
             VK_CODE = {'0': 0x30, '1': 0x31, '2': 0x32, '3': 0x33, '4': 0x34, '5': 0x35, '6': 0x36, '7': 0x37,
                        '8': 0x38,
                        '9': 0x39, 'a': 0x41, 'b': 0x42, 'c': 0x43, 'd': 0x44, 'e': 0x45, 'f': 0x46, 's': 0x53,
-                       'q': 0x51}
+                       'q': 0x51  ,'h':0x48}
             HOTKEY_ACTIONS = {
                 1: TopFrame.handle_Jiajia, 2: TopFrame.handle_Chujia, 3: TopFrame.handle_Tijiao,
                 4: TopFrame.handle_Shuaxin, 5: TopFrame.handle_Confirm,
                 6: TopFrame.handle_Yanzhengma, 7: TopFrame.OnClick_Shuaxin, 8: TopFrame.selfTijiao,
                 9:(lambda :TopFrame.selfChujia()), 10: TopFrame.OnClick_Backspace, 11: TopFrame.tijiao_ok, 12: TopFrame.tijiao_ok2,
-                13: TopFrame.OnClick_chujia}   #TopFrame.query
+                13: TopFrame.query    ,14:TopFrame.OnClick_chujia}   #TopFrame.query
             user32 = ctypes.windll.user32
             msg = wintypes.MSG()
             byref = ctypes.byref
@@ -2725,14 +2729,13 @@ class OperationFrame(wx.Frame):
         global strategy_on  # 策略开启
         global twice, tijiao_num, chujia_on, tijiao_on, tijiao_OK, tijiao_one  # 二次出价触发开关
         if moni_second < one_time1 and moni_on and not twice:  #单次还原
-            print("触发还原")
-            strategy_on = True
-            twice = True
-            chujia_on = True
-            tijiao_on = False
+            twice=False
+            strategy_on=True
+            chujia_on=True
+            tijiao_on=False
             tijiao_num = 1  # 初始化
-            tijiao_OK = False
-            tijiao_one = False  # 单枪未开
+            tijiao_OK=False
+            tijiao_one=False  #单枪未开
         elif moni_second < one_time1 and moni_on and twice:  #二次还原
             strategy_on=True
             twice=True
@@ -3719,9 +3722,7 @@ class confirmThread(Thread):
         global confirm_need, confirm_on ,confirm_one,chujia_on
         for i in range(100):
             wx.Sleep(0.1)
-            # print(confirm_need)
             if confirm_need:
-                # print("开启查找")
                 findconfirm()
                 if confirm_on:
                     TopFrame.OnClick_confirm()
@@ -3736,16 +3737,19 @@ class refreshThread(Thread):
         Thread.__init__(self)
         self.setDaemon(True)
         self.start()
-
     def run(self):
         global confirm_need, confirm_on
         global refresh_need, refresh_on,refresh_one
         for i in range(60):
+            #print("查找刷新")
+            print(refresh_need)
             if refresh_need:
                 findrefresh()
                 if refresh_on:
                     TopFrame.OnClick_Shuaxin()  # 刷新验证码
-
+                    refresh_one = False   #解除进程限制
+                    refresh_on= False    #关闭点击刷新
+                    refresh_need=False  #关闭查找刷新
         refresh_one=False  #进程结束的时候允许
 
 
@@ -3847,7 +3851,7 @@ class TijiaoThread(Thread):
             #触发出价
             if  strategy_on and guopai_on and chujia_on:  # 判断是否需要提交,国拍开启状态方可触发
                 # print(a_time,final_tijiao)
-                if tijiao_num == 1 and  one_real_time1<=a_time:  # 判断是否满足条件
+                if tijiao_num == 1 and  one_real_time1<=a_time<=one_real_time1+0.6:  # 判断是否满足条件
                     TopFrame.OnClick_chujia()  # 调用出价
                     own_price1=lowest_price+one_diff
                     tijiao_on=True   #
@@ -3907,16 +3911,16 @@ class MoniTijiaoThread(Thread):
             # print(strategy_on, moni_on, chujia_on)
             # print(twice, second_time1, moni_second)
             if strategy_on and moni_on and chujia_on :  # 判断是否需要出价,模拟开启方可触发
-                if tijiao_num == 1 and  one_time1<=moni_second:   # 判断是否满足条件
+                if tijiao_num == 1 and  one_time1<=moni_second<=one_time1+0.6:  # 判断是否满足条件
                     TopFrame.OnClick_chujia()  # 调用方法
-                    # print("第一次")
+                    print("第一次")
                     own_price1=lowest_price+one_diff
                     tijiao_on=True
                     logging.info("moni one_chujia %s %s" %(strategy_on,moni_on))
                     logging.info("moni one_chujia %s %s" %(one_time1,moni_second))
                 elif tijiao_num == 2 and  twice and  second_time1<moni_second:
                     TopFrame.OnClick_chujia()  # 调用方法
-                    # print("第二次")
+                    print("第二次")
                     own_price2=lowest_price+second_diff
                     tijiao_on=True
                     logging.info("moni second_chujia %s %s" %(strategy_on,moni_on))
