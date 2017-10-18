@@ -1,0 +1,15 @@
+Fri, 13 Oct 2017 09:26:09 Iambest1.9.py[line:386] DEBUG This is debug message
+Fri, 13 Oct 2017 09:26:09 Iambest1.9.py[line:387] INFO This is info message
+Fri, 13 Oct 2017 09:26:09 Iambest1.9.py[line:388] WARNING This is warning message
+Fri, 13 Oct 2017 09:26:09 Iambest1.9.py[line:389] ERROR This is error message
+Fri, 13 Oct 2017 09:26:13 Iambest1.9.py[line:775] INFO 发送信息 ["login", "shooter2", "123456"]
+Fri, 13 Oct 2017 09:26:13 Iambest1.9.py[line:779] INFO Submit Complete
+Fri, 13 Oct 2017 09:26:13 Iambest1.9.py[line:789] INFO 登录成功 success
+Fri, 13 Oct 2017 09:26:13 Iambest1.9.py[line:3770] INFO login success
+Fri, 13 Oct 2017 09:26:45 Iambest1.9.py[line:3919] INFO moni one_chujia True True
+Fri, 13 Oct 2017 09:26:45 Iambest1.9.py[line:3920] INFO moni one_chujia 48 48.094570253397855
+Fri, 13 Oct 2017 09:26:52 Iambest1.9.py[line:3889] INFO moni one_tijiao False True True True
+Fri, 13 Oct 2017 09:26:52 Iambest1.9.py[line:3890] INFO moni one_tijiao 1 55.055546194841 55
+Fri, 13 Oct 2017 09:27:00 Iambest1.9.py[line:1786] INFO close assistant success
+Fri, 13 Oct 2017 09:27:03 Iambest1.9.py[line:831] INFO 发送信息 ["logout", "shooter2", "123456"]
+Fri, 13 Oct 2017 09:27:03 Iambest1.9.py[line:835] INFO Submit Log Out Complete

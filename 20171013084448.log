@@ -1,8 +1,0 @@
-Fri, 13 Oct 2017 08:44:48 Iambest1.9.py[line:386] DEBUG This is debug message
-Fri, 13 Oct 2017 08:44:48 Iambest1.9.py[line:387] INFO This is info message
-Fri, 13 Oct 2017 08:44:48 Iambest1.9.py[line:388] WARNING This is warning message
-Fri, 13 Oct 2017 08:44:48 Iambest1.9.py[line:389] ERROR This is error message
-Fri, 13 Oct 2017 08:44:50 Iambest1.9.py[line:775] INFO 发送信息 ["login", "shooter2", "123456"]
-Fri, 13 Oct 2017 08:44:50 Iambest1.9.py[line:779] INFO Submit Complete
-Fri, 13 Oct 2017 08:44:50 Iambest1.9.py[line:789] INFO 登录成功 success
-Fri, 13 Oct 2017 08:44:50 Iambest1.9.py[line:3770] INFO login success

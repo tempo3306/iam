@@ -6,12 +6,68 @@
     <bookmark url="file://$PROJECT_DIR$/ce.py" line="9" />
     <bookmark url="file://$PROJECT_DIR$/ce.py" line="27" />
     <bookmark url="file://$PROJECT_DIR$/Iambest1.7.py" line="1037" mnemonic="4" />
+    <bookmark url="file://$PROJECT_DIR$/Iambest1.9.py" line="3695" mnemonic="1" />
   </component>
   <component name="ChangeListManager">
     <list default="true" id="c8debae4-b925-498b-98cb-a7662a836617" name="Default" comment="">
+      <change type="DELETED" beforePath="$PROJECT_DIR$/20170927084729.log" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/20170927134219.log" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/20170929165411.log" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/20171010142825.log" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/20171010144249.log" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/20171010144336.log" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/20171010144447.log" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/20171010144847.log" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/20171010153229.log" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/20171010154210.log" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/20171012125502.log" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/20171012131001.log" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/20171012135504.log" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/20171012135921.log" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/20171012154031.log" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/20171012154555.log" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/20171012154705.log" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/20171012154830.log" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/20171012155004.log" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/20171012155242.log" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/20171012155412.log" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/20171012155532.log" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/20171012155639.log" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/20171012155844.log" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/20171012160050.log" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/20171012160230.log" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/20171012160546.log" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/20171012160723.log" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/20171012160835.log" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/20171012161028.log" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/20171012161438.log" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/20171012161600.log" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/20171012161703.log" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/20171012161806.log" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/20171012162024.log" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/20171012162128.log" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/20171012162311.log" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/20171012162855.log" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/20171012165319.log" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/20171012165519.log" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/20171012165849.log" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/20171012170001.log" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/20171012170111.log" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/20171012170217.log" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/20171012170308.log" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/20171012170411.log" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/20171013083253.log" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/20171013083414.log" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/20171013083446.log" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/20171013084448.log" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/20171013084830.log" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/20171013084913.log" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/20171013085020.log" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/20171013085534.log" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/sc_new.png" afterPath="" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/your.name" afterPath="$PROJECT_DIR$/your.name" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Iambest1.9.py" afterPath="$PROJECT_DIR$/Iambest1.9.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/fabu.py" afterPath="$PROJECT_DIR$/fabu.py" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -23,11 +79,41 @@
   <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="375">
-      <file leaf-file-name="Iambest1.9.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="Iambest1.9.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Iambest1.9.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-5360">
-              <caret line="14" column="0" lean-forward="true" selection-start-line="14" selection-start-column="0" selection-end-line="14" selection-end-column="0" />
+            <state relative-caret-position="176">
+              <caret line="3789" column="22" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="4042" selection-end-column="44" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Iambest1.9.py" pinned="false" current-in-tab="true">
+        <entry file="file://F:/Zup/Iambest1.9.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="318">
+              <caret line="4042" column="44" lean-forward="false" selection-start-line="4042" selection-start-column="44" selection-end-line="4042" selection-end-column="44" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="去注释.py" pinned="false" current-in-tab="false">
+        <entry file="file://F:/Zup/去注释.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="240">
+              <caret line="19" column="32" lean-forward="false" selection-start-line="19" selection-start-column="32" selection-end-line="19" selection-end-column="32" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="fabu.py" pinned="false" current-in-tab="false">
+        <entry file="file://F:/Zup/fabu.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="362">
+              <caret line="2522" column="0" lean-forward="true" selection-start-line="2522" selection-start-column="0" selection-end-line="2522" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -44,13 +130,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>opt(</find>
-      <find>tijiaothread</find>
-      <find>chujia_on=True</find>
-      <find>twice</find>
-      <find>lowestprice</find>
-      <find>lowestprice=</find>
-      <find>smart</find>
       <find>threading.Timer</find>
       <find>test</find>
       <find>自动</find>
@@ -62,7 +141,6 @@
       <find>查找</find>
       <find>refresh_need = False</find>
       <find>refresh_need</find>
-      <find>refreshthread</find>
       <find>refreshth</find>
       <find>confirmthread</find>
       <find>动态</find>
@@ -74,6 +152,14 @@
       <find>topframe.</find>
       <find>selfdele</find>
       <find>topframe.que</find>
+      <find>121.</find>
+      <find>hupai.pro</find>
+      <find>.exe</find>
+      <find>reg</find>
+      <find>cLICK(</find>
+      <find>CLOSE()</find>
+      <find>refreshthread</find>
+      <find>logging.info</find>
     </findStrings>
     <replaceStrings>
       <replace>小鲜肉拍牌</replace>
@@ -127,9 +213,9 @@
         <option value="$PROJECT_DIR$/Iambest1.8.py" />
         <option value="F:/Zup/去注释.py" />
         <option value="$PROJECT_DIR$/fabu.py" />
-        <option value="F:/Zup/Iambest1.9.py" />
         <option value="F:/Zup/fabu.py" />
         <option value="$PROJECT_DIR$/Iambest1.9.py" />
+        <option value="F:/Zup/Iambest1.9.py" />
       </list>
     </option>
   </component>
@@ -452,12 +538,11 @@
       <window_info id="DB Browser" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="DB Execution Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.62881356" sideWeight="0.50303954" order="1" side_tool="true" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32795697" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32616487" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32881355" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.44444445" sideWeight="0.4969605" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.67562723" sideWeight="0.48480242" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32616487" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.5609319" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
@@ -467,6 +552,7 @@
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32616487" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
@@ -513,20 +599,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$USER_HOME$/.PyCharmCE2017.1/system/python_stubs/-1313743207/wx/_core/Timer.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="180">
-          <caret line="12" column="6" lean-forward="false" selection-start-line="12" selection-start-column="6" selection-end-line="12" selection-end-column="6" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://C:/Python35/Lib/site-packages/wx/core.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="162">
-          <caret line="3179" column="18" lean-forward="false" selection-start-line="3179" selection-start-column="18" selection-end-line="3179" selection-end-column="18" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$USER_HOME$/.PyCharmCE2017.1/system/python_stubs/-1313743207/select.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -666,7 +738,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="240">
           <caret line="3583" column="39" lean-forward="false" selection-start-line="3583" selection-start-column="39" selection-end-line="3583" selection-end-column="39" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -737,7 +808,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="166">
           <caret line="1035" column="38" lean-forward="false" selection-start-line="1035" selection-start-column="38" selection-end-line="1035" selection-end-column="38" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -766,9 +836,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="136">
           <caret line="75" column="0" lean-forward="true" selection-start-line="75" selection-start-column="0" selection-end-line="75" selection-end-column="0" />
-          <folding>
-            <element signature="e#92#101#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -797,9 +864,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="20">
           <caret line="41" column="0" lean-forward="false" selection-start-line="41" selection-start-column="0" selection-end-line="41" selection-end-column="26" />
-          <folding>
-            <element signature="e#147#178#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -807,7 +871,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="200">
           <caret line="100" column="33" lean-forward="true" selection-start-line="100" selection-start-column="33" selection-end-line="100" selection-end-column="33" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -815,7 +878,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="176">
           <caret line="4251" column="4" lean-forward="false" selection-start-line="4251" selection-start-column="4" selection-end-line="4251" selection-end-column="4" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -827,43 +889,11 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Iambest1.8.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="936">
-          <caret line="1493" column="30" lean-forward="true" selection-start-line="1493" selection-start-column="30" selection-end-line="1493" selection-end-column="30" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/Iambest1.8.py" />
     <entry file="file://$APPLICATION_HOME_DIR$/helpers/pydev/_pydev_imps/_pydev_execfile.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="340">
           <caret line="17" column="0" lean-forward="false" selection-start-line="17" selection-start-column="0" selection-end-line="17" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://F:/Zup/fabu.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="362">
-          <caret line="2529" column="0" lean-forward="true" selection-start-line="2529" selection-start-column="0" selection-end-line="2529" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://F:/Zup/去注释.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="140">
-          <caret line="7" column="41" lean-forward="true" selection-start-line="7" selection-start-column="41" selection-end-line="7" selection-end-column="41" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://F:/Zup/Iambest1.9.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="460">
-          <caret line="4002" column="44" lean-forward="false" selection-start-line="4002" selection-start-column="44" selection-end-line="4002" selection-end-column="44" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -871,14 +901,52 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="160">
           <caret line="329" column="45" lean-forward="true" selection-start-line="329" selection-start-column="45" selection-end-line="329" selection-end-column="45" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://F:/car/webserver.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-840">
+          <caret line="6" column="15" lean-forward="true" selection-start-line="6" selection-start-column="15" selection-end-line="7" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://F:/Zup/去注释.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="240">
+          <caret line="19" column="32" lean-forward="false" selection-start-line="19" selection-start-column="32" selection-end-line="19" selection-end-column="32" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://F:/Zup/fabu.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="362">
+          <caret line="2522" column="0" lean-forward="true" selection-start-line="2522" selection-start-column="0" selection-end-line="2522" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://C:/Python35/Lib/logging/__init__.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="176">
+          <caret line="1830" column="4" lean-forward="false" selection-start-line="1830" selection-start-column="4" selection-end-line="1830" selection-end-column="4" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Iambest1.9.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-5360">
-          <caret line="14" column="0" lean-forward="true" selection-start-line="14" selection-start-column="0" selection-end-line="14" selection-end-column="0" />
+        <state relative-caret-position="176">
+          <caret line="3789" column="22" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="4042" selection-end-column="44" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://F:/Zup/Iambest1.9.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="318">
+          <caret line="4042" column="44" lean-forward="false" selection-start-line="4042" selection-start-column="44" selection-end-line="4042" selection-end-column="44" />
           <folding />
         </state>
       </provider>

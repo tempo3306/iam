@@ -1,0 +1,22 @@
+Tue, 17 Oct 2017 19:24:59 Iambest1.9.py[line:386] DEBUG This is debug message
+Tue, 17 Oct 2017 19:24:59 Iambest1.9.py[line:387] INFO This is info message
+Tue, 17 Oct 2017 19:24:59 Iambest1.9.py[line:388] WARNING This is warning message
+Tue, 17 Oct 2017 19:24:59 Iambest1.9.py[line:389] ERROR This is error message
+Tue, 17 Oct 2017 19:25:01 Iambest1.9.py[line:775] INFO 发送信息 ["login", "shooter3", "123456"]
+Tue, 17 Oct 2017 19:25:01 Iambest1.9.py[line:779] INFO Submit Complete
+Tue, 17 Oct 2017 19:25:01 Iambest1.9.py[line:789] INFO 登录成功 success
+Tue, 17 Oct 2017 19:25:01 Iambest1.9.py[line:3770] INFO login success
+Tue, 17 Oct 2017 19:25:49 Iambest1.9.py[line:3919] INFO moni one_chujia True True
+Tue, 17 Oct 2017 19:25:49 Iambest1.9.py[line:3920] INFO moni one_chujia 48 48.146276836863684
+Tue, 17 Oct 2017 19:25:56 Iambest1.9.py[line:3889] INFO moni one_tijiao False True True True
+Tue, 17 Oct 2017 19:25:56 Iambest1.9.py[line:3890] INFO moni one_tijiao 1 55.02511345422575 55
+Tue, 17 Oct 2017 19:26:31 Iambest1.9.py[line:860] INFO 发送信息 ["keep", "shooter3", "123456"]
+Tue, 17 Oct 2017 19:26:31 Iambest1.9.py[line:865] INFO Submit keep Complete
+Tue, 17 Oct 2017 19:26:49 Iambest1.9.py[line:3919] INFO moni one_chujia True True
+Tue, 17 Oct 2017 19:26:49 Iambest1.9.py[line:3920] INFO moni one_chujia 48 48.03829860570602
+Tue, 17 Oct 2017 19:26:56 Iambest1.9.py[line:3889] INFO moni one_tijiao False True True False
+Tue, 17 Oct 2017 19:26:56 Iambest1.9.py[line:3890] INFO moni one_tijiao 1 55.041931022567596 55
+Tue, 17 Oct 2017 19:27:50 Iambest1.9.py[line:3919] INFO moni one_chujia True True
+Tue, 17 Oct 2017 19:27:50 Iambest1.9.py[line:3920] INFO moni one_chujia 48 48.2166757612506
+Tue, 17 Oct 2017 19:28:01 Iambest1.9.py[line:860] INFO 发送信息 ["keep", "shooter3", "123456"]
+Tue, 17 Oct 2017 19:28:01 Iambest1.9.py[line:865] INFO Submit keep Complete

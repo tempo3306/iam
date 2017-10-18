@@ -1,0 +1,17 @@
+Tue, 17 Oct 2017 15:40:11 Iambest1.9.py[line:386] DEBUG This is debug message
+Tue, 17 Oct 2017 15:40:11 Iambest1.9.py[line:387] INFO This is info message
+Tue, 17 Oct 2017 15:40:11 Iambest1.9.py[line:388] WARNING This is warning message
+Tue, 17 Oct 2017 15:40:11 Iambest1.9.py[line:389] ERROR This is error message
+Tue, 17 Oct 2017 15:40:29 Iambest1.9.py[line:766] ERROR 连接失败 timed out
+Tue, 17 Oct 2017 15:40:29 Iambest1.9.py[line:767] ERROR Connection error: timed out
+Tue, 17 Oct 2017 15:40:29 Iambest1.9.py[line:3770] INFO net error
+Tue, 17 Oct 2017 15:40:44 Iambest1.9.py[line:775] INFO 发送信息 ["login", "shooter3", "123456"]
+Tue, 17 Oct 2017 15:40:44 Iambest1.9.py[line:779] INFO Submit Complete
+Tue, 17 Oct 2017 15:40:44 Iambest1.9.py[line:789] INFO 登录成功 success
+Tue, 17 Oct 2017 15:40:44 Iambest1.9.py[line:3770] INFO login success
+Tue, 17 Oct 2017 15:41:32 Iambest1.9.py[line:3919] INFO moni one_chujia True True
+Tue, 17 Oct 2017 15:41:32 Iambest1.9.py[line:3920] INFO moni one_chujia 48 48.00487942976103
+Tue, 17 Oct 2017 15:42:14 Iambest1.9.py[line:860] INFO 发送信息 ["keep", "shooter3", "123456"]
+Tue, 17 Oct 2017 15:42:14 Iambest1.9.py[line:865] INFO Submit keep Complete
+Tue, 17 Oct 2017 15:42:32 Iambest1.9.py[line:3919] INFO moni one_chujia True True
+Tue, 17 Oct 2017 15:42:32 Iambest1.9.py[line:3920] INFO moni one_chujia 48 48.118210921369695

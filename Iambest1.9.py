@@ -13,7 +13,7 @@ num=0
 avt=0
 
 
-test=True
+test=False
 ############全局变量参数表##96.22#######
 
 host_ali="121.196.220.94"
@@ -400,7 +400,7 @@ def Click(x, y):  # 鼠标点击
     win32api.SetCursorPos((x, y))
     win32api.mouse_event(win32con.MOUSEEVENTF_LEFTDOWN, x, y, 0, 0)
     win32api.mouse_event(win32con.MOUSEEVENTF_LEFTUP, x, y, 0, 0)
-    win32api.SetCursorPos(a)
+    # win32api.SetCursorPos(a)
 def Click2(x, y):  # 鼠标点击
     a = win32gui.GetCursorPos()
     x=int(x)
@@ -442,9 +442,11 @@ def setText(aString):
     win32clipboard.CloseClipboard()
 
 def Delete():
+    a=time.clock()
     win32api.keybd_event(0x08,0,0,0)
     win32api.keybd_event(0x08,0,win32con.KEYEVENTF_KEYUP, 0)
-
+    b=time.clock()
+    print(b-a)
 
 #查找位置
 def findpos():
@@ -489,9 +491,10 @@ def findrefresh():
     w, h = template.shape[::-1]
     res = cv2.matchTemplate(img, template, cv2.TM_CCOEFF_NORMED)
     min_val, max_val, min_loc, max_loc = cv2.minMaxLoc(res)
-    # print(max_val)
+    print(max_val)
     if max_val>=0.8:
-        refresh_on=True
+        logging.info("刷新")
+        refresh_on=True  #关闭查找
 
 
 def findconfirm():
@@ -1491,7 +1494,7 @@ class TopFrame(wx.Frame):
                 timer = threading.Timer(0.5, cls.Tijiao)
                 timer.start()
                 tijiao_on = False
-            elif lowest_price == own_price2-500 and interval<1:
+            elif lowest_price == own_price2-500 and interval<0.95:
                 tijiao_num = 0
                 timesleep=(1-interval)/3+0.25
                 timer = threading.Timer(timesleep, cls.Tijiao)
@@ -1514,7 +1517,7 @@ class TopFrame(wx.Frame):
                 tijiao_on = False
                 if twice:
                     tijiao_num = 2
-            elif lowest_price == own_price1-500 and interval<1:
+            elif lowest_price == own_price1-500 and interval<0.95:
                 timesleep = (1 - interval) / 3 + 0.25
                 timer = threading.Timer(timesleep, cls.Tijiao)
                 timer.start()
@@ -1560,7 +1563,7 @@ class TopFrame(wx.Frame):
                 own_price1 = lowest_price + one_diff
                 setText(str(own_price1))
                 TopFrame.selfdelete()
-                Click(Position[1][0], Position[1][1])
+                # Click(Position[1][0], Position[1][1])
                 tijiao_on = True
                 chujia_on = False
                 chujia_interval = False  # 间隔结束
@@ -1586,14 +1589,31 @@ class TopFrame(wx.Frame):
 
     @staticmethod
     def selfdelete():
-        Click2(Position[6][0], Position[6][1])
-        Click2(Position[6][0], Position[6][1])
-        Delete()
-        if moni_on:
-            Paste_moni()
-            # Paste_moni(Position[6][0], Position[6][1])
-        else:
-            Paste()  # 粘贴
+        deletethread=DeleteThread()
+
+
+        # Click2(Position[6][0]+17, Position[6][1])
+        # a = time.clock()
+        # for i in range(15):
+        #     Delete()
+        # b=time.clock()
+        # print(b-a)
+        # if moni_on:
+        #     Paste_moni()
+        #     # Paste_moni(Position[6][0], Position[6][1])
+        # else:
+        #     Paste()  # 粘贴
+
+    # @staticmethod
+    # def selfdelete():
+    #     Click2(Position[6][0], Position[6][1])
+    #     Click2(Position[6][0], Position[6][1])
+    #     Delete()
+        # if moni_on:
+        #     Paste_moni()
+        #     # Paste_moni(Position[6][0], Position[6][1])
+        # else:
+        #     Paste()  # 粘贴
 
     @staticmethod
     def selfChujia():
@@ -1770,7 +1790,7 @@ class TopFrame(wx.Frame):
             VK_CODE = {'0': 0x30, '1': 0x31, '2': 0x32, '3': 0x33, '4': 0x34, '5': 0x35, '6': 0x36, '7': 0x37,
                        '8': 0x38,
                        '9': 0x39, 'a': 0x41, 'b': 0x42, 'c': 0x43, 'd': 0x44, 'e': 0x45, 'f': 0x46, 's': 0x53,
-                       'q': 0x51}
+                       'q': 0x51 ,'h': 0x48}
             HOTKEYS1 = {1: (VK_CODE['2'], win32con.MOD_ALT), 2: (VK_CODE['3'], win32con.MOD_ALT),
                         3: (VK_CODE['4'], win32con.MOD_ALT), 4: (VK_CODE['5'], win32con.MOD_ALT),
                         5: (VK_CODE['6'], win32con.MOD_ALT), 6: (VK_CODE['7'], win32con.MOD_ALT),
@@ -1778,7 +1798,7 @@ class TopFrame(wx.Frame):
             user32 = ctypes.windll.user32
             HOTKEYS2 = {7: (VK_CODE['s'], 0x4000), 8: (VK_CODE['f'], 0x4000), 9: (VK_CODE['d'], 0x4000),
                         10: (win32con.VK_SPACE, 0x4000), 11: (VK_CODE['e'], 0x4000), 12: (win32con.VK_RETURN, 0x4000),
-                        13: (VK_CODE['q'], 0x4000)}
+                        13: (VK_CODE['q'], 0x4000),14:(VK_CODE['h'],0x4000)}
             for id in HOTKEYS1.keys():
                 user32.UnregisterHotKey(None, id)
             for id in HOTKEYS2.keys():
@@ -3654,6 +3674,30 @@ class OpenwebThread(Thread):
         """Run Worker Thread."""
         # This is the code executing in the new thread.
         openweb(self.url)
+#-------------------------------
+######模拟删除
+class DeleteThread(Thread):
+    def __init__(self):
+        """Init Worker Thread Class."""
+        Thread.__init__(self)
+        self.setDaemon(True)     #启动进程之前选择，主进程关闭，子进程跟着关闭
+        self.start()  # start the thread
+    # ----------------------------------------------------------------------
+    def run(self):
+        """Run Worker Thread."""
+        # This is the code executing in the new thread.
+        Click2(Position[6][0] + 17, Position[6][1])
+        for i in range(15):
+            Delete()
+        if moni_on:
+            Paste_moni()
+            # Paste_moni(Position[6][0], Position[6][1])
+        else:
+            Paste()  # 粘贴
+        Click(Position[1][0], Position[1][1])
+#----------------------
+
+
 
 class HashThread(Thread):
     def __init__(self):
@@ -3688,7 +3732,7 @@ class HashThread(Thread):
             # 设置注册表python.exe 值为 11000(IE11)
             name = os.path.realpath(sys.argv[0])  # 获取运行路径
             name = name.split('\\')[-1]
-            winreg.SetValueEx(key, '%s'%name, 0, winreg.REG_DWORD, 0x00002710)    #10:2710
+            # winreg.SetValueEx(key, '%s'%name, 0, winreg.REG_DWORD, 0x00002710)    #10:2710
             # winreg.SetValueEx(key2, '%s'%name, 0, winreg.REG_DWORD, 0x00000001)
         except:
             # 设置出现错误
@@ -3747,11 +3791,10 @@ class refreshThread(Thread):
                 findrefresh()
                 if refresh_on:
                     TopFrame.OnClick_Shuaxin()  # 刷新验证码
-                    refresh_one = False   #解除进程限制
-                    refresh_on= False    #关闭点击刷新
-                    refresh_need=False  #关闭查找刷新
-        refresh_one=False  #进程结束的时候允许
 
+        refresh_one=False  #进程结束的时候允许
+        refresh_on = False  # 关闭点击刷新
+        refresh_need = False  # 关闭查找刷新
 
 # ----------------------------------------------------------------------
 #登录验证器
