@@ -8,7 +8,7 @@
 #参数
 #id Topframe 1    Operationframe 2  guopaiweb 3 controlframe 4
 
-version='1.93'
+version='2.0'
 num=0
 avt=0
 
@@ -130,7 +130,7 @@ chujia_on=True  #完成一次出价之后关闭，完成出价后关闭
 tijiao_on=False  #是否需要提交,完成提交后打开
 
 
-lowest_price=86000 #最低成交价
+lowest_price=93400 #最低成交价
 own_price1=0 #第一次出价
 own_price2=0 #第二次出价
 own_price=0 #当前出价
@@ -446,7 +446,7 @@ def Delete():
     win32api.keybd_event(0x08,0,0,0)
     win32api.keybd_event(0x08,0,win32con.KEYEVENTF_KEYUP, 0)
     b=time.clock()
-    print(b-a)
+    # print(b-a)
 
 #查找位置
 def findpos():
@@ -491,12 +491,14 @@ def findrefresh():
     w, h = template.shape[::-1]
     res = cv2.matchTemplate(img, template, cv2.TM_CCOEFF_NORMED)
     min_val, max_val, min_loc, max_loc = cv2.minMaxLoc(res)
-    print(max_val)
+    logging.info("查找刷新")
     if max_val>=0.8:
         logging.info("刷新")
-        refresh_on=True  #关闭查找
-
-
+        TopFrame.OnClick_Shuaxin()
+    #     refresh_on = True  # 关闭查找
+    # elif refresh_on:
+    #     refresh_need=False  #找到刷新之后下一次发现小于0.8就关闭查找
+    #     refresh_on=False
 def findconfirm():
     # print("触发确认")
     global dick_target,confirm_on,Position
@@ -510,6 +512,11 @@ def findconfirm():
     if max_val>=0.9:
         # print("找到确认")
         confirm_on=True
+        TopFrame.OnClick_confirm()
+    if confirm_on and max_val<0.9:
+        print("暂停确认")
+        confirmthread.pause()  #暂停
+
 
 #------------------------------------------------------------------------------------
 ########图像识别###########
@@ -1067,6 +1074,8 @@ class TopFrame(wx.Frame):
 #触发打开不同网址的国拍
         pub.subscribe(self.OpenGuopai_dianxin, "open dianxin")  # 打开电信
         pub.subscribe(self.OpenGuopai_nodianxin, "open nodianxin")  # 打开非电信
+        pub.subscribe(self.OpenGuopai_userweb, "open userweb")  # 使用用户自己的IE
+
 
 
 # ------------------------------------------------------------------
@@ -1161,12 +1170,12 @@ class TopFrame(wx.Frame):
                 browser.CanSetZoomType(False)
                 self.fr.Show()
                 # 价格显示
-
+                self.Listen()
                 # pub.subscribe(self.OnCalculatepos, "refresh")
             else:
                 wx.MessageBox('请检查其它软件热键占用', '辅助启用失败', wx.OK | wx.ICON_ERROR)
                 self.Close()  # 关闭可能注册的热键
-            self.Listen()
+
 
     def OpenGuopai_nodianxin(self):
         # 初始化
@@ -1206,12 +1215,53 @@ class TopFrame(wx.Frame):
                 browser.CanSetZoomType(False)
                 self.fr.Show()
                 # 价格显示
-
+                self.Listen()
                 # pub.subscribe(self.OnCalculatepos, "refresh")
             else:
                 wx.MessageBox('请检查其它软件热键占用', '辅助启用失败', wx.OK | wx.ICON_ERROR)
                 self.Close()  # 关闭可能注册的热键
-            self.Listen()
+
+
+    def OpenGuopai_userweb(self):
+        # 初始化
+        global tijiao_num, chujia_on, tijiao_on, strategy_on, tijiao_OK
+        strategy_on = True
+        twice = True
+        chujia_on = True
+        tijiao_on = False
+        tijiao_num = 1  # 初始化
+        tijiao_OK = False
+        global Px, Py, url3, ad_view, web_on, do, moni_on, guopai_on, strategy_repeat
+        if guopai_on:
+            guopai_on=False
+        else:
+            self.Open()
+            # if not strategy_repeat :  # 判断自动出价进程是否开启
+            #     self.monitijiaothread = MoniTijiaoThread()  # 开启模拟自动出价
+            #     strategy_repeat=True  #防止进程重复开启
+            if do:
+                ad_view = True
+                guopai_on = True
+                self.fr = WebFrame(Px, Py, False, '小鲜肉代拍 国拍')  # 暂时关闭广告
+                # self.operationframe.Show(True)  # 开启控制面板显示
+                # 查看时间框是否应该显示
+                if time_on:
+                    self.operationframe.Opentime()
+                if not strategy_repeat:  # 判断自动出价进程是否开启
+                    self.monitijiaothread = MoniTijiaoThread()  # 开启模拟自动出价
+                    self.tijiaothread = TijiaoThread()  # 开启模拟自动出价
+                    strategy_repeat = True
+
+                browser = wx.html2.WebView.New(self.fr, size=(websize[0] + 48, websize[1] + 40), pos=(-17, 0))
+                browser.LoadURL(url3)
+                browser.CanSetZoomType(False)
+                self.fr.Show(False)
+                # 价格显示
+                self.Listen()
+                # pub.subscribe(self.OnCalculatepos, "refresh")
+            else:
+                wx.MessageBox('请检查其它软件热键占用', '辅助启用失败', wx.OK | wx.ICON_ERROR)
+                self.Close()  # 关闭可能注册的热键
 
 
 
@@ -1474,8 +1524,10 @@ class TopFrame(wx.Frame):
         tijiao_OK = False  # 需要按E解锁，自动提交
         global confirm_one
         if not confirm_one:  # 激活确认
-            confirmthread = confirmThread()
-            confirm_one = True
+            print("启动确认")
+            confirmthread.resume()   #重启
+
+            # confirm_one = True
 
     #智能提交，动态策略1号
     @classmethod
@@ -1563,15 +1615,14 @@ class TopFrame(wx.Frame):
                 own_price1 = lowest_price + one_diff
                 setText(str(own_price1))
                 TopFrame.selfdelete()
-                # Click(Position[1][0], Position[1][1])
+                Click(Position[1][0], Position[1][1])
                 tijiao_on = True
                 chujia_on = False
                 chujia_interval = False  # 间隔结束
-                print(chujia_interval)
-
-                if not refresh_one:  # 激活确认
-                    refreshthread = refreshThread()
-                    refresh_one = True  #同时只存在一个进程
+                refreshthread.resume()
+                # if not refresh_one:  # 激活确认
+                    # refreshthread = refreshThread()
+                    # refresh_one = True  #同时只存在一个进程
 
 
             elif tijiao_num == 2 and twice:
@@ -1583,32 +1634,21 @@ class TopFrame(wx.Frame):
                 tijiao_on = True
                 chujia_on = False
                 chujia_interval = False  # 间隔结束
-                if not refresh_one:  # 激活确认
-                    refreshthread = refreshThread()
-                    refresh_one = True
+                refreshthread.resume()
+
+                # if not refresh_one:  # 激活确认
+                #
+                #     refreshthread = refreshThread()
+                    # refresh_one = True
+
 
     @staticmethod
     def selfdelete():
-        deletethread=DeleteThread()
-
-
-        # Click2(Position[6][0]+17, Position[6][1])
-        # a = time.clock()
-        # for i in range(15):
-        #     Delete()
-        # b=time.clock()
-        # print(b-a)
-        # if moni_on:
-        #     Paste_moni()
-        #     # Paste_moni(Position[6][0], Position[6][1])
-        # else:
-        #     Paste()  # 粘贴
-
-    # @staticmethod
-    # def selfdelete():
-    #     Click2(Position[6][0], Position[6][1])
-    #     Click2(Position[6][0], Position[6][1])
-    #     Delete()
+        Click2(Position[6][0], Position[6][1])
+        Click2(Position[6][0], Position[6][1])
+        Delete()
+        Delete()
+        Paste()  # 粘贴
         # if moni_on:
         #     Paste_moni()
         #     # Paste_moni(Position[6][0], Position[6][1])
@@ -1670,14 +1710,15 @@ class TopFrame(wx.Frame):
         global tijiao_OK, refresh_need, tijiao_on
         if e_on and tijiao_on:
             tijiao_OK = True
-            refresh_need = False  # 关闭刷新识别
-
+            refreshthread.pause()
     @staticmethod
     def tijiao_ok2():
         global tijiao_OK, refresh_need
         if enter_on and tijiao_on:
             tijiao_OK = True
-            refresh_need = False  # 关闭刷新识别
+            refreshthread.pause()
+
+            # refresh_need = False  # 关闭刷新识别
 
     @classmethod
     def query(cls):
@@ -3064,7 +3105,7 @@ class OperationFrame(wx.Frame):
         one_time2 = 48  # 第一次出价提交
         one_diff = 500  # 第一次加价幅度
         one_delay = 0.5  # 第一次延迟
-        one_advance = 100  # 第一次提交提前量
+        one_advance = 0  # 第一次提交提前量
 
         second_time1 = 50  # 第二次次出价加价
         second_time2 = 55.5  # 第二次出价提交
@@ -3755,46 +3796,92 @@ class findposThread(Thread):
         findpos()
 
 #创建一个确认进程
-class confirmThread(Thread):
-    def __init__(self):
-        Thread.__init__(self)
+class confirmThread(threading.Thread):
+    def __init__(self, *args, **kwargs):
+        super(confirmThread, self).__init__(*args, **kwargs)
+        self.__flag = threading.Event()     # 用于暂停线程的标识
+        self.__flag.set()       # 设置为True
+        self.__running = threading.Event()      # 用于停止线程的标识
+        self.__running.set()      # 将running设置为True
         self.setDaemon(True)
         self.start()
 
+
     def run(self):
-        global confirm_need, confirm_on
-        global confirm_need, confirm_on ,confirm_one,chujia_on
-        for i in range(100):
-            wx.Sleep(0.1)
-            if confirm_need:
-                findconfirm()
-                if confirm_on:
-                    TopFrame.OnClick_confirm()
-                    confirm_need=False
-                    confirm_on=False
-                    confirm_one=False
-                    chujia_on=True
-        confirm_one = False #进程结束的时候允许
+        while self.__running.isSet():
+            self.__flag.wait()      # 为True时立即返回, 为False时阻塞直到内部的标识位为True后返回
+            findconfirm()
+
+    def pause(self):
+        self.__flag.clear()     # 设置为False, 让线程阻塞
+
+    def resume(self):
+        self.__flag.set()    # 设置为True, 让线程停止阻塞
+
+    def stop(self):
+        self.__flag.set()       # 将线程从暂停状态恢复, 如何已经暂停的话
+        self.__running.clear()        # 设置为False
+
+
+# class confirmThread(Thread):
+#     def __init__(self):
+#         Thread.__init__(self)
+#         self.setDaemon(True)
+#         self.start()
+#
+#     def run(self):
+#         global confirm_need, confirm_on
+#         global confirm_need, confirm_on ,confirm_one,chujia_on
+#         for i in range(100):
+#             wx.Sleep(0.1)
+#             if confirm_need:
+#                 findconfirm()
+#                 if confirm_on:
+#                     # TopFrame.OnClick_confirm()
+#                     confirm_need=False
+#                     confirm_on=False
+#                     confirm_one=False
+#                     chujia_on=True
+#         confirm_one = False #进程结束的时候允许
 #创建一个刷新进程
 class refreshThread(Thread):
-    def __init__(self):
-        Thread.__init__(self)
+    def __init__(self, *args, **kwargs):
+        super(refreshThread, self).__init__(*args, **kwargs)
+        self.__flag = threading.Event()     # 用于暂停线程的标识
+        self.__flag.set()       # 设置为True
+        self.__running = threading.Event()      # 用于停止线程的标识
+        self.__running.set()      # 将running设置为True
         self.setDaemon(True)
         self.start()
     def run(self):
-        global confirm_need, confirm_on
-        global refresh_need, refresh_on,refresh_one
-        for i in range(60):
-            #print("查找刷新")
-            print(refresh_need)
-            if refresh_need:
-                findrefresh()
-                if refresh_on:
-                    TopFrame.OnClick_Shuaxin()  # 刷新验证码
+        while self.__running.isSet():
+            self.__flag.wait()      # 为True时立即返回, 为False时阻塞直到内部的标识位为True后返回
+            logging.info("刷")
+            findrefresh()
 
-        refresh_one=False  #进程结束的时候允许
-        refresh_on = False  # 关闭点击刷新
-        refresh_need = False  # 关闭查找刷新
+        # for i in range(50):
+            #print("查找刷新")
+            # print(refresh_need)
+            # if refresh_need:
+            #     findrefresh()
+                # if refresh_on:
+                #     TopFrame.OnClick_Shuaxin()  # 刷新验证码
+
+        # refresh_one=False  #进程结束的时候允许
+        # refresh_on = False  # 关闭点击刷新
+        # refresh_need = False  # 关闭查找刷新
+    def pause(self):
+        self.__flag.clear()     # 设置为False, 让线程阻塞
+
+    def resume(self):
+        self.__flag.set()    # 设置为True, 让线程停止阻塞
+
+    def stop(self):
+        self.__flag.set()       # 将线程从暂停状态恢复, 如何已经暂停的话
+        self.__running.clear()        # 设置为False
+
+
+
 
 # ----------------------------------------------------------------------
 #登录验证器
@@ -3979,22 +4066,26 @@ class Infoframe(wx.Frame):
         self.SetIcon(self.icon)
 
 
+userweb_label="本地IE"
 class Guopaiframe(wx.Dialog):
     def __init__(self,name):  ##########版本号
-        wx.Frame.__init__(self, None, -1, name,size=(195,195), style= wx.CAPTION | wx.CLOSE_BOX)
+        wx.Frame.__init__(self, None, -1, name,size=(195,265), style= wx.CAPTION | wx.CLOSE_BOX)
         self.Bind(wx.EVT_CLOSE, self.OnClose)
-        self.panel = wx.Panel(self, size=(195, 200))
+        self.panel = wx.Panel(self, size=(195, 270))
         self.icon = wx.Icon(mainicon, wx.BITMAP_TYPE_ICO)
         self.SetIcon(self.icon)
 
         #创建2个button
-
+        self.userweb_label=userweb_label
         self.dianxin=wx.Button(self.panel,label="上海电信",pos=(20,10),size=(140,60))
         self.nodianxin=wx.Button(self.panel,label="非电信",pos=(20,80),size=(140,60))
+        self.userweb = wx.Button(self.panel, label=self.userweb_label, pos=(20, 150), size=(140, 60))
         self.dianxin.SetFont(wx.Font(20, wx.SWISS, wx.NORMAL, wx.NORMAL))
         self.nodianxin.SetFont(wx.Font(20, wx.SWISS, wx.NORMAL, wx.NORMAL))
+        self.userweb.SetFont(wx.Font(20, wx.SWISS, wx.NORMAL, wx.NORMAL))
         self.Bind(wx.EVT_BUTTON,self.Dianxin,self.dianxin)
         self.Bind(wx.EVT_BUTTON,self.NoDianxin,self.nodianxin)
+        self.Bind(wx.EVT_BUTTON, self.UserWeb, self.userweb)
         self.Center()
         self.ShowModal()
     def Dianxin(self,event):
@@ -4005,6 +4096,16 @@ class Guopaiframe(wx.Dialog):
         wx.CallAfter(pub.sendMessage, "open nodianxin")
         self.Destroy()
         event.Skip()
+    def UserWeb(self,event):
+        global userweb_label
+        if userweb_label=='本地IE':
+            userweb_label='关闭辅助'
+        else:
+            userweb_label = '本地IE'
+        wx.CallAfter(pub.sendMessage, "open userweb")
+        self.Destroy()
+        event.Skip()
+
     def OnClose(self,event):
         self.Destroy()
         event.Skip()
@@ -4028,6 +4129,7 @@ class SketchApp(wx.App):
                 psd = namepsd[1]
         except:
             user = '123456'  # 关闭
+            user = '123456'  # 关闭
             psd = 0
         loginframe = LoginFrame('小鲜肉拍牌', user, psd)
         loginframe.Show(True)
@@ -4036,6 +4138,12 @@ class SketchApp(wx.App):
 
 if __name__ == '__main__':
     app = SketchApp()
+    # 打开刷新与确认进程
+    confirmthread = confirmThread()
+    confirmthread.pause()  # 暂停
+    refreshthread=refreshThread()
+    refreshthread.pause()
+
 
     app.MainLoop()
 
