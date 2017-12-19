@@ -7,8 +7,12 @@
 ####################
 #参数
 #id Topframe 1    Operationframe 2  guopaiweb 3 controlframe 4
+#无确认
 
-version='2.0'
+#3.1变更说明
+#新增验证码放大器功能
+
+version='3.1'
 num=0
 avt=0
 
@@ -16,7 +20,7 @@ avt=0
 test=False
 ############全局变量参数表##96.22#######
 
-host_ali="121.196.220.94"
+host_ali="http://hupai.pro"
 # host_ali="127.0.0.1"
 #网址
 url1="http://moni.51hupai.org/"
@@ -36,6 +40,9 @@ do=False  # 开启辅助
 ad_view=False  # 显示广告
 
 price_view=False #显示价格,控制截图
+yanzhengma_view=False #验证码放大,控制截图
+yanzhengma_close=True #关闭验证码放大窗
+
 price_on=False   #价格是否显示
 price_count=0    #辅助计时，正确显示价格
 web_on=False     #监测web是否开启
@@ -188,6 +195,8 @@ px_mini=200
 py_mini=40
 #价格框大小
 Pricesize=[400,80]
+#验证码放大框大小
+Yanzhengmasize=[400,180]
 #时间框大小
 Timesize=[200,50]
 
@@ -217,6 +226,8 @@ Px_price=Px+px_price
 Py_price=Py+py_price
 Pos_price=[Px_price,Py_price,Px_price+px_mini,Py_price+py_mini]  #所出价格截图位置BOX
 
+Pos_yanzhengma=[]    #验证码所在位置
+
 #计算price框放置位置
 Px_priceframe=Px+px_priceframe
 Py_priceframe=Py+py_priceframe
@@ -226,7 +237,6 @@ Pos_priceframe=[Px_priceframe,Py_priceframe]
 Px_timeframe=px_timeframe+Px
 Py_timeframe=py_timeframe+Py
 Pos_timeframe=[Px_timeframe,Py_timeframe]
-print(Pos_timeframe)
 #time放置位置
 Pos_controlframe=[Px+40, Py+480]
 
@@ -464,23 +474,28 @@ def findpos():
     # print(min_loc)
     # print(max_loc)
     global px_lowestprice,py_lowestprice,px_relative,py_relative,Px_lowestprice,Py_lowestprice,Px,Py
-    px_lowestprice = max_loc[0]+px_relative
-    py_lowestprice = max_loc[1]+py_relative
-    Px_lowestprice=px_lowestprice
-    Py_lowestprice=py_lowestprice
 
-    # print(px_lowestprice,py_lowestprice)
-    global Position,refresh_area,confirm_area,Pos_timeframe,Pos_controlframe
-    for i in range(len(Position)):
-        Position[i][0] = Px_lowestprice + P_relative2[i][0]
-        Position[i][1] = Py_lowestprice + P_relative2[i][1]
-    refresh_area = [396 - 150+Px_lowestprice, 11 - 100+Py_lowestprice, 396 + 150+Px_lowestprice, 11 + 100+Py_lowestprice]
-    confirm_area = [505 - 80+Px_lowestprice, 68 - 50+Py_lowestprice, 505 + 80+Px_lowestprice, 68 + 50+Py_lowestprice]
-    Pos_controlframe=[192-344+Px_lowestprice, 514-183+Py_lowestprice]
-    # Pos_timeframe=[245 - 344+Px_lowestprice, 299- 183+Py_lowestprice]
-    #关闭触发
-    global findpos_on
-    findpos_on=False
+    if max_val>0.9:   #找不到不动作
+        px_lowestprice = max_loc[0]+px_relative
+        py_lowestprice = max_loc[1]+py_relative
+        Px_lowestprice=px_lowestprice
+        Py_lowestprice=py_lowestprice
+
+        # print(px_lowestprice,py_lowestprice)
+        global Position,refresh_area,confirm_area,Pos_timeframe,Pos_controlframe,Pos_yanzhengma,Pos_yanzhengmaframe
+        for i in range(len(Position)):
+            Position[i][0] = Px_lowestprice + P_relative2[i][0]
+            Position[i][1] = Py_lowestprice + P_relative2[i][1]
+        refresh_area = [396 - 150+Px_lowestprice, 11 - 100+Py_lowestprice, 396 + 150+Px_lowestprice, 11 + 100+Py_lowestprice]
+        confirm_area = [505 - 80+Px_lowestprice, 68 - 50+Py_lowestprice, 505 + 80+Px_lowestprice, 68 + 50+Py_lowestprice]
+        Pos_controlframe=[192-344+Px_lowestprice, 514-183+Py_lowestprice]
+
+        Pos_yanzhengma = [Position[5][0]-245,Position[5][1]-15,Position[5][0]-102,Position[5][1]+45]  # 验证码所在位置
+        Pos_yanzhengmaframe = [Px_lowestprice+240, Py_lowestprice-240]   #验证码框放置位置
+        # Pos_timeframe=[245 - 344+Px_lowestprice, 299- 183+Py_lowestprice]
+        #关闭触发
+        global findpos_on
+        findpos_on=False
 
 def findrefresh():
     global dick_target,refresh_on,refresh_need,refresh_one,Position,refresh_area,confirm_area
@@ -515,7 +530,7 @@ def findconfirm():
         TopFrame.OnClick_confirm()
     if confirm_on and max_val<0.9:
         print("暂停确认")
-        confirmthread.pause()  #暂停
+        # confirmthread.pause()  #暂停
 
 
 #------------------------------------------------------------------------------------
@@ -573,143 +588,144 @@ def readpic(img):
 
 # --------------------------------------------------------------------------------
 #PING网速测试
-import os
-import socket
-import struct
-import select
-import time
+# import os
+# import socket
+# import struct
+# import select
+# import time
 
-ICMP_ECHO_REQUEST = 8  # Platform specific
-DEFAULT_TIMEOUT = 2
-DEFAULT_COUNT = 1
-
-
-class Pinger(object):
-    """ Pings to a host -- the Pythonic way"""
-
-    def __init__(self, target_host, count=DEFAULT_COUNT, timeout=DEFAULT_TIMEOUT):
-        self.target_host = target_host
-        self.count = count
-        self.timeout = timeout
-
-
-    def do_checksum(self, source_string):
-        """  Verify the packet integritity """
-        sum = 0
-        max_count = (len(source_string) / 2) * 2
-        count = 0
-        while count < max_count:  # 分割数据每两比特(16bit)为一组
-            val = source_string[count + 1]* 256 + source_string[count]
-            sum = sum + val
-            sum = sum & 0xffffffff
-            count = count + 2
-
-        if max_count < len(source_string):   # 如果数据长度为基数,则将最后一位单独相加
-            sum = sum + source_string[len(source_string) - 1]
-            sum = sum & 0xffffffff
-        sum = (sum >> 16) + (sum & 0xffff)  # 将高16位与低16位相加直到高16位为0
-        sum = sum + (sum >> 16)
-        answer = ~sum
-        answer = answer & 0xffff
-        answer = answer >> 8 | (answer << 8 & 0xff00)
-        return answer  # 返回的是十进制整数
-
-    def receive_ping(self, sock, ID, timeout):
-        time_remaining = timeout
-        while True:
-            start_time = time.time()
-            readable = select.select([sock], [], [], time_remaining)
-            time_spent = (time.time() - start_time)
-            if readable[0] == []:  # Timeout
-                return
-
-            time_received = time.time()
-            recv_packet, addr = sock.recvfrom(1024)
-            icmp_header = recv_packet[20:28]
-            type, code, checksum, packet_ID, sequence = struct.unpack(
-                "bbHHh", icmp_header
-            )
-            if packet_ID == ID:
-                bytes_In_double = struct.calcsize("d")
-                time_sent = struct.unpack("d", recv_packet[28:28 + bytes_In_double])[0]
-                return time_received - time_sent
-
-            time_remaining = time_remaining - time_spent
-            if time_remaining <= 0:
-                return
-
-    def send_ping(self, sock, ID):
-        """
-        Send ping to the target host
-        """
-        target_addr = socket.gethostbyname(self.target_host)
-
-        my_checksum = 0
-
-        # Create a dummy heder with a 0 checksum.
-        header = struct.pack("bbHHh", ICMP_ECHO_REQUEST, 0, my_checksum, ID, 1)
-        bytes_In_double = struct.calcsize("d")
-        data = (192 - bytes_In_double) * "Q"
-        data = struct.pack("d", time.time()) + bytes(data,encoding="utf-8")
-
-        # Get the checksum on the data and the dummy header.
-        my_checksum = self.do_checksum(header + data)
-        header = struct.pack(
-            "bbHHh", ICMP_ECHO_REQUEST, 0, socket.htons(my_checksum), ID, 1
-        )
-        packet = header + data
-        sock.sendto(packet, (target_addr, 1))
-
-    def ping_once(self):
-        """
-        Returns the delay (in seconds) or none on timeout.
-        """
-        icmp = socket.getprotobyname("icmp")
-        try:
-            sock = socket.socket(socket.AF_INET, socket.SOCK_RAW, icmp)
-        except socket.error as er:
-            if er[0] == 1:
-                # Not superuser, so operation not permitted
-                er[1] += "ICMP messages can only be sent from root user processes"
-                raise socket.error(er[1])
-        except Exception as e:
-            print ("Exception: %s" % (e))
-
-
-        my_ID = os.getpid() & 0xFFFF
-
-        self.send_ping(sock, my_ID)
-        delay = self.receive_ping(sock, my_ID, self.timeout)
-        sock.close()
-        return delay
-
-    def ping(self):
-        """
-        Run the ping process
-        """
-        for i in range(self.count):
-            # print("Ping to %s..." % self.target_host)
-            try:
-                delay = self.ping_once()
-            except socket.gaierror as e:
-                # print ("Ping failed. (socket error: '%s')" % e)
-                return "timeout"
-
-            if delay == None:
-                # print("Ping failed. (timeout within %ssec.)" % self.timeout)
-                return "timeout"
-
-            else:
-                delay = delay * 1000
-                # print("Get ping in %0.4fms" % delay)
-                return int(delay)
-#定义网速查询的类
-pinger=Pinger(url2)
+# ICMP_ECHO_REQUEST = 8  # Platform specific
+# DEFAULT_TIMEOUT = 2
+# DEFAULT_COUNT = 1
+#
+#
+# class Pinger(object):
+#     """ Pings to a host -- the Pythonic way"""
+#
+#     def __init__(self, target_host, count=DEFAULT_COUNT, timeout=DEFAULT_TIMEOUT):
+#         self.target_host = target_host
+#         self.count = count
+#         self.timeout = timeout
+#
+#
+#     def do_checksum(self, source_string):
+#         """  Verify the packet integritity """
+#         sum = 0
+#         max_count = (len(source_string) / 2) * 2
+#         count = 0
+#         while count < max_count:  # 分割数据每两比特(16bit)为一组
+#             val = source_string[count + 1]* 256 + source_string[count]
+#             sum = sum + val
+#             sum = sum & 0xffffffff
+#             count = count + 2
+#
+#         if max_count < len(source_string):   # 如果数据长度为基数,则将最后一位单独相加
+#             sum = sum + source_string[len(source_string) - 1]
+#             sum = sum & 0xffffffff
+#         sum = (sum >> 16) + (sum & 0xffff)  # 将高16位与低16位相加直到高16位为0
+#         sum = sum + (sum >> 16)
+#         answer = ~sum
+#         answer = answer & 0xffff
+#         answer = answer >> 8 | (answer << 8 & 0xff00)
+#         return answer  # 返回的是十进制整数
+#
+#     def receive_ping(self, sock, ID, timeout):
+#         time_remaining = timeout
+#         while True:
+#             start_time = time.time()
+#             readable = select.select([sock], [], [], time_remaining)
+#             time_spent = (time.time() - start_time)
+#             if readable[0] == []:  # Timeout
+#                 return
+#
+#             time_received = time.time()
+#             recv_packet, addr = sock.recvfrom(1024)
+#             icmp_header = recv_packet[20:28]
+#             type, code, checksum, packet_ID, sequence = struct.unpack(
+#                 "bbHHh", icmp_header
+#             )
+#             if packet_ID == ID:
+#                 bytes_In_double = struct.calcsize("d")
+#                 time_sent = struct.unpack("d", recv_packet[28:28 + bytes_In_double])[0]
+#                 return time_received - time_sent
+#
+#             time_remaining = time_remaining - time_spent
+#             if time_remaining <= 0:
+#                 return
+#
+#     def send_ping(self, sock, ID):
+#         """
+#         Send ping to the target host
+#         """
+#         target_addr = socket.gethostbyname(self.target_host)
+#
+#         my_checksum = 0
+#
+#         # Create a dummy heder with a 0 checksum.
+#         header = struct.pack("bbHHh", ICMP_ECHO_REQUEST, 0, my_checksum, ID, 1)
+#         bytes_In_double = struct.calcsize("d")
+#         data = (192 - bytes_In_double) * "Q"
+#         data = struct.pack("d", time.time()) + bytes(data,encoding="utf-8")
+#
+#         # Get the checksum on the data and the dummy header.
+#         my_checksum = self.do_checksum(header + data)
+#         header = struct.pack(
+#             "bbHHh", ICMP_ECHO_REQUEST, 0, socket.htons(my_checksum), ID, 1
+#         )
+#         packet = header + data
+#         sock.sendto(packet, (target_addr, 1))
+#
+#     def ping_once(self):
+#         """
+#         Returns the delay (in seconds) or none on timeout.
+#         """
+#         icmp = socket.getprotobyname("icmp")
+#         try:
+#             sock = socket.socket(socket.AF_INET, socket.SOCK_RAW, icmp)
+#         except socket.error as er:
+#             if er[0] == 1:
+#                 # Not superuser, so operation not permitted
+#                 er[1] += "ICMP messages can only be sent from root user processes"
+#                 raise socket.error(er[1])
+#         except Exception as e:
+#             print ("Exception: %s" % (e))
+#
+#
+#         my_ID = os.getpid() & 0xFFFF
+#
+#         self.send_ping(sock, my_ID)
+#         delay = self.receive_ping(sock, my_ID, self.timeout)
+#         sock.close()
+#         return delay
+#
+#     def ping(self):
+#         """
+#         Run the ping process
+#         """
+#         for i in range(self.count):
+#             # print("Ping to %s..." % self.target_host)
+#             try:
+#                 delay = self.ping_once()
+#             except socket.gaierror as e:
+#                 # print ("Ping failed. (socket error: '%s')" % e)
+#                 return "timeout"
+#
+#             if delay == None:
+#                 # print("Ping failed. (timeout within %ssec.)" % self.timeout)
+#                 return "timeout"
+#
+#             else:
+#                 delay = delay * 1000
+#                 # print("Get ping in %0.4fms" % delay)
+#                 return int(delay)
+# #定义网速查询的类
+# pinger=Pinger(url2)
 
 #---------------------------------------------------------------------------------
 #打开浏览器
 import winreg,re,subprocess
 needpath=r'C:\Program Files (x86)\Internet Explorer\iexplore.exe'
+iepath=r'C:\Program Files (x86)\Internet Explorer\iexplore.exe'
 path1='C:\Program Files (x86)'
 path2='C:\Program Files'
 def getwebpath():
@@ -734,6 +750,10 @@ def openweb(url):
     # command="\""+needpath+"\"" +" "+url  #需要加个空格
     # path=r'C:\Program Files (x86)\Internet Explorer\iexplore.exe www.baidu.com'
     subprocess.Popen([needpath,url])
+def openIE(url):
+    global iepath
+    subprocess.Popen([iepath,url])
+
 # --------------------------------------------------------------------------------
 #采集用户信息
 import smtplib
@@ -757,63 +777,22 @@ import socket, sys ,json
 timeout = 10
 socket.setdefaulttimeout(timeout)  #设定截止时间
 
+from urllib import request
+import json
+
 def ConfirmUser():
-    host = host_ali
-    # host = raw_input("Plz imput destination IP:")
-    # data = raw_input("Plz imput what you want to submit:")
-    port = 8080
-
-    s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-
     try:
-        s.connect((host, port))
-    except socket.gaierror as e:
-        logging.error('连接失败 %s' %e)
-        logging.error("Address-related error connecting to server: %s" % e)
-        return 'net error'
-        # sys.exit(1)
-    except socket.error as e:
-        logging.error('连接失败 %s' %e)
-        logging.error("Connection error: %s" % e)
-        return 'net error'
-        # sys.exit(1)
-
-#发送激活码
-    data = ['login',Username,Password]
-    data=json.dumps(data)
-    data = bytes(data, encoding="utf-8")  #转化为BYTE
-    logging.info('发送信息 %s' % str(data,encoding="utf-8"))
-    s.send(data)                          #发送
-
-    s.shutdown(1)
-    logging.info("Submit Complete")
-    print("Submit Complete")
-    try:
-        login_reply = s.recv(1024)  # 收到回复
-        print(login_reply)
-        login_reply = str(login_reply, encoding="utf-8")#接受反馈
-        login_reply = json.loads(login_reply)      #json转列表
-        print("login_reply%s"%login_reply)
-        buf=login_reply[0]
-        if buf == 'success':                  #判断是否成功
-            logging.info('登录成功 %s' % buf)
-            global url2,url3
-            url2=login_reply[1]   #修改为最新网址
-            url3=login_reply[2]
-            return 'login success'  #登录成功，给予返回值
-        elif buf == 'wrong password':
-            logging.warning('密码错误 %s' %buf)
-            return 'wrong password'
-        elif buf == "wrong account":
-            logging.warning('账号错误 %s' %buf)
-            return 'wrong account'
-        elif buf == 'repeat':
-            logging.warning('账号错误 %s' % buf)
-            return 'repeat'
+        target_url = host_ali+r'/main_api/userconfirm/info?' + 'username=%s' % Username + '&' + 'passwd=%s' % Password
+        print(target_url)
+        response = request.urlopen(target_url)
+        print(response)
+        result = response.read()
+        result = str(result, encoding='utf-8')
+        result = json.loads(result)
     except:
-        print("连接失败")
-        logging.warning('连接失败 ' )
-        return False
+        return {'result':'net error'}
+    return result
+
 
 
 def Logout():
@@ -835,14 +814,14 @@ def Logout():
         # sys.exit(1)
 
     # 发送登出信息
-    data = ['logout',Username,Password]
-    data=json.dumps(data)
-    data = bytes(data, encoding="utf-8")  #转化为BYTE
-    logging.info('发送信息 %s' % str(data,encoding="utf-8"))
-    s.send(data)
-    s.shutdown(1)
-    print("Submit Log Out Complete")
-    logging.info("Submit Log Out Complete")
+    # data = ['logout',Username,Password]
+    # data=json.dumps(data)
+    # data = bytes(data, encoding="utf-8")  #转化为BYTE
+    # logging.info('发送信息 %s' % str(data,encoding="utf-8"))
+    # s.send(data)
+    # s.shutdown(1)
+    # print("Submit Log Out Complete")
+    # logging.info("Submit Log Out Complete")
 
 
 def Keeplogin():
@@ -1061,7 +1040,7 @@ class TopFrame(wx.Frame):
         #自动定位
         self.timer4=wx.Timer(self)
         self.Bind(wx.EVT_TIMER, self.Find_pos, self.timer4)#设置一个截屏取价
-        self.timer4.Start(150)
+        self.timer4.Start(350)
 
 
         #登录确认器  ,放入独立进程管理
@@ -1236,13 +1215,15 @@ class TopFrame(wx.Frame):
             guopai_on=False
         else:
             self.Open()
+
             # if not strategy_repeat :  # 判断自动出价进程是否开启
             #     self.monitijiaothread = MoniTijiaoThread()  # 开启模拟自动出价
             #     strategy_repeat=True  #防止进程重复开启
+            print(do)
             if do:
                 ad_view = True
                 guopai_on = True
-                self.fr = WebFrame(Px, Py, False, '小鲜肉代拍 国拍')  # 暂时关闭广告
+                # self.fr = WebFrame(Px, Py, False, '小鲜肉代拍 国拍')  # 暂时关闭广告
                 # self.operationframe.Show(True)  # 开启控制面板显示
                 # 查看时间框是否应该显示
                 if time_on:
@@ -1251,13 +1232,17 @@ class TopFrame(wx.Frame):
                     self.monitijiaothread = MoniTijiaoThread()  # 开启模拟自动出价
                     self.tijiaothread = TijiaoThread()  # 开启模拟自动出价
                     strategy_repeat = True
-
-                browser = wx.html2.WebView.New(self.fr, size=(websize[0] + 48, websize[1] + 40), pos=(-17, 0))
-                browser.LoadURL(url3)
-                browser.CanSetZoomType(False)
-                self.fr.Show(False)
+                #
+                # browser = wx.html2.WebView.New(self.fr, size=(websize[0] + 48, websize[1] + 40), pos=(-17, 0))
+                # browser.LoadURL(url3)
+                # browser.CanSetZoomType(False)
+                # self.fr.Show(False)
                 # 价格显示
+                openIE(url3)
+                print("fsdf")
                 self.Listen()
+
+
                 # pub.subscribe(self.OnCalculatepos, "refresh")
             else:
                 wx.MessageBox('请检查其它软件热键占用', '辅助启用失败', wx.OK | wx.ICON_ERROR)
@@ -1316,6 +1301,11 @@ class TopFrame(wx.Frame):
 
     def Posautoset(self,event):
         findpos()
+        try:
+            yan = self.FindWindowById(8)
+            yan.Move(Pos_yanzhengmaframe[0], Pos_yanzhengmaframe[1])
+        except:
+            pass
 
     def Timeautoset(self,event):
         pass
@@ -1525,7 +1515,7 @@ class TopFrame(wx.Frame):
         global confirm_one
         if not confirm_one:  # 激活确认
             print("启动确认")
-            confirmthread.resume()   #重启
+            # confirmthread.resume()   #重启
 
             # confirm_one = True
 
@@ -1602,11 +1592,12 @@ class TopFrame(wx.Frame):
 
     @staticmethod
     def OnClick_chujia():
-        global web_on, lowest_price
+        global web_on, lowest_price ,price_count
         global tijiao_num, own_price1, own_price2, one_diff, second_diff
         global tijiao_on, chujia_on
-        global refresh_need, refresh_one, chujia_interval
-        print(chujia_interval)
+        global refresh_need, refresh_one, chujia_interval ,yanzhengma_view
+        price_count=0  #计数器，制造延迟
+        yanzhengma_view=True  #打开验证码放大器
         if not chujia_interval:
             chujia_interval = True
             tijiao_on = True  # 激活自动出价
@@ -1616,6 +1607,8 @@ class TopFrame(wx.Frame):
                 setText(str(own_price1))
                 TopFrame.selfdelete()
                 Click(Position[1][0], Position[1][1])
+                Click(Position[5][0], Position[5][1])
+
                 tijiao_on = True
                 chujia_on = False
                 chujia_interval = False  # 间隔结束
@@ -1631,6 +1624,7 @@ class TopFrame(wx.Frame):
                 setText(str(own_price2))
                 TopFrame.selfdelete()
                 Click(Position[1][0], Position[1][1])
+                Click(Position[5][0], Position[5][1])
                 tijiao_on = True
                 chujia_on = False
                 chujia_interval = False  # 间隔结束
@@ -1640,6 +1634,24 @@ class TopFrame(wx.Frame):
                 #
                 #     refreshthread = refreshThread()
                     # refresh_one = True
+
+# 热键H的功能
+    @staticmethod
+    def OnH_chujia():
+        global yanzhengma_view , price_count
+        yanzhengma_view=True
+        price_count=0
+        own_price1 = lowest_price + one_diff
+        setText(str(own_price1))
+        TopFrame.selfdelete()
+
+        Click(Position[1][0], Position[1][1])
+        Click(Position[5][0], Position[5][1])
+        # if not refresh_one:  # 激活确认
+            # refreshthread = refreshThread()
+            # refresh_one = True  #同时只存在一个进程
+
+
 
 
     @staticmethod
@@ -1666,6 +1678,7 @@ class TopFrame(wx.Frame):
         Click(Position[4][0], Position[4][1])
         Click(Position[0][0], Position[0][1])
         Click(Position[1][0], Position[1][1])
+        Click(Position[5][0], Position[5][1])
         price_view = True
         price_count = 0
 
@@ -1707,17 +1720,21 @@ class TopFrame(wx.Frame):
 
     @staticmethod
     def tijiao_ok():
-        global tijiao_OK, refresh_need, tijiao_on
+        global tijiao_OK, refresh_need, tijiao_on ,yanzhengma_close,yanzhengma_view
         if e_on and tijiao_on:
             tijiao_OK = True
+
             refreshthread.pause()
+        yanzhengma_view = False
+        yanzhengma_close = True
     @staticmethod
     def tijiao_ok2():
-        global tijiao_OK, refresh_need
+        global tijiao_OK, refresh_need ,yanzhengma_close ,yanzhengma_view
         if enter_on and tijiao_on:
             tijiao_OK = True
             refreshthread.pause()
-
+        yanzhengma_close = True
+        yanzhengma_view = False
             # refresh_need = False  # 关闭刷新识别
 
     @classmethod
@@ -1803,7 +1820,7 @@ class TopFrame(wx.Frame):
                 4: TopFrame.handle_Shuaxin, 5: TopFrame.handle_Confirm,
                 6: TopFrame.handle_Yanzhengma, 7: TopFrame.OnClick_Shuaxin, 8: TopFrame.selfTijiao,
                 9:(lambda :TopFrame.selfChujia()), 10: TopFrame.OnClick_Backspace, 11: TopFrame.tijiao_ok, 12: TopFrame.tijiao_ok2,
-                13: TopFrame.query    ,14:TopFrame.OnClick_chujia}   #TopFrame.query
+                13: TopFrame.query    ,14:TopFrame.OnH_chujia}   #TopFrame.query
             user32 = ctypes.windll.user32
             msg = wintypes.MSG()
             byref = ctypes.byref
@@ -2312,22 +2329,30 @@ class PosFrame(wx.Frame):
             t1[i].SetFont(font)
 
 class PriceFrame(wx.Frame):
-    def __init__(self,image):
+    def __init__(self,image,size,pos):
 
-        wx.Frame.__init__(self, None, -1,'Price',size=Pricesize, pos=Pos_priceframe,
+        wx.Frame.__init__(self, None, -1,'Price',size=size, pos=pos,
                           style=wx.FRAME_TOOL_WINDOW|wx.STAY_ON_TOP)
-        self.panel=wx.Panel(self,size=Pricesize)
+        self.panel=wx.Panel(self,size=size)
         #image=wx.Image(path,wx.BITMAP_TYPE_PNG)
-        wx.StaticBitmap(self.panel,-1,wx.BitmapFromImage(image))
+        self.bmp=wx.StaticBitmap(self.panel,-1,wx.Bitmap(image))
+
+
+
+
 
 class YanzhengmaFrame(wx.Frame):
     def __init__(self,image):
-
-        wx.Frame.__init__(self, None, -1,'Price',size=(400,80), pos=Pos_yanzhengmaframe,
+        print(Pos_yanzhengmaframe)
+        wx.Frame.__init__(self, None, 8,'Price',size=Yanzhengmasize, pos=Pos_yanzhengmaframe,
                           style=wx.FRAME_TOOL_WINDOW|wx.STAY_ON_TOP)
-        self.panel=wx.Panel(self,size=(400,80))
+        self.panel=wx.Panel(self,size=Yanzhengmasize)
         #image=wx.Image(path,wx.BITMAP_TYPE_PNG)
-        wx.StaticBitmap(self.panel,-1,wx.BitmapFromImage(image))
+        self.bmp=wx.StaticBitmap(self.panel,-1,wx.Bitmap(image))
+
+        # 更换图片显示
+    def ShowImage(self,bm):
+        self.bmp.SetBitmap(wx.Bitmap(bm))
 
 
 
@@ -2362,12 +2387,15 @@ class WebFrame(wx.Frame):
             self.adframe.Show(True)
         self.Bind(wx.EVT_CLOSE, self.OnClose)
         self.ad2=ad
-        self.control=ControlFrame()
+
+#广告   控制 界面
+
+        # self.control=ControlFrame()
 
         global test
         #测试关掉
-        if not test:
-            self.control.Show(True)
+        # if not test:
+        #     self.control.Show(True)
 
         # panel = wx.Panel(self, -1)
         # panel.Bind(wx.EVT_KEY_DOWN, self.OnKeyDown)
@@ -2404,8 +2432,10 @@ class WebFrame(wx.Frame):
         TopFrame.Close()
         file="sc_new.png"
         #控制窗
-
-        self.control.Destroy()
+        try:
+            self.control.Destroy()
+        except:
+            pass
         if  os.path.exists(file):
             os.remove(file)
         self.Destroy()
@@ -2494,7 +2524,7 @@ class OperationFrame(wx.Frame):
         #显示价格
         self.timer1=wx.Timer(self)
         self.Bind(wx.EVT_TIMER, self.Price_view, self.timer1)#绑定一个定时器事件，主判断
-        self.timer1.Start(500)  #设定时间间隔
+        self.timer1.Start(200)  #设定时间间隔
         #设定间隔
         self.timer2=wx.Timer(self)
         self.Bind(wx.EVT_TIMER, self.Price_count, self.timer2)#
@@ -2723,25 +2753,50 @@ class OperationFrame(wx.Frame):
         self.operationtimer = wx.Timer(self)
         self.Bind(wx.EVT_TIMER, self.opt, self.operationtimer)
         self.operationtimer.Start(1000)
+#验证码放大窗口
+        self.priceframe = YanzhengmaFrame("1.png")
+        self.priceframe.Show(False)
+
 
     def OnClose(self,event):
         self.Show(False)
-    # 动态显示价格
+
+    # 动态显示价格   验证码放大器
     def Price_view(self, event):
-        global price_view, web_on, price_on, view_time
+        global price_view, web_on, price_on, view_time  ,yanzhengma_view ,Pricesize,Yanzhengmasize,yanzhengma_close
         # print(price_view, price_count)
         if price_view and price_count >= 4:
+            print(price_count)
             try:
                 self.Price_close()
             except:
                 pass
-            self.Screen_shot()
+            self.Screen_shot(Pos_price,Pricesize)
             image = "sc_new.png"
-            self.priceframe = PriceFrame(image)
+            self.priceframe = PriceFrame(image,Pricesize,Pos_priceframe)
             self.priceframe.Show(True)
             price_view = False
             price_on = True
             # print("到这5")
+
+        if yanzhengma_close:
+            try:
+                yan2 = self.FindWindowById(8)
+                yan2.Show(False)
+            except:
+                pass
+        if yanzhengma_view :
+            yanzhengma_close = False
+            self.Screen_shot(Pos_yanzhengma,Yanzhengmasize)
+            image = "sc_new.png"
+            try:
+                yan = self.FindWindowById(8)
+                yan.ShowImage(image)
+                yan.Move(Pos_yanzhengmaframe[0],Pos_yanzhengmaframe[1])
+                yan.Show(True)
+                price_on = True
+            except:
+                pass
 
     def Price_count(self,event):
         #设计手动显示价格的判定器，制作显示间隔
@@ -2761,12 +2816,11 @@ class OperationFrame(wx.Frame):
 
 
 
-    # 获取出价信息
-    def Screen_shot(self):
+    # 截图显示
+    def Screen_shot(self,box,size):
         global Pricesize
-        box = Pos_price
         region = ImageGrab.grab(box)
-        region.resize(Pricesize, Image.ANTIALIAS).save("sc_new.png")
+        region.resize(size, Image.ANTIALIAS).save("sc_new.png")
 
     # 删除此图
     @staticmethod
@@ -2791,14 +2845,12 @@ class OperationFrame(wx.Frame):
         global twice, tijiao_num, chujia_on, tijiao_on, tijiao_OK, tijiao_one  # 二次出价触发开关
         if moni_second < one_time1 and moni_on and not twice:  #单次还原
             twice=False
-            strategy_on=True
             chujia_on=True
             tijiao_on=False
             tijiao_num = 1  # 初始化
             tijiao_OK=False
             tijiao_one=False  #单枪未开
         elif moni_second < one_time1 and moni_on and twice:  #二次还原
-            strategy_on=True
             twice=True
             chujia_on=True
             tijiao_on=False
@@ -3504,19 +3556,22 @@ class LoginFrame(wx.Frame):
 
     def connect_success(self):
         self.loginbtn.Enable()
-        global login_result
-        if login_result=='login success':
+        global login_result ,url2,url3  #dick对象
+
+        if login_result['result']=='login success':
             self.Destroy()
             self.topframe = TopFrame('小鲜肉拍牌', version)
             self.topframe.Show(True)
+            url2=login_result['url_dianxin']
+            url3=login_result['url_nodianxin']
             # event.Skip()
-        elif login_result=='net error':
+        elif login_result['result']=='net error':
             wx.MessageBox('连接服务器失败', '用户登录', wx.OK | wx.ICON_ERROR)
-        elif login_result=='repeat':
+        elif login_result['result']=='repeat':
             wx.MessageBox('重复登录，稍后再试', '用户登录', wx.OK | wx.ICON_ERROR)
-        elif login_result=='wrong account':
+        elif login_result['result']=='wrong account':
             wx.MessageBox('账号错误', '用户登录', wx.OK | wx.ICON_ERROR)
-        elif login_result=='wrong password':
+        elif login_result['result']=='wrong password':
             wx.MessageBox('密码错误', '用户登录', wx.OK | wx.ICON_ERROR)
         else:
             wx.MessageBox('登录失败', '用户登录', wx.OK | wx.ICON_ERROR)
@@ -3897,7 +3952,7 @@ class LoginThread(Thread):
         global Username,login_result
         login_result=ConfirmUser()
         print(login_result)
-        logging.info("%s"%login_result)
+        # logging.info("%s"%login_result)
         wx.CallAfter(pub.sendMessage, "connect")
 
 ###限定登录时间
@@ -4100,9 +4155,10 @@ class Guopaiframe(wx.Dialog):
         global userweb_label
         if userweb_label=='本地IE':
             userweb_label='关闭辅助'
+            wx.CallAfter(pub.sendMessage, "open userweb")
         else:
             userweb_label = '本地IE'
-        wx.CallAfter(pub.sendMessage, "open userweb")
+            TopFrame.Close()
         self.Destroy()
         event.Skip()
 
@@ -4139,8 +4195,8 @@ class SketchApp(wx.App):
 if __name__ == '__main__':
     app = SketchApp()
     # 打开刷新与确认进程
-    confirmthread = confirmThread()
-    confirmthread.pause()  # 暂停
+    # confirmthread = confirmThread()
+    # confirmthread.pause()  # 暂停
     refreshthread=refreshThread()
     refreshthread.pause()
 
