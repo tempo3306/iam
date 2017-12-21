@@ -6,6 +6,15 @@
 '''
 import wx
 import PIL
+from PIL import ImageGrab
+from wx.lib.embeddedimage import PyEmbeddedImage
+
+
+def getpic():
+    im=ImageGrab.grab()
+    bitmap=wx.Bitmap(wx.ImageFromStream())
+    return bitmap
+
 class PriceFrame(wx.Frame):
     def __init__(self,image,size,pos):
 
@@ -18,7 +27,8 @@ class PriceFrame(wx.Frame):
         self.ShowImage()
 #更换图片显示
     def ShowImage(self):
-        img = wx.Bitmap(wx.Image('1.png',wx.BITMAP_TYPE_PNG))
+        im=getpic()
+        img = wx.Bitmap(im)
         self.bmp.SetBitmap(img)
 
 class App(wx.App):
