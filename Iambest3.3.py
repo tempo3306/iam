@@ -204,7 +204,7 @@ py_mini=40
 #价格框大小
 Pricesize=[400,80]
 #验证码放大框大小
-Yanzhengmasize=[400,180]
+Yanzhengmasize=[400,220]
 #时间框大小
 Timesize=[200,50]
 
@@ -498,9 +498,9 @@ def findpos():
 
         Pos_controlframe=[192-344+Px_lowestprice, 514-183+Py_lowestprice]
 
-        Pos_yanzhengma = [Position[5][0]-245,Position[5][1]-15,Position[5][0]-102,Position[5][1]+45]  # 验证码所在位置
+        Pos_yanzhengma = [Position[5][0]-280,Position[5][1]-65,Position[5][0]-102,Position[5][1]+45]  # 验证码所在位置
         # Pos_yanzhengmaframe = [Px_lowestprice+590, Py_lowestprice-185]   #验证码框放置位置
-        Pos_yanzhengmaframe = [Px_lowestprice+297, Py_lowestprice-243]   #验证码框放置位置
+        Pos_yanzhengmaframe = [Px_lowestprice+297, Py_lowestprice-283]   #验证码框放置位置
         # Pos_timeframe=[245 - 344+Px_lowestprice, 299- 183+Py_lowestprice]
         #关闭触发
         global findpos_on  ,yanzhengma_move
@@ -559,6 +559,23 @@ def find_yan_confirm():
     if max_val<0.9:
         yanzhengma_view = False
         yanzhengma_close = True
+
+#用于裁剪图片
+# Pos_yanzhengma = [Position[5][0]-280,Position[5][1]-65,Position[5][0]-102,Position[5][1]+45]
+def cut_pic(img,size,name):
+    img = np.asarray(img)
+    i1 = img[0:22, :]
+    i2 = img[48:103, :]
+    im = np.concatenate([i2, i1])
+    b = np.zeros((im.shape[0], img.shape[1]), dtype=img.dtype)
+    g = np.zeros((im.shape[0], img.shape[1]), dtype=img.dtype)
+    r = np.zeros((im.shape[0], img.shape[1]), dtype=img.dtype)
+    b[:, :] = im[:, :, 0]
+    g[:, :] = im[:, :, 1]
+    r[:, :] = im[:, :, 2]
+    im = np.dstack([r, g,b])
+    im=cv2.resize(im, tuple(size))
+    cv2.imwrite(name, im)
 
 
 
@@ -2863,7 +2880,7 @@ class OperationFrame(wx.Frame):
                 pass
         if yanzhengma_view :
             yanzhengma_close = False
-            self.Screen_shot(Pos_yanzhengma,Yanzhengmasize,"yanzhengma.png")
+            self.Screen_shot_yanzhengma(Pos_yanzhengma,Yanzhengmasize,"yanzhengma.png")
             image = "yanzhengma.png"
             img=Image.open("yanzhengma.png")
             yan_hash=imagehash.dhash(img)
@@ -2918,6 +2935,12 @@ class OperationFrame(wx.Frame):
         global Pricesize
         region = ImageGrab.grab(box)
         region.resize(size, Image.ANTIALIAS).save(name)
+
+    def Screen_shot_yanzhengma(self,box,size,name):
+        global Pricesize
+        region = ImageGrab.grab(box)
+        cut_pic(region,size,name)
+        # region.resize(size, Image.ANTIALIAS).save(name)
 
     # 删除此图
     @staticmethod
