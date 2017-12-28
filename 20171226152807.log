@@ -1,0 +1,29 @@
+Tue, 26 Dec 2017 15:28:07 Iambest3.3.py[line:404] DEBUG This is debug message
+Tue, 26 Dec 2017 15:28:07 Iambest3.3.py[line:405] INFO This is info message
+Tue, 26 Dec 2017 15:28:07 Iambest3.3.py[line:406] WARNING This is warning message
+Tue, 26 Dec 2017 15:28:07 Iambest3.3.py[line:407] ERROR This is error message
+Tue, 26 Dec 2017 15:28:10 Iambest3.3.py[line:4059] INFO À¢
+Tue, 26 Dec 2017 15:28:10 Iambest3.3.py[line:520] INFO ≤È’“À¢–¬
+Tue, 26 Dec 2017 15:28:30 PngImagePlugin.py[line:130] DEBUG STREAM b'IHDR' 16 13
+Tue, 26 Dec 2017 15:28:30 PngImagePlugin.py[line:130] DEBUG STREAM b'IDAT' 41 902
+Tue, 26 Dec 2017 15:28:31 PngImagePlugin.py[line:130] DEBUG STREAM b'IHDR' 16 13
+Tue, 26 Dec 2017 15:28:31 PngImagePlugin.py[line:130] DEBUG STREAM b'IDAT' 41 902
+Tue, 26 Dec 2017 15:28:31 PngImagePlugin.py[line:130] DEBUG STREAM b'IHDR' 16 13
+Tue, 26 Dec 2017 15:28:31 PngImagePlugin.py[line:130] DEBUG STREAM b'IDAT' 41 902
+Tue, 26 Dec 2017 15:28:31 PngImagePlugin.py[line:130] DEBUG STREAM b'IHDR' 16 13
+Tue, 26 Dec 2017 15:28:31 PngImagePlugin.py[line:130] DEBUG STREAM b'IDAT' 41 902
+Tue, 26 Dec 2017 15:28:31 PngImagePlugin.py[line:130] DEBUG STREAM b'IHDR' 16 13
+Tue, 26 Dec 2017 15:28:31 PngImagePlugin.py[line:130] DEBUG STREAM b'IDAT' 41 902
+Tue, 26 Dec 2017 15:28:31 PngImagePlugin.py[line:130] DEBUG STREAM b'IHDR' 16 13
+Tue, 26 Dec 2017 15:28:31 PngImagePlugin.py[line:130] DEBUG STREAM b'IDAT' 41 902
+Tue, 26 Dec 2017 15:28:31 PngImagePlugin.py[line:130] DEBUG STREAM b'IHDR' 16 13
+Tue, 26 Dec 2017 15:28:31 PngImagePlugin.py[line:130] DEBUG STREAM b'IDAT' 41 902
+Tue, 26 Dec 2017 15:28:31 PngImagePlugin.py[line:130] DEBUG STREAM b'IHDR' 16 13
+Tue, 26 Dec 2017 15:28:31 PngImagePlugin.py[line:130] DEBUG STREAM b'IDAT' 41 902
+Tue, 26 Dec 2017 15:28:31 PngImagePlugin.py[line:130] DEBUG STREAM b'IHDR' 16 13
+Tue, 26 Dec 2017 15:28:31 PngImagePlugin.py[line:130] DEBUG STREAM b'IDAT' 41 902
+Tue, 26 Dec 2017 15:28:31 PngImagePlugin.py[line:130] DEBUG STREAM b'IHDR' 16 13
+Tue, 26 Dec 2017 15:28:31 PngImagePlugin.py[line:130] DEBUG STREAM b'IDAT' 41 902
+Tue, 26 Dec 2017 15:28:32 PngImagePlugin.py[line:130] DEBUG STREAM b'IHDR' 16 13
+Tue, 26 Dec 2017 15:28:32 PngImagePlugin.py[line:130] DEBUG STREAM b'IDAT' 41 902
+Tue, 26 Dec 2017 15:28:46 Iambest3.3.py[line:1956] INFO close assistant success

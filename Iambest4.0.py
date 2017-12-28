@@ -218,6 +218,7 @@ refresh_area=[396-150,11-100,396+150,11+100]
 confirm_area=[505-300,68-150,505+300,68+150]
 yan_confirm_area=[505-300,68-150,505+300,68+150]
 
+
 #-------------------------------------------------------------------
 ######################
 #自动计算位置
@@ -300,6 +301,20 @@ chujia_interval=False #出价间隔
 tijiao_interval=False #提交间隔
 query_interval=False #间隔
 query_on=False #是否处于查询状态
+
+
+#####初始化
+import numpy as np
+sc_area = [Px_lowestprice - 10, Py_lowestprice - 100, Px_lowestprice + 600, Py_lowestprice + 120]
+use_area=[[10, 100, 92, 116], [256, 11, 556, 211], [435, 118, 595, 218], [315, 43, 495, 153], [135, 118, 495, 218]]
+nptemp=[]
+imgpos_lowestprice = np.array(nptemp)
+imgpos_refresh = np.array(nptemp)
+imgpos_confirm = np.array(nptemp)
+impos_yanzhengma = np.array(nptemp)
+imgpos_yanzhengmaconfirm = np.array(nptemp)
+
+
 #----------------------------------------------------------------
 #导入模块#####################
 import sys
@@ -308,7 +323,6 @@ if sys.platform != 'win32':
 import pyautogui as pg
 import ctypes
 from ctypes import wintypes
-import win32con
 import wx.html2
 import wx
 import pickle
@@ -478,127 +492,185 @@ def Delete():
 #查找位置
 def findpos():
     # targetimg="target.png"
-    try:
-        sc = new_screenshot((0,0,Pxy[0],Pxy[1]))   #Pxy为分辨率
-        # sc = ImageGrab.grab().convert('L')
-        img=np.asarray(sc)
-        global dick_target
-        template=dick_target[2]
-        w, h = template.shape[::-1]
-        res = cv2.matchTemplate(img, template, cv2.TM_CCOEFF_NORMED)
-        min_val, max_val, min_loc, max_loc = cv2.minMaxLoc(res)
-        # print(min_val)
-        # print(max_val)
-        # print(min_loc)
-        # print(max_loc)
-        global px_lowestprice,py_lowestprice,px_relative,py_relative,Px_lowestprice,Py_lowestprice,Px,Py
-        if max_val>0.9:   #找不到不动作
-            px_lowestprice = max_loc[0]+px_relative
-            py_lowestprice = max_loc[1]+py_relative
-            Px_lowestprice=px_lowestprice
-            Py_lowestprice=py_lowestprice
+    # sc = new_screenshot((0,0,Pxy[0],Pxy[1]))   #Pxy为分辨率
+    sc = ImageGrab.grab().convert('L')
+    img=np.asarray(sc)
+    global dick_target
+    template=dick_target[2]
+    w, h = template.shape[::-1]
+    res = cv2.matchTemplate(img, template, cv2.TM_CCOEFF_NORMED)
+    min_val, max_val, min_loc, max_loc = cv2.minMaxLoc(res)
+    # print(min_val)
+    # print(max_val)
+    # print(min_loc)
+    # print(max_loc)
+    global px_lowestprice,py_lowestprice,px_relative,py_relative,Px_lowestprice,Py_lowestprice,Px,Py
+    global refresh_area, confirm_area, Pos_timeframe, Pos_controlframe, Pos_yanzhengma, Pos_yanzhengmaframe, yan_confirm_area
+    global use_area, sc_area  # 用于截取图片
+    global Position, refresh_area, confirm_area, Pos_timeframe, Pos_controlframe, Pos_yanzhengma, Pos_yanzhengmaframe, yan_confirm_area
+    if max_val>0.9:   #找不到不动作
+        px_lowestprice = max_loc[0]+px_relative
+        py_lowestprice = max_loc[1]+py_relative
+        Px_lowestprice=px_lowestprice
+        Py_lowestprice=py_lowestprice
 
-            # print(px_lowestprice,py_lowestprice)
-            global Position,refresh_area,confirm_area,Pos_timeframe,Pos_controlframe,Pos_yanzhengma,Pos_yanzhengmaframe,yan_confirm_area
-            for i in range(len(Position)):
-                Position[i][0] = Px_lowestprice + P_relative2[i][0]
-                Position[i][1] = Py_lowestprice + P_relative2[i][1]
-            refresh_area = [396 - 150+Px_lowestprice, 11 - 100+Py_lowestprice, 396 + 150+Px_lowestprice, 11 + 100+Py_lowestprice]
-            confirm_area = [505 - 80+Px_lowestprice, 68 - 50+Py_lowestprice, 505 + 80+Px_lowestprice, 68 + 50+Py_lowestprice]
-            yan_confirm_area = [205 - 80+Px_lowestprice, 68 - 50+Py_lowestprice, 405 + 80+Px_lowestprice, 68 + 50+Py_lowestprice]
+        # print(px_lowestprice,py_lowestprice)
 
-            Pos_controlframe=[192-344+Px_lowestprice, 514-183+Py_lowestprice]
+        for i in range(len(Position)):
+            Position[i][0] = Px_lowestprice + P_relative2[i][0]
+            Position[i][1] = Py_lowestprice + P_relative2[i][1]
+        refresh_area = [396 - 150+Px_lowestprice, 11 - 100+Py_lowestprice, 396 + 150+Px_lowestprice, 11 + 100+Py_lowestprice]
+        confirm_area = [505 - 80+Px_lowestprice, 68 - 50+Py_lowestprice, 505 + 80+Px_lowestprice, 68 + 50+Py_lowestprice]
+        yan_confirm_area = [205 - 80+Px_lowestprice, 68 - 50+Py_lowestprice, 405 + 80+Px_lowestprice, 68 + 50+Py_lowestprice]
 
-            Pos_yanzhengma = [Position[5][0]-280,Position[5][1]-65,Position[5][0]-100,Position[5][1]+45]  # 验证码所在位置
-            # Pos_yanzhengmaframe = [Px_lowestprice+590, Py_lowestprice-185]   #验证码框放置位置
-            Pos_yanzhengmaframe = [Px_lowestprice+297, Py_lowestprice-283]   #验证码框放置位置
-            # Pos_timeframe=[245 - 344+Px_lowestprice, 299- 183+Py_lowestprice]
-            #关闭触发
-            global findpos_on  ,yanzhengma_move
-            findpos_on=False #无需定位
+        Pos_controlframe=[192-344+Px_lowestprice, 514-183+Py_lowestprice]
 
-            yanzhengma_move=True #需要定位
-            print(Px_lowestprice,"Px_lowestprice")
-            print(Py_lowestprice,"Py_lowestprice")
-            print("找到位置 之后 ",Pos_yanzhengmaframe)
-
-            print("Pos_yanzhengma",Pos_yanzhengma)
-            print("yanconfirm",yan_confirm_area)
-            print("refresh_area",refresh_area)
-            print("lowest",(Px_lowestprice, Py_lowestprice, lowestprice_sizex + Px_lowestprice, lowestprice_sizey + Py_lowestprice))
-            print("confirm_area",confirm_area)
+        Pos_yanzhengma = [Position[5][0]-280,Position[5][1]-65,Position[5][0]-100,Position[5][1]+45]  # 验证码所在位置
+        # Pos_yanzhengmaframe = [Px_lowestprice+590, Py_lowestprice-185]   #验证码框放置位置
+        Pos_yanzhengmaframe = [Px_lowestprice+297, Py_lowestprice-283]   #验证码框放置位置
+        # Pos_timeframe=[245 - 344+Px_lowestprice, 299- 183+Py_lowestprice]
+        #关闭触发
+        global findpos_on  ,yanzhengma_move
+        findpos_on=False #无需定位
+        yanzhengma_move=True #需要定位
+ ##########################
+        ####新式截图定位
 
 
-    except:
-        pass
+        Pos_yanzhengma = [612, 391, 792, 501]
+        yanconfirm = [432, 466, 792, 566]
+        refresh_area = [553, 359, 853, 559]
+        lowest = [307, 448, 389, 464]
+        confirm_area = [732, 466, 892, 566]
+
+        x1 = Px_lowestprice - 10  # 截图起始点
+        y1 = Py_lowestprice - 100
+
+
+        cal_area = [lowest, refresh_area, confirm_area, Pos_yanzhengma, yanconfirm]
+        use_area = []
+        sc_area = [Px_lowestprice - 10, Py_lowestprice - 100, Px_lowestprice + 600, Py_lowestprice + 120]
+        for i in range(5):
+            temp = [cal_area[i][0] - x1, cal_area[i][1] - y1, cal_area[i][2] - x1, cal_area[i][3] - y1]
+            use_area.append(temp)
+
+        print("找到位置 之后 ",Pos_yanzhengmaframe)
+
+#########################################################
+def only_screenshot(area):  # x,y  pos      w,h size
+    x, y = int(area[0]), int(area[1])
+    w, h = int(area[2]), int(area[3])
+    hwnd = win32gui.FindWindow(None, "win32")
+    wDC = win32gui.GetWindowDC(hwnd)
+    dcObj = win32ui.CreateDCFromHandle(wDC)
+    cDC = dcObj.CreateCompatibleDC()
+    dataBitMap = win32ui.CreateBitmap()
+    dataBitMap.CreateCompatibleBitmap(dcObj, w - x, h - y)
+    cDC.SelectObject(dataBitMap)
+    cDC.BitBlt((-x, -y), (w, h), dcObj, (0, 0), win32con.SRCCOPY)
+    # dataBitMap.SaveBitmapFile(cDC, "foo.png")
+    im = dataBitMap.GetBitmapBits(True)  # Tried False also
+    bmpinfo = dataBitMap.GetInfo()
+    img = Image.frombuffer(
+        'RGB',
+        (bmpinfo['bmWidth'], bmpinfo['bmHeight']),
+        im, 'raw', 'RGBX', 0, 1)
+    # cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)   #转灰度
+    dcObj.DeleteDC()
+    cDC.DeleteDC()
+    win32gui.ReleaseDC(hwnd, wDC)
+    win32gui.DeleteObject(dataBitMap.GetHandle())
+    return img
+#########################################################
+###获得截取的全局变量
+def cut_img():  # 将所得的img 处理成  lowestprice_img   confirm_img  yanzhengma_confirm_img  refresh_img
+    global use_area,sc_area ,imgpos_lowestprice,imgpos_yanzhengma,imgpos_refresh,imgpos_confirm,imgpos_yanzhengmaconfirm
+    img = only_screenshot(sc_area)  # 获取得到的截图
+    # 切片
+    img = np.asarray(img)  # 转化为numpy数组
+    #[[10, 100, 92, 116], [256, 11, 556, 211], [435, 118, 595, 218], [315, 43, 495, 153], [135, 118, 495, 218]]
+    #[220,510]
+    cv2.imwrite("to.png", img)
+    imgpos_lowestprice =img[use_area[0][1]:use_area[0][3], use_area[0][0]:use_area[0][2]  ] #ok
+    imgpos_refresh = img[ use_area[1][1]:use_area[1][3],use_area[1][0]:use_area[1][2] ]  #ok
+    imgpos_confirm = img[use_area[2][1]:use_area[2][3], use_area[2][0]:use_area[2][2] ]
+    imgpos_yanzhengma = img[use_area[3][1]:use_area[3][3] , use_area[3][0]:use_area[3][2] ]  #ok
+    imgpos_yanzhengmaconfirm = img[ use_area[4][1]:use_area[4][3],use_area[4][0]:use_area[4][2] ]  #ok
+
 
 
 def findrefresh():
-    try:
-        global dick_target,refresh_on,refresh_need,refresh_one,Position,refresh_area,confirm_area
-        template=dick_target[0]
-        sc = new_screenshot(refresh_area)
-        # sc = ImageGrab.grab(refresh_area).convert('L')
-        # sc = ImageGrab.grab().convert('L')
-        img = np.asarray(sc)
-        w, h = template.shape[::-1]
-        res = cv2.matchTemplate(img, template, cv2.TM_CCOEFF_NORMED)
-        min_val, max_val, min_loc, max_loc = cv2.minMaxLoc(res)
-        logging.info("查找刷新")
-        if max_val>=0.8:
-            logging.info("刷新")
-            TopFrame.OnClick_Shuaxin()
-            global yanzhengma_view,yanzhengma_close,yanzhengma_count,yanzhengma_hash
-            yanzhengma_view = True #激活放大器
-            yanzhengma_count = 0  #归零
-            yanzhengma_hash={}  #清空验证码库
-    except:
-        pass
+    global dick_target,refresh_on,refresh_need,refresh_one,Position,refresh_area,confirm_area
+    template=dick_target[0]
+    global imgpos_refresh
+    sc = imgpos_refresh
+    img = cv2.cvtColor(sc, cv2.COLOR_BGR2GRAY)  #转灰度图
+
+    # sc = new_screenshot(refresh_area)
+    # sc = ImageGrab.grab(refresh_area).convert('L')
+    # sc = ImageGrab.grab().convert('L')
+    # img = np.asarray(sc)
+    w, h = template.shape[::-1]
+    res = cv2.matchTemplate(img, template, cv2.TM_CCOEFF_NORMED)
+    min_val, max_val, min_loc, max_loc = cv2.minMaxLoc(res)
+    logging.info("查找刷新")
+    if max_val>=0.8:
+        logging.info("刷新")
+        TopFrame.OnClick_Shuaxin()
+        global yanzhengma_view,yanzhengma_close,yanzhengma_count,yanzhengma_hash
+        yanzhengma_view = True #激活放大器
+        yanzhengma_count = 0  #归零
+        yanzhengma_hash={}  #清空验证码库
+
 
     #     refresh_on = True  # 关闭查找
     # elif refresh_on:
     #     refresh_need=False  #找到刷新之后下一次发现小于0.8就关闭查找
     #     refresh_on=False
 def findconfirm():
-    try:
     # print("触发确认")
-        global dick_target,confirm_on,Position
-        template=dick_target[1]
-        sc = new_screenshot(confirm_area)
-        # sc = ImageGrab.grab(confirm_area).convert('L')
-        img = np.asarray(sc)
-        w, h = template.shape[::-1]
-        res = cv2.matchTemplate(img, template, cv2.TM_CCOEFF_NORMED)
-        min_val, max_val, min_loc, max_loc = cv2.minMaxLoc(res)
-        # print(max_val)
-        if max_val>=0.9:
-            # print("找到确认")
-            confirm_on=True
-            TopFrame.OnClick_confirm()
-        if confirm_on and max_val<0.9:
-            print("暂停确认")
-            # confirmthread.pause()  #暂停
-    except:
-        pass
+    global dick_target,confirm_on,Position
+    template=dick_target[1]
+    global imgpos_confirm
+    sc = imgpos_confirm
+    img = cv2.cvtColor(sc, cv2.COLOR_BGR2GRAY)  #转灰度图
+
+    # sc = new_screenshot(confirm_area)
+    # sc = ImageGrab.grab(confirm_area).convert('L')
+    # img = np.asarray(sc)
+    w, h = template.shape[::-1]
+    res = cv2.matchTemplate(img, template, cv2.TM_CCOEFF_NORMED)
+    min_val, max_val, min_loc, max_loc = cv2.minMaxLoc(res)
+    # print(max_val)
+    if max_val>=0.9:
+        # print("找到确认")
+        confirm_on=True
+        TopFrame.OnClick_confirm()
+    if confirm_on and max_val<0.9:
+        print("暂停确认")
+        # confirmthread.pause()  #暂停
+
 
 #用于确认是否关闭验证码放大器
 def find_yan_confirm():
     # print("触发确认")
-    try:
-        global dick_target,confirm_on,Position ,yanzhengma_view,yanzhengma_close
-        template=dick_target[1]
-        sc = new_screenshot(yan_confirm_area)
-        # sc = ImageGrab.grab(yan_confirm_area).convert('L')
-        img = np.asarray(sc)
-        w, h = template.shape[::-1]
-        res = cv2.matchTemplate(img, template, cv2.TM_CCOEFF_NORMED)
-        min_val, max_val, min_loc, max_loc = cv2.minMaxLoc(res)
-        # print(max_val)
-        if max_val<0.9:
-            yanzhengma_view = False
-            yanzhengma_close = True
-    except:
-        pass
+    global dick_target,confirm_on,Position ,yanzhengma_view,yanzhengma_close
+    template=dick_target[1]
+    global imgpos_yanzhengmaconfirm
+    sc = imgpos_yanzhengmaconfirm
+    img = cv2.cvtColor(sc, cv2.COLOR_BGR2GRAY)  #转灰度图
+
+    # sc = new_screenshot(yan_confirm_area)
+    # sc = ImageGrab.grab(yan_confirm_area).convert('L')
+    # img = np.asarray(sc)
+    w, h = template.shape[::-1]
+    res = cv2.matchTemplate(img, template, cv2.TM_CCOEFF_NORMED)
+    min_val, max_val, min_loc, max_loc = cv2.minMaxLoc(res)
+    # print(max_val)
+    if max_val<0.9:
+        yanzhengma_view = False
+        yanzhengma_close = True
+
 
 #用于裁剪图片
 # Pos_yanzhengma = [Position[5][0]-280,Position[5][1]-65,Position[5][0]-102,Position[5][1]+45]
@@ -613,13 +685,15 @@ def cut_pic(img,size,name):
     i1 = img[0:22, :150]
     i2 = img[48:105, 30:]
     im = np.concatenate([i2, i1])
-    b = np.zeros((im.shape[0], im.shape[1]), dtype=im.dtype)
-    g = np.zeros((im.shape[0], im.shape[1]), dtype=im.dtype)
-    r = np.zeros((im.shape[0], im.shape[1]), dtype=im.dtype)
-    b[:, :] = im[:, :, 0]
-    g[:, :] = im[:, :, 1]
-    r[:, :] = im[:, :, 2]
-    im = np.dstack([r, g,b])
+    #转换颜色
+    # b = np.zeros((im.shape[0], im.shape[1]), dtype=im.dtype)
+    # g = np.zeros((im.shape[0], im.shape[1]), dtype=im.dtype)
+
+    # r = np.zeros((im.shape[0], im.shape[1]), dtype=im.dtype)
+    # b[:, :] = im[:, :, 0]
+    # g[:, :] = im[:, :, 1]
+    # r[:, :] = im[:, :, 2]
+    # im = np.dstack([r, g,b])
     im=cv2.resize(im, tuple(size))
     cv2.imwrite(name, im)
 
@@ -637,9 +711,9 @@ def new_screenshot(area):  #x,y  pos      w,h size
     dcObj=win32ui.CreateDCFromHandle(wDC)
     cDC=dcObj.CreateCompatibleDC()
     dataBitMap = win32ui.CreateBitmap()
-    dataBitMap.CreateCompatibleBitmap(dcObj, w-x, h-y)
+    dataBitMap.CreateCompatibleBitmap(dcObj, x, y)
     cDC.SelectObject(dataBitMap)
-    cDC.BitBlt((-x,-y),(w, h) , dcObj, (0,0), win32con.SRCCOPY)
+    cDC.BitBlt((0,0),(x, y) , dcObj, (0,0), win32con.SRCCOPY)
     im = dataBitMap.GetBitmapBits(True)  # Tried False also
     bmpinfo = dataBitMap.GetInfo()
     img = Image.frombuffer(
@@ -671,7 +745,7 @@ def new_screenshot_getimg(area,size,name):
         (bmpinfo['bmWidth'], bmpinfo['bmHeight']),
        im, 'raw', 'RGBX', 0, 1)
     img=np.array(img)
-    img=cv2.cvtColor(img, cv2.COLOR_RGB2BGR)
+    # img=cv2.cvtColor(img, cv2.COLOR_RGB2BGR)  #转换
     cut_pic(img,size,name)
     dcObj.DeleteDC()
     cDC.DeleteDC()
@@ -684,7 +758,6 @@ def new_screenshot_getimg(area,size,name):
 ########图像识别###########
 SZ=20
 bin_n = 16 # Number of bins
-import numpy as np
 
 #hog特征
 def hog(img):
@@ -719,17 +792,14 @@ def cut(img):
     return imgn
 
 def readpic(img):
-    try:
-        svm=cv2.ml.SVM_load('maindata.xml')
-        testData=cut(img)
-        testData=list(map(hog,testData))
-        testData = np.float32(testData).reshape(-1,64)
-        result = svm.predict(testData)
-        result=result[1].reshape(-1).astype(int).astype(str)
-        price="".join(list(result))
-        return price   #返回的是price str
-    except:
-        return False
+    svm=cv2.ml.SVM_load('maindata.xml')
+    testData=cut(img)
+    testData=list(map(hog,testData))
+    testData = np.float32(testData).reshape(-1,64)
+    result = svm.predict(testData)
+    result=result[1].reshape(-1).astype(int).astype(str)
+    price="".join(list(result))
+    return price   #返回的是price str
 
 
 
@@ -1188,10 +1258,10 @@ class TopFrame(wx.Frame):
         self.Bind(wx.EVT_TIMER, self.Lowest_price, self.timer3)#设置一个截屏取价
         self.timer3.Start(100)
         #自动定位
-        self.timer4=wx.Timer(self)
-        self.Bind(wx.EVT_TIMER, self.Find_pos, self.timer4)#设置一个截屏取价
-        self.timer4.Start(600)
-
+        # self.timer4=wx.Timer(self)
+        # self.Bind(wx.EVT_TIMER, self.Find_pos, self.timer4)#设置一个截屏取价
+        # self.timer4.Start(600)
+        finposthread= findposThread()
         # 时间同步
         self.Bind(wx.EVT_BUTTON, self.Time_autoajust, self.timeautoreset)#设置一个截屏取价
 
@@ -1504,7 +1574,12 @@ class TopFrame(wx.Frame):
     def Find_pos(self,event):
         global findpos_on
         if findpos_on:
-            findpos()
+            try:
+                findpos()
+            except:
+                logging.error("Find_pos error")
+                print("Find_pos error")
+
 
 #方便测试 时间调整为11点29分
     def Time_autoajust(self,event):
@@ -1533,20 +1608,20 @@ class TopFrame(wx.Frame):
     #image read
     @staticmethod
     def Price_read():
-        a=time.clock()
         # lowestprice=ImageGrab.grab((Px_lowestprice, Py_lowestprice,
         #                            lowestprice_sizex+Px_lowestprice, lowestprice_sizey+Py_lowestprice)).convert('L')
 
-        lowestprice=new_screenshot((Px_lowestprice, Py_lowestprice,lowestprice_sizex+Px_lowestprice, lowestprice_sizey+Py_lowestprice))
-        b=time.clock()
-        # print("最小价",b-a)
-        # global num
-        # num+=1
-        # lowestprice.save("%s.png"%num)
+        # lowestprice=new_screenshot((Px_lowestprice, Py_lowestprice,lowestprice_sizex+Px_lowestprice, lowestprice_sizey+Py_lowestprice))
 
-        lowestprice=np.asarray(lowestprice)
-        price=readpic(lowestprice)
-        # print(price)
+
+        # lowestprice=np.asarray(lowestprice)
+        global imgpos_lowestprice
+        print("就我这不行")
+        cv2.imwrite("low1.png", imgpos_lowestprice)
+        lowest_price = cv2.cvtColor(imgpos_lowestprice,cv2.COLOR_BGR2GRAY)
+        cv2.imwrite("low2.png",lowest_price)
+        price=readpic(lowest_price)
+        print(price)
         return price
 
 
@@ -1586,7 +1661,7 @@ class TopFrame(wx.Frame):
         Position[0][0] = po[0]
         Position[0][1] = po[1]
         # print(Position[0][0], "  ", Position[0][1])
-        findpos()
+        # findpos()
 
     @staticmethod
     def OnChujia():
@@ -1629,7 +1704,10 @@ class TopFrame(wx.Frame):
 
     @staticmethod
     def handle_Tijiao():
-        TopFrame.OnTijiao()
+        cut_img()
+
+
+        # TopFrame.OnTijiao()
 
     @staticmethod
     def handle_Shuaxin():
@@ -2717,7 +2795,7 @@ class OperationFrame(wx.Frame):
         #显示价格
         self.timer1=wx.Timer(self)
         self.Bind(wx.EVT_TIMER, self.Price_view, self.timer1)#绑定一个定时器事件，主判断
-        self.timer1.Start(100)  #设定时间间隔
+        self.timer1.Start(50)  #设定时间间隔
         #设定间隔
         self.timer2=wx.Timer(self)
         self.Bind(wx.EVT_TIMER, self.Price_count, self.timer2)#
@@ -2959,6 +3037,11 @@ class OperationFrame(wx.Frame):
     def Price_view(self, event):
         global price_view, web_on, price_on, view_time  ,yanzhengma_view ,Pricesize,Yanzhengmasize,yanzhengma_close
         global yanzhengma_count ,price_count  ,yanzhengma_move
+        global imgpos_yanzhengma
+        try:
+            cut_img()  #完成截图操作
+        except:
+            print("这出错3033")
         # print(price_view, price_count)
         if yanzhengma_move:
             yan=self.FindWindowById(18)
@@ -2993,33 +3076,35 @@ class OperationFrame(wx.Frame):
         if yanzhengma_view :
             yanzhengma_close = False
             a=time.clock()
-            try:
-                new_screenshot_getimg(Pos_yanzhengma,Yanzhengmasize,"yanzhengma.png")
-                # self.Screen_shot_yanzhengma(Pos_yanzhengma,Yanzhengmasize,"yanzhengma.png")
-                c=time.clock()
-                e=time.clock()
-                image = "yanzhengma.png"
-                global yanzhengma_img
-                yanzhengma_img=Image.open("yanzhengma.png")
-                yan_hash=imagehash.dhash(yanzhengma_img)
-                yan_change=yanzhengma_hash.get(yan_hash,1)   #判断hash库里是否有
-                if  yanzhengma_count>=10 and  yan_change:   #1s之后，如果字典里没有就更新库  有的话说明没有变化，不动作
-                    yanzhengma_hash[yan_hash]=0  #已经存在yan_change=0  不存在为1
-                if  yan_change:  #如果
-                    try:
-                        global yanzhengma_exist
-                        yan = self.FindWindowById(18)
-                        yan.ShowImage(image)
-                        yan.Show()
-                        b = time.clock()
-                    except:  #找不到的情况下也要重新创建
-                        pass
-                    finally:
-                        pass
-                else:
-                    yanzhengma_view=False  #关闭放大刷新
-            except:
-                pass
+            cut_pic(imgpos_yanzhengma,Yanzhengmasize,"yanzhengma.png")  #直接调用得到 png
+            # new_screenshot_getimg(Pos_yanzhengma,Yanzhengmasize,"yanzhengma.png")
+            # self.Screen_shot_yanzhengma(Pos_yanzhengma,Yanzhengmasize,"yanzhengma.png")
+            c=time.clock()
+            print("截图时间",c-a)
+            e=time.clock()
+            image = "yanzhengma.png"
+            global yanzhengma_img
+            yanzhengma_img=Image.open("yanzhengma.png")
+            yan_hash=imagehash.dhash(yanzhengma_img)
+            yan_change=yanzhengma_hash.get(yan_hash,1)   #判断hash库里是否有
+            d=time.clock()
+            print("d-e",d-e)
+            if  yanzhengma_count>=10 and  yan_change:   #1s之后，如果字典里没有就更新库  有的话说明没有变化，不动作
+                yanzhengma_hash[yan_hash]=0  #已经存在yan_change=0  不存在为1
+            if  yan_change:  #如果
+                try:
+                    global yanzhengma_exist
+                    yan = self.FindWindowById(18)
+                    yan.ShowImage(image)
+                    yan.Show()
+                    b = time.clock()
+                    print("显示总耗时",b - a)
+                except:  #找不到的情况下也要重新创建
+                    pass
+                finally:
+                    pass
+            else:
+                yanzhengma_view=False  #关闭放大刷新
 
 
 
@@ -3056,7 +3141,6 @@ class OperationFrame(wx.Frame):
 
     def Screen_shot_yanzhengma(self,box,size,name):
         global Pricesize
-
         region = ImageGrab.grab(box)
         cut_pic(region,size,name)
         # region.resize(size, Image.ANTIALIAS).save(name)
@@ -4086,7 +4170,15 @@ class findposThread(Thread):
         self.start()
 
     def run(self):
-        findpos()
+        for i  in range(1000000):
+            global findpos_on
+            if findpos_on:
+                try:
+                    findpos()  #定位
+                    time.sleep(1)  # 1秒间隔92900
+                except:
+                    logging.error("findposthread error")
+                    print("findposthread error")
 
 #创建一个确认进程
 class confirmThread(threading.Thread):
@@ -4150,8 +4242,11 @@ class refreshThread(Thread):
         while self.__running.isSet():
             self.__flag.wait()      # 为True时立即返回, 为False时阻塞直到内部的标识位为True后返回
             logging.info("刷")
-            findrefresh()
-
+            time.sleep(0.05)
+            try:
+                findrefresh()
+            except:
+                print("刷新失败")
         # for i in range(50):
             #print("查找刷新")
             # print(refresh_need)
@@ -4450,6 +4545,7 @@ if __name__ == '__main__':
     # 打开刷新与确认进程
     # confirmthread = confirmThread()
     # confirmthread.pause()  # 暂停
+    ##
     refreshthread=refreshThread()
     refreshthread.pause()
 
