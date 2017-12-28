@@ -5,223 +5,210 @@
 @time: 2017/3/28 8:59
 '''
 ####################
-#参数
-#id Topframe 1    Operationframe 2  guopaiweb 3 controlframe 4
-#无确认
+# 参数
+# id Topframe 1    Operationframe 2  guopaiweb 3 controlframe 4
+# 无确认
 
-#3.1变更说明
-#新增验证码放大器功能
-#时间同步
+# 3.1变更说明
+# 新增验证码放大器功能
+# 时间同步
 
-version='3.13'
-num=0
-avt=0
+version = '4.0'
+num = 0
+avt = 0
 
-
-test=False
-
-
-
+test = False
 
 ############全局变量参数表##96.22#######
 
-host_ali="http://hupai.pro"
+host_ali = "http://hupai.pro"
 # host_ali="127.0.0.1"
-#网址
-url1="http://moni.51hupai.org/"
+# 网址
+url1 = "http://moni.51hupai.org/"
 # url1="http://hupai.pro/Moni"
 
-url2="www.baidu.com"   #电信
-url3="www.baidu.com"   #非电信
-url4="http://127.0.0.1:5000/Moni"
+url2 = "www.baidu.com"  # 电信
+url3 = "www.baidu.com"  # 非电信
+url4 = "http://127.0.0.1:5000/Moni"
 # url4="http://121.196.220.94/Moni"
 
-#icon路径
-mainicon='ico.ico'
+# icon路径
+mainicon = 'ico.ico'
 
 # global全局变量，操作控制
-view=False  # 定位显示
-do=False  # 开启辅助
-ad_view=False  # 显示广告
+view = False  # 定位显示
+do = False  # 开启辅助
+ad_view = False  # 显示广告
 
-price_view=False #显示价格,控制截图
-yanzhengma_view=False #验证码放大,控制截图
-yanzhengma_close=True #关闭验证码放大窗
-yanzhengma_move=True #是否需要移动
+price_view = False  # 显示价格,控制截图
+yanzhengma_view = False  # 验证码放大,控制截图
+yanzhengma_close = True  # 关闭验证码放大窗
+yanzhengma_move = True  # 是否需要移动
 
+yanzhengma_hash = {}  # 验证码HASH库
 
-yanzhengma_hash={}  #验证码HASH库
-
-
-price_on=False   #价格是否显示
-price_count=0    #辅助计时，正确显示价格
-yanzhengma_count=0    #辅助计时，正确显示价格
-web_on=False     #监测web是否开启
-#时间
-view_time=False #时间框是否开启
-operation_show=False  #策略框是否开启
-time_on=False  #操作面板上是否开启时间
+price_on = False  # 价格是否显示
+price_count = 0  # 辅助计时，正确显示价格
+yanzhengma_count = 0  # 辅助计时，正确显示价格
+web_on = False  # 监测web是否开启
+# 时间
+view_time = False  # 时间框是否开启
+operation_show = False  # 策略框是否开启
+time_on = False  # 操作面板上是否开启时间
 import time
-a_time = time.time()  #国拍初始时间
-b_time=0              #制作0.1秒
 
-moni_minute=29
-moni_second=0
+a_time = time.time()  # 国拍初始时间
+b_time = 0  # 制作0.1秒
 
-chujia_time=0         #出价时间
+moni_minute = 29
+moni_second = 0
 
-Username=0             #用户名
-Password=0          #密码
+chujia_time = 0  # 出价时间
 
+Username = 0  # 用户名
+Password = 0  # 密码
 
-moni_on=False             #判断开启的是哪个窗口 ，限制同时只能开启一个
-guopai_on=False
+moni_on = False  # 判断开启的是哪个窗口 ，限制同时只能开启一个
+guopai_on = False
 
-
-strategy1=53           #策略整数时间
-strategy2=0.0          #策略小数时间
+strategy1 = 53  # 策略整数时间
+strategy2 = 0.0  # 策略小数时间
 
 # tijiao_delay=0         #策略提交延时
 # final_tijiao=1000000000 #最终提交时间
 
 
-strategy_on=True      #策略是否开启
-strategy_repeat=False  #判断是否重复，避免重复进程
+strategy_on = True  # 策略是否开启
+strategy_repeat = False  # 判断是否重复，避免重复进程
 # guopai_tijiao=False #国拍提交次数
 
-delay=False   #是否延迟
-delay_time=0.5 #延迟大小设置
+delay = False  # 是否延迟
+delay_time = 0.5  # 延迟大小设置
 
-login_result=False #登录成功与否
+login_result = False  # 登录成功与否
 
+findpos_on = True  # 控制是否找位置
 
-findpos_on=True  #控制是否找位置
+pricelist = [80000 + i * 100 for i in range(200)]  # 用于验证识别
+IDnumber = 0  # 身份证号
+account = 0  # 标书号
+passwd = 0  # 密码
 
-pricelist=[80000+i*100  for i in range(200)]   #用于验证识别
-IDnumber=0  #身份证号
-account=0   #标书号
-passwd=0    #密码
-
-#动态策略辅助
-changetime=0
-
-
+# 动态策略辅助
+changetime = 0
 
 ######################################################
 import pyautogui as pg
-#初始化hash字典
-def Create_hash():
-    with open('dick.dl','rb') as dick:
-        global dick_hash
-        dick_hash=pickle.load(dick)  #读取得到dick_hash
-    with open('cf.btn','rb') as cf:
-        global cf_hash
-        cf_hash=pickle.load(cf)   #read confirm and refresh
 
-    with open("target.tkl",'rb')  as tar:
+
+# 初始化hash字典
+def Create_hash():
+    with open('dick.dl', 'rb') as dick:
+        global dick_hash
+        dick_hash = pickle.load(dick)  # 读取得到dick_hash
+    with open('cf.btn', 'rb') as cf:
+        global cf_hash
+        cf_hash = pickle.load(cf)  # read confirm and refresh
+
+    with open("target.tkl", 'rb')  as tar:
         global dick_target
-        dick_target=pickle.load(tar)  # 要寻找对象的对象
+        dick_target = pickle.load(tar)  # 要寻找对象的对象
 
 
 #######################################
-#策略相关参数
-one_time1=48 #第一次出价加价
-one_time2=55 #第一次出价提交
-one_real_time1=1000000000000 #换算之后的出价时间
-one_real_time2=1000000000000 #换算之后的提交时间
-one_diff=700 #第一次加价幅度
-one_delay=0.5 #第一次延迟
-one_advance=100 #第一次提交提前量
+# 策略相关参数
+one_time1 = 48  # 第一次出价加价
+one_time2 = 55  # 第一次出价提交
+one_real_time1 = 1000000000000  # 换算之后的出价时间
+one_real_time2 = 1000000000000  # 换算之后的提交时间
+one_diff = 700  # 第一次加价幅度
+one_delay = 0.5  # 第一次延迟
+one_advance = 100  # 第一次提交提前量
 
+second_time1 = 48  # 第二次次出价加价
+second_time2 = 55  # 第二次出价提交
+second_real_time1 = 1000000000000  # 换算之后的出价时间
+second_real_time2 = 1000000000000  # 换算之后的提交时间
+second_diff = 600  # 第二次加价幅度
+second_delay = 0.5  # 第二次出价延迟
+second_advance = 100  # 第二次出价提交提前量
 
-second_time1=48 #第二次次出价加价
-second_time2=55 #第二次出价提交
-second_real_time1=1000000000000 #换算之后的出价时间
-second_real_time2=1000000000000 #换算之后的提交时间
-second_diff=600 #第二次加价幅度
-second_delay=0.5 #第二次出价延迟
-second_advance=100 #第二次出价提交提前量
+osl = [0] * 15  # 策略容器初始化   判定+10参数+确认选项
 
-osl = [0] * 15  #策略容器初始化   判定+10参数+确认选项
+chujia_on = True  # 完成一次出价之后关闭，完成出价后关闭
+tijiao_on = False  # 是否需要提交,完成提交后打开
 
-chujia_on=True  #完成一次出价之后关闭，完成出价后关闭
-tijiao_on=False  #是否需要提交,完成提交后打开
+lowest_price = 93400  # 最低成交价
+own_price1 = 0  # 第一次出价
+own_price2 = 0  # 第二次出价
+own_price = 0  # 当前出价
 
+tijiao_OK = False  # 表示输完验证码
+e_on = True  # 表示s激活tijiao_OK
+enter_on = False  # 表示回车激活tijiao_Ok
 
-lowest_price=93400 #最低成交价
-own_price1=0 #第一次出价
-own_price2=0 #第二次出价
-own_price=0 #当前出价
-
-tijiao_OK=False #表示输完验证码
-e_on=True #表示s激活tijiao_OK
-enter_on=False #表示回车激活tijiao_Ok
-
-twice=False #开启两次出价
-tijiao_num=1    #开启二次出价，设置为2，执行一次之后，减1
-tijiao_one=False #第一次出价之后开闭
-#---------------------------------------------------------------
-#计算浏览器位置，左上角s
-websize=[902,700]   #浏览器大小
+twice = False  # 开启两次出价
+tijiao_num = 1  # 开启二次出价，设置为2，执行一次之后，减1
+tijiao_one = False  # 第一次出价之后开闭
+# ---------------------------------------------------------------
+# 计算浏览器位置，左上角s
+websize = [902, 700]  # 浏览器大小
 Pxy = pg.size()  # 分辨率
-Px1 = Pxy[0] / 2 #屏幕中心位置
+Px1 = Pxy[0] / 2  # 屏幕中心位置
 Py2 = Pxy[1] / 2
-Px=(Pxy[0]-websize[0])/2-80
-Py=(Pxy[1]-websize[1])/2
-#创建位置数据
-#0:加价  1：出价 2：提交  3：刷新   4 ：确认   5：验证码    6:验证码输入框     7：取消
-P_relative=[[343, -66], [346, 40], [96, 121], [92, 43], [201, 100],[281, 40],[261,37],[282,118]]  #各按钮相对于WEB位置
-P_relative2=[[647, -98], [650, 8], [400, 89], [396, 11], [505, 68], [585, 8], [565, 5], [586, 86]]
-Position=[[0,0] for i in range(len(P_relative))]
+Px = (Pxy[0] - websize[0]) / 2 - 80
+Py = (Pxy[1] - websize[1]) / 2
+# 创建位置数据
+# 0:加价  1：出价 2：提交  3：刷新   4 ：确认   5：验证码    6:验证码输入框     7：取消
+P_relative = [[343, -66], [346, 40], [96, 121], [92, 43], [201, 100], [281, 40], [261, 37], [282, 118]]  # 各按钮相对于WEB位置
+P_relative2 = [[647, -98], [650, 8], [400, 89], [396, 11], [505, 68], [585, 8], [565, 5], [586, 86]]
+Position = [[0, 0] for i in range(len(P_relative))]
 for i in range(len(Position)):
     Position[i][0] = Px1 + P_relative[i][0]
     Position[i][1] = Py2 + P_relative[i][1]
-#转换为基于浏览器左上角坐标相对位置
-#按钮微调幅度--为国拍调整位置做准备
-px_ajust,py_ajust=0,0
+# 转换为基于浏览器左上角坐标相对位置
+# 按钮微调幅度--为国拍调整位置做准备
+px_ajust, py_ajust = 0, 0
 for i in range(len(P_relative)):
-    P_relative[i][0]+=websize[0]/2+px_ajust
-    P_relative[i][1]+=websize[1]/2+py_ajust  #微调
-#price位置
-px_price=770-171
-py_price=260
-#price框放置位置
-px_priceframe=220-191
-py_priceframe=480
-#time放置位置
-px_timeframe=22
-py_timeframe=350
-#最低成交价框显示位置
-px_lowestpriceframe=245
-py_lowestpriceframe=290
-lowestpriceframe_pos=[px_lowestpriceframe,py_lowestpriceframe]
+    P_relative[i][0] += websize[0] / 2 + px_ajust
+    P_relative[i][1] += websize[1] / 2 + py_ajust  # 微调
+# price位置
+px_price = 770 - 171
+py_price = 260
+# price框放置位置
+px_priceframe = 220 - 191
+py_priceframe = 480
+# time放置位置
+px_timeframe = 22
+py_timeframe = 350
+# 最低成交价框显示位置
+px_lowestpriceframe = 245
+py_lowestpriceframe = 290
+lowestpriceframe_pos = [px_lowestpriceframe, py_lowestpriceframe]
 
-#验证码位置
-px_yanzhengmaframe=400-215
-py_yanzhengmaframe=460
+# 验证码位置
+px_yanzhengmaframe = 400 - 215
+py_yanzhengmaframe = 460
 
+# 出价截取大小
+px_mini = 200
+py_mini = 40
+# 价格框大小
+Pricesize = [400, 80]
+# 验证码放大框大小
+Yanzhengmasize = [400, 220]
+# 时间框大小
+Timesize = [200, 50]
 
+# 刷新、确认所在区域  [396, 11], [505, 68]   价格387    440  325    412  375    431
+lowestprice_area = [179 - 80 + Px, 424 - 50 + Py, 179 + 80 + Px, 424 + 50 + Py]
+refresh_area = [396 - 150, 11 - 100, 396 + 150, 11 + 100]
+confirm_area = [505 - 300, 68 - 150, 505 + 300, 68 + 150]
+yan_confirm_area = [505 - 300, 68 - 150, 505 + 300, 68 + 150]
 
-#出价截取大小
-px_mini=200
-py_mini=40
-#价格框大小
-Pricesize=[400,80]
-#验证码放大框大小
-Yanzhengmasize=[400,220]
-#时间框大小
-Timesize=[200,50]
-
-#刷新、确认所在区域  [396, 11], [505, 68]   价格387    440  325    412  375    431
-lowestprice_area=[179-80+Px,424-50+Py,179+80+Px,424+50+Py]
-refresh_area=[396-150,11-100,396+150,11+100]
-confirm_area=[505-300,68-150,505+300,68+150]
-yan_confirm_area=[505-300,68-150,505+300,68+150]
-
-
-#-------------------------------------------------------------------
+# -------------------------------------------------------------------
 ######################
-#自动计算位置
+# 自动计算位置
 # try:
 #     log=open('pos.log',"rb")
 #     Position=pickle.load(log)
@@ -232,92 +219,91 @@ yan_confirm_area=[505-300,68-150,505+300,68+150]
 
 
 # [[853, 317], [596, 503], [775, 424], [775, 427], [884, 484]]
-#[(342, -63), (344, 39), (91, 124), (109, 37), (202, 106)]
+# [(342, -63), (344, 39), (91, 124), (109, 37), (202, 106)]
 
-#计算price位置
-Px_price=Px+px_price
-Py_price=Py+py_price
-Pos_price=[Px_price,Py_price,Px_price+px_mini,Py_price+py_mini]  #所出价格截图位置BOX
+# 计算price位置
+Px_price = Px + px_price
+Py_price = Py + py_price
+Pos_price = [Px_price, Py_price, Px_price + px_mini, Py_price + py_mini]  # 所出价格截图位置BOX
 
-Pos_yanzhengma=[]    #验证码所在位置
+Pos_yanzhengma = []  # 验证码所在位置
 
-#计算price框放置位置
-Px_priceframe=Px+px_priceframe
-Py_priceframe=Py+py_priceframe
-Pos_priceframe=[Px_priceframe,Py_priceframe]
+# 计算price框放置位置
+Px_priceframe = Px + px_priceframe
+Py_priceframe = Py + py_priceframe
+Pos_priceframe = [Px_priceframe, Py_priceframe]
 
-#计算time放置位置
-Px_timeframe=px_timeframe+Px
-Py_timeframe=py_timeframe+Py
-Pos_timeframe=[Px_timeframe,Py_timeframe]
-#time放置位置
-Pos_controlframe=[Px+40, Py+480]
+# 计算time放置位置
+Px_timeframe = px_timeframe + Px
+Py_timeframe = py_timeframe + Py
+Pos_timeframe = [Px_timeframe, Py_timeframe]
+# time放置位置
+Pos_controlframe = [Px + 40, Py + 480]
 
-#计算验证码位置
-Px_yanzhengmaframe=Px+px_yanzhengmaframe
-Py_yanzhengmaframe=Py+py_yanzhengmaframe
-Pos_yanzhengmaframe=[Px_yanzhengmaframe,Py_yanzhengmaframe]
+# 计算验证码位置
+Px_yanzhengmaframe = Px + px_yanzhengmaframe
+Py_yanzhengmaframe = Py + py_yanzhengmaframe
+Pos_yanzhengmaframe = [Px_yanzhengmaframe, Py_yanzhengmaframe]
 
 ###########################
-#提供所需截图位置
-#计算最低成交价位置
-#最低成交价位置，大小
+# 提供所需截图位置
+# 计算最低成交价位置
+# 最低成交价位置，大小
 # px_lowestprice=159    #206   209 208 #截图相对位置
 # py_lowestprice=416   #412  416
-px_lowestprice=0    #206   209 208 #截图相对位置
-py_lowestprice=0   #412  416
+px_lowestprice = 0  # 206   209 208 #截图相对位置
+py_lowestprice = 0  # 412  416
 
-
-Px_lowestprice=Px+px_lowestprice
-Py_lowestprice=Py+py_lowestprice
-lowestprice_sizex=82 #截图范围 41
+Px_lowestprice = Px + px_lowestprice
+Py_lowestprice = Py + py_lowestprice
+lowestprice_sizex = 82  # 截图范围 41
 # lowestprice_sizex=41 #截图范围 41
-lowestprice_sizey=16
+lowestprice_sizey = 16
 
-px_relative=49  #查找出来位置反算相对位置
-py_relative=0
-#计算确认键位置
-px_confirm=656
-py_confirm=475
-Px_confirm=Px+px_confirm
-Py_confirm=Py+py_confirm
-confirm_sizex=113
-confirm_sizey=28
-confirm_on=False #是否需要确认
-confirm_need=False #启动确认识别
-confirm_one=False #限制只产生一次进程
-#计算刷新位置
-px_refresh=550
-py_refresh=413
-Px_refresh=Px+px_refresh
-Py_refresh=Py+py_refresh
-refresh_sizex=108
-refresh_sizey=21
-refresh_on=False #是否需要刷新
-refresh_need=False #启动刷新识别
-refresh_one=False #限制只产生一次进程
+px_relative = 49  # 查找出来位置反算相对位置
+py_relative = 0
+# 计算确认键位置
+px_confirm = 656
+py_confirm = 475
+Px_confirm = Px + px_confirm
+Py_confirm = Py + py_confirm
+confirm_sizex = 113
+confirm_sizey = 28
+confirm_on = False  # 是否需要确认
+confirm_need = False  # 启动确认识别
+confirm_one = False  # 限制只产生一次进程
+# 计算刷新位置
+px_refresh = 550
+py_refresh = 413
+Px_refresh = Px + px_refresh
+Py_refresh = Py + py_refresh
+refresh_sizex = 108
+refresh_sizey = 21
+refresh_on = False  # 是否需要刷新
+refresh_need = False  # 启动刷新识别
+refresh_one = False  # 限制只产生一次进程
 
-chujia_interval=False #出价间隔
-tijiao_interval=False #提交间隔
-query_interval=False #间隔
-query_on=False #是否处于查询状态
-
+chujia_interval = False  # 出价间隔
+tijiao_interval = False  # 提交间隔
+query_interval = False  # 间隔
+query_on = False  # 是否处于查询状态
 
 #####初始化
 import numpy as np
+
 sc_area = [Px_lowestprice - 10, Py_lowestprice - 100, Px_lowestprice + 600, Py_lowestprice + 120]
-use_area=[[10, 100, 92, 116], [256, 11, 556, 211], [435, 118, 595, 218], [315, 43, 495, 153], [135, 118, 495, 218]]
-nptemp=[]
+use_area = [[10, 100, 92, 116], [256, 11, 556, 211], [435, 118, 595, 218], [315, 43, 495, 153], [135, 118, 495, 218]]
+nptemp = []
 imgpos_lowestprice = np.array(nptemp)
 imgpos_refresh = np.array(nptemp)
 imgpos_confirm = np.array(nptemp)
 impos_yanzhengma = np.array(nptemp)
 imgpos_yanzhengmaconfirm = np.array(nptemp)
 
-
-#----------------------------------------------------------------
-#导入模块#####################
+# ----------------------------------------------------------------
+# 导入模块#####################
 import sys
+
 if sys.platform != 'win32':
     exit()
 import pyautogui as pg
@@ -407,58 +393,66 @@ import imagehash
 # --------------------------------------------------------------------------------
 ##########生成日志文件##########
 import logging
-timenow=time.time()
-#转换成localtime
+
+timenow = time.time()
+# 转换成localtime
 time_local = time.localtime(timenow)
-#转换成新的时间格式(2016-05-09 18:59:20)
-myapplog = time.strftime("%Y%m%d%H%M%S",time_local)
-print(myapplog)  #生成时间log名
+# 转换成新的时间格式(2016-05-09 18:59:20)
+myapplog = time.strftime("%Y%m%d%H%M%S", time_local)
+print(myapplog)  # 生成时间log名
 logging.basicConfig(level=logging.DEBUG,
-                format='%(asctime)s %(filename)s[line:%(lineno)d] %(levelname)s %(message)s',
-                datefmt='%a, %d %b %Y %H:%M:%S',
-                filename='%s.log'%myapplog,
-                filemode='w')
+                    format='%(asctime)s %(filename)s[line:%(lineno)d] %(levelname)s %(message)s',
+                    datefmt='%a, %d %b %Y %H:%M:%S',
+                    filename='%s.log' % myapplog,
+                    filemode='w')
 
 logging.debug('This is debug message')
 logging.info('This is info message')
 logging.warning('This is warning message')
 logging.error('This is error message')
-#--------------------------------------------------------------------------------
-#鼠标点击
-import win32gui,win32api
+# --------------------------------------------------------------------------------
+# 鼠标点击
+import win32gui, win32api
 import cv2
 from PIL import ImageGrab
 
 ##############
-#图片打开提速
-yimg=ImageGrab.grab().save("yanzhengma.png")
-yanzhengma_img=Image.open("yanzhengma.png")  #打开图片的全局变量 ,提升第一次打开的速度
+# 图片打开提速
+yimg = ImageGrab.grab().save("yanzhengma.png")
+yanzhengma_img = Image.open("yanzhengma.png")  # 打开图片的全局变量 ,提升第一次打开的速度
+
 
 def Click(x, y):  # 鼠标点击
     a = win32gui.GetCursorPos()
-    x=int(x)
-    y=int(y)
+    x = int(x)
+    y = int(y)
     win32api.SetCursorPos((x, y))
     win32api.mouse_event(win32con.MOUSEEVENTF_LEFTDOWN, x, y, 0, 0)
     win32api.mouse_event(win32con.MOUSEEVENTF_LEFTUP, x, y, 0, 0)
     # win32api.SetCursorPos(a)
+
+
 def Click2(x, y):  # 鼠标点击
     a = win32gui.GetCursorPos()
-    x=int(x)
-    y=int(y)
+    x = int(x)
+    y = int(y)
     win32api.SetCursorPos((x, y))
     win32api.mouse_event(win32con.MOUSEEVENTF_LEFTDOWN, x, y, 0, 0)
     win32api.mouse_event(win32con.MOUSEEVENTF_LEFTUP, x, y, 0, 0)
     win32api.SetCursorPos(a)
 
-#模拟键盘输入
-#对应码
+
+# 模拟键盘输入
+# 对应码
 import win32clipboard
-def Paste():  #ctrl + V
+
+
+def Paste():  # ctrl + V
     win32api.keybd_event(17, 0, 0, 0)  # ctrl的键位码是17
     win32api.keybd_event(86, 0, 0, 0)  # v的键位码是86
     win32api.keybd_event(86, 0, win32con.KEYEVENTF_KEYUP, 0)  # 释放按键
     win32api.keybd_event(17, 0, win32con.KEYEVENTF_KEYUP, 0)
+
 
 # def Paste_moni(x,y):
 def Paste_moni():
@@ -473,30 +467,31 @@ def Paste_moni():
     # win32api.keybd_event(80, 0, win32con.KEYEVENTF_KEYUP, 0)  # 释放按键
 
 
-
-#操作粘贴板
+# 操作粘贴板
 def setText(aString):
-    aString=aString.encode('utf-8')
+    aString = aString.encode('utf-8')
     win32clipboard.OpenClipboard()
     win32clipboard.EmptyClipboard()
     win32clipboard.SetClipboardData(win32con.CF_TEXT, aString)
     win32clipboard.CloseClipboard()
 
+
 def Delete():
-    a=time.clock()
-    win32api.keybd_event(0x08,0,0,0)
-    win32api.keybd_event(0x08,0,win32con.KEYEVENTF_KEYUP, 0)
-    b=time.clock()
+    a = time.clock()
+    win32api.keybd_event(0x08, 0, 0, 0)
+    win32api.keybd_event(0x08, 0, win32con.KEYEVENTF_KEYUP, 0)
+    b = time.clock()
     # print(b-a)
 
-#查找位置
+
+# 查找位置
 def findpos():
     # targetimg="target.png"
     # sc = new_screenshot((0,0,Pxy[0],Pxy[1]))   #Pxy为分辨率
     sc = ImageGrab.grab().convert('L')
-    img=np.asarray(sc)
+    img = np.asarray(sc)
     global dick_target
-    template=dick_target[2]
+    template = dick_target[2]
     w, h = template.shape[::-1]
     res = cv2.matchTemplate(img, template, cv2.TM_CCOEFF_NORMED)
     min_val, max_val, min_loc, max_loc = cv2.minMaxLoc(res)
@@ -504,38 +499,41 @@ def findpos():
     # print(max_val)
     # print(min_loc)
     # print(max_loc)
-    global px_lowestprice,py_lowestprice,px_relative,py_relative,Px_lowestprice,Py_lowestprice,Px,Py
+    global px_lowestprice, py_lowestprice, px_relative, py_relative, Px_lowestprice, Py_lowestprice, Px, Py
     global refresh_area, confirm_area, Pos_timeframe, Pos_controlframe, Pos_yanzhengma, Pos_yanzhengmaframe, yan_confirm_area
     global use_area, sc_area  # 用于截取图片
     global Position, refresh_area, confirm_area, Pos_timeframe, Pos_controlframe, Pos_yanzhengma, Pos_yanzhengmaframe, yan_confirm_area
-    if max_val>0.9:   #找不到不动作
-        px_lowestprice = max_loc[0]+px_relative
-        py_lowestprice = max_loc[1]+py_relative
-        Px_lowestprice=px_lowestprice
-        Py_lowestprice=py_lowestprice
+    if max_val > 0.9:  # 找不到不动作
+        px_lowestprice = max_loc[0] + px_relative
+        py_lowestprice = max_loc[1] + py_relative
+        Px_lowestprice = px_lowestprice
+        Py_lowestprice = py_lowestprice
 
         # print(px_lowestprice,py_lowestprice)
 
         for i in range(len(Position)):
             Position[i][0] = Px_lowestprice + P_relative2[i][0]
             Position[i][1] = Py_lowestprice + P_relative2[i][1]
-        refresh_area = [396 - 150+Px_lowestprice, 11 - 100+Py_lowestprice, 396 + 150+Px_lowestprice, 11 + 100+Py_lowestprice]
-        confirm_area = [505 - 80+Px_lowestprice, 68 - 50+Py_lowestprice, 505 + 80+Px_lowestprice, 68 + 50+Py_lowestprice]
-        yan_confirm_area = [205 - 80+Px_lowestprice, 68 - 50+Py_lowestprice, 405 + 80+Px_lowestprice, 68 + 50+Py_lowestprice]
+        refresh_area = [396 - 150 + Px_lowestprice, 11 - 100 + Py_lowestprice, 396 + 150 + Px_lowestprice,
+                        11 + 100 + Py_lowestprice]
+        confirm_area = [505 - 80 + Px_lowestprice, 68 - 50 + Py_lowestprice, 505 + 80 + Px_lowestprice,
+                        68 + 50 + Py_lowestprice]
+        yan_confirm_area = [205 - 80 + Px_lowestprice, 68 - 50 + Py_lowestprice, 405 + 80 + Px_lowestprice,
+                            68 + 50 + Py_lowestprice]
 
-        Pos_controlframe=[192-344+Px_lowestprice, 514-183+Py_lowestprice]
+        Pos_controlframe = [192 - 344 + Px_lowestprice, 514 - 183 + Py_lowestprice]
 
-        Pos_yanzhengma = [Position[5][0]-280,Position[5][1]-65,Position[5][0]-100,Position[5][1]+45]  # 验证码所在位置
+        Pos_yanzhengma = [Position[5][0] - 280, Position[5][1] - 65, Position[5][0] - 100,
+                          Position[5][1] + 45]  # 验证码所在位置
         # Pos_yanzhengmaframe = [Px_lowestprice+590, Py_lowestprice-185]   #验证码框放置位置
-        Pos_yanzhengmaframe = [Px_lowestprice+297, Py_lowestprice-283]   #验证码框放置位置
+        Pos_yanzhengmaframe = [Px_lowestprice + 297, Py_lowestprice - 283]  # 验证码框放置位置
         # Pos_timeframe=[245 - 344+Px_lowestprice, 299- 183+Py_lowestprice]
-        #关闭触发
-        global findpos_on  ,yanzhengma_move
-        findpos_on=False #无需定位
-        yanzhengma_move=True #需要定位
- ##########################
+        # 关闭触发
+        global findpos_on, yanzhengma_move
+        findpos_on = False  # 无需定位
+        yanzhengma_move = True  # 需要定位
+        ##########################
         ####新式截图定位
-
 
         Pos_yanzhengma = [612, 391, 792, 501]
         yanconfirm = [432, 466, 792, 566]
@@ -546,7 +544,6 @@ def findpos():
         x1 = Px_lowestprice - 10  # 截图起始点
         y1 = Py_lowestprice - 100
 
-
         cal_area = [lowest, refresh_area, confirm_area, Pos_yanzhengma, yanconfirm]
         use_area = []
         sc_area = [Px_lowestprice - 10, Py_lowestprice - 100, Px_lowestprice + 600, Py_lowestprice + 120]
@@ -554,7 +551,8 @@ def findpos():
             temp = [cal_area[i][0] - x1, cal_area[i][1] - y1, cal_area[i][2] - x1, cal_area[i][3] - y1]
             use_area.append(temp)
 
-        print("找到位置 之后 ",Pos_yanzhengmaframe)
+        print("找到位置 之后 ", Pos_yanzhengmaframe)
+
 
 #########################################################
 def only_screenshot(area):  # x,y  pos      w,h size
@@ -581,30 +579,30 @@ def only_screenshot(area):  # x,y  pos      w,h size
     win32gui.ReleaseDC(hwnd, wDC)
     win32gui.DeleteObject(dataBitMap.GetHandle())
     return img
+
+
 #########################################################
 ###获得截取的全局变量
 def cut_img():  # 将所得的img 处理成  lowestprice_img   confirm_img  yanzhengma_confirm_img  refresh_img
-    global use_area,sc_area ,imgpos_lowestprice,imgpos_yanzhengma,imgpos_refresh,imgpos_confirm,imgpos_yanzhengmaconfirm
+    global use_area, sc_area, imgpos_lowestprice, imgpos_yanzhengma, imgpos_refresh, imgpos_confirm, imgpos_yanzhengmaconfirm
     img = only_screenshot(sc_area)  # 获取得到的截图
     # 切片
     img = np.asarray(img)  # 转化为numpy数组
-    #[[10, 100, 92, 116], [256, 11, 556, 211], [435, 118, 595, 218], [315, 43, 495, 153], [135, 118, 495, 218]]
-    #[220,510]
-    cv2.imwrite("to.png", img)
-    imgpos_lowestprice =img[use_area[0][1]:use_area[0][3], use_area[0][0]:use_area[0][2]  ] #ok
-    imgpos_refresh = img[ use_area[1][1]:use_area[1][3],use_area[1][0]:use_area[1][2] ]  #ok
-    imgpos_confirm = img[use_area[2][1]:use_area[2][3], use_area[2][0]:use_area[2][2] ]
-    imgpos_yanzhengma = img[use_area[3][1]:use_area[3][3] , use_area[3][0]:use_area[3][2] ]  #ok
-    imgpos_yanzhengmaconfirm = img[ use_area[4][1]:use_area[4][3],use_area[4][0]:use_area[4][2] ]  #ok
-
+    # [[10, 100, 92, 116], [256, 11, 556, 211], [435, 118, 595, 218], [315, 43, 495, 153], [135, 118, 495, 218]]
+    # [220,510]
+    imgpos_lowestprice = img[use_area[0][1]:use_area[0][3], use_area[0][0]:use_area[0][2]]  # ok
+    imgpos_refresh = img[use_area[1][1]:use_area[1][3], use_area[1][0]:use_area[1][2]]  # ok
+    imgpos_confirm = img[use_area[2][1]:use_area[2][3], use_area[2][0]:use_area[2][2]]
+    imgpos_yanzhengma = img[use_area[3][1]:use_area[3][3], use_area[3][0]:use_area[3][2]]  # ok
+    imgpos_yanzhengmaconfirm = img[use_area[4][1]:use_area[4][3], use_area[4][0]:use_area[4][2]]  # ok
 
 
 def findrefresh():
-    global dick_target,refresh_on,refresh_need,refresh_one,Position,refresh_area,confirm_area
-    template=dick_target[0]
+    global dick_target, refresh_on, refresh_need, refresh_one, Position, refresh_area, confirm_area
+    template = dick_target[0]
     global imgpos_refresh
     sc = imgpos_refresh
-    img = cv2.cvtColor(sc, cv2.COLOR_BGR2GRAY)  #转灰度图
+    img = cv2.cvtColor(sc, cv2.COLOR_BGR2GRAY)  # 转灰度图
 
     # sc = new_screenshot(refresh_area)
     # sc = ImageGrab.grab(refresh_area).convert('L')
@@ -614,26 +612,27 @@ def findrefresh():
     res = cv2.matchTemplate(img, template, cv2.TM_CCOEFF_NORMED)
     min_val, max_val, min_loc, max_loc = cv2.minMaxLoc(res)
     logging.info("查找刷新")
-    if max_val>=0.8:
+    if max_val >= 0.8:
         logging.info("刷新")
         TopFrame.OnClick_Shuaxin()
-        global yanzhengma_view,yanzhengma_close,yanzhengma_count,yanzhengma_hash
-        yanzhengma_view = True #激活放大器
-        yanzhengma_count = 0  #归零
-        yanzhengma_hash={}  #清空验证码库
-
+        global yanzhengma_view, yanzhengma_close, yanzhengma_count, yanzhengma_hash
+        yanzhengma_view = True  # 激活放大器
+        yanzhengma_count = 0  # 归零
+        yanzhengma_hash = {}  # 清空验证码库
 
     #     refresh_on = True  # 关闭查找
     # elif refresh_on:
     #     refresh_need=False  #找到刷新之后下一次发现小于0.8就关闭查找
     #     refresh_on=False
+
+
 def findconfirm():
     # print("触发确认")
-    global dick_target,confirm_on,Position
-    template=dick_target[1]
+    global dick_target, confirm_on, Position
+    template = dick_target[1]
     global imgpos_confirm
     sc = imgpos_confirm
-    img = cv2.cvtColor(sc, cv2.COLOR_BGR2GRAY)  #转灰度图
+    img = cv2.cvtColor(sc, cv2.COLOR_BGR2GRAY)  # 转灰度图
 
     # sc = new_screenshot(confirm_area)
     # sc = ImageGrab.grab(confirm_area).convert('L')
@@ -642,23 +641,23 @@ def findconfirm():
     res = cv2.matchTemplate(img, template, cv2.TM_CCOEFF_NORMED)
     min_val, max_val, min_loc, max_loc = cv2.minMaxLoc(res)
     # print(max_val)
-    if max_val>=0.9:
+    if max_val >= 0.9:
         # print("找到确认")
-        confirm_on=True
+        # confirm_on=True
         TopFrame.OnClick_confirm()
-    if confirm_on and max_val<0.9:
+    if confirm_on and max_val < 0.9:
         print("暂停确认")
         # confirmthread.pause()  #暂停
 
 
-#用于确认是否关闭验证码放大器
+# 用于确认是否关闭验证码放大器
 def find_yan_confirm():
     # print("触发确认")
-    global dick_target,confirm_on,Position ,yanzhengma_view,yanzhengma_close
-    template=dick_target[1]
+    global dick_target, confirm_on, Position, yanzhengma_view, yanzhengma_close
+    template = dick_target[1]
     global imgpos_yanzhengmaconfirm
     sc = imgpos_yanzhengmaconfirm
-    img = cv2.cvtColor(sc, cv2.COLOR_BGR2GRAY)  #转灰度图
+    img = cv2.cvtColor(sc, cv2.COLOR_BGR2GRAY)  # 转灰度图
 
     # sc = new_screenshot(yan_confirm_area)
     # sc = ImageGrab.grab(yan_confirm_area).convert('L')
@@ -667,14 +666,14 @@ def find_yan_confirm():
     res = cv2.matchTemplate(img, template, cv2.TM_CCOEFF_NORMED)
     min_val, max_val, min_loc, max_loc = cv2.minMaxLoc(res)
     # print(max_val)
-    if max_val<0.9:
+    if max_val < 0.9:
         yanzhengma_view = False
         yanzhengma_close = True
 
 
-#用于裁剪图片
+# 用于裁剪图片
 # Pos_yanzhengma = [Position[5][0]-280,Position[5][1]-65,Position[5][0]-102,Position[5][1]+45]
-def cut_pic(img,size,name):
+def cut_pic(img, size, name):
     # i1 = img[0:22, :]
     # i2 = img[48:103, :]
     # im = np.concatenate([i2, i1])
@@ -685,7 +684,7 @@ def cut_pic(img,size,name):
     i1 = img[0:22, :150]
     i2 = img[48:105, 30:]
     im = np.concatenate([i2, i1])
-    #转换颜色
+    # 转换颜色
     # b = np.zeros((im.shape[0], im.shape[1]), dtype=im.dtype)
     # g = np.zeros((im.shape[0], im.shape[1]), dtype=im.dtype)
 
@@ -694,26 +693,29 @@ def cut_pic(img,size,name):
     # g[:, :] = im[:, :, 1]
     # r[:, :] = im[:, :, 2]
     # im = np.dstack([r, g,b])
-    im=cv2.resize(im, tuple(size))
+    im = cv2.resize(im, tuple(size))
     cv2.imwrite(name, im)
 
-#------------------------------------------------------------------------------------
+
+# ------------------------------------------------------------------------------------
 ###全新的载图  ScreenShot
 import win32gui
 import win32ui
 import win32con
 import time
-def new_screenshot(area):  #x,y  pos      w,h size
-    x,y=area[0],area[1]
-    w,h=area[2],area[3]
+
+
+def new_screenshot(area):  # x,y  pos      w,h size
+    x, y = area[0], area[1]
+    w, h = area[2], area[3]
     hwnd = win32gui.FindWindow(None, "win32")
     wDC = win32gui.GetWindowDC(hwnd)
-    dcObj=win32ui.CreateDCFromHandle(wDC)
-    cDC=dcObj.CreateCompatibleDC()
+    dcObj = win32ui.CreateDCFromHandle(wDC)
+    cDC = dcObj.CreateCompatibleDC()
     dataBitMap = win32ui.CreateBitmap()
     dataBitMap.CreateCompatibleBitmap(dcObj, x, y)
     cDC.SelectObject(dataBitMap)
-    cDC.BitBlt((0,0),(x, y) , dcObj, (0,0), win32con.SRCCOPY)
+    cDC.BitBlt((0, 0), (x, y), dcObj, (0, 0), win32con.SRCCOPY)
     im = dataBitMap.GetBitmapBits(True)  # Tried False also
     bmpinfo = dataBitMap.GetInfo()
     img = Image.frombuffer(
@@ -727,39 +729,39 @@ def new_screenshot(area):  #x,y  pos      w,h size
     return img
 
 
-def new_screenshot_getimg(area,size,name):
-    x,y=area[0],area[1]
-    w,h=area[2],area[3]
+def new_screenshot_getimg(area, size, name):
+    x, y = area[0], area[1]
+    w, h = area[2], area[3]
     hwnd = win32gui.FindWindow(None, "win32")
     wDC = win32gui.GetWindowDC(hwnd)
     dcObj = win32ui.CreateDCFromHandle(wDC)
     cDC = dcObj.CreateCompatibleDC()
     dataBitMap = win32ui.CreateBitmap()
-    dataBitMap.CreateCompatibleBitmap(dcObj, w-x, h-y)
+    dataBitMap.CreateCompatibleBitmap(dcObj, w - x, h - y)
     cDC.SelectObject(dataBitMap)
-    cDC.BitBlt((-x,-y),(w, h) , dcObj, (0,0), win32con.SRCCOPY)
+    cDC.BitBlt((-x, -y), (w, h), dcObj, (0, 0), win32con.SRCCOPY)
     im = dataBitMap.GetBitmapBits(True)  # Tried False also
     bmpinfo = dataBitMap.GetInfo()
     img = Image.frombuffer(
         'RGB',
         (bmpinfo['bmWidth'], bmpinfo['bmHeight']),
-       im, 'raw', 'RGBX', 0, 1)
-    img=np.array(img)
+        im, 'raw', 'RGBX', 0, 1)
+    img = np.array(img)
     # img=cv2.cvtColor(img, cv2.COLOR_RGB2BGR)  #转换
-    cut_pic(img,size,name)
+    cut_pic(img, size, name)
     dcObj.DeleteDC()
     cDC.DeleteDC()
     win32gui.ReleaseDC(hwnd, wDC)
     win32gui.DeleteObject(dataBitMap.GetHandle())
 
 
-
-#------------------------------------------------------------------------------------
+# ------------------------------------------------------------------------------------
 ########图像识别###########
-SZ=20
-bin_n = 16 # Number of bins
+SZ = 20
+bin_n = 16  # Number of bins
 
-#hog特征
+
+# hog特征
 def hog(img):
     gx = cv2.Sobel(img, cv2.CV_32F, 1, 0)
     gy = cv2.Sobel(img, cv2.CV_32F, 0, 1)
@@ -772,13 +774,13 @@ def hog(img):
     return hist
 
 
-#二值化，切割
+# 二值化，切割
 def cut(img):
-    ret,thresh1=cv2.threshold(img,127,255,cv2.THRESH_BINARY_INV)
+    ret, thresh1 = cv2.threshold(img, 127, 255, cv2.THRESH_BINARY_INV)
     # image,contours,hierarchy = cv2.findContours(thresh1,cv2.RETR_EXTERNAL,cv2.CHAIN_APPROX_NONE)
-    image,contours,hierarchy = cv2.findContours(thresh1,cv2.RETR_EXTERNAL,cv2.CHAIN_APPROX_NONE)
-    imgn=[]
-    xy=[]
+    image, contours, hierarchy = cv2.findContours(thresh1, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_NONE)
+    imgn = []
+    xy = []
     for i in range(len(contours)):
         cnt = contours[i]
         x, y, w, h = cv2.boundingRect(cnt)
@@ -791,20 +793,20 @@ def cut(img):
         imgn.append(image[y:y + h, x:x + w])
     return imgn
 
-def readpic(img):
-    svm=cv2.ml.SVM_load('maindata.xml')
-    testData=cut(img)
-    testData=list(map(hog,testData))
-    testData = np.float32(testData).reshape(-1,64)
-    result = svm.predict(testData)
-    result=result[1].reshape(-1).astype(int).astype(str)
-    price="".join(list(result))
-    return price   #返回的是price str
 
+def readpic(img):
+    svm = cv2.ml.SVM_load('maindata.xml')
+    testData = cut(img)
+    testData = list(map(hog, testData))
+    testData = np.float32(testData).reshape(-1, 64)
+    result = svm.predict(testData)
+    result = result[1].reshape(-1).astype(int).astype(str)
+    price = "".join(list(result))
+    return price  # 返回的是price str
 
 
 # --------------------------------------------------------------------------------
-#PING网速测试
+# PING网速测试
 # import os
 # import socket
 # import struct
@@ -938,23 +940,26 @@ def readpic(img):
 # #定义网速查询的类
 # pinger=Pinger(url2)
 
-#---------------------------------------------------------------------------------
-#打开浏览器
-import winreg,re,subprocess
-needpath=r'C:\Program Files (x86)\Internet Explorer\iexplore.exe'
-iepath=r'C:\Program Files (x86)\Internet Explorer\iexplore.exe'
-path1='C:\Program Files (x86)'
-path2='C:\Program Files'
+# ---------------------------------------------------------------------------------
+# 打开浏览器
+import winreg, re, subprocess
+
+needpath = r'C:\Program Files (x86)\Internet Explorer\iexplore.exe'
+iepath = r'C:\Program Files (x86)\Internet Explorer\iexplore.exe'
+path1 = 'C:\Program Files (x86)'
+path2 = 'C:\Program Files'
+
+
 def getwebpath():
     global needpath
-    #查找注册表键值
+    # 查找注册表键值
     try:
-        key = winreg.OpenKey(winreg.HKEY_CLASSES_ROOT,r"http\shell\open\command")
-        name, value, type = winreg.EnumValue(key,0)
+        key = winreg.OpenKey(winreg.HKEY_CLASSES_ROOT, r"http\shell\open\command")
+        name, value, type = winreg.EnumValue(key, 0)
         pattern = re.compile("\"*(.+\.exe)")
         result = re.findall(pattern, value)
         if result:
-            needpath=result[0]
+            needpath = result[0]
             # needpath='"'+result[0]+'"'
     except:
         pass
@@ -962,17 +967,22 @@ def getwebpath():
         if os.path.exists('C:\Program Files (x86)'):
             pass
             # os.walk()
+
+
 def openweb(url):
     global needpath
     # command="\""+needpath+"\"" +" "+url  #需要加个空格
     # path=r'C:\Program Files (x86)\Internet Explorer\iexplore.exe www.baidu.com'
-    subprocess.Popen([needpath,url])
+    subprocess.Popen([needpath, url])
+
+
 def openIE(url):
     global iepath
-    subprocess.Popen([iepath,url])
+    subprocess.Popen([iepath, url])
+
 
 # --------------------------------------------------------------------------------
-#采集用户信息
+# 采集用户信息
 import smtplib
 # import time
 # import codecs
@@ -981,25 +991,27 @@ import os
 import mimetypes
 import email
 from email.mime.multipart import MIMEMultipart
-#--------------------------------------------------------------------------------
-#进程管理
+# --------------------------------------------------------------------------------
+# 进程管理
 from threading import Thread
 import threading
-from wx.lib.pubsub import pub   #代替了publisher
+from wx.lib.pubsub import pub  # 代替了publisher
 # --------------------------------------------------------------------------------
 
 ####验证登录
 ####记录一个全局变量Username
-import socket, sys ,json
+import socket, sys, json
+
 timeout = 10
-socket.setdefaulttimeout(timeout)  #设定截止时间
+socket.setdefaulttimeout(timeout)  # 设定截止时间
 
 from urllib import request
 import json
 
+
 def ConfirmUser():
     try:
-        target_url = host_ali+r'/main_api/userconfirm/info?' + 'username=%s' % Username + '&' + 'passwd=%s' % Password
+        target_url = host_ali + r'/main_api/userconfirm/info?' + 'username=%s' % Username + '&' + 'passwd=%s' % Password
         print(target_url)
         response = request.urlopen(target_url)
         print(response)
@@ -1007,9 +1019,8 @@ def ConfirmUser():
         result = str(result, encoding='utf-8')
         result = json.loads(result)
     except:
-        return {'result':'net error'}
+        return {'result': 'net error'}
     return result
-
 
 
 def Logout():
@@ -1060,57 +1071,63 @@ def Keeplogin():
         # sys.exit(1)
 
     # 发送确认信息
-    data = ['keep',Username,Password]
-    data=json.dumps(data)
-    data = bytes(data, encoding="utf-8")  #转化为BYTE
-    logging.info('发送信息 %s' % str(data,encoding="utf-8"))
+    data = ['keep', Username, Password]
+    data = json.dumps(data)
+    data = bytes(data, encoding="utf-8")  # 转化为BYTE
+    logging.info('发送信息 %s' % str(data, encoding="utf-8"))
     s.send(data)
 
     s.shutdown(1)
     print("Submit keep Complete")
     logging.info("Submit keep Complete")
 
+
 # --------------------------------------------------------------------------------
-def send_mail(subject,to_list,file_name):
-    data=open(file_name,'rb')
-    ctype,encoding=mimetypes.guess_type(file_name)
+def send_mail(subject, to_list, file_name):
+    data = open(file_name, 'rb')
+    ctype, encoding = mimetypes.guess_type(file_name)
     if ctype is None and encoding is None:
-        ctype='application/octet-stream'
-    maintype,subtype=ctype.split('/',1)
-    file_msg=email.mime.base.MIMEBase(maintype,subtype)
+        ctype = 'application/octet-stream'
+    maintype, subtype = ctype.split('/', 1)
+    file_msg = email.mime.base.MIMEBase(maintype, subtype)
     file_msg.set_payload(data.read())
     data.close()
     email.encoders.encode_base64(file_msg)
-    basename=os.path.basename(file_name)
-    file_msg.add_header('Content-Disposition','attachment',filename=basename)
-    to_list=to_list
-    mail_host='smtp.qq.com'
-    mail_user=os.environ.get('MAIL_USERNAME')
-    mail_pass=os.environ.get('MAIL_PASSWORD')
-    me=mail_user
-    msg=MIMEMultipart()
+    basename = os.path.basename(file_name)
+    file_msg.add_header('Content-Disposition', 'attachment', filename=basename)
+    to_list = to_list
+    mail_host = 'smtp.qq.com'
+    mail_user = os.environ.get('MAIL_USERNAME')
+    mail_pass = os.environ.get('MAIL_PASSWORD')
+    me = mail_user
+    msg = MIMEMultipart()
     msg.attach(file_msg)
-    msg['Subject']=subject
-    msg['From']=me
-    msg['To']=";".join(to_list)
-    server=smtplib.SMTP_SSL(mail_host,465)  # SSL方式加密，QQ port:465
-    server.login(mail_user,mail_pass)
+    msg['Subject'] = subject
+    msg['From'] = me
+    msg['To'] = ";".join(to_list)
+    server = smtplib.SMTP_SSL(mail_host, 465)  # SSL方式加密，QQ port:465
+    server.login(mail_user, mail_pass)
     print('login in  successfully')
-    server.sendmail(me,to_list,msg.as_string())
+    server.sendmail(me, to_list, msg.as_string())
     server.quit()
     print('send email  successfully')
 
+
 def Upload():
-    pass #采集有用信息为将来分析准备
+    pass  # 采集有用信息为将来分析准备
+
+
 # --------------------------------------------------------------------------------
-#计算机视觉
+# 计算机视觉
 def Com_read():
     pass
 
+
 # --------------------------------------------------------------------------------
-#自动操作
+# 自动操作
 def Com_decision():
     pass
+
 
 # --------------------------------------------------------------------------------
 
@@ -1146,7 +1163,7 @@ def Com_decision():
 class TopFrame(wx.Frame):
     def __init__(self, name, rev):  ##########版本号
         wx.Frame.__init__(self, None, 1, name,
-                          size=(280, 300),pos=(Px-120,Py),style=wx.CAPTION|wx.CLOSE_BOX|wx.MINIMIZE_BOX)
+                          size=(280, 300), pos=(Px - 120, Py), style=wx.CAPTION | wx.CLOSE_BOX | wx.MINIMIZE_BOX)
         self.Bind(wx.EVT_CLOSE, self.OnClose)
         # 状态栏
         self.statusbar = self.CreateStatusBar()
@@ -1164,26 +1181,25 @@ class TopFrame(wx.Frame):
 
         # 设置状态栏3内容
         self.statusbar.SetStatusText(u"软件作者：ZS ", 2)
-        self.statusbar.SetBackgroundColour((240,255,255))
-        #创建一个容器
+        self.statusbar.SetBackgroundColour((240, 255, 255))
+        # 创建一个容器
         panel = wx.Panel(self, -1)
         # panel.Bind(wx.EVT_ERASE_BACKGROUND, self.OnEraseBackground)
-        panel.SetBackgroundColour((240,255,255))
-        self.SetBackgroundColour((240,255,255))
-############################
-#######功能区#########
-        self.operationarea=wx.StaticBox(panel,label="基本功能")
-        self.operationareasizer=wx.StaticBoxSizer(self.operationarea,wx.VERTICAL)
+        panel.SetBackgroundColour((240, 255, 255))
+        self.SetBackgroundColour((240, 255, 255))
+        ############################
+        #######功能区#########
+        self.operationarea = wx.StaticBox(panel, label="基本功能")
+        self.operationareasizer = wx.StaticBoxSizer(self.operationarea, wx.VERTICAL)
 
-
-        self.hbox1=wx.BoxSizer(wx.HORIZONTAL)
+        self.hbox1 = wx.BoxSizer(wx.HORIZONTAL)
         self.monibutton = wx.Button(panel, label='打开模拟')
         self.Bind(wx.EVT_BUTTON, self.Openmoni, self.monibutton)
         ###打开国拍
         self.guopaibutton = wx.Button(panel, label='打开国拍')
         self.Bind(wx.EVT_BUTTON, self.Openurlchoice, self.guopaibutton)
-        self.hbox1.Add(self.monibutton, 0 ,wx.ALL | wx.CENTER, 5)
-        self.hbox1.Add(self.guopaibutton, 0 ,wx.ALL | wx.CENTER, 5)
+        self.hbox1.Add(self.monibutton, 0, wx.ALL | wx.CENTER, 5)
+        self.hbox1.Add(self.guopaibutton, 0, wx.ALL | wx.CENTER, 5)
         self.operationareasizer.Add(self.hbox1)
         ###验证码练习
         self.helpbutton = wx.Button(panel, label='查看帮助')
@@ -1194,40 +1210,38 @@ class TopFrame(wx.Frame):
         # self.Bind(wx.EVT_BUTTON, self.Yan_practice, self.yanzhengmabutton)
         # self.testbutton = wx.Button(panel, label='考核')
         # self.Bind(wx.EVT_BUTTON, self.Yan_test, self.testbutton)
-        self.hbox2=wx.BoxSizer(wx.HORIZONTAL)
-        self.hbox2.Add(self.helpbutton, 0 ,wx.ALL | wx.CENTER, 5)
-        self.hbox2.Add(self.rulebutton, 0 ,wx.ALL | wx.CENTER, 5)
+        self.hbox2 = wx.BoxSizer(wx.HORIZONTAL)
+        self.hbox2.Add(self.helpbutton, 0, wx.ALL | wx.CENTER, 5)
+        self.hbox2.Add(self.rulebutton, 0, wx.ALL | wx.CENTER, 5)
         self.operationareasizer.Add(self.hbox2)
 
-########设置区#########
-        self.set=wx.StaticBox(panel,label="常规设置")
-        self.setsizer=wx.StaticBoxSizer(self.set)
+        ########设置区#########
+        self.set = wx.StaticBox(panel, label="常规设置")
+        self.setsizer = wx.StaticBoxSizer(self.set)
 
-        self.hbox3=wx.BoxSizer(wx.HORIZONTAL)
+        self.hbox3 = wx.BoxSizer(wx.HORIZONTAL)
         self.advanceset = wx.Button(panel, label='策略设置')
-        self.posautoset = wx.Button(panel, label= '刷新定位')
+        self.posautoset = wx.Button(panel, label='刷新定位')
         self.Bind(wx.EVT_BUTTON, self.Advanceset, self.advanceset)
-        self.Bind(wx.EVT_BUTTON, self.Posautoset,self.posautoset)
-        self.hbox3.Add(self.advanceset, 0 ,wx.ALL | wx.CENTER, 5)
-        self.hbox3.Add(self.posautoset, 0 ,wx.ALL | wx.CENTER, 5)
+        self.Bind(wx.EVT_BUTTON, self.Posautoset, self.posautoset)
+        self.hbox3.Add(self.advanceset, 0, wx.ALL | wx.CENTER, 5)
+        self.hbox3.Add(self.posautoset, 0, wx.ALL | wx.CENTER, 5)
 
-        self.hbox4=wx.BoxSizer(wx.HORIZONTAL)
+        self.hbox4 = wx.BoxSizer(wx.HORIZONTAL)
         self.highadvanceset = wx.Button(panel, label='动态策略')
-        self.timeautoreset = wx.Button(panel, label= '时间同步')
-        self.hbox4.Add(self.highadvanceset, 0 ,wx.ALL | wx.CENTER, 5)
-        self.hbox4.Add(self.timeautoreset, 0 ,wx.ALL | wx.CENTER, 5)
+        self.timeautoreset = wx.Button(panel, label='时间同步')
+        self.hbox4.Add(self.highadvanceset, 0, wx.ALL | wx.CENTER, 5)
+        self.hbox4.Add(self.timeautoreset, 0, wx.ALL | wx.CENTER, 5)
 
-
-        self.vbox_setting=wx.BoxSizer(wx.VERTICAL)
-
+        self.vbox_setting = wx.BoxSizer(wx.VERTICAL)
 
         self.vbox_setting.Add(self.hbox3)
         self.vbox_setting.Add(self.hbox4)
         self.setsizer.Add(self.vbox_setting)
 
-        self.vbox=wx.BoxSizer(wx.VERTICAL)
-        self.vbox.Add(self.operationareasizer, 0 ,wx.ALL | wx.CENTER, 5)
-        self.vbox.Add(self.setsizer, 0 ,wx.ALL | wx.CENTER, 5)
+        self.vbox = wx.BoxSizer(wx.VERTICAL)
+        self.vbox.Add(self.operationareasizer, 0, wx.ALL | wx.CENTER, 5)
+        self.vbox.Add(self.setsizer, 0, wx.ALL | wx.CENTER, 5)
         panel.SetSizer(self.vbox)
 
         # ###修改国拍网址
@@ -1238,53 +1252,48 @@ class TopFrame(wx.Frame):
         # self.button7 = wx.Button(panel, label='显示帮助', pos=(10, 190))
         # self.Bind(wx.EVT_BUTTON, self.Help, self.button7)
 
-#--------------------------------------------------------------------------------
-# ########设置区############
-        self.thread=TimeThread()      #创建时间进程
+        # --------------------------------------------------------------------------------
+        # ########设置区############
+        self.thread = TimeThread()  # 创建时间进程
 
-        #暂时停止登录确认进程
-#         self.keepthread=KeepThread()
+        # 暂时停止登录确认进程
+        #         self.keepthread=KeepThread()
         ###########创建操作面板
         self.operationframe = OperationFrame()
         self.operationframe.Show(False)  # 初始关闭
-#--------------------------------------------------------------------------------
-##########控制操作台
-        self.timer2=wx.Timer(self)
-        self.Bind(wx.EVT_TIMER, self.MainControl, self.timer2)#绑定一个定时器事件，主判断
-        self.timer2.Start(100)  #设定时间间隔
+        # --------------------------------------------------------------------------------
+        ##########控制操作台
+        self.timer2 = wx.Timer(self)
+        self.Bind(wx.EVT_TIMER, self.MainControl, self.timer2)  # 绑定一个定时器事件，主判断
+        self.timer2.Start(100)  # 设定时间间隔
 
-        #读取最低成交价
-        self.timer3=wx.Timer(self)
-        self.Bind(wx.EVT_TIMER, self.Lowest_price, self.timer3)#设置一个截屏取价
+        # 读取最低成交价
+        self.timer3 = wx.Timer(self)
+        self.Bind(wx.EVT_TIMER, self.Lowest_price, self.timer3)  # 设置一个截屏取价
         self.timer3.Start(100)
-        #自动定位
+        # 自动定位
         # self.timer4=wx.Timer(self)
         # self.Bind(wx.EVT_TIMER, self.Find_pos, self.timer4)#设置一个截屏取价
         # self.timer4.Start(600)
-        finposthread= findposThread()
+        finposthread = findposThread()
         # 时间同步
-        self.Bind(wx.EVT_BUTTON, self.Time_autoajust, self.timeautoreset)#设置一个截屏取价
+        self.Bind(wx.EVT_BUTTON, self.Time_autoajust, self.timeautoreset)  # 设置一个截屏取价
 
-
-        #登录确认器  ,放入独立进程管理
+        # 登录确认器  ,放入独立进程管理
         # self.timer3=wx.Timer(self)
         # self.timer3.Start(90000)  #设定时间间隔，1分半执行一次
         # self.Bind(wx.EVT_TIMER,self.Confirmlogin,self.timer3)
 
-
-
-#触发打开不同网址的国拍
+        # 触发打开不同网址的国拍
         pub.subscribe(self.OpenGuopai_dianxin, "open dianxin")  # 打开电信
         pub.subscribe(self.OpenGuopai_nodianxin, "open nodianxin")  # 打开非电信
         pub.subscribe(self.OpenGuopai_userweb, "open userweb")  # 使用用户自己的IE
 
-
-
-# ------------------------------------------------------------------
-# 功能区
+    # ------------------------------------------------------------------
+    # 功能区
     def Openmoni(self, event):
         # 初始化
-        global tijiao_num, chujia_on, tijiao_on, strategy_on, tijiao_OK ,twice
+        global tijiao_num, chujia_on, tijiao_on, strategy_on, tijiao_OK, twice
         timer0 = threading.Timer(5, findpos)
         strategy_on = True
         twice = True
@@ -1330,14 +1339,12 @@ class TopFrame(wx.Frame):
                 self.Close()
             self.Listen()
 
-    def Openurlchoice(self,event):
-        guopai=Guopaiframe("国拍")
-
-
+    def Openurlchoice(self, event):
+        guopai = Guopaiframe("国拍")
 
     def OpenGuopai_dianxin(self):
         # 初始化
-        global tijiao_num, chujia_on, tijiao_on, strategy_on, tijiao_OK ,twice
+        global tijiao_num, chujia_on, tijiao_on, strategy_on, tijiao_OK, twice
         timer0 = threading.Timer(5, findpos)
         strategy_on = True
         twice = True
@@ -1380,10 +1387,9 @@ class TopFrame(wx.Frame):
                 wx.MessageBox('请检查其它软件热键占用', '辅助启用失败', wx.OK | wx.ICON_ERROR)
                 self.Close()  # 关闭可能注册的热键
 
-
     def OpenGuopai_nodianxin(self):
         # 初始化
-        global tijiao_num, chujia_on, tijiao_on, strategy_on, tijiao_OK ,twice
+        global tijiao_num, chujia_on, tijiao_on, strategy_on, tijiao_OK, twice
         timer0 = threading.Timer(5, findpos)
         strategy_on = True
         twice = True
@@ -1426,11 +1432,10 @@ class TopFrame(wx.Frame):
                 wx.MessageBox('请检查其它软件热键占用', '辅助启用失败', wx.OK | wx.ICON_ERROR)
                 self.Close()  # 关闭可能注册的热键
 
-
     def OpenGuopai_userweb(self):
         # 初始化
-        global tijiao_num, chujia_on, tijiao_on, strategy_on, tijiao_OK ,twice
-        timer0 = threading.Timer(5, findpos)   #几秒之后执行一次位置刷新
+        global tijiao_num, chujia_on, tijiao_on, strategy_on, tijiao_OK, twice
+        timer0 = threading.Timer(5, findpos)  # 几秒之后执行一次位置刷新
         strategy_on = True
         twice = True
         chujia_on = True
@@ -1457,12 +1462,12 @@ class TopFrame(wx.Frame):
                 self.monitijiaothread = MoniTijiaoThread()  # 开启模拟自动出价
                 self.tijiaothread = TijiaoThread()  # 开启模拟自动出价
                 strategy_repeat = True
-            #
-            # browser = wx.html2.WebView.New(self.fr, size=(websize[0] + 48, websize[1] + 40), pos=(-17, 0))
-            # browser.LoadURL(url3)
-            # browser.CanSetZoomType(False)
-            # self.fr.Show(False)
-            # 价格显示
+                #
+                # browser = wx.html2.WebView.New(self.fr, size=(websize[0] + 48, websize[1] + 40), pos=(-17, 0))
+                # browser.LoadURL(url3)
+                # browser.CanSetZoomType(False)
+                # self.fr.Show(False)
+                # 价格显示
                 openIE(url3)
                 # print("fsdf")
                 self.Listen()
@@ -1470,9 +1475,6 @@ class TopFrame(wx.Frame):
         else:
             wx.MessageBox('请检查其它软件热键占用', '辅助启用失败', wx.OK | wx.ICON_ERROR)
             self.Close()  # 关闭可能注册的热键
-
-
-
 
     def UrlGuopai(self, event):
         global url2
@@ -1498,14 +1500,17 @@ class TopFrame(wx.Frame):
         # aboutInfo.SetWebSite("http:#myapp.org")
         aboutInfo.AddDeveloper("ZS")
         wx.adv.AboutBox(aboutInfo)
-#打开帮助和规定
-    def rule(self,event):
-        url="http://hupai.pro/rules"
+
+    # 打开帮助和规定
+    def rule(self, event):
+        url = "http://hupai.pro/rules"
         OpenwebThread(url)
-    def help(self,event):
-        url="http://hupai.pro/coursestudy"
+
+    def help(self, event):
+        url = "http://hupai.pro/coursestudy"
         OpenwebThread(url)
         # 验证码练习
+
     def Yan_practice(self, event):
         pass
 
@@ -1516,47 +1521,42 @@ class TopFrame(wx.Frame):
     def Time_adjust(self, event):
         pass
 
-# ------------------------------------------------------------------
-#设置区域
-    def Advanceset(self,event):
-        setting=self.FindWindowById(2)
+    # ------------------------------------------------------------------
+    # 设置区域
+    def Advanceset(self, event):
+        setting = self.FindWindowById(2)
         setting.Show(True)
 
-    def Posautoset(self,event):
+    def Posautoset(self, event):
         findpos()
 
-
-    def Timeautoset(self,event):
+    def Timeautoset(self, event):
         pass
 
-
-
-
-# ------------------------------------------------------------------
-#核心功能区
-####截屏取价 暂时放在一起
+    # ------------------------------------------------------------------
+    # 核心功能区
+    ####截屏取价 暂时放在一起
     def Lowest_price(self, event):  #
-        global lowest_price,findpos_on,changetime
+        global lowest_price, findpos_on, changetime
         if not findpos_on:
             try:
                 price = int(TopFrame.Price_read())  # 获取当前最低价
                 # 处理价格
-                if price in  pricelist:  # 字典查找
+                if price in pricelist:  # 字典查找
                     if lowest_price == price:
                         pass
                     else:
                         lowest_price = price
                         if moni_on:
-                            changetime=moni_second
+                            changetime = moni_second
                         else:
-                            changetime=a_time
+                            changetime = a_time
                 else:
-                    findpos_on=True
+                    findpos_on = True
             except:
                 pass
 
-
-#原来方法识别
+    # 原来方法识别
     # def Lowest_price(self, event):  #
     #     global lowest_price,findpos_on
     #     if not findpos_on:
@@ -1566,12 +1566,12 @@ class TopFrame(wx.Frame):
     #             lowest_price = dick_hash[price_hash]
     #         else:
     #             findpos_on=True
-            # findposThread()
+    # findposThread()
 
-            # logging.info("NONEHASH")
-            # 处理确认
-#自动定位
-    def Find_pos(self,event):
+    # logging.info("NONEHASH")
+    # 处理确认
+    # 自动定位
+    def Find_pos(self, event):
         global findpos_on
         if findpos_on:
             try:
@@ -1580,32 +1580,31 @@ class TopFrame(wx.Frame):
                 logging.error("Find_pos error")
                 print("Find_pos error")
 
-
-#方便测试 时间调整为11点29分
-    def Time_autoajust(self,event):
+    # 方便测试 时间调整为11点29分
+    def Time_autoajust(self, event):
         global a_time
-        tem1 =time.time()
+        tem1 = time.time()
         a = time.strftime('%Y-%m-%d', time.localtime(tem1))
-        b = a+' '+"11:29:0"
-        a_time= time.mktime(time.strptime(b, '%Y-%m-%d %H:%M:%S'))  #转时间戳
-
-
+        b = a + ' ' + "11:29:0"
+        a_time = time.mktime(time.strptime(b, '%Y-%m-%d %H:%M:%S'))  # 转时间戳
 
         # print(lowest_price)
+
     @staticmethod
     def Confirm():
-        global cf_hash,confirm_on
-        confirm_hash=TopFrame.Confirm_hash() #获取确认信息
+        global cf_hash, confirm_on
+        confirm_hash = TopFrame.Confirm_hash()  # 获取确认信息
         if confirm_hash == cf_hash[0]:
-            confirm_on=True
+            confirm_on = True
+
     @staticmethod
     def Refresh():
-        refresh_hash=TopFrame.Refresh_hash()  #获取刷新信息
-        global cf_hash,refresh_on
+        refresh_hash = TopFrame.Refresh_hash()  # 获取刷新信息
+        global cf_hash, refresh_on
         if refresh_hash == cf_hash[1]:
-            refresh_on=True
+            refresh_on = True
 
-    #image read
+    # image read
     @staticmethod
     def Price_read():
         # lowestprice=ImageGrab.grab((Px_lowestprice, Py_lowestprice,
@@ -1613,17 +1612,14 @@ class TopFrame(wx.Frame):
 
         # lowestprice=new_screenshot((Px_lowestprice, Py_lowestprice,lowestprice_sizex+Px_lowestprice, lowestprice_sizey+Py_lowestprice))
 
-
         # lowestprice=np.asarray(lowestprice)
         global imgpos_lowestprice
-        print("就我这不行")
         cv2.imwrite("low1.png", imgpos_lowestprice)
-        lowest_price = cv2.cvtColor(imgpos_lowestprice,cv2.COLOR_BGR2GRAY)
-        cv2.imwrite("low2.png",lowest_price)
-        price=readpic(lowest_price)
-        print(price)
+        lowest_price = cv2.cvtColor(imgpos_lowestprice, cv2.COLOR_BGR2GRAY)
+        cv2.imwrite("low2.png", lowest_price)
+        price = readpic(lowest_price)
+        # print(price)
         return price
-
 
     # @staticmethod
     # def Price_hash():
@@ -1653,7 +1649,6 @@ class TopFrame(wx.Frame):
     #
     #     refresh_hash = imagehash.dhash(refresh)
     #     return refresh_hash
-
 
     @staticmethod
     def OnJiajia():
@@ -1706,7 +1701,6 @@ class TopFrame(wx.Frame):
     def handle_Tijiao():
         cut_img()
 
-
         # TopFrame.OnTijiao()
 
     @staticmethod
@@ -1727,6 +1721,7 @@ class TopFrame(wx.Frame):
         ##点击
         ##执行点击操作
         ##点击
+
     @classmethod
     def OnClick_Tijiao(cls):
         global web_on, tijiao_on, one_delay, second_delay, tijiao_num
@@ -1751,9 +1746,10 @@ class TopFrame(wx.Frame):
 
     @staticmethod
     def Tijiao():
-        global tijiao_on, tijiao_OK, tijiao_num
+        global tijiao_on, tijiao_OK, tijiao_num ,chujia_on
         Click(Position[2][0], Position[2][1])
         tijiao_OK = False  # 需要按E解锁，自动提交
+        chujia_on = True  # 激活自动
         global confirm_one
         if not confirm_one:  # 激活确认
             pass
@@ -1762,26 +1758,27 @@ class TopFrame(wx.Frame):
 
             # confirm_one = True
 
-    #智能提交，动态策略1号
+    # 智能提交，动态策略1号
     @classmethod
     def SmartTijiao(cls):
-        global tijiao_on, tijiao_OK, tijiao_num ,  confirm_need
-        confirm_need=True
+        global tijiao_on, tijiao_OK, tijiao_num, confirm_need
+
+        confirm_need = True
         if moni_on:
-            interval=moni_second-changetime
+            interval = moni_second - changetime
         else:
             interval = a_time - changetime
-        if tijiao_num == 2:  #说明是第二次出价
+        if tijiao_num == 2:  # 说明是第二次出价
 
-            if lowest_price <= own_price2-600:
+            if lowest_price <= own_price2 - 600:
                 print("触发延迟")
                 tijiao_num = 0
                 timer = threading.Timer(0.5, cls.Tijiao)
                 timer.start()
                 tijiao_on = False
-            elif lowest_price == own_price2-500 and interval<0.95:
+            elif lowest_price == own_price2 - 500 and interval < 0.95:
                 tijiao_num = 0
-                timesleep=(1-interval)/3+0.25
+                timesleep = (1 - interval) / 3 + 0.25
                 timer = threading.Timer(timesleep, cls.Tijiao)
                 timer.start()
                 tijiao_on = False
@@ -1802,7 +1799,7 @@ class TopFrame(wx.Frame):
                 tijiao_on = False
                 if twice:
                     tijiao_num = 2
-            elif lowest_price == own_price1-500 and interval<0.95:
+            elif lowest_price == own_price1 - 500 and interval < 0.95:
                 timesleep = (1 - interval) / 3 + 0.25
                 timer = threading.Timer(timesleep, cls.Tijiao)
                 timer.start()
@@ -1815,7 +1812,6 @@ class TopFrame(wx.Frame):
                 if twice:
                     tijiao_num = 2
 
-
     # @staticmethod
     # def OnClick_Jiajia():
     #     global web_on
@@ -1826,11 +1822,10 @@ class TopFrame(wx.Frame):
     def OnClick_Shuaxin():
         Click(Position[3][0], Position[3][1])
         Click(Position[5][0], Position[5][1])
-        global yanzhengma_view,yanzhengma_close,yanzhengma_count,yanzhengma_hash
-        yanzhengma_view = True #激活放大器
-        yanzhengma_count = 0  #归零
-        yanzhengma_hash={}  #清空验证码库
-
+        global yanzhengma_view, yanzhengma_close, yanzhengma_count, yanzhengma_hash
+        yanzhengma_view = True  # 激活放大器
+        yanzhengma_count = 0  # 归零
+        yanzhengma_hash = {}  # 清空验证码库
 
     @staticmethod
     def OnClick_confirm():
@@ -1839,61 +1834,60 @@ class TopFrame(wx.Frame):
 
     @staticmethod
     def OnClick_chujia():
-        global web_on, lowest_price ,yanzhengma_count
+        global web_on, lowest_price, yanzhengma_count
         global tijiao_num, own_price1, own_price2, one_diff, second_diff
         global tijiao_on, chujia_on
-        global refresh_need, refresh_one, chujia_interval ,yanzhengma_view
+        global refresh_need, refresh_one, chujia_interval, yanzhengma_view
         global yanzhengma_hash
-        yanzhengma_hash={}
-        yanzhengma_count=0  #计数器，制造延迟
-        yanzhengma_view=True  #打开验证码放大器
-        if not chujia_interval:
-            chujia_interval = True
-            tijiao_on = True  # 激活自动出价
-            refresh_need = True  # 激活刷新验证码
-            if tijiao_num == 1:
-                own_price1 = lowest_price + one_diff
-                setText(str(own_price1))
-                TopFrame.selfdelete()
-                Click(Position[1][0], Position[1][1])
-                Click(Position[5][0], Position[5][1])
+        yanzhengma_hash = {}
+        yanzhengma_count = 0  # 计数器，制造延迟
+        yanzhengma_view = True  # 打开验证码放大器
+        print("到这了")
+        tijiao_on = True  # 激活自动出价
+        refresh_need = True  # 激活刷新验证码
+        if tijiao_num == 1:
+            own_price1 = lowest_price + one_diff
+            setText(str(own_price1))
+            TopFrame.selfdelete()
+            Click(Position[1][0], Position[1][1])
+            Click(Position[5][0], Position[5][1])
 
-                tijiao_on = True
-                chujia_on = False
-                chujia_interval = False  # 间隔结束
-                refreshthread.resume()
-                # if not refresh_one:  # 激活确认
-                    # refreshthread = refreshThread()
-                    # refresh_one = True  #同时只存在一个进程
+            tijiao_on = True
+            chujia_on = False
+            chujia_interval = False  # 间隔结束
+            # refreshthread.resume()
+            # if not refresh_one:  # 激活确认
+            # refreshthread = refreshThread()
+            # refresh_one = True  #同时只存在一个进程
 
 
-            elif tijiao_num == 2 and twice:
-                # print("第二次")
-                own_price2 = lowest_price + second_diff
-                setText(str(own_price2))
-                TopFrame.selfdelete()
-                Click(Position[1][0], Position[1][1])
-                Click(Position[5][0], Position[5][1])
-                tijiao_on = True
-                chujia_on = False
-                chujia_interval = False  # 间隔结束
-                refreshthread.resume()
+        elif tijiao_num == 2 and twice:
+            # print("第二次")
+            own_price2 = lowest_price + second_diff
+            setText(str(own_price2))
+            TopFrame.selfdelete()
+            Click(Position[1][0], Position[1][1])
+            Click(Position[5][0], Position[5][1])
+            tijiao_on = True
+            chujia_on = False
+            chujia_interval = False  # 间隔结束
+            # refreshthread.resume()
 
-                # if not refresh_one:  # 激活确认
-                #
-                #     refreshthread = refreshThread()
-                    # refresh_one = True
+            # if not refresh_one:  # 激活确认
+            #
+            #     refreshthread = refreshThread()
+            # refresh_one = True
 
-# 热键H的功能
+    # 热键H的功能
     @staticmethod
     def OnH_chujia():
-        global yanzhengma_view , yanzhengma_count
+        global yanzhengma_view, yanzhengma_count
 
         global yanzhengma_hash
-        yanzhengma_hash={}  #清空验证码库
+        yanzhengma_hash = {}  # 清空验证码库
 
-        yanzhengma_view=True
-        yanzhengma_count=0
+        yanzhengma_view = True
+        yanzhengma_count = 0
         own_price1 = lowest_price + one_diff
         setText(str(own_price1))
         TopFrame.selfdelete()
@@ -1901,15 +1895,12 @@ class TopFrame(wx.Frame):
         Click(Position[1][0], Position[1][1])
         Click(Position[5][0], Position[5][1])
         # if not refresh_one:  # 激活确认
-            # refreshthread = refreshThread()
-            # refresh_one = True  #同时只存在一个进程
-
-
-
+        # refreshthread = refreshThread()
+        # refresh_one = True  #同时只存在一个进程
 
     @staticmethod
     def selfdelete():
-        Click2(Position[6][0], Position[6][1]-5)
+        Click2(Position[6][0], Position[6][1] - 5)
         Click2(Position[6][0], Position[6][1])
         Click2(Position[6][0], Position[6][1])
         Delete()
@@ -1928,9 +1919,9 @@ class TopFrame(wx.Frame):
         #     Delete()
         # a=wx.FindWindowById(1)
         # a.Show(True)
-        global price_view, price_count ,yanzhengma_count ,yanzhengma_view
+        global price_view, price_count, yanzhengma_count, yanzhengma_view
         global yanzhengma_hash
-        yanzhengma_hash={}  #清空验证码库
+        yanzhengma_hash = {}  # 清空验证码库
 
         Click(Position[4][0], Position[4][1])
         Click(Position[0][0], Position[0][1])
@@ -1939,8 +1930,7 @@ class TopFrame(wx.Frame):
         price_view = True
         price_count = 0
         yanzhengma_count = 0
-        yanzhengma_view =  True
-
+        yanzhengma_view = True
 
     @staticmethod
     def selfTijiao():
@@ -1955,8 +1945,6 @@ class TopFrame(wx.Frame):
         #####
         if not web_on and time_on:  # 网页关就把时间关掉
             self.operationframe.Closetime()
-
-
 
         # if web_on:
         #     try:
@@ -1975,24 +1963,24 @@ class TopFrame(wx.Frame):
         # else:
         #     self.Show(True)
 
-
-            ##############表示成功输入验证码
+        ##############表示成功输入验证码
 
     @staticmethod
     def tijiao_ok():
-        global tijiao_OK, refresh_need, tijiao_on ,yanzhengma_close,yanzhengma_view
+        global tijiao_OK, refresh_need, tijiao_on, yanzhengma_close, yanzhengma_view
         if e_on and tijiao_on:
+            print("tijiao_ok")
             tijiao_OK = True
-            refreshthread.pause()
-        if e_on:
+            # refreshthread.pause()
             yanzhengma_view = False
             yanzhengma_close = True
+
     @staticmethod
     def tijiao_ok2():
-        global tijiao_OK, refresh_need ,yanzhengma_close ,yanzhengma_view
+        global tijiao_OK, refresh_need, yanzhengma_close, yanzhengma_view
         if enter_on and tijiao_on:
             tijiao_OK = True
-            refreshthread.pause()
+            # refreshthread.pause()
         if enter_on:
             yanzhengma_close = True
             yanzhengma_view = False
@@ -2045,7 +2033,7 @@ class TopFrame(wx.Frame):
             VK_CODE = {'0': 0x30, '1': 0x31, '2': 0x32, '3': 0x33, '4': 0x34, '5': 0x35, '6': 0x36, '7': 0x37,
                        '8': 0x38,
                        '9': 0x39, 'a': 0x41, 'b': 0x42, 'c': 0x43, 'd': 0x44, 'e': 0x45, 'f': 0x46, 's': 0x53,
-                       'q': 0x51  ,'h':0x48}
+                       'q': 0x51, 'h': 0x48}
             user32 = ctypes.windll.user32
             HOTKEYS1 = {1: (VK_CODE['2'], win32con.MOD_ALT), 2: (VK_CODE['3'], win32con.MOD_ALT),
                         3: (VK_CODE['4'], win32con.MOD_ALT), 4: (VK_CODE['5'], win32con.MOD_ALT),
@@ -2053,7 +2041,7 @@ class TopFrame(wx.Frame):
                         }
             HOTKEYS2 = {7: (VK_CODE['s'], 0x4000), 8: (VK_CODE['f'], 0x4000), 9: (VK_CODE['d'], 0x4000),
                         10: (win32con.VK_SPACE, 0x4000), 11: (VK_CODE['e'], 0x4000), 12: (win32con.VK_RETURN, 0x4000),
-                        13: (VK_CODE['q'], 0x4000) ,14: (VK_CODE['h'], 0x4000)}
+                        13: (VK_CODE['q'], 0x4000), 14: (VK_CODE['h'], 0x4000)}
             # 注册快捷键
             for id, (vk, modifiers) in HOTKEYS1.items():
                 if not user32.RegisterHotKey(None, id, modifiers, vk):
@@ -2075,13 +2063,14 @@ class TopFrame(wx.Frame):
             VK_CODE = {'0': 0x30, '1': 0x31, '2': 0x32, '3': 0x33, '4': 0x34, '5': 0x35, '6': 0x36, '7': 0x37,
                        '8': 0x38,
                        '9': 0x39, 'a': 0x41, 'b': 0x42, 'c': 0x43, 'd': 0x44, 'e': 0x45, 'f': 0x46, 's': 0x53,
-                       'q': 0x51  ,'h':0x48}
+                       'q': 0x51, 'h': 0x48}
             HOTKEY_ACTIONS = {
                 1: TopFrame.handle_Jiajia, 2: TopFrame.handle_Chujia, 3: TopFrame.handle_Tijiao,
                 4: TopFrame.handle_Shuaxin, 5: TopFrame.handle_Confirm,
                 6: TopFrame.handle_Yanzhengma, 7: TopFrame.OnClick_Shuaxin, 8: TopFrame.selfTijiao,
-                9:(lambda :TopFrame.selfChujia()), 10: TopFrame.OnClick_Backspace, 11: TopFrame.tijiao_ok, 12: TopFrame.tijiao_ok2,
-                13: TopFrame.query    ,14:TopFrame.OnH_chujia}   #TopFrame.query
+                9: (lambda: TopFrame.selfChujia()), 10: TopFrame.OnClick_Backspace, 11: TopFrame.tijiao_ok,
+                12: TopFrame.tijiao_ok2,
+                13: TopFrame.query, 14: TopFrame.OnH_chujia}  # TopFrame.query
             user32 = ctypes.windll.user32
             msg = wintypes.MSG()
             byref = ctypes.byref
@@ -2109,7 +2098,7 @@ class TopFrame(wx.Frame):
             VK_CODE = {'0': 0x30, '1': 0x31, '2': 0x32, '3': 0x33, '4': 0x34, '5': 0x35, '6': 0x36, '7': 0x37,
                        '8': 0x38,
                        '9': 0x39, 'a': 0x41, 'b': 0x42, 'c': 0x43, 'd': 0x44, 'e': 0x45, 'f': 0x46, 's': 0x53,
-                       'q': 0x51 ,'h': 0x48}
+                       'q': 0x51, 'h': 0x48}
             HOTKEYS1 = {1: (VK_CODE['2'], win32con.MOD_ALT), 2: (VK_CODE['3'], win32con.MOD_ALT),
                         3: (VK_CODE['4'], win32con.MOD_ALT), 4: (VK_CODE['5'], win32con.MOD_ALT),
                         5: (VK_CODE['6'], win32con.MOD_ALT), 6: (VK_CODE['7'], win32con.MOD_ALT),
@@ -2117,7 +2106,7 @@ class TopFrame(wx.Frame):
             user32 = ctypes.windll.user32
             HOTKEYS2 = {7: (VK_CODE['s'], 0x4000), 8: (VK_CODE['f'], 0x4000), 9: (VK_CODE['d'], 0x4000),
                         10: (win32con.VK_SPACE, 0x4000), 11: (VK_CODE['e'], 0x4000), 12: (win32con.VK_RETURN, 0x4000),
-                        13: (VK_CODE['q'], 0x4000),14:(VK_CODE['h'],0x4000)}
+                        13: (VK_CODE['q'], 0x4000), 14: (VK_CODE['h'], 0x4000)}
             for id in HOTKEYS1.keys():
                 user32.UnregisterHotKey(None, id)
             for id in HOTKEYS2.keys():
@@ -2126,10 +2115,9 @@ class TopFrame(wx.Frame):
         else:
             pass
 
-
-# ------------------------------------------------------------------
-#辅助功能区
-####设置背景图片
+    # ------------------------------------------------------------------
+    # 辅助功能区
+    ####设置背景图片
     def OnEraseBackground(self, evt):
         """
         设置背景的方法
@@ -2150,10 +2138,7 @@ class TopFrame(wx.Frame):
         # 4: handle_Shuaxin,
         # 5: handle_Confirm,
 
-
-
-
-##########主程序关闭选项#############
+    ##########主程序关闭选项#############
     def OnClose(self, event):
         ret = wx.MessageBox('真的要退出第一枪吗?', '确认', wx.OK | wx.CANCEL)
         if ret == wx.OK:
@@ -2166,22 +2151,19 @@ class TopFrame(wx.Frame):
             self.Show(False)
 
             try:
-                self.Close_time1(event)    #关闭可能未关闭的窗口
+                self.Close_time1(event)  # 关闭可能未关闭的窗口
                 self.Close_time2(event)
             except:
                 pass
 
-            Logout()             #登出
+            Logout()  # 登出
             wx.GetApp().ExitMainLoop()
             event.Skip()
             sys.exit(None)
 
-
-
-
-#------------------------------------------------------------------
-#放弃的功能
-######## 开启辅助
+    # ------------------------------------------------------------------
+    # 放弃的功能
+    ######## 开启辅助
     def OnOpenAssist(self):
         self.Open()
         global do
@@ -2190,6 +2172,7 @@ class TopFrame(wx.Frame):
         else:
             wx.MessageBox('启用失败', '开启辅助', wx.OK | wx.ICON_ERROR)
         self.Listen()
+
     # 关闭辅助
     @classmethod
     def OnCloseAssist(cls):
@@ -2199,10 +2182,11 @@ class TopFrame(wx.Frame):
         #     wx.MessageBox('关闭成功', '关闭辅助', wx.OK | wx.ICON_INFORMATION)
         # else:
         #     wx.MessageBox('关闭失败', '关闭辅助', wx.OK | wx.ICON_ERROR)
+
     # 显示位置
 
-# ------------------------------------------------------------------
-# 放弃的功能
+    # ------------------------------------------------------------------
+    # 放弃的功能
     def OnViewPos(self, event):
         wx.CallAfter(pub.sendMessage, "refresh")
         self.MovePos(event)
@@ -2222,21 +2206,14 @@ class TopFrame(wx.Frame):
         self.Save_log()
         wx.MessageBox('保存成功', '定位保存', wx.OK | wx.ICON_INFORMATION)
 
-
-
-
-    #移动窗口
-    def MovePos(self,event):
+    # 移动窗口
+    def MovePos(self, event):
         global Positon
         for i in range(5):
-            posx,posy = Position[i]
-            self.posframe[i].Move(posx-10,posy-5)
+            posx, posy = Position[i]
+            self.posframe[i].Move(posx - 10, posy - 5)
 
-
-
-#------------------------------------------------------------------------------
-
-
+    # ------------------------------------------------------------------------------
 
     # @classmethod
     # def OnClick_Tijiao(cls):
@@ -2295,126 +2272,112 @@ class TopFrame(wx.Frame):
     #     price_view = True
     #     price_count = 0
 
-
-
-
-
-
-# #设定间隔辅助
-#     def Price_count(self,event):
-#         global price_count
-#         price_count+=1
-
-
+    # #设定间隔辅助
+    #     def Price_count(self,event):
+    #         global price_count
+    #         price_count+=1
 
     # ----------------------------------------------------------------------
 
-
     def Save_log(self):
-        output=open('pos.log','wb')
-        pickle.dump(Position,output)
+        output = open('pos.log', 'wb')
+        pickle.dump(Position, output)
         output.close()
 
     # 截图处理，此次出价
 
+    # #############修改时间###########
+    #     def Add_time(self, event):
+    #         global a_time,moni_second,moni_on,guopai_on
+    #         if moni_on:
+    #             moni_second+=0.1
+    #         else:
+    #             a_time += 0.1
+    #
+    #     def Minus_time(self, event):
+    #         global a_time,moni_second,moni_on,guopai_on
+    #         if moni_on:
+    #             moni_second-=0.1
+    #         else:
+    #             a_time -= 0.1
+    #
+    #     def Add_second(self, event):
+    #         global a_time,moni_second,moni_on,guopai_on
+    #         if moni_on:
+    #             moni_second += 1
+    #             if moni_second>=60:
+    #                 moni_second=0
+    #         else:
+    #             a_time+=1
+    #
+    #     def Minus_second(self, event):
+    #         global a_time,moni_second,moni_on,guopai_on
+    #         if moni_on:
+    #             moni_second -= 1
+    #             if moni_second<=0:
+    #                 moni_second=60
+    #         else:
+    #             a_time-=1
+    #
+    # #国拍时间控制
+    #     def Open_time1(self, event):
+    #         self.timeframe1.Show(True)
+    #         global view_time
+    #         view_time=True
+    #     def Close_time1(self, event):
+    #         self.timeframe1.Show(False)
+    #         global view_time
+    #         view_time=False
+    # #模拟时间控制
+    #     def Open_time2(self, event):
+    #         self.timeframe2.Show(True)
+    #         global view_time
+    #         view_time=True
+    #     def Close_time2(self, event):
+    #         self.timeframe2.Show(False)
+    #         global view_time
+    #         view_time=False
 
+    # #############时间换算###############
+    # #转时间戳
+    #     def changetime(self,a):   #换算成时间戳
+    #         final_time=time.mktime(time.strptime(a,'%Y-%m-%d %H:%M:%S'))
+    #         return final_time            #以时间戳输出
+    #
+    # #转字符串
+    #     def get_nowtime(self):
+    #         tem1 = time.time()
+    #         a = time.strftime('%Y-%m-%d', time.localtime(tem1))
+    #         return a               #输出时间格式字符串
+    # #转为最终时间戳，调用这个时间
+    #     def gettime(self,event,choice1,choice2):      #choice1:55,choice2:0.5
+    #         tem = self.get_nowtime()
+    #         b = tem + ' 11:29:' + str(choice1)
+    #         c=self.changetime(b)+float(choice2)
+    #         return c         #得到用户所确定的最终时间戳
 
-
-# #############修改时间###########
-#     def Add_time(self, event):
-#         global a_time,moni_second,moni_on,guopai_on
-#         if moni_on:
-#             moni_second+=0.1
-#         else:
-#             a_time += 0.1
-#
-#     def Minus_time(self, event):
-#         global a_time,moni_second,moni_on,guopai_on
-#         if moni_on:
-#             moni_second-=0.1
-#         else:
-#             a_time -= 0.1
-#
-#     def Add_second(self, event):
-#         global a_time,moni_second,moni_on,guopai_on
-#         if moni_on:
-#             moni_second += 1
-#             if moni_second>=60:
-#                 moni_second=0
-#         else:
-#             a_time+=1
-#
-#     def Minus_second(self, event):
-#         global a_time,moni_second,moni_on,guopai_on
-#         if moni_on:
-#             moni_second -= 1
-#             if moni_second<=0:
-#                 moni_second=60
-#         else:
-#             a_time-=1
-#
-# #国拍时间控制
-#     def Open_time1(self, event):
-#         self.timeframe1.Show(True)
-#         global view_time
-#         view_time=True
-#     def Close_time1(self, event):
-#         self.timeframe1.Show(False)
-#         global view_time
-#         view_time=False
-# #模拟时间控制
-#     def Open_time2(self, event):
-#         self.timeframe2.Show(True)
-#         global view_time
-#         view_time=True
-#     def Close_time2(self, event):
-#         self.timeframe2.Show(False)
-#         global view_time
-#         view_time=False
-
-# #############时间换算###############
-# #转时间戳
-#     def changetime(self,a):   #换算成时间戳
-#         final_time=time.mktime(time.strptime(a,'%Y-%m-%d %H:%M:%S'))
-#         return final_time            #以时间戳输出
-#
-# #转字符串
-#     def get_nowtime(self):
-#         tem1 = time.time()
-#         a = time.strftime('%Y-%m-%d', time.localtime(tem1))
-#         return a               #输出时间格式字符串
-# #转为最终时间戳，调用这个时间
-#     def gettime(self,event,choice1,choice2):      #choice1:55,choice2:0.5
-#         tem = self.get_nowtime()
-#         b = tem + ' 11:29:' + str(choice1)
-#         c=self.changetime(b)+float(choice2)
-#         return c         #得到用户所确定的最终时间戳
-
-
-
-#################登录确认#############
-    def Confirmlogin(self,event):
+    #################登录确认#############
+    def Confirmlogin(self, event):
         Keeplogin()
 
-
-####设定策略
-#修改时间
-    def Choose_time1(self,event):
+    ####设定策略
+    # 修改时间
+    def Choose_time1(self, event):
         self.timelabel.SetLabel("已设定截止时间" + self.time_choice1.GetString
-        (self.time_choice1.GetSelection())+'.'+
-        str(self.time_choice2.GetSelection())+ " 秒")
-        global strategy1,strategy2
-        strategy1=self.time_choice1.GetString(self.time_choice1.GetSelection())
-        strategy2=self.time_choice2.GetString(self.time_choice2.GetSelection())
+        (self.time_choice1.GetSelection()) + '.' +
+                                str(self.time_choice2.GetSelection()) + " 秒")
+        global strategy1, strategy2
+        strategy1 = self.time_choice1.GetString(self.time_choice1.GetSelection())
+        strategy2 = self.time_choice2.GetString(self.time_choice2.GetSelection())
 
-
-    def Choose_time2(self,event):
+    def Choose_time2(self, event):
         self.timelabel.SetLabel("已设定截止时间" + self.time_choice1.GetString
-        (self.time_choice1.GetSelection())+'.'+
-        str(self.time_choice2.GetSelection())+ " 秒")
-        global strategy1,strategy2
-        strategy1=self.time_choice1.GetString(self.time_choice1.GetSelection())
-        strategy2=self.time_choice2.GetString(self.time_choice2.GetSelection())
+        (self.time_choice1.GetSelection()) + '.' +
+                                str(self.time_choice2.GetSelection()) + " 秒")
+        global strategy1, strategy2
+        strategy1 = self.time_choice1.GetString(self.time_choice1.GetSelection())
+        strategy2 = self.time_choice2.GetString(self.time_choice2.GetSelection())
+
 
 # 开启自动出价
 #     def Strategy_select(self, event):
@@ -2444,32 +2407,32 @@ class TopFrame(wx.Frame):
 #             #     pass
 #             ######关闭自动出价进程
 
-    # def delayCheck(self,event):
-    #     global delay
-    #     checkBoxSelected = event.GetEventObject()
-    #     if checkBoxSelected.IsChecked():
-    #         delay=True
-    #     else:
-    #         delay=False
+# def delayCheck(self,event):
+#     global delay
+#     checkBoxSelected = event.GetEventObject()
+#     if checkBoxSelected.IsChecked():
+#         delay=True
+#     else:
+#         delay=False
 
 
 #####时间选择
-    # def OnTimeChoose(self, event):
-    #     state = event.GetEventObject().GetValue()
-    #     global moni_on
-    #     if state == True:
-    #         moni=False
-    #         event.GetEventObject().SetLabel("修改国拍时间")
-    #     else:
-    #         moni=True
-    #         event.GetEventObject().SetLabel("修改模拟时间")
+# def OnTimeChoose(self, event):
+#     state = event.GetEventObject().GetValue()
+#     global moni_on
+#     if state == True:
+#         moni=False
+#         event.GetEventObject().SetLabel("修改国拍时间")
+#     else:
+#         moni=True
+#         event.GetEventObject().SetLabel("修改模拟时间")
 
 
-    # -----------------------------------------------------------------------
+# -----------------------------------------------------------------------
 #################国拍时间显示##################
 class ClockWindow(wx.Panel):
     def __init__(self, parent):
-        wx.Window.__init__(self, parent,size=Timesize)
+        wx.Window.__init__(self, parent, size=Timesize)
         self.Bind(wx.EVT_PAINT, self.OnPaint)
         self.timer = wx.Timer(self)  # 创建定时器
         self.Bind(wx.EVT_TIMER, self.OnTimer, self.timer)  # 绑定一个定时器事件
@@ -2494,7 +2457,7 @@ class ClockWindow(wx.Panel):
         else:
             b_time = 0
         time_local = time.localtime(a_time)
-        st = time.strftime("%H:%M:%S", time_local)         #+ '.' + str(b_time)
+        st = time.strftime("%H:%M:%S", time_local)  # + '.' + str(b_time)
         # st="%s:%s:%s"%(b_time[0],b_time[1],b_time[2])
         w, h = self.GetClientSize()
         dc.SetBackground(wx.Brush(self.GetBackgroundColour()))
@@ -2512,7 +2475,7 @@ class ClockWindow(wx.Panel):
         self.Draw(dc)
 
 
-#国拍时间框显示
+# 国拍时间框显示
 class TimeFrame(wx.Frame):
     def __init__(self):
         wx.Frame.__init__(self, None, title="wx.Timer", size=Timesize, pos=Pos_timeframe,
@@ -2522,11 +2485,11 @@ class TimeFrame(wx.Frame):
         ClockWindow(self)
 
 
-#-----------------------------------------------------------------------
+# -----------------------------------------------------------------------
 #################模拟时间显示##################
 class MoniClockWindow(wx.Panel):
     def __init__(self, parent):
-        wx.Window.__init__(self, parent,size=Timesize)
+        wx.Window.__init__(self, parent, size=Timesize)
         self.Bind(wx.EVT_PAINT, self.OnPaint)
         self.timer = wx.Timer(self)  # 创建定时器
         self.Bind(wx.EVT_TIMER, self.OnTimer, self.timer)  # 绑定一个定时器事件
@@ -2534,7 +2497,7 @@ class MoniClockWindow(wx.Panel):
 
     def Draw(self, dc):  # 绘制当前时间
         global moni_second
-        st = "%s:%s:%s" %(11,29,moni_second)
+        st = "%s:%s:%s" % (11, 29, moni_second)
         w, h = self.GetClientSize()
         dc.SetBackground(wx.Brush(self.GetBackgroundColour()))
         dc.Clear()
@@ -2545,8 +2508,8 @@ class MoniClockWindow(wx.Panel):
     def Modify(self, dc):  # 更新
         global moni_second
 
-        moni_s=int(moni_second)   #整数化
-        st ="%s:%s:%s" %(11,29,moni_s)
+        moni_s = int(moni_second)  # 整数化
+        st = "%s:%s:%s" % (11, 29, moni_s)
         w, h = self.GetClientSize()
         dc.SetBackground(wx.Brush(self.GetBackgroundColour()))
         dc.Clear()
@@ -2563,24 +2526,23 @@ class MoniClockWindow(wx.Panel):
         self.Draw(dc)
 
 
-#国拍时间框显示
+# 国拍时间框显示
 class MoniTimeFrame(wx.Frame):
     def __init__(self):
-        wx.Frame.__init__(self, None, title="wx.Timer", size=(200,50), pos=Pos_timeframe,
+        wx.Frame.__init__(self, None, title="wx.Timer", size=(200, 50), pos=Pos_timeframe,
                           style=wx.FRAME_TOOL_WINDOW | wx.STAY_ON_TOP)
         # wx.Frame.__init__(self, None, -1,'Time',size=(400,160), pos=Pos_timeframe,
         #                   style=wx.FRAME_TOOL_WINDOW|wx.STAY_ON_TOP)
         MoniClockWindow(self)
 
 
-
 # ----------------------------------------------------------------------
 class PosFrame(wx.Frame):
-    def __init__(self,pos,pos_name):
-        x,y=pos
+    def __init__(self, pos, pos_name):
+        x, y = pos
         wx.Frame.__init__(self, None, -1, 'POS',
-                          pos=(x-20,y-10), size=(30, 20), style=wx.FRAME_TOOL_WINDOW )
-        panel = wx.Panel(self, -1,size=(30,20))
+                          pos=(x - 20, y - 10), size=(30, 20), style=wx.FRAME_TOOL_WINDOW)
+        panel = wx.Panel(self, -1, size=(30, 20))
         # 这是一个基本的静态文本
         font = wx.Font(10, wx.SWISS, wx.NORMAL, wx.NORMAL)
         t1 = []
@@ -2589,40 +2551,40 @@ class PosFrame(wx.Frame):
         for i in range(len(t1)):
             t1[i].SetFont(font)
 
+
 class PriceFrame(wx.Frame):
-    def __init__(self,image,size,pos):
-
-        wx.Frame.__init__(self, None, -1,'Price',size=size, pos=pos,
-                          style=wx.FRAME_TOOL_WINDOW|wx.STAY_ON_TOP)
-        self.panel=wx.Panel(self,size=size)
-        #image=wx.Image(path,wx.BITMAP_TYPE_PNG)
-        self.bmp=wx.StaticBitmap(self.panel,-1,wx.Bitmap(image))
-
-
-
+    def __init__(self, image, size, pos):
+        wx.Frame.__init__(self, None, -1, 'Price', size=size, pos=pos,
+                          style=wx.FRAME_TOOL_WINDOW | wx.STAY_ON_TOP)
+        self.panel = wx.Panel(self, size=size)
+        # image=wx.Image(path,wx.BITMAP_TYPE_PNG)
+        self.bmp = wx.StaticBitmap(self.panel, -1, wx.Bitmap(image))
 
 
 class YanzhengmaFrame(wx.Frame):
     def __init__(self):
         # print(Pos_yanzhengmaframe)
-        wx.Frame.__init__(self, None, 18,'Price',size=Yanzhengmasize, pos=Pos_yanzhengmaframe ,style=wx.FRAME_TOOL_WINDOW|wx.STAY_ON_TOP
+        wx.Frame.__init__(self, None, 18, 'Price', size=Yanzhengmasize, pos=Pos_yanzhengmaframe,
+                          style=wx.FRAME_TOOL_WINDOW | wx.STAY_ON_TOP
                           )
-        self.panel=wx.Panel(self,size=Yanzhengmasize)
-        #image=wx.Image(path,wx.BITMAP_TYPE_PNG)
-        self.bmp=wx.StaticBitmap(self.panel,-1)
+        self.panel = wx.Panel(self, size=Yanzhengmasize)
+        # image=wx.Image(path,wx.BITMAP_TYPE_PNG)
+        self.bmp = wx.StaticBitmap(self.panel, -1)
         # 更换图片显示
-    def ShowImage(self,bm):
+
+    def ShowImage(self, bm):
         self.bmp.SetBitmap(wx.Bitmap(bm))
 
-    def OnClose(self,event):
+    def OnClose(self, event):
         self.Close()
         event.Skip()
+
 
 class AdFrame(wx.Frame):
     def __init__(self):  ##########版本号
         wx.Frame.__init__(self, None, -1, "广告",
-                         pos=(0,250), size=(250, 200),style=wx.FRAME_TOOL_WINDOW|wx.STAY_ON_TOP)
-        panel = wx.Panel(self, -1,size=(250,200))
+                          pos=(0, 250), size=(250, 200), style=wx.FRAME_TOOL_WINDOW | wx.STAY_ON_TOP)
+        panel = wx.Panel(self, -1, size=(250, 200))
         # 这是一个基本的静态文本
         font = wx.Font(20, wx.SWISS, wx.NORMAL, wx.NORMAL)
         t1 = []
@@ -2637,28 +2599,29 @@ class AdFrame(wx.Frame):
         for i in range(len(t1)):
             t1[i].SetFont(font)
 
+
 class WebFrame(wx.Frame):
-    def __init__(self,px,py,ad,name):   #name:窗口显示名称
-        wx.Frame.__init__(self, None, 3, name, size=(websize[0], websize[1]), pos=(px, py),style=wx.SIMPLE_BORDER)
+    def __init__(self, px, py, ad, name):  # name:窗口显示名称
+        wx.Frame.__init__(self, None, 3, name, size=(websize[0], websize[1]), pos=(px, py), style=wx.SIMPLE_BORDER)
 
         # wx.Frame.__init__(self,None, -1,title="大师拍牌 QQ 178456661 - 3.663",size=(websize[0], websize[1]),\
         #  pos=(px, py),style=wx.DEFAULT_FRAME_STYLE|wx.STAY_ON_TOP&~(wx.RESIZE_BORDER))
-        #wx.DEFAULT_FRAME_STYLE^(wx.RESIZE_BORDER|wx.MAXIMIZE_BOX|wx.MINIMIZE_BOX|wx.CLOSE_BOX))
+        # wx.DEFAULT_FRAME_STYLE^(wx.RESIZE_BORDER|wx.MAXIMIZE_BOX|wx.MINIMIZE_BOX|wx.CLOSE_BOX))
         if ad:
-            self.adframe=AdFrame()
+            self.adframe = AdFrame()
             self.adframe.Show(True)
         self.Bind(wx.EVT_CLOSE, self.OnClose)
-        self.ad2=ad
-    #最低成交价
+        self.ad2 = ad
+        # 最低成交价
         # self.lowestframe = LowestpriceFrame()
         # self.lowestframe.Show(False)
 
-#广告   控制 界面
+        # 广告   控制 界面
 
         # self.control=ControlFrame()
 
         global test
-        #测试关掉
+        # 测试关掉
         # if not test:
         #     self.control.Show(True)
 
@@ -2667,122 +2630,123 @@ class WebFrame(wx.Frame):
         # panel.SetFocus()
         # panel.Bind(wx.EVT_KEY_DOWN, self.OnKeyDown)
 
+        # def OnKeyDown(self, event):
+        #     keycode = event.GetKeyCode()
+        #     if keycode == wx.WXK_F1:
+        #         x, y = pg.position()
+        #         print(x, y)
+        #     else:
+        #         event.Skip()
+        #     global num
+        #     sc = pg.screenshot(region=(377, 412, 41, 16))
+        #     global num
+        #     print("成功")
+        #     sc.save("%d.png" %num)
+        #     num+=1
+        #
+        #
+        # def Webpos(self):
+        #     return self.GetPosition()  #输出位置坐标
+        pub.subscribe(self.OnClose2, "close web")  # 触发关闭
 
-
-    # def OnKeyDown(self, event):
-    #     keycode = event.GetKeyCode()
-    #     if keycode == wx.WXK_F1:
-    #         x, y = pg.position()
-    #         print(x, y)
-    #     else:
-    #         event.Skip()
-    #     global num
-    #     sc = pg.screenshot(region=(377, 412, 41, 16))
-    #     global num
-    #     print("成功")
-    #     sc.save("%d.png" %num)
-    #     num+=1
-    #
-    #
-    # def Webpos(self):
-    #     return self.GetPosition()  #输出位置坐标
-        pub.subscribe(self.OnClose2, "close web")  #触发关闭
-    def OnClose(self,event):
-        global web_on,view_time,moni_on,guopai_on,strategy_repeat
+    def OnClose(self, event):
+        global web_on, view_time, moni_on, guopai_on, strategy_repeat
         # print("关闭web")
-        web_on=False
-        view_time=False
-        moni_on=False
-        guopai_on=False
+        web_on = False
+        view_time = False
+        moni_on = False
+        guopai_on = False
         TopFrame.Close()
-        file="sc_new.png"
-        #控制窗
+        file = "sc_new.png"
+        # 控制窗
         try:
             self.control.Destroy()
         except:
             pass
-        if  os.path.exists(file):
+        if os.path.exists(file):
             os.remove(file)
         self.Destroy()
         if self.ad2:
             self.adframe.Destroy()
-        event.Skip()   #绑在同一事件上的两个函数，如果 没有这个，就只执行后绑定的。
-
-
-
+        event.Skip()  # 绑在同一事件上的两个函数，如果 没有这个，就只执行后绑定的。
 
     def OnClose2(self):
-        global web_on,view_time,moni_on,guopai_on,strategy_repeat
-        web_on=False
-        view_time=False
-        moni_on=False
-        guopai_on=False
+        global web_on, view_time, moni_on, guopai_on, strategy_repeat
+        web_on = False
+        view_time = False
+        moni_on = False
+        guopai_on = False
         TopFrame.Close()
-        file="sc_new.png"
-        if  os.path.exists(file):
+        file = "sc_new.png"
+        if os.path.exists(file):
             os.remove(file)
         self.Destroy()
         if self.ad2:
             self.adframe.Destroy()
-#控制小窗
-class ControlFrame(wx.Frame):  #为webframe提供控制操作
-    def __init__(self):   #name:窗口显示名称
-        wx.Frame.__init__(self, None, 4, size=(330, 200), style=wx.NO_BORDER|wx.STAY_ON_TOP|wx.FRAME_NO_TASKBAR, \
-                          pos=(Px+40, Py+480) ,name="control")
-        self.panel=wx.Panel(self,-1,size=(330, 270))
+
+
+# 控制小窗
+class ControlFrame(wx.Frame):  # 为webframe提供控制操作
+    def __init__(self):  # name:窗口显示名称
+        wx.Frame.__init__(self, None, 4, size=(330, 200), style=wx.NO_BORDER | wx.STAY_ON_TOP | wx.FRAME_NO_TASKBAR, \
+                          pos=(Px + 40, Py + 480), name="control")
+        self.panel = wx.Panel(self, -1, size=(330, 270))
         # self.button1=wx.Button(self.panel,pos=(0,0),size=(50,25),label="关闭")
         # self.Bind(wx.EVT_BUTTON, self.o_closeweb, self.button1)
-        font1=wx.Font(25, wx.SWISS, wx.NORMAL, wx.NORMAL)
-        font2=wx.Font(15, wx.SWISS, wx.NORMAL, wx.NORMAL)
-        self.adtext=wx.StaticText(self.panel,label=u"小鲜肉代拍",pos=(90,20))
+        font1 = wx.Font(25, wx.SWISS, wx.NORMAL, wx.NORMAL)
+        font2 = wx.Font(15, wx.SWISS, wx.NORMAL, wx.NORMAL)
+        self.adtext = wx.StaticText(self.panel, label=u"小鲜肉代拍", pos=(90, 20))
         self.adtext.SetFont(font1)
-        self.pricetext=wx.StaticText(self.panel,label=u"最低成交价:",pos=(50,90))
+        self.pricetext = wx.StaticText(self.panel, label=u"最低成交价:", pos=(50, 90))
         self.pricetext.SetFont(font2)
-        self.price=wx.StaticText(self.panel,pos=(190,90))
+        self.price = wx.StaticText(self.panel, pos=(190, 90))
         self.price.SetFont(font2)
-        self.timetext = wx.StaticText(self.panel, label=u"当前时间:",pos=(50,130))
+        self.timetext = wx.StaticText(self.panel, label=u"当前时间:", pos=(50, 130))
         self.timetext.SetFont(font2)
-        self.time=wx.StaticText(self.panel,pos=(190,130))
+        self.time = wx.StaticText(self.panel, pos=(190, 130))
         self.time.SetFont(font2)
 
-        self.netstattext=wx.StaticText(self.panel,pos=(80,170),label=u"网速")
+        self.netstattext = wx.StaticText(self.panel, pos=(80, 170), label=u"网速")
         self.netstattext.SetFont(font2)
-        self.netstat=wx.StaticText(self.panel,pos=(190,170))
+        self.netstat = wx.StaticText(self.panel, pos=(190, 170))
 
         # dc.SetFont(wx.Font(30, wx.SWISS, wx.NORMAL, wx.NORMAL))
-        #定时器
-        self.timetimer1=wx.Timer(self)
-        self.Bind(wx.EVT_TIMER,self.Timego,self.timetimer1)
+        # 定时器
+        self.timetimer1 = wx.Timer(self)
+        self.Bind(wx.EVT_TIMER, self.Timego, self.timetimer1)
         self.timetimer1.Start(100)
-    def o_closeweb(self,event):
+
+    def o_closeweb(self, event):
         wx.CallAfter(pub.sendMessage, "close web")
         self.Destroy()
         event.Skip()
 
-    def Timego(self,event):
-        global lowest_price,moni_second,a_time
-        self.price.SetLabel("%s"%lowest_price)
+    def Timego(self, event):
+        global lowest_price, moni_second, a_time
+        self.price.SetLabel("%s" % lowest_price)
         if moni_on:
-            self.time.SetLabel("11:29:%s"%int(moni_second))
+            self.time.SetLabel("11:29:%s" % int(moni_second))
         else:
-            timestr1=time.localtime(a_time)
-            timestr2=time.strftime("%H:%M:%S",timestr1)
+            timestr1 = time.localtime(a_time)
+            timestr2 = time.strftime("%H:%M:%S", timestr1)
             self.time.SetLabel(timestr2)
         global pinger
-        pingnow=pinger.ping()
+        pingnow = pinger.ping()
         if pingnow == "timeout":
-            self.netstat.SetLabel("%s"%pingnow)
+            self.netstat.SetLabel("%s" % pingnow)
         else:
             self.netstat.SetLabel("%sms" % pingnow)
+
+
 ##################
-#功能窗口#
+# 功能窗口#
 class OperationFrame(wx.Frame):
     def __init__(self):  # name:窗口显示名称
-        wx.Frame.__init__(self, None, 2,title="小鲜肉代拍", pos=(Px+902,Py),size=(300, 425),\
-                          style=wx.FRAME_NO_TASKBAR|wx.CAPTION|wx.CLOSE_BOX)  # wx.FRAME_TOOL_WINDOW|   |wx.STAY_ON_TOP
+        wx.Frame.__init__(self, None, 2, title="小鲜肉代拍", pos=(Px + 902, Py), size=(300, 425), \
+                          style=wx.FRAME_NO_TASKBAR | wx.CAPTION | wx.CLOSE_BOX)  # wx.FRAME_TOOL_WINDOW|   |wx.STAY_ON_TOP
 
         self.Bind(wx.EVT_CLOSE, self.OnClose)
-        #设置图标
+        # 设置图标
         self.icon = wx.Icon(mainicon, wx.BITMAP_TYPE_ICO)
         self.SetIcon(self.icon)
 
@@ -2792,95 +2756,90 @@ class OperationFrame(wx.Frame):
         one_real_time2 = self.gettime(one_time2)
         second_real_time1 = self.gettime(second_time1)
         second_real_time2 = self.gettime(second_time2)
-        #显示价格
-        self.timer1=wx.Timer(self)
-        self.Bind(wx.EVT_TIMER, self.Price_view, self.timer1)#绑定一个定时器事件，主判断
-        self.timer1.Start(50)  #设定时间间隔
-        #设定间隔
-        self.timer2=wx.Timer(self)
-        self.Bind(wx.EVT_TIMER, self.Price_count, self.timer2)#
-        self.timer2.Start(100)  #设定时间间隔
+        # 显示价格
+        self.timer1 = wx.Timer(self)
+        self.Bind(wx.EVT_TIMER, self.Price_view, self.timer1)  # 绑定一个定时器事件，主判断
+        self.timer1.Start(50)  # 设定时间间隔
+        # 设定间隔
+        self.timer2 = wx.Timer(self)
+        self.Bind(wx.EVT_TIMER, self.Price_count, self.timer2)  #
+        self.timer2.Start(100)  # 设定时间间隔
 
-
-        #显示最低成交价
+        # 显示最低成交价
         self.lowestframe = LowestpriceFrame()
         self.lowestframe.Show(False)
 
-#############################
+        #############################
         ####布局
         panel = wx.Panel(self, -1, size=(300, 380))
         stractagy = wx.StaticBox(panel, -1, u'选择策略:')
         self.stractagySizer = wx.StaticBoxSizer(stractagy, wx.VERTICAL)
-        stractagy_label = wx.StaticText(panel, label=u"设定拍牌策略",size=(100,50))
+        stractagy_label = wx.StaticText(panel, label=u"设定拍牌策略", size=(100, 50))
         hbox1 = wx.BoxSizer(wx.HORIZONTAL)
-        hbox1.Add(stractagy_label )
-
-
+        hbox1.Add(stractagy_label)
 
         # 选择策略
-        stractagy_choices = [u'单枪策略', u'双枪策略',u'手动操作（热键辅助）' ]
-        self.select_stractagy = wx.Choice(panel, -1, choices=stractagy_choices,size=(100,50))
+        stractagy_choices = [u'单枪策略', u'双枪策略', u'手动操作（热键辅助）']
+        self.select_stractagy = wx.Choice(panel, -1, choices=stractagy_choices, size=(100, 50))
         hbox1.Add(self.select_stractagy)
         self.select_stractagy.SetSelection(0)
-        #时间显示
-        self.timeview = wx.CheckBox(panel, -1, label=u'显示时间')  #开启时间显示
-        hbox2=wx.BoxSizer(wx.HORIZONTAL)
+        # 时间显示
+        self.timeview = wx.CheckBox(panel, -1, label=u'显示时间')  # 开启时间显示
+        hbox2 = wx.BoxSizer(wx.HORIZONTAL)
         hbox2.Add(self.timeview)
 
-
-        self.button1 = wx.Button(panel, label='+1s',size=(35,25))
+        self.button1 = wx.Button(panel, label='+1s', size=(35, 25))
         self.Bind(wx.EVT_BUTTON, self.Add_second, self.button1)
-        self.button2 = wx.Button(panel, label='-1s',size=(35,25))
+        self.button2 = wx.Button(panel, label='-1s', size=(35, 25))
         self.Bind(wx.EVT_BUTTON, self.Minus_second, self.button2)
-        self.button3 = wx.Button(panel, label='+0.1s',size=(35,25))
+        self.button3 = wx.Button(panel, label='+0.1s', size=(35, 25))
         self.Bind(wx.EVT_BUTTON, self.Add_time, self.button3)
-        self.button4 = wx.Button(panel, label='-0.1s',size=(35,25))
+        self.button4 = wx.Button(panel, label='-0.1s', size=(35, 25))
         self.Bind(wx.EVT_BUTTON, self.Minus_time, self.button4)
 
         hbox2.Add(self.button1)
         hbox2.Add(self.button2)
         hbox2.Add(self.button3)
         hbox2.Add(self.button4)
-        #竖直SIZER
-        vb1=wx.BoxSizer(wx.VERTICAL)
+        # 竖直SIZER
+        vb1 = wx.BoxSizer(wx.VERTICAL)
         vb1.Add(hbox1)
         vb1.Add(hbox2)
 
-        #设置确认方式
-        confirm_choice=["E键","回车"]
-        self.confirm_choice=wx.Choice(panel,-1,choices=confirm_choice)
+        # 设置确认方式
+        confirm_choice = ["E键", "回车"]
+        self.confirm_choice = wx.Choice(panel, -1, choices=confirm_choice)
         self.confirm_choice.SetSelection(0)
-        self.confirm_label=wx.StaticText(panel, label=u"确认提交方式     ")
+        self.confirm_label = wx.StaticText(panel, label=u"确认提交方式     ")
         hbox3 = wx.BoxSizer(wx.HORIZONTAL)
-        hbox3.Add(self.confirm_label,flag=wx.TOP,  border=4)
+        hbox3.Add(self.confirm_label, flag=wx.TOP, border=4)
         hbox3.Add(self.confirm_choice)
         vb1.Add(hbox3)
 
-        #策略保存与恢复
-        self.strategy_save=wx.Button(panel,label="保存策略",size=(60,35))
-        self.strategy_load=wx.Button(panel,label="载入策略",size=(60,35))
-        self.save_info=wx.Button(panel,label="用户信息",size=(60,35))
-        hbox4= wx.BoxSizer(wx.HORIZONTAL)
+        # 策略保存与恢复
+        self.strategy_save = wx.Button(panel, label="保存策略", size=(60, 35))
+        self.strategy_load = wx.Button(panel, label="载入策略", size=(60, 35))
+        self.save_info = wx.Button(panel, label="用户信息", size=(60, 35))
+        hbox4 = wx.BoxSizer(wx.HORIZONTAL)
         hbox4.Add(self.strategy_save)
         hbox4.Add(self.strategy_load)
         hbox4.Add(self.save_info)
         vb1.Add(hbox4)
 
-
         # 网格需放置于静态框中
         oneshot = wx.StaticBox(panel, -1, u'单枪策略:')
         self.oneshotSizer = wx.StaticBoxSizer(oneshot, wx.VERTICAL)
         gridsizer1 = wx.GridBagSizer(4, 4)
-        self.jiajia_time = wx.SpinCtrlDouble(panel, -1, "", size=(68, 25))   #,style=wx.SP_WRAP最大值向上变最小值
+        self.jiajia_time = wx.SpinCtrlDouble(panel, -1, "", size=(68, 25))  # ,style=wx.SP_WRAP最大值向上变最小值
         self.jiajia_time.SetRange(40, 55)
         self.jiajia_time.SetValue(48)
         self.jiajia_time.SetIncrement(0.1)
 
         gridsizer1.Add(self.jiajia_time, pos=(0, 0))
         miao_label = wx.StaticText(panel, label=u"秒")
-        gridsizer1.Add(miao_label, pos=(0, 1), flag=wx.TOP|wx.ALIGN_LEFT,  border=4)
-        jiahao_label = wx.StaticText(panel, label=u"加价",style=wx.ALIGN_CENTER,size=(25,25))
-        gridsizer1.Add(jiahao_label, pos=(0, 2), flag=wx.TOP,  border=4)
+        gridsizer1.Add(miao_label, pos=(0, 1), flag=wx.TOP | wx.ALIGN_LEFT, border=4)
+        jiahao_label = wx.StaticText(panel, label=u"加价", style=wx.ALIGN_CENTER, size=(25, 25))
+        gridsizer1.Add(jiahao_label, pos=(0, 2), flag=wx.TOP, border=4)
         self.jiajia_price = wx.SpinCtrlDouble(panel, -1, "", size=(68, 25))
         self.jiajia_price.SetRange(300, 1500)
         self.jiajia_price.SetValue(700)
@@ -2889,137 +2848,135 @@ class OperationFrame(wx.Frame):
 
         # 选择提交方式,第二排
         tijiao_choices = [u"提前100", u"提前200", u"踩点"]
-        self.select_tijiao = wx.Choice(panel, -1, choices=tijiao_choices,size=(68, 25))
+        self.select_tijiao = wx.Choice(panel, -1, choices=tijiao_choices, size=(68, 25))
         self.select_tijiao.SetSelection(0)
         gridsizer1.Add(self.select_tijiao, pos=(1, 0))
         yanchi_label = wx.StaticText(panel, label=u"出价提交延迟")
-        gridsizer1.Add(yanchi_label, pos=(1, 1), flag=wx.TOP,  border=4)
-        self.yanchi_time = wx.SpinCtrlDouble(panel, -1, "",size=(68, 25))
+        gridsizer1.Add(yanchi_label, pos=(1, 1), flag=wx.TOP, border=4)
+        self.yanchi_time = wx.SpinCtrlDouble(panel, -1, "", size=(68, 25))
         self.yanchi_time.SetRange(0.0, 1.0)
         self.yanchi_time.SetValue(0.5)
         self.yanchi_time.SetIncrement(0.1)
         gridsizer1.Add(self.yanchi_time, pos=(1, 3))
         miao2_label = wx.StaticText(panel, label=u"秒")
-        gridsizer1.Add(miao2_label, pos=(1, 4), flag=wx.TOP,  border=4)
+        gridsizer1.Add(miao2_label, pos=(1, 4), flag=wx.TOP, border=4)
 
         # 选择提交方式,第三排
         tijiao_label = wx.StaticText(panel, label=u"强制提交时间")
-        gridsizer1.Add(tijiao_label, pos=(2, 0), flag=wx.TOP,  border=4)
-        self.tijiao_time = wx.SpinCtrlDouble(panel, -1, "",size=(68, 25))
+        gridsizer1.Add(tijiao_label, pos=(2, 0), flag=wx.TOP, border=4)
+        self.tijiao_time = wx.SpinCtrlDouble(panel, -1, "", size=(68, 25))
         self.tijiao_time.SetRange(40.0, 57.0)
         self.tijiao_time.SetValue(55.0)
         self.tijiao_time.SetIncrement(0.1)
         gridsizer1.Add(self.tijiao_time, pos=(2, 1))
         miao3_label = wx.StaticText(panel, label=u"秒")
-        gridsizer1.Add(miao3_label,  pos=(2, 2), flag=wx.TOP,  border=4)
+        gridsizer1.Add(miao3_label, pos=(2, 2), flag=wx.TOP, border=4)
         # 网格需放置于静态框中
-        self.oneshotSizer.Add(gridsizer1, 0,flag=wx.ALL,border=5)
+        self.oneshotSizer.Add(gridsizer1, 0, flag=wx.ALL, border=5)
 
         # 第二枪
         # 选择加价时间,第一排
         secondshot = wx.StaticBox(panel, -1, u'双枪策略:')
         self.secondshotSizer = wx.StaticBoxSizer(secondshot, wx.VERTICAL)
         gridsizer2 = wx.GridBagSizer(4, 4)
-        self.jiajia_time2 = wx.SpinCtrlDouble(panel, -1, "",size=(68, 25))
+        self.jiajia_time2 = wx.SpinCtrlDouble(panel, -1, "", size=(68, 25))
         self.jiajia_time2.SetRange(40, 55)
         self.jiajia_time2.SetValue(48)
         self.jiajia_time2.SetIncrement(0.1)
-        gridsizer2.Add(self.jiajia_time2, pos=(0, 0) )
+        gridsizer2.Add(self.jiajia_time2, pos=(0, 0))
         miao_label2 = wx.StaticText(panel, label=u"秒")
-        gridsizer2.Add(miao_label2,  pos=(0, 1) ,flag=wx.TOP|wx.ALIGN_LEFT,  border=4)
-        jiahao_label2 = wx.StaticText(panel, label=u"加价",size=(25,25),style=wx.ALIGN_CENTER)
-        gridsizer2.Add(jiahao_label2,  pos=(0, 2) ,flag=wx.TOP,  border=4)
-        self.jiajia_price2 = wx.SpinCtrlDouble(panel, -1, "",size=(68, 25))
+        gridsizer2.Add(miao_label2, pos=(0, 1), flag=wx.TOP | wx.ALIGN_LEFT, border=4)
+        jiahao_label2 = wx.StaticText(panel, label=u"加价", size=(25, 25), style=wx.ALIGN_CENTER)
+        gridsizer2.Add(jiahao_label2, pos=(0, 2), flag=wx.TOP, border=4)
+        self.jiajia_price2 = wx.SpinCtrlDouble(panel, -1, "", size=(68, 25))
         self.jiajia_price2.SetRange(300, 1500)
         self.jiajia_price2.SetValue(600)
         self.jiajia_price2.SetIncrement(100)
-        gridsizer2.Add(self.jiajia_price2, pos=(0, 3) )
+        gridsizer2.Add(self.jiajia_price2, pos=(0, 3))
         # 选择提交方式,第二排
         tijiao_choices2 = [u"提前100", u"提前200", u"踩点"]
-        self.select_tijiao2 = wx.Choice(panel, -1, choices=tijiao_choices2,size=(68, 25))
+        self.select_tijiao2 = wx.Choice(panel, -1, choices=tijiao_choices2, size=(68, 25))
         self.select_tijiao2.SetSelection(0)
-        gridsizer2.Add(self.select_tijiao2, pos=(1, 0) )
+        gridsizer2.Add(self.select_tijiao2, pos=(1, 0))
         yanchi_label2 = wx.StaticText(panel, label=u"出价提交延迟")
-        gridsizer2.Add(yanchi_label2, pos=(1, 1) ,flag=wx.TOP,  border=4)
-        self.yanchi_time2 = wx.SpinCtrlDouble(panel, -1, "",size=(68, 25))
+        gridsizer2.Add(yanchi_label2, pos=(1, 1), flag=wx.TOP, border=4)
+        self.yanchi_time2 = wx.SpinCtrlDouble(panel, -1, "", size=(68, 25))
         self.yanchi_time2.SetRange(0.0, 1.0)
         self.yanchi_time2.SetValue(0.5)
         self.yanchi_time2.SetIncrement(0.1)
-        gridsizer2.Add(self.yanchi_time2,  pos=(1, 3) )
+        gridsizer2.Add(self.yanchi_time2, pos=(1, 3))
         miao2_label2 = wx.StaticText(panel, label=u"秒")
-        gridsizer2.Add(miao2_label2,  pos=(1, 4) ,flag=wx.TOP,  border=4)
+        gridsizer2.Add(miao2_label2, pos=(1, 4), flag=wx.TOP, border=4)
 
         # 选择提交方式,第三排
         tijiao_label2 = wx.StaticText(panel, label=u"强制提交时间")
-        gridsizer2.Add(tijiao_label2, pos=(2, 0) ,flag=wx.TOP,  border=4)
-        self.tijiao_time2 = wx.SpinCtrlDouble(panel, -1, "",size=(68, 25))
+        gridsizer2.Add(tijiao_label2, pos=(2, 0), flag=wx.TOP, border=4)
+        self.tijiao_time2 = wx.SpinCtrlDouble(panel, -1, "", size=(68, 25))
         self.tijiao_time2.SetRange(53.0, 57.0)
         self.tijiao_time2.SetValue(55.0)
         self.tijiao_time2.SetIncrement(0.1)
-        gridsizer2.Add(self.tijiao_time2, pos=(2, 1) )
+        gridsizer2.Add(self.tijiao_time2, pos=(2, 1))
         miao3_label2 = wx.StaticText(panel, label=u"秒")
-        gridsizer2.Add(miao3_label2, pos=(2, 2) ,flag=wx.TOP,  border=4)
+        gridsizer2.Add(miao3_label2, pos=(2, 2), flag=wx.TOP, border=4)
         # 网格需放置于静态框中
-        self.secondshotSizer.Add(gridsizer2, 0,flag=wx.ALL,border=5)
-        self.stractagySizer.Add(vb1, 0 ,wx.ALL | wx.CENTER, 5)
-        self.vbox1 = wx.BoxSizer(wx.VERTICAL )
+        self.secondshotSizer.Add(gridsizer2, 0, flag=wx.ALL, border=5)
+        self.stractagySizer.Add(vb1, 0, wx.ALL | wx.CENTER, 5)
+        self.vbox1 = wx.BoxSizer(wx.VERTICAL)
 
-        #加横线
-        title=wx.StaticText(panel,-1,label=u"拍牌功能设置")
-        warning=wx.StaticText(panel,-1,label=u"10点半需要进行第一次出价")
+        # 加横线
+        title = wx.StaticText(panel, -1, label=u"拍牌功能设置")
+        warning = wx.StaticText(panel, -1, label=u"10点半需要进行第一次出价")
         warning.SetForegroundColour('red')
-        line=wx.StaticLine(panel, -1  )
-        self.vbox1.Add(title,0,wx.ALL | wx.LEFT, 10)
-        self.vbox1.Add(warning,0,wx.LEFT, 10)
-        self.vbox1.Add(line,flag=wx.EXPAND|wx.BOTTOM,border=10)
-        self.vbox1.Add(self.stractagySizer, 0 ,wx.ALL | wx.CENTER, 5)
-        self.vbox1.Add(self.oneshotSizer, 0,wx.ALL | wx.CENTER, 5)
+        line = wx.StaticLine(panel, -1)
+        self.vbox1.Add(title, 0, wx.ALL | wx.LEFT, 10)
+        self.vbox1.Add(warning, 0, wx.LEFT, 10)
+        self.vbox1.Add(line, flag=wx.EXPAND | wx.BOTTOM, border=10)
+        self.vbox1.Add(self.stractagySizer, 0, wx.ALL | wx.CENTER, 5)
+        self.vbox1.Add(self.oneshotSizer, 0, wx.ALL | wx.CENTER, 5)
         self.vbox1.Add(self.secondshotSizer, 0, wx.ALL | wx.CENTER, 5)
         panel.SetSizer(self.vbox1)
 
-#显示参数设置
-        self.secondsizer_Shown=False #二次出价默认关闭
-        self.oneshotsizer_Shown=True #单次出价默认开启
-        self.vbox1.Hide(self.secondshotSizer) #默认关闭二次出价
+        # 显示参数设置
+        self.secondsizer_Shown = False  # 二次出价默认关闭
+        self.oneshotsizer_Shown = True  # 单次出价默认开启
+        self.vbox1.Hide(self.secondshotSizer)  # 默认关闭二次出价
 
+        # 状态区，显示当前策略，最低成交价，时间，出价状态
 
+        # -------------待增加-------------------#
 
-# 状态区，显示当前策略，最低成交价，时间，出价状态
+        # 绑定操作
+        self.Bind(wx.EVT_CHECKBOX, self.Timeview, self.timeview)
+        self.Bind(wx.EVT_CHOICE, self.Confirmchoice, self.confirm_choice)
+        self.Bind(wx.EVT_BUTTON, self.Strategy_save, self.strategy_save)
+        self.Bind(wx.EVT_BUTTON, self.Strategy_load, self.strategy_load)
+        self.Bind(wx.EVT_BUTTON, self.Save_info, self.save_info)
 
-#-------------待增加-------------------#
-
-#绑定操作
-        self.Bind(wx.EVT_CHECKBOX, self.Timeview,self.timeview)
-        self.Bind(wx.EVT_CHOICE, self.Confirmchoice,self.confirm_choice)
-        self.Bind(wx.EVT_BUTTON,self.Strategy_save,self.strategy_save)
-        self.Bind(wx.EVT_BUTTON,self.Strategy_load,self.strategy_load)
-        self.Bind(wx.EVT_BUTTON,self.Save_info,self.save_info)
-
-        self.Bind(wx.EVT_CHOICE, self.Refresh_panel,self.select_stractagy)
+        self.Bind(wx.EVT_CHOICE, self.Refresh_panel, self.select_stractagy)
         # self.Bind(wx.EVT_SPINCTRLDOUBLE, self.Jiajia_time,self.jiajia_time)
-        self.Bind(wx.EVT_TEXT, self.Jiajia_time,self.jiajia_time)
+        self.Bind(wx.EVT_TEXT, self.Jiajia_time, self.jiajia_time)
         # self.Bind(wx.EVT_SPINCTRLDOUBLE , self.Jiajia_price,self.jiajia_price)
-        self.Bind(wx.EVT_TEXT , self.Jiajia_price,self.jiajia_price)
-        self.Bind(wx.EVT_CHOICE, self.Select_tijiao,self.select_tijiao)
+        self.Bind(wx.EVT_TEXT, self.Jiajia_price, self.jiajia_price)
+        self.Bind(wx.EVT_CHOICE, self.Select_tijiao, self.select_tijiao)
         # self.Bind(wx.EVT_SPINCTRLDOUBLE , self.Yanchi_time,self.yanchi_time)
-        self.Bind(wx.EVT_TEXT , self.Yanchi_time,self.yanchi_time)
+        self.Bind(wx.EVT_TEXT, self.Yanchi_time, self.yanchi_time)
         # self.Bind(wx.EVT_SPINCTRLDOUBLE , self.Tijiao_time,self.tijiao_time)
-        self.Bind(wx.EVT_TEXT , self.Tijiao_time,self.tijiao_time)
+        self.Bind(wx.EVT_TEXT, self.Tijiao_time, self.tijiao_time)
 
         # self.Bind(wx.EVT_SPINCTRLDOUBLE, self.Jiajia_time2,self.jiajia_time2)
-        self.Bind(wx.EVT_TEXT, self.Jiajia_time2,self.jiajia_time2)
+        self.Bind(wx.EVT_TEXT, self.Jiajia_time2, self.jiajia_time2)
         # self.Bind(wx.EVT_SPINCTRLDOUBLE , self.Jiajia_price2,self.jiajia_price2)
-        self.Bind(wx.EVT_TEXT , self.Jiajia_price2,self.jiajia_price2)
-        self.Bind(wx.EVT_CHOICE, self.Select_tijiao2,self.select_tijiao2)
+        self.Bind(wx.EVT_TEXT, self.Jiajia_price2, self.jiajia_price2)
+        self.Bind(wx.EVT_CHOICE, self.Select_tijiao2, self.select_tijiao2)
         # self.Bind(wx.EVT_SPINCTRLDOUBLE , self.Yanchi_time2,self.yanchi_time2)
-        self.Bind(wx.EVT_TEXT , self.Yanchi_time2,self.yanchi_time2)
+        self.Bind(wx.EVT_TEXT, self.Yanchi_time2, self.yanchi_time2)
         # self.Bind(wx.EVT_SPINCTRLDOUBLE , self.Tijiao_time2,self.tijiao_time2)
-        self.Bind(wx.EVT_TEXT , self.Tijiao_time2,self.tijiao_time2)
-#初始化国拍时间窗口
-        self.timeframe1=TimeFrame()
+        self.Bind(wx.EVT_TEXT, self.Tijiao_time2, self.tijiao_time2)
+        # 初始化国拍时间窗口
+        self.timeframe1 = TimeFrame()
         self.timeframe1.Show(False)
-#初始化模拟时间窗口
-        self.timeframe2=MoniTimeFrame()
+        # 初始化模拟时间窗口
+        self.timeframe2 = MoniTimeFrame()
         self.timeframe2.Show(False)
 
         # 增加一个判定事件
@@ -3027,28 +2984,27 @@ class OperationFrame(wx.Frame):
         self.Bind(wx.EVT_TIMER, self.opt, self.operationtimer)
         self.operationtimer.Start(1000)
 
-        self.yanzhengmaframe=YanzhengmaFrame()
+        self.yanzhengmaframe = YanzhengmaFrame()
 
-
-    def OnClose(self,event):
+    def OnClose(self, event):
         self.Show(False)
 
     # 动态显示价格   验证码放大器
     def Price_view(self, event):
-        global price_view, web_on, price_on, view_time  ,yanzhengma_view ,Pricesize,Yanzhengmasize,yanzhengma_close
-        global yanzhengma_count ,price_count  ,yanzhengma_move
+        global price_view, web_on, price_on, view_time, yanzhengma_view, Pricesize, Yanzhengmasize, yanzhengma_close
+        global yanzhengma_count, price_count, yanzhengma_move
         global imgpos_yanzhengma
         try:
-            cut_img()  #完成截图操作
+            cut_img()  # 完成截图操作
         except:
             print("这出错3033")
         # print(price_view, price_count)
         if yanzhengma_move:
-            yan=self.FindWindowById(18)
+            yan = self.FindWindowById(18)
             if yan:
                 try:
-                    yan.Move(Pos_yanzhengmaframe)  #移动到新位置
-                    yanzhengma_move=False #无需动作
+                    yan.Move(Pos_yanzhengmaframe)  # 移动到新位置
+                    yanzhengma_move = False  # 无需动作
                 except:
                     pass
         if price_view and price_count >= 4:
@@ -3056,15 +3012,15 @@ class OperationFrame(wx.Frame):
                 self.Price_close()
             except:
                 pass
-            self.Screen_shot(Pos_price,Pricesize,"userprice.png")
+            self.Screen_shot(Pos_price, Pricesize, "userprice.png")
             image = "userprice.png"
-            self.priceframe = PriceFrame(image,Pricesize,Pos_priceframe)
+            self.priceframe = PriceFrame(image, Pricesize, Pos_priceframe)
             self.priceframe.Show(True)
             price_view = False
             price_on = True
             # print("到这5")
-#1秒之后查找是否有确定，找不到就关闭放大器
-        if yanzhengma_count>=10 and not yanzhengma_close:
+        # 1秒之后查找是否有确定，找不到就关闭放大器
+        if yanzhengma_count >= 10 and not yanzhengma_close:
             # yanzhengma_count = 0
             find_yan_confirm()
         if yanzhengma_close:
@@ -3073,53 +3029,44 @@ class OperationFrame(wx.Frame):
                 yan2.Show(False)
             except:
                 pass
-        if yanzhengma_view :
+        if yanzhengma_view:
             yanzhengma_close = False
-            a=time.clock()
-            cut_pic(imgpos_yanzhengma,Yanzhengmasize,"yanzhengma.png")  #直接调用得到 png
+            cut_pic(imgpos_yanzhengma, Yanzhengmasize, "yanzhengma.png")  # 直接调用得到 png
             # new_screenshot_getimg(Pos_yanzhengma,Yanzhengmasize,"yanzhengma.png")
             # self.Screen_shot_yanzhengma(Pos_yanzhengma,Yanzhengmasize,"yanzhengma.png")
-            c=time.clock()
-            print("截图时间",c-a)
-            e=time.clock()
             image = "yanzhengma.png"
             global yanzhengma_img
-            yanzhengma_img=Image.open("yanzhengma.png")
-            yan_hash=imagehash.dhash(yanzhengma_img)
-            yan_change=yanzhengma_hash.get(yan_hash,1)   #判断hash库里是否有
-            d=time.clock()
-            print("d-e",d-e)
-            if  yanzhengma_count>=10 and  yan_change:   #1s之后，如果字典里没有就更新库  有的话说明没有变化，不动作
-                yanzhengma_hash[yan_hash]=0  #已经存在yan_change=0  不存在为1
-            if  yan_change:  #如果
+            yanzhengma_img = Image.open("yanzhengma.png")
+            yan_hash = imagehash.dhash(yanzhengma_img)
+            yan_change = yanzhengma_hash.get(yan_hash, 1)  # 判断hash库里是否有
+            if yanzhengma_count >= 10 and yan_change:  # 1s之后，如果字典里没有就更新库  有的话说明没有变化，不动作
+                yanzhengma_hash[yan_hash] = 0  # 已经存在yan_change=0  不存在为1
+            if yan_change:  # 如果
                 try:
                     global yanzhengma_exist
                     yan = self.FindWindowById(18)
                     yan.ShowImage(image)
                     yan.Show()
-                    b = time.clock()
-                    print("显示总耗时",b - a)
-                except:  #找不到的情况下也要重新创建
+                    # b = time.clock()
+                    # print("显示总耗时",b - a)
+                except:  # 找不到的情况下也要重新创建
                     pass
                 finally:
                     pass
             else:
-                yanzhengma_view=False  #关闭放大刷新
+                yanzhengma_view = False  # 关闭放大刷新
 
-
-
-    def Yan_close(self,event):
+    def Yan_close(self, event):
         # print('fd')
-        global yanzhengma_view,yanzhengma_close
+        global yanzhengma_view, yanzhengma_close
         find_yan_confirm()
 
-
-    def Price_count(self,event):
-        #设计手动显示价格的判定器，制作显示间隔
-        global price_count  ,yanzhengma_count
-        price_count+=1
-        yanzhengma_count+=1
-        file='sc_new.png'
+    def Price_count(self, event):
+        # 设计手动显示价格的判定器，制作显示间隔
+        global price_count, yanzhengma_count
+        price_count += 1
+        yanzhengma_count += 1
+        file = 'sc_new.png'
         if web_on and strategy_on:
             self.lowestframe.Show(False)
         if not os.path.exists(file):
@@ -3127,22 +3074,20 @@ class OperationFrame(wx.Frame):
                 self.Price_close()
             except:
                 pass
-        #手动关闭最低价显示
+        # 手动关闭最低价显示
         if not strategy_on or not web_on:
             self.lowestframe.Show(False)
 
-
-
     # 截图显示
-    def Screen_shot(self,box,size,name):
+    def Screen_shot(self, box, size, name):
         global Pricesize
         region = ImageGrab.grab(box)
         region.resize(size, Image.ANTIALIAS).save(name)
 
-    def Screen_shot_yanzhengma(self,box,size,name):
+    def Screen_shot_yanzhengma(self, box, size, name):
         global Pricesize
         region = ImageGrab.grab(box)
-        cut_pic(region,size,name)
+        cut_pic(region, size, name)
         # region.resize(size, Image.ANTIALIAS).save(name)
 
     # 删除此图
@@ -3160,73 +3105,73 @@ class OperationFrame(wx.Frame):
         except:
             pass
 
-
-###还原触发出价
-    def opt(self,event):
-        global tijiao_num,tijiao_one,chujia_on
+    ###还原触发出价
+    def opt(self, event):
+        global tijiao_num, tijiao_one, chujia_on
         global strategy_on  # 策略开启
         global twice, tijiao_num, chujia_on, tijiao_on, tijiao_OK, tijiao_one  # 二次出价触发开关
-        if moni_second < one_time1 and moni_on and not twice:  #单次还原
-            twice=False
-            chujia_on=True
-            tijiao_on=False
+        if moni_second < one_time1 and moni_on and not twice:  # 单次还原
+            twice = False
+            chujia_on = True
+            tijiao_on = False
             tijiao_num = 1  # 初始化
-            tijiao_OK=False
-            tijiao_one=False  #单枪未开
-        elif moni_second < one_time1 and moni_on and twice:  #二次还原
-            twice=True
-            chujia_on=True
-            tijiao_on=False
-            tijiao_num=1  #初始化
-            tijiao_OK=False
+            tijiao_OK = False
+            tijiao_one = False  # 单枪未开
+        elif moni_second < one_time1 and moni_on and twice:  # 二次还原
+            twice = True
+            chujia_on = True
+            tijiao_on = False
+            tijiao_num = 1  # 初始化
+            tijiao_OK = False
             tijiao_one = False  # 单枪未开
 
-#时间修改操作
+    # 时间修改操作
     def Add_time(self, event):
-        global a_time,moni_second,moni_on,guopai_on
+        global a_time, moni_second, moni_on, guopai_on
         if moni_on:
-            moni_second+=0.1
+            moni_second += 0.1
         else:
             a_time += 0.1
 
     def Minus_time(self, event):
-        global a_time,moni_second,moni_on,guopai_on
+        global a_time, moni_second, moni_on, guopai_on
         if moni_on:
-            moni_second-=0.1
+            moni_second -= 0.1
         else:
             a_time -= 0.1
 
     def Add_second(self, event):
-        global a_time,moni_second,moni_on,guopai_on
+        global a_time, moni_second, moni_on, guopai_on
         if moni_on:
             moni_second += 1
-            if moni_second>=60:
-                moni_second=0
+            if moni_second >= 60:
+                moni_second = 0
         else:
-            a_time+=1
+            a_time += 1
 
     def Minus_second(self, event):
-        global a_time,moni_second,moni_on,guopai_on
+        global a_time, moni_second, moni_on, guopai_on
         if moni_on:
             moni_second -= 1
-            if moni_second<=0:
-                moni_second=60
+            if moni_second <= 0:
+                moni_second = 60
         else:
-            a_time-=1
-#时间显示控制器
-    def Timeview(self,event):
+            a_time -= 1
+
+    # 时间显示控制器
+    def Timeview(self, event):
         timeSelected = event.GetEventObject()
-        global view_time,time_on
+        global view_time, time_on
         if timeSelected.IsChecked():
-            view_time=True
-            time_on=True
+            view_time = True
+            time_on = True
             if guopai_on:
                 self.timeframe1.Show(True)
             elif moni_on:
                 self.timeframe2.Show(True)
         else:
-            view_time=False
-            time_on=False
+            view_time = False
+            time_on = False
             if guopai_on:
                 self.timeframe1.Show(False)
             elif moni_on:
@@ -3244,7 +3189,6 @@ class OperationFrame(wx.Frame):
             except:
                 pass
 
-
     def Closetime(self):
         try:
             self.timeframe1.Show(False)
@@ -3255,53 +3199,50 @@ class OperationFrame(wx.Frame):
         except:
             pass
 
-    def Confirmchoice(self,event):
-        global e_on,enter_on
-        con=self.confirm_choice.GetSelection()
+    def Confirmchoice(self, event):
+        global e_on, enter_on
+        con = self.confirm_choice.GetSelection()
         if con == 0:
-            e_on=True
-            enter_on=False
-        elif con==1:
-            e_on=False
-            enter_on=True
+            e_on = True
+            enter_on = False
+        elif con == 1:
+            e_on = False
+            enter_on = True
 
-
-
-    def Jiajia_time(self,event):
-        global one_advance,one_delay,one_diff,one_time1,one_time2,one_real_time1,one_real_time2
-        tem=self.jiajia_time.GetValue()
-        templist=[40+i*0.1 for i in range(151)]
+    def Jiajia_time(self, event):
+        global one_advance, one_delay, one_diff, one_time1, one_time2, one_real_time1, one_real_time2
+        tem = self.jiajia_time.GetValue()
+        templist = [40 + i * 0.1 for i in range(151)]
         if tem in templist:
-            one_time1=tem
-            one_time1=float(one_time1)
+            one_time1 = tem
+            one_time1 = float(one_time1)
             one_real_time1 = self.gettime(one_time1)  # 计算得到的时间戳
         else:
             self.jiajia_time.SetValue(one_time1)
 
-
     def Jiajia_price(self, event):
         global one_advance, one_delay, one_diff, one_time1, one_time2
-        templist=[300+i*100 for i in range(13)]
+        templist = [300 + i * 100 for i in range(13)]
         tem = self.jiajia_price.GetValue()
         if tem in templist:
-            one_diff=int(tem)
+            one_diff = int(tem)
         else:
             self.jiajia_price.SetValue(one_diff)
 
-#
+    #
     def Select_tijiao(self, event):
         global one_advance, one_delay, one_diff, one_time1, one_time2
         select = self.select_tijiao.GetString(self.select_tijiao.GetSelection())
         if select == u"提前100":
-            one_advance=100
+            one_advance = 100
         elif select == u"提前200":
-            one_advance=200
+            one_advance = 200
         else:
-            one_advance=0
+            one_advance = 0
 
     def Yanchi_time(self, event):
         global one_advance, one_delay, one_diff, one_time1, one_time2
-        templist=['0.%d' %i for i in range(11)]
+        templist = ['0.%d' % i for i in range(11)]
         templist.append('1.0')
         tem = str(self.yanchi_time.GetValue())
         if tem in templist:
@@ -3310,21 +3251,22 @@ class OperationFrame(wx.Frame):
             self.yanchi_time.SetValue(one_delay)
 
     def Tijiao_time(self, event):
-        global one_advance, one_delay, one_diff, one_time1, one_time2,one_real_time2
-        tem=self.tijiao_time.GetValue()
-        templist=[40+i*0.1 for i in range(171)]
+        global one_advance, one_delay, one_diff, one_time1, one_time2, one_real_time2
+        tem = self.tijiao_time.GetValue()
+        templist = [40 + i * 0.1 for i in range(171)]
         if tem in templist:
-            one_time2=float(tem)
+            one_time2 = float(tem)
             one_real_time2 = self.gettime(one_time2)  # 计算得到的时间戳
         else:
             self.tijiao_time.SetValue(one_time2)
-#双枪操作
+
+    # 双枪操作
     def Jiajia_time2(self, event):
-        global second_advance, second_delay, second_diff, second_time1, second_time2,second_real_time1
-        tem=self.jiajia_time2.GetValue()
-        templist=[40+i*0.1 for i in range(151)]
+        global second_advance, second_delay, second_diff, second_time1, second_time2, second_real_time1
+        tem = self.jiajia_time2.GetValue()
+        templist = [40 + i * 0.1 for i in range(151)]
         if tem in templist:
-            second_time1=float(tem)
+            second_time1 = float(tem)
             second_real_time1 = self.gettime(second_time1)  # 计算得到的时间戳
         else:
             self.jiajia_time2.SetValue(second_time1)
@@ -3332,10 +3274,10 @@ class OperationFrame(wx.Frame):
     def Jiajia_price2(self, event):
         global second_advance, second_delay, second_diff, second_time1, second_time2
         global one_advance, one_delay, one_diff, one_time1, one_time2
-        templist=[300+i*100 for i in range(13)]
+        templist = [300 + i * 100 for i in range(13)]
         tem = self.jiajia_price2.GetValue()
         if tem in templist:
-            second_diff=int(tem)
+            second_diff = int(tem)
         else:
             self.jiajia_price2.SetValue(second_diff)
 
@@ -3349,10 +3291,9 @@ class OperationFrame(wx.Frame):
         else:
             second_advance = 0
 
-
     def Yanchi_time2(self, event):
         global second_advance, second_delay, second_diff, second_time1, second_time2
-        templist=['0.%d' %i for i in range(11)]  #符点数运算BUG
+        templist = ['0.%d' % i for i in range(11)]  # 符点数运算BUG
         templist.append('1.0')
         tem = str(self.yanchi_time2.GetValue())
         if tem in templist:
@@ -3360,67 +3301,65 @@ class OperationFrame(wx.Frame):
         else:
             self.yanchi_time2.SetValue(second_delay)
 
-
     def Tijiao_time2(self, event):
-        global second_advance, second_delay, second_diff, second_time1, second_time2,second_real_time2
-        tem=self.tijiao_time2.GetValue()
-        templist=[53+i*0.1 for i in range(41)]
+        global second_advance, second_delay, second_diff, second_time1, second_time2, second_real_time2
+        tem = self.tijiao_time2.GetValue()
+        templist = [53 + i * 0.1 for i in range(41)]
         if tem in templist:
-            second_time2=float(tem)
+            second_time2 = float(tem)
             second_real_time2 = self.gettime(second_time2)  # 计算得到的时间戳
         else:
             self.tijiao_time2.SetValue(second_time2)
 
-##################
-#重新绘制,面板刷新
-    def Refresh_panel(self,event):
-        #GetSelection 返回index
-        global strategy_on #策略开启
-        global twice,tijiao_num,chujia_on,tijiao_on,tijiao_OK,tijiao_one #二次出价触发开关
-        stractagy_selection=self.select_stractagy.GetString(self.select_stractagy.GetSelection())
+    ##################
+    # 重新绘制,面板刷新
+    def Refresh_panel(self, event):
+        # GetSelection 返回index
+        global strategy_on  # 策略开启
+        global twice, tijiao_num, chujia_on, tijiao_on, tijiao_OK, tijiao_one  # 二次出价触发开关
+        stractagy_selection = self.select_stractagy.GetString(self.select_stractagy.GetSelection())
         if stractagy_selection == u"单枪策略":
             self.ss_Hide()
-            twice=False
-            strategy_on=True
-            chujia_on=True
-            tijiao_on=False
+            twice = False
+            strategy_on = True
+            chujia_on = True
+            tijiao_on = False
             tijiao_num = 1  # 初始化
-            tijiao_OK=False
-            tijiao_one=False  #单枪未开
+            tijiao_OK = False
+            tijiao_one = False  # 单枪未开
 
         elif stractagy_selection == u"双枪策略":
             self.ss_Shown()
-            strategy_on=True
-            twice=True
-            chujia_on=True
-            tijiao_on=False
-            tijiao_num=1  #初始化
-            tijiao_OK=False
+            strategy_on = True
+            twice = True
+            chujia_on = True
+            tijiao_on = False
+            tijiao_num = 1  # 初始化
+            tijiao_OK = False
             tijiao_one = False  # 单枪未开
         else:
             self.none_show()
-            strategy_on=False
-            twice=False
+            strategy_on = False
+            twice = False
 
-
-    def ss_Shown(self): #双枪
-        if not self.secondsizer_Shown:    #如果当前控件已隐藏
-            self.vbox1.Show(self.secondshotSizer)    #打开双枪面板
-            self.secondsizer_Shown = True    #服务器设置部分当前已隐藏
+    def ss_Shown(self):  # 双枪
+        if not self.secondsizer_Shown:  # 如果当前控件已隐藏
+            self.vbox1.Show(self.secondshotSizer)  # 打开双枪面板
+            self.secondsizer_Shown = True  # 服务器设置部分当前已隐藏
         if not self.oneshotsizer_Shown:
-            self.vbox1.Show(self.oneshotSizer)  #显示第一枪面板
-            self.oneshotsizer_Shown=True
+            self.vbox1.Show(self.oneshotSizer)  # 显示第一枪面板
+            self.oneshotsizer_Shown = True
         self.secondsizer_Shown = True
         self.oneshotSizer_Shown = True
         self.SetClientSize((280, 575))  # 更新面板尺寸
         self.Secondshot_reset()
         self.Layout()
 
-    def ss_Hide(self): #单枪
+    def ss_Hide(self):  # 单枪
         if self.secondsizer_Shown:  # 如果当前控件已显示
-            self.vbox1.Hide(self.secondshotSizer)    #如果当前控件已隐藏
+            self.vbox1.Hide(self.secondshotSizer)  # 如果当前控件已隐藏
             # self.setserverBtn.SetLabel(u'服务器设置↑')    #更新按钮标签
-                #服务器设置部分当前已显示
+            # 服务器设置部分当前已显示
         if not self.oneshotsizer_Shown:
             self.vbox1.Show(self.oneshotSizer)
         self.secondsizer_Shown = False
@@ -3441,7 +3380,7 @@ class OperationFrame(wx.Frame):
         self.Layout()
 
     def Oneshot_reset(self):
-        global one_time1,one_time2,one_diff,one_delay,one_advance
+        global one_time1, one_time2, one_diff, one_delay, one_advance
         self.jiajia_time.SetValue(48.0)
         self.tijiao_time.SetValue(55.0)
         self.jiajia_price.SetValue(700)
@@ -3460,10 +3399,9 @@ class OperationFrame(wx.Frame):
         second_real_time1 = self.gettime(second_time1)
         second_real_time2 = self.gettime(second_time2)
 
-
     def Secondshot_reset(self):
-        global one_time1,one_time2,one_diff,one_delay,one_advance
-        global second_time1,second_time2,second_diff,second_delay,second_advance
+        global one_time1, one_time2, one_diff, one_delay, one_advance
+        global second_time1, second_time2, second_diff, second_delay, second_advance
         self.jiajia_time.SetValue(40.0)
         self.tijiao_time.SetValue(48.0)
         self.jiajia_price.SetValue(500)
@@ -3494,8 +3432,8 @@ class OperationFrame(wx.Frame):
         second_real_time1 = self.gettime(second_time1)
         second_real_time2 = self.gettime(second_time2)
 
-# 定义策略保存
-    def Strategy_save(self,event):
+    # 定义策略保存
+    def Strategy_save(self, event):
         dlg = wx.TextEntryDialog(None, '设定你的策略名称:', "策略保存", "策略1",
                                  style=wx.OK)
         if dlg.ShowModal() == wx.ID_OK:
@@ -3507,53 +3445,53 @@ class OperationFrame(wx.Frame):
                     dlg.Destroy()
                 self.save(name)
             else:
-                dlg_tip=wx.MessageBox('名称不能为空', '策略保存', wx.OK | wx.ICON_ERROR)
+                dlg_tip = wx.MessageBox('名称不能为空', '策略保存', wx.OK | wx.ICON_ERROR)
                 if dlg_tip == wx.ID_OK:
                     dlg_tip.Destroy()
                     dlg.Destroy()
 
-    def save(self,name):
-        global one_time1,one_time2,one_diff,one_delay,one_advance
-        global second_time1,second_time2,second_diff,second_delay,second_advance
-        global osl ,e_on,enter_on#策略存储容器
+    def save(self, name):
+        global one_time1, one_time2, one_diff, one_delay, one_advance
+        global second_time1, second_time2, second_diff, second_delay, second_advance
+        global osl, e_on, enter_on  # 策略存储容器
 
         if self.select_stractagy.GetSelection() == 2:
             dlg_tip = wx.MessageBox('请先制定一个策略', '策略保存', wx.OK | wx.ICON_ERROR)
             if dlg_tip == wx.ID_OK:
                 dlg_tip.Destroy()
         elif self.select_stractagy.GetSelection() == 0:
-            osl[0]=0
-            osl[1]=one_time1
-            osl[2]=one_time2
-            osl[3]=one_diff
-            osl[4]=one_delay
-            osl[5]=one_advance
-            osl[6]=second_time1
-            osl[7]=second_time2
-            osl[8]=second_diff
-            osl[9]=second_delay
-            osl[10]=second_advance
-            osl[11]=e_on
-            osl[12]=enter_on
+            osl[0] = 0
+            osl[1] = one_time1
+            osl[2] = one_time2
+            osl[3] = one_diff
+            osl[4] = one_delay
+            osl[5] = one_advance
+            osl[6] = second_time1
+            osl[7] = second_time2
+            osl[8] = second_diff
+            osl[9] = second_delay
+            osl[10] = second_advance
+            osl[11] = e_on
+            osl[12] = enter_on
         elif self.select_stractagy.GetSelection() == 1:
-            osl[0]=1
-            osl[0]=1
-            osl[1]=one_time1
-            osl[2]=one_time2
-            osl[3]=one_diff
-            osl[4]=one_delay
-            osl[5]=one_advance
-            osl[6]=second_time1
-            osl[7]=second_time2
-            osl[8]=second_diff
-            osl[9]=second_delay
-            osl[10]=second_advance
-            osl[11]=e_on
-            osl[12]=enter_on
-        with open('%s.strategy'%name,'wb') as spk:
-            pickle.dump(osl,spk)
+            osl[0] = 1
+            osl[0] = 1
+            osl[1] = one_time1
+            osl[2] = one_time2
+            osl[3] = one_diff
+            osl[4] = one_delay
+            osl[5] = one_advance
+            osl[6] = second_time1
+            osl[7] = second_time2
+            osl[8] = second_diff
+            osl[9] = second_delay
+            osl[10] = second_advance
+            osl[11] = e_on
+            osl[12] = enter_on
+        with open('%s.strategy' % name, 'wb') as spk:
+            pickle.dump(osl, spk)
 
-#输入框
+    # 输入框
     # def GetName(self):
     #     dlg = wx.TextEntryDialog(self.panel, '设定你的策略名称:', "策略保存", "策略1",
     #                              style=wx.OK)
@@ -3563,16 +3501,15 @@ class OperationFrame(wx.Frame):
     #         response = dlg.GetValue()
     #         dlg.Destroy()
 
-        #定义策略恢复
+    # 定义策略恢复
 
-
-    def Strategy_load(self,event):
+    def Strategy_load(self, event):
         import os
-        path=os.getcwd()
-        choice=self.findfiles(path)
+        path = os.getcwd()
+        choice = self.findfiles(path)
         if choice:
             dlg = wx.SingleChoiceDialog(None, u"请选择策略:", u"策略载入",
-                                       choices=choice)
+                                        choices=choice)
             if dlg.ShowModal() == wx.ID_OK:
                 path = dlg.GetStringSelection()  # 获取选择的内容
                 dlg_tip = wx.MessageDialog(None, "载入成功", u"载入策略", wx.OK | wx.ICON_INFORMATION)
@@ -3586,22 +3523,21 @@ class OperationFrame(wx.Frame):
             if dlg_tip == wx.ID_OK:
                 dlg_tip.Destroy()
 
-    def load(self,path):
-        global  osl,e_on,enter_on
+    def load(self, path):
+        global osl, e_on, enter_on
         global one_time1, one_time2, one_diff, one_delay, one_advance
         global second_time1, second_time2, second_diff, second_delay, second_advance
 
         global strategy_on  # 策略开启
         global twice, tijiao_num, chujia_on, tijiao_on, tijiao_OK, tijiao_one  # 二次出价触发开关
-        global one_real_time1,one_real_time2,second_real_time1,second_real_time2
+        global one_real_time1, one_real_time2, second_real_time1, second_real_time2
         try:
-            with open(path,'rb') as loadstr:
-                osl=pickle.load(loadstr)
+            with open(path, 'rb') as loadstr:
+                osl = pickle.load(loadstr)
         except:
             pass
-        if osl[0] == 0:  #单次
+        if osl[0] == 0:  # 单次
             self.ss_Hide()
-
 
             twice = False
             strategy_on = True
@@ -3628,9 +3564,9 @@ class OperationFrame(wx.Frame):
             one_diff = osl[3]  # 第一次加价幅度
             one_delay = osl[4]  # 第一次延迟
             one_advance = osl[5]  # 第一次提交提前量
-            #确认操作
-            e_on=osl[11]
-            enter_on=osl[12]
+            # 确认操作
+            e_on = osl[11]
+            enter_on = osl[12]
             if e_on:
                 self.confirm_choice.SetSelection(0)
             elif enter_on:
@@ -3641,13 +3577,13 @@ class OperationFrame(wx.Frame):
             second_real_time1 = self.gettime(second_time1)
             second_real_time2 = self.gettime(second_time2)
 
-        elif osl[0] == 1:   #双枪
-            strategy_on=True
-            twice=True
-            chujia_on=True
-            tijiao_on=False
-            tijiao_num=1  #初始化
-            tijiao_OK=False
+        elif osl[0] == 1:  # 双枪
+            strategy_on = True
+            twice = True
+            chujia_on = True
+            tijiao_on = False
+            tijiao_num = 1  # 初始化
+            tijiao_OK = False
             tijiao_one = False  # 单枪未开
             self.ss_Shown()
             self.select_stractagy.SetSelection(1)
@@ -3672,7 +3608,6 @@ class OperationFrame(wx.Frame):
             else:
                 self.select_tijiao2.SetSelection(2)
 
-
             one_time1 = osl[1]  # 第一次出价加价
             one_time2 = osl[2]  # 第一次出价提交
             one_diff = osl[3]  # 第一次加价幅度
@@ -3682,11 +3617,11 @@ class OperationFrame(wx.Frame):
             second_time1 = osl[6]  # 第二次次出价加价
             second_time2 = osl[7]  # 第二次出价提交
             second_diff = osl[8]  # 第二次加价幅度
-            second_delay =osl[9]  # 第二次出价延迟
+            second_delay = osl[9]  # 第二次出价延迟
             second_advance = osl[10]  # 第二次出价提交提前量
-            #确认操作
-            e_on=osl[11]
-            enter_on=osl[12]
+            # 确认操作
+            e_on = osl[11]
+            enter_on = osl[12]
             if e_on:
                 self.confirm_choice.SetSelection(0)
             elif enter_on:
@@ -3697,7 +3632,7 @@ class OperationFrame(wx.Frame):
             second_real_time1 = self.gettime(second_time1)
             second_real_time2 = self.gettime(second_time2)
 
-    def findfiles(self,path):
+    def findfiles(self, path):
         L = []
         for root, dirs, files in os.walk(path):
             for file in files:
@@ -3705,12 +3640,11 @@ class OperationFrame(wx.Frame):
                     L.append(os.path.join(root, file))
         return L
 
-    def Save_info(self,event):
+    def Save_info(self, event):
         pass
 
-
-#############时间换算###############
-# 转时间戳
+    #############时间换算###############
+    # 转时间戳
     def changetime(self, a):  # 换算成时间戳
         final_time = time.mktime(time.strptime(a, '%Y-%m-%d %H:%M:%S'))
         return final_time  # 以时间戳输出
@@ -3722,16 +3656,17 @@ class OperationFrame(wx.Frame):
         return a  # 输出时间格式字符串
         # 转为最终时间戳，调用这个时间
 
-    def gettime(self,choice):  # choice1:55,choice2:0.5
+    def gettime(self, choice):  # choice1:55,choice2:0.5
         tem = self.get_nowtime()
         b = tem + ' 11:29:' + str(int(choice))
-        c = self.changetime(b) + float(choice)-int(choice)
+        c = self.changetime(b) + float(choice) - int(choice)
         return c  # 得到用户所确定的最终时间戳
+
 
 #################最低成交价显示##################
 class LowestpriceWindow(wx.Panel):
     def __init__(self, parent):
-        wx.Window.__init__(self, parent,size=Timesize)
+        wx.Window.__init__(self, parent, size=Timesize)
         self.Bind(wx.EVT_PAINT, self.OnPaint)
         self.timer = wx.Timer(self)  # 创建定时器
         self.Bind(wx.EVT_TIMER, self.OnTimer, self.timer)  # 绑定一个定时器事件
@@ -3765,16 +3700,17 @@ class LowestpriceWindow(wx.Panel):
         dc = wx.BufferedPaintDC(self)  # 用于重绘事件
         self.Draw(dc)
 
+
 class LowestpriceFrame(wx.Frame):
     def __init__(self):
-         wx.Frame.__init__(self, None, title="wx.Timer", size=(200, 50), pos=lowestpriceframe_pos,
-                              style=wx.FRAME_TOOL_WINDOW | wx.STAY_ON_TOP)
-            # wx.Frame.__init__(self, None, -1,'Time',size=(400,160), pos=Pos_timeframe,
-            #                   style=wx.FRAME_TOOL_WINDOW|wx.STAY_ON_TOP)
-         LowestpriceWindow(self)
+        wx.Frame.__init__(self, None, title="wx.Timer", size=(200, 50), pos=lowestpriceframe_pos,
+                          style=wx.FRAME_TOOL_WINDOW | wx.STAY_ON_TOP)
+        # wx.Frame.__init__(self, None, -1,'Time',size=(400,160), pos=Pos_timeframe,
+        #                   style=wx.FRAME_TOOL_WINDOW|wx.STAY_ON_TOP)
+        LowestpriceWindow(self)
 
 
-#--------------------------------------------------------------
+# --------------------------------------------------------------
 # # 策略窗口
 # class OperationFrame():
 #     def __init__(self, px, py, ad, name):  # name:窗口显示名称
@@ -3791,14 +3727,15 @@ class LowestpriceFrame(wx.Frame):
 ########初始登录窗口########
 import string
 import wx.lib.agw.hyperlink as hyperlink
+
+
 class LoginFrame(wx.Frame):
-    def __init__(self, name, user,psd):  ##########版本号
-        wx.Frame.__init__(self, None, -1, name,size=(300, 240), style= wx.CAPTION | wx.CLOSE_BOX)
+    def __init__(self, name, user, psd):  ##########版本号
+        wx.Frame.__init__(self, None, -1, name, size=(300, 240), style=wx.CAPTION | wx.CLOSE_BOX)
         self.Bind(wx.EVT_CLOSE, self.OnClose)
         self.panel = wx.Panel(self, size=(300, 220))
         self.icon = wx.Icon(mainicon, wx.BITMAP_TYPE_ICO)
         self.SetIcon(self.icon)
-
 
         # self.panel.SetBackgroundColour((0,188, 255))
         # self.panel.Bind(wx.EVT_ERASE_BACKGROUND, self.OnEraseBack)
@@ -3812,22 +3749,22 @@ class LoginFrame(wx.Frame):
         # 主sizer
         self.sizer_v1 = wx.BoxSizer(wx.VERTICAL)
         self.welcomelabel = wx.StaticText(self.panel, -1, label="请输入用户名和密码", style=wx.ALIGN_CENTER)
-        self.sizer_v1.Add(self.welcomelabel,  flag=wx.ALIGN_CENTER | wx.ALL, border=10)
+        self.sizer_v1.Add(self.welcomelabel, flag=wx.ALIGN_CENTER | wx.ALL, border=10)
 
         # self.btnSizer = wx.StdDialogButtonSizer()
         self.userbox = wx.BoxSizer(wx.HORIZONTAL)
         self.userlabel = wx.StaticText(self.panel, -1, label="账号")
-        self.userText = wx.TextCtrl(self.panel, -1,size=(150, -1),
+        self.userText = wx.TextCtrl(self.panel, -1, size=(150, -1),
                                     style=wx.TE_CENTER | wx.TE_PROCESS_ENTER)
         self.userbox.Add(self.userlabel, flag=wx.ALIGN_CENTER | wx.ALL, border=5)
         self.userbox.Add(self.userText, flag=wx.ALIGN_CENTER_HORIZONTAL | wx.ALL, border=5)
 
         self.passbox = wx.BoxSizer(wx.HORIZONTAL)
         self.passlabel = wx.StaticText(self.panel, -1, label="密码")
-        self.passText = wx.TextCtrl(self.panel, -1,size=(150, -1),
+        self.passText = wx.TextCtrl(self.panel, -1, size=(150, -1),
                                     style=wx.TE_CENTER | wx.TE_PROCESS_ENTER | wx.TE_PASSWORD)
-        self.passbox.Add(self.passlabel,  flag=wx.ALIGN_CENTER | wx.ALL, border=5)
-        self.passbox.Add(self.passText,  flag=wx.ALIGN_CENTER_HORIZONTAL | wx.ALL, border=5)
+        self.passbox.Add(self.passlabel, flag=wx.ALIGN_CENTER | wx.ALL, border=5)
+        self.passbox.Add(self.passText, flag=wx.ALIGN_CENTER_HORIZONTAL | wx.ALL, border=5)
         if user:
             self.userText.SetValue(user)
         if psd:
@@ -3838,13 +3775,13 @@ class LoginFrame(wx.Frame):
         self.Bind(wx.EVT_TEXT_ENTER, self.OnLogin, self.userText)
         self.Bind(wx.EVT_TEXT_ENTER, self.OnLogin, self.passText)
 
-        self.monibtn = wx.Button(self.panel, -1, label="模拟",size=(90,30))
-        self.loginbtn = wx.Button(self.panel, -1, label="登录",size=(90,30))
-        self.btnSizer=wx.BoxSizer(wx.HORIZONTAL)
-        self.btnSizer.Add(self.monibtn,flag=wx.ALIGN_LEFT | wx.ALL, border=3)
-        self.btnSizer.Add(self.loginbtn,flag=wx.ALIGN_RIGHT | wx.ALL, border=3)
+        self.monibtn = wx.Button(self.panel, -1, label="模拟", size=(90, 30))
+        self.loginbtn = wx.Button(self.panel, -1, label="登录", size=(90, 30))
+        self.btnSizer = wx.BoxSizer(wx.HORIZONTAL)
+        self.btnSizer.Add(self.monibtn, flag=wx.ALIGN_LEFT | wx.ALL, border=3)
+        self.btnSizer.Add(self.loginbtn, flag=wx.ALIGN_RIGHT | wx.ALL, border=3)
         self.sizer_v1.Add(self.btnSizer, flag=wx.ALIGN_CENTER | wx.ALL, border=5)
-        self.loginbtn.Bind(wx.EVT_BUTTON,self.OnLogin,self.loginbtn)
+        self.loginbtn.Bind(wx.EVT_BUTTON, self.OnLogin, self.loginbtn)
 
         self.purchaselink = hyperlink.HyperLinkCtrl(self.panel, -1, u"购买账号")
         self.purchaselink.UnsetToolTip()
@@ -3864,10 +3801,10 @@ class LoginFrame(wx.Frame):
         self.helplink.OpenInSameWindow(True)
         self.helplink.UpdateLink()
 
-        self.linkbox=wx.BoxSizer(wx.HORIZONTAL)
-        self.linkbox.Add(self.purchaselink,flag=wx.ALIGN_LEFT|wx.RIGHT,border=20)
-        self.linkbox.Add(self.helplink,flag=wx.ALIGN_RIGHT|wx.LEFT,border=20)
-        self.sizer_v1.Add(self.linkbox,flag=wx.ALIGN_CENTER|wx.ALL, border=5)
+        self.linkbox = wx.BoxSizer(wx.HORIZONTAL)
+        self.linkbox.Add(self.purchaselink, flag=wx.ALIGN_LEFT | wx.RIGHT, border=20)
+        self.linkbox.Add(self.helplink, flag=wx.ALIGN_RIGHT | wx.LEFT, border=20)
+        self.sizer_v1.Add(self.linkbox, flag=wx.ALIGN_CENTER | wx.ALL, border=5)
 
         self.SetSizer(self.sizer_v1)
         self.Center()  # 初始化居中
@@ -3875,30 +3812,29 @@ class LoginFrame(wx.Frame):
         pub.subscribe(self.connect_success, "connect")
         # pub.subscribe(self.connect_failure, "connect failure")
 
-        self.hashthread=HashThread()
+        self.hashthread = HashThread()
 
     def connect_success(self):
         self.loginbtn.Enable()
-        global login_result ,url2,url3  #dick对象
+        global login_result, url2, url3  # dick对象
 
-        if login_result['result']=='login success':
+        if login_result['result'] == 'login success':
             self.Destroy()
             self.topframe = TopFrame('小鲜肉拍牌', version)
             self.topframe.Show(True)
-            url2=login_result['url_dianxin']
-            url3=login_result['url_nodianxin']
+            url2 = login_result['url_dianxin']
+            url3 = login_result['url_nodianxin']
             # event.Skip()
-        elif login_result['result']=='net error':
+        elif login_result['result'] == 'net error':
             wx.MessageBox('连接服务器失败', '用户登录', wx.OK | wx.ICON_ERROR)
-        elif login_result['result']=='repeat':
+        elif login_result['result'] == 'repeat':
             wx.MessageBox('重复登录，稍后再试', '用户登录', wx.OK | wx.ICON_ERROR)
-        elif login_result['result']=='wrong account':
+        elif login_result['result'] == 'wrong account':
             wx.MessageBox('账号错误', '用户登录', wx.OK | wx.ICON_ERROR)
-        elif login_result['result']=='wrong password':
+        elif login_result['result'] == 'wrong password':
             wx.MessageBox('密码错误', '用户登录', wx.OK | wx.ICON_ERROR)
         else:
             wx.MessageBox('登录失败', '用户登录', wx.OK | wx.ICON_ERROR)
-
 
     def OnEraseBack(self, event):
         dc = event.GetDC()
@@ -3914,16 +3850,15 @@ class LoginFrame(wx.Frame):
         event.Skip()
         sys.exit(None)
 
-
     # def connect_failure(self):
     #     self.loginBtn.Enable()
     #     # self.loginthread.terminate()
     #     wx.MessageBox('连接服务器失败', '用户登录', wx.OK | wx.ICON_ERROR)
 
-    def OnLogin(self,event):
-        global Username,Password
-        username=self.userText.GetValue()
-        password=self.passText.GetValue()
+    def OnLogin(self, event):
+        global Username, Password
+        username = self.userText.GetValue()
+        password = self.passText.GetValue()
         if username == "":
             wx.MessageBox('请输入用户名！')
             self.userText.SetFocus()
@@ -3932,46 +3867,46 @@ class LoginFrame(wx.Frame):
             self.passText.SetFocus()
             # loginthread=TestThread()
         else:
-            Username=username     #保存用户输入的账号密码
-            Password=password
-            self.loginthread=LoginThread()
-            namepsd=[username,password]
-            with open('your.name','wb') as userfile:
-                pickle.dump(namepsd,userfile)
+            Username = username  # 保存用户输入的账号密码
+            Password = password
+            self.loginthread = LoginThread()
+            namepsd = [username, password]
+            with open('your.name', 'wb') as userfile:
+                pickle.dump(namepsd, userfile)
             # self.loginBtn.setlabel(u"登录中")
             event.GetEventObject().Disable()
 
-    def Purchase(self,event):
+    def Purchase(self, event):
         print("购买")
-
 
 
 class UserValidator(wx.Validator):
     ''' Validates data as it is entered into the text controls. '''
-    #----------------------------------------------------------------------
+
+    # ----------------------------------------------------------------------
     def __init__(self, flag):
         wx.Validator.__init__(self)
         self.flag = flag
         self.Bind(wx.EVT_CHAR, self.OnChar)
 
-    #----------------------------------------------------------------------
+    # ----------------------------------------------------------------------
     def Clone(self):
         '''Required Validator method'''
         return UserValidator(self.flag)
 
-    #----------------------------------------------------------------------
+    # ----------------------------------------------------------------------
     def Validate(self, win):
         return True
 
-    #----------------------------------------------------------------------
+    # ----------------------------------------------------------------------
     def TransferToWindow(self):
         return True
 
-    #----------------------------------------------------------------------
+    # ----------------------------------------------------------------------
     def TransferFromWindow(self):
         return True
 
-    #----------------------------------------------------------------------
+    # ----------------------------------------------------------------------
     def OnChar(self, event):
         pass
         # keycode = int(event.GetKeyCode())
@@ -3986,6 +3921,7 @@ class UserValidator(wx.Validator):
         #     # if self.flag == 'no-digit' and key in string.digits:
         #     #     return
         # event.Skip()
+
 
 class PassValidator(wx.Validator):
     ''' Validates data as it is entered into the text controls. '''
@@ -4030,25 +3966,28 @@ class PassValidator(wx.Validator):
 ########确认登录窗口########
 class ConfirmLogin(wx.Frame):
     pass
+
+
 # ----------------------------------------------------------------------
-#时间进程
+# 时间进程
 class TimeThread(Thread):
     def __init__(self):
         """Init Worker Thread Class."""
         Thread.__init__(self)
-        self.setDaemon(True)     #启动进程之前选择，主进程关闭，子进程跟着关闭
+        self.setDaemon(True)  # 启动进程之前选择，主进程关闭，子进程跟着关闭
         self.start()  # start the thread
+
     # ----------------------------------------------------------------------
     def run(self):
         """Run Worker Thread."""
         # This is the code executing in the new thread.
-        global a_time,moni_second
+        global a_time, moni_second
         for i in range(1000000):
-            a=time.clock()
+            a = time.clock()
             time.sleep(0.1)
-            b=time.clock()
-            a_time+=b-a  #实际运行时间作为真实间隔
-            moni_second += b-a
+            b = time.clock()
+            a_time += b - a  # 实际运行时间作为真实间隔
+            moni_second += b - a
             if moni_second >= 60:
                 moni_second = 0
             # a=time.clock()
@@ -4058,8 +3997,8 @@ class TimeThread(Thread):
             # print(b-a)
 
             # for i in range(1000000):
-                # time.sleep(0.2)
-                # a_time+=0.2
+            # time.sleep(0.2)
+            # a_time+=0.2
 
 
 #     def run(self):
@@ -4079,28 +4018,32 @@ class TimeThread(Thread):
 #     timer=threading.Timer(0.2,runtime)
 #     timer.start()
 
-#---------------------------------------
-#创建hash进程，初始化
+# ---------------------------------------
+# 创建hash进程，初始化
 class OpenwebThread(Thread):
-    def __init__(self,url):
+    def __init__(self, url):
         """Init Worker Thread Class."""
         Thread.__init__(self)
-        self.url=url
-        self.setDaemon(True)     #启动进程之前选择，主进程关闭，子进程跟着关闭
+        self.url = url
+        self.setDaemon(True)  # 启动进程之前选择，主进程关闭，子进程跟着关闭
         self.start()  # start the thread
+
     # ----------------------------------------------------------------------
     def run(self):
         """Run Worker Thread."""
         # This is the code executing in the new thread.
         openweb(self.url)
-#-------------------------------
+
+
+# -------------------------------
 ######模拟删除
 class DeleteThread(Thread):
     def __init__(self):
         """Init Worker Thread Class."""
         Thread.__init__(self)
-        self.setDaemon(True)     #启动进程之前选择，主进程关闭，子进程跟着关闭
+        self.setDaemon(True)  # 启动进程之前选择，主进程关闭，子进程跟着关闭
         self.start()  # start the thread
+
     # ----------------------------------------------------------------------
     def run(self):
         """Run Worker Thread."""
@@ -4114,16 +4057,18 @@ class DeleteThread(Thread):
         else:
             Paste()  # 粘贴
         Click(Position[1][0], Position[1][1])
-#----------------------
 
+
+# ----------------------
 
 
 class HashThread(Thread):
     def __init__(self):
         """Init Worker Thread Class."""
         Thread.__init__(self)
-        self.setDaemon(True)     #启动进程之前选择，主进程关闭，子进程跟着关闭
+        self.setDaemon(True)  # 启动进程之前选择，主进程关闭，子进程跟着关闭
         self.start()  # start the thread
+
     # ----------------------------------------------------------------------
     def run(self):
         """Run Worker Thread."""
@@ -4132,7 +4077,7 @@ class HashThread(Thread):
         # wx.Sleep(15)
         # TopFrame.Refresh_hash()
         import winreg, sys
-####################修改打开的IE版本
+        ####################修改打开的IE版本
         key = winreg.OpenKey(winreg.HKEY_CURRENT_USER,
                              r"SOFTWARE\Microsoft\Internet Explorer\Main\FeatureControl\FEATURE_BROWSER_EMULATION", 0,
                              winreg.KEY_ALL_ACCESS)
@@ -4140,8 +4085,6 @@ class HashThread(Thread):
         # key = _winreg.OpenKey(_winreg.HKEY_CURRENT_USER,
         #                       r"SOFTWARE\Microsoft\Internet Explorer\Main\FeatureControl\FEATURE_BROWSER_EMULATION", 0,
         #                       _winreg.KEY_ALL_ACCESS)
-
-
 
         # key2 = winreg.OpenKey(winreg.HKEY_CURRENT_USER,
         #                      r"SOFTWARE\Microsoft\Internet Explorer\Main\FeatureControl\FEATURE_ENABLE_SCRIPT_PASTE_URLACTION_IF_PROMPT", 0,
@@ -4162,7 +4105,7 @@ class HashThread(Thread):
         # winreg.CloseKey(key)
 
 
-#创建一个确认进程
+# 创建一个确认进程
 class findposThread(Thread):
     def __init__(self):
         Thread.__init__(self)
@@ -4170,42 +4113,48 @@ class findposThread(Thread):
         self.start()
 
     def run(self):
-        for i  in range(1000000):
+        for i in range(1000000):
             global findpos_on
             if findpos_on:
                 try:
-                    findpos()  #定位
+                    findpos()  # 定位
                     time.sleep(1)  # 1秒间隔92900
                 except:
                     logging.error("findposthread error")
                     print("findposthread error")
 
-#创建一个确认进程
+
+# 创建一个确认进程
 class confirmThread(threading.Thread):
     def __init__(self, *args, **kwargs):
         super(confirmThread, self).__init__(*args, **kwargs)
-        self.__flag = threading.Event()     # 用于暂停线程的标识
-        self.__flag.set()       # 设置为True
-        self.__running = threading.Event()      # 用于停止线程的标识
-        self.__running.set()      # 将running设置为True
+        self.__flag = threading.Event()  # 用于暂停线程的标识
+        self.__flag.set()  # 设置为True
+        self.__running = threading.Event()  # 用于停止线程的标识
+        self.__running.set()  # 将running设置为True
         self.setDaemon(True)
         self.start()
 
-
     def run(self):
         while self.__running.isSet():
-            self.__flag.wait()      # 为True时立即返回, 为False时阻塞直到内部的标识位为True后返回
-            findconfirm()
+            self.__flag.wait()  # 为True时立即返回, 为False时阻塞直到内部的标识位为True后返回
+            time.sleep(0.05)
+            global tijiao_num
+            if tijiao_num == 2:
+                try:
+                    findconfirm()
+                except:
+                    print("查找确认出错")
 
     def pause(self):
-        self.__flag.clear()     # 设置为False, 让线程阻塞
+        self.__flag.clear()  # 设置为False, 让线程阻塞
 
     def resume(self):
-        self.__flag.set()    # 设置为True, 让线程停止阻塞
+        self.__flag.set()  # 设置为True, 让线程停止阻塞
 
     def stop(self):
-        self.__flag.set()       # 将线程从暂停状态恢复, 如何已经暂停的话
-        self.__running.clear()        # 设置为False
+        self.__flag.set()  # 将线程从暂停状态恢复, 如何已经暂停的话
+        self.__running.clear()  # 设置为False
 
 
 # class confirmThread(Thread):
@@ -4228,19 +4177,20 @@ class confirmThread(threading.Thread):
 #                     confirm_one=False
 #                     chujia_on=True
 #         confirm_one = False #进程结束的时候允许
-#创建一个刷新进程
+# 创建一个刷新进程
 class refreshThread(Thread):
     def __init__(self, *args, **kwargs):
         super(refreshThread, self).__init__(*args, **kwargs)
-        self.__flag = threading.Event()     # 用于暂停线程的标识
-        self.__flag.set()       # 设置为True
-        self.__running = threading.Event()      # 用于停止线程的标识
-        self.__running.set()      # 将running设置为True
+        self.__flag = threading.Event()  # 用于暂停线程的标识
+        self.__flag.set()  # 设置为True
+        self.__running = threading.Event()  # 用于停止线程的标识
+        self.__running.set()  # 将running设置为True
         self.setDaemon(True)
         self.start()
+
     def run(self):
         while self.__running.isSet():
-            self.__flag.wait()      # 为True时立即返回, 为False时阻塞直到内部的标识位为True后返回
+            self.__flag.wait()  # 为True时立即返回, 为False时阻塞直到内部的标识位为True后返回
             logging.info("刷")
             time.sleep(0.05)
             try:
@@ -4248,45 +4198,46 @@ class refreshThread(Thread):
             except:
                 print("刷新失败")
         # for i in range(50):
-            #print("查找刷新")
-            # print(refresh_need)
-            # if refresh_need:
-            #     findrefresh()
-                # if refresh_on:
-                #     TopFrame.OnClick_Shuaxin()  # 刷新验证码
+        # print("查找刷新")
+        # print(refresh_need)
+        # if refresh_need:
+        #     findrefresh()
+        # if refresh_on:
+        #     TopFrame.OnClick_Shuaxin()  # 刷新验证码
 
         # refresh_one=False  #进程结束的时候允许
         # refresh_on = False  # 关闭点击刷新
         # refresh_need = False  # 关闭查找刷新
+
     def pause(self):
-        self.__flag.clear()     # 设置为False, 让线程阻塞
+        self.__flag.clear()  # 设置为False, 让线程阻塞
 
     def resume(self):
-        self.__flag.set()    # 设置为True, 让线程停止阻塞
+        self.__flag.set()  # 设置为True, 让线程停止阻塞
 
     def stop(self):
-        self.__flag.set()       # 将线程从暂停状态恢复, 如何已经暂停的话
-        self.__running.clear()        # 设置为False
-
-
+        self.__flag.set()  # 将线程从暂停状态恢复, 如何已经暂停的话
+        self.__running.clear()  # 设置为False
 
 
 # ----------------------------------------------------------------------
-#登录验证器
+# 登录验证器
 class LoginThread(Thread):
     def __init__(self):
         """Init Worker Thread Class."""
         Thread.__init__(self)
         self.setDaemon(True)
         self.start()  # start the thread
+
     # ----------------------------------------------------------------------
     def run(self):
         # self.controlthread=controlThread()
-        global Username,login_result
-        login_result=ConfirmUser()
+        global Username, login_result
+        login_result = ConfirmUser()
         print(login_result)
         # logging.info("%s"%login_result)
         wx.CallAfter(pub.sendMessage, "connect")
+
 
 ###限定登录时间
 class controlThread(Thread):
@@ -4300,7 +4251,6 @@ class controlThread(Thread):
     def run(self):
         wx.Sleep(10)
         wx.CallAfter(pub.sendMessage, "connect failure")
-
 
 
 # 登录状态验证器
@@ -4318,9 +4268,9 @@ class KeepThread(Thread):
             Keeplogin()
 
 
-#----------------------------------------------------------------------
-#自动出价触发器
-#国拍出价
+# ----------------------------------------------------------------------
+# 自动出价触发器
+# 国拍出价
 class TijiaoThread(Thread):
     def __init__(self):
         """Init Worker Thread Class."""
@@ -4330,60 +4280,60 @@ class TijiaoThread(Thread):
 
     # ----------------------------------------------------------------------
     def run(self):
-        global tijiao_delay,final_tijiao,strategy_price,lowest_price,own_price1,own_price2
-        global moni_second,strategy_on,moni_on,tijiao_on,tijiao_OK,second_real_time1,second_real_time2
-        global one_advance,second_advance,tijiao_num,tijiao_OK,chujia_on,tijiao_on,tijiao_one
+        global tijiao_delay, final_tijiao, strategy_price, lowest_price, own_price1, own_price2
+        global moni_second, strategy_on, moni_on, tijiao_on, tijiao_OK, second_real_time1, second_real_time2
+        global one_advance, second_advance, tijiao_num, tijiao_OK, chujia_on, tijiao_on, tijiao_one
         for i in range(10000000):
-            time.sleep(0.1)  #间隔0.1秒判断一次
+            time.sleep(0.05)  # 间隔0.1秒判断一次
             # print(tijiao_on,strategy_on,guopai_on)
             # print(a_time, final_tijiao)
-            #触发提交
-            if tijiao_on and strategy_on and guopai_on  and tijiao_OK :     #判断是否需要提交,国拍开启状态方可触发
+            # 触发提交
+            if tijiao_on and strategy_on and guopai_on and tijiao_OK:  # 判断是否需要提交,国拍开启状态方可触发
                 # print(a_time,final_tijiao)
-                if tijiao_num == 1 and a_time>=one_real_time2 and not tijiao_one:  #判断是否满足条件
-                    tijiao_on=False
-                    TopFrame.SmartTijiao()    #调用方法
-                    tijiao_on=False
-                    logging.info("Rone_tijiao %s%s%s%s" % (tijiao_on,strategy_on, guopai_on, tijiao_OK))
+                if tijiao_num == 1 and a_time >= one_real_time2 and not tijiao_one:  # 判断是否满足条件
+                    tijiao_on = False
+                    TopFrame.SmartTijiao()  # 调用方法
+                    tijiao_on = False
+                    logging.info("Rone_tijiao %s%s%s%s" % (tijiao_on, strategy_on, guopai_on, tijiao_OK))
                     logging.info("Rone_tijiao %s%s%s" % (tijiao_num, a_time, one_real_time2))
-                    tijiao_one=True
+                    tijiao_one = True
                 elif tijiao_num == 2 and a_time >= second_real_time2:  # 判断是否满足条件
                     tijiao_on = False
                     TopFrame.SmartTijiao()  # 调用方法
                     tijiao_on = False
-                    logging.info("Rsecond_tijiao %s%s%s%s" % (tijiao_on,strategy_on, guopai_on, tijiao_OK))
+                    logging.info("Rsecond_tijiao %s%s%s%s" % (tijiao_on, strategy_on, guopai_on, tijiao_OK))
                     logging.info("Rsecond_tijiao %s%s%s" % (tijiao_num, a_time, second_real_time2))
-                elif tijiao_num ==1 and   lowest_price >= own_price1-300-one_advance and a_time<=one_real_time2-one_delay and not tijiao_one:  # 价格判断
+                elif tijiao_num == 1 and lowest_price >= own_price1 - 300 - one_advance and a_time <= one_real_time2 - one_delay and not tijiao_one:  # 价格判断
                     tijiao_on = False
                     tijiao_on = False  # 执行提交之后只能通过选择进程开启自动提交
                     TopFrame.OnClick_Tijiao()  # 调用方法
-                    logging.info("Rone_tijiao %s%s%s%s" % (tijiao_on,strategy_on, guopai_on, tijiao_OK))
+                    logging.info("Rone_tijiao %s%s%s%s" % (tijiao_on, strategy_on, guopai_on, tijiao_OK))
                     logging.info("Rone_tijiao %s%s%s" % (tijiao_num, lowest_price, own_price1))
                     tijiao_one = True
-                elif tijiao_num == 2 and lowest_price >= own_price2-300-second_advance and a_time<=second_real_time2-second_delay:  # 价格判断
+                elif tijiao_num == 2 and lowest_price >= own_price2 - 300 - second_advance and a_time <= second_real_time2 - second_delay:  # 价格判断
                     tijiao_on = False
                     tijiao_on = False  # 执行提交之后只能通过选择进程开启自动提交
                     TopFrame.OnClick_Tijiao()  # 调用方法
-                    logging.info("Rsecond_tijiao %s%s%s%s" % (tijiao_on,strategy_on, guopai_on, tijiao_OK))
+                    logging.info("Rsecond_tijiao %s%s%s%s" % (tijiao_on, strategy_on, guopai_on, tijiao_OK))
                     logging.info("Rsecond_tijiao %s%s%s" % (tijiao_num, lowest_price, own_price2))
-            #触发出价
-            if  strategy_on and guopai_on and chujia_on:  # 判断是否需要提交,国拍开启状态方可触发
+            # 触发出价
+            if strategy_on and guopai_on and chujia_on:  # 判断是否需要提交,国拍开启状态方可触发
                 # print(a_time,final_tijiao)
-                if tijiao_num == 1 and  one_real_time1<=a_time<=one_real_time1+0.6:  # 判断是否满足条件
+                if tijiao_num == 1 and one_real_time1 <= a_time <= one_real_time1 + 0.6:  # 判断是否满足条件
                     TopFrame.OnClick_chujia()  # 调用出价
-                    own_price1=lowest_price+one_diff
-                    tijiao_on=True   #
-                    logging.info("Rone_chujia %s%s" %(strategy_on,guopai_on))
-                    logging.info("Rone_chujia %s%s" %(one_time1,one_real_time1))
-                elif tijiao_num == 2 and twice and   second_real_time1<=a_time:  # 判断是否满足条件
+                    own_price1 = lowest_price + one_diff
+                    tijiao_on = True  #
+                    logging.info("Rone_chujia %s%s" % (strategy_on, guopai_on))
+                    logging.info("Rone_chujia %s%s" % (one_time1, one_real_time1))
+                elif tijiao_num == 2 and twice and second_real_time1 <= a_time:  # 判断是否满足条件
                     TopFrame.OnClick_chujia()  # 调用出价
-                    own_price2=lowest_price+second_diff
-                    tijiao_on=True
+                    own_price2 = lowest_price + second_diff
+                    tijiao_on = True
                     logging.info("Rsecond_chujia %s%s" % (strategy_on, guopai_on))
                     logging.info("Rsecond_chujia %s%s" % (second_time1, second_real_time1))
 
 
-#模拟出价
+# 模拟出价
 class MoniTijiaoThread(Thread):
     def __init__(self):
         """Init Worker Thread Class."""
@@ -4393,110 +4343,115 @@ class MoniTijiaoThread(Thread):
 
     # ----------------------------------------------------------------------
     def run(self):
-        global moni_second,strategy_on,moni_on,tijiao_on,own_price1,own_price2,one_diff,second_diff
-        global tijiao_num, tijiao_OK,one_advance,second_advance,tijiao_one
+        global moni_second, strategy_on, moni_on, tijiao_on, own_price1, own_price2, one_diff, second_diff
+        global tijiao_num, tijiao_OK, one_advance, second_advance, tijiao_one
         for i in range(10000000):
-            time.sleep(0.1)  #间隔0.1秒判断一次
+            time.sleep(0.05)  # 间隔0.1秒判断一次
 
-            if tijiao_on and strategy_on and moni_on and tijiao_OK :     #判断是否需要提交，模拟开启方可触发
+            if tijiao_on and strategy_on and moni_on and tijiao_OK:  # 判断是否需要提交，模拟开启方可触发
                 # print(tijiao_on, strategy_on, moni_on, tijiao_OK)
                 # print(tijiao_num,moni_second,one_time2,tijiao_one)
                 # print(lowest_price, own_price1, own_price2)
-                if tijiao_num == 1 and moni_second>=one_time2 and not tijiao_one:  #判断是否满足条件
-                    TopFrame.SmartTijiao()    #调用方法
-                    logging.info("moni one_tijiao %s %s %s %s" % (tijiao_on,strategy_on, moni_on,  tijiao_OK))
+                if tijiao_num == 1 and moni_second >= one_time2 and not tijiao_one:  # 判断是否满足条件
+                    TopFrame.SmartTijiao()  # 调用方法
+                    logging.info("moni one_tijiao %s %s %s %s" % (tijiao_on, strategy_on, moni_on, tijiao_OK))
                     logging.info("moni one_tijiao %s %s %s" % (tijiao_num, moni_second, one_time2))
-                    tijiao_on=False
-                    tijiao_one=True #第一枪已开
-                elif tijiao_num == 2 and moni_second>= second_time2 and twice:  # 判断是否满足条件
+                    tijiao_on = False
+                    tijiao_one = True  # 第一枪已开
+                elif tijiao_num == 2 and moni_second >= second_time2 and twice:  # 判断是否满足条件
                     TopFrame.SmartTijiao()  # 调用方法
                     logging.info("moni1 second_tijiao %s %s %s %s" % (tijiao_on, strategy_on, moni_on, tijiao_OK))
                     logging.info("moni second_tijiao %s %s %s" % (tijiao_num, moni_second, second_time2))
                     tijiao_on = False
-                elif tijiao_num ==1 and   lowest_price >= own_price1-300-one_advance and  not tijiao_one:  # 价格判断
+                elif tijiao_num == 1 and lowest_price >= own_price1 - 300 - one_advance and not tijiao_one:  # 价格判断
                     tijiao_on = False  # 执行提交之后只能通过选择进程开启自动提交
                     TopFrame.OnClick_Tijiao()  # 调用方法
                     logging.info("moni one_tijiao %s %s %s %s" % (tijiao_on, strategy_on, moni_on, tijiao_OK))
                     logging.info("moni one_tijiao %s %s %s" % (tijiao_num, lowest_price, own_price1))
                     tijiao_one = True  # 第一枪已开
-                elif tijiao_num == 2 and lowest_price >= own_price2-300-second_advance and twice:  # 价格判断
+                elif tijiao_num == 2 and lowest_price >= own_price2 - 300 - second_advance and twice:  # 价格判断
                     tijiao_on = False  # 执行提交之后只能通过选择进程开启自动提交
-                    TopFrame.OnClick_Tijiao() # 调用方法
+                    TopFrame.OnClick_Tijiao()  # 调用方法
                     logging.info("moni2 second_tijiao %s%s%s%s" % (tijiao_on, strategy_on, moni_on, tijiao_OK))
                     logging.info("moni second_tijiao %s%s%s" % (tijiao_num, lowest_price, own_price2))
-            #触发出价
+            # 触发出价
             # print(strategy_on,moni_on)
             # print(strategy_on, moni_on, chujia_on)
             # print(twice, second_time1, moni_second)
-            if strategy_on and moni_on and chujia_on :  # 判断是否需要出价,模拟开启方可触发
-                if tijiao_num == 1 and  one_time1<=moni_second<=one_time1+0.6:  # 判断是否满足条件
+            if strategy_on and moni_on and chujia_on:  # 判断是否需要出价,模拟开启方可触发
+                if tijiao_num == 1 and one_time1 <= moni_second <= one_time1 + 0.6:  # 判断是否满足条件
                     TopFrame.OnClick_chujia()  # 调用方法
                     print("第一次")
-                    own_price1=lowest_price+one_diff
-                    tijiao_on=True
-                    logging.info("moni one_chujia %s %s" %(strategy_on,moni_on))
-                    logging.info("moni one_chujia %s %s" %(one_time1,moni_second))
-                elif tijiao_num == 2 and  twice and  second_time1<moni_second:
+                    own_price1 = lowest_price + one_diff
+                    tijiao_on = True
+                    logging.info("moni one_chujia %s %s" % (strategy_on, moni_on))
+                    logging.info("moni one_chujia %s %s" % (one_time1, moni_second))
+                elif tijiao_num == 2 and twice and second_time1 < moni_second:
                     TopFrame.OnClick_chujia()  # 调用方法
                     print("第二次")
-                    own_price2=lowest_price+second_diff
-                    tijiao_on=True
-                    logging.info("moni second_chujia %s %s" %(strategy_on,moni_on))
-                    logging.info("moni second_chujia %s %s" %(second_time1,moni_second))
+                    own_price2 = lowest_price + second_diff
+                    tijiao_on = True
+                    logging.info("moni second_chujia %s %s" % (strategy_on, moni_on))
+                    logging.info("moni second_chujia %s %s" % (second_time1, moni_second))
 
 
 class Infoframe(wx.Frame):
-    def __init__(self, name, user,psd):  ##########版本号
-        wx.Frame.__init__(self, None, -1, name,size=(300, 240), style= wx.CAPTION | wx.CLOSE_BOX)
+    def __init__(self, name, user, psd):  ##########版本号
+        wx.Frame.__init__(self, None, -1, name, size=(300, 240), style=wx.CAPTION | wx.CLOSE_BOX)
         self.Bind(wx.EVT_CLOSE, self.OnClose)
         self.panel = wx.Panel(self, size=(300, 220))
         self.icon = wx.Icon(mainicon, wx.BITMAP_TYPE_ICO)
         self.SetIcon(self.icon)
 
 
-userweb_label="本地IE"
+userweb_label = "本地IE"
+
+
 class Guopaiframe(wx.Dialog):
-    def __init__(self,name):  ##########版本号
-        wx.Frame.__init__(self, None, -1, name,size=(195,265), style= wx.CAPTION | wx.CLOSE_BOX)
+    def __init__(self, name):  ##########版本号
+        wx.Frame.__init__(self, None, -1, name, size=(195, 265), style=wx.CAPTION | wx.CLOSE_BOX)
         self.Bind(wx.EVT_CLOSE, self.OnClose)
         self.panel = wx.Panel(self, size=(195, 270))
         self.icon = wx.Icon(mainicon, wx.BITMAP_TYPE_ICO)
         self.SetIcon(self.icon)
 
-        #创建2个button
-        self.userweb_label=userweb_label
-        self.dianxin=wx.Button(self.panel,label="上海电信",pos=(20,10),size=(140,60))
-        self.nodianxin=wx.Button(self.panel,label="非电信",pos=(20,80),size=(140,60))
+        # 创建2个button
+        self.userweb_label = userweb_label
+        self.dianxin = wx.Button(self.panel, label="上海电信", pos=(20, 10), size=(140, 60))
+        self.nodianxin = wx.Button(self.panel, label="非电信", pos=(20, 80), size=(140, 60))
         self.userweb = wx.Button(self.panel, label=self.userweb_label, pos=(20, 150), size=(140, 60))
         self.dianxin.SetFont(wx.Font(20, wx.SWISS, wx.NORMAL, wx.NORMAL))
         self.nodianxin.SetFont(wx.Font(20, wx.SWISS, wx.NORMAL, wx.NORMAL))
         self.userweb.SetFont(wx.Font(20, wx.SWISS, wx.NORMAL, wx.NORMAL))
-        self.Bind(wx.EVT_BUTTON,self.Dianxin,self.dianxin)
-        self.Bind(wx.EVT_BUTTON,self.NoDianxin,self.nodianxin)
+        self.Bind(wx.EVT_BUTTON, self.Dianxin, self.dianxin)
+        self.Bind(wx.EVT_BUTTON, self.NoDianxin, self.nodianxin)
         self.Bind(wx.EVT_BUTTON, self.UserWeb, self.userweb)
         self.Center()
         self.ShowModal()
-    def Dianxin(self,event):
+
+    def Dianxin(self, event):
         wx.CallAfter(pub.sendMessage, "open dianxin")
         self.Destroy()
         event.Skip()
-    def NoDianxin(self,event):
+
+    def NoDianxin(self, event):
         wx.CallAfter(pub.sendMessage, "open nodianxin")
         self.Destroy()
         event.Skip()
-    def UserWeb(self,event):
-        global userweb_label,guopai_on
-        if userweb_label =='本地IE'  and not guopai_on:
-            guopai_on = True  #表示国拍已经打开
-            userweb_label='关闭辅助'
+
+    def UserWeb(self, event):
+        global userweb_label, guopai_on
+        if userweb_label == '本地IE' and not guopai_on:
+            guopai_on = True  # 表示国拍已经打开
+            userweb_label = '关闭辅助'
             wx.CallAfter(pub.sendMessage, "open userweb")
         else:
             userweb_label = '本地IE'
-            guopai_on = False #表示国拍已经关闭
+            guopai_on = False  # 表示国拍已经关闭
             TopFrame.Close()
-            #关闭 验证码放大框
+            # 关闭 验证码放大框
             try:
-                yan=self.FindWindowById(18)
+                yan = self.FindWindowById(18)
                 yan.Destroy()
                 global yanzhengma_exist
                 print("关闭成功")
@@ -4504,13 +4459,13 @@ class Guopaiframe(wx.Dialog):
             except:
                 pass
 
-
         self.Destroy()
         event.Skip()
 
-    def OnClose(self,event):
+    def OnClose(self, event):
         self.Destroy()
         event.Skip()
+
 
 class SketchApp(wx.App):
     def OnInit(self):
@@ -4543,14 +4498,12 @@ if __name__ == '__main__':
     getwebpath()  # 初始化浏览器地址
     app = SketchApp()
     # 打开刷新与确认进程
-    # confirmthread = confirmThread()
+    confirmthread = confirmThread()
     # confirmthread.pause()  # 暂停
     ##
-    refreshthread=refreshThread()
-    refreshthread.pause()
-
+    refreshthread = refreshThread()
+    # refreshthread.pause()
 
     app.MainLoop()
-
 
 # self.Bind(wx.EVT_KEY_DOWN, self.OnKeyDown)
