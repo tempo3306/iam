@@ -10,17 +10,15 @@
     <bookmark url="file://$PROJECT_DIR$/Iambest3.0.py" line="2550" mnemonic="5" />
     <bookmark url="file://$PROJECT_DIR$/Iambest3.0.py" line="4227" />
     <bookmark url="file://$PROJECT_DIR$/Iambest3.3.py" mnemonic="3" />
-    <bookmark url="file://$PROJECT_DIR$/Iambest3.3.py" line="2996" mnemonic="7" />
     <bookmark url="file://$PROJECT_DIR$/Iambest3.3.py" line="610" mnemonic="8" />
-    <bookmark url="file://$PROJECT_DIR$/Iambest3.3.py" line="526" mnemonic="6" />
+    <bookmark url="file://$PROJECT_DIR$/Iambest4.0.py" line="494" mnemonic="6" />
+    <bookmark url="file://$PROJECT_DIR$/Iambest4.0.py" line="1609" mnemonic="7" />
   </component>
   <component name="ChangeListManager">
     <list default="true" id="c8debae4-b925-498b-98cb-a7662a836617" name="Default" comment="">
+      <change beforePath="" afterPath="$PROJECT_DIR$/hotkey1.py" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change beforePath="$PROJECT_DIR$/Iambest4.0.py" afterPath="$PROJECT_DIR$/Iambest4.0.py" />
-      <change beforePath="$PROJECT_DIR$/low1.png" afterPath="$PROJECT_DIR$/low1.png" />
-      <change beforePath="$PROJECT_DIR$/low2.png" afterPath="$PROJECT_DIR$/low2.png" />
-      <change beforePath="$PROJECT_DIR$/to.png" afterPath="$PROJECT_DIR$/to.png" />
       <change beforePath="$PROJECT_DIR$/yanzhengma.png" afterPath="$PROJECT_DIR$/yanzhengma.png" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -31,26 +29,27 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="CoverageDataManager">
-    <SUITE FILE_PATH="coverage/BestAssistant$obfuscate.coverage" NAME="obfuscate Coverage Results" MODIFIED="1514165485184" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="F:/Zup" />
     <SUITE FILE_PATH="coverage/BestAssistant$screenshot1.coverage" NAME="screenshot1 Coverage Results" MODIFIED="1514421105017" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/BestAssistant$Iambest4_0.coverage" NAME="Iambest4.0 Coverage Results" MODIFIED="1514447573393" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/BestAssistant$get_bmp.coverage" NAME="get_bmp Coverage Results" MODIFIED="1514352308068" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/BestAssistant$new_screenshot.coverage" NAME="new_screenshot Coverage Results" MODIFIED="1514275909492" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/BestAssistant$Iambest3_3.coverage" NAME="Iambest3.3 Coverage Results" MODIFIED="1514363873437" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/BestAssistant$global1.coverage" NAME="global1 Coverage Results" MODIFIED="1514432088668" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/BestAssistant$.coverage" NAME="去注释 Coverage Results" MODIFIED="1514447718877" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="F:/Zup" />
-    <SUITE FILE_PATH="coverage/BestAssistant$test_cv.coverage" NAME="test_cv Coverage Results" MODIFIED="1514212560209" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/BestAssistant$Iambest3_1.coverage" NAME="Iambest3.1 Coverage Results" MODIFIED="1514204289807" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/BestAssistant$Iambest3_4.coverage" NAME="Iambest3.4 Coverage Results" MODIFIED="1514277620912" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/BestAssistant$hotkey1.coverage" NAME="hotkey1 Coverage Results" MODIFIED="1514450733946" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/BestAssistant$imagehash1.coverage" NAME="imagehash1 Coverage Results" MODIFIED="1514170312711" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/BestAssistant$obfuscate.coverage" NAME="obfuscate Coverage Results" MODIFIED="1514165485184" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="F:/Zup" />
+    <SUITE FILE_PATH="coverage/BestAssistant$Iambest4_0.coverage" NAME="Iambest4.0 Coverage Results" MODIFIED="1514507353110" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/BestAssistant$get_bmp.coverage" NAME="get_bmp Coverage Results" MODIFIED="1514352308068" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/BestAssistant$new_screenshot.coverage" NAME="new_screenshot Coverage Results" MODIFIED="1514275909492" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/BestAssistant$global1.coverage" NAME="global1 Coverage Results" MODIFIED="1514432088668" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/BestAssistant$test_cv.coverage" NAME="test_cv Coverage Results" MODIFIED="1514212560209" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="375">
       <file leaf-file-name="Iambest4.0.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Iambest4.0.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="240">
-              <caret line="12" column="12" lean-forward="true" selection-start-line="12" selection-start-column="12" selection-end-line="12" selection-end-column="12" />
+            <state relative-caret-position="124">
+              <caret line="13" column="6" lean-forward="true" selection-start-line="13" selection-start-column="6" selection-end-line="13" selection-end-column="6" />
               <folding />
             </state>
           </provider>
@@ -67,14 +66,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>findpos()</find>
-      <find>findposth</find>
-      <find>findposT</find>
-      <find>new_scree</find>
-      <find>new_screenshot_getimg</find>
-      <find>cut_pic</find>
-      <find>lowest_price=</find>
-      <find>lowest_price =</find>
       <find>.cvtColor</find>
       <find>global imgpos_yanzhengma</find>
       <find>find</find>
@@ -97,6 +88,14 @@
       <find>chujia_on</find>
       <find>chujia_on=True</find>
       <find>chujia_on = True</find>
+      <find>lowestprice</find>
+      <find>findpos()</find>
+      <find>findpost</find>
+      <find>准备读价格</find>
+      <find>findpos(</find>
+      <find>findposThread</find>
+      <find>lowestpri</find>
+      <find>Price_read</find>
     </findStrings>
     <replaceStrings>
       <replace>小鲜肉拍牌</replace>
@@ -111,7 +110,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/timeceshi.py" />
         <option value="$PROJECT_DIR$/Iambest.py" />
         <option value="$PROJECT_DIR$/PING.py" />
         <option value="F:/Zup/BestAssistant1.5s.py" />
@@ -160,8 +158,9 @@
         <option value="$PROJECT_DIR$/screenshot1.py" />
         <option value="$PROJECT_DIR$/global1.py" />
         <option value="F:/Zup/disable.py" />
-        <option value="$PROJECT_DIR$/Iambest4.0.py" />
         <option value="F:/Zup/去注释.py" />
+        <option value="$PROJECT_DIR$/hotkey1.py" />
+        <option value="$PROJECT_DIR$/Iambest4.0.py" />
       </list>
     </option>
   </component>
@@ -221,7 +220,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python.去注释">
+  <component name="RunManager" selected="Python.Iambest4.0">
     <configuration name="去注释" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -317,25 +316,6 @@
       <option name="EMULATE_TERMINAL" value="false" />
       <option name="MODULE_MODE" value="false" />
     </configuration>
-    <configuration name="Iambest3.3" type="PythonConfigurationType" factoryName="Python" temporary="true">
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <module name="BestAssistant" />
-      <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Iambest3.3.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-    </configuration>
     <configuration name="Iambest4.0" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -388,6 +368,25 @@
       <module name="BestAssistant" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/global1.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+    </configuration>
+    <configuration name="hotkey1" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="BestAssistant" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/hotkey1.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -482,19 +481,19 @@
       <item index="2" class="java.lang.String" itemvalue="Python.PING" />
       <item index="3" class="java.lang.String" itemvalue="Python.Iambest" />
       <item index="4" class="java.lang.String" itemvalue="Python.Iambest1.7" />
-      <item index="5" class="java.lang.String" itemvalue="Python.Iambest3.3" />
-      <item index="6" class="java.lang.String" itemvalue="Python.Iambest4.0" />
-      <item index="7" class="java.lang.String" itemvalue="Python.screenshot1" />
-      <item index="8" class="java.lang.String" itemvalue="Python.global1" />
-      <item index="9" class="java.lang.String" itemvalue="Python.去注释" />
+      <item index="5" class="java.lang.String" itemvalue="Python.Iambest4.0" />
+      <item index="6" class="java.lang.String" itemvalue="Python.screenshot1" />
+      <item index="7" class="java.lang.String" itemvalue="Python.global1" />
+      <item index="8" class="java.lang.String" itemvalue="Python.去注释" />
+      <item index="9" class="java.lang.String" itemvalue="Python.hotkey1" />
     </list>
     <recent_temporary>
       <list size="5">
-        <item index="0" class="java.lang.String" itemvalue="Python.去注释" />
-        <item index="1" class="java.lang.String" itemvalue="Python.Iambest4.0" />
-        <item index="2" class="java.lang.String" itemvalue="Python.global1" />
-        <item index="3" class="java.lang.String" itemvalue="Python.screenshot1" />
-        <item index="4" class="java.lang.String" itemvalue="Python.Iambest3.3" />
+        <item index="0" class="java.lang.String" itemvalue="Python.Iambest4.0" />
+        <item index="1" class="java.lang.String" itemvalue="Python.hotkey1" />
+        <item index="2" class="java.lang.String" itemvalue="Python.去注释" />
+        <item index="3" class="java.lang.String" itemvalue="Python.global1" />
+        <item index="4" class="java.lang.String" itemvalue="Python.screenshot1" />
       </list>
     </recent_temporary>
   </component>
@@ -594,27 +593,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://C:/Python35/Lib/site-packages/wx/core.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="82">
-          <caret line="738" column="0" lean-forward="false" selection-start-line="738" selection-start-column="0" selection-end-line="738" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/t2.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="100">
-          <caret line="14" column="42" lean-forward="true" selection-start-line="14" selection-start-column="42" selection-end-line="14" selection-end-column="42" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/thread1.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="180">
-          <caret line="18" column="59" lean-forward="false" selection-start-line="18" selection-start-column="59" selection-end-line="18" selection-end-column="59" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/thread2.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="82">
@@ -785,9 +763,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="83">
           <caret line="11" column="19" lean-forward="true" selection-start-line="11" selection-start-column="19" selection-end-line="11" selection-end-column="19" />
-          <folding>
-            <element signature="e#93#103#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -827,9 +802,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="123">
           <caret line="19" column="4" lean-forward="false" selection-start-line="19" selection-start-column="4" selection-end-line="19" selection-end-column="4" />
-          <folding>
-            <element signature="e#93#103#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -837,7 +809,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="316">
           <caret line="300" column="32" lean-forward="false" selection-start-line="300" selection-start-column="32" selection-end-line="300" selection-end-column="32" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -885,7 +856,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="340">
           <caret line="17" column="0" lean-forward="false" selection-start-line="17" selection-start-column="0" selection-end-line="17" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -909,7 +879,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="100">
           <caret line="5" column="3" lean-forward="true" selection-start-line="5" selection-start-column="3" selection-end-line="5" selection-end-column="3" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -917,7 +886,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -933,9 +901,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="260">
           <caret line="79" column="0" lean-forward="false" selection-start-line="79" selection-start-column="0" selection-end-line="83" selection-end-column="98" />
-          <folding>
-            <element signature="e#93#111#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -943,7 +908,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="243">
           <caret line="56" column="17" lean-forward="true" selection-start-line="56" selection-start-column="17" selection-end-line="56" selection-end-column="17" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -951,7 +915,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -959,14 +922,38 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-300">
           <caret line="12" column="0" lean-forward="true" selection-start-line="12" selection-start-column="0" selection-end-line="12" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/.PyCharm2017.3/system/python_stubs/-1781124807/wx/_core/Window.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="176">
+          <caret line="752" column="8" lean-forward="false" selection-start-line="752" selection-start-column="8" selection-end-line="752" selection-end-column="8" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/.PyCharm2017.3/system/python_stubs/-1781124807/wx/_core/AcceleratorTable.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="329">
+          <caret line="28" column="8" lean-forward="false" selection-start-line="28" selection-start-column="8" selection-end-line="28" selection-end-column="8" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/hotkey1.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="383">
+          <caret line="33" column="18" lean-forward="true" selection-start-line="33" selection-start-column="18" selection-end-line="33" selection-end-column="18" />
+          <folding>
+            <element signature="e#93#102#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Iambest4.0.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="240">
-          <caret line="12" column="12" lean-forward="true" selection-start-line="12" selection-start-column="12" selection-end-line="12" selection-end-column="12" />
+        <state relative-caret-position="124">
+          <caret line="13" column="6" lean-forward="true" selection-start-line="13" selection-start-column="6" selection-end-line="13" selection-end-column="6" />
           <folding />
         </state>
       </provider>

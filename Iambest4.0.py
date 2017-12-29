@@ -89,7 +89,7 @@ login_result = False  # 登录成功与否
 
 findpos_on = True  # 控制是否找位置
 
-pricelist = [80000 + i * 100 for i in range(200)]  # 用于验证识别
+pricelist = [80000 + i * 100 for i in range(400)]  # 用于验证识别
 IDnumber = 0  # 身份证号
 account = 0  # 标书号
 passwd = 0  # 密码
@@ -535,16 +535,12 @@ def findpos():
         ##########################
         ####新式截图定位
 
-        Pos_yanzhengma = [612, 391, 792, 501]
-        yanconfirm = [432, 466, 792, 566]
-        refresh_area = [553, 359, 853, 559]
-        lowest = [307, 448, 389, 464]
-        confirm_area = [732, 466, 892, 566]
+        lowest = [Px_lowestprice, Py_lowestprice,  lowestprice_sizex+Px_lowestprice, lowestprice_sizey+Py_lowestprice]
 
         x1 = Px_lowestprice - 10  # 截图起始点
         y1 = Py_lowestprice - 100
 
-        cal_area = [lowest, refresh_area, confirm_area, Pos_yanzhengma, yanconfirm]
+        cal_area = [lowest, refresh_area, confirm_area, Pos_yanzhengma, yan_confirm_area]
         use_area = []
         sc_area = [Px_lowestprice - 10, Py_lowestprice - 100, Px_lowestprice + 600, Py_lowestprice + 120]
         for i in range(5):
@@ -1270,12 +1266,12 @@ class TopFrame(wx.Frame):
         # 读取最低成交价
         self.timer3 = wx.Timer(self)
         self.Bind(wx.EVT_TIMER, self.Lowest_price, self.timer3)  # 设置一个截屏取价
-        self.timer3.Start(100)
+        self.timer3.Start(50)
         # 自动定位
         # self.timer4=wx.Timer(self)
         # self.Bind(wx.EVT_TIMER, self.Find_pos, self.timer4)#设置一个截屏取价
         # self.timer4.Start(600)
-        finposthread = findposThread()
+
         # 时间同步
         self.Bind(wx.EVT_BUTTON, self.Time_autoajust, self.timeautoreset)  # 设置一个截屏取价
 
@@ -1538,23 +1534,23 @@ class TopFrame(wx.Frame):
     ####截屏取价 暂时放在一起
     def Lowest_price(self, event):  #
         global lowest_price, findpos_on, changetime
-        if not findpos_on:
-            try:
-                price = int(TopFrame.Price_read())  # 获取当前最低价
-                # 处理价格
-                if price in pricelist:  # 字典查找
-                    if lowest_price == price:
-                        pass
-                    else:
-                        lowest_price = price
-                        if moni_on:
-                            changetime = moni_second
-                        else:
-                            changetime = a_time
+        try:
+            price = int(TopFrame.Price_read())  # 获取当前最低价
+            # 处理价格
+            if price in pricelist:  # 字典查找
+                findpos_on = False
+                if lowest_price == price:
+                    pass
                 else:
-                    findpos_on = True
-            except:
-                pass
+                    lowest_price = price
+                    if moni_on:
+                        changetime = moni_second
+                    else:
+                        changetime = a_time
+            else:
+                findpos_on = True
+        except:
+            findpos_on = True
 
     # 原来方法识别
     # def Lowest_price(self, event):  #
@@ -1613,13 +1609,22 @@ class TopFrame(wx.Frame):
         # lowestprice=new_screenshot((Px_lowestprice, Py_lowestprice,lowestprice_sizex+Px_lowestprice, lowestprice_sizey+Py_lowestprice))
 
         # lowestprice=np.asarray(lowestprice)
-        global imgpos_lowestprice
-        cv2.imwrite("low1.png", imgpos_lowestprice)
+
+        global imgpos_lowestprice , findpos_on
         lowest_price = cv2.cvtColor(imgpos_lowestprice, cv2.COLOR_BGR2GRAY)
-        cv2.imwrite("low2.png", lowest_price)
+        print("准备读价格")
         price = readpic(lowest_price)
+        print(price)
         # print(price)
+        # price = int(price)  # 获取当前最低价
+        # 处理价格
+        if price in pricelist:  # 字典查找
+            print("f333")
+        else:
+            print("ffds")
+            findpos_on = True
         return price
+
 
     # @staticmethod
     # def Price_hash():
@@ -4115,8 +4120,10 @@ class findposThread(Thread):
     def run(self):
         for i in range(1000000):
             global findpos_on
+            print(findpos_on,"findpos_on")
             if findpos_on:
                 try:
+                    # print("找着呢")
                     findpos()  # 定位
                     time.sleep(1)  # 1秒间隔92900
                 except:
@@ -4498,12 +4505,12 @@ if __name__ == '__main__':
     getwebpath()  # 初始化浏览器地址
     app = SketchApp()
     # 打开刷新与确认进程
-    confirmthread = confirmThread()
+    confirmthread = confirmThread()  #确认线程
     # confirmthread.pause()  # 暂停
     ##
-    refreshthread = refreshThread()
+    refreshthread = refreshThread()  #刷新线程
     # refreshthread.pause()
-
+    finposthread = findposThread()   #定位线程
     app.MainLoop()
 
 # self.Bind(wx.EVT_KEY_DOWN, self.OnKeyDown)
