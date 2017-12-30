@@ -45,7 +45,7 @@ yanzhengma_view = False  # 验证码放大,控制截图
 yanzhengma_close = True  # 关闭验证码放大窗
 yanzhengma_move = True  # 是否需要移动
 
-yanzhengma_hash = {}  # 验证码HASH库
+yanzhengma_hash = 0  # 前一个验证码截图  如果变化就刷新 ，不变化就不动作
 
 price_on = False  # 价格是否显示
 price_count = 0  # 辅助计时，正确显示价格
@@ -254,11 +254,22 @@ Pos_yanzhengmaframe = [Px_yanzhengmaframe, Py_yanzhengmaframe]
 px_lowestprice = 0  # 206   209 208 #截图相对位置
 py_lowestprice = 0  # 412  416
 
+
+
+########最低成交价
 Px_lowestprice = Px + px_lowestprice
 Py_lowestprice = Py + py_lowestprice
 lowestprice_sizex = 82  # 截图范围 41
 # lowestprice_sizex=41 #截图范围 41
 lowestprice_sizey = 16
+########当前时间位置
+
+Px_currenttime =Px_lowestprice-25   #参考最低成交价位置
+Py_currenttime = Py_lowestprice+17
+currenttime_sizex = 132
+currenttime_sizey = 16
+
+
 
 px_relative = 49  # 查找出来位置反算相对位置
 py_relative = 0
@@ -294,11 +305,12 @@ import numpy as np
 sc_area = [Px_lowestprice - 10, Py_lowestprice - 100, Px_lowestprice + 600, Py_lowestprice + 120]
 use_area = [[10, 100, 92, 116], [256, 11, 556, 211], [435, 118, 595, 218], [315, 43, 495, 153], [135, 118, 495, 218]]
 nptemp = []
-imgpos_lowestprice = np.array(nptemp)
-imgpos_refresh = np.array(nptemp)
-imgpos_confirm = np.array(nptemp)
-impos_yanzhengma = np.array(nptemp)
-imgpos_yanzhengmaconfirm = np.array(nptemp)
+imgpos_lowestprice = np.array(nptemp) #最低成交价
+imgpos_refresh = np.array(nptemp)  #刷新按钮
+imgpos_confirm = np.array(nptemp)  #出价完后确认
+impos_yanzhengma = np.array(nptemp)   #验证码
+imgpos_yanzhengmaconfirm = np.array(nptemp)  #验证码确认键
+imgpos_currenttime = np.array(nptemp)   #当前时间
 
 # ----------------------------------------------------------------
 # 导入模块#####################
@@ -503,11 +515,16 @@ def findpos():
     global refresh_area, confirm_area, Pos_timeframe, Pos_controlframe, Pos_yanzhengma, Pos_yanzhengmaframe, yan_confirm_area
     global use_area, sc_area  # 用于截取图片
     global Position, refresh_area, confirm_area, Pos_timeframe, Pos_controlframe, Pos_yanzhengma, Pos_yanzhengmaframe, yan_confirm_area
+    global Px_currenttime,Py_currenttime  #当前时间所在位置
+
     if max_val > 0.9:  # 找不到不动作
         px_lowestprice = max_loc[0] + px_relative
         py_lowestprice = max_loc[1] + py_relative
         Px_lowestprice = px_lowestprice
         Py_lowestprice = py_lowestprice
+
+        Px_currenttime = Px_lowestprice - 25  # 参考最低成交价位置
+        Py_currenttime = Py_lowestprice + 17
 
         # print(px_lowestprice,py_lowestprice)
 
@@ -536,18 +553,22 @@ def findpos():
         ####新式截图定位
 
         lowest = [Px_lowestprice, Py_lowestprice,  lowestprice_sizex+Px_lowestprice, lowestprice_sizey+Py_lowestprice]
+        currenttime = [Px_currenttime,Py_currenttime,Px_currenttime+currenttime_sizex,Py_currenttime+currenttime_sizey]
 
         x1 = Px_lowestprice - 10  # 截图起始点
         y1 = Py_lowestprice - 100
 
-        cal_area = [lowest, refresh_area, confirm_area, Pos_yanzhengma, yan_confirm_area]
+        cal_area = [lowest, refresh_area, confirm_area, Pos_yanzhengma, yan_confirm_area , currenttime]
         use_area = []
         sc_area = [Px_lowestprice - 10, Py_lowestprice - 100, Px_lowestprice + 600, Py_lowestprice + 120]
-        for i in range(5):
+        for i in range(len(cal_area)):
             temp = [cal_area[i][0] - x1, cal_area[i][1] - y1, cal_area[i][2] - x1, cal_area[i][3] - y1]
             use_area.append(temp)
 
         print("找到位置 之后 ", Pos_yanzhengmaframe)
+    ###find timepos
+
+
 
 
 #########################################################
@@ -591,7 +612,7 @@ def cut_img():  # 将所得的img 处理成  lowestprice_img   confirm_img  yanz
     imgpos_confirm = img[use_area[2][1]:use_area[2][3], use_area[2][0]:use_area[2][2]]
     imgpos_yanzhengma = img[use_area[3][1]:use_area[3][3], use_area[3][0]:use_area[3][2]]  # ok
     imgpos_yanzhengmaconfirm = img[use_area[4][1]:use_area[4][3], use_area[4][0]:use_area[4][2]]  # ok
-
+    impos_currenttime = img[use_area[5][1]:use_area[5][3], use_area[5][0]:use_area[5][2]]
 
 def findrefresh():
     global dick_target, refresh_on, refresh_need, refresh_one, Position, refresh_area, confirm_area
@@ -611,10 +632,9 @@ def findrefresh():
     if max_val >= 0.8:
         logging.info("刷新")
         TopFrame.OnClick_Shuaxin()
-        global yanzhengma_view, yanzhengma_close, yanzhengma_count, yanzhengma_hash
+        global yanzhengma_view, yanzhengma_close, yanzhengma_count
         yanzhengma_view = True  # 激活放大器
         yanzhengma_count = 0  # 归零
-        yanzhengma_hash = {}  # 清空验证码库
 
     #     refresh_on = True  # 关闭查找
     # elif refresh_on:
@@ -1265,7 +1285,7 @@ class TopFrame(wx.Frame):
 
         # 读取最低成交价
         self.timer3 = wx.Timer(self)
-        self.Bind(wx.EVT_TIMER, self.Lowest_price, self.timer3)  # 设置一个截屏取价
+        self.Bind(wx.EVT_TIMER, self.Lowest_price, self.timer3)  # 设置一个截屏取价  和查看时间
         self.timer3.Start(50)
         # 自动定位
         # self.timer4=wx.Timer(self)
@@ -1292,7 +1312,7 @@ class TopFrame(wx.Frame):
         global tijiao_num, chujia_on, tijiao_on, strategy_on, tijiao_OK, twice
         timer0 = threading.Timer(5, findpos)
         strategy_on = True
-        twice = True
+        twice = False
         chujia_on = True
         tijiao_on = False
         tijiao_num = 1  # 初始化
@@ -1343,7 +1363,7 @@ class TopFrame(wx.Frame):
         global tijiao_num, chujia_on, tijiao_on, strategy_on, tijiao_OK, twice
         timer0 = threading.Timer(5, findpos)
         strategy_on = True
-        twice = True
+        twice = False
         chujia_on = True
         tijiao_on = False
         tijiao_num = 1  # 初始化
@@ -1388,7 +1408,7 @@ class TopFrame(wx.Frame):
         global tijiao_num, chujia_on, tijiao_on, strategy_on, tijiao_OK, twice
         timer0 = threading.Timer(5, findpos)
         strategy_on = True
-        twice = True
+        twice = False  #初始化双枪不触发
         chujia_on = True
         tijiao_on = False
         tijiao_num = 1  # 初始化
@@ -1433,7 +1453,7 @@ class TopFrame(wx.Frame):
         global tijiao_num, chujia_on, tijiao_on, strategy_on, tijiao_OK, twice
         timer0 = threading.Timer(5, findpos)  # 几秒之后执行一次位置刷新
         strategy_on = True
-        twice = True
+        twice = False
         chujia_on = True
         tijiao_on = False
         tijiao_num = 1  # 初始化
@@ -1543,12 +1563,13 @@ class TopFrame(wx.Frame):
                     pass
                 else:
                     lowest_price = price
-                    print(price,"fdsf")
+                    # print(price,"fdsf")
                     if moni_on:
                         changetime = moni_second
                     else:
                         changetime = a_time
             else:
+                print("重新查找")
                 findpos_on = True
         except:
             findpos_on = True
@@ -1579,7 +1600,11 @@ class TopFrame(wx.Frame):
 
     # 方便测试 时间调整为11点29分
     def Time_autoajust(self, event):
-        global a_time
+        global a_time ,imgpos_currenttime
+        #时间识别
+        currenttime = cv2.cvtColor(imgpos_currenttime, cv2.COLOR_BGR2GRAY)
+        currenttime = readpic(currenttime)  #识别出来的时间
+
         tem1 = time.time()
         a = time.strftime('%Y-%m-%d', time.localtime(tem1))
         b = a + ' ' + "11:29:0"
@@ -1614,10 +1639,7 @@ class TopFrame(wx.Frame):
         global imgpos_lowestprice , findpos_on
         lowest_price = cv2.cvtColor(imgpos_lowestprice, cv2.COLOR_BGR2GRAY)
         price = readpic(lowest_price)
-        # print(price)
-        # price = int(price)  # 获取当前最低价
-        # 处理价格
-
+        return price
 
 
     # @staticmethod
@@ -1698,7 +1720,10 @@ class TopFrame(wx.Frame):
 
     @staticmethod
     def handle_Tijiao():
-        cut_img()
+        x,y=win32api.GetCursorPos()
+        print("x=",x," y=",y)
+
+        # cut_img()
 
         # TopFrame.OnTijiao()
 
@@ -1821,10 +1846,9 @@ class TopFrame(wx.Frame):
     def OnClick_Shuaxin():
         Click(Position[3][0], Position[3][1])
         Click(Position[5][0], Position[5][1])
-        global yanzhengma_view, yanzhengma_close, yanzhengma_count, yanzhengma_hash
+        global yanzhengma_view, yanzhengma_close, yanzhengma_count
         yanzhengma_view = True  # 激活放大器
         yanzhengma_count = 0  # 归零
-        yanzhengma_hash = {}  # 清空验证码库
 
     @staticmethod
     def OnClick_confirm():
@@ -1837,8 +1861,7 @@ class TopFrame(wx.Frame):
         global tijiao_num, own_price1, own_price2, one_diff, second_diff
         global tijiao_on, chujia_on
         global refresh_need, refresh_one, chujia_interval, yanzhengma_view
-        global yanzhengma_hash
-        yanzhengma_hash = {}
+
         yanzhengma_count = 0  # 计数器，制造延迟
         yanzhengma_view = True  # 打开验证码放大器
         print("到这了")
@@ -1882,8 +1905,6 @@ class TopFrame(wx.Frame):
     def OnH_chujia():
         global yanzhengma_view, yanzhengma_count
 
-        global yanzhengma_hash
-        yanzhengma_hash = {}  # 清空验证码库
 
         yanzhengma_view = True
         yanzhengma_count = 0
@@ -1919,8 +1940,7 @@ class TopFrame(wx.Frame):
         # a=wx.FindWindowById(1)
         # a.Show(True)
         global price_view, price_count, yanzhengma_count, yanzhengma_view
-        global yanzhengma_hash
-        yanzhengma_hash = {}  # 清空验证码库
+
 
         Click(Position[4][0], Position[4][1])
         Click(Position[0][0], Position[0][1])
@@ -2758,7 +2778,7 @@ class OperationFrame(wx.Frame):
         # 显示价格
         self.timer1 = wx.Timer(self)
         self.Bind(wx.EVT_TIMER, self.Price_view, self.timer1)  # 绑定一个定时器事件，主判断
-        self.timer1.Start(50)  # 设定时间间隔
+        self.timer1.Start(10)  # 设定时间间隔
         # 设定间隔
         self.timer2 = wx.Timer(self)
         self.Bind(wx.EVT_TIMER, self.Price_count, self.timer2)  #
@@ -2992,11 +3012,11 @@ class OperationFrame(wx.Frame):
     def Price_view(self, event):
         global price_view, web_on, price_on, view_time, yanzhengma_view, Pricesize, Yanzhengmasize, yanzhengma_close
         global yanzhengma_count, price_count, yanzhengma_move
-        global imgpos_yanzhengma
-        try:
-            cut_img()  # 完成截图操作
-        except:
-            print("这出错3033")
+        global imgpos_yanzhengma ,yanzhengma_hash
+        # try:
+        #     cut_img()  # 完成截图操作
+        # except:
+        #     print("这出错3033")
         # print(price_view, price_count)
         if yanzhengma_move:
             yan = self.FindWindowById(18)
@@ -3019,7 +3039,7 @@ class OperationFrame(wx.Frame):
             price_on = True
             # print("到这5")
         # 1秒之后查找是否有确定，找不到就关闭放大器
-        if yanzhengma_count >= 10 and not yanzhengma_close:
+        if yanzhengma_count >= 5 and not yanzhengma_close:  #0.5秒之后没有确认触发关闭验证码
             # yanzhengma_count = 0
             find_yan_confirm()
         if yanzhengma_close:
@@ -3037,12 +3057,13 @@ class OperationFrame(wx.Frame):
             global yanzhengma_img
             yanzhengma_img = Image.open("yanzhengma.png")
             yan_hash = imagehash.dhash(yanzhengma_img)
-            yan_change = yanzhengma_hash.get(yan_hash, 1)  # 判断hash库里是否有
-            if yanzhengma_count >= 10 and yan_change:  # 1s之后，如果字典里没有就更新库  有的话说明没有变化，不动作
-                yanzhengma_hash[yan_hash] = 0  # 已经存在yan_change=0  不存在为1
-            if yan_change:  # 如果
+            if not yanzhengma_hash:  #第一次
+                yanzhengma_hash = yan_hash
+            elif yan_hash == yanzhengma_hash:  #验证码没变化
+                print("没变化，不动作")
+            else:
+                yanzhengma_hash = yan_hash
                 try:
-                    global yanzhengma_exist
                     yan = self.FindWindowById(18)
                     yan.ShowImage(image)
                     yan.Show()
@@ -3052,8 +3073,6 @@ class OperationFrame(wx.Frame):
                     pass
                 finally:
                     pass
-            else:
-                yanzhengma_view = False  # 关闭放大刷新
 
     def Yan_close(self, event):
         # print('fd')
@@ -4219,6 +4238,50 @@ class refreshThread(Thread):
     def stop(self):
         self.__flag.set()  # 将线程从暂停状态恢复, 如何已经暂停的话
         self.__running.clear()  # 设置为False
+###########
+#截图线程
+# 创建一个刷新进程
+class cutimgThread(Thread):
+    def __init__(self, *args, **kwargs):
+        super(cutimgThread, self).__init__(*args, **kwargs)
+        self.__flag = threading.Event()  # 用于暂停线程的标识
+        self.__flag.set()  # 设置为True
+        self.__running = threading.Event()  # 用于停止线程的标识
+        self.__running.set()  # 将running设置为True
+        self.setDaemon(True)
+        self.start()
+
+    def run(self):
+        while self.__running.isSet():
+            self.__flag.wait()  # 为True时立即返回, 为False时阻塞直到内部的标识位为True后返回
+            time.sleep(0.04)
+            try:
+                cut_img()
+            except:
+                print("截图失败")
+        # for i in range(50):
+        # print("查找刷新")
+        # print(refresh_need)
+        # if refresh_need:
+        #     findrefresh()
+        # if refresh_on:
+        #     TopFrame.OnClick_Shuaxin()  # 刷新验证码
+
+        # refresh_one=False  #进程结束的时候允许
+        # refresh_on = False  # 关闭点击刷新
+        # refresh_need = False  # 关闭查找刷新
+
+    def pause(self):
+        self.__flag.clear()  # 设置为False, 让线程阻塞
+
+    def resume(self):
+        self.__flag.set()  # 设置为True, 让线程停止阻塞
+
+    def stop(self):
+        self.__flag.set()  # 将线程从暂停状态恢复, 如何已经暂停的话
+        self.__running.clear()  # 设置为False
+
+
 
 
 # ----------------------------------------------------------------------
@@ -4505,6 +4568,7 @@ if __name__ == '__main__':
     refreshthread = refreshThread()  #刷新线程
     # refreshthread.pause()
     finposthread = findposThread()   #定位线程
+    cutimgthread = cutimgThread()   #截图线程
     app.MainLoop()
 
 # self.Bind(wx.EVT_KEY_DOWN, self.OnKeyDown)
