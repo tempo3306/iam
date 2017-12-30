@@ -1543,6 +1543,7 @@ class TopFrame(wx.Frame):
                     pass
                 else:
                     lowest_price = price
+                    print(price,"fdsf")
                     if moni_on:
                         changetime = moni_second
                     else:
@@ -1612,18 +1613,11 @@ class TopFrame(wx.Frame):
 
         global imgpos_lowestprice , findpos_on
         lowest_price = cv2.cvtColor(imgpos_lowestprice, cv2.COLOR_BGR2GRAY)
-        print("准备读价格")
         price = readpic(lowest_price)
-        print(price)
         # print(price)
         # price = int(price)  # 获取当前最低价
         # 处理价格
-        if price in pricelist:  # 字典查找
-            print("f333")
-        else:
-            print("ffds")
-            findpos_on = True
-        return price
+
 
 
     # @staticmethod
@@ -4120,7 +4114,7 @@ class findposThread(Thread):
     def run(self):
         for i in range(1000000):
             global findpos_on
-            print(findpos_on,"findpos_on")
+            # print(findpos_on,"findpos_on")
             if findpos_on:
                 try:
                     # print("找着呢")
