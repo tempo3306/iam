@@ -13,7 +13,7 @@
 # 新增验证码放大器功能
 # 时间同步
 
-version = '4.0'
+version = '4.1'
 num = 0
 avt = 0
 
@@ -303,7 +303,7 @@ query_on = False  # 是否处于查询状态
 import numpy as np
 
 sc_area = [Px_lowestprice - 10, Py_lowestprice - 100, Px_lowestprice + 600, Py_lowestprice + 120]
-use_area = [[10, 100, 92, 116], [256, 11, 556, 211], [435, 118, 595, 218], [315, 43, 495, 153], [135, 118, 495, 218]]
+use_area = []
 nptemp = []
 imgpos_lowestprice = np.array(nptemp) #最低成交价
 imgpos_refresh = np.array(nptemp)  #刷新按钮
@@ -523,8 +523,8 @@ def findpos():
         Px_lowestprice = px_lowestprice
         Py_lowestprice = py_lowestprice
 
-        Px_currenttime = Px_lowestprice - 25  # 参考最低成交价位置
-        Py_currenttime = Py_lowestprice + 17
+        Px_currenttime = Px_lowestprice -27  # 参考最低成交价位置
+        Py_currenttime = Py_lowestprice -16
 
         # print(px_lowestprice,py_lowestprice)
 
@@ -554,13 +554,14 @@ def findpos():
 
         lowest = [Px_lowestprice, Py_lowestprice,  lowestprice_sizex+Px_lowestprice, lowestprice_sizey+Py_lowestprice]
         currenttime = [Px_currenttime,Py_currenttime,Px_currenttime+currenttime_sizex,Py_currenttime+currenttime_sizey]
-
-        x1 = Px_lowestprice - 10  # 截图起始点
-        y1 = Py_lowestprice - 100
+        dis_x=50
+        dis_y=100
+        x1 = Px_lowestprice - dis_x  # 截图起始点
+        y1 = Py_lowestprice - dis_y
 
         cal_area = [lowest, refresh_area, confirm_area, Pos_yanzhengma, yan_confirm_area , currenttime]
         use_area = []
-        sc_area = [Px_lowestprice - 10, Py_lowestprice - 100, Px_lowestprice + 600, Py_lowestprice + 120]
+        sc_area = [Px_lowestprice - dis_x, Py_lowestprice - dis_y, Px_lowestprice + 600, Py_lowestprice + 120]
         for i in range(len(cal_area)):
             temp = [cal_area[i][0] - x1, cal_area[i][1] - y1, cal_area[i][2] - x1, cal_area[i][3] - y1]
             use_area.append(temp)
@@ -601,10 +602,11 @@ def only_screenshot(area):  # x,y  pos      w,h size
 #########################################################
 ###获得截取的全局变量
 def cut_img():  # 将所得的img 处理成  lowestprice_img   confirm_img  yanzhengma_confirm_img  refresh_img
-    global use_area, sc_area, imgpos_lowestprice, imgpos_yanzhengma, imgpos_refresh, imgpos_confirm, imgpos_yanzhengmaconfirm
+    global use_area, sc_area, imgpos_lowestprice, imgpos_yanzhengma, imgpos_refresh, imgpos_confirm, imgpos_yanzhengmaconfirm,imgpos_currenttime
     img = only_screenshot(sc_area)  # 获取得到的截图
     # 切片
     img = np.asarray(img)  # 转化为numpy数组
+
     # [[10, 100, 92, 116], [256, 11, 556, 211], [435, 118, 595, 218], [315, 43, 495, 153], [135, 118, 495, 218]]
     # [220,510]
     imgpos_lowestprice = img[use_area[0][1]:use_area[0][3], use_area[0][0]:use_area[0][2]]  # ok
@@ -612,7 +614,7 @@ def cut_img():  # 将所得的img 处理成  lowestprice_img   confirm_img  yanz
     imgpos_confirm = img[use_area[2][1]:use_area[2][3], use_area[2][0]:use_area[2][2]]
     imgpos_yanzhengma = img[use_area[3][1]:use_area[3][3], use_area[3][0]:use_area[3][2]]  # ok
     imgpos_yanzhengmaconfirm = img[use_area[4][1]:use_area[4][3], use_area[4][0]:use_area[4][2]]  # ok
-    impos_currenttime = img[use_area[5][1]:use_area[5][3], use_area[5][0]:use_area[5][2]]
+    imgpos_currenttime = img[use_area[5][1]:use_area[5][3], use_area[5][0]:use_area[5][2]]
 
 def findrefresh():
     global dick_target, refresh_on, refresh_need, refresh_one, Position, refresh_area, confirm_area
@@ -792,24 +794,100 @@ def hog(img):
 
 # 二值化，切割
 def cut(img):
-    ret, thresh1 = cv2.threshold(img, 127, 255, cv2.THRESH_BINARY_INV)
+    ret,thresh1=cv2.threshold(img,127,255,cv2.THRESH_BINARY_INV)
+    # thresh1=fushi(thresh1)
     # image,contours,hierarchy = cv2.findContours(thresh1,cv2.RETR_EXTERNAL,cv2.CHAIN_APPROX_NONE)
-    image, contours, hierarchy = cv2.findContours(thresh1, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_NONE)
-    imgn = []
-    xy = []
+    image,contours,hierarchy = cv2.findContours(thresh1,cv2.RETR_EXTERNAL,cv2.CHAIN_APPROX_NONE)
+    imgn=[]
+    xy=[]
     for i in range(len(contours)):
         cnt = contours[i]
         x, y, w, h = cv2.boundingRect(cnt)
         # print(x, y, w, h)
         xy.append([x, y, w, h])
-
     xy = sorted(xy)
-    for i in range(len(contours)):
-        x, y, w, h = xy[i]
+    xy0=[]
+    for i in range(len(xy)-1):
+        diff=xy[i+1][0]-xy[i][0]
+        if diff == 0:
+            pass
+        elif 0<diff<6:
+            print("diff=",diff)
+            continue
+        else:
+            xy0.append(xy[i])
+            if 12<=diff<=16:
+                temp=[int(diff/2)+xy[i][0],xy[i+1][1],xy[i+1][2],xy[i+1][3]]
+                print(temp)
+                xy0.append(temp)
+            elif 19<=diff<=23:
+                temp1=int(diff/3)
+                temp2=int(diff/3)*2
+                temp=copy.deepcopy(temp)
+                temp=[temp1+xy[i][0],xy[i+1][1],xy[i+1][2],xy[i+1][3]]
+                xy0.append(temp)
+                temp = copy.deepcopy(temp)
+                temp=[temp2+xy[i][0],xy[i+1][1],xy[i+1][2],xy[i+1][3]]
+                xy0.append(temp)
+            elif  26<=diff<=30:
+                temp1=int(diff/4)
+                temp2=int(diff/4)*2
+                temp3=int(diff/4)*3
+                temp = copy.deepcopy(temp)
+                temp=[temp1+xy[i][0],xy[i+1][1],xy[i+1][2],xy[i+1][3]]
+                xy0.append(temp)
+                temp = copy.deepcopy(temp)
+                temp=[temp2+xy[i][0],xy[i+1][1],xy[i+1][2],xy[i+1][3]]
+                xy0.append(temp)
+                temp = copy.deepcopy(temp)
+                temp=[temp3+xy[i][0],xy[i+1][1],xy[i+1][2],xy[i+1][3]]
+                xy0.append(temp)
+            elif  33<=diff<=37:
+                temp1=int(diff/5)
+                temp2=int(diff/5)*2
+                temp3=int(diff/5)*3
+                temp4=int(diff/5)*4
+                temp = copy.deepcopy(temp)
+                temp=[temp1+xy[i][0],xy[i+1][1],xy[i+1][2],xy[i+1][3]]
+                xy0.append(temp)
+                temp = copy.deepcopy(temp)
+                temp=[temp2+xy[i][0],xy[i+1][1],xy[i+1][2],xy[i+1][3]]
+                xy0.append(temp)
+                temp = copy.deepcopy(temp)
+                temp=[temp3+xy[i][0],xy[i+1][1],xy[i+1][2],xy[i+1][3]]
+                xy0.append(temp)
+                temp = copy.deepcopy(temp)
+                temp=[temp4+xy[i][0],xy[i+1][1],xy[i+1][2],xy[i+1][3]]
+                xy0.append(temp)
+            elif  40<=diff<=44:
+                temp1=int(diff/6)
+                temp2=int(diff/6)*2
+                temp3=int(diff/6)*3
+                temp4=int(diff/6)*4
+                temp5=int(diff/6)*5
+                temp = copy.deepcopy(temp)
+                temp=[temp1+xy[i][0],xy[i+1][1],xy[i+1][2],xy[i+1][3]]
+                xy0.append(temp)
+                temp = copy.deepcopy(temp)
+                temp=[temp2+xy[i][0],xy[i+1][1],xy[i+1][2],xy[i+1][3]]
+                xy0.append(temp)
+                temp = copy.deepcopy(temp)
+                temp=[temp3+xy[i][0],xy[i+1][1],xy[i+1][2],xy[i+1][3]]
+                xy0.append(temp)
+                temp = copy.deepcopy(temp)
+                temp=[temp4+xy[i][0],xy[i+1][1],xy[i+1][2],xy[i+1][3]]
+                xy0.append(temp)
+                temp = copy.deepcopy(temp)
+                temp=[temp5+xy[i][0],xy[i+1][1],xy[i+1][2],xy[i+1][3]]
+                xy0.append(temp)
+    xy0.append(xy[-1])
+
+    for i in range(len(xy0)):
+        x, y, w, h = xy0[i]
         imgn.append(image[y:y + h, x:x + w])
     return imgn
 
-
+import copy
 def readpic(img):
     svm = cv2.ml.SVM_load('maindata.xml')
     testData = cut(img)
@@ -817,9 +895,27 @@ def readpic(img):
     testData = np.float32(testData).reshape(-1, 64)
     result = svm.predict(testData)
     result = result[1].reshape(-1).astype(int).astype(str)
+    for i in range(len(result)):
+        if result[i] == '11':
+            result[i] = ':'
     price = "".join(list(result))
-    return price  # 返回的是price str
+    return price  # 返回的是price str   也可以是时间
 
+def timeset():
+    global a_time, imgpos_currenttime, moni_second
+    # 时间识别
+    currenttime = cv2.cvtColor(imgpos_currenttime, cv2.COLOR_BGR2GRAY)
+    currenttime = readpic(currenttime)  # 识别出来的时间
+    cv2.imwrite("zp.png", imgpos_currenttime)
+    print(currenttime)
+    tem1 = time.time()
+    a = time.strftime('%Y-%m-%d', time.localtime(tem1))
+    b = a + ' ' + currenttime
+    a_time = time.mktime(time.strptime(b, '%Y-%m-%d %H:%M:%S')) + 0.5  # 转时间戳   补个平均时差
+    try:
+        moni_second = int(currenttime.split(':')[2]) + 0.5
+    except:
+        pass
 
 # --------------------------------------------------------------------------------
 # PING网速测试
@@ -1600,17 +1696,7 @@ class TopFrame(wx.Frame):
 
     # 方便测试 时间调整为11点29分
     def Time_autoajust(self, event):
-        global a_time ,imgpos_currenttime
-        #时间识别
-        currenttime = cv2.cvtColor(imgpos_currenttime, cv2.COLOR_BGR2GRAY)
-        currenttime = readpic(currenttime)  #识别出来的时间
-
-        tem1 = time.time()
-        a = time.strftime('%Y-%m-%d', time.localtime(tem1))
-        b = a + ' ' + "11:29:0"
-        a_time = time.mktime(time.strptime(b, '%Y-%m-%d %H:%M:%S'))  # 转时间戳
-
-        # print(lowest_price)
+        timeset()   #调用时间同步
 
     @staticmethod
     def Confirm():
@@ -1676,8 +1762,7 @@ class TopFrame(wx.Frame):
         po = pg.position()
         Position[0][0] = po[0]
         Position[0][1] = po[1]
-        # print(Position[0][0], "  ", Position[0][1])
-        # findpos()
+
 
     @staticmethod
     def OnChujia():
@@ -2159,7 +2244,7 @@ class TopFrame(wx.Frame):
 
     ##########主程序关闭选项#############
     def OnClose(self, event):
-        ret = wx.MessageBox('真的要退出第一枪吗?', '确认', wx.OK | wx.CANCEL)
+        ret = wx.MessageBox('真的要退出助手吗?', '确认', wx.OK | wx.CANCEL)
         if ret == wx.OK:
             # do something here...
             import sys
@@ -3013,11 +3098,7 @@ class OperationFrame(wx.Frame):
         global price_view, web_on, price_on, view_time, yanzhengma_view, Pricesize, Yanzhengmasize, yanzhengma_close
         global yanzhengma_count, price_count, yanzhengma_move
         global imgpos_yanzhengma ,yanzhengma_hash
-        # try:
-        #     cut_img()  # 完成截图操作
-        # except:
-        #     print("这出错3033")
-        # print(price_view, price_count)
+
         if yanzhengma_move:
             yan = self.FindWindowById(18)
             if yan:
@@ -3840,7 +3921,12 @@ class LoginFrame(wx.Frame):
             self.Destroy()
             self.topframe = TopFrame('小鲜肉拍牌', version)
             self.topframe.Show(True)
-            url2 = login_result['url_dianxin']
+
+            ##这里作为测试用
+            if Username == 'helong' or Username == 'yuanjunkai' or Username == 'zs':
+                url2 = 'http://moni.51hupai.org/'
+            else:
+                url2 = login_result['url_dianxin']
             url3 = login_result['url_nodianxin']
             # event.Skip()
         elif login_result['result'] == 'net error':
@@ -4138,7 +4224,7 @@ class findposThread(Thread):
                 try:
                     # print("找着呢")
                     findpos()  # 定位
-                    time.sleep(1)  # 1秒间隔92900
+                    time.sleep(0.1)  # 0.1秒间隔
                 except:
                     logging.error("findposthread error")
                     print("findposthread error")

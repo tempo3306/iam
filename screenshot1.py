@@ -30,9 +30,6 @@ confirm_area=[732, 466, 892, 566]
 cal_area = [lowest,refresh_area,confirm_area,Pos_yanzhengma,yanconfirm]
 use_area = []
 
-for i in range(5):
-    temp=[cal_area[i][0]-x1,cal_area[i][1]-y1,cal_area[i][2]-x1,cal_area[i][3]-y1]
-    use_area.append(   temp   )
 
 ##得到use_area
 
