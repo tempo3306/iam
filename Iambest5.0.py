@@ -13,20 +13,19 @@
 # 新增验证码放大器功能
 # 时间同步
 
-version = '4.1'
+version = '5.0'
 num = 0
-avt = 0
-
+avt = 90100
 test = False
 
-############全局变量参数表##96.22#######
+############全局变量参数表##96.22##-0[=#####
 
 host_ali = "http://hupai.pro"
 # host_ali="127.0.0.1"
 # 网址
 url1 = "http://moni.51hupai.org/"
-url1 = "http://127.0.0.1:5000/Moni"   #模拟网址
 # url1="http://hupai.pro/Moni"
+# url1="http://127.0.0.1:5000/Moni"
 
 url2 = "www.baidu.com"  # 电信
 url3 = "www.baidu.com"  # 非电信
@@ -818,6 +817,7 @@ def cut(img):
             xy0.append(xy[i])
             if 12<=diff<=16:
                 temp=[int(diff/2)+xy[i][0],xy[i+1][1],xy[i+1][2],xy[i+1][3]]
+                print(temp)
                 xy0.append(temp)
             elif 19<=diff<=23:
                 temp1=int(diff/3)
@@ -1381,7 +1381,7 @@ class TopFrame(wx.Frame):
         # 读取最低成交价
         self.timer3 = wx.Timer(self)
         self.Bind(wx.EVT_TIMER, self.Lowest_price, self.timer3)  # 设置一个截屏取价  和查看时间
-        self.timer3.Start(50)
+        self.timer3.Start(200)
         # 自动定位
         # self.timer4=wx.Timer(self)
         # self.Bind(wx.EVT_TIMER, self.Find_pos, self.timer4)#设置一个截屏取价
@@ -1722,9 +1722,12 @@ class TopFrame(wx.Frame):
         # lowestprice=np.asarray(lowestprice)
 
         global imgpos_lowestprice , findpos_on
+        global num
+        cv2.imwrite("z%d.png"%num ,imgpos_lowestprice)
+        num+=1
+
         lowest_price = cv2.cvtColor(imgpos_lowestprice, cv2.COLOR_BGR2GRAY)
         price = readpic(lowest_price)
-        print("price=",price)
         return price
 
 
@@ -4180,25 +4183,24 @@ class HashThread(Thread):
 
         # wx.Sleep(15)
         # TopFrame.Refresh_hash()
-        import winreg, sys
         ####################修改打开的IE版本
         key = winreg.OpenKey(winreg.HKEY_CURRENT_USER,
                              r"SOFTWARE\Microsoft\Internet Explorer\Main\FeatureControl\FEATURE_BROWSER_EMULATION", 0,
                              winreg.KEY_ALL_ACCESS)
 
-        # key = _winreg.OpenKey(_winreg.HKEY_CURRENT_USER,
-        #                       r"SOFTWARE\Microsoft\Internet Explorer\Main\FeatureControl\FEATURE_BROWSER_EMULATION", 0,
-        #                       _winreg.KEY_ALL_ACCESS)
+        key = _winreg.OpenKey(_winreg.HKEY_CURRENT_USER,
+                              r"SOFTWARE\Microsoft\Internet Explorer\Main\FeatureControl\FEATURE_BROWSER_EMULATION", 0,
+                              _winreg.KEY_ALL_ACCESS)
 
-        # key2 = winreg.OpenKey(winreg.HKEY_CURRENT_USER,
-        #                      r"SOFTWARE\Microsoft\Internet Explorer\Main\FeatureControl\FEATURE_ENABLE_SCRIPT_PASTE_URLACTION_IF_PROMPT", 0,
-        #                      winreg.KEY_ALL_ACCESS)
+        key2 = winreg.OpenKey(winreg.HKEY_CURRENT_USER,
+                             r"SOFTWARE\Microsoft\Internet Explorer\Main\FeatureControl\FEATURE_ENABLE_SCRIPT_PASTE_URLACTION_IF_PROMPT", 0,
+                             winreg.KEY_ALL_ACCESS)
         try:
             # 设置注册表python.exe 值为 11000(IE11)
             name = os.path.realpath(sys.argv[0])  # 获取运行路径
             name = name.split('\\')[-1]
-            # winreg.SetValueEx(key, '%s'%name, 0, winreg.REG_DWORD, 0x00002710)    #10:2710
-            # winreg.SetValueEx(key2, '%s'%name, 0, winreg.REG_DWORD, 0x00000001)
+            winreg.SetValueEx(key, '%s'%name, 0, winreg.REG_DWORD, 0x00002710)    #10:2710
+            winreg.SetValueEx(key2, '%s'%name, 0, winreg.REG_DWORD, 0x00000001)
         except:
             # 设置出现错误
             print('error in set value!')
@@ -4340,7 +4342,7 @@ class cutimgThread(Thread):
     def run(self):
         while self.__running.isSet():
             self.__flag.wait()  # 为True时立即返回, 为False时阻塞直到内部的标识位为True后返回
-            time.sleep(0.2)
+            time.sleep(0.04)
             try:
                 cut_img()
             except:
