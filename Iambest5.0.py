@@ -8,8 +8,6 @@
 # 参数
 # id Topframe 1    Operationframe 2  guopaiweb 3 controlframe 4
 # 无确认
-
-# 3.1变更说明
 # 新增验证码放大器功能
 # 时间同步
 
@@ -23,8 +21,8 @@ test = False
 host_ali = "http://hupai.pro"
 # host_ali="127.0.0.1"
 # 网址
-url1 = "http://moni.51hupai.org/"
-# url1="http://hupai.pro/Moni"
+# url1 = "http://moni.51hupai.org/"
+url1="http://hupai.pro/Moni"
 # url1="http://127.0.0.1:5000/Moni"
 
 url2 = "www.baidu.com"  # 电信
@@ -206,6 +204,9 @@ refresh_area = [396 - 150, 11 - 100, 396 + 150, 11 + 100]
 confirm_area = [505 - 300, 68 - 150, 505 + 300, 68 + 150]
 yan_confirm_area = [505 - 300, 68 - 150, 505 + 300, 68 + 150]
 
+###幽灵键所在位置
+ghostbutton_pos = [0,0]
+webview_pos = [-25,0]   #WEB在 WEBVIEW里的相对位置
 # -------------------------------------------------------------------
 ######################
 # 自动计算位置
@@ -468,10 +469,9 @@ def Paste():  # ctrl + V
 
 # def Paste_moni(x,y):
 def Paste_moni():
-    win32api.keybd_event(17, 0, 0, 0)  # ctrl的键位码是17
-    win32api.keybd_event(86, 0, 0, 0)  # v的键位码是86
-    win32api.keybd_event(86, 0, win32con.KEYEVENTF_KEYUP, 0)  # 释放按键
-    win32api.keybd_event(17, 0, win32con.KEYEVENTF_KEYUP, 0)
+    global ghostbutton_pos
+    Click(ghostbutton_pos[0],ghostbutton_pos[1])
+
     # win32api.SetCursorPos((x,y))
     # win32api.mouse_event(win32con.MOUSEEVENTF_RIGHTDOWN, x, y, 0, 0)
     # win32api.mouse_event(win32con.MOUSEEVENTF_RIGHTUP, x, y, 0, 0)
@@ -516,7 +516,7 @@ def findpos():
     global use_area, sc_area  # 用于截取图片
     global Position, refresh_area, confirm_area, Pos_timeframe, Pos_controlframe, Pos_yanzhengma, Pos_yanzhengmaframe, yan_confirm_area
     global Px_currenttime,Py_currenttime  #当前时间所在位置
-
+    global ghostbutton_pos
     if max_val > 0.9:  # 找不到不动作
         px_lowestprice = max_loc[0] + px_relative
         py_lowestprice = max_loc[1] + py_relative
@@ -525,6 +525,10 @@ def findpos():
 
         Px_currenttime = Px_lowestprice -27  # 参考最低成交价位置
         Py_currenttime = Py_lowestprice -16
+
+        #虚拟按键位置
+        ghostbutton_pos = [px_lowestprice-9,py_lowestprice+84]
+
 
         # print(px_lowestprice,py_lowestprice)
 
@@ -540,7 +544,7 @@ def findpos():
 
         Pos_controlframe = [192 - 344 + Px_lowestprice, 514 - 183 + Py_lowestprice]
 
-        Pos_yanzhengma = [Position[5][0] - 280, Position[5][1] - 65, Position[5][0] - 100,
+        Pos_yanzhengma = [Position[5][0] - 277, Position[5][1] - 65, Position[5][0] - 97,
                           Position[5][1] + 45]  # 验证码所在位置
         # Pos_yanzhengmaframe = [Px_lowestprice+590, Py_lowestprice-185]   #验证码框放置位置
         Pos_yanzhengmaframe = [Px_lowestprice + 297, Py_lowestprice - 283]  # 验证码框放置位置
@@ -559,14 +563,13 @@ def findpos():
         x1 = Px_lowestprice - dis_x  # 截图起始点
         y1 = Py_lowestprice - dis_y
 
-        cal_area = [lowest, refresh_area, confirm_area, Pos_yanzhengma, yan_confirm_area , currenttime]
+        cal_area = [lowest, refresh_area, confirm_area, Pos_yanzhengma, yan_confirm_area , currenttime]   #构建截图区域
         use_area = []
         sc_area = [Px_lowestprice - dis_x, Py_lowestprice - dis_y, Px_lowestprice + 600, Py_lowestprice + 120]
         for i in range(len(cal_area)):
             temp = [cal_area[i][0] - x1, cal_area[i][1] - y1, cal_area[i][2] - x1, cal_area[i][3] - y1]
             use_area.append(temp)
 
-        print("找到位置 之后 ", Pos_yanzhengmaframe)
     ###find timepos
 
 
@@ -699,8 +702,8 @@ def cut_pic(img, size, name):
     # cv2.imwrite(name, im)
     img = np.asarray(img)
     # print(img.size())
-    i1 = img[0:22, :150]
-    i2 = img[48:105, 30:]
+    i1 = img[0:24, :150]
+    i2 = img[48:110, 30:]
     im = np.concatenate([i2, i1])
     # 转换颜色
     # b = np.zeros((im.shape[0], im.shape[1]), dtype=im.dtype)
@@ -794,96 +797,80 @@ def hog(img):
 
 # 二值化，切割
 def cut(img):
-    ret,thresh1=cv2.threshold(img,127,255,cv2.THRESH_BINARY_INV)
+    ret, thresh1 = cv2.threshold(img, 127, 255, cv2.THRESH_BINARY_INV)
     # thresh1=fushi(thresh1)
     # image,contours,hierarchy = cv2.findContours(thresh1,cv2.RETR_EXTERNAL,cv2.CHAIN_APPROX_NONE)
-    image,contours,hierarchy = cv2.findContours(thresh1,cv2.RETR_EXTERNAL,cv2.CHAIN_APPROX_NONE)
-    imgn=[]
-    xy=[]
+    image, contours, hierarchy = cv2.findContours(thresh1, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_NONE)
+    imgn = []
+    xy = []
+    # cv2.imwrite("thresh1.png", thresh1)
     for i in range(len(contours)):
         cnt = contours[i]
         x, y, w, h = cv2.boundingRect(cnt)
         # print(x, y, w, h)
         xy.append([x, y, w, h])
-    xy = sorted(xy)
-    xy0=[]
-    for i in range(len(xy)-1):
-        diff=xy[i+1][0]-xy[i][0]
-        if diff == 0:
-            pass
-        elif 0<diff<6:
-            continue
-        else:
-            xy0.append(xy[i])
-            if 12<=diff<=16:
-                temp=[int(diff/2)+xy[i][0],xy[i+1][1],xy[i+1][2],xy[i+1][3]]
-                print(temp)
-                xy0.append(temp)
-            elif 19<=diff<=23:
-                temp1=int(diff/3)
-                temp2=int(diff/3)*2
-                temp=copy.deepcopy(temp)
-                temp=[temp1+xy[i][0],xy[i+1][1],xy[i+1][2],xy[i+1][3]]
-                xy0.append(temp)
-                temp = copy.deepcopy(temp)
-                temp=[temp2+xy[i][0],xy[i+1][1],xy[i+1][2],xy[i+1][3]]
-                xy0.append(temp)
-            elif  26<=diff<=30:
-                temp1=int(diff/4)
-                temp2=int(diff/4)*2
-                temp3=int(diff/4)*3
-                temp = copy.deepcopy(temp)
-                temp=[temp1+xy[i][0],xy[i+1][1],xy[i+1][2],xy[i+1][3]]
-                xy0.append(temp)
-                temp = copy.deepcopy(temp)
-                temp=[temp2+xy[i][0],xy[i+1][1],xy[i+1][2],xy[i+1][3]]
-                xy0.append(temp)
-                temp = copy.deepcopy(temp)
-                temp=[temp3+xy[i][0],xy[i+1][1],xy[i+1][2],xy[i+1][3]]
-                xy0.append(temp)
-            elif  33<=diff<=37:
-                temp1=int(diff/5)
-                temp2=int(diff/5)*2
-                temp3=int(diff/5)*3
-                temp4=int(diff/5)*4
-                temp = copy.deepcopy(temp)
-                temp=[temp1+xy[i][0],xy[i+1][1],xy[i+1][2],xy[i+1][3]]
-                xy0.append(temp)
-                temp = copy.deepcopy(temp)
-                temp=[temp2+xy[i][0],xy[i+1][1],xy[i+1][2],xy[i+1][3]]
-                xy0.append(temp)
-                temp = copy.deepcopy(temp)
-                temp=[temp3+xy[i][0],xy[i+1][1],xy[i+1][2],xy[i+1][3]]
-                xy0.append(temp)
-                temp = copy.deepcopy(temp)
-                temp=[temp4+xy[i][0],xy[i+1][1],xy[i+1][2],xy[i+1][3]]
-                xy0.append(temp)
-            elif  40<=diff<=44:
-                temp1=int(diff/6)
-                temp2=int(diff/6)*2
-                temp3=int(diff/6)*3
-                temp4=int(diff/6)*4
-                temp5=int(diff/6)*5
-                temp = copy.deepcopy(temp)
-                temp=[temp1+xy[i][0],xy[i+1][1],xy[i+1][2],xy[i+1][3]]
-                xy0.append(temp)
-                temp = copy.deepcopy(temp)
-                temp=[temp2+xy[i][0],xy[i+1][1],xy[i+1][2],xy[i+1][3]]
-                xy0.append(temp)
-                temp = copy.deepcopy(temp)
-                temp=[temp3+xy[i][0],xy[i+1][1],xy[i+1][2],xy[i+1][3]]
-                xy0.append(temp)
-                temp = copy.deepcopy(temp)
-                temp=[temp4+xy[i][0],xy[i+1][1],xy[i+1][2],xy[i+1][3]]
-                xy0.append(temp)
-                temp = copy.deepcopy(temp)
-                temp=[temp5+xy[i][0],xy[i+1][1],xy[i+1][2],xy[i+1][3]]
-                xy0.append(temp)
-    xy0.append(xy[-1])
 
+    xy = sorted(xy)
+    xy0 = []
+    for i in range(len(xy) - 1):
+        diff = xy[i + 1][0] - xy[i][0]
+        if diff < 6:
+            t0 = min(xy[i][0], xy[i + 1][0])
+            t1 = min(xy[i][1], xy[i + 1][1])
+            t2 = max(xy[i][2] + xy[i][0], xy[i + 1][2] + xy[i + 1][0]) - t0
+            t3 = max(xy[i][3] + xy[i][1], xy[i + 1][3] + xy[i + 1][1]) - t1
+            xy[i + 1] = [t0, t1, t2, t3]
+        elif 6 <= diff < 12:
+            xy0.append(xy[i])
+        else:
+            if 12 <= diff <= 16:
+                temp1 = [xy[i][0], xy[i][1], xy[i][2] - int(diff / 2), xy[i][3]]
+                temp2 = [int(diff / 2) + xy[i][0], xy[i + 1][1], xy[i + 1][2], xy[i + 1][3]]
+                xy0.append(temp1)
+                xy0.append(temp2)
+            elif 19 <= diff <= 23:
+                t1 = int(diff / 3)
+                t2 = int(diff / 3) * 2
+                temp1 = [xy[i][0], xy[i][1], t1, xy[i][3]]
+                temp2 = [xy[i][0] + t1, xy[i][1], t2, xy[i][3]]
+                temp3 = [xy[i][0] + t2, xy[i][1], diff - t2, xy[i][3]]
+                xy0.append(temp1)
+                xy0.append(temp2)
+                xy0.append(temp3)
+            elif 26 <= diff <= 30:
+                t1 = int(diff / 4)
+                t2 = int(diff / 4) * 2
+                t3 = int(diff / 4) * 3
+                temp1 = [xy[i][0], xy[i][1], t1, xy[i][3]]
+                temp2 = [xy[i][0] + t1, xy[i][1], t2, xy[i][3]]
+                temp3 = [xy[i][0] + t2, xy[i][1], t3, xy[i][3]]
+                temp4 = [xy[i][0] + t3, xy[i][1], diff - t3, xy[i][3]]
+                xy0.append(temp1)
+                xy0.append(temp2)
+                xy0.append(temp3)
+                xy0.append(temp4)
+            elif 33 <= diff:
+                t1 = int(diff / 5)
+                t2 = int(diff / 5) * 2
+                t3 = int(diff / 5) * 3
+                t4 = int(diff / 5) * 4
+                temp1 = [xy[i][0], xy[i][1], t1, xy[i][3]]
+                temp2 = [xy[i][0] + t1, xy[i][1], t2, xy[i][3]]
+                temp3 = [xy[i][0] + t2, xy[i][1], t3, xy[i][3]]
+                temp4 = [xy[i][0] + t3, xy[i][1], t4, xy[i][3]]
+                temp5 = [xy[i][0] + t4, xy[i][1], diff - t4, xy[i][3]]
+                xy0.append(temp1)
+                xy0.append(temp2)
+                xy0.append(temp3)
+                xy0.append(temp4)
+                xy0.append(temp5)
+
+    xy0.append(xy[-1])
     for i in range(len(xy0)):
         x, y, w, h = xy0[i]
         imgn.append(image[y:y + h, x:x + w])
+    for i in range(len(imgn)):
+        imgn[i] = cv2.resize(imgn[i], (8, 8))
     return imgn
 
 import copy
@@ -898,6 +885,7 @@ def readpic(img):
         if result[i] == '11':
             result[i] = ':'
     price = "".join(list(result))
+    print("price==",price)
     return price  # 返回的是price str   也可以是时间
 
 def timeset():
@@ -1381,7 +1369,7 @@ class TopFrame(wx.Frame):
         # 读取最低成交价
         self.timer3 = wx.Timer(self)
         self.Bind(wx.EVT_TIMER, self.Lowest_price, self.timer3)  # 设置一个截屏取价  和查看时间
-        self.timer3.Start(200)
+        self.timer3.Start(50)
         # 自动定位
         # self.timer4=wx.Timer(self)
         # self.Bind(wx.EVT_TIMER, self.Find_pos, self.timer4)#设置一个截屏取价
@@ -1437,7 +1425,7 @@ class TopFrame(wx.Frame):
                     self.tijiaothread = TijiaoThread()  # 开启模拟自动出价
                     strategy_repeat = True
 
-                browser = wx.html2.WebView.New(self.fr, size=(websize[0] + 48, websize[1] + 40), pos=(-17, 0),
+                browser = wx.html2.WebView.New(self.fr, size=(websize[0] + 48, websize[1] + 40), pos=webview_pos,
                                                style=wx.BORDER_NONE)
                 browser.LoadURL(url1)
                 browser.CanSetZoomType(False)
@@ -1487,7 +1475,7 @@ class TopFrame(wx.Frame):
                     self.tijiaothread = TijiaoThread()  # 开启模拟自动出价
                     strategy_repeat = True
 
-                browser = wx.html2.WebView.New(self.fr, size=(websize[0] + 48, websize[1] + 40), pos=(-17, 0))
+                browser = wx.html2.WebView.New(self.fr, size=(websize[0] + 48, websize[1] + 40), pos=webview_pos,  style=wx.BORDER_NONE)
                 browser.LoadURL(url2)
                 browser.CanSetZoomType(False)
                 self.fr.Show()
@@ -1532,7 +1520,7 @@ class TopFrame(wx.Frame):
                     self.tijiaothread = TijiaoThread()  # 开启模拟自动出价
                     strategy_repeat = True
 
-                browser = wx.html2.WebView.New(self.fr, size=(websize[0] + 48, websize[1] + 40), pos=(-17, 0))
+                browser = wx.html2.WebView.New(self.fr, size=(websize[0] + 48, websize[1] + 40), pos=webview_pos ,style=wx.BORDER_NONE)
                 browser.LoadURL(url3)
                 browser.CanSetZoomType(False)
                 self.fr.Show()
@@ -1721,13 +1709,17 @@ class TopFrame(wx.Frame):
 
         # lowestprice=np.asarray(lowestprice)
 
+
+
         global imgpos_lowestprice , findpos_on
         global num
-        cv2.imwrite("z%d.png"%num ,imgpos_lowestprice)
+        # print("执行到了")
+        # cv2.imwrite("tu\\z%d.png"%num ,imgpos_lowestprice)
         num+=1
 
         lowest_price = cv2.cvtColor(imgpos_lowestprice, cv2.COLOR_BGR2GRAY)
         price = readpic(lowest_price)
+        print("price=",price)
         return price
 
 
@@ -1992,8 +1984,6 @@ class TopFrame(wx.Frame):
     @staticmethod
     def OnH_chujia():
         global yanzhengma_view, yanzhengma_count
-
-
         yanzhengma_view = True
         yanzhengma_count = 0
         own_price1 = lowest_price + one_diff
@@ -2002,9 +1992,7 @@ class TopFrame(wx.Frame):
 
         Click(Position[1][0], Position[1][1])
         Click(Position[5][0], Position[5][1])
-        # if not refresh_one:  # 激活确认
-        # refreshthread = refreshThread()
-        # refresh_one = True  #同时只存在一个进程
+
 
     @staticmethod
     def selfdelete():
@@ -2013,7 +2001,12 @@ class TopFrame(wx.Frame):
         Click2(Position[6][0], Position[6][1])
         Delete()
         Delete()
-        Paste()  # 粘贴
+        if moni_on:
+            Paste_moni()  # 粘贴
+        else:
+            Paste()   #真粘贴
+
+
         # if moni_on:
         #     Paste_moni()
         #     # Paste_moni(Position[6][0], Position[6][1])
@@ -3144,7 +3137,8 @@ class OperationFrame(wx.Frame):
             if not yanzhengma_hash:  #第一次
                 yanzhengma_hash = yan_hash
             elif yan_hash == yanzhengma_hash:  #验证码没变化
-                print("没变化，不动作")
+                # print("没变化，不动作")
+                pass
             else:
                 yanzhengma_hash = yan_hash
                 try:
@@ -3170,7 +3164,7 @@ class OperationFrame(wx.Frame):
         yanzhengma_count += 1
         file = 'sc_new.png'
         if web_on and strategy_on:
-            self.lowestframe.Show(False)
+            self.lowestframe.Show(True)
         if not os.path.exists(file):
             try:
                 self.Price_close()
@@ -4188,19 +4182,19 @@ class HashThread(Thread):
                              r"SOFTWARE\Microsoft\Internet Explorer\Main\FeatureControl\FEATURE_BROWSER_EMULATION", 0,
                              winreg.KEY_ALL_ACCESS)
 
-        key = _winreg.OpenKey(_winreg.HKEY_CURRENT_USER,
-                              r"SOFTWARE\Microsoft\Internet Explorer\Main\FeatureControl\FEATURE_BROWSER_EMULATION", 0,
-                              _winreg.KEY_ALL_ACCESS)
-
-        key2 = winreg.OpenKey(winreg.HKEY_CURRENT_USER,
-                             r"SOFTWARE\Microsoft\Internet Explorer\Main\FeatureControl\FEATURE_ENABLE_SCRIPT_PASTE_URLACTION_IF_PROMPT", 0,
-                             winreg.KEY_ALL_ACCESS)
+        # key = _winreg.OpenKey(_winreg.HKEY_CURRENT_USER,
+        #                       r"SOFTWARE\Microsoft\Internet Explorer\Main\FeatureControl\FEATURE_BROWSER_EMULATION", 0,
+        #                       _winreg.KEY_ALL_ACCESS)
+        #
+        # key2 = winreg.OpenKey(winreg.HKEY_CURRENT_USER,
+        #                      r"SOFTWARE\Microsoft\Internet Explorer\Main\FeatureControl\FEATURE_ENABLE_SCRIPT_PASTE_URLACTION_IF_PROMPT", 0,
+        #                      winreg.KEY_ALL_ACCESS)
         try:
             # 设置注册表python.exe 值为 11000(IE11)
             name = os.path.realpath(sys.argv[0])  # 获取运行路径
             name = name.split('\\')[-1]
-            winreg.SetValueEx(key, '%s'%name, 0, winreg.REG_DWORD, 0x00002710)    #10:2710
-            winreg.SetValueEx(key2, '%s'%name, 0, winreg.REG_DWORD, 0x00000001)
+            winreg.SetValueEx(key, '%s'%name, 0, winreg.REG_DWORD, 0x00002710)    #10:2710  8:1f40
+            # winreg.SetValueEx(key2, '%s'%name, 0, winreg.REG_DWORD, 0x00000001)
         except:
             # 设置出现错误
             print('error in set value!')
@@ -4212,6 +4206,7 @@ class HashThread(Thread):
 
 
 # 创建一个确认进程
+#!--<script src="{{bootstrap_find_resource('jquery.js', cdn='jquery')}}"></script>-->
 class findposThread(Thread):
     def __init__(self):
         Thread.__init__(self)
@@ -4224,7 +4219,7 @@ class findposThread(Thread):
             # print(findpos_on,"findpos_on")
             if findpos_on:
                 try:
-                    # print("找着呢")
+                    print("找着呢")
                     findpos()  # 定位
                     time.sleep(0.1)  # 0.1秒间隔
                 except:
@@ -4246,7 +4241,7 @@ class confirmThread(threading.Thread):
     def run(self):
         while self.__running.isSet():
             self.__flag.wait()  # 为True时立即返回, 为False时阻塞直到内部的标识位为True后返回
-            time.sleep(0.05)
+            time.sleep(0.035)
             global tijiao_num
             if tijiao_num == 2:
                 try:
@@ -4300,7 +4295,7 @@ class refreshThread(Thread):
         while self.__running.isSet():
             self.__flag.wait()  # 为True时立即返回, 为False时阻塞直到内部的标识位为True后返回
             logging.info("刷")
-            time.sleep(0.05)
+            time.sleep(0.035)
             try:
                 findrefresh()
             except:

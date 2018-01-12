@@ -542,7 +542,7 @@ def findpos():
         Pos_controlframe = [192 - 344 + Px_lowestprice, 514 - 183 + Py_lowestprice]
 
         Pos_yanzhengma = [Position[5][0] - 280, Position[5][1] - 65, Position[5][0] - 100,
-                          Position[5][1] + 45]  # 验证码所在位置
+                          Position[5][1] + 48]  # 验证码所在位置
         # Pos_yanzhengmaframe = [Px_lowestprice+590, Py_lowestprice-185]   #验证码框放置位置
         Pos_yanzhengmaframe = [Px_lowestprice + 297, Py_lowestprice - 283]  # 验证码框放置位置
         # Pos_timeframe=[245 - 344+Px_lowestprice, 299- 183+Py_lowestprice]
