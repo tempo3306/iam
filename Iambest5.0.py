@@ -11,7 +11,7 @@
 # 新增验证码放大器功能
 # 时间同步
 
-version = '5.0'
+version = '5.1'
 num = 0
 avt = 90100
 test = False
@@ -21,8 +21,8 @@ test = False
 host_ali = "http://hupai.pro"
 # host_ali="127.0.0.1"
 # 网址
-# url1 = "http://moni.51hupai.org/"
-url1="http://hupai.pro/Moni"
+url1 = "http://moni.51hupai.org/"
+# url1="http://hupai.pro/Moni"
 # url1="http://127.0.0.1:5000/Moni"
 
 url2 = "www.baidu.com"  # 电信
