@@ -11,7 +11,7 @@
 # 新增验证码放大器功能
 # 时间同步
 
-version = '5.1'
+version = '5.11s'
 num = 0
 avt = 90100
 test = False
@@ -268,7 +268,7 @@ lowestprice_sizey = 16
 Px_currenttime =Px_lowestprice-25   #参考最低成交价位置
 Py_currenttime = Py_lowestprice+17
 currenttime_sizex = 132
-currenttime_sizey = 16
+currenttime_sizey = 13
 
 
 
@@ -469,9 +469,12 @@ def Paste():  # ctrl + V
 
 # def Paste_moni(x,y):
 def Paste_moni():
-    global ghostbutton_pos
-    Click(ghostbutton_pos[0],ghostbutton_pos[1])
-
+    # global ghostbutton_pos
+    # Click(ghostbutton_pos[0],ghostbutton_pos[1])
+    win32api.keybd_event(17, 0, 0, 0)  # ctrl的键位码是17
+    win32api.keybd_event(86, 0, 0, 0)  # v的键位码是86
+    win32api.keybd_event(86, 0, win32con.KEYEVENTF_KEYUP, 0)  # 释放按键
+    win32api.keybd_event(17, 0, win32con.KEYEVENTF_KEYUP, 0)
     # win32api.SetCursorPos((x,y))
     # win32api.mouse_event(win32con.MOUSEEVENTF_RIGHTDOWN, x, y, 0, 0)
     # win32api.mouse_event(win32con.MOUSEEVENTF_RIGHTUP, x, y, 0, 0)
@@ -524,7 +527,7 @@ def findpos():
         Py_lowestprice = py_lowestprice
 
         Px_currenttime = Px_lowestprice -27  # 参考最低成交价位置
-        Py_currenttime = Py_lowestprice -16
+        Py_currenttime = Py_lowestprice -14
 
         #虚拟按键位置
         ghostbutton_pos = [px_lowestprice-9,py_lowestprice+84]
@@ -885,22 +888,29 @@ def readpic(img):
         if result[i] == '11':
             result[i] = ':'
     price = "".join(list(result))
-    print("price==",price)
     return price  # 返回的是price str   也可以是时间
 
 def timeset():
     global a_time, imgpos_currenttime, moni_second
     # 时间识别
-    currenttime = cv2.cvtColor(imgpos_currenttime, cv2.COLOR_BGR2GRAY)
-    currenttime = readpic(currenttime)  # 识别出来的时间
-    cv2.imwrite("zp.png", imgpos_currenttime)
-    print(currenttime)
-    tem1 = time.time()
-    a = time.strftime('%Y-%m-%d', time.localtime(tem1))
-    b = a + ' ' + currenttime
-    a_time = time.mktime(time.strptime(b, '%Y-%m-%d %H:%M:%S')) + 0.5  # 转时间戳   补个平均时差
     try:
-        moni_second = int(currenttime.split(':')[2]) + 0.5
+        currenttime = cv2.cvtColor(imgpos_currenttime, cv2.COLOR_BGR2GRAY)
+        currenttime = readpic(currenttime)  # 识别出来的时间
+        cv2.imwrite("zp.png", imgpos_currenttime)
+        print(currenttime)
+        tem1 = time.time()
+        a = time.strftime('%Y-%m-%d', time.localtime(tem1))
+        b = a + ' ' + currenttime
+        print(b)
+        global guopai_on,moni_on
+        if guopai_on:
+            print(time.strptime(b, '%Y-%m-%d %H:%M:%S'))
+            a_time = time.mktime(time.strptime(b,'%Y-%m-%d %H:%M:%S')) + 0.5  # 转时间戳   补个平均时差
+        if moni_on:
+            try:
+                moni_second = int(currenttime.split(':')[2]) + 0.5
+            except:
+                pass
     except:
         pass
 
@@ -1652,7 +1662,7 @@ class TopFrame(wx.Frame):
                     else:
                         changetime = a_time
             else:
-                print("重新查找")
+                # print("重新查找")
                 findpos_on = True
         except:
             findpos_on = True
@@ -1719,7 +1729,7 @@ class TopFrame(wx.Frame):
 
         lowest_price = cv2.cvtColor(imgpos_lowestprice, cv2.COLOR_BGR2GRAY)
         price = readpic(lowest_price)
-        print("price=",price)
+        # print("price=",price)
         return price
 
 
@@ -2541,6 +2551,7 @@ class ClockWindow(wx.Panel):
     def Draw(self, dc):  # 绘制当前时间
         global a_time
         time_local = time.localtime(a_time)
+        print(time_local)
         st = time.strftime("%H:%M:%S", time_local)
         w, h = self.GetClientSize()
         dc.SetBackground(wx.Brush(self.GetBackgroundColour()))

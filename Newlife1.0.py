@@ -8,25 +8,23 @@
 # 参数
 # id Topframe 1    Operationframe 2  guopaiweb 3 controlframe 4
 # 无确认
-
-# 3.1变更说明
 # 新增验证码放大器功能
 # 时间同步
 
-version = '4.1'
+version = '1.0'
+debug = True
 num = 0
-avt = 0
-
+avt = 90100
 test = False
 
-############全局变量参数表##96.22#######
+############全局变量参数表##96.22##-0[=#####
 
 host_ali = "http://hupai.pro"
-# host_ali="127.0.0.1"
+# host_ali="127.0.0.1:5000"
 # 网址
 url1 = "http://moni.51hupai.org/"
-url1 = "http://127.0.0.1:5000/Moni"   #模拟网址
 # url1="http://hupai.pro/Moni"
+# url1="http://127.0.0.1:5000/Moni"
 
 url2 = "www.baidu.com"  # 电信
 url3 = "www.baidu.com"  # 非电信
@@ -181,7 +179,7 @@ px_priceframe = 220 - 191
 py_priceframe = 480
 # time放置位置
 px_timeframe = 22
-py_timeframe = 350
+py_timeframe = 348
 # 最低成交价框显示位置
 px_lowestpriceframe = 245
 py_lowestpriceframe = 290
@@ -207,6 +205,9 @@ refresh_area = [396 - 150, 11 - 100, 396 + 150, 11 + 100]
 confirm_area = [505 - 300, 68 - 150, 505 + 300, 68 + 150]
 yan_confirm_area = [505 - 300, 68 - 150, 505 + 300, 68 + 150]
 
+###幽灵键所在位置
+ghostbutton_pos = [0,0]
+webview_pos = [-25,0]   #WEB在 WEBVIEW里的相对位置
 # -------------------------------------------------------------------
 ######################
 # 自动计算位置
@@ -268,7 +269,7 @@ lowestprice_sizey = 16
 Px_currenttime =Px_lowestprice-25   #参考最低成交价位置
 Py_currenttime = Py_lowestprice+17
 currenttime_sizex = 132
-currenttime_sizey = 16
+currenttime_sizey = 13
 
 
 
@@ -469,6 +470,8 @@ def Paste():  # ctrl + V
 
 # def Paste_moni(x,y):
 def Paste_moni():
+    # global ghostbutton_pos
+    # Click(ghostbutton_pos[0],ghostbutton_pos[1])
     win32api.keybd_event(17, 0, 0, 0)  # ctrl的键位码是17
     win32api.keybd_event(86, 0, 0, 0)  # v的键位码是86
     win32api.keybd_event(86, 0, win32con.KEYEVENTF_KEYUP, 0)  # 释放按键
@@ -517,7 +520,7 @@ def findpos():
     global use_area, sc_area  # 用于截取图片
     global Position, refresh_area, confirm_area, Pos_timeframe, Pos_controlframe, Pos_yanzhengma, Pos_yanzhengmaframe, yan_confirm_area
     global Px_currenttime,Py_currenttime  #当前时间所在位置
-
+    global ghostbutton_pos
     if max_val > 0.9:  # 找不到不动作
         px_lowestprice = max_loc[0] + px_relative
         py_lowestprice = max_loc[1] + py_relative
@@ -525,7 +528,11 @@ def findpos():
         Py_lowestprice = py_lowestprice
 
         Px_currenttime = Px_lowestprice -27  # 参考最低成交价位置
-        Py_currenttime = Py_lowestprice -16
+        Py_currenttime = Py_lowestprice -14
+
+        #虚拟按键位置
+        ghostbutton_pos = [px_lowestprice-9,py_lowestprice+84]
+
 
         # print(px_lowestprice,py_lowestprice)
 
@@ -541,11 +548,11 @@ def findpos():
 
         Pos_controlframe = [192 - 344 + Px_lowestprice, 514 - 183 + Py_lowestprice]
 
-        Pos_yanzhengma = [Position[5][0] - 280, Position[5][1] - 65, Position[5][0] - 100,
-                          Position[5][1] + 48]  # 验证码所在位置
+        Pos_yanzhengma = [Position[5][0] - 277, Position[5][1] - 65, Position[5][0] - 97,
+                          Position[5][1] + 45]  # 验证码所在位置
         # Pos_yanzhengmaframe = [Px_lowestprice+590, Py_lowestprice-185]   #验证码框放置位置
         Pos_yanzhengmaframe = [Px_lowestprice + 297, Py_lowestprice - 283]  # 验证码框放置位置
-        # Pos_timeframe=[245 - 344+Px_lowestprice, 299- 183+Py_lowestprice]
+        Pos_timeframe=[245 - 344+Px_lowestprice, 399- 183+Py_lowestprice]
         # 关闭触发
         global findpos_on, yanzhengma_move
         findpos_on = False  # 无需定位
@@ -560,14 +567,13 @@ def findpos():
         x1 = Px_lowestprice - dis_x  # 截图起始点
         y1 = Py_lowestprice - dis_y
 
-        cal_area = [lowest, refresh_area, confirm_area, Pos_yanzhengma, yan_confirm_area , currenttime]
+        cal_area = [lowest, refresh_area, confirm_area, Pos_yanzhengma, yan_confirm_area , currenttime]   #构建截图区域
         use_area = []
         sc_area = [Px_lowestprice - dis_x, Py_lowestprice - dis_y, Px_lowestprice + 600, Py_lowestprice + 120]
         for i in range(len(cal_area)):
             temp = [cal_area[i][0] - x1, cal_area[i][1] - y1, cal_area[i][2] - x1, cal_area[i][3] - y1]
             use_area.append(temp)
 
-        print("找到位置 之后 ", Pos_yanzhengmaframe)
     ###find timepos
 
 
@@ -700,8 +706,8 @@ def cut_pic(img, size, name):
     # cv2.imwrite(name, im)
     img = np.asarray(img)
     # print(img.size())
-    i1 = img[0:22, :150]
-    i2 = img[48:105, 30:]
+    i1 = img[0:24, :150]
+    i2 = img[48:110, 30:]
     im = np.concatenate([i2, i1])
     # 转换颜色
     # b = np.zeros((im.shape[0], im.shape[1]), dtype=im.dtype)
@@ -795,95 +801,80 @@ def hog(img):
 
 # 二值化，切割
 def cut(img):
-    ret,thresh1=cv2.threshold(img,127,255,cv2.THRESH_BINARY_INV)
+    ret, thresh1 = cv2.threshold(img, 127, 255, cv2.THRESH_BINARY_INV)
     # thresh1=fushi(thresh1)
     # image,contours,hierarchy = cv2.findContours(thresh1,cv2.RETR_EXTERNAL,cv2.CHAIN_APPROX_NONE)
-    image,contours,hierarchy = cv2.findContours(thresh1,cv2.RETR_EXTERNAL,cv2.CHAIN_APPROX_NONE)
-    imgn=[]
-    xy=[]
+    image, contours, hierarchy = cv2.findContours(thresh1, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_NONE)
+    imgn = []
+    xy = []
+    # cv2.imwrite("thresh1.png", thresh1)
     for i in range(len(contours)):
         cnt = contours[i]
         x, y, w, h = cv2.boundingRect(cnt)
         # print(x, y, w, h)
         xy.append([x, y, w, h])
-    xy = sorted(xy)
-    xy0=[]
-    for i in range(len(xy)-1):
-        diff=xy[i+1][0]-xy[i][0]
-        if diff == 0:
-            pass
-        elif 0<diff<6:
-            continue
-        else:
-            xy0.append(xy[i])
-            if 12<=diff<=16:
-                temp=[int(diff/2)+xy[i][0],xy[i+1][1],xy[i+1][2],xy[i+1][3]]
-                xy0.append(temp)
-            elif 19<=diff<=23:
-                temp1=int(diff/3)
-                temp2=int(diff/3)*2
-                temp=copy.deepcopy(temp)
-                temp=[temp1+xy[i][0],xy[i+1][1],xy[i+1][2],xy[i+1][3]]
-                xy0.append(temp)
-                temp = copy.deepcopy(temp)
-                temp=[temp2+xy[i][0],xy[i+1][1],xy[i+1][2],xy[i+1][3]]
-                xy0.append(temp)
-            elif  26<=diff<=30:
-                temp1=int(diff/4)
-                temp2=int(diff/4)*2
-                temp3=int(diff/4)*3
-                temp = copy.deepcopy(temp)
-                temp=[temp1+xy[i][0],xy[i+1][1],xy[i+1][2],xy[i+1][3]]
-                xy0.append(temp)
-                temp = copy.deepcopy(temp)
-                temp=[temp2+xy[i][0],xy[i+1][1],xy[i+1][2],xy[i+1][3]]
-                xy0.append(temp)
-                temp = copy.deepcopy(temp)
-                temp=[temp3+xy[i][0],xy[i+1][1],xy[i+1][2],xy[i+1][3]]
-                xy0.append(temp)
-            elif  33<=diff<=37:
-                temp1=int(diff/5)
-                temp2=int(diff/5)*2
-                temp3=int(diff/5)*3
-                temp4=int(diff/5)*4
-                temp = copy.deepcopy(temp)
-                temp=[temp1+xy[i][0],xy[i+1][1],xy[i+1][2],xy[i+1][3]]
-                xy0.append(temp)
-                temp = copy.deepcopy(temp)
-                temp=[temp2+xy[i][0],xy[i+1][1],xy[i+1][2],xy[i+1][3]]
-                xy0.append(temp)
-                temp = copy.deepcopy(temp)
-                temp=[temp3+xy[i][0],xy[i+1][1],xy[i+1][2],xy[i+1][3]]
-                xy0.append(temp)
-                temp = copy.deepcopy(temp)
-                temp=[temp4+xy[i][0],xy[i+1][1],xy[i+1][2],xy[i+1][3]]
-                xy0.append(temp)
-            elif  40<=diff<=44:
-                temp1=int(diff/6)
-                temp2=int(diff/6)*2
-                temp3=int(diff/6)*3
-                temp4=int(diff/6)*4
-                temp5=int(diff/6)*5
-                temp = copy.deepcopy(temp)
-                temp=[temp1+xy[i][0],xy[i+1][1],xy[i+1][2],xy[i+1][3]]
-                xy0.append(temp)
-                temp = copy.deepcopy(temp)
-                temp=[temp2+xy[i][0],xy[i+1][1],xy[i+1][2],xy[i+1][3]]
-                xy0.append(temp)
-                temp = copy.deepcopy(temp)
-                temp=[temp3+xy[i][0],xy[i+1][1],xy[i+1][2],xy[i+1][3]]
-                xy0.append(temp)
-                temp = copy.deepcopy(temp)
-                temp=[temp4+xy[i][0],xy[i+1][1],xy[i+1][2],xy[i+1][3]]
-                xy0.append(temp)
-                temp = copy.deepcopy(temp)
-                temp=[temp5+xy[i][0],xy[i+1][1],xy[i+1][2],xy[i+1][3]]
-                xy0.append(temp)
-    xy0.append(xy[-1])
 
+    xy = sorted(xy)
+    xy0 = []
+    for i in range(len(xy) - 1):
+        diff = xy[i + 1][0] - xy[i][0]
+        if diff < 6:
+            t0 = min(xy[i][0], xy[i + 1][0])
+            t1 = min(xy[i][1], xy[i + 1][1])
+            t2 = max(xy[i][2] + xy[i][0], xy[i + 1][2] + xy[i + 1][0]) - t0
+            t3 = max(xy[i][3] + xy[i][1], xy[i + 1][3] + xy[i + 1][1]) - t1
+            xy[i + 1] = [t0, t1, t2, t3]
+        elif 6 <= diff < 12:
+            xy0.append(xy[i])
+        else:
+            if 12 <= diff <= 16:
+                temp1 = [xy[i][0], xy[i][1], xy[i][2] - int(diff / 2), xy[i][3]]
+                temp2 = [int(diff / 2) + xy[i][0], xy[i + 1][1], xy[i + 1][2], xy[i + 1][3]]
+                xy0.append(temp1)
+                xy0.append(temp2)
+            elif 19 <= diff <= 23:
+                t1 = int(diff / 3)
+                t2 = int(diff / 3) * 2
+                temp1 = [xy[i][0], xy[i][1], t1, xy[i][3]]
+                temp2 = [xy[i][0] + t1, xy[i][1], t2, xy[i][3]]
+                temp3 = [xy[i][0] + t2, xy[i][1], diff - t2, xy[i][3]]
+                xy0.append(temp1)
+                xy0.append(temp2)
+                xy0.append(temp3)
+            elif 26 <= diff <= 30:
+                t1 = int(diff / 4)
+                t2 = int(diff / 4) * 2
+                t3 = int(diff / 4) * 3
+                temp1 = [xy[i][0], xy[i][1], t1, xy[i][3]]
+                temp2 = [xy[i][0] + t1, xy[i][1], t2, xy[i][3]]
+                temp3 = [xy[i][0] + t2, xy[i][1], t3, xy[i][3]]
+                temp4 = [xy[i][0] + t3, xy[i][1], diff - t3, xy[i][3]]
+                xy0.append(temp1)
+                xy0.append(temp2)
+                xy0.append(temp3)
+                xy0.append(temp4)
+            elif 33 <= diff:
+                t1 = int(diff / 5)
+                t2 = int(diff / 5) * 2
+                t3 = int(diff / 5) * 3
+                t4 = int(diff / 5) * 4
+                temp1 = [xy[i][0], xy[i][1], t1, xy[i][3]]
+                temp2 = [xy[i][0] + t1, xy[i][1], t2, xy[i][3]]
+                temp3 = [xy[i][0] + t2, xy[i][1], t3, xy[i][3]]
+                temp4 = [xy[i][0] + t3, xy[i][1], t4, xy[i][3]]
+                temp5 = [xy[i][0] + t4, xy[i][1], diff - t4, xy[i][3]]
+                xy0.append(temp1)
+                xy0.append(temp2)
+                xy0.append(temp3)
+                xy0.append(temp4)
+                xy0.append(temp5)
+
+    xy0.append(xy[-1])
     for i in range(len(xy0)):
         x, y, w, h = xy0[i]
         imgn.append(image[y:y + h, x:x + w])
+    for i in range(len(imgn)):
+        imgn[i] = cv2.resize(imgn[i], (8, 8))
     return imgn
 
 import copy
@@ -903,16 +894,24 @@ def readpic(img):
 def timeset():
     global a_time, imgpos_currenttime, moni_second
     # 时间识别
-    currenttime = cv2.cvtColor(imgpos_currenttime, cv2.COLOR_BGR2GRAY)
-    currenttime = readpic(currenttime)  # 识别出来的时间
-    cv2.imwrite("zp.png", imgpos_currenttime)
-    print(currenttime)
-    tem1 = time.time()
-    a = time.strftime('%Y-%m-%d', time.localtime(tem1))
-    b = a + ' ' + currenttime
-    a_time = time.mktime(time.strptime(b, '%Y-%m-%d %H:%M:%S')) + 0.5  # 转时间戳   补个平均时差
     try:
-        moni_second = int(currenttime.split(':')[2]) + 0.5
+        currenttime = cv2.cvtColor(imgpos_currenttime, cv2.COLOR_BGR2GRAY)
+        currenttime = readpic(currenttime)  # 识别出来的时间
+        cv2.imwrite("zp.png", imgpos_currenttime)
+        print(currenttime)
+        tem1 = time.time()
+        a = time.strftime('%Y-%m-%d', time.localtime(tem1))
+        b = a + ' ' + currenttime
+        print(b)
+        global guopai_on,moni_on
+        if guopai_on:
+            print(time.strptime(b, '%Y-%m-%d %H:%M:%S'))
+            a_time = time.mktime(time.strptime(b,'%Y-%m-%d %H:%M:%S')) + 0.5  # 转时间戳   补个平均时差
+        if moni_on:
+            try:
+                moni_second = int(currenttime.split(':')[2]) + 0.5
+            except:
+                pass
     except:
         pass
 
@@ -1122,7 +1121,10 @@ import json
 
 def ConfirmUser():
     try:
-        target_url = host_ali + r'/main_api/userconfirm/info?' + 'username=%s' % Username + '&' + 'passwd=%s' % Password
+        # debug 模式
+        target_url = host_ali + r'/main_api/userconfirm/info?' + 'username=%s' % Username + \
+                     '&' + 'passwd=%s' % Password+'&'+'version=%s' %version +'&'+"debug=%s" % debug
+        # target_url = host_ali + r'/main_api/userconfirm/info?' + 'username=%s' % Username + '&' + 'passwd=%s' % Password
         print(target_url)
         response = request.urlopen(target_url)
         print(response)
@@ -1437,7 +1439,7 @@ class TopFrame(wx.Frame):
                     self.tijiaothread = TijiaoThread()  # 开启模拟自动出价
                     strategy_repeat = True
 
-                browser = wx.html2.WebView.New(self.fr, size=(websize[0] + 48, websize[1] + 40), pos=(-17, 0),
+                browser = wx.html2.WebView.New(self.fr, size=(websize[0] + 48, websize[1] + 40), pos=webview_pos,
                                                style=wx.BORDER_NONE)
                 browser.LoadURL(url1)
                 browser.CanSetZoomType(False)
@@ -1477,7 +1479,7 @@ class TopFrame(wx.Frame):
             if do:
                 ad_view = True
                 guopai_on = True
-                self.fr = WebFrame(Px, Py, False, '小鲜肉代拍 国拍')  # 暂时关闭广告
+                self.fr = WebFrame(Px, Py, False, '沪牌一号 国拍')  # 暂时关闭广告
                 # self.operationframe.Show(True)  # 开启控制面板显示
                 # 查看时间框是否应该显示
                 if time_on:
@@ -1487,7 +1489,7 @@ class TopFrame(wx.Frame):
                     self.tijiaothread = TijiaoThread()  # 开启模拟自动出价
                     strategy_repeat = True
 
-                browser = wx.html2.WebView.New(self.fr, size=(websize[0] + 48, websize[1] + 40), pos=(-17, 0))
+                browser = wx.html2.WebView.New(self.fr, size=(websize[0] + 48, websize[1] + 40), pos=webview_pos,  style=wx.BORDER_NONE)
                 browser.LoadURL(url2)
                 browser.CanSetZoomType(False)
                 self.fr.Show()
@@ -1522,7 +1524,7 @@ class TopFrame(wx.Frame):
             if do:
                 ad_view = True
                 guopai_on = True
-                self.fr = WebFrame(Px, Py, False, '小鲜肉代拍 国拍')  # 暂时关闭广告
+                self.fr = WebFrame(Px, Py, False, '沪牌一号 国拍')  # 暂时关闭广告
                 # self.operationframe.Show(True)  # 开启控制面板显示
                 # 查看时间框是否应该显示
                 if time_on:
@@ -1532,7 +1534,7 @@ class TopFrame(wx.Frame):
                     self.tijiaothread = TijiaoThread()  # 开启模拟自动出价
                     strategy_repeat = True
 
-                browser = wx.html2.WebView.New(self.fr, size=(websize[0] + 48, websize[1] + 40), pos=(-17, 0))
+                browser = wx.html2.WebView.New(self.fr, size=(websize[0] + 48, websize[1] + 40), pos=webview_pos ,style=wx.BORDER_NONE)
                 browser.LoadURL(url3)
                 browser.CanSetZoomType(False)
                 self.fr.Show()
@@ -1564,7 +1566,7 @@ class TopFrame(wx.Frame):
         if do:
             ad_view = True
             guopai_on = True
-            # self.fr = WebFrame(Px, Py, False, '小鲜肉代拍 国拍')  # 暂时关闭广告
+            # self.fr = WebFrame(Px, Py, False, '沪牌一号 国拍')  # 暂时关闭广告
             # self.operationframe.Show(True)  # 开启控制面板显示
             # 查看时间框是否应该显示
             if time_on:
@@ -1664,7 +1666,7 @@ class TopFrame(wx.Frame):
                     else:
                         changetime = a_time
             else:
-                print("重新查找")
+                # print("重新查找")
                 findpos_on = True
         except:
             findpos_on = True
@@ -1721,10 +1723,17 @@ class TopFrame(wx.Frame):
 
         # lowestprice=np.asarray(lowestprice)
 
+
+
         global imgpos_lowestprice , findpos_on
+        global num
+        # print("执行到了")
+        # cv2.imwrite("tu\\z%d.png"%num ,imgpos_lowestprice)
+        num+=1
+
         lowest_price = cv2.cvtColor(imgpos_lowestprice, cv2.COLOR_BGR2GRAY)
         price = readpic(lowest_price)
-        print("price=",price)
+        # print("price=",price)
         return price
 
 
@@ -1989,8 +1998,6 @@ class TopFrame(wx.Frame):
     @staticmethod
     def OnH_chujia():
         global yanzhengma_view, yanzhengma_count
-
-
         yanzhengma_view = True
         yanzhengma_count = 0
         own_price1 = lowest_price + one_diff
@@ -1999,9 +2006,7 @@ class TopFrame(wx.Frame):
 
         Click(Position[1][0], Position[1][1])
         Click(Position[5][0], Position[5][1])
-        # if not refresh_one:  # 激活确认
-        # refreshthread = refreshThread()
-        # refresh_one = True  #同时只存在一个进程
+
 
     @staticmethod
     def selfdelete():
@@ -2010,7 +2015,12 @@ class TopFrame(wx.Frame):
         Click2(Position[6][0], Position[6][1])
         Delete()
         Delete()
-        Paste()  # 粘贴
+        if moni_on:
+            Paste_moni()  # 粘贴
+        else:
+            Paste()   #真粘贴
+
+
         # if moni_on:
         #     Paste_moni()
         #     # Paste_moni(Position[6][0], Position[6][1])
@@ -2048,7 +2058,7 @@ class TopFrame(wx.Frame):
     def MainControl(self, event):
         #####
         if not web_on and time_on:  # 网页关就把时间关掉
-            self.operationframe.Closetime()
+            self.operationframe.strategy_tab.Closetime()
 
         # if web_on:
         #     try:
@@ -2545,6 +2555,7 @@ class ClockWindow(wx.Panel):
     def Draw(self, dc):  # 绘制当前时间
         global a_time
         time_local = time.localtime(a_time)
+        print(time_local)
         st = time.strftime("%H:%M:%S", time_local)
         w, h = self.GetClientSize()
         dc.SetBackground(wx.Brush(self.GetBackgroundColour()))
@@ -2799,7 +2810,7 @@ class ControlFrame(wx.Frame):  # 为webframe提供控制操作
         # self.Bind(wx.EVT_BUTTON, self.o_closeweb, self.button1)
         font1 = wx.Font(25, wx.SWISS, wx.NORMAL, wx.NORMAL)
         font2 = wx.Font(15, wx.SWISS, wx.NORMAL, wx.NORMAL)
-        self.adtext = wx.StaticText(self.panel, label=u"小鲜肉代拍", pos=(90, 20))
+        self.adtext = wx.StaticText(self.panel, label=u"沪牌一号", pos=(90, 20))
         self.adtext.SetFont(font1)
         self.pricetext = wx.StaticText(self.panel, label=u"最低成交价:", pos=(50, 90))
         self.pricetext.SetFont(font2)
@@ -2843,23 +2854,82 @@ class ControlFrame(wx.Frame):  # 为webframe提供控制操作
 
 
 ##################
-# 功能窗口#
-class OperationFrame(wx.Frame):
-    def __init__(self):  # name:窗口显示名称
-        wx.Frame.__init__(self, None, 2, title="小鲜肉代拍", pos=(Px + 902, Py), size=(300, 425), \
-                          style=wx.FRAME_NO_TASKBAR | wx.CAPTION | wx.CLOSE_BOX)  # wx.FRAME_TOOL_WINDOW|   |wx.STAY_ON_TOP
+#状态栏面板
+class StatusPanel(wx.Panel):
+    def __init__(self, parent):
+        wx.Panel.__init__(self, parent=parent)
+        #功能区
+        self.control = wx.StaticBox(self,-1,"功能区域")
+        self.controlbox = wx.StaticBoxSizer(self.control,wx.VERTICAL)
+        self.controlgrid = wx.GridBagSizer(4, 4) #网格组件
+        self.closeButton = wx.Button(self)  #关闭WEB
+        self.timeButton = wx.Button(self) #时间
+        self.posajustButton = wx.Button(self) #位置调整
+        self.timeajustButton = wx.Button(self) #时间同步
+        self.controlgrid.Add(self.closeButton, pos=(0,0)) #布局
+        self.controlgrid.Add(self.timeButton, pos=(0,1))
+        self.controlgrid.Add(self.posajustButton, pos=(1,0))
+        self.controlgrid.Add(self.timeajustButton, pos=(1,1))
+        self.controlbox.Add(self.controlgrid) #把网格组加到 功能框内
+        #状态区
+        self.status = wx.StaticBox(self,-1,"状态显示")
+        self.statusbox = wx.StaticBoxSizer(self.status,wx.VERTICAL)
+        self.statusgrid =wx.GridBagSizer(6,6)
+        self.net_status = wx.StaticText(self,-1,label="当前网速")
+        self.lowestprice_status = wx.StaticText(self,-1,label="当前最低成交价")
+        self.userprice_status = wx.StaticText(self,-1,label="出价状态")
+        self.time_status = wx.StaticText(self,-1,label="与出价时间相差")
+        self.price_status = wx.StaticText(self,-1,label="价格相差")
+        self.statusgrid.Add(self.net_status,pos=(0,0))
+        self.statusgrid.Add(self.lowestprice_status,pos=(1,0))
+        self.statusgrid.Add(self.userprice_status,pos=(2,0))
+        self.statusgrid.Add(self.time_status,pos=(3,0))
+        self.statusgrid.Add(self.price_status,pos=(4,0))
+        self.statusbox.Add(self.statusgrid)
 
-        self.Bind(wx.EVT_CLOSE, self.OnClose)
-        # 设置图标
-        self.icon = wx.Icon(mainicon, wx.BITMAP_TYPE_ICO)
-        self.SetIcon(self.icon)
+        #提示区域
+        self.reminder = wx.StaticBox(self,-1,"提示")
+        self.reminderbox = wx.StaticBoxSizer(self.reminder,wx.VERTICAL)
+        self.remindervbox = wx.BoxSizer(wx.VERTICAL)
+        self.hotkey_confirm = wx.StaticText(self,-1,label="回车 确认")
+        self.hotkey_smartprice = wx.StaticText(self,-1,label="智能出价")
+        self.remindervbox.Add(self.hotkey_confirm)
+        self.remindervbox.Add(self.hotkey_smartprice)
+        self.reminderbox.Add(self.remindervbox)
+        #组合
+        self.vbox = wx.BoxSizer(wx.VERTICAL)
+        self.vbox.Add(self.controlbox)
+        self.vbox.Add(self.statusbox)
+        self.vbox.Add(self.reminderbox)
+        #设置盒子
+        self.SetSizer(self.vbox)
 
+
+
+#账号设置
+class AccountPanel(wx.Panel):
+    def __init__(self, parent):
+        wx.Panel.__init__(self, parent=parent)
+        # colors = ["red", "blue", "gray", "yellow", "green"]
+        # self.SetBackgroundColour(random.choice(colors))
+        btn = wx.Button(self, label="3")
+        sizer = wx.BoxSizer(wx.VERTICAL)
+        sizer.Add(btn, 0, wx.ALL, 10)
+        self.SetSizer(sizer)
+
+
+#策略设置
+class StrategyPanel(wx.Panel):
+    def __init__(self,parent):
+        wx.Panel.__init__(self,parent=parent)
         # 初始化real_time
         global one_real_time1, second_real_time1, one_real_time2, second_real_time2
         one_real_time1 = self.gettime(one_time1)
         one_real_time2 = self.gettime(one_time2)
         second_real_time1 = self.gettime(second_time1)
         second_real_time2 = self.gettime(second_time2)
+        #----------------------------
+        #timer 事件
         # 显示价格
         self.timer1 = wx.Timer(self)
         self.Bind(wx.EVT_TIMER, self.Price_view, self.timer1)  # 绑定一个定时器事件，主判断
@@ -2872,33 +2942,31 @@ class OperationFrame(wx.Frame):
         # 显示最低成交价
         self.lowestframe = LowestpriceFrame()
         self.lowestframe.Show(False)
-
-        #############################
-        ####布局
-        panel = wx.Panel(self, -1, size=(300, 380))
-        stractagy = wx.StaticBox(panel, -1, u'选择策略:')
+        # ----------------------------
+        #功能区
+        stractagy = wx.StaticBox(self, -1, u'选择策略:')
         self.stractagySizer = wx.StaticBoxSizer(stractagy, wx.VERTICAL)
-        stractagy_label = wx.StaticText(panel, label=u"设定拍牌策略", size=(100, 50))
+        stractagy_label = wx.StaticText(self, label=u"设定拍牌策略", size=(100, 50))
         hbox1 = wx.BoxSizer(wx.HORIZONTAL)
         hbox1.Add(stractagy_label)
 
         # 选择策略
         stractagy_choices = [u'单枪策略', u'双枪策略', u'手动操作（热键辅助）']
-        self.select_stractagy = wx.Choice(panel, -1, choices=stractagy_choices, size=(100, 50))
+        self.select_stractagy = wx.Choice(self, -1, choices=stractagy_choices, size=(100, 50))
         hbox1.Add(self.select_stractagy)
         self.select_stractagy.SetSelection(0)
         # 时间显示
-        self.timeview = wx.CheckBox(panel, -1, label=u'显示时间')  # 开启时间显示
+        self.timeview = wx.CheckBox(self, -1, label=u'显示时间')  # 开启时间显示
         hbox2 = wx.BoxSizer(wx.HORIZONTAL)
         hbox2.Add(self.timeview)
 
-        self.button1 = wx.Button(panel, label='+1s', size=(35, 25))
+        self.button1 = wx.Button(self, label='+1s', size=(35, 25))
         self.Bind(wx.EVT_BUTTON, self.Add_second, self.button1)
-        self.button2 = wx.Button(panel, label='-1s', size=(35, 25))
+        self.button2 = wx.Button(self, label='-1s', size=(35, 25))
         self.Bind(wx.EVT_BUTTON, self.Minus_second, self.button2)
-        self.button3 = wx.Button(panel, label='+0.1s', size=(35, 25))
+        self.button3 = wx.Button(self, label='+0.1s', size=(35, 25))
         self.Bind(wx.EVT_BUTTON, self.Add_time, self.button3)
-        self.button4 = wx.Button(panel, label='-0.1s', size=(35, 25))
+        self.button4 = wx.Button(self, label='-0.1s', size=(35, 25))
         self.Bind(wx.EVT_BUTTON, self.Minus_time, self.button4)
 
         hbox2.Add(self.button1)
@@ -2912,18 +2980,18 @@ class OperationFrame(wx.Frame):
 
         # 设置确认方式
         confirm_choice = ["E键", "回车"]
-        self.confirm_choice = wx.Choice(panel, -1, choices=confirm_choice)
+        self.confirm_choice = wx.Choice(self, -1, choices=confirm_choice)
         self.confirm_choice.SetSelection(0)
-        self.confirm_label = wx.StaticText(panel, label=u"确认提交方式     ")
+        self.confirm_label = wx.StaticText(self, label=u"确认提交方式     ")
         hbox3 = wx.BoxSizer(wx.HORIZONTAL)
         hbox3.Add(self.confirm_label, flag=wx.TOP, border=4)
         hbox3.Add(self.confirm_choice)
         vb1.Add(hbox3)
 
         # 策略保存与恢复
-        self.strategy_save = wx.Button(panel, label="保存策略", size=(60, 35))
-        self.strategy_load = wx.Button(panel, label="载入策略", size=(60, 35))
-        self.save_info = wx.Button(panel, label="用户信息", size=(60, 35))
+        self.strategy_save = wx.Button(self, label="保存策略", size=(60, 35))
+        self.strategy_load = wx.Button(self, label="载入策略", size=(60, 35))
+        self.save_info = wx.Button(self, label="用户信息", size=(60, 35))
         hbox4 = wx.BoxSizer(wx.HORIZONTAL)
         hbox4.Add(self.strategy_save)
         hbox4.Add(self.strategy_load)
@@ -2931,20 +2999,20 @@ class OperationFrame(wx.Frame):
         vb1.Add(hbox4)
 
         # 网格需放置于静态框中
-        oneshot = wx.StaticBox(panel, -1, u'单枪策略:')
+        oneshot = wx.StaticBox(self, -1, u'单枪策略:')
         self.oneshotSizer = wx.StaticBoxSizer(oneshot, wx.VERTICAL)
         gridsizer1 = wx.GridBagSizer(4, 4)
-        self.jiajia_time = wx.SpinCtrlDouble(panel, -1, "", size=(68, 25))  # ,style=wx.SP_WRAP最大值向上变最小值
+        self.jiajia_time = wx.SpinCtrlDouble(self, -1, "", size=(68, 25))  # ,style=wx.SP_WRAP最大值向上变最小值
         self.jiajia_time.SetRange(40, 55)
         self.jiajia_time.SetValue(48)
         self.jiajia_time.SetIncrement(0.1)
 
         gridsizer1.Add(self.jiajia_time, pos=(0, 0))
-        miao_label = wx.StaticText(panel, label=u"秒")
+        miao_label = wx.StaticText(self, label=u"秒")
         gridsizer1.Add(miao_label, pos=(0, 1), flag=wx.TOP | wx.ALIGN_LEFT, border=4)
-        jiahao_label = wx.StaticText(panel, label=u"加价", style=wx.ALIGN_CENTER, size=(25, 25))
+        jiahao_label = wx.StaticText(self, label=u"加价", style=wx.ALIGN_CENTER, size=(25, 25))
         gridsizer1.Add(jiahao_label, pos=(0, 2), flag=wx.TOP, border=4)
-        self.jiajia_price = wx.SpinCtrlDouble(panel, -1, "", size=(68, 25))
+        self.jiajia_price = wx.SpinCtrlDouble(self, -1, "", size=(68, 25))
         self.jiajia_price.SetRange(300, 1500)
         self.jiajia_price.SetValue(700)
         self.jiajia_price.SetIncrement(100)
@@ -2952,75 +3020,75 @@ class OperationFrame(wx.Frame):
 
         # 选择提交方式,第二排
         tijiao_choices = [u"提前100", u"提前200", u"踩点"]
-        self.select_tijiao = wx.Choice(panel, -1, choices=tijiao_choices, size=(68, 25))
+        self.select_tijiao = wx.Choice(self, -1, choices=tijiao_choices, size=(68, 25))
         self.select_tijiao.SetSelection(0)
         gridsizer1.Add(self.select_tijiao, pos=(1, 0))
-        yanchi_label = wx.StaticText(panel, label=u"出价提交延迟")
+        yanchi_label = wx.StaticText(self, label=u"出价提交延迟")
         gridsizer1.Add(yanchi_label, pos=(1, 1), flag=wx.TOP, border=4)
-        self.yanchi_time = wx.SpinCtrlDouble(panel, -1, "", size=(68, 25))
+        self.yanchi_time = wx.SpinCtrlDouble(self, -1, "", size=(68, 25))
         self.yanchi_time.SetRange(0.0, 1.0)
         self.yanchi_time.SetValue(0.5)
         self.yanchi_time.SetIncrement(0.1)
         gridsizer1.Add(self.yanchi_time, pos=(1, 3))
-        miao2_label = wx.StaticText(panel, label=u"秒")
+        miao2_label = wx.StaticText(self, label=u"秒")
         gridsizer1.Add(miao2_label, pos=(1, 4), flag=wx.TOP, border=4)
 
         # 选择提交方式,第三排
-        tijiao_label = wx.StaticText(panel, label=u"强制提交时间")
+        tijiao_label = wx.StaticText(self, label=u"强制提交时间")
         gridsizer1.Add(tijiao_label, pos=(2, 0), flag=wx.TOP, border=4)
-        self.tijiao_time = wx.SpinCtrlDouble(panel, -1, "", size=(68, 25))
+        self.tijiao_time = wx.SpinCtrlDouble(self, -1, "", size=(68, 25))
         self.tijiao_time.SetRange(40.0, 57.0)
         self.tijiao_time.SetValue(55.0)
         self.tijiao_time.SetIncrement(0.1)
         gridsizer1.Add(self.tijiao_time, pos=(2, 1))
-        miao3_label = wx.StaticText(panel, label=u"秒")
+        miao3_label = wx.StaticText(self, label=u"秒")
         gridsizer1.Add(miao3_label, pos=(2, 2), flag=wx.TOP, border=4)
         # 网格需放置于静态框中
         self.oneshotSizer.Add(gridsizer1, 0, flag=wx.ALL, border=5)
 
         # 第二枪
         # 选择加价时间,第一排
-        secondshot = wx.StaticBox(panel, -1, u'双枪策略:')
+        secondshot = wx.StaticBox(self, -1, u'双枪策略:')
         self.secondshotSizer = wx.StaticBoxSizer(secondshot, wx.VERTICAL)
         gridsizer2 = wx.GridBagSizer(4, 4)
-        self.jiajia_time2 = wx.SpinCtrlDouble(panel, -1, "", size=(68, 25))
+        self.jiajia_time2 = wx.SpinCtrlDouble(self, -1, "", size=(68, 25))
         self.jiajia_time2.SetRange(40, 55)
         self.jiajia_time2.SetValue(48)
         self.jiajia_time2.SetIncrement(0.1)
         gridsizer2.Add(self.jiajia_time2, pos=(0, 0))
-        miao_label2 = wx.StaticText(panel, label=u"秒")
+        miao_label2 = wx.StaticText(self, label=u"秒")
         gridsizer2.Add(miao_label2, pos=(0, 1), flag=wx.TOP | wx.ALIGN_LEFT, border=4)
-        jiahao_label2 = wx.StaticText(panel, label=u"加价", size=(25, 25), style=wx.ALIGN_CENTER)
+        jiahao_label2 = wx.StaticText(self, label=u"加价", size=(25, 25), style=wx.ALIGN_CENTER)
         gridsizer2.Add(jiahao_label2, pos=(0, 2), flag=wx.TOP, border=4)
-        self.jiajia_price2 = wx.SpinCtrlDouble(panel, -1, "", size=(68, 25))
+        self.jiajia_price2 = wx.SpinCtrlDouble(self, -1, "", size=(68, 25))
         self.jiajia_price2.SetRange(300, 1500)
         self.jiajia_price2.SetValue(600)
         self.jiajia_price2.SetIncrement(100)
         gridsizer2.Add(self.jiajia_price2, pos=(0, 3))
         # 选择提交方式,第二排
         tijiao_choices2 = [u"提前100", u"提前200", u"踩点"]
-        self.select_tijiao2 = wx.Choice(panel, -1, choices=tijiao_choices2, size=(68, 25))
+        self.select_tijiao2 = wx.Choice(self, -1, choices=tijiao_choices2, size=(68, 25))
         self.select_tijiao2.SetSelection(0)
         gridsizer2.Add(self.select_tijiao2, pos=(1, 0))
-        yanchi_label2 = wx.StaticText(panel, label=u"出价提交延迟")
+        yanchi_label2 = wx.StaticText(self, label=u"出价提交延迟")
         gridsizer2.Add(yanchi_label2, pos=(1, 1), flag=wx.TOP, border=4)
-        self.yanchi_time2 = wx.SpinCtrlDouble(panel, -1, "", size=(68, 25))
+        self.yanchi_time2 = wx.SpinCtrlDouble(self, -1, "", size=(68, 25))
         self.yanchi_time2.SetRange(0.0, 1.0)
         self.yanchi_time2.SetValue(0.5)
         self.yanchi_time2.SetIncrement(0.1)
         gridsizer2.Add(self.yanchi_time2, pos=(1, 3))
-        miao2_label2 = wx.StaticText(panel, label=u"秒")
+        miao2_label2 = wx.StaticText(self, label=u"秒")
         gridsizer2.Add(miao2_label2, pos=(1, 4), flag=wx.TOP, border=4)
 
         # 选择提交方式,第三排
-        tijiao_label2 = wx.StaticText(panel, label=u"强制提交时间")
+        tijiao_label2 = wx.StaticText(self, label=u"强制提交时间")
         gridsizer2.Add(tijiao_label2, pos=(2, 0), flag=wx.TOP, border=4)
-        self.tijiao_time2 = wx.SpinCtrlDouble(panel, -1, "", size=(68, 25))
+        self.tijiao_time2 = wx.SpinCtrlDouble(self, -1, "", size=(68, 25))
         self.tijiao_time2.SetRange(53.0, 57.0)
         self.tijiao_time2.SetValue(55.0)
         self.tijiao_time2.SetIncrement(0.1)
         gridsizer2.Add(self.tijiao_time2, pos=(2, 1))
-        miao3_label2 = wx.StaticText(panel, label=u"秒")
+        miao3_label2 = wx.StaticText(self, label=u"秒")
         gridsizer2.Add(miao3_label2, pos=(2, 2), flag=wx.TOP, border=4)
         # 网格需放置于静态框中
         self.secondshotSizer.Add(gridsizer2, 0, flag=wx.ALL, border=5)
@@ -3028,17 +3096,17 @@ class OperationFrame(wx.Frame):
         self.vbox1 = wx.BoxSizer(wx.VERTICAL)
 
         # 加横线
-        title = wx.StaticText(panel, -1, label=u"拍牌功能设置")
-        warning = wx.StaticText(panel, -1, label=u"10点半需要进行第一次出价")
+        title = wx.StaticText(self, -1, label=u"拍牌功能设置")
+        warning = wx.StaticText(self, -1, label=u"10点半需要进行第一次出价")
         warning.SetForegroundColour('red')
-        line = wx.StaticLine(panel, -1)
+        line = wx.StaticLine(self, -1)
         self.vbox1.Add(title, 0, wx.ALL | wx.LEFT, 10)
         self.vbox1.Add(warning, 0, wx.LEFT, 10)
         self.vbox1.Add(line, flag=wx.EXPAND | wx.BOTTOM, border=10)
         self.vbox1.Add(self.stractagySizer, 0, wx.ALL | wx.CENTER, 5)
         self.vbox1.Add(self.oneshotSizer, 0, wx.ALL | wx.CENTER, 5)
         self.vbox1.Add(self.secondshotSizer, 0, wx.ALL | wx.CENTER, 5)
-        panel.SetSizer(self.vbox1)
+        self.SetSizer(self.vbox1)
 
         # 显示参数设置
         self.secondsizer_Shown = False  # 二次出价默认关闭
@@ -3090,8 +3158,7 @@ class OperationFrame(wx.Frame):
 
         self.yanzhengmaframe = YanzhengmaFrame()
 
-    def OnClose(self, event):
-        self.Show(False)
+
 
     # 动态显示价格   验证码放大器
     def Price_view(self, event):
@@ -3141,7 +3208,8 @@ class OperationFrame(wx.Frame):
             if not yanzhengma_hash:  #第一次
                 yanzhengma_hash = yan_hash
             elif yan_hash == yanzhengma_hash:  #验证码没变化
-                print("没变化，不动作")
+                # print("没变化，不动作")
+                pass
             else:
                 yanzhengma_hash = yan_hash
                 try:
@@ -3167,7 +3235,7 @@ class OperationFrame(wx.Frame):
         yanzhengma_count += 1
         file = 'sc_new.png'
         if web_on and strategy_on:
-            self.lowestframe.Show(False)
+            self.lowestframe.Show(True)
         if not os.path.exists(file):
             try:
                 self.Price_close()
@@ -3762,6 +3830,40 @@ class OperationFrame(wx.Frame):
         return c  # 得到用户所确定的最终时间戳
 
 
+
+# 功能窗口#
+class OperationFrame(wx.Frame):
+    def __init__(self):  # name:窗口显示名称
+        wx.Frame.__init__(self, None, 2, title="沪牌一号", pos=(Px + 902, Py), size=(300,625), \
+                          style=wx.FRAME_NO_TASKBAR | wx.CAPTION | wx.CLOSE_BOX)  # wx.FRAME_TOOL_WINDOW|   |wx.STAY_ON_TOP
+
+        self.Bind(wx.EVT_CLOSE, self.OnClose)
+        # 设置图标
+        self.icon = wx.Icon(mainicon, wx.BITMAP_TYPE_ICO)
+        self.SetIcon(self.icon)
+        #############################
+        ####标签切换
+        panel = wx.Panel(self)
+
+        self.notebook = wx.Notebook(panel)
+        self.status_tab = StatusPanel(self.notebook)   #notebook作为父类
+        self.notebook.AddPage(self.status_tab, "常规功能")
+
+        self.strategy_tab = StrategyPanel(self.notebook)
+        self.notebook.AddPage(self.strategy_tab, "策略设置")
+
+        self.account_tab =AccountPanel(self.notebook)
+        self.notebook.AddPage(self.account_tab, "账号设置")
+
+        sizer = wx.BoxSizer(wx.VERTICAL)
+        sizer.Add(self.notebook, 1, wx.ALL | wx.EXPAND, 5)
+        panel.SetSizer(sizer)
+        self.Layout()
+        self.Show(False) #初始隐藏
+
+    def OnClose(self, event):
+        self.Show(False)
+
 #################最低成交价显示##################
 class LowestpriceWindow(wx.Panel):
     def __init__(self, parent):
@@ -4180,7 +4282,6 @@ class HashThread(Thread):
 
         # wx.Sleep(15)
         # TopFrame.Refresh_hash()
-        import winreg, sys
         ####################修改打开的IE版本
         key = winreg.OpenKey(winreg.HKEY_CURRENT_USER,
                              r"SOFTWARE\Microsoft\Internet Explorer\Main\FeatureControl\FEATURE_BROWSER_EMULATION", 0,
@@ -4189,7 +4290,7 @@ class HashThread(Thread):
         # key = _winreg.OpenKey(_winreg.HKEY_CURRENT_USER,
         #                       r"SOFTWARE\Microsoft\Internet Explorer\Main\FeatureControl\FEATURE_BROWSER_EMULATION", 0,
         #                       _winreg.KEY_ALL_ACCESS)
-
+        #
         # key2 = winreg.OpenKey(winreg.HKEY_CURRENT_USER,
         #                      r"SOFTWARE\Microsoft\Internet Explorer\Main\FeatureControl\FEATURE_ENABLE_SCRIPT_PASTE_URLACTION_IF_PROMPT", 0,
         #                      winreg.KEY_ALL_ACCESS)
@@ -4197,7 +4298,7 @@ class HashThread(Thread):
             # 设置注册表python.exe 值为 11000(IE11)
             name = os.path.realpath(sys.argv[0])  # 获取运行路径
             name = name.split('\\')[-1]
-            # winreg.SetValueEx(key, '%s'%name, 0, winreg.REG_DWORD, 0x00002710)    #10:2710
+            winreg.SetValueEx(key, '%s'%name, 0, winreg.REG_DWORD, 0x00002710)    #10:2710  8:1f40
             # winreg.SetValueEx(key2, '%s'%name, 0, winreg.REG_DWORD, 0x00000001)
         except:
             # 设置出现错误
@@ -4210,6 +4311,7 @@ class HashThread(Thread):
 
 
 # 创建一个确认进程
+#!--<script src="{{bootstrap_find_resource('jquery.js', cdn='jquery')}}"></script>-->
 class findposThread(Thread):
     def __init__(self):
         Thread.__init__(self)
@@ -4222,7 +4324,7 @@ class findposThread(Thread):
             # print(findpos_on,"findpos_on")
             if findpos_on:
                 try:
-                    # print("找着呢")
+                    print("找着呢")
                     findpos()  # 定位
                     time.sleep(0.1)  # 0.1秒间隔
                 except:
@@ -4244,7 +4346,7 @@ class confirmThread(threading.Thread):
     def run(self):
         while self.__running.isSet():
             self.__flag.wait()  # 为True时立即返回, 为False时阻塞直到内部的标识位为True后返回
-            time.sleep(0.05)
+            time.sleep(0.035)
             global tijiao_num
             if tijiao_num == 2:
                 try:
@@ -4340,7 +4442,7 @@ class cutimgThread(Thread):
     def run(self):
         while self.__running.isSet():
             self.__flag.wait()  # 为True时立即返回, 为False时阻塞直到内部的标识位为True后返回
-            time.sleep(0.2)
+            time.sleep(0.04)
             try:
                 cut_img()
             except:
@@ -4648,13 +4750,10 @@ if __name__ == '__main__':
     getwebpath()  # 初始化浏览器地址
     app = SketchApp()
     # 打开刷新与确认进程
-    confirmthread = confirmThread()  #确认线程
-    # confirmthread.pause()  # 暂停
-    ##
-    refreshthread = refreshThread()  #刷新线程
-    # refreshthread.pause()
-    finposthread = findposThread()   #定位线程
-    cutimgthread = cutimgThread()   #截图线程
+    # confirmthread = confirmThread()  #确认线程
+    # refreshthread = refreshThread()  #刷新线程
+    # finposthread = findposThread()   #定位线程
+    # cutimgthread = cutimgThread()   #截图线程
     app.MainLoop()
 
 # self.Bind(wx.EVT_KEY_DOWN, self.OnKeyDown)

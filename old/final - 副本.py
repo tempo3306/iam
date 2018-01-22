@@ -3,92 +3,92 @@
 @contact: 810909753@q.com
 @time: 2017/3/28 8:59
 '''
-version = '5.0'
+version = '5.1'
 num = 0
 avt = 90100
 test = False
 host_ali = "http://hupai.pro"
-url1="http://hupai.pro/Moni"
+url1 = "http://moni.51hupai.org/"
 url2 = "www.baidu.com"      
 url3 = "www.baidu.com"       
 url4 = "http://127.0.0.1:5000/Moni"
 mainicon = 'ico.ico'
 view = False        
 do = False        
-oooo000ooooooooo00o0o = False        
-o00ooooo00o00o0000o0o = False             
-ooooo0oo0oo0o0o0oooo0 = False              
-oo00o00o00o0oo00o0000 = True            
-oo000oooo0ooo0000o000 = True          
-oo0000000oo0oooooo00o = 0                              
-oo00ooo0ooo000oo0000o = False          
-oo0ooooo00oo0oo000o00 = 0               
-o00o00o00000oooo00oo0 = 0               
+o0000ooooooo0oo00oo00 = False        
+o0000oo0ooo0oo000o00o = False             
+o00ooo00oo0oo0oo0o000 = False              
+oooo00ooo00o0oo0o0ooo = True            
+o00000oo000ooooo00ooo = True          
+oooo00000o0o0oooooo0o = 0                              
+o000ooo0000oo0o0ooooo = False          
+oo0oo0ooo0oo0oo0000oo = 0               
+oo00o00o000o000oo0oo0 = 0               
 web_on = False             
-o0oo0ooo0oo0o0o0oo0oo = False           
+ooo00ooooo0o00ooo00o0 = False           
 operation_show = False           
-o000oo000oo0ooooo00oo = False               
+o00oo0oo0000ooo00oooo = False               
 import time
-oooo00o00oo0000oo0o0o = time.time()          
+oo000000oooo0oo00oo00 = time.time()          
 b_time = 0          
 moni_minute = 29
-o0oo0ooo000oo0oo00oo0 = 0
-oo000oo0o000000o0o0oo_time = 0        
-oo000oo0oooo00ooo000o = 0       
-o0oooo0oooo0000oooo00 = 0      
-ooooo00o000o0o00oo0o0 = False                          
-oooooo00o000o00o000oo = False
-o0ooooooo00o0000oo00o = 53          
-o00oo0o00oooo00oo0000 = 0.0          
-oooooo000000ooo00oooo = True          
-oooo000o00000o0ooo0o0 = False                 
+oo0oo0ooo000000oo0000 = 0
+o00o0ooooooo0oo0ooo00_time = 0        
+ooo0000oo00ooooo00oo0 = 0       
+ooo00000o0oo0oooooo0o = 0      
+ooo0o0000oo0oo0o00ooo = False                          
+oooo000000o00o00oo0oo = False
+oo000oo0oo0000o00oo00 = 53          
+o00oo0o0o000oo000oooo = 0.0          
+oo00ooo0oo000o0oo0000 = True          
+o0oo000oooo0o00oo0oo0 = False                 
 delay = False        
 delay_time = 0.5          
-o0o00o00ooo000o0o00o0 = False          
-o0oo00o0000000000o0oo = True           
+oo00oooo0o00oooo0o0o0 = False          
+oooo0oo0ooooooo000o0o = True           
 pricelist = [80000 + i * 100 for i in range(400)]          
 IDnumber = 0        
 account = 0       
 passwd = 0      
-o00000000000o000oo000 = 0
+o0ooo000ooooooo0o000o = 0
 import pyautogui as pg
-def o00o0o0o000o00o0oo0o0():
+def o00oo00oooooo000o0o0o():
     with open('dick.dl', 'rb') as dick:
-        global oooooo000o000o0oo0oo0
-        oooooo000o000o0oo0oo0 = pickle.load(dick)                 
+        global oo0ooo0000oo0o00o0o00
+        oo0ooo0000oo0o00o0o00 = pickle.load(dick)                 
     with open('cf.btn', 'rb') as cf:
-        global oo0o0o00000o00o00000o
-        oo0o0o00000o00o00000o = pickle.load(cf)                            
+        global ooo00oo0000o00o0oo0oo
+        ooo00oo0000o00o0oo0oo = pickle.load(cf)                            
     with open("target.tkl", 'rb')  as tar:
-        global oooooo0o0o000ooooo0oo
-        oooooo0o0o000ooooo0oo = pickle.load(tar)            
-o000oo0ooo0o0o000oo00 = 48           
-oo00000o0oo00o0o0o0o0 = 55           
-ooo0o0o0o00o000ooo0oo = 1000000000000             
-o0o00ooo0ooo0o0o00o0o = 1000000000000             
-o000ooooooooo000o00o0 = 700           
-oo0oo00o00000oo00o000 = 0.5         
-ooo0oooooo0o0ooo00ooo = 100            
-oo0o0o0o000o0o00ooooo = 48            
-o00o0o0000oooo0000ooo = 55           
-ooo0o0ooo0000000o0o0o = 1000000000000             
-o000oo0oo0ooo0ooooooo = 1000000000000             
-ooo0000000000ooo00000 = 600           
-oo0ooo000o0oo0o00o0o0 = 0.5           
-ooo0ooo0ooo00oo0ooo0o = 100              
+        global ooo0oo00ooo0o00000000
+        ooo0oo00ooo0o00000000 = pickle.load(tar)            
+o00o00o00000ooooo0o0o = 48           
+o0000ooo00oo000o0o00o = 55           
+o0ooo0oo000oo00o000o0 = 1000000000000             
+ooo00oo0000o00o0o00o0 = 1000000000000             
+oo0oo00ooooo0000o00o0 = 700           
+o00000o0o0ooo0o0o0oo0 = 0.5         
+o0ooo0o00o0o00000ooo0 = 100            
+o000o000o0000ooo0o0o0 = 48            
+ooooo0o000oooo0o0ooo0 = 55           
+o00oo0oo0o0ooooooo0oo = 1000000000000             
+oo00ooo0o0o00o0oo0oo0 = 1000000000000             
+ooo0ooooo0o000oo0ooo0 = 600           
+o0o00oooo0o0ooo000oo0 = 0.5           
+oo0oo0oooo0ooo0oo0000 = 100              
 osl = [0] * 15                          
-oo00ooo0o000o00oo00o0 = True                      
-ooo000o00oo00o0oo0000 = False                  
-o0000o0o0000000o00o0o = 93400         
-o0ooo0ooo00o0o0o0o0oo = 0         
-o0oo000o000000oo00000 = 0         
+o0o0000oo000o00o0o0o0 = True                      
+ooo0ooo0o000o00oo000o = False                  
+o0oo0ooo0o00oo00o0o00 = 93400         
+oo000oo00o0oo0o0000oo = 0         
+oooooo0o0000o0o0oo0o0 = 0         
 own_price = 0        
-o000000000ooo0oooo00o = False           
+oo0000o00o0000oo00oo0 = False           
 e_on = True                  
-oooo0oooo0ooo000o0oo0 = False                   
+o0ooo000o00oo0oooo0o0 = False                   
 twice = False          
-oooo00oo00o0o00000o00 = 1                         
-ooo000o00oo00o0oo0000e = False             
+o0000ooo000000ooo00o0 = 1                         
+ooo0ooo0o000o00oo000oe = False             
 websize = [902, 700]         
 Pxy = pg.size()       
 Px1 = Pxy[0] / 2          
@@ -97,10 +97,10 @@ Px = (Pxy[0] - websize[0]) / 2 - 80
 Py = (Pxy[1] - websize[1]) / 2
 P_relative = [[343, -66], [346, 40], [96, 121], [92, 43], [201, 100], [281, 40], [261, 37], [282, 118]]               
 P_relative2 = [[647, -98], [650, 8], [400, 89], [396, 11], [505, 68], [585, 8], [565, 5], [586, 86]]
-o000o0oo000o000o0o00o = [[0, 0] for i in range(len(P_relative))]
-for i in range(len(o000o0oo000o000o0o00o)):
-    o000o0oo000o000o0o00o[i][0] = Px1 + P_relative[i][0]
-    o000o0oo000o000o0o00o[i][1] = Py2 + P_relative[i][1]
+oo0o0oo0o0o0oo00o0oo0 = [[0, 0] for i in range(len(P_relative))]
+for i in range(len(oo0o0oo0o0o0oo00o0oo0)):
+    oo0o0oo0o0o0oo00o0oo0[i][0] = Px1 + P_relative[i][0]
+    oo0o0oo0o0o0oo00o0oo0[i][1] = Py2 + P_relative[i][1]
 px_ajust, py_ajust = 0, 0
 for i in range(len(P_relative)):
     P_relative[i][0] += websize[0] / 2 + px_ajust
@@ -111,80 +111,80 @@ px_priceframe = 220 - 191
 py_priceframe = 480
 px_timeframe = 22
 py_timeframe = 350
-ooo0o0000oooo000ooo00frame = 245
-o0o0oo0oooo00oooo0oooframe = 290
-o0o00o0000o0oo0o00o00frame_pos = [ooo0o0000oooo000ooo00frame, o0o0oo0oooo00oooo0oooframe]
-px_o0o00oo0000oo00ooo0o0frame = 400 - 215
-py_o0o00oo0000oo00ooo0o0frame = 460
+o0oo00oooooo0ooo00oooframe = 245
+o0oooo0000oo00000o00oframe = 290
+ooo00o0oo00oo0ooo0o00frame_pos = [o0oo00oooooo0ooo00oooframe, o0oooo0000oo00000o00oframe]
+px_o00ooo00000o00000o00oframe = 400 - 215
+py_o00ooo00000o00000o00oframe = 460
 px_mini = 200
 py_mini = 40
-o0oo0ooo00o00o0o00oo0 = [400, 80]
-o0oo00oo000oo0o0oo0oo = [400, 220]
+o0o0000ooooo00oo0oo00 = [400, 80]
+o0o0000ooo0oo00ooo0o0 = [400, 220]
 Timesize = [200, 50]
-o0o00o0000o0oo0o00o00_area = [179 - 80 + Px, 424 - 50 + Py, 179 + 80 + Px, 424 + 50 + Py]
-o00000o0o0oo0o0o0ooo0 = [396 - 150, 11 - 100, 396 + 150, 11 + 100]
-o00oo000oo0oooo0oo0oo = [505 - 300, 68 - 150, 505 + 300, 68 + 150]
-o0000o0000oooo0o00o00 = [505 - 300, 68 - 150, 505 + 300, 68 + 150]
-o0o000o0ooo000ooo0ooo = [0,0]
+ooo00o0oo00oo0ooo0o00_area = [179 - 80 + Px, 424 - 50 + Py, 179 + 80 + Px, 424 + 50 + Py]
+o00o0000o000000o000o0 = [396 - 150, 11 - 100, 396 + 150, 11 + 100]
+o00000o0oo0oooo00oo00 = [505 - 300, 68 - 150, 505 + 300, 68 + 150]
+o0o0000oo000000o00000 = [505 - 300, 68 - 150, 505 + 300, 68 + 150]
+o000000o00000o0o000oo = [0,0]
 webview_pos = [-25,0]                      
 Px_price = Px + px_price
 Py_price = Py + py_price
 Pos_price = [Px_price, Py_price, Px_price + px_mini, Py_price + py_mini]               
-o000oooo00o0ooo00o00o = []           
+o00o0oo0oo0oo0ooooo00 = []           
 Px_priceframe = Px + px_priceframe
 Py_priceframe = Py + py_priceframe
 Pos_priceframe = [Px_priceframe, Py_priceframe]
 Px_timeframe = px_timeframe + Px
 Py_timeframe = py_timeframe + Py
-oo0o00ooo0oo0o0000o0o = [Px_timeframe, Py_timeframe]
-o00000oo00oo0o00o0ooo = [Px + 40, Py + 480]
-Px_o0o00oo0000oo00ooo0o0frame = Px + px_o0o00oo0000oo00ooo0o0frame
-Py_o0o00oo0000oo00ooo0o0frame = Py + py_o0o00oo0000oo00ooo0o0frame
-o000oooo00o0ooo00o00oframe = [Px_o0o00oo0000oo00ooo0o0frame, Py_o0o00oo0000oo00ooo0o0frame]
-ooo0o0000oooo000ooo00 = 0                         
-o0o0oo0oooo00oooo0ooo = 0            
-oo00oo0o00000oooo000o = Px + ooo0o0000oooo000ooo00
-o00oo00ooooo00o0ooooo = Py + o0o0oo0oooo00oooo0ooo
-o0o00o0000o0oo0o00o00_sizex = 82           
-o0o00o0000o0oo0o00o00_sizey = 16
-ooo00000o00oo000oo0oo =oo00oo0o00000oooo000o-25             
-o0000o000oooooo000o0o = o00oo00ooooo00o0ooooo+17
+o000o0o00o0oooo0ooo00 = [Px_timeframe, Py_timeframe]
+o00ooo00oooo0ooo00ooo = [Px + 40, Py + 480]
+Px_o00ooo00000o00000o00oframe = Px + px_o00ooo00000o00000o00oframe
+Py_o00ooo00000o00000o00oframe = Py + py_o00ooo00000o00000o00oframe
+o00o0oo0oo0oo0ooooo00frame = [Px_o00ooo00000o00000o00oframe, Py_o00ooo00000o00000o00oframe]
+o0oo00oooooo0ooo00ooo = 0                         
+o0oooo0000oo00000o00o = 0            
+ooo0o00oooo00000o0ooo = Px + o0oo00oooooo0ooo00ooo
+o0ooooo000o0o00oooooo = Py + o0oooo0000oo00000o00o
+ooo00o0oo00oo0ooo0o00_sizex = 82           
+ooo00o0oo00oo0ooo0o00_sizey = 16
+oo0000o0oo00ooooooooo =ooo0o00oooo00000o0ooo-25             
+o0oo0oo0ooo0o00000o0o = o0ooooo000o0o00oooooo+17
 currenttime_sizex = 132
 currenttime_sizey = 16
-oooo0o0o0ooo0ooo0o0oo = 49                
-ooo0o0o00ooooo00ooo0o = 0
+o0000o0o0o00000o0oo00 = 49                
+o00o0oo0000oo0oo0000o = 0
 px_confirm = 656
 py_confirm = 475
 Px_confirm = Px + px_confirm
 Py_confirm = Py + py_confirm
 confirm_sizex = 113
 confirm_sizey = 28
-oooo000o0ooo0o000oo0o = False          
-o00oo0000o00o0o00o0oo = False          
-oooo000o0ooo0o000oo0oe = False             
-px_oo0o0000o000ooo0000oo = 550
-py_oo0o0000o000ooo0000oo = 413
-Px_oo0o0000o000ooo0000oo = Px + px_oo0o0000o000ooo0000oo
-Py_oo0o0000o000ooo0000oo = Py + py_oo0o0000o000ooo0000oo
-oo0o0000o000ooo0000oo_sizex = 108
-oo0o0000o000ooo0000oo_sizey = 21
-oo0000ooooo000oo0o0o0 = False          
-oo0o0o0o00000oo00o0oo = False          
-o000oo0o00oooooo000o0 = False             
-oo0ooo0o0o0oo000ooo00 = False        
-o0ooo000000oo0oooo00o_interval = False        
-oo00ooo00000oo0o00o00 = False      
-o0oo00oooo0o00o000o0o = False            
+oo0oooo0000oo00oooooo = False          
+oo00ooo0o0oo00oo000oo = False          
+oo0oooo0000oo00ooooooe = False             
+px_o0oo0o0oo000ooo0ooooo = 550
+py_o0oo0o0oo000ooo0ooooo = 413
+Px_o0oo0o0oo000ooo0ooooo = Px + px_o0oo0o0oo000ooo0ooooo
+Py_o0oo0o0oo000ooo0ooooo = Py + py_o0oo0o0oo000ooo0ooooo
+o0oo0o0oo000ooo0ooooo_sizex = 108
+o0oo0o0oo000ooo0ooooo_sizey = 21
+o0o0o00o00oo0o0oo0000 = False          
+oo0oo0oo0oo00o00o000o = False          
+oooo0000oooo0ooo0000o = False             
+oooo00o0oooo00000000o = False        
+ooo0oo0o000000o00oooo_interval = False        
+o00000ooo00000ooo0000 = False      
+o00ooo00o0oo0o0oo0ooo = False            
 import numpy as np
-oo00oo0oo0oooooo00o00 = [oo00oo0o00000oooo000o - 10, o00oo00ooooo00o0ooooo - 100, oo00oo0o00000oooo000o + 600, o00oo00ooooo00o0ooooo + 120]
-ooooo000o0o00oo00oo0o = []
+o0oooo0oo00o00o0000oo = [ooo0o00oooo00000o0ooo - 10, o0ooooo000o0o00oooooo - 100, ooo0o00oooo00000o0ooo + 600, o0ooooo000o0o00oooooo + 120]
+oo0000o00o0o0000o00o0 = []
 nptemp = []
-oo000o0o0ooooo0oo0oo0 = np.array(nptemp)       
-o00oo0o0ooooooo00000o = np.array(nptemp)       
-o0ooo0o0oo000000o000o = np.array(nptemp)         
-impos_o0o00oo0000oo00ooo0o0 = np.array(nptemp)       
-o00000o0ooooooo00o0o0confirm = np.array(nptemp)         
-oo00oo00o0oo00o000o00 = np.array(nptemp)        
+ooooo00oo000oo0ooooo0 = np.array(nptemp)       
+o00000ooo00o000oooo00 = np.array(nptemp)       
+o0o000o0o0o000o0o0o00 = np.array(nptemp)         
+impos_o00ooo00000o00000o00o = np.array(nptemp)       
+o0oo0000ooooo00o00oo0confirm = np.array(nptemp)         
+oo0oooo0o00o0ooooooo0 = np.array(nptemp)        
 import sys
 if sys.platform != 'win32':
     exit()
@@ -214,8 +214,8 @@ logging.error('This is error message')
 import win32gui, win32api
 import cv2
 from PIL import ImageGrab
-yimg = ImageGrab.grab().save("o0o00oo0000oo00ooo0o0.png")
-o000oo00oo0oo0oo0o0o0 = Image.open("o0o00oo0000oo00ooo0o0.png")                         
+yimg = ImageGrab.grab().save("o00ooo00000o00000o00o.png")
+o0o0ooooo0oo0o00o0000 = Image.open("o00ooo00000o00000o00o.png")                         
 def Click(x, y):        
     a = win32gui.GetCursorPos()
     x = int(x)
@@ -237,9 +237,11 @@ def Paste():
     win32api.keybd_event(86, 0, 0, 0)            
     win32api.keybd_event(86, 0, win32con.KEYEVENTF_KEYUP, 0)        
     win32api.keybd_event(17, 0, win32con.KEYEVENTF_KEYUP, 0)
-def o0oo0000o000o0o0oo000():
-    global o0o000o0ooo000ooo0ooo
-    Click(o0o000o0ooo000ooo0ooo[0],o0o000o0ooo000ooo0ooo[1])
+def oo0o00o0ooo0o00oooooo():
+    win32api.keybd_event(17, 0, 0, 0)               
+    win32api.keybd_event(86, 0, 0, 0)            
+    win32api.keybd_event(86, 0, win32con.KEYEVENTF_KEYUP, 0)        
+    win32api.keybd_event(17, 0, win32con.KEYEVENTF_KEYUP, 0)
 def setText(aString):
     aString = aString.encode('utf-8')
     win32clipboard.OpenClipboard()
@@ -251,57 +253,57 @@ def Delete():
     win32api.keybd_event(0x08, 0, 0, 0)
     win32api.keybd_event(0x08, 0, win32con.KEYEVENTF_KEYUP, 0)
     b = time.clock()
-def o00ooo0oo00o0oo00o0o0():
+def oooooo0o0oooo0o0o0o0o():
     sc = ImageGrab.grab().convert('L')
     img = np.asarray(sc)
-    global oooooo0o0o000ooooo0oo
-    template = oooooo0o0o000ooooo0oo[2]
+    global ooo0oo00ooo0o00000000
+    template = ooo0oo00ooo0o00000000[2]
     w, h = template.shape[::-1]
     res = cv2.matchTemplate(img, template, cv2.TM_CCOEFF_NORMED)
     min_val, max_val, min_loc, max_loc = cv2.minMaxLoc(res)
-    global ooo0o0000oooo000ooo00, o0o0oo0oooo00oooo0ooo, oooo0o0o0ooo0ooo0o0oo, ooo0o0o00ooooo00ooo0o, oo00oo0o00000oooo000o, o00oo00ooooo00o0ooooo, Px, Py
-    global o00000o0o0oo0o0o0ooo0, o00oo000oo0oooo0oo0oo, oo0o00ooo0oo0o0000o0o, o00000oo00oo0o00o0ooo, o000oooo00o0ooo00o00o, o000oooo00o0ooo00o00oframe, o0000o0000oooo0o00o00
-    global ooooo000o0o00oo00oo0o, oo00oo0oo0oooooo00o00          
-    global o000o0oo000o000o0o00o, o00000o0o0oo0o0o0ooo0, o00oo000oo0oooo0oo0oo, oo0o00ooo0oo0o0000o0o, o00000oo00oo0o00o0ooo, o000oooo00o0ooo00o00o, o000oooo00o0ooo00o00oframe, o0000o0000oooo0o00o00
-    global ooo00000o00oo000oo0oo,o0000o000oooooo000o0o           
-    global o0o000o0ooo000ooo0ooo
+    global o0oo00oooooo0ooo00ooo, o0oooo0000oo00000o00o, o0000o0o0o00000o0oo00, o00o0oo0000oo0oo0000o, ooo0o00oooo00000o0ooo, o0ooooo000o0o00oooooo, Px, Py
+    global o00o0000o000000o000o0, o00000o0oo0oooo00oo00, o000o0o00o0oooo0ooo00, o00ooo00oooo0ooo00ooo, o00o0oo0oo0oo0ooooo00, o00o0oo0oo0oo0ooooo00frame, o0o0000oo000000o00000
+    global oo0000o00o0o0000o00o0, o0oooo0oo00o00o0000oo          
+    global oo0o0oo0o0o0oo00o0oo0, o00o0000o000000o000o0, o00000o0oo0oooo00oo00, o000o0o00o0oooo0ooo00, o00ooo00oooo0ooo00ooo, o00o0oo0oo0oo0ooooo00, o00o0oo0oo0oo0ooooo00frame, o0o0000oo000000o00000
+    global oo0000o0oo00ooooooooo,o0oo0oo0ooo0o00000o0o           
+    global o000000o00000o0o000oo
     if max_val > 0.9:          
-        ooo0o0000oooo000ooo00 = max_loc[0] + oooo0o0o0ooo0ooo0o0oo
-        o0o0oo0oooo00oooo0ooo = max_loc[1] + ooo0o0o00ooooo00ooo0o
-        oo00oo0o00000oooo000o = ooo0o0000oooo000ooo00
-        o00oo00ooooo00o0ooooo = o0o0oo0oooo00oooo0ooo
-        ooo00000o00oo000oo0oo = oo00oo0o00000oooo000o -27             
-        o0000o000oooooo000o0o = o00oo00ooooo00o0ooooo -16
-        o0o000o0ooo000ooo0ooo = [ooo0o0000oooo000ooo00-9,o0o0oo0oooo00oooo0ooo+84]
-        for i in range(len(o000o0oo000o000o0o00o)):
-            o000o0oo000o000o0o00o[i][0] = oo00oo0o00000oooo000o + P_relative2[i][0]
-            o000o0oo000o000o0o00o[i][1] = o00oo00ooooo00o0ooooo + P_relative2[i][1]
-        o00000o0o0oo0o0o0ooo0 = [396 - 150 + oo00oo0o00000oooo000o, 11 - 100 + o00oo00ooooo00o0ooooo, 396 + 150 + oo00oo0o00000oooo000o,
-                        11 + 100 + o00oo00ooooo00o0ooooo]
-        o00oo000oo0oooo0oo0oo = [505 - 80 + oo00oo0o00000oooo000o, 68 - 50 + o00oo00ooooo00o0ooooo, 505 + 80 + oo00oo0o00000oooo000o,
-                        68 + 50 + o00oo00ooooo00o0ooooo]
-        o0000o0000oooo0o00o00 = [205 - 80 + oo00oo0o00000oooo000o, 68 - 50 + o00oo00ooooo00o0ooooo, 405 + 80 + oo00oo0o00000oooo000o,
-                            68 + 50 + o00oo00ooooo00o0ooooo]
-        o00000oo00oo0o00o0ooo = [192 - 344 + oo00oo0o00000oooo000o, 514 - 183 + o00oo00ooooo00o0ooooo]
-        o000oooo00o0ooo00o00o = [o000o0oo000o000o0o00o[5][0] - 277, o000o0oo000o000o0o00o[5][1] - 65, o000o0oo000o000o0o00o[5][0] - 97,
-                          o000o0oo000o000o0o00o[5][1] + 45]           
-        o000oooo00o0ooo00o00oframe = [oo00oo0o00000oooo000o + 297, o00oo00ooooo00o0ooooo - 283]            
-        global o0oo00o0000000000o0oo, oo000oooo0ooo0000o000
-        o0oo00o0000000000o0oo = False        
-        oo000oooo0ooo0000o000 = True        
-        lowest = [oo00oo0o00000oooo000o, o00oo00ooooo00o0ooooo,  o0o00o0000o0oo0o00o00_sizex+oo00oo0o00000oooo000o, o0o00o0000o0oo0o00o00_sizey+o00oo00ooooo00o0ooooo]
-        currenttime = [ooo00000o00oo000oo0oo,o0000o000oooooo000o0o,ooo00000o00oo000oo0oo+currenttime_sizex,o0000o000oooooo000o0o+currenttime_sizey]
+        o0oo00oooooo0ooo00ooo = max_loc[0] + o0000o0o0o00000o0oo00
+        o0oooo0000oo00000o00o = max_loc[1] + o00o0oo0000oo0oo0000o
+        ooo0o00oooo00000o0ooo = o0oo00oooooo0ooo00ooo
+        o0ooooo000o0o00oooooo = o0oooo0000oo00000o00o
+        oo0000o0oo00ooooooooo = ooo0o00oooo00000o0ooo -27             
+        o0oo0oo0ooo0o00000o0o = o0ooooo000o0o00oooooo -16
+        o000000o00000o0o000oo = [o0oo00oooooo0ooo00ooo-9,o0oooo0000oo00000o00o+84]
+        for i in range(len(oo0o0oo0o0o0oo00o0oo0)):
+            oo0o0oo0o0o0oo00o0oo0[i][0] = ooo0o00oooo00000o0ooo + P_relative2[i][0]
+            oo0o0oo0o0o0oo00o0oo0[i][1] = o0ooooo000o0o00oooooo + P_relative2[i][1]
+        o00o0000o000000o000o0 = [396 - 150 + ooo0o00oooo00000o0ooo, 11 - 100 + o0ooooo000o0o00oooooo, 396 + 150 + ooo0o00oooo00000o0ooo,
+                        11 + 100 + o0ooooo000o0o00oooooo]
+        o00000o0oo0oooo00oo00 = [505 - 80 + ooo0o00oooo00000o0ooo, 68 - 50 + o0ooooo000o0o00oooooo, 505 + 80 + ooo0o00oooo00000o0ooo,
+                        68 + 50 + o0ooooo000o0o00oooooo]
+        o0o0000oo000000o00000 = [205 - 80 + ooo0o00oooo00000o0ooo, 68 - 50 + o0ooooo000o0o00oooooo, 405 + 80 + ooo0o00oooo00000o0ooo,
+                            68 + 50 + o0ooooo000o0o00oooooo]
+        o00ooo00oooo0ooo00ooo = [192 - 344 + ooo0o00oooo00000o0ooo, 514 - 183 + o0ooooo000o0o00oooooo]
+        o00o0oo0oo0oo0ooooo00 = [oo0o0oo0o0o0oo00o0oo0[5][0] - 277, oo0o0oo0o0o0oo00o0oo0[5][1] - 65, oo0o0oo0o0o0oo00o0oo0[5][0] - 97,
+                          oo0o0oo0o0o0oo00o0oo0[5][1] + 45]           
+        o00o0oo0oo0oo0ooooo00frame = [ooo0o00oooo00000o0ooo + 297, o0ooooo000o0o00oooooo - 283]            
+        global oooo0oo0ooooooo000o0o, o00000oo000ooooo00ooo
+        oooo0oo0ooooooo000o0o = False        
+        o00000oo000ooooo00ooo = True        
+        lowest = [ooo0o00oooo00000o0ooo, o0ooooo000o0o00oooooo,  ooo00o0oo00oo0ooo0o00_sizex+ooo0o00oooo00000o0ooo, ooo00o0oo00oo0ooo0o00_sizey+o0ooooo000o0o00oooooo]
+        currenttime = [oo0000o0oo00ooooooooo,o0oo0oo0ooo0o00000o0o,oo0000o0oo00ooooooooo+currenttime_sizex,o0oo0oo0ooo0o00000o0o+currenttime_sizey]
         dis_x=50
         dis_y=100
-        x1 = oo00oo0o00000oooo000o - dis_x         
-        y1 = o00oo00ooooo00o0ooooo - dis_y
-        cal_area = [lowest, o00000o0o0oo0o0o0ooo0, o00oo000oo0oooo0oo0oo, o000oooo00o0ooo00o00o, o0000o0000oooo0o00o00 , currenttime]          
-        ooooo000o0o00oo00oo0o = []
-        oo00oo0oo0oooooo00o00 = [oo00oo0o00000oooo000o - dis_x, o00oo00ooooo00o0ooooo - dis_y, oo00oo0o00000oooo000o + 600, o00oo00ooooo00o0ooooo + 120]
+        x1 = ooo0o00oooo00000o0ooo - dis_x         
+        y1 = o0ooooo000o0o00oooooo - dis_y
+        cal_area = [lowest, o00o0000o000000o000o0, o00000o0oo0oooo00oo00, o00o0oo0oo0oo0ooooo00, o0o0000oo000000o00000 , currenttime]          
+        oo0000o00o0o0000o00o0 = []
+        o0oooo0oo00o00o0000oo = [ooo0o00oooo00000o0ooo - dis_x, o0ooooo000o0o00oooooo - dis_y, ooo0o00oooo00000o0ooo + 600, o0ooooo000o0o00oooooo + 120]
         for i in range(len(cal_area)):
             temp = [cal_area[i][0] - x1, cal_area[i][1] - y1, cal_area[i][2] - x1, cal_area[i][3] - y1]
-            ooooo000o0o00oo00oo0o.append(temp)
-def oo0ooooo0o00ooooo00o0(area):                          
+            oo0000o00o0o0000o00o0.append(temp)
+def ooo0000oo0oo0o00o0o00(area):                          
     x, y = int(area[0]), int(area[1])
     w, h = int(area[2]), int(area[3])
     hwnd = win32gui.FindWindow(None, "win32")
@@ -324,20 +326,20 @@ def oo0ooooo0o00ooooo00o0(area):
     win32gui.DeleteObject(dataBitMap.GetHandle())
     return img
 def cut_img():                                                                                   
-    global ooooo000o0o00oo00oo0o, oo00oo0oo0oooooo00o00, oo000o0o0ooooo0oo0oo0, o00000o0ooooooo00o0o0, o00oo0o0ooooooo00000o, o0ooo0o0oo000000o000o, o00000o0ooooooo00o0o0confirm,oo00oo00o0oo00o000o00
-    img = oo0ooooo0o00ooooo00o0(oo00oo0oo0oooooo00o00)           
+    global oo0000o00o0o0000o00o0, o0oooo0oo00o00o0000oo, ooooo00oo000oo0ooooo0, o0oo0000ooooo00o00oo0, o00000ooo00o000oooo00, o0o000o0o0o000o0o0o00, o0oo0000ooooo00o00oo0confirm,oo0oooo0o00o0ooooooo0
+    img = ooo0000oo0oo0o00o0o00(o0oooo0oo00o00o0000oo)           
     img = np.asarray(img)              
-    oo000o0o0ooooo0oo0oo0 = img[ooooo000o0o00oo00oo0o[0][1]:ooooo000o0o00oo00oo0o[0][3], ooooo000o0o00oo00oo0o[0][0]:ooooo000o0o00oo00oo0o[0][2]]      
-    o00oo0o0ooooooo00000o = img[ooooo000o0o00oo00oo0o[1][1]:ooooo000o0o00oo00oo0o[1][3], ooooo000o0o00oo00oo0o[1][0]:ooooo000o0o00oo00oo0o[1][2]]      
-    o0ooo0o0oo000000o000o = img[ooooo000o0o00oo00oo0o[2][1]:ooooo000o0o00oo00oo0o[2][3], ooooo000o0o00oo00oo0o[2][0]:ooooo000o0o00oo00oo0o[2][2]]
-    o00000o0ooooooo00o0o0 = img[ooooo000o0o00oo00oo0o[3][1]:ooooo000o0o00oo00oo0o[3][3], ooooo000o0o00oo00oo0o[3][0]:ooooo000o0o00oo00oo0o[3][2]]      
-    o00000o0ooooooo00o0o0confirm = img[ooooo000o0o00oo00oo0o[4][1]:ooooo000o0o00oo00oo0o[4][3], ooooo000o0o00oo00oo0o[4][0]:ooooo000o0o00oo00oo0o[4][2]]      
-    oo00oo00o0oo00o000o00 = img[ooooo000o0o00oo00oo0o[5][1]:ooooo000o0o00oo00oo0o[5][3], ooooo000o0o00oo00oo0o[5][0]:ooooo000o0o00oo00oo0o[5][2]]
-def oo0o00oo000o0ooooooo0():
-    global oooooo0o0o000ooooo0oo, oo0000ooooo000oo0o0o0, oo0o0o0o00000oo00o0oo, o000oo0o00oooooo000o0, o000o0oo000o000o0o00o, o00000o0o0oo0o0o0ooo0, o00oo000oo0oooo0oo0oo
-    template = oooooo0o0o000ooooo0oo[0]
-    global o00oo0o0ooooooo00000o
-    sc = o00oo0o0ooooooo00000o
+    ooooo00oo000oo0ooooo0 = img[oo0000o00o0o0000o00o0[0][1]:oo0000o00o0o0000o00o0[0][3], oo0000o00o0o0000o00o0[0][0]:oo0000o00o0o0000o00o0[0][2]]      
+    o00000ooo00o000oooo00 = img[oo0000o00o0o0000o00o0[1][1]:oo0000o00o0o0000o00o0[1][3], oo0000o00o0o0000o00o0[1][0]:oo0000o00o0o0000o00o0[1][2]]      
+    o0o000o0o0o000o0o0o00 = img[oo0000o00o0o0000o00o0[2][1]:oo0000o00o0o0000o00o0[2][3], oo0000o00o0o0000o00o0[2][0]:oo0000o00o0o0000o00o0[2][2]]
+    o0oo0000ooooo00o00oo0 = img[oo0000o00o0o0000o00o0[3][1]:oo0000o00o0o0000o00o0[3][3], oo0000o00o0o0000o00o0[3][0]:oo0000o00o0o0000o00o0[3][2]]      
+    o0oo0000ooooo00o00oo0confirm = img[oo0000o00o0o0000o00o0[4][1]:oo0000o00o0o0000o00o0[4][3], oo0000o00o0o0000o00o0[4][0]:oo0000o00o0o0000o00o0[4][2]]      
+    oo0oooo0o00o0ooooooo0 = img[oo0000o00o0o0000o00o0[5][1]:oo0000o00o0o0000o00o0[5][3], oo0000o00o0o0000o00o0[5][0]:oo0000o00o0o0000o00o0[5][2]]
+def oo0000o00000000o0oo00():
+    global ooo0oo00ooo0o00000000, o0o0o00o00oo0o0oo0000, oo0oo0oo0oo00o00o000o, oooo0000oooo0ooo0000o, oo0o0oo0o0o0oo00o0oo0, o00o0000o000000o000o0, o00000o0oo0oooo00oo00
+    template = ooo0oo00ooo0o00000000[0]
+    global o00000ooo00o000oooo00
+    sc = o00000ooo00o000oooo00
     img = cv2.cvtColor(sc, cv2.COLOR_BGR2GRAY)        
     w, h = template.shape[::-1]
     res = cv2.matchTemplate(img, template, cv2.TM_CCOEFF_NORMED)
@@ -345,35 +347,35 @@ def oo0o00oo000o0ooooooo0():
     logging.info("查找刷新")
     if max_val >= 0.8:
         logging.info("刷新")
-        TopFrame.o00oo00oo0o0oooo0oo0o()
-        global ooooo0oo0oo0o0o0oooo0, oo00o00o00o0oo00o0000, o00o00o00000oooo00oo0
-        ooooo0oo0oo0o0o0oooo0 = True         
-        o00o00o00000oooo00oo0 = 0      
-def oooo00o00o00ooo00oo00():
-    global oooooo0o0o000ooooo0oo, oooo000o0ooo0o000oo0o, o000o0oo000o000o0o00o
-    template = oooooo0o0o000ooooo0oo[1]
-    global o0ooo0o0oo000000o000o
-    sc = o0ooo0o0oo000000o000o
+        TopFrame.o0oo00o0o000o0oo00o00()
+        global o00ooo00oo0oo0oo0o000, oooo00ooo00o0oo0o0ooo, oo00o00o000o000oo0oo0
+        o00ooo00oo0oo0oo0o000 = True         
+        oo00o00o000o000oo0oo0 = 0      
+def oo0oooooo0o0000000o00():
+    global ooo0oo00ooo0o00000000, oo0oooo0000oo00oooooo, oo0o0oo0o0o0oo00o0oo0
+    template = ooo0oo00ooo0o00000000[1]
+    global o0o000o0o0o000o0o0o00
+    sc = o0o000o0o0o000o0o0o00
     img = cv2.cvtColor(sc, cv2.COLOR_BGR2GRAY)        
     w, h = template.shape[::-1]
     res = cv2.matchTemplate(img, template, cv2.TM_CCOEFF_NORMED)
     min_val, max_val, min_loc, max_loc = cv2.minMaxLoc(res)
     if max_val >= 0.9:
-        TopFrame.o000oo000o0oooo00000o()
-    if oooo000o0ooo0o000oo0o and max_val < 0.9:
+        TopFrame.oo00o0oo0o0o00o00oo0o()
+    if oo0oooo0000oo00oooooo and max_val < 0.9:
         print("暂停确认")
-def o0o00oo000oooo0o00oo0():
-    global oooooo0o0o000ooooo0oo, oooo000o0ooo0o000oo0o, o000o0oo000o000o0o00o, ooooo0oo0oo0o0o0oooo0, oo00o00o00o0oo00o0000
-    template = oooooo0o0o000ooooo0oo[1]
-    global o00000o0ooooooo00o0o0confirm
-    sc = o00000o0ooooooo00o0o0confirm
+def o0o00oo00oo0oo0o000o0():
+    global ooo0oo00ooo0o00000000, oo0oooo0000oo00oooooo, oo0o0oo0o0o0oo00o0oo0, o00ooo00oo0oo0oo0o000, oooo00ooo00o0oo0o0ooo
+    template = ooo0oo00ooo0o00000000[1]
+    global o0oo0000ooooo00o00oo0confirm
+    sc = o0oo0000ooooo00o00oo0confirm
     img = cv2.cvtColor(sc, cv2.COLOR_BGR2GRAY)        
     w, h = template.shape[::-1]
     res = cv2.matchTemplate(img, template, cv2.TM_CCOEFF_NORMED)
     min_val, max_val, min_loc, max_loc = cv2.minMaxLoc(res)
     if max_val < 0.9:
-        ooooo0oo0oo0o0o0oooo0 = False
-        oo00o00o00o0oo00o0000 = True
+        o00ooo00oo0oo0oo0o000 = False
+        oooo00ooo00o0oo0o0ooo = True
 def cut_pic(img, size, name):
     img = np.asarray(img)
     i1 = img[0:24, :150]
@@ -385,7 +387,7 @@ import win32gui
 import win32ui
 import win32con
 import time
-def o0000oo00oo0o000o00oo(area):                          
+def o00o00000oo0o00o0oooo(area):                          
     x, y = area[0], area[1]
     w, h = area[2], area[3]
     hwnd = win32gui.FindWindow(None, "win32")
@@ -407,7 +409,7 @@ def o0000oo00oo0o000o00oo(area):
     win32gui.ReleaseDC(hwnd, wDC)
     win32gui.DeleteObject(dataBitMap.GetHandle())
     return img
-def oo00o00o0o0oo00o0oo00(area, size, name):
+def o00o00000oo0o00o0oooo_getimg(area, size, name):
     x, y = area[0], area[1]
     w, h = area[2], area[3]
     hwnd = win32gui.FindWindow(None, "win32")
@@ -527,41 +529,41 @@ def readpic(img):
     print("price==",price)
     return price                          
 def timeset():
-    global oooo00o00oo0000oo0o0o, oo00oo00o0oo00o000o00, o0oo0ooo000oo0oo00oo0
-    currenttime = cv2.cvtColor(oo00oo00o0oo00o000o00, cv2.COLOR_BGR2GRAY)
+    global oo000000oooo0oo00oo00, oo0oooo0o00o0ooooooo0, oo0oo0ooo000000oo0000
+    currenttime = cv2.cvtColor(oo0oooo0o00o0ooooooo0, cv2.COLOR_BGR2GRAY)
     currenttime = readpic(currenttime)           
-    cv2.imwrite("zp.png", oo00oo00o0oo00o000o00)
+    cv2.imwrite("zp.png", oo0oooo0o00o0ooooooo0)
     print(currenttime)
     tem1 = time.time()
     a = time.strftime('%Y-%m-%d', time.localtime(tem1))
     b = a + ' ' + currenttime
-    oooo00o00oo0000oo0o0o = time.mktime(time.strptime(b, '%Y-%m-%d %H:%M:%S')) + 0.5                 
+    oo000000oooo0oo00oo00 = time.mktime(time.strptime(b, '%Y-%m-%d %H:%M:%S')) + 0.5                 
     try:
-        o0oo0ooo000oo0oo00oo0 = int(currenttime.split(':')[2]) + 0.5
+        oo0oo0ooo000000oo0000 = int(currenttime.split(':')[2]) + 0.5
     except:
         pass
 import winreg, re, subprocess
-ooo00o00oo0o0ooo0o000 = r'C:\Program Files (x86)\Internet Explorer\iexplore.exe'
+oo000o0ooo000o00o0000 = r'C:\Program Files (x86)\Internet Explorer\iexplore.exe'
 iepath = r'C:\Program Files (x86)\Internet Explorer\iexplore.exe'
 path1 = 'C:\Program Files (x86)'
 path2 = 'C:\Program Files'
-def o0ooooo0ooooo00oo0o0o():
-    global ooo00o00oo0o0ooo0o000
+def o0o000o000oo00o0000oo():
+    global oo000o0ooo000o00o0000
     try:
         key = winreg.OpenKey(winreg.HKEY_CLASSES_ROOT, r"http\shell\open\command")
         name, value, type = winreg.EnumValue(key, 0)
         pattern = re.compile("\"*(.+\.exe)")
         result = re.findall(pattern, value)
         if result:
-            ooo00o00oo0o0ooo0o000 = result[0]
+            oo000o0ooo000o00o0000 = result[0]
     except:
         pass
-    if not os.path.exists(ooo00o00oo0o0ooo0o000):
+    if not os.path.exists(oo000o0ooo000o00o0000):
         if os.path.exists('C:\Program Files (x86)'):
             pass
 def openweb(url):
-    global ooo00o00oo0o0ooo0o000
-    subprocess.Popen([ooo00o00oo0o0ooo0o000, url])
+    global oo000o0ooo000o00o0000
+    subprocess.Popen([oo000o0ooo000o00o0000, url])
 def openIE(url):
     global iepath
     subprocess.Popen([iepath, url])
@@ -579,9 +581,9 @@ timeout = 10
 socket.setdefaulttimeout(timeout)          
 from urllib import request
 import json
-def o000oo0000o0oo0o000o0():
+def o000oo0oooo00o0000oo0():
     try:
-        target_url = host_ali + r'/main_api/userconfirm/info?' + 'username=%s' % oo000oo0oooo00ooo000o + '&' + 'passwd=%s' % o0oooo0oooo0000oooo00
+        target_url = host_ali + r'/main_api/userconfirm/info?' + 'username=%s' % ooo0000oo00ooooo00oo0 + '&' + 'passwd=%s' % ooo00000o0oo0oooooo0o
         print(target_url)
         response = request.urlopen(target_url)
         print(response)
@@ -594,7 +596,7 @@ def o000oo0000o0oo0o000o0():
 def Logout():
     host = host_ali
     port = 8080
-    global oo000oo0oooo00ooo000o
+    global ooo0000oo00ooooo00oo0
     s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
     try:
         s.connect((host, port))
@@ -604,10 +606,10 @@ def Logout():
     except socket.error as e:
         print("Connection error: %s" % e)
         logging.info("Connection error: %s" % e)
-def ooo0ooooo0o00oooo0000():
+def o000000000o0ooooo0oo0():
     host = host_ali
     port = 8080
-    global oo000oo0oooo00ooo000o
+    global ooo0000oo00ooooo00oo0
     s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
     try:
         s.connect((host, port))
@@ -617,7 +619,7 @@ def ooo0ooooo0o00oooo0000():
     except socket.error as e:
         print("Connection error: %s" % e)
         logging.info("Connection error: %s" % e)
-    data = ['keep', oo000oo0oooo00ooo000o, o0oooo0oooo0000oooo00]
+    data = ['keep', ooo0000oo00ooooo00oo0, ooo00000o0oo0oooooo0o]
     data = json.dumps(data)
     data = bytes(data, encoding="utf-8")           
     logging.info('发送信息 %s' % str(data, encoding="utf-8"))
@@ -625,7 +627,7 @@ def ooo0ooooo0o00oooo0000():
     s.shutdown(1)
     print("Submit keep Complete")
     logging.info("Submit keep Complete")
-def ooooooo000o000000oooo(subject, to_list, file_name):
+def oo00oo0o000o000oo000o(subject, to_list, file_name):
     data = open(file_name, 'rb')
     ctype, encoding = mimetypes.guess_type(file_name)
     if ctype is None and encoding is None:
@@ -655,9 +657,9 @@ def ooooooo000o000000oooo(subject, to_list, file_name):
     print('send email  successfully')
 def Upload():
     pass                 
-def oo00ooooooo0o0oo0000o():
+def o0000o00000oo00o0o0oo():
     pass
-def ooo0000000o00oo00o0oo():
+def o00o0oo000o0o00o0ooo0():
     pass
 class TopFrame(wx.Frame):
     def __init__(self, name, rev):               
@@ -680,11 +682,11 @@ class TopFrame(wx.Frame):
         self.operationareasizer = wx.StaticBoxSizer(self.operationarea, wx.VERTICAL)
         self.hbox1 = wx.BoxSizer(wx.HORIZONTAL)
         self.monibutton = wx.Button(panel, label='打开模拟')
-        self.Bind(wx.EVT_BUTTON, self.ooo00ooooooooooo0o00o, self.monibutton)
-        self.o00oooooo00o00oo0oo0obutton = wx.Button(panel, label='打开国拍')
-        self.Bind(wx.EVT_BUTTON, self.oooooo000o00o0oo0oo0o, self.o00oooooo00o00oo0oo0obutton)
+        self.Bind(wx.EVT_BUTTON, self.ooo000o00ooo00oooo00o, self.monibutton)
+        self.o00o0o00o00oo0000o0o0button = wx.Button(panel, label='打开国拍')
+        self.Bind(wx.EVT_BUTTON, self.ooo0000oooo0o0o0o0oo0, self.o00o0o00o00oo0000o0o0button)
         self.hbox1.Add(self.monibutton, 0, wx.ALL | wx.CENTER, 5)
-        self.hbox1.Add(self.o00oooooo00o00oo0oo0obutton, 0, wx.ALL | wx.CENTER, 5)
+        self.hbox1.Add(self.o00o0o00o00oo0000o0o0button, 0, wx.ALL | wx.CENTER, 5)
         self.operationareasizer.Add(self.hbox1)
         self.helpbutton = wx.Button(panel, label='查看帮助')
         self.Bind(wx.EVT_BUTTON, self.help, self.helpbutton)
@@ -699,8 +701,8 @@ class TopFrame(wx.Frame):
         self.hbox3 = wx.BoxSizer(wx.HORIZONTAL)
         self.advanceset = wx.Button(panel, label='策略设置')
         self.posautoset = wx.Button(panel, label='刷新定位')
-        self.Bind(wx.EVT_BUTTON, self.oo00oo00oo0o0o0o0oo0o, self.advanceset)
-        self.Bind(wx.EVT_BUTTON, self.o00o0ooo0000o0oo0o0o0, self.posautoset)
+        self.Bind(wx.EVT_BUTTON, self.ooo0ooo00o0oooo0o0ooo, self.advanceset)
+        self.Bind(wx.EVT_BUTTON, self.o00o0o0o000000oo0o000, self.posautoset)
         self.hbox3.Add(self.advanceset, 0, wx.ALL | wx.CENTER, 5)
         self.hbox3.Add(self.posautoset, 0, wx.ALL | wx.CENTER, 5)
         self.hbox4 = wx.BoxSizer(wx.HORIZONTAL)
@@ -720,42 +722,42 @@ class TopFrame(wx.Frame):
         self.operationframe = OperationFrame()
         self.operationframe.Show(False)        
         self.timer2 = wx.Timer(self)
-        self.Bind(wx.EVT_TIMER, self.o00oo000oo0o000000o0o, self.timer2)                 
+        self.Bind(wx.EVT_TIMER, self.oo0o00oo0ooo000o00o0o, self.timer2)                 
         self.timer2.Start(100)          
         self.timer3 = wx.Timer(self)
-        self.Bind(wx.EVT_TIMER, self.ooo000o0o0o00oo0oo00o, self.timer3)                   
+        self.Bind(wx.EVT_TIMER, self.o00oo0ooo0ooo00oooooo, self.timer3)                   
         self.timer3.Start(50)
-        self.Bind(wx.EVT_BUTTON, self.oo00o0o000oooo0o0oo00, self.timeautoreset)            
-        pub.subscribe(self.oo000oooo00oo00ooo0oo, "open dianxin")        
-        pub.subscribe(self.o0o0o00000oo0o0o0o0o0, "open nodianxin")         
-        pub.subscribe(self.oo0ooooo0000o000ooo00, "open userweb")             
-    def ooo00ooooooooooo0o00o(self, event):
-        global oooo00oo00o0o00000o00, oo00ooo0o000o00oo00o0, ooo000o00oo00o0oo0000, oooooo000000ooo00oooo, o000000000ooo0oooo00o, twice
-        timer0 = threading.Timer(5, o00ooo0oo00o0oo00o0o0)
-        oooooo000000ooo00oooo = True
+        self.Bind(wx.EVT_BUTTON, self.o0o0ooo000o0oo000oo0o, self.timeautoreset)            
+        pub.subscribe(self.o0o000ooo000o0o0ooo00, "open dianxin")        
+        pub.subscribe(self.oooo0oo0000o0o0o000o0, "open nodianxin")         
+        pub.subscribe(self.oo0oooo0ooo0000000o0o, "open userweb")             
+    def ooo000o00ooo00oooo00o(self, event):
+        global o0000ooo000000ooo00o0, o0o0000oo000o00o0o0o0, ooo0ooo0o000o00oo000o, oo00ooo0oo000o0oo0000, oo0000o00o0000oo00oo0, twice
+        timer0 = threading.Timer(5, oooooo0o0oooo0o0o0o0o)
+        oo00ooo0oo000o0oo0000 = True
         twice = False
-        oo00ooo0o000o00oo00o0 = True
-        ooo000o00oo00o0oo0000 = False
-        oooo00oo00o0o00000o00 = 1       
-        o000000000ooo0oooo00o = False
-        global Px, Py, url1, oooo000ooooooooo00o0o, web_on, do, oooooo00o000o00o000oo, ooooo00o000o0o00oo0o0, oooo000o00000o0ooo0o0
-        if oooooo00o000o00o000oo:
+        o0o0000oo000o00o0o0o0 = True
+        ooo0ooo0o000o00oo000o = False
+        o0000ooo000000ooo00o0 = 1       
+        oo0000o00o0000oo00oo0 = False
+        global Px, Py, url1, o0000ooooooo0oo00oo00, web_on, do, oooo000000o00o00oo0oo, ooo0o0000oo0oo0o00ooo, o0oo000oooo0o00oo0oo0
+        if oooo000000o00o00oo0oo:
             wx.MessageBox('请关闭国拍页面或先关闭辅助', '开启模拟失败', wx.OK | wx.ICON_ERROR)
-        elif ooooo00o000o0o00oo0o0:
+        elif ooo0o0000oo0oo0o00ooo:
             wx.MessageBox('请关闭模拟页面', '开启模拟失败', wx.OK | wx.ICON_ERROR)
         else:
             self.Open()
             if do:
-                ooooo00o000o0o00oo0o0 = True        
-                oooo000ooooooooo00o0o = True
+                ooo0o0000oo0oo0o00ooo = True        
+                o0000ooooooo0oo00oo00 = True
                 web_on = True
                 self.fr = WebFrame(Px, Py, False, '小鲜肉模拟')
-                if o000oo000oo0ooooo00oo:
-                    self.operationframe.oo0o0oooo0ooo0o0000o0()
-                if not oooo000o00000o0ooo0o0:                
-                    self.monio0ooo000000oo0oooo00othread = MoniTijiaoThread()            
-                    self.o0ooo000000oo0oooo00othread = TijiaoThread()            
-                    oooo000o00000o0ooo0o0 = True
+                if o00oo0oo0000ooo00oooo:
+                    self.operationframe.oo00o0o0000ooo000o000()
+                if not o0oo000oooo0o00oo0oo0:                
+                    self.moniooo0oo0o000000o00oooothread = MoniTijiaoThread()            
+                    self.ooo0oo0o000000o00oooothread = TijiaoThread()            
+                    o0oo000oooo0o00oo0oo0 = True
                 browser = wx.html2.WebView.New(self.fr, size=(websize[0] + 48, websize[1] + 40), pos=webview_pos,
                                                style=wx.BORDER_NONE)
                 browser.LoadURL(url1)
@@ -765,34 +767,34 @@ class TopFrame(wx.Frame):
                 wx.MessageBox('请检查其它软件热键占用', '辅助启用失败', wx.OK | wx.ICON_ERROR)
                 self.Close()
             self.Listen()
-    def oooooo000o00o0oo0oo0o(self, event):
-        o00oooooo00o00oo0oo0o = Guopaiframe("国拍")
-    def oo000oooo00oo00ooo0oo(self):
-        global oooo00oo00o0o00000o00, oo00ooo0o000o00oo00o0, ooo000o00oo00o0oo0000, oooooo000000ooo00oooo, o000000000ooo0oooo00o, twice
-        timer0 = threading.Timer(5, o00ooo0oo00o0oo00o0o0)
-        oooooo000000ooo00oooo = True
+    def ooo0000oooo0o0o0o0oo0(self, event):
+        o00o0o00o00oo0000o0o0 = Guopaiframe("国拍")
+    def o0o000ooo000o0o0ooo00(self):
+        global o0000ooo000000ooo00o0, o0o0000oo000o00o0o0o0, ooo0ooo0o000o00oo000o, oo00ooo0oo000o0oo0000, oo0000o00o0000oo00oo0, twice
+        timer0 = threading.Timer(5, oooooo0o0oooo0o0o0o0o)
+        oo00ooo0oo000o0oo0000 = True
         twice = False
-        oo00ooo0o000o00oo00o0 = True
-        ooo000o00oo00o0oo0000 = False
-        oooo00oo00o0o00000o00 = 1       
-        o000000000ooo0oooo00o = False
-        global Px, Py, url2, oooo000ooooooooo00o0o, web_on, do, ooooo00o000o0o00oo0o0, oooooo00o000o00o000oo, oooo000o00000o0ooo0o0
-        if ooooo00o000o0o00oo0o0:
+        o0o0000oo000o00o0o0o0 = True
+        ooo0ooo0o000o00oo000o = False
+        o0000ooo000000ooo00o0 = 1       
+        oo0000o00o0000oo00oo0 = False
+        global Px, Py, url2, o0000ooooooo0oo00oo00, web_on, do, ooo0o0000oo0oo0o00ooo, oooo000000o00o00oo0oo, o0oo000oooo0o00oo0oo0
+        if ooo0o0000oo0oo0o00ooo:
             wx.MessageBox('请关闭模拟页面', '开启国拍失败', wx.OK | wx.ICON_ERROR)
-        elif oooooo00o000o00o000oo:
+        elif oooo000000o00o00oo0oo:
             wx.MessageBox('国拍已经打开', '开启国拍失败', wx.OK | wx.ICON_ERROR)
         else:
             self.Open()
             if do:
-                oooo000ooooooooo00o0o = True
-                oooooo00o000o00o000oo = True
+                o0000ooooooo0oo00oo00 = True
+                oooo000000o00o00oo0oo = True
                 self.fr = WebFrame(Px, Py, False, '小鲜肉代拍 国拍')          
-                if o000oo000oo0ooooo00oo:
-                    self.operationframe.oo0o0oooo0ooo0o0000o0()
-                if not oooo000o00000o0ooo0o0:                
-                    self.monio0ooo000000oo0oooo00othread = MoniTijiaoThread()            
-                    self.o0ooo000000oo0oooo00othread = TijiaoThread()            
-                    oooo000o00000o0ooo0o0 = True
+                if o00oo0oo0000ooo00oooo:
+                    self.operationframe.oo00o0o0000ooo000o000()
+                if not o0oo000oooo0o00oo0oo0:                
+                    self.moniooo0oo0o000000o00oooothread = MoniTijiaoThread()            
+                    self.ooo0oo0o000000o00oooothread = TijiaoThread()            
+                    o0oo000oooo0o00oo0oo0 = True
                 browser = wx.html2.WebView.New(self.fr, size=(websize[0] + 48, websize[1] + 40), pos=webview_pos,  style=wx.BORDER_NONE)
                 browser.LoadURL(url2)
                 browser.CanSetZoomType(False)
@@ -801,32 +803,32 @@ class TopFrame(wx.Frame):
             else:
                 wx.MessageBox('请检查其它软件热键占用', '辅助启用失败', wx.OK | wx.ICON_ERROR)
                 self.Close()             
-    def o0o0o00000oo0o0o0o0o0(self):
-        global oooo00oo00o0o00000o00, oo00ooo0o000o00oo00o0, ooo000o00oo00o0oo0000, oooooo000000ooo00oooo, o000000000ooo0oooo00o, twice
-        timer0 = threading.Timer(5, o00ooo0oo00o0oo00o0o0)
-        oooooo000000ooo00oooo = True
+    def oooo0oo0000o0o0o000o0(self):
+        global o0000ooo000000ooo00o0, o0o0000oo000o00o0o0o0, ooo0ooo0o000o00oo000o, oo00ooo0oo000o0oo0000, oo0000o00o0000oo00oo0, twice
+        timer0 = threading.Timer(5, oooooo0o0oooo0o0o0o0o)
+        oo00ooo0oo000o0oo0000 = True
         twice = False           
-        oo00ooo0o000o00oo00o0 = True
-        ooo000o00oo00o0oo0000 = False
-        oooo00oo00o0o00000o00 = 1       
-        o000000000ooo0oooo00o = False
-        global Px, Py, url3, oooo000ooooooooo00o0o, web_on, do, ooooo00o000o0o00oo0o0, oooooo00o000o00o000oo, oooo000o00000o0ooo0o0
-        if ooooo00o000o0o00oo0o0:
+        o0o0000oo000o00o0o0o0 = True
+        ooo0ooo0o000o00oo000o = False
+        o0000ooo000000ooo00o0 = 1       
+        oo0000o00o0000oo00oo0 = False
+        global Px, Py, url3, o0000ooooooo0oo00oo00, web_on, do, ooo0o0000oo0oo0o00ooo, oooo000000o00o00oo0oo, o0oo000oooo0o00oo0oo0
+        if ooo0o0000oo0oo0o00ooo:
             wx.MessageBox('请关闭模拟页面', '开启国拍失败', wx.OK | wx.ICON_ERROR)
-        elif oooooo00o000o00o000oo:
+        elif oooo000000o00o00oo0oo:
             wx.MessageBox('国拍已经打开', '开启国拍失败', wx.OK | wx.ICON_ERROR)
         else:
             self.Open()
             if do:
-                oooo000ooooooooo00o0o = True
-                oooooo00o000o00o000oo = True
+                o0000ooooooo0oo00oo00 = True
+                oooo000000o00o00oo0oo = True
                 self.fr = WebFrame(Px, Py, False, '小鲜肉代拍 国拍')          
-                if o000oo000oo0ooooo00oo:
-                    self.operationframe.oo0o0oooo0ooo0o0000o0()
-                if not oooo000o00000o0ooo0o0:                
-                    self.monio0ooo000000oo0oooo00othread = MoniTijiaoThread()            
-                    self.o0ooo000000oo0oooo00othread = TijiaoThread()            
-                    oooo000o00000o0ooo0o0 = True
+                if o00oo0oo0000ooo00oooo:
+                    self.operationframe.oo00o0o0000ooo000o000()
+                if not o0oo000oooo0o00oo0oo0:                
+                    self.moniooo0oo0o000000o00oooothread = MoniTijiaoThread()            
+                    self.ooo0oo0o000000o00oooothread = TijiaoThread()            
+                    o0oo000oooo0o00oo0oo0 = True
                 browser = wx.html2.WebView.New(self.fr, size=(websize[0] + 48, websize[1] + 40), pos=webview_pos ,style=wx.BORDER_NONE)
                 browser.LoadURL(url3)
                 browser.CanSetZoomType(False)
@@ -835,32 +837,32 @@ class TopFrame(wx.Frame):
             else:
                 wx.MessageBox('请检查其它软件热键占用', '辅助启用失败', wx.OK | wx.ICON_ERROR)
                 self.Close()             
-    def oo0ooooo0000o000ooo00(self):
-        global oooo00oo00o0o00000o00, oo00ooo0o000o00oo00o0, ooo000o00oo00o0oo0000, oooooo000000ooo00oooo, o000000000ooo0oooo00o, twice
-        timer0 = threading.Timer(5, o00ooo0oo00o0oo00o0o0)                
-        oooooo000000ooo00oooo = True
+    def oo0oooo0ooo0000000o0o(self):
+        global o0000ooo000000ooo00o0, o0o0000oo000o00o0o0o0, ooo0ooo0o000o00oo000o, oo00ooo0oo000o0oo0000, oo0000o00o0000oo00oo0, twice
+        timer0 = threading.Timer(5, oooooo0o0oooo0o0o0o0o)                
+        oo00ooo0oo000o0oo0000 = True
         twice = False
-        oo00ooo0o000o00oo00o0 = True
-        ooo000o00oo00o0oo0000 = False
-        oooo00oo00o0o00000o00 = 1       
-        o000000000ooo0oooo00o = False
-        global Px, Py, url3, oooo000ooooooooo00o0o, web_on, do, ooooo00o000o0o00oo0o0, oooooo00o000o00o000oo, oooo000o00000o0ooo0o0
+        o0o0000oo000o00o0o0o0 = True
+        ooo0ooo0o000o00oo000o = False
+        o0000ooo000000ooo00o0 = 1       
+        oo0000o00o0000oo00oo0 = False
+        global Px, Py, url3, o0000ooooooo0oo00oo00, web_on, do, ooo0o0000oo0oo0o00ooo, oooo000000o00o00oo0oo, o0oo000oooo0o00oo0oo0
         self.Open()
         if do:
-            oooo000ooooooooo00o0o = True
-            oooooo00o000o00o000oo = True
-            if o000oo000oo0ooooo00oo:
-                self.operationframe.oo0o0oooo0ooo0o0000o0()
-            if not oooo000o00000o0ooo0o0:                
-                self.monio0ooo000000oo0oooo00othread = MoniTijiaoThread()            
-                self.o0ooo000000oo0oooo00othread = TijiaoThread()            
-                oooo000o00000o0ooo0o0 = True
+            o0000ooooooo0oo00oo00 = True
+            oooo000000o00o00oo0oo = True
+            if o00oo0oo0000ooo00oooo:
+                self.operationframe.oo00o0o0000ooo000o000()
+            if not o0oo000oooo0o00oo0oo0:                
+                self.moniooo0oo0o000000o00oooothread = MoniTijiaoThread()            
+                self.ooo0oo0o000000o00oooothread = TijiaoThread()            
+                o0oo000oooo0o00oo0oo0 = True
                 openIE(url3)
                 self.Listen()
         else:
             wx.MessageBox('请检查其它软件热键占用', '辅助启用失败', wx.OK | wx.ICON_ERROR)
             self.Close()             
-    def o0o00o000ooooo000o0o0(self, event):
+    def ooo000oooo0oo000oo0o0(self, event):
         global url2
         try:
             url2 = self.urlText.GetValue()
@@ -884,312 +886,312 @@ class TopFrame(wx.Frame):
     def help(self, event):
         url = "http://hupai.pro/coursestudy"
         OpenwebThread(url)
-    def oo0ooo0o0000000o0ooo0(self, event):
+    def o000oo0o000oo000o0o0o(self, event):
         pass
-    def o0o000ooo00o00o00000o(self, event):
+    def oooooo0o0o000ooooo000(self, event):
         pass
-    def oo0oo0ooo00oo00ooo00o(self, event):
+    def oooo00ooo00o00oo0o000(self, event):
         pass
-    def oo00oo00oo0o0o0o0oo0o(self, event):
+    def ooo0ooo00o0oooo0o0ooo(self, event):
         setting = self.FindWindowById(2)
         setting.Show(True)
-    def o00o0ooo0000o0oo0o0o0(self, event):
-        o00ooo0oo00o0oo00o0o0()
-    def o000o0o0ooooo000oo0o0(self, event):
+    def o00o0o0o000000oo0o000(self, event):
+        oooooo0o0oooo0o0o0o0o()
+    def o000o0oo00000ooo00ooo(self, event):
         pass
-    def ooo000o0o0o00oo0oo00o(self, event):   
-        global o0000o0o0000000o00o0o, o0oo00o0000000000o0oo, o00000000000o000oo000
+    def o00oo0ooo0ooo00oooooo(self, event):   
+        global o0oo0ooo0o00oo00o0o00, oooo0oo0ooooooo000o0o, o0ooo000ooooooo0o000o
         try:
-            price = int(TopFrame.o0o000o00oo000ooooo00())           
+            price = int(TopFrame.oooo0o0o00000oo00ooo0())           
             if price in pricelist:        
-                o0oo00o0000000000o0oo = False
-                if o0000o0o0000000o00o0o == price:
+                oooo0oo0ooooooo000o0o = False
+                if o0oo0ooo0o00oo00o0o00 == price:
                     pass
                 else:
-                    o0000o0o0000000o00o0o = price
-                    if ooooo00o000o0o00oo0o0:
-                        o00000000000o000oo000 = o0oo0ooo000oo0oo00oo0
+                    o0oo0ooo0o00oo00o0o00 = price
+                    if ooo0o0000oo0oo0o00ooo:
+                        o0ooo000ooooooo0o000o = oo0oo0ooo000000oo0000
                     else:
-                        o00000000000o000oo000 = oooo00o00oo0000oo0o0o
+                        o0ooo000ooooooo0o000o = oo000000oooo0oo00oo00
             else:
                 print("重新查找")
-                o0oo00o0000000000o0oo = True
+                oooo0oo0ooooooo000o0o = True
         except:
-            o0oo00o0000000000o0oo = True
-    def oo00oooo00o0oo0o000oo(self, event):
-        global o0oo00o0000000000o0oo
-        if o0oo00o0000000000o0oo:
+            oooo0oo0ooooooo000o0o = True
+    def oo0000ooo0o0o00o0oooo(self, event):
+        global oooo0oo0ooooooo000o0o
+        if oooo0oo0ooooooo000o0o:
             try:
-                o00ooo0oo00o0oo00o0o0()
+                oooooo0o0oooo0o0o0o0o()
             except:
-                logging.error("oo00oooo00o0oo0o000oo error")
-                print("oo00oooo00o0oo0o000oo error")
-    def oo00o0o000oooo0o0oo00(self, event):
+                logging.error("oo0000ooo0o0o00o0oooo error")
+                print("oo0000ooo0o0o00o0oooo error")
+    def o0o0ooo000o0oo000oo0o(self, event):
         timeset()          
     @staticmethod
     def Confirm():
-        global oo0o0o00000o00o00000o, oooo000o0ooo0o000oo0o
+        global ooo00oo0000o00o0oo0oo, oo0oooo0000oo00oooooo
         confirm_hash = TopFrame.Confirm_hash()          
-        if confirm_hash == oo0o0o00000o00o00000o[0]:
-            oooo000o0ooo0o000oo0o = True
+        if confirm_hash == ooo00oo0000o00o0oo0oo[0]:
+            oo0oooo0000oo00oooooo = True
     @staticmethod
     def Refresh():
-        oo0o0000o000ooo0000oo_hash = TopFrame.Refresh_hash()          
-        global oo0o0o00000o00o00000o, oo0000ooooo000oo0o0o0
-        if oo0o0000o000ooo0000oo_hash == oo0o0o00000o00o00000o[1]:
-            oo0000ooooo000oo0o0o0 = True
+        o0oo0o0oo000ooo0ooooo_hash = TopFrame.Refresh_hash()          
+        global ooo00oo0000o00o0oo0oo, o0o0o00o00oo0o0oo0000
+        if o0oo0o0oo000ooo0ooooo_hash == ooo00oo0000o00o0oo0oo[1]:
+            o0o0o00o00oo0o0oo0000 = True
     @staticmethod
-    def o0o000o00oo000ooooo00():
-        global oo000o0o0ooooo0oo0oo0 , o0oo00o0000000000o0oo
+    def oooo0o0o00000oo00ooo0():
+        global ooooo00oo000oo0ooooo0 , oooo0oo0ooooooo000o0o
         global num
         num+=1
-        o0000o0o0000000o00o0o = cv2.cvtColor(oo000o0o0ooooo0oo0oo0, cv2.COLOR_BGR2GRAY)
-        price = readpic(o0000o0o0000000o00o0o)
+        o0oo0ooo0o00oo00o0o00 = cv2.cvtColor(ooooo00oo000oo0ooooo0, cv2.COLOR_BGR2GRAY)
+        price = readpic(o0oo0ooo0o00oo00o0o00)
         print("price=",price)
         return price
     @staticmethod
-    def oooo0oo0oo0o00o00o0oo():
+    def o00oo000ooo0oooooooo0():
         po = pg.position()
-        o000o0oo000o000o0o00o[0][0] = po[0]
-        o000o0oo000o000o0o00o[0][1] = po[1]
+        oo0o0oo0o0o0oo00o0oo0[0][0] = po[0]
+        oo0o0oo0o0o0oo00o0oo0[0][1] = po[1]
     @staticmethod
-    def o0o00ooo00o000oo000o0():
+    def o0o0oo0ooo0000o0o00o0():
         po = pg.position()
-        o000o0oo000o000o0o00o[1][0] = po[0]
-        o000o0oo000o000o0o00o[1][1] = po[1]
+        oo0o0oo0o0o0oo00o0oo0[1][0] = po[0]
+        oo0o0oo0o0o0oo00o0oo0[1][1] = po[1]
     @staticmethod
-    def o00oo000o0o00o000o000():
+    def ooo00oo000oo0000000o0():
         po = pg.position()
-        o000o0oo000o000o0o00o[2][0] = po[0]
-        o000o0oo000o000o0o00o[2][1] = po[1]
+        oo0o0oo0o0o0oo00o0oo0[2][0] = po[0]
+        oo0o0oo0o0o0oo00o0oo0[2][1] = po[1]
     @staticmethod
-    def oo0ooo00o00oo0oo00ooo():
+    def oo0o0o0o000oo0o0oo000():
         po = pg.position()
-        o000o0oo000o000o0o00o[3][0] = po[0]
-        o000o0oo000o000o0o00o[3][1] = po[1]
+        oo0o0oo0o0o0oo00o0oo0[3][0] = po[0]
+        oo0o0oo0o0o0oo00o0oo0[3][1] = po[1]
     @staticmethod
-    def o0o00o0oo0o0ooo00oo0o():
+    def o000o0000o0o0oo0oo0oo():
         po = pg.position()
-        o000o0oo000o000o0o00o[4][0] = po[0]
-        o000o0oo000o000o0o00o[4][1] = po[1]
+        oo0o0oo0o0o0oo00o0oo0[4][0] = po[0]
+        oo0o0oo0o0o0oo00o0oo0[4][1] = po[1]
     @staticmethod
-    def ooo0o00o00o000o0oo00o():
+    def o000oooo0o0000o00o000():
         po = pg.position()
-        o000o0oo000o000o0o00o[5][0] = po[0]
-        o000o0oo000o000o0o00o[5][1] = po[1]
+        oo0o0oo0o0o0oo00o0oo0[5][0] = po[0]
+        oo0o0oo0o0o0oo00o0oo0[5][1] = po[1]
     @staticmethod
-    def o0oooo00oo00ooo00o0oo():
-        TopFrame.oooo0oo0oo0o00o00o0oo()
+    def o0o0oo00ooooo0o00oo00():
+        TopFrame.o00oo000ooo0oooooooo0()
     @staticmethod
-    def o00000oo0o0o0000000o0():
-        TopFrame.o0o00ooo00o000oo000o0()
+    def o0o0ooo0000000oo00ooo():
+        TopFrame.o0o0oo0ooo0000o0o00o0()
     @staticmethod
-    def o0ooooo0oo0oo00000o00():
+    def o00o0oo00o0oo0000oo00():
         x,y=win32api.GetCursorPos()
         print("x=",x," y=",y)
     @staticmethod
-    def o0o0000oooo00000oooo0():
-        TopFrame.oo0ooo00o00oo0oo00ooo()
+    def o00o0o0o00o00o0o00o00():
+        TopFrame.oo0o0o0o000oo0o0oo000()
     @staticmethod
-    def o0ooo00o00oooo0o00o0o():
-        TopFrame.o0o00o0oo0o0ooo00oo0o()
+    def oo00oo00oooo0oo0o0000():
+        TopFrame.o000o0000o0o0oo0oo0oo()
     @staticmethod
-    def o0oo0000oo000o0o0o00o():
-        TopFrame.ooo0o00o00o000o0oo00o()
+    def oo0ooooo0oo0oo0o00000():
+        TopFrame.o000oooo0o0000o00o000()
     @classmethod
-    def o0oo0ooooo000o0oooo00(cls):
-        global web_on, ooo000o00oo00o0oo0000, oo0oo00o00000oo00o000, oo0ooo000o0oo0o00o0o0, oooo00oo00o0o00000o00
-        global ooo000o00oo00o0oo0000, oo00ooo0o000o00oo00o0, oooo000o0ooo0o000oo0oe, o00oo0000o00o0o00o0oo
-        o00oo0000o00o0o00o0oo = True
-        if oooo00oo00o0o00000o00 == 1:
-            timer = threading.Timer(oo0oo00o00000oo00o000, cls.Tijiao)
+    def o00ooo000o0o00oo00000(cls):
+        global web_on, ooo0ooo0o000o00oo000o, o00000o0o0ooo0o0o0oo0, o0o00oooo0o0ooo000oo0, o0000ooo000000ooo00o0
+        global ooo0ooo0o000o00oo000o, o0o0000oo000o00o0o0o0, oo0oooo0000oo00ooooooe, oo00ooo0o0oo00oo000oo
+        oo00ooo0o0oo00oo000oo = True
+        if o0000ooo000000ooo00o0 == 1:
+            timer = threading.Timer(o00000o0o0ooo0o0o0oo0, cls.Tijiao)
             timer.start()
-            ooo000o00oo00o0oo0000 = False
+            ooo0ooo0o000o00oo000o = False
             if twice:
-                oooo00oo00o0o00000o00 = 2
-        elif oooo00oo00o0o00000o00 == 2:
-            oooo00oo00o0o00000o00 = 0
-            timer = threading.Timer(oo0ooo000o0oo0o00o0o0, cls.Tijiao)
+                o0000ooo000000ooo00o0 = 2
+        elif o0000ooo000000ooo00o0 == 2:
+            o0000ooo000000ooo00o0 = 0
+            timer = threading.Timer(o0o00oooo0o0ooo000oo0, cls.Tijiao)
             timer.start()
-            ooo000o00oo00o0oo0000 = False
+            ooo0ooo0o000o00oo000o = False
         else:
             cls.Tijiao()
     @staticmethod
     def Tijiao():
-        global ooo000o00oo00o0oo0000, o000000000ooo0oooo00o, oooo00oo00o0o00000o00 ,oo00ooo0o000o00oo00o0
-        Click(o000o0oo000o000o0o00o[2][0], o000o0oo000o000o0o00o[2][1])
-        o000000000ooo0oooo00o = False               
-        oo00ooo0o000o00oo00o0 = True        
-        global oooo000o0ooo0o000oo0oe
-        if not oooo000o0ooo0o000oo0oe:        
+        global ooo0ooo0o000o00oo000o, oo0000o00o0000oo00oo0, o0000ooo000000ooo00o0 ,o0o0000oo000o00o0o0o0
+        Click(oo0o0oo0o0o0oo00o0oo0[2][0], oo0o0oo0o0o0oo00o0oo0[2][1])
+        oo0000o00o0000oo00oo0 = False               
+        o0o0000oo000o00o0o0o0 = True        
+        global oo0oooo0000oo00ooooooe
+        if not oo0oooo0000oo00ooooooe:        
             pass
     @classmethod
-    def oo0000o0oo0000o0o0o0o(cls):
-        global ooo000o00oo00o0oo0000, o000000000ooo0oooo00o, oooo00oo00o0o00000o00, o00oo0000o00o0o00o0oo
-        o00oo0000o00o0o00o0oo = True
-        if ooooo00o000o0o00oo0o0:
-            interval = o0oo0ooo000oo0oo00oo0 - o00000000000o000oo000
+    def oo0o0oo0000o0000o0000(cls):
+        global ooo0ooo0o000o00oo000o, oo0000o00o0000oo00oo0, o0000ooo000000ooo00o0, oo00ooo0o0oo00oo000oo
+        oo00ooo0o0oo00oo000oo = True
+        if ooo0o0000oo0oo0o00ooo:
+            interval = oo0oo0ooo000000oo0000 - o0ooo000ooooooo0o000o
         else:
-            interval = oooo00o00oo0000oo0o0o - o00000000000o000oo000
-        if oooo00oo00o0o00000o00 == 2:            
-            if o0000o0o0000000o00o0o <= o0oo000o000000oo00000 - 600:
+            interval = oo000000oooo0oo00oo00 - o0ooo000ooooooo0o000o
+        if o0000ooo000000ooo00o0 == 2:            
+            if o0oo0ooo0o00oo00o0o00 <= oooooo0o0000o0o0oo0o0 - 600:
                 print("触发延迟")
-                oooo00oo00o0o00000o00 = 0
+                o0000ooo000000ooo00o0 = 0
                 timer = threading.Timer(0.5, cls.Tijiao)
                 timer.start()
-                ooo000o00oo00o0oo0000 = False
-            elif o0000o0o0000000o00o0o == o0oo000o000000oo00000 - 500 and interval < 0.95:
-                oooo00oo00o0o00000o00 = 0
+                ooo0ooo0o000o00oo000o = False
+            elif o0oo0ooo0o00oo00o0o00 == oooooo0o0000o0o0oo0o0 - 500 and interval < 0.95:
+                o0000ooo000000ooo00o0 = 0
                 timesleep = (1 - interval) / 3 + 0.25
                 timer = threading.Timer(timesleep, cls.Tijiao)
                 timer.start()
-                ooo000o00oo00o0oo0000 = False
+                ooo0ooo0o000o00oo000o = False
             else:
-                oooo00oo00o0o00000o00 = 0
+                o0000ooo000000ooo00o0 = 0
                 cls.Tijiao()
-                ooo000o00oo00o0oo0000 = False
-        elif oooo00oo00o0o00000o00 == 1:
-            if o0000o0o0000000o00o0o <= o0ooo0ooo00o0o0o0o0oo - 600:
+                ooo0ooo0o000o00oo000o = False
+        elif o0000ooo000000ooo00o0 == 1:
+            if o0oo0ooo0o00oo00o0o00 <= oo000oo00o0oo0o0000oo - 600:
                 timer = threading.Timer(0.5, cls.Tijiao)
                 timer.start()
-                ooo000o00oo00o0oo0000 = False
+                ooo0ooo0o000o00oo000o = False
                 if twice:
-                    oooo00oo00o0o00000o00 = 2
-            elif o0000o0o0000000o00o0o == o0ooo0ooo00o0o0o0o0oo - 500 and interval < 0.95:
+                    o0000ooo000000ooo00o0 = 2
+            elif o0oo0ooo0o00oo00o0o00 == oo000oo00o0oo0o0000oo - 500 and interval < 0.95:
                 timesleep = (1 - interval) / 3 + 0.25
                 timer = threading.Timer(timesleep, cls.Tijiao)
                 timer.start()
-                ooo000o00oo00o0oo0000 = False
+                ooo0ooo0o000o00oo000o = False
                 if twice:
-                    oooo00oo00o0o00000o00 = 2
+                    o0000ooo000000ooo00o0 = 2
             else:
                 cls.Tijiao()
-                ooo000o00oo00o0oo0000 = False
+                ooo0ooo0o000o00oo000o = False
                 if twice:
-                    oooo00oo00o0o00000o00 = 2
+                    o0000ooo000000ooo00o0 = 2
     @staticmethod
-    def o00oo00oo0o0oooo0oo0o():
-        Click(o000o0oo000o000o0o00o[3][0], o000o0oo000o000o0o00o[3][1])
-        Click(o000o0oo000o000o0o00o[5][0], o000o0oo000o000o0o00o[5][1])
-        global ooooo0oo0oo0o0o0oooo0, oo00o00o00o0oo00o0000, o00o00o00000oooo00oo0
-        ooooo0oo0oo0o0o0oooo0 = True         
-        o00o00o00000oooo00oo0 = 0      
+    def o0oo00o0o000o0oo00o00():
+        Click(oo0o0oo0o0o0oo00o0oo0[3][0], oo0o0oo0o0o0oo00o0oo0[3][1])
+        Click(oo0o0oo0o0o0oo00o0oo0[5][0], oo0o0oo0o0o0oo00o0oo0[5][1])
+        global o00ooo00oo0oo0oo0o000, oooo00ooo00o0oo0o0ooo, oo00o00o000o000oo0oo0
+        o00ooo00oo0oo0oo0o000 = True         
+        oo00o00o000o000oo0oo0 = 0      
     @staticmethod
-    def o000oo000o0oooo00000o():
-        Click(o000o0oo000o000o0o00o[4][0], o000o0oo000o000o0o00o[4][1])
+    def oo00o0oo0o0o00o00oo0o():
+        Click(oo0o0oo0o0o0oo00o0oo0[4][0], oo0o0oo0o0o0oo00o0oo0[4][1])
     @staticmethod
-    def o0ooo0oo00oooooo00000():
-        global web_on, o0000o0o0000000o00o0o, o00o00o00000oooo00oo0
-        global oooo00oo00o0o00000o00, o0ooo0ooo00o0o0o0o0oo, o0oo000o000000oo00000, o000ooooooooo000o00o0, ooo0000000000ooo00000
-        global ooo000o00oo00o0oo0000, oo00ooo0o000o00oo00o0
-        global oo0o0o0o00000oo00o0oo, o000oo0o00oooooo000o0, oo0ooo0o0o0oo000ooo00, ooooo0oo0oo0o0o0oooo0
-        o00o00o00000oooo00oo0 = 0            
-        ooooo0oo0oo0o0o0oooo0 = True            
+    def o0o00oo0o0000ooo0000o():
+        global web_on, o0oo0ooo0o00oo00o0o00, oo00o00o000o000oo0oo0
+        global o0000ooo000000ooo00o0, oo000oo00o0oo0o0000oo, oooooo0o0000o0o0oo0o0, oo0oo00ooooo0000o00o0, ooo0ooooo0o000oo0ooo0
+        global ooo0ooo0o000o00oo000o, o0o0000oo000o00o0o0o0
+        global oo0oo0oo0oo00o00o000o, oooo0000oooo0ooo0000o, oooo00o0oooo00000000o, o00ooo00oo0oo0oo0o000
+        oo00o00o000o000oo0oo0 = 0            
+        o00ooo00oo0oo0oo0o000 = True            
         print("到这了")
-        ooo000o00oo00o0oo0000 = True          
-        oo0o0o0o00000oo00o0oo = True           
-        if oooo00oo00o0o00000o00 == 1:
-            o0ooo0ooo00o0o0o0o0oo = o0000o0o0000000o00o0o + o000ooooooooo000o00o0
-            setText(str(o0ooo0ooo00o0o0o0o0oo))
-            TopFrame.oo00oo00o0oo00o00o00o()
-            Click(o000o0oo000o000o0o00o[1][0], o000o0oo000o000o0o00o[1][1])
-            Click(o000o0oo000o000o0o00o[5][0], o000o0oo000o000o0o00o[5][1])
-            ooo000o00oo00o0oo0000 = True
-            oo00ooo0o000o00oo00o0 = False
-            oo0ooo0o0o0oo000ooo00 = False        
-        elif oooo00oo00o0o00000o00 == 2 and twice:
-            o0oo000o000000oo00000 = o0000o0o0000000o00o0o + ooo0000000000ooo00000
-            setText(str(o0oo000o000000oo00000))
-            TopFrame.oo00oo00o0oo00o00o00o()
-            Click(o000o0oo000o000o0o00o[1][0], o000o0oo000o000o0o00o[1][1])
-            Click(o000o0oo000o000o0o00o[5][0], o000o0oo000o000o0o00o[5][1])
-            ooo000o00oo00o0oo0000 = True
-            oo00ooo0o000o00oo00o0 = False
-            oo0ooo0o0o0oo000ooo00 = False        
+        ooo0ooo0o000o00oo000o = True          
+        oo0oo0oo0oo00o00o000o = True           
+        if o0000ooo000000ooo00o0 == 1:
+            oo000oo00o0oo0o0000oo = o0oo0ooo0o00oo00o0o00 + oo0oo00ooooo0000o00o0
+            setText(str(oo000oo00o0oo0o0000oo))
+            TopFrame.o0oo000oo0ooo00o000o0()
+            Click(oo0o0oo0o0o0oo00o0oo0[1][0], oo0o0oo0o0o0oo00o0oo0[1][1])
+            Click(oo0o0oo0o0o0oo00o0oo0[5][0], oo0o0oo0o0o0oo00o0oo0[5][1])
+            ooo0ooo0o000o00oo000o = True
+            o0o0000oo000o00o0o0o0 = False
+            oooo00o0oooo00000000o = False        
+        elif o0000ooo000000ooo00o0 == 2 and twice:
+            oooooo0o0000o0o0oo0o0 = o0oo0ooo0o00oo00o0o00 + ooo0ooooo0o000oo0ooo0
+            setText(str(oooooo0o0000o0o0oo0o0))
+            TopFrame.o0oo000oo0ooo00o000o0()
+            Click(oo0o0oo0o0o0oo00o0oo0[1][0], oo0o0oo0o0o0oo00o0oo0[1][1])
+            Click(oo0o0oo0o0o0oo00o0oo0[5][0], oo0o0oo0o0o0oo00o0oo0[5][1])
+            ooo0ooo0o000o00oo000o = True
+            o0o0000oo000o00o0o0o0 = False
+            oooo00o0oooo00000000o = False        
     @staticmethod
-    def o0o0000oo0oo0o0oo0o00():
-        global ooooo0oo0oo0o0o0oooo0, o00o00o00000oooo00oo0
-        ooooo0oo0oo0o0o0oooo0 = True
-        o00o00o00000oooo00oo0 = 0
-        o0ooo0ooo00o0o0o0o0oo = o0000o0o0000000o00o0o + o000ooooooooo000o00o0
-        setText(str(o0ooo0ooo00o0o0o0o0oo))
-        TopFrame.oo00oo00o0oo00o00o00o()
-        Click(o000o0oo000o000o0o00o[1][0], o000o0oo000o000o0o00o[1][1])
-        Click(o000o0oo000o000o0o00o[5][0], o000o0oo000o000o0o00o[5][1])
+    def oo0oo0o0o0o0o00o0000o():
+        global o00ooo00oo0oo0oo0o000, oo00o00o000o000oo0oo0
+        o00ooo00oo0oo0oo0o000 = True
+        oo00o00o000o000oo0oo0 = 0
+        oo000oo00o0oo0o0000oo = o0oo0ooo0o00oo00o0o00 + oo0oo00ooooo0000o00o0
+        setText(str(oo000oo00o0oo0o0000oo))
+        TopFrame.o0oo000oo0ooo00o000o0()
+        Click(oo0o0oo0o0o0oo00o0oo0[1][0], oo0o0oo0o0o0oo00o0oo0[1][1])
+        Click(oo0o0oo0o0o0oo00o0oo0[5][0], oo0o0oo0o0o0oo00o0oo0[5][1])
     @staticmethod
-    def oo00oo00o0oo00o00o00o():
-        Click2(o000o0oo000o000o0o00o[6][0], o000o0oo000o000o0o00o[6][1] - 5)
-        Click2(o000o0oo000o000o0o00o[6][0], o000o0oo000o000o0o00o[6][1])
-        Click2(o000o0oo000o000o0o00o[6][0], o000o0oo000o000o0o00o[6][1])
+    def o0oo000oo0ooo00o000o0():
+        Click2(oo0o0oo0o0o0oo00o0oo0[6][0], oo0o0oo0o0o0oo00o0oo0[6][1] - 5)
+        Click2(oo0o0oo0o0o0oo00o0oo0[6][0], oo0o0oo0o0o0oo00o0oo0[6][1])
+        Click2(oo0o0oo0o0o0oo00o0oo0[6][0], oo0o0oo0o0o0oo00o0oo0[6][1])
         Delete()
         Delete()
-        if ooooo00o000o0o00oo0o0:
-            o0oo0000o000o0o0oo000()      
+        if ooo0o0000oo0oo0o00ooo:
+            oo0o00o0ooo0o00oooooo()      
         else:
             Paste()       
     @staticmethod
-    def o00000o0ooo00ooo0oo00():
-        global o00ooooo00o00o0000o0o, oo0ooooo00oo0oo000o00, o00o00o00000oooo00oo0, ooooo0oo0oo0o0o0oooo0
-        Click(o000o0oo000o000o0o00o[4][0], o000o0oo000o000o0o00o[4][1])
-        Click(o000o0oo000o000o0o00o[0][0], o000o0oo000o000o0o00o[0][1])
-        Click(o000o0oo000o000o0o00o[1][0], o000o0oo000o000o0o00o[1][1])
-        Click(o000o0oo000o000o0o00o[5][0], o000o0oo000o000o0o00o[5][1])
-        o00ooooo00o00o0000o0o = True
-        oo0ooooo00oo0oo000o00 = 0
-        o00o00o00000oooo00oo0 = 0
-        ooooo0oo0oo0o0o0oooo0 = True
+    def o000o0o0o0o0o0oo00000():
+        global o0000oo0ooo0oo000o00o, oo0oo0ooo0oo0oo0000oo, oo00o00o000o000oo0oo0, o00ooo00oo0oo0oo0o000
+        Click(oo0o0oo0o0o0oo00o0oo0[4][0], oo0o0oo0o0o0oo00o0oo0[4][1])
+        Click(oo0o0oo0o0o0oo00o0oo0[0][0], oo0o0oo0o0o0oo00o0oo0[0][1])
+        Click(oo0o0oo0o0o0oo00o0oo0[1][0], oo0o0oo0o0o0oo00o0oo0[1][1])
+        Click(oo0o0oo0o0o0oo00o0oo0[5][0], oo0o0oo0o0o0oo00o0oo0[5][1])
+        o0000oo0ooo0oo000o00o = True
+        oo0oo0ooo0oo0oo0000oo = 0
+        oo00o00o000o000oo0oo0 = 0
+        o00ooo00oo0oo0oo0o000 = True
     @staticmethod
-    def o00o0o0o0oooo0o00oo00():
-        OperationFrame.o0000oo0o0oooo0oo00o0()
-        Click(o000o0oo000o000o0o00o[2][0], o000o0oo000o000o0o00o[2][1])
+    def oo0o000o0o0000oooo000():
+        OperationFrame.o00oo000000oooo0oo0oo()
+        Click(oo0o0oo0o0o0oo00o0oo0[2][0], oo0o0oo0o0o0oo00o0oo0[2][1])
     @staticmethod
-    def oo00o00000oo00000o0oo():
+    def o00o0o0ooooooo0o0oo00():
         pg.press('backspace')
-    def o00oo000oo0o000000o0o(self, event):
-        if not web_on and o000oo000oo0ooooo00oo:             
-            self.operationframe.o00o0o0oo00o000oo0o0o()
+    def oo0o00oo0ooo000o00o0o(self, event):
+        if not web_on and o00oo0oo0000ooo00oooo:             
+            self.operationframe.o00ooo0oo00o000o0oo0o()
     @staticmethod
-    def oo0o0o000oo0oo00000o0():
-        global o000000000ooo0oooo00o, oo0o0o0o00000oo00o0oo, ooo000o00oo00o0oo0000, oo00o00o00o0oo00o0000, ooooo0oo0oo0o0o0oooo0
-        if e_on and ooo000o00oo00o0oo0000:
-            print("oo0o0o000oo0oo00000o0")
-            o000000000ooo0oooo00o = True
-            ooooo0oo0oo0o0o0oooo0 = False
-            oo00o00o00o0oo00o0000 = True
+    def o0ooo0ooo0o0o00000ooo():
+        global oo0000o00o0000oo00oo0, oo0oo0oo0oo00o00o000o, ooo0ooo0o000o00oo000o, oooo00ooo00o0oo0o0ooo, o00ooo00oo0oo0oo0o000
+        if e_on and ooo0ooo0o000o00oo000o:
+            print("o0ooo0ooo0o0o00000ooo")
+            oo0000o00o0000oo00oo0 = True
+            o00ooo00oo0oo0oo0o000 = False
+            oooo00ooo00o0oo0o0ooo = True
     @staticmethod
-    def o0o0oo00ooo00ooooooo0():
-        global o000000000ooo0oooo00o, oo0o0o0o00000oo00o0oo, oo00o00o00o0oo00o0000, ooooo0oo0oo0o0o0oooo0
-        if oooo0oooo0ooo000o0oo0 and ooo000o00oo00o0oo0000:
-            o000000000ooo0oooo00o = True
-        if oooo0oooo0ooo000o0oo0:
-            oo00o00o00o0oo00o0000 = True
-            ooooo0oo0oo0o0o0oooo0 = False
+    def ooo0oo00oo00oo00o0ooo():
+        global oo0000o00o0000oo00oo0, oo0oo0oo0oo00o00o000o, oooo00ooo00o0oo0o0ooo, o00ooo00oo0oo0oo0o000
+        if o0ooo000o00oo0oooo0o0 and ooo0ooo0o000o00oo000o:
+            oo0000o00o0000oo00oo0 = True
+        if o0ooo000o00oo0oooo0o0:
+            oooo00ooo00o0oo0o0ooo = True
+            o00ooo00oo0oo0oo0o000 = False
     @classmethod
     def query(cls):
-        global oo00ooo00000oo0o00o00, o0oo00oooo0o00o000o0o
-        if not oo00ooo00000oo0o00o00 and not o0oo00oooo0o00o000o0o:
-            o0oo00oooo0o00o000o0o = True
-            oo00ooo00000oo0o00o00 = True
+        global o00000ooo00000ooo0000, o00ooo00o0oo0o0oo0ooo
+        if not o00000ooo00000ooo0000 and not o00ooo00o0oo0o0oo0ooo:
+            o00ooo00o0oo0o0oo0ooo = True
+            o00000ooo00000ooo0000 = True
             setText(str(1000000))            
-            TopFrame.oo00oo00o0oo00o00o00o()
-            Click(o000o0oo000o000o0o00o[1][0], o000o0oo000o000o0o00o[1][1])
-            timer1 = threading.Timer(3, cls.oo000o00o0o00oo0o000o)
+            TopFrame.o0oo000oo0ooo00o000o0()
+            Click(oo0o0oo0o0o0oo00o0oo0[1][0], oo0o0oo0o0o0oo00o0oo0[1][1])
+            timer1 = threading.Timer(3, cls.ooo00oo00o0o0o000000o)
             timer1.start()
-            timer2 = threading.Timer(5, cls.o00o0000o00ooo00ooo00)
+            timer2 = threading.Timer(5, cls.oo00000oo0000o0oooooo)
             timer2.start()
-        elif oo00ooo00000oo0o00o00 and o0oo00oooo0o00o000o0o:
-            Click(o000o0oo000o000o0o00o[7][0], o000o0oo000o000o0o00o[7][1])
-            o0oo00oooo0o00o000o0o = False
+        elif o00000ooo00000ooo0000 and o00ooo00o0oo0o0oo0ooo:
+            Click(oo0o0oo0o0o0oo00o0oo0[7][0], oo0o0oo0o0o0oo00o0oo0[7][1])
+            o00ooo00o0oo0o0oo0ooo = False
     @staticmethod
-    def oo000o00o0o00oo0o000o():
-        global oo00ooo00000oo0o00o00, o0oo00oooo0o00o000o0o
-        if o0oo00oooo0o00o000o0o:
-            Click(o000o0oo000o000o0o00o[7][0], o000o0oo000o000o0o00o[7][1])
-            o0oo00oooo0o00o000o0o = False
+    def ooo00oo00o0o0o000000o():
+        global o00000ooo00000ooo0000, o00ooo00o0oo0o0oo0ooo
+        if o00ooo00o0oo0o0oo0ooo:
+            Click(oo0o0oo0o0o0oo00o0oo0[7][0], oo0o0oo0o0o0oo00o0oo0[7][1])
+            o00ooo00o0oo0o0oo0ooo = False
     @staticmethod
-    def o00o0000o00ooo00ooo00():
-        global oo00ooo00000oo0o00o00
-        oo00ooo00000oo0o00o00 = False
+    def oo00000oo0000o0oooooo():
+        global o00000ooo00000ooo0000
+        o00000ooo00000ooo0000 = False
     @staticmethod
     def Open():
         global do, web_on
@@ -1226,12 +1228,12 @@ class TopFrame(wx.Frame):
                        '9': 0x39, 'a': 0x41, 'b': 0x42, 'c': 0x43, 'd': 0x44, 'e': 0x45, 'f': 0x46, 's': 0x53,
                        'q': 0x51, 'h': 0x48}
             HOTKEY_ACTIONS = {
-                1: TopFrame.o0oooo00oo00ooo00o0oo, 2: TopFrame.o00000oo0o0o0000000o0, 3: TopFrame.o0ooooo0oo0oo00000o00,
-                4: TopFrame.o0o0000oooo00000oooo0, 5: TopFrame.o0ooo00o00oooo0o00o0o,
-                6: TopFrame.o0oo0000oo000o0o0o00o, 7: TopFrame.o00oo00oo0o0oooo0oo0o, 8: TopFrame.o00o0o0o0oooo0o00oo00,
-                9: (lambda: TopFrame.o00000o0ooo00ooo0oo00()), 10: TopFrame.oo00o00000oo00000o0oo, 11: TopFrame.oo0o0o000oo0oo00000o0,
-                12: TopFrame.o0o0oo00ooo00ooooooo0,
-                13: TopFrame.query, 14: TopFrame.o0o0000oo0oo0o0oo0o00}                  
+                1: TopFrame.o0o0oo00ooooo0o00oo00, 2: TopFrame.o0o0ooo0000000oo00ooo, 3: TopFrame.o00o0oo00o0oo0000oo00,
+                4: TopFrame.o00o0o0o00o00o0o00o00, 5: TopFrame.oo00oo00oooo0oo0o0000,
+                6: TopFrame.oo0ooooo0oo0oo0o00000, 7: TopFrame.o0oo00o0o000o0oo00o00, 8: TopFrame.oo0o000o0o0000oooo000,
+                9: (lambda: TopFrame.o000o0o0o0o0o0oo00000()), 10: TopFrame.o00o0o0ooooooo0o0oo00, 11: TopFrame.o0ooo0ooo0o0o00000ooo,
+                12: TopFrame.ooo0oo00oo00oo00o0ooo,
+                13: TopFrame.query, 14: TopFrame.oo0oo0o0o0o0o00o0000o}                  
             user32 = ctypes.windll.user32
             msg = wintypes.MSG()
             byref = ctypes.byref
@@ -1268,7 +1270,7 @@ class TopFrame(wx.Frame):
             logging.info("close assistant success")
         else:
             pass
-    def ooo0000000o0oo0oo0o00ground(self, evt):
+    def o000000oo0o00oooo00oo(self, evt):
         """
         设置背景的方法
         """
@@ -1294,7 +1296,7 @@ class TopFrame(wx.Frame):
             wx.GetApp().ExitMainLoop()
             event.Skip()
             sys.exit(None)
-    def o0oo00o0ooo0o00oo0o00(self):
+    def o0ooo00o00oo0ooo00o00(self):
         self.Open()
         global do
         if do:
@@ -1303,49 +1305,49 @@ class TopFrame(wx.Frame):
             wx.MessageBox('启用失败', '开启辅助', wx.OK | wx.ICON_ERROR)
         self.Listen()
     @classmethod
-    def o00oooo00o0o0ooo00o00(cls):
+    def oo0o0o0o00o00o000oo00(cls):
         cls.Close()
-    def oo00ooo00o0oooo00oooo(self, event):
-        wx.CallAfter(pub.sendMessage, "oo0o0000o000ooo0000oo")
+    def ooooo00ooooo0oo0ooooo(self, event):
+        wx.CallAfter(pub.sendMessage, "o0oo0o0oo000ooo0ooooo")
         self.MovePos(event)
         global view
         if not view:
             view = True
-            for i in range(len(o000o0oo000o000o0o00o)):
+            for i in range(len(oo0o0oo0o0o0oo00o0oo0)):
                 self.posframe[i].Show(view)
         else:
             view = False
-            for i in range(len(o000o0oo000o000o0o00o)):
+            for i in range(len(oo0o0oo0o0o0oo00o0oo0)):
                 self.posframe[i].Hide()
-    def oo0oo0o0o0000oo0o0000(self, event):
+    def o0000o00o0o000o0oo000(self, event):
         self.MovePos(event)
-        self.oo0oo00oo0oo0o00oo000()
+        self.oo00oooo00o0000000o0o()
         wx.MessageBox('保存成功', '定位保存', wx.OK | wx.ICON_INFORMATION)
     def MovePos(self, event):
-        global ooo0o000o0o0o0o0o0ooo
+        global o00o00ooo000o000o0oo0
         for i in range(5):
-            posx, posy = o000o0oo000o000o0o00o[i]
+            posx, posy = oo0o0oo0o0o0oo00o0oo0[i]
             self.posframe[i].Move(posx - 10, posy - 5)
-    def oo0oo00oo0oo0o00oo000(self):
+    def oo00oooo00o0000000o0o(self):
         output = open('pos.log', 'wb')
-        pickle.dump(o000o0oo000o000o0o00o, output)
+        pickle.dump(oo0o0oo0o0o0oo00o0oo0, output)
         output.close()
-    def o000o0o0o0000oo0oo0o0(self, event):
-        ooo0ooooo0o00oooo0000()
-    def o000oo00oo0ooo00ooo0o(self, event):
+    def oo0o000o00oooooo00000(self, event):
+        o000000000o0ooooo0oo0()
+    def o0000o0o0oo0ooo0oo0oo(self, event):
         self.timelabel.SetLabel("已设定截止时间" + self.time_choice1.GetString
         (self.time_choice1.GetSelection()) + '.' +
                                 str(self.time_choice2.GetSelection()) + " 秒")
-        global o0ooooooo00o0000oo00o, o00oo0o00oooo00oo0000
-        o0ooooooo00o0000oo00o = self.time_choice1.GetString(self.time_choice1.GetSelection())
-        o00oo0o00oooo00oo0000 = self.time_choice2.GetString(self.time_choice2.GetSelection())
-    def o00o00oo000o0o00000o0(self, event):
+        global oo000oo0oo0000o00oo00, o00oo0o0o000oo000oooo
+        oo000oo0oo0000o00oo00 = self.time_choice1.GetString(self.time_choice1.GetSelection())
+        o00oo0o0o000oo000oooo = self.time_choice2.GetString(self.time_choice2.GetSelection())
+    def o0000o0o00o0000oo0ooo(self, event):
         self.timelabel.SetLabel("已设定截止时间" + self.time_choice1.GetString
         (self.time_choice1.GetSelection()) + '.' +
                                 str(self.time_choice2.GetSelection()) + " 秒")
-        global o0ooooooo00o0000oo00o, o00oo0o00oooo00oo0000
-        o0ooooooo00o0000oo00o = self.time_choice1.GetString(self.time_choice1.GetSelection())
-        o00oo0o00oooo00oo0000 = self.time_choice2.GetString(self.time_choice2.GetSelection())
+        global oo000oo0oo0000o00oo00, o00oo0o0o000oo000oooo
+        oo000oo0oo0000o00oo00 = self.time_choice1.GetString(self.time_choice1.GetSelection())
+        o00oo0o0o000oo000oooo = self.time_choice2.GetString(self.time_choice2.GetSelection())
 class ClockWindow(wx.Panel):
     def __init__(self, parent):
         wx.Window.__init__(self, parent, size=Timesize)
@@ -1354,8 +1356,8 @@ class ClockWindow(wx.Panel):
         self.Bind(wx.EVT_TIMER, self.OnTimer, self.timer)             
         self.timer.Start(100)          
     def Draw(self, dc):          
-        global oooo00o00oo0000oo0o0o
-        time_local = time.localtime(oooo00o00oo0000oo0o0o)
+        global oo000000oooo0oo00oo00
+        time_local = time.localtime(oo000000oooo0oo00oo00)
         st = time.strftime("%H:%M:%S", time_local)
         w, h = self.GetClientSize()
         dc.SetBackground(wx.Brush(self.GetBackgroundColour()))
@@ -1364,12 +1366,12 @@ class ClockWindow(wx.Panel):
         tw, th = dc.GetTextExtent(st)
         dc.DrawText(st, (w - tw) / 2, (h) / 2 - th / 2)
     def Modify(self, dc):      
-        global oooo00o00oo0000oo0o0o, b_time
+        global oo000000oooo0oo00oo00, b_time
         if b_time < 9:
             b_time = b_time + 1
         else:
             b_time = 0
-        time_local = time.localtime(oooo00o00oo0000oo0o0o)
+        time_local = time.localtime(oo000000oooo0oo00oo00)
         st = time.strftime("%H:%M:%S", time_local)                       
         w, h = self.GetClientSize()
         dc.SetBackground(wx.Brush(self.GetBackgroundColour()))
@@ -1385,7 +1387,7 @@ class ClockWindow(wx.Panel):
         self.Draw(dc)
 class TimeFrame(wx.Frame):
     def __init__(self):
-        wx.Frame.__init__(self, None, title="wx.Timer", size=Timesize, pos=oo0o00ooo0oo0o0000o0o,
+        wx.Frame.__init__(self, None, title="wx.Timer", size=Timesize, pos=o000o0o00o0oooo0ooo00,
                           style=wx.FRAME_TOOL_WINDOW | wx.STAY_ON_TOP)
         ClockWindow(self)
 class MoniClockWindow(wx.Panel):
@@ -1396,8 +1398,8 @@ class MoniClockWindow(wx.Panel):
         self.Bind(wx.EVT_TIMER, self.OnTimer, self.timer)             
         self.timer.Start(100)          
     def Draw(self, dc):          
-        global o0oo0ooo000oo0oo00oo0
-        st = "%s:%s:%s" % (11, 29, o0oo0ooo000oo0oo00oo0)
+        global oo0oo0ooo000000oo0000
+        st = "%s:%s:%s" % (11, 29, oo0oo0ooo000000oo0000)
         w, h = self.GetClientSize()
         dc.SetBackground(wx.Brush(self.GetBackgroundColour()))
         dc.Clear()
@@ -1405,8 +1407,8 @@ class MoniClockWindow(wx.Panel):
         tw, th = dc.GetTextExtent(st)
         dc.DrawText(st, (w - tw) / 2, (h) / 2 - th / 2)
     def Modify(self, dc):      
-        global o0oo0ooo000oo0oo00oo0
-        moni_s = int(o0oo0ooo000oo0oo00oo0)       
+        global oo0oo0ooo000000oo0000
+        moni_s = int(oo0oo0ooo000000oo0000)       
         st = "%s:%s:%s" % (11, 29, moni_s)
         w, h = self.GetClientSize()
         dc.SetBackground(wx.Brush(self.GetBackgroundColour()))
@@ -1422,7 +1424,7 @@ class MoniClockWindow(wx.Panel):
         self.Draw(dc)
 class MoniTimeFrame(wx.Frame):
     def __init__(self):
-        wx.Frame.__init__(self, None, title="wx.Timer", size=(200, 50), pos=oo0o00ooo0oo0o0000o0o,
+        wx.Frame.__init__(self, None, title="wx.Timer", size=(200, 50), pos=o000o0o00o0oooo0ooo00,
                           style=wx.FRAME_TOOL_WINDOW | wx.STAY_ON_TOP)
         MoniClockWindow(self)
 class PosFrame(wx.Frame):
@@ -1445,12 +1447,12 @@ class PriceFrame(wx.Frame):
         self.bmp = wx.StaticBitmap(self.panel, -1, wx.Bitmap(image))
 class YanzhengmaFrame(wx.Frame):
     def __init__(self):
-        wx.Frame.__init__(self, None, 18, 'Price', size=o0oo00oo000oo0o0oo0oo, pos=o000oooo00o0ooo00o00oframe,
+        wx.Frame.__init__(self, None, 18, 'Price', size=o0o0000ooo0oo00ooo0o0, pos=o00o0oo0oo0oo0ooooo00frame,
                           style=wx.FRAME_TOOL_WINDOW | wx.STAY_ON_TOP
                           )
-        self.panel = wx.Panel(self, size=o0oo00oo000oo0o0oo0oo)
+        self.panel = wx.Panel(self, size=o0o0000ooo0oo00ooo0o0)
         self.bmp = wx.StaticBitmap(self.panel, -1)
-    def ooo0oooo0o0o000o0o0oo(self, bm):
+    def o0o0oooo00o00000oo0o0(self, bm):
         self.bmp.SetBitmap(wx.Bitmap(bm))
     def OnClose(self, event):
         self.Close()
@@ -1481,13 +1483,13 @@ class WebFrame(wx.Frame):
         self.Bind(wx.EVT_CLOSE, self.OnClose)
         self.ad2 = ad
         global test
-        pub.subscribe(self.ooo0ooo0oo00oo00o0o0o, "close web")        
+        pub.subscribe(self.o0oooo00o00o0oo000ooo, "close web")        
     def OnClose(self, event):
-        global web_on, o0oo0ooo0oo0o0o0oo0oo, ooooo00o000o0o00oo0o0, oooooo00o000o00o000oo, oooo000o00000o0ooo0o0
+        global web_on, ooo00ooooo0o00ooo00o0, ooo0o0000oo0oo0o00ooo, oooo000000o00o00oo0oo, o0oo000oooo0o00oo0oo0
         web_on = False
-        o0oo0ooo0oo0o0o0oo0oo = False
-        ooooo00o000o0o00oo0o0 = False
-        oooooo00o000o00o000oo = False
+        ooo00ooooo0o00ooo00o0 = False
+        ooo0o0000oo0oo0o00ooo = False
+        oooo000000o00o00oo0oo = False
         TopFrame.Close()
         file = "sc_new.png"
         try:
@@ -1500,12 +1502,12 @@ class WebFrame(wx.Frame):
         if self.ad2:
             self.adframe.Destroy()
         event.Skip()                                  
-    def ooo0ooo0oo00oo00o0o0o(self):
-        global web_on, o0oo0ooo0oo0o0o0oo0oo, ooooo00o000o0o00oo0o0, oooooo00o000o00o000oo, oooo000o00000o0ooo0o0
+    def o0oooo00o00o0oo000ooo(self):
+        global web_on, ooo00ooooo0o00ooo00o0, ooo0o0000oo0oo0o00ooo, oooo000000o00o00oo0oo, o0oo000oooo0o00oo0oo0
         web_on = False
-        o0oo0ooo0oo0o0o0oo0oo = False
-        ooooo00o000o0o00oo0o0 = False
-        oooooo00o000o00o000oo = False
+        ooo00ooooo0o00ooo00o0 = False
+        ooo0o0000oo0oo0o00ooo = False
+        oooo000000o00o00oo0oo = False
         TopFrame.Close()
         file = "sc_new.png"
         if os.path.exists(file):
@@ -1536,17 +1538,17 @@ class ControlFrame(wx.Frame):
         self.timetimer1 = wx.Timer(self)
         self.Bind(wx.EVT_TIMER, self.Timego, self.timetimer1)
         self.timetimer1.Start(100)
-    def ooo0o0oo0oo0oo00000oo(self, event):
+    def ooooo0000o0oo0000o00o(self, event):
         wx.CallAfter(pub.sendMessage, "close web")
         self.Destroy()
         event.Skip()
     def Timego(self, event):
-        global o0000o0o0000000o00o0o, o0oo0ooo000oo0oo00oo0, oooo00o00oo0000oo0o0o
-        self.price.SetLabel("%s" % o0000o0o0000000o00o0o)
-        if ooooo00o000o0o00oo0o0:
-            self.time.SetLabel("11:29:%s" % int(o0oo0ooo000oo0oo00oo0))
+        global o0oo0ooo0o00oo00o0o00, oo0oo0ooo000000oo0000, oo000000oooo0oo00oo00
+        self.price.SetLabel("%s" % o0oo0ooo0o00oo00o0o00)
+        if ooo0o0000oo0oo0o00ooo:
+            self.time.SetLabel("11:29:%s" % int(oo0oo0ooo000000oo0000))
         else:
-            timestr1 = time.localtime(oooo00o00oo0000oo0o0o)
+            timestr1 = time.localtime(oo000000oooo0oo00oo00)
             timestr2 = time.strftime("%H:%M:%S", timestr1)
             self.time.SetLabel(timestr2)
         global pinger
@@ -1562,16 +1564,16 @@ class OperationFrame(wx.Frame):
         self.Bind(wx.EVT_CLOSE, self.OnClose)
         self.icon = wx.Icon(mainicon, wx.BITMAP_TYPE_ICO)
         self.SetIcon(self.icon)
-        global ooo0o0o0o00o000ooo0oo, ooo0o0ooo0000000o0o0o, o0o00ooo0ooo0o0o00o0o, o000oo0oo0ooo0ooooooo
-        ooo0o0o0o00o000ooo0oo = self.gettime(o000oo0ooo0o0o000oo00)
-        o0o00ooo0ooo0o0o00o0o = self.gettime(oo00000o0oo00o0o0o0o0)
-        ooo0o0ooo0000000o0o0o = self.gettime(oo0o0o0o000o0o00ooooo)
-        o000oo0oo0ooo0ooooooo = self.gettime(o00o0o0000oooo0000ooo)
+        global o0ooo0oo000oo00o000o0, o00oo0oo0o0ooooooo0oo, ooo00oo0000o00o0o00o0, oo00ooo0o0o00o0oo0oo0
+        o0ooo0oo000oo00o000o0 = self.gettime(o00o00o00000ooooo0o0o)
+        ooo00oo0000o00o0o00o0 = self.gettime(o0000ooo00oo000o0o00o)
+        o00oo0oo0o0ooooooo0oo = self.gettime(o000o000o0000ooo0o0o0)
+        oo00ooo0o0o00o0oo0oo0 = self.gettime(ooooo0o000oooo0o0ooo0)
         self.timer1 = wx.Timer(self)
-        self.Bind(wx.EVT_TIMER, self.oooo0oo00o00oo0oo000o, self.timer1)                 
+        self.Bind(wx.EVT_TIMER, self.o0oo0o0o0o000o00o000o, self.timer1)                 
         self.timer1.Start(10)          
         self.timer2 = wx.Timer(self)
-        self.Bind(wx.EVT_TIMER, self.o0o00ooo0o0oo00o0oo00, self.timer2)   
+        self.Bind(wx.EVT_TIMER, self.o000oooo00o000o0oo000, self.timer2)   
         self.timer2.Start(100)          
         self.lowestframe = LowestpriceFrame()
         self.lowestframe.Show(False)
@@ -1589,13 +1591,13 @@ class OperationFrame(wx.Frame):
         hbox2 = wx.BoxSizer(wx.HORIZONTAL)
         hbox2.Add(self.timeview)
         self.button1 = wx.Button(panel, label='+1s', size=(35, 25))
-        self.Bind(wx.EVT_BUTTON, self.o0oo0o0000000oo0o0oo0, self.button1)
+        self.Bind(wx.EVT_BUTTON, self.o0000o0ooo00oo000ooo0, self.button1)
         self.button2 = wx.Button(panel, label='-1s', size=(35, 25))
-        self.Bind(wx.EVT_BUTTON, self.o00o0oooo000oo0oooooo, self.button2)
+        self.Bind(wx.EVT_BUTTON, self.oo000oo0oo0000000o00o, self.button2)
         self.button3 = wx.Button(panel, label='+0.1s', size=(35, 25))
-        self.Bind(wx.EVT_BUTTON, self.o0ooooo00ooo000ooo00o, self.button3)
+        self.Bind(wx.EVT_BUTTON, self.oo0oooo00o0000o0ooooo, self.button3)
         self.button4 = wx.Button(panel, label='-0.1s', size=(35, 25))
-        self.Bind(wx.EVT_BUTTON, self.ooo0o000o0000ooo00ooo, self.button4)
+        self.Bind(wx.EVT_BUTTON, self.oo0ooo0ooo0oo0000oo0o, self.button4)
         hbox2.Add(self.button1)
         hbox2.Add(self.button2)
         hbox2.Add(self.button3)
@@ -1611,22 +1613,22 @@ class OperationFrame(wx.Frame):
         hbox3.Add(self.confirm_label, flag=wx.TOP, border=4)
         hbox3.Add(self.confirm_choice)
         vb1.Add(hbox3)
-        self.oo0o000o00oo0000oo0o0_save = wx.Button(panel, label="保存策略", size=(60, 35))
-        self.oo0o000o00oo0000oo0o0_load = wx.Button(panel, label="载入策略", size=(60, 35))
+        self.o00ooo000oooo0oooo00o_save = wx.Button(panel, label="保存策略", size=(60, 35))
+        self.o00ooo000oooo0oooo00o_load = wx.Button(panel, label="载入策略", size=(60, 35))
         self.save_info = wx.Button(panel, label="用户信息", size=(60, 35))
         hbox4 = wx.BoxSizer(wx.HORIZONTAL)
-        hbox4.Add(self.oo0o000o00oo0000oo0o0_save)
-        hbox4.Add(self.oo0o000o00oo0000oo0o0_load)
+        hbox4.Add(self.o00ooo000oooo0oooo00o_save)
+        hbox4.Add(self.o00ooo000oooo0oooo00o_load)
         hbox4.Add(self.save_info)
         vb1.Add(hbox4)
         oneshot = wx.StaticBox(panel, -1, u'单枪策略:')
         self.oneshotSizer = wx.StaticBoxSizer(oneshot, wx.VERTICAL)
         gridsizer1 = wx.GridBagSizer(4, 4)
-        self.jiajioooo00o00oo0000oo0o0o = wx.SpinCtrlDouble(panel, -1, "", size=(68, 25))                              
-        self.jiajioooo00o00oo0000oo0o0o.SetRange(40, 55)
-        self.jiajioooo00o00oo0000oo0o0o.SetValue(48)
-        self.jiajioooo00o00oo0000oo0o0o.SetIncrement(0.1)
-        gridsizer1.Add(self.jiajioooo00o00oo0000oo0o0o, pos=(0, 0))
+        self.jiajioo000000oooo0oo00oo00 = wx.SpinCtrlDouble(panel, -1, "", size=(68, 25))                              
+        self.jiajioo000000oooo0oo00oo00.SetRange(40, 55)
+        self.jiajioo000000oooo0oo00oo00.SetValue(48)
+        self.jiajioo000000oooo0oo00oo00.SetIncrement(0.1)
+        gridsizer1.Add(self.jiajioo000000oooo0oo00oo00, pos=(0, 0))
         miao_label = wx.StaticText(panel, label=u"秒")
         gridsizer1.Add(miao_label, pos=(0, 1), flag=wx.TOP | wx.ALIGN_LEFT, border=4)
         jiahao_label = wx.StaticText(panel, label=u"加价", style=wx.ALIGN_CENTER, size=(25, 25))
@@ -1636,10 +1638,10 @@ class OperationFrame(wx.Frame):
         self.jiajia_price.SetValue(700)
         self.jiajia_price.SetIncrement(100)
         gridsizer1.Add(self.jiajia_price, pos=(0, 3))
-        o0ooo000000oo0oooo00o_choices = [u"提前100", u"提前200", u"踩点"]
-        self.select_o0ooo000000oo0oooo00o = wx.Choice(panel, -1, choices=o0ooo000000oo0oooo00o_choices, size=(68, 25))
-        self.select_o0ooo000000oo0oooo00o.SetSelection(0)
-        gridsizer1.Add(self.select_o0ooo000000oo0oooo00o, pos=(1, 0))
+        ooo0oo0o000000o00oooo_choices = [u"提前100", u"提前200", u"踩点"]
+        self.select_ooo0oo0o000000o00oooo = wx.Choice(panel, -1, choices=ooo0oo0o000000o00oooo_choices, size=(68, 25))
+        self.select_ooo0oo0o000000o00oooo.SetSelection(0)
+        gridsizer1.Add(self.select_ooo0oo0o000000o00oooo, pos=(1, 0))
         yanchi_label = wx.StaticText(panel, label=u"出价提交延迟")
         gridsizer1.Add(yanchi_label, pos=(1, 1), flag=wx.TOP, border=4)
         self.yanchi_time = wx.SpinCtrlDouble(panel, -1, "", size=(68, 25))
@@ -1649,24 +1651,24 @@ class OperationFrame(wx.Frame):
         gridsizer1.Add(self.yanchi_time, pos=(1, 3))
         miao2_label = wx.StaticText(panel, label=u"秒")
         gridsizer1.Add(miao2_label, pos=(1, 4), flag=wx.TOP, border=4)
-        o0ooo000000oo0oooo00o_label = wx.StaticText(panel, label=u"强制提交时间")
-        gridsizer1.Add(o0ooo000000oo0oooo00o_label, pos=(2, 0), flag=wx.TOP, border=4)
-        self.o0ooo000000oo0oooo00o_time = wx.SpinCtrlDouble(panel, -1, "", size=(68, 25))
-        self.o0ooo000000oo0oooo00o_time.SetRange(40.0, 57.0)
-        self.o0ooo000000oo0oooo00o_time.SetValue(55.0)
-        self.o0ooo000000oo0oooo00o_time.SetIncrement(0.1)
-        gridsizer1.Add(self.o0ooo000000oo0oooo00o_time, pos=(2, 1))
+        ooo0oo0o000000o00oooo_label = wx.StaticText(panel, label=u"强制提交时间")
+        gridsizer1.Add(ooo0oo0o000000o00oooo_label, pos=(2, 0), flag=wx.TOP, border=4)
+        self.ooo0oo0o000000o00oooo_time = wx.SpinCtrlDouble(panel, -1, "", size=(68, 25))
+        self.ooo0oo0o000000o00oooo_time.SetRange(40.0, 57.0)
+        self.ooo0oo0o000000o00oooo_time.SetValue(55.0)
+        self.ooo0oo0o000000o00oooo_time.SetIncrement(0.1)
+        gridsizer1.Add(self.ooo0oo0o000000o00oooo_time, pos=(2, 1))
         miao3_label = wx.StaticText(panel, label=u"秒")
         gridsizer1.Add(miao3_label, pos=(2, 2), flag=wx.TOP, border=4)
         self.oneshotSizer.Add(gridsizer1, 0, flag=wx.ALL, border=5)
         secondshot = wx.StaticBox(panel, -1, u'双枪策略:')
         self.secondshotSizer = wx.StaticBoxSizer(secondshot, wx.VERTICAL)
         gridsizer2 = wx.GridBagSizer(4, 4)
-        self.jiajioooo00o00oo0000oo0o0o2 = wx.SpinCtrlDouble(panel, -1, "", size=(68, 25))
-        self.jiajioooo00o00oo0000oo0o0o2.SetRange(40, 55)
-        self.jiajioooo00o00oo0000oo0o0o2.SetValue(48)
-        self.jiajioooo00o00oo0000oo0o0o2.SetIncrement(0.1)
-        gridsizer2.Add(self.jiajioooo00o00oo0000oo0o0o2, pos=(0, 0))
+        self.jiajioo000000oooo0oo00oo002 = wx.SpinCtrlDouble(panel, -1, "", size=(68, 25))
+        self.jiajioo000000oooo0oo00oo002.SetRange(40, 55)
+        self.jiajioo000000oooo0oo00oo002.SetValue(48)
+        self.jiajioo000000oooo0oo00oo002.SetIncrement(0.1)
+        gridsizer2.Add(self.jiajioo000000oooo0oo00oo002, pos=(0, 0))
         miao_label2 = wx.StaticText(panel, label=u"秒")
         gridsizer2.Add(miao_label2, pos=(0, 1), flag=wx.TOP | wx.ALIGN_LEFT, border=4)
         jiahao_label2 = wx.StaticText(panel, label=u"加价", size=(25, 25), style=wx.ALIGN_CENTER)
@@ -1676,10 +1678,10 @@ class OperationFrame(wx.Frame):
         self.jiajia_price2.SetValue(600)
         self.jiajia_price2.SetIncrement(100)
         gridsizer2.Add(self.jiajia_price2, pos=(0, 3))
-        o0ooo000000oo0oooo00o_choices2 = [u"提前100", u"提前200", u"踩点"]
-        self.select_o0ooo000000oo0oooo00o2 = wx.Choice(panel, -1, choices=o0ooo000000oo0oooo00o_choices2, size=(68, 25))
-        self.select_o0ooo000000oo0oooo00o2.SetSelection(0)
-        gridsizer2.Add(self.select_o0ooo000000oo0oooo00o2, pos=(1, 0))
+        ooo0oo0o000000o00oooo_choices2 = [u"提前100", u"提前200", u"踩点"]
+        self.select_ooo0oo0o000000o00oooo2 = wx.Choice(panel, -1, choices=ooo0oo0o000000o00oooo_choices2, size=(68, 25))
+        self.select_ooo0oo0o000000o00oooo2.SetSelection(0)
+        gridsizer2.Add(self.select_ooo0oo0o000000o00oooo2, pos=(1, 0))
         yanchi_label2 = wx.StaticText(panel, label=u"出价提交延迟")
         gridsizer2.Add(yanchi_label2, pos=(1, 1), flag=wx.TOP, border=4)
         self.yanchi_time2 = wx.SpinCtrlDouble(panel, -1, "", size=(68, 25))
@@ -1689,13 +1691,13 @@ class OperationFrame(wx.Frame):
         gridsizer2.Add(self.yanchi_time2, pos=(1, 3))
         miao2_label2 = wx.StaticText(panel, label=u"秒")
         gridsizer2.Add(miao2_label2, pos=(1, 4), flag=wx.TOP, border=4)
-        o0ooo000000oo0oooo00o_label2 = wx.StaticText(panel, label=u"强制提交时间")
-        gridsizer2.Add(o0ooo000000oo0oooo00o_label2, pos=(2, 0), flag=wx.TOP, border=4)
-        self.o0ooo000000oo0oooo00o_time2 = wx.SpinCtrlDouble(panel, -1, "", size=(68, 25))
-        self.o0ooo000000oo0oooo00o_time2.SetRange(53.0, 57.0)
-        self.o0ooo000000oo0oooo00o_time2.SetValue(55.0)
-        self.o0ooo000000oo0oooo00o_time2.SetIncrement(0.1)
-        gridsizer2.Add(self.o0ooo000000oo0oooo00o_time2, pos=(2, 1))
+        ooo0oo0o000000o00oooo_label2 = wx.StaticText(panel, label=u"强制提交时间")
+        gridsizer2.Add(ooo0oo0o000000o00oooo_label2, pos=(2, 0), flag=wx.TOP, border=4)
+        self.ooo0oo0o000000o00oooo_time2 = wx.SpinCtrlDouble(panel, -1, "", size=(68, 25))
+        self.ooo0oo0o000000o00oooo_time2.SetRange(53.0, 57.0)
+        self.ooo0oo0o000000o00oooo_time2.SetValue(55.0)
+        self.ooo0oo0o000000o00oooo_time2.SetIncrement(0.1)
+        gridsizer2.Add(self.ooo0oo0o000000o00oooo_time2, pos=(2, 1))
         miao3_label2 = wx.StaticText(panel, label=u"秒")
         gridsizer2.Add(miao3_label2, pos=(2, 2), flag=wx.TOP, border=4)
         self.secondshotSizer.Add(gridsizer2, 0, flag=wx.ALL, border=5)
@@ -1715,22 +1717,22 @@ class OperationFrame(wx.Frame):
         self.secondsizer_Shown = False            
         self.oneshotsizer_Shown = True            
         self.vbox1.Hide(self.secondshotSizer)            
-        self.Bind(wx.EVT_CHECKBOX, self.ooo00o0oo00o0o0o0oooo, self.timeview)
-        self.Bind(wx.EVT_CHOICE, self.ooo000ooo0o0o00oo0o0o, self.confirm_choice)
-        self.Bind(wx.EVT_BUTTON, self.o0o0o00oooooo0o0o0000, self.oo0o000o00oo0000oo0o0_save)
-        self.Bind(wx.EVT_BUTTON, self.o000ooo0000oooo0ooooo, self.oo0o000o00oo0000oo0o0_load)
-        self.Bind(wx.EVT_BUTTON, self.ooo00o0oo0oo00o00ooo0, self.save_info)
-        self.Bind(wx.EVT_CHOICE, self.oo00o0oo0o0o0ooo00ooo, self.select_stractagy)
-        self.Bind(wx.EVT_TEXT, self.o00oooooo0ooo0oo0oooo, self.jiajioooo00o00oo0000oo0o0o)
-        self.Bind(wx.EVT_TEXT, self.o0o0o0oo0oo00oo0ooo00, self.jiajia_price)
-        self.Bind(wx.EVT_CHOICE, self.o0000oooooo0oo0oooo0o, self.select_o0ooo000000oo0oooo00o)
-        self.Bind(wx.EVT_TEXT, self.oooooooooooooooooo000, self.yanchi_time)
-        self.Bind(wx.EVT_TEXT, self.o0oo0000oooo00oo0oooo, self.o0ooo000000oo0oooo00o_time)
-        self.Bind(wx.EVT_TEXT, self.o0o00o00oo0oooo00o000, self.jiajioooo00o00oo0000oo0o0o2)
-        self.Bind(wx.EVT_TEXT, self.o0000oooo0o00o00000oo, self.jiajia_price2)
-        self.Bind(wx.EVT_CHOICE, self.ooo0o000oo000o00o0000, self.select_o0ooo000000oo0oooo00o2)
-        self.Bind(wx.EVT_TEXT, self.oooooo0oo0o0000oo0ooo, self.yanchi_time2)
-        self.Bind(wx.EVT_TEXT, self.o0oo0o00o0000000000o0, self.o0ooo000000oo0oooo00o_time2)
+        self.Bind(wx.EVT_CHECKBOX, self.o0oo0o00o00o0ooo0o00o, self.timeview)
+        self.Bind(wx.EVT_CHOICE, self.o0oo0oooo0o00o00o00oo, self.confirm_choice)
+        self.Bind(wx.EVT_BUTTON, self.o00o000o0o0ooo0o0o0o0, self.o00ooo000oooo0oooo00o_save)
+        self.Bind(wx.EVT_BUTTON, self.oooo00o0o0oooooooo0o0, self.o00ooo000oooo0oooo00o_load)
+        self.Bind(wx.EVT_BUTTON, self.o000o00o0oo0oooo0o0o0, self.save_info)
+        self.Bind(wx.EVT_CHOICE, self.o000o0o0ooo0oooo0ooo0, self.select_stractagy)
+        self.Bind(wx.EVT_TEXT, self.o000oo00oo0o00oooo00o, self.jiajioo000000oooo0oo00oo00)
+        self.Bind(wx.EVT_TEXT, self.o000oo00oo0oo00o00000, self.jiajia_price)
+        self.Bind(wx.EVT_CHOICE, self.oo0ooo0o0oo0oo0o0oo0o, self.select_ooo0oo0o000000o00oooo)
+        self.Bind(wx.EVT_TEXT, self.oooo0ooo00o00ooo0oo00, self.yanchi_time)
+        self.Bind(wx.EVT_TEXT, self.o0ooo00o0oo0oo0000o0o, self.ooo0oo0o000000o00oooo_time)
+        self.Bind(wx.EVT_TEXT, self.o000oo00oo0o00oooo00o2, self.jiajioo000000oooo0oo00oo002)
+        self.Bind(wx.EVT_TEXT, self.ooo00oooooo0ooooo00o0, self.jiajia_price2)
+        self.Bind(wx.EVT_CHOICE, self.o0oo00o0o00oo0o0oo0o0, self.select_ooo0oo0o000000o00oooo2)
+        self.Bind(wx.EVT_TEXT, self.oooo0ooo00o00ooo0oo002, self.yanchi_time2)
+        self.Bind(wx.EVT_TEXT, self.ooo0oooo0oooo0o0ooooo, self.ooo0oo0o000000o00oooo_time2)
         self.timeframe1 = TimeFrame()
         self.timeframe1.Show(False)
         self.timeframe2 = MoniTimeFrame()
@@ -1738,172 +1740,172 @@ class OperationFrame(wx.Frame):
         self.operationtimer = wx.Timer(self)
         self.Bind(wx.EVT_TIMER, self.opt, self.operationtimer)
         self.operationtimer.Start(1000)
-        self.o0o00oo0000oo00ooo0o0frame = YanzhengmaFrame()
+        self.o00ooo00000o00000o00oframe = YanzhengmaFrame()
     def OnClose(self, event):
         self.Show(False)
-    def oooo0oo00o00oo0oo000o(self, event):
-        global o00ooooo00o00o0000o0o, web_on, oo00ooo0ooo000oo0000o, o0oo0ooo0oo0o0o0oo0oo, ooooo0oo0oo0o0o0oooo0, o0oo0ooo00o00o0o00oo0, o0oo00oo000oo0o0oo0oo, oo00o00o00o0oo00o0000
-        global o00o00o00000oooo00oo0, oo0ooooo00oo0oo000o00, oo000oooo0ooo0000o000
-        global o00000o0ooooooo00o0o0 ,oo0000000oo0oooooo00o
-        if oo000oooo0ooo0000o000:
+    def o0oo0o0o0o000o00o000o(self, event):
+        global o0000oo0ooo0oo000o00o, web_on, o000ooo0000oo0o0ooooo, ooo00ooooo0o00ooo00o0, o00ooo00oo0oo0oo0o000, o0o0000ooooo00oo0oo00, o0o0000ooo0oo00ooo0o0, oooo00ooo00o0oo0o0ooo
+        global oo00o00o000o000oo0oo0, oo0oo0ooo0oo0oo0000oo, o00000oo000ooooo00ooo
+        global o0oo0000ooooo00o00oo0 ,oooo00000o0o0oooooo0o
+        if o00000oo000ooooo00ooo:
             yan = self.FindWindowById(18)
             if yan:
                 try:
-                    yan.Move(o000oooo00o0ooo00o00oframe)          
-                    oo000oooo0ooo0000o000 = False        
+                    yan.Move(o00o0oo0oo0oo0ooooo00frame)          
+                    o00000oo000ooooo00ooo = False        
                 except:
                     pass
-        if o00ooooo00o00o0000o0o and oo0ooooo00oo0oo000o00 >= 4:
+        if o0000oo0ooo0oo000o00o and oo0oo0ooo0oo0oo0000oo >= 4:
             try:
-                self.oooo0ooo0oo0o000o00oo()
+                self.o0000000o0o00000o0oo0()
             except:
                 pass
-            self.oo0000ooo00000000o00o(Pos_price, o0oo0ooo00o00o0o00oo0, "userprice.png")
+            self.o000oo0o0oooo00000o0o(Pos_price, o0o0000ooooo00oo0oo00, "userprice.png")
             image = "userprice.png"
-            self.priceframe = PriceFrame(image, o0oo0ooo00o00o0o00oo0, Pos_priceframe)
+            self.priceframe = PriceFrame(image, o0o0000ooooo00oo0oo00, Pos_priceframe)
             self.priceframe.Show(True)
-            o00ooooo00o00o0000o0o = False
-            oo00ooo0ooo000oo0000o = True
-        if o00o00o00000oooo00oo0 >= 5 and not oo00o00o00o0oo00o0000:                    
-            o0o00oo000oooo0o00oo0()
-        if oo00o00o00o0oo00o0000:
+            o0000oo0ooo0oo000o00o = False
+            o000ooo0000oo0o0ooooo = True
+        if oo00o00o000o000oo0oo0 >= 5 and not oooo00ooo00o0oo0o0ooo:                    
+            o0o00oo00oo0oo0o000o0()
+        if oooo00ooo00o0oo0o0ooo:
             try:
                 yan2 = self.FindWindowById(18)
                 yan2.Show(False)
             except:
                 pass
-        if ooooo0oo0oo0o0o0oooo0:
-            oo00o00o00o0oo00o0000 = False
-            cut_pic(o00000o0ooooooo00o0o0, o0oo00oo000oo0o0oo0oo, "o0o00oo0000oo00ooo0o0.png")              
-            image = "o0o00oo0000oo00ooo0o0.png"
-            global o000oo00oo0oo0oo0o0o0
-            o000oo00oo0oo0oo0o0o0 = Image.open("o0o00oo0000oo00ooo0o0.png")
-            yan_hash = imagehash.dhash(o000oo00oo0oo0oo0o0o0)
-            if not oo0000000oo0oooooo00o:      
-                oo0000000oo0oooooo00o = yan_hash
-            elif yan_hash == oo0000000oo0oooooo00o:         
+        if o00ooo00oo0oo0oo0o000:
+            oooo00ooo00o0oo0o0ooo = False
+            cut_pic(o0oo0000ooooo00o00oo0, o0o0000ooo0oo00ooo0o0, "o00ooo00000o00000o00o.png")              
+            image = "o00ooo00000o00000o00o.png"
+            global o0o0ooooo0oo0o00o0000
+            o0o0ooooo0oo0o00o0000 = Image.open("o00ooo00000o00000o00o.png")
+            yan_hash = imagehash.dhash(o0o0ooooo0oo0o00o0000)
+            if not oooo00000o0o0oooooo0o:      
+                oooo00000o0o0oooooo0o = yan_hash
+            elif yan_hash == oooo00000o0o0oooooo0o:         
                 pass
             else:
-                oo0000000oo0oooooo00o = yan_hash
+                oooo00000o0o0oooooo0o = yan_hash
                 try:
                     yan = self.FindWindowById(18)
-                    yan.ooo0oooo0o0o000o0o0oo(image)
+                    yan.o0o0oooo00o00000oo0o0(image)
                     yan.Show()
                 except:                 
                     pass
                 finally:
                     pass
-    def ooooooo00o00o0oooo0oo(self, event):
-        global ooooo0oo0oo0o0o0oooo0, oo00o00o00o0oo00o0000
-        o0o00oo000oooo0o00oo0()
-    def o0o00ooo0o0oo00o0oo00(self, event):
-        global oo0ooooo00oo0oo000o00, o00o00o00000oooo00oo0
-        oo0ooooo00oo0oo000o00 += 1
-        o00o00o00000oooo00oo0 += 1
+    def o000o0oooo0o000o0o0oo(self, event):
+        global o00ooo00oo0oo0oo0o000, oooo00ooo00o0oo0o0ooo
+        o0o00oo00oo0oo0o000o0()
+    def o000oooo00o000o0oo000(self, event):
+        global oo0oo0ooo0oo0oo0000oo, oo00o00o000o000oo0oo0
+        oo0oo0ooo0oo0oo0000oo += 1
+        oo00o00o000o000oo0oo0 += 1
         file = 'sc_new.png'
-        if web_on and oooooo000000ooo00oooo:
+        if web_on and oo00ooo0oo000o0oo0000:
             self.lowestframe.Show(True)
         if not os.path.exists(file):
             try:
-                self.oooo0ooo0oo0o000o00oo()
+                self.o0000000o0o00000o0oo0()
             except:
                 pass
-        if not oooooo000000ooo00oooo or not web_on:
+        if not oo00ooo0oo000o0oo0000 or not web_on:
             self.lowestframe.Show(False)
-    def oo0000ooo00000000o00o(self, box, size, name):
-        global o0oo0ooo00o00o0o00oo0
+    def o000oo0o0oooo00000o0o(self, box, size, name):
+        global o0o0000ooooo00oo0oo00
         region = ImageGrab.grab(box)
         region.resize(size, Image.ANTIALIAS).save(name)
-    def oo00ooo00o0oooo0oo00o(self, box, size, name):
-        global o0oo0ooo00o00o0o00oo0
+    def o000oo0o0oooo00000o0o_o00ooo00000o00000o00o(self, box, size, name):
+        global o0o0000ooooo00oo0oo00
         region = ImageGrab.grab(box)
         cut_pic(region, size, name)
     @staticmethod
-    def o0000oo0o0oooo0oo00o0():
+    def o00oo000000oooo0oo0oo():
         try:
             os.remove("sc_new.png")
         except:
             pass
-    def oooo0ooo0oo0o000o00oo(self):
+    def o0000000o0o00000o0oo0(self):
         try:
             self.priceframe.Destroy()
         except:
             pass
     def opt(self, event):
-        global oooo00oo00o0o00000o00, ooo000o00oo00o0oo0000e, oo00ooo0o000o00oo00o0
-        global oooooo000000ooo00oooo        
-        global twice, oooo00oo00o0o00000o00, oo00ooo0o000o00oo00o0, ooo000o00oo00o0oo0000, o000000000ooo0oooo00o, ooo000o00oo00o0oo0000e            
-        if o0oo0ooo000oo0oo00oo0 < o000oo0ooo0o0o000oo00 and ooooo00o000o0o00oo0o0 and not twice:        
+        global o0000ooo000000ooo00o0, ooo0ooo0o000o00oo000oe, o0o0000oo000o00o0o0o0
+        global oo00ooo0oo000o0oo0000        
+        global twice, o0000ooo000000ooo00o0, o0o0000oo000o00o0o0o0, ooo0ooo0o000o00oo000o, oo0000o00o0000oo00oo0, ooo0ooo0o000o00oo000oe            
+        if oo0oo0ooo000000oo0000 < o00o00o00000ooooo0o0o and ooo0o0000oo0oo0o00ooo and not twice:        
             twice = False
-            oo00ooo0o000o00oo00o0 = True
-            ooo000o00oo00o0oo0000 = False
-            oooo00oo00o0o00000o00 = 1       
-            o000000000ooo0oooo00o = False
-            ooo000o00oo00o0oo0000e = False        
-        elif o0oo0ooo000oo0oo00oo0 < o000oo0ooo0o0o000oo00 and ooooo00o000o0o00oo0o0 and twice:        
+            o0o0000oo000o00o0o0o0 = True
+            ooo0ooo0o000o00oo000o = False
+            o0000ooo000000ooo00o0 = 1       
+            oo0000o00o0000oo00oo0 = False
+            ooo0ooo0o000o00oo000oe = False        
+        elif oo0oo0ooo000000oo0000 < o00o00o00000ooooo0o0o and ooo0o0000oo0oo0o00ooo and twice:        
             twice = True
-            oo00ooo0o000o00oo00o0 = True
-            ooo000o00oo00o0oo0000 = False
-            oooo00oo00o0o00000o00 = 1       
-            o000000000ooo0oooo00o = False
-            ooo000o00oo00o0oo0000e = False        
-    def o0ooooo00ooo000ooo00o(self, event):
-        global oooo00o00oo0000oo0o0o, o0oo0ooo000oo0oo00oo0, ooooo00o000o0o00oo0o0, oooooo00o000o00o000oo
-        if ooooo00o000o0o00oo0o0:
-            o0oo0ooo000oo0oo00oo0 += 0.1
+            o0o0000oo000o00o0o0o0 = True
+            ooo0ooo0o000o00oo000o = False
+            o0000ooo000000ooo00o0 = 1       
+            oo0000o00o0000oo00oo0 = False
+            ooo0ooo0o000o00oo000oe = False        
+    def oo0oooo00o0000o0ooooo(self, event):
+        global oo000000oooo0oo00oo00, oo0oo0ooo000000oo0000, ooo0o0000oo0oo0o00ooo, oooo000000o00o00oo0oo
+        if ooo0o0000oo0oo0o00ooo:
+            oo0oo0ooo000000oo0000 += 0.1
         else:
-            oooo00o00oo0000oo0o0o += 0.1
-    def ooo0o000o0000ooo00ooo(self, event):
-        global oooo00o00oo0000oo0o0o, o0oo0ooo000oo0oo00oo0, ooooo00o000o0o00oo0o0, oooooo00o000o00o000oo
-        if ooooo00o000o0o00oo0o0:
-            o0oo0ooo000oo0oo00oo0 -= 0.1
+            oo000000oooo0oo00oo00 += 0.1
+    def oo0ooo0ooo0oo0000oo0o(self, event):
+        global oo000000oooo0oo00oo00, oo0oo0ooo000000oo0000, ooo0o0000oo0oo0o00ooo, oooo000000o00o00oo0oo
+        if ooo0o0000oo0oo0o00ooo:
+            oo0oo0ooo000000oo0000 -= 0.1
         else:
-            oooo00o00oo0000oo0o0o -= 0.1
-    def o0oo0o0000000oo0o0oo0(self, event):
-        global oooo00o00oo0000oo0o0o, o0oo0ooo000oo0oo00oo0, ooooo00o000o0o00oo0o0, oooooo00o000o00o000oo
-        if ooooo00o000o0o00oo0o0:
-            o0oo0ooo000oo0oo00oo0 += 1
-            if o0oo0ooo000oo0oo00oo0 >= 60:
-                o0oo0ooo000oo0oo00oo0 = 0
+            oo000000oooo0oo00oo00 -= 0.1
+    def o0000o0ooo00oo000ooo0(self, event):
+        global oo000000oooo0oo00oo00, oo0oo0ooo000000oo0000, ooo0o0000oo0oo0o00ooo, oooo000000o00o00oo0oo
+        if ooo0o0000oo0oo0o00ooo:
+            oo0oo0ooo000000oo0000 += 1
+            if oo0oo0ooo000000oo0000 >= 60:
+                oo0oo0ooo000000oo0000 = 0
         else:
-            oooo00o00oo0000oo0o0o += 1
-    def o00o0oooo000oo0oooooo(self, event):
-        global oooo00o00oo0000oo0o0o, o0oo0ooo000oo0oo00oo0, ooooo00o000o0o00oo0o0, oooooo00o000o00o000oo
-        if ooooo00o000o0o00oo0o0:
-            o0oo0ooo000oo0oo00oo0 -= 1
-            if o0oo0ooo000oo0oo00oo0 <= 0:
-                o0oo0ooo000oo0oo00oo0 = 60
+            oo000000oooo0oo00oo00 += 1
+    def oo000oo0oo0000000o00o(self, event):
+        global oo000000oooo0oo00oo00, oo0oo0ooo000000oo0000, ooo0o0000oo0oo0o00ooo, oooo000000o00o00oo0oo
+        if ooo0o0000oo0oo0o00ooo:
+            oo0oo0ooo000000oo0000 -= 1
+            if oo0oo0ooo000000oo0000 <= 0:
+                oo0oo0ooo000000oo0000 = 60
         else:
-            oooo00o00oo0000oo0o0o -= 1
-    def ooo00o0oo00o0o0o0oooo(self, event):
+            oo000000oooo0oo00oo00 -= 1
+    def o0oo0o00o00o0ooo0o00o(self, event):
         timeSelected = event.GetEventObject()
-        global o0oo0ooo0oo0o0o0oo0oo, o000oo000oo0ooooo00oo
+        global ooo00ooooo0o00ooo00o0, o00oo0oo0000ooo00oooo
         if timeSelected.IsChecked():
-            o0oo0ooo0oo0o0o0oo0oo = True
-            o000oo000oo0ooooo00oo = True
-            if oooooo00o000o00o000oo:
+            ooo00ooooo0o00ooo00o0 = True
+            o00oo0oo0000ooo00oooo = True
+            if oooo000000o00o00oo0oo:
                 self.timeframe1.Show(True)
-            elif ooooo00o000o0o00oo0o0:
+            elif ooo0o0000oo0oo0o00ooo:
                 self.timeframe2.Show(True)
         else:
-            o0oo0ooo0oo0o0o0oo0oo = False
-            o000oo000oo0ooooo00oo = False
-            if oooooo00o000o00o000oo:
+            ooo00ooooo0o00ooo00o0 = False
+            o00oo0oo0000ooo00oooo = False
+            if oooo000000o00o00oo0oo:
                 self.timeframe1.Show(False)
-            elif ooooo00o000o0o00oo0o0:
+            elif ooo0o0000oo0oo0o00ooo:
                 self.timeframe2.Show(False)
-    def oo0o0oooo0ooo0o0000o0(self):
-        if ooooo00o000o0o00oo0o0:
+    def oo00o0o0000ooo000o000(self):
+        if ooo0o0000oo0oo0o00ooo:
             try:
                 self.timeframe2.Show(True)
             except:
                 pass
-        elif oooooo00o000o00o000oo:
+        elif oooo000000o00o00oo0oo:
             try:
                 self.timeframe1.Show(True)
             except:
                 pass
-    def o00o0o0oo00o000oo0o0o(self):
+    def o00ooo0oo00o000o0oo0o(self):
         try:
             self.timeframe1.Show(False)
         except:
@@ -1912,132 +1914,132 @@ class OperationFrame(wx.Frame):
             self.timeframe2.Show(False)
         except:
             pass
-    def ooo000ooo0o0o00oo0o0o(self, event):
-        global e_on, oooo0oooo0ooo000o0oo0
+    def o0oo0oooo0o00o00o00oo(self, event):
+        global e_on, o0ooo000o00oo0oooo0o0
         con = self.confirm_choice.GetSelection()
         if con == 0:
             e_on = True
-            oooo0oooo0ooo000o0oo0 = False
+            o0ooo000o00oo0oooo0o0 = False
         elif con == 1:
             e_on = False
-            oooo0oooo0ooo000o0oo0 = True
-    def o00oooooo0ooo0oo0oooo(self, event):
-        global ooo0oooooo0o0ooo00ooo, oo0oo00o00000oo00o000, o000ooooooooo000o00o0, o000oo0ooo0o0o000oo00, oo00000o0oo00o0o0o0o0, ooo0o0o0o00o000ooo0oo, o0o00ooo0ooo0o0o00o0o
-        tem = self.jiajioooo00o00oo0000oo0o0o.GetValue()
+            o0ooo000o00oo0oooo0o0 = True
+    def o000oo00oo0o00oooo00o(self, event):
+        global o0ooo0o00o0o00000ooo0, o00000o0o0ooo0o0o0oo0, oo0oo00ooooo0000o00o0, o00o00o00000ooooo0o0o, o0000ooo00oo000o0o00o, o0ooo0oo000oo00o000o0, ooo00oo0000o00o0o00o0
+        tem = self.jiajioo000000oooo0oo00oo00.GetValue()
         templist = [40 + i * 0.1 for i in range(151)]
         if tem in templist:
-            o000oo0ooo0o0o000oo00 = tem
-            o000oo0ooo0o0o000oo00 = float(o000oo0ooo0o0o000oo00)
-            ooo0o0o0o00o000ooo0oo = self.gettime(o000oo0ooo0o0o000oo00)            
+            o00o00o00000ooooo0o0o = tem
+            o00o00o00000ooooo0o0o = float(o00o00o00000ooooo0o0o)
+            o0ooo0oo000oo00o000o0 = self.gettime(o00o00o00000ooooo0o0o)            
         else:
-            self.jiajioooo00o00oo0000oo0o0o.SetValue(o000oo0ooo0o0o000oo00)
-    def o0o0o0oo0oo00oo0ooo00(self, event):
-        global ooo0oooooo0o0ooo00ooo, oo0oo00o00000oo00o000, o000ooooooooo000o00o0, o000oo0ooo0o0o000oo00, oo00000o0oo00o0o0o0o0
+            self.jiajioo000000oooo0oo00oo00.SetValue(o00o00o00000ooooo0o0o)
+    def o000oo00oo0oo00o00000(self, event):
+        global o0ooo0o00o0o00000ooo0, o00000o0o0ooo0o0o0oo0, oo0oo00ooooo0000o00o0, o00o00o00000ooooo0o0o, o0000ooo00oo000o0o00o
         templist = [300 + i * 100 for i in range(13)]
         tem = self.jiajia_price.GetValue()
         if tem in templist:
-            o000ooooooooo000o00o0 = int(tem)
+            oo0oo00ooooo0000o00o0 = int(tem)
         else:
-            self.jiajia_price.SetValue(o000ooooooooo000o00o0)
-    def o0000oooooo0oo0oooo0o(self, event):
-        global ooo0oooooo0o0ooo00ooo, oo0oo00o00000oo00o000, o000ooooooooo000o00o0, o000oo0ooo0o0o000oo00, oo00000o0oo00o0o0o0o0
-        select = self.select_o0ooo000000oo0oooo00o.GetString(self.select_o0ooo000000oo0oooo00o.GetSelection())
+            self.jiajia_price.SetValue(oo0oo00ooooo0000o00o0)
+    def oo0ooo0o0oo0oo0o0oo0o(self, event):
+        global o0ooo0o00o0o00000ooo0, o00000o0o0ooo0o0o0oo0, oo0oo00ooooo0000o00o0, o00o00o00000ooooo0o0o, o0000ooo00oo000o0o00o
+        select = self.select_ooo0oo0o000000o00oooo.GetString(self.select_ooo0oo0o000000o00oooo.GetSelection())
         if select == u"提前100":
-            ooo0oooooo0o0ooo00ooo = 100
+            o0ooo0o00o0o00000ooo0 = 100
         elif select == u"提前200":
-            ooo0oooooo0o0ooo00ooo = 200
+            o0ooo0o00o0o00000ooo0 = 200
         else:
-            ooo0oooooo0o0ooo00ooo = 0
-    def oooooooooooooooooo000(self, event):
-        global ooo0oooooo0o0ooo00ooo, oo0oo00o00000oo00o000, o000ooooooooo000o00o0, o000oo0ooo0o0o000oo00, oo00000o0oo00o0o0o0o0
+            o0ooo0o00o0o00000ooo0 = 0
+    def oooo0ooo00o00ooo0oo00(self, event):
+        global o0ooo0o00o0o00000ooo0, o00000o0o0ooo0o0o0oo0, oo0oo00ooooo0000o00o0, o00o00o00000ooooo0o0o, o0000ooo00oo000o0o00o
         templist = ['0.%d' % i for i in range(11)]
         templist.append('1.0')
         tem = str(self.yanchi_time.GetValue())
         if tem in templist:
-            oo0oo00o00000oo00o000 = float(tem)
+            o00000o0o0ooo0o0o0oo0 = float(tem)
         else:
-            self.yanchi_time.SetValue(oo0oo00o00000oo00o000)
-    def o0oo0000oooo00oo0oooo(self, event):
-        global ooo0oooooo0o0ooo00ooo, oo0oo00o00000oo00o000, o000ooooooooo000o00o0, o000oo0ooo0o0o000oo00, oo00000o0oo00o0o0o0o0, o0o00ooo0ooo0o0o00o0o
-        tem = self.o0ooo000000oo0oooo00o_time.GetValue()
+            self.yanchi_time.SetValue(o00000o0o0ooo0o0o0oo0)
+    def o0ooo00o0oo0oo0000o0o(self, event):
+        global o0ooo0o00o0o00000ooo0, o00000o0o0ooo0o0o0oo0, oo0oo00ooooo0000o00o0, o00o00o00000ooooo0o0o, o0000ooo00oo000o0o00o, ooo00oo0000o00o0o00o0
+        tem = self.ooo0oo0o000000o00oooo_time.GetValue()
         templist = [40 + i * 0.1 for i in range(171)]
         if tem in templist:
-            oo00000o0oo00o0o0o0o0 = float(tem)
-            o0o00ooo0ooo0o0o00o0o = self.gettime(oo00000o0oo00o0o0o0o0)            
+            o0000ooo00oo000o0o00o = float(tem)
+            ooo00oo0000o00o0o00o0 = self.gettime(o0000ooo00oo000o0o00o)            
         else:
-            self.o0ooo000000oo0oooo00o_time.SetValue(oo00000o0oo00o0o0o0o0)
-    def o0o00o00oo0oooo00o000(self, event):
-        global ooo0ooo0ooo00oo0ooo0o, oo0ooo000o0oo0o00o0o0, ooo0000000000ooo00000, oo0o0o0o000o0o00ooooo, o00o0o0000oooo0000ooo, ooo0o0ooo0000000o0o0o
-        tem = self.jiajioooo00o00oo0000oo0o0o2.GetValue()
+            self.ooo0oo0o000000o00oooo_time.SetValue(o0000ooo00oo000o0o00o)
+    def o000oo00oo0o00oooo00o2(self, event):
+        global oo0oo0oooo0ooo0oo0000, o0o00oooo0o0ooo000oo0, ooo0ooooo0o000oo0ooo0, o000o000o0000ooo0o0o0, ooooo0o000oooo0o0ooo0, o00oo0oo0o0ooooooo0oo
+        tem = self.jiajioo000000oooo0oo00oo002.GetValue()
         templist = [40 + i * 0.1 for i in range(151)]
         if tem in templist:
-            oo0o0o0o000o0o00ooooo = float(tem)
-            ooo0o0ooo0000000o0o0o = self.gettime(oo0o0o0o000o0o00ooooo)            
+            o000o000o0000ooo0o0o0 = float(tem)
+            o00oo0oo0o0ooooooo0oo = self.gettime(o000o000o0000ooo0o0o0)            
         else:
-            self.jiajioooo00o00oo0000oo0o0o2.SetValue(oo0o0o0o000o0o00ooooo)
-    def o0000oooo0o00o00000oo(self, event):
-        global ooo0ooo0ooo00oo0ooo0o, oo0ooo000o0oo0o00o0o0, ooo0000000000ooo00000, oo0o0o0o000o0o00ooooo, o00o0o0000oooo0000ooo
-        global ooo0oooooo0o0ooo00ooo, oo0oo00o00000oo00o000, o000ooooooooo000o00o0, o000oo0ooo0o0o000oo00, oo00000o0oo00o0o0o0o0
+            self.jiajioo000000oooo0oo00oo002.SetValue(o000o000o0000ooo0o0o0)
+    def ooo00oooooo0ooooo00o0(self, event):
+        global oo0oo0oooo0ooo0oo0000, o0o00oooo0o0ooo000oo0, ooo0ooooo0o000oo0ooo0, o000o000o0000ooo0o0o0, ooooo0o000oooo0o0ooo0
+        global o0ooo0o00o0o00000ooo0, o00000o0o0ooo0o0o0oo0, oo0oo00ooooo0000o00o0, o00o00o00000ooooo0o0o, o0000ooo00oo000o0o00o
         templist = [300 + i * 100 for i in range(13)]
         tem = self.jiajia_price2.GetValue()
         if tem in templist:
-            ooo0000000000ooo00000 = int(tem)
+            ooo0ooooo0o000oo0ooo0 = int(tem)
         else:
-            self.jiajia_price2.SetValue(ooo0000000000ooo00000)
-    def ooo0o000oo000o00o0000(self, event):
-        global ooo0ooo0ooo00oo0ooo0o, oo0ooo000o0oo0o00o0o0, ooo0000000000ooo00000, oo0o0o0o000o0o00ooooo, o00o0o0000oooo0000ooo
-        select = self.select_o0ooo000000oo0oooo00o2.GetString(self.select_o0ooo000000oo0oooo00o2.GetSelection())
+            self.jiajia_price2.SetValue(ooo0ooooo0o000oo0ooo0)
+    def o0oo00o0o00oo0o0oo0o0(self, event):
+        global oo0oo0oooo0ooo0oo0000, o0o00oooo0o0ooo000oo0, ooo0ooooo0o000oo0ooo0, o000o000o0000ooo0o0o0, ooooo0o000oooo0o0ooo0
+        select = self.select_ooo0oo0o000000o00oooo2.GetString(self.select_ooo0oo0o000000o00oooo2.GetSelection())
         if select == u"提前100":
-            ooo0ooo0ooo00oo0ooo0o = 100
+            oo0oo0oooo0ooo0oo0000 = 100
         elif select == u"提前200":
-            ooo0ooo0ooo00oo0ooo0o = 200
+            oo0oo0oooo0ooo0oo0000 = 200
         else:
-            ooo0ooo0ooo00oo0ooo0o = 0
-    def oooooo0oo0o0000oo0ooo(self, event):
-        global ooo0ooo0ooo00oo0ooo0o, oo0ooo000o0oo0o00o0o0, ooo0000000000ooo00000, oo0o0o0o000o0o00ooooo, o00o0o0000oooo0000ooo
+            oo0oo0oooo0ooo0oo0000 = 0
+    def oooo0ooo00o00ooo0oo002(self, event):
+        global oo0oo0oooo0ooo0oo0000, o0o00oooo0o0ooo000oo0, ooo0ooooo0o000oo0ooo0, o000o000o0000ooo0o0o0, ooooo0o000oooo0o0ooo0
         templist = ['0.%d' % i for i in range(11)]            
         templist.append('1.0')
         tem = str(self.yanchi_time2.GetValue())
         if tem in templist:
-            oo0ooo000o0oo0o00o0o0 = float(tem)
+            o0o00oooo0o0ooo000oo0 = float(tem)
         else:
-            self.yanchi_time2.SetValue(oo0ooo000o0oo0o00o0o0)
-    def o0oo0o00o0000000000o0(self, event):
-        global ooo0ooo0ooo00oo0ooo0o, oo0ooo000o0oo0o00o0o0, ooo0000000000ooo00000, oo0o0o0o000o0o00ooooo, o00o0o0000oooo0000ooo, o000oo0oo0ooo0ooooooo
-        tem = self.o0ooo000000oo0oooo00o_time2.GetValue()
+            self.yanchi_time2.SetValue(o0o00oooo0o0ooo000oo0)
+    def ooo0oooo0oooo0o0ooooo(self, event):
+        global oo0oo0oooo0ooo0oo0000, o0o00oooo0o0ooo000oo0, ooo0ooooo0o000oo0ooo0, o000o000o0000ooo0o0o0, ooooo0o000oooo0o0ooo0, oo00ooo0o0o00o0oo0oo0
+        tem = self.ooo0oo0o000000o00oooo_time2.GetValue()
         templist = [53 + i * 0.1 for i in range(41)]
         if tem in templist:
-            o00o0o0000oooo0000ooo = float(tem)
-            o000oo0oo0ooo0ooooooo = self.gettime(o00o0o0000oooo0000ooo)            
+            ooooo0o000oooo0o0ooo0 = float(tem)
+            oo00ooo0o0o00o0oo0oo0 = self.gettime(ooooo0o000oooo0o0ooo0)            
         else:
-            self.o0ooo000000oo0oooo00o_time2.SetValue(o00o0o0000oooo0000ooo)
-    def oo00o0oo0o0o0ooo00ooo(self, event):
-        global oooooo000000ooo00oooo        
-        global twice, oooo00oo00o0o00000o00, oo00ooo0o000o00oo00o0, ooo000o00oo00o0oo0000, o000000000ooo0oooo00o, ooo000o00oo00o0oo0000e            
+            self.ooo0oo0o000000o00oooo_time2.SetValue(ooooo0o000oooo0o0ooo0)
+    def o000o0o0ooo0oooo0ooo0(self, event):
+        global oo00ooo0oo000o0oo0000        
+        global twice, o0000ooo000000ooo00o0, o0o0000oo000o00o0o0o0, ooo0ooo0o000o00oo000o, oo0000o00o0000oo00oo0, ooo0ooo0o000o00oo000oe            
         stractagy_selection = self.select_stractagy.GetString(self.select_stractagy.GetSelection())
         if stractagy_selection == u"单枪策略":
             self.ss_Hide()
             twice = False
-            oooooo000000ooo00oooo = True
-            oo00ooo0o000o00oo00o0 = True
-            ooo000o00oo00o0oo0000 = False
-            oooo00oo00o0o00000o00 = 1       
-            o000000000ooo0oooo00o = False
-            ooo000o00oo00o0oo0000e = False        
+            oo00ooo0oo000o0oo0000 = True
+            o0o0000oo000o00o0o0o0 = True
+            ooo0ooo0o000o00oo000o = False
+            o0000ooo000000ooo00o0 = 1       
+            oo0000o00o0000oo00oo0 = False
+            ooo0ooo0o000o00oo000oe = False        
         elif stractagy_selection == u"双枪策略":
-            self.oo000000o0ooo00000ooo()
-            oooooo000000ooo00oooo = True
+            self.oo000oo0oooooo00ooo00()
+            oo00ooo0oo000o0oo0000 = True
             twice = True
-            oo00ooo0o000o00oo00o0 = True
-            ooo000o00oo00o0oo0000 = False
-            oooo00oo00o0o00000o00 = 1       
-            o000000000ooo0oooo00o = False
-            ooo000o00oo00o0oo0000e = False        
+            o0o0000oo000o00o0o0o0 = True
+            ooo0ooo0o000o00oo000o = False
+            o0000ooo000000ooo00o0 = 1       
+            oo0000o00o0000oo00oo0 = False
+            ooo0ooo0o000o00oo000oe = False        
         else:
-            self.o00ooo0o00o0oo0ooo0o0()
-            oooooo000000ooo00oooo = False
+            self.o0000ooo00o00oo00o0o0()
+            oo00ooo0oo000o0oo0000 = False
             twice = False
-    def oo000000o0ooo00000ooo(self):      
+    def oo000oo0oooooo00ooo00(self):      
         if not self.secondsizer_Shown:             
             self.vbox1.Show(self.secondshotSizer)          
             self.secondsizer_Shown = True                
@@ -2047,7 +2049,7 @@ class OperationFrame(wx.Frame):
         self.secondsizer_Shown = True
         self.oneshotSizer_Shown = True
         self.SetClientSize((280, 575))          
-        self.oooo0o0o00oo0oooo000o()
+        self.o0000oo0o0o00oo0000o0()
         self.Layout()
     def ss_Hide(self):      
         if self.secondsizer_Shown:             
@@ -2057,9 +2059,9 @@ class OperationFrame(wx.Frame):
         self.secondsizer_Shown = False
         self.oneshotSizer_Shown = True
         self.SetClientSize((280, 375))          
-        self.oo0o0oooo000o0000o00o()
+        self.o00oooo0o0o00o00o00oo()
         self.Layout()
-    def o00ooo0o00o0oo0ooo0o0(self):
+    def o0000ooo00o00oo00o0o0(self):
         if self.oneshotsizer_Shown:
             self.vbox1.Hide(self.secondshotSizer)
         if self.secondsizer_Shown:
@@ -2068,52 +2070,52 @@ class OperationFrame(wx.Frame):
         self.secondsizer_Shown = False
         self.SetClientSize((280, 255))
         self.Layout()
-    def oo0o0oooo000o0000o00o(self):
-        global o000oo0ooo0o0o000oo00, oo00000o0oo00o0o0o0o0, o000ooooooooo000o00o0, oo0oo00o00000oo00o000, ooo0oooooo0o0ooo00ooo
-        self.jiajioooo00o00oo0000oo0o0o.SetValue(48.0)
-        self.o0ooo000000oo0oooo00o_time.SetValue(55.0)
+    def o00oooo0o0o00o00o00oo(self):
+        global o00o00o00000ooooo0o0o, o0000ooo00oo000o0o00o, oo0oo00ooooo0000o00o0, o00000o0o0ooo0o0o0oo0, o0ooo0o00o0o00000ooo0
+        self.jiajioo000000oooo0oo00oo00.SetValue(48.0)
+        self.ooo0oo0o000000o00oooo_time.SetValue(55.0)
         self.jiajia_price.SetValue(700)
-        self.select_o0ooo000000oo0oooo00o.SetSelection(0)
+        self.select_ooo0oo0o000000o00oooo.SetSelection(0)
         self.yanchi_time.SetValue(0.5)
-        o000oo0ooo0o0o000oo00 = 48           
-        oo00000o0oo00o0o0o0o0 = 55           
-        o000ooooooooo000o00o0 = 700           
-        oo0oo00o00000oo00o000 = 0.5         
-        ooo0oooooo0o0ooo00ooo = 100            
-        global ooo0o0o0o00o000ooo0oo, ooo0o0ooo0000000o0o0o, o0o00ooo0ooo0o0o00o0o, o000oo0oo0ooo0ooooooo
-        ooo0o0o0o00o000ooo0oo = self.gettime(o000oo0ooo0o0o000oo00)
-        o0o00ooo0ooo0o0o00o0o = self.gettime(oo00000o0oo00o0o0o0o0)
-        ooo0o0ooo0000000o0o0o = self.gettime(oo0o0o0o000o0o00ooooo)
-        o000oo0oo0ooo0ooooooo = self.gettime(o00o0o0000oooo0000ooo)
-    def oooo0o0o00oo0oooo000o(self):
-        global o000oo0ooo0o0o000oo00, oo00000o0oo00o0o0o0o0, o000ooooooooo000o00o0, oo0oo00o00000oo00o000, ooo0oooooo0o0ooo00ooo
-        global oo0o0o0o000o0o00ooooo, o00o0o0000oooo0000ooo, ooo0000000000ooo00000, oo0ooo000o0oo0o00o0o0, ooo0ooo0ooo00oo0ooo0o
-        self.jiajioooo00o00oo0000oo0o0o.SetValue(40.0)
-        self.o0ooo000000oo0oooo00o_time.SetValue(48.0)
+        o00o00o00000ooooo0o0o = 48           
+        o0000ooo00oo000o0o00o = 55           
+        oo0oo00ooooo0000o00o0 = 700           
+        o00000o0o0ooo0o0o0oo0 = 0.5         
+        o0ooo0o00o0o00000ooo0 = 100            
+        global o0ooo0oo000oo00o000o0, o00oo0oo0o0ooooooo0oo, ooo00oo0000o00o0o00o0, oo00ooo0o0o00o0oo0oo0
+        o0ooo0oo000oo00o000o0 = self.gettime(o00o00o00000ooooo0o0o)
+        ooo00oo0000o00o0o00o0 = self.gettime(o0000ooo00oo000o0o00o)
+        o00oo0oo0o0ooooooo0oo = self.gettime(o000o000o0000ooo0o0o0)
+        oo00ooo0o0o00o0oo0oo0 = self.gettime(ooooo0o000oooo0o0ooo0)
+    def o0000oo0o0o00oo0000o0(self):
+        global o00o00o00000ooooo0o0o, o0000ooo00oo000o0o00o, oo0oo00ooooo0000o00o0, o00000o0o0ooo0o0o0oo0, o0ooo0o00o0o00000ooo0
+        global o000o000o0000ooo0o0o0, ooooo0o000oooo0o0ooo0, ooo0ooooo0o000oo0ooo0, o0o00oooo0o0ooo000oo0, oo0oo0oooo0ooo0oo0000
+        self.jiajioo000000oooo0oo00oo00.SetValue(40.0)
+        self.ooo0oo0o000000o00oooo_time.SetValue(48.0)
         self.jiajia_price.SetValue(500)
-        self.select_o0ooo000000oo0oooo00o.SetSelection(2)
+        self.select_ooo0oo0o000000o00oooo.SetSelection(2)
         self.yanchi_time.SetValue(0.0)
-        self.jiajioooo00o00oo0000oo0o0o2.SetValue(50.0)
-        self.o0ooo000000oo0oooo00o_time2.SetValue(55.5)
+        self.jiajioo000000oooo0oo00oo002.SetValue(50.0)
+        self.ooo0oo0o000000o00oooo_time2.SetValue(55.5)
         self.jiajia_price2.SetValue(700)
-        self.select_o0ooo000000oo0oooo00o2.SetSelection(0)
+        self.select_ooo0oo0o000000o00oooo2.SetSelection(0)
         self.yanchi_time2.SetValue(0.5)
-        o000oo0ooo0o0o000oo00 = 40           
-        oo00000o0oo00o0o0o0o0 = 48           
-        o000ooooooooo000o00o0 = 500           
-        oo0oo00o00000oo00o000 = 0.5         
-        ooo0oooooo0o0ooo00ooo = 0            
-        oo0o0o0o000o0o00ooooo = 50            
-        o00o0o0000oooo0000ooo = 55.5           
-        ooo0000000000ooo00000 = 700           
-        oo0ooo000o0oo0o00o0o0 = 0.5           
-        ooo0ooo0ooo00oo0ooo0o = 100              
-        global ooo0o0o0o00o000ooo0oo, ooo0o0ooo0000000o0o0o, o0o00ooo0ooo0o0o00o0o, o000oo0oo0ooo0ooooooo
-        ooo0o0o0o00o000ooo0oo = self.gettime(o000oo0ooo0o0o000oo00)
-        o0o00ooo0ooo0o0o00o0o = self.gettime(oo00000o0oo00o0o0o0o0)
-        ooo0o0ooo0000000o0o0o = self.gettime(oo0o0o0o000o0o00ooooo)
-        o000oo0oo0ooo0ooooooo = self.gettime(o00o0o0000oooo0000ooo)
-    def o0o0o00oooooo0o0o0000(self, event):
+        o00o00o00000ooooo0o0o = 40           
+        o0000ooo00oo000o0o00o = 48           
+        oo0oo00ooooo0000o00o0 = 500           
+        o00000o0o0ooo0o0o0oo0 = 0.5         
+        o0ooo0o00o0o00000ooo0 = 0            
+        o000o000o0000ooo0o0o0 = 50            
+        ooooo0o000oooo0o0ooo0 = 55.5           
+        ooo0ooooo0o000oo0ooo0 = 700           
+        o0o00oooo0o0ooo000oo0 = 0.5           
+        oo0oo0oooo0ooo0oo0000 = 100              
+        global o0ooo0oo000oo00o000o0, o00oo0oo0o0ooooooo0oo, ooo00oo0000o00o0o00o0, oo00ooo0o0o00o0oo0oo0
+        o0ooo0oo000oo00o000o0 = self.gettime(o00o00o00000ooooo0o0o)
+        ooo00oo0000o00o0o00o0 = self.gettime(o0000ooo00oo000o0o00o)
+        o00oo0oo0o0ooooooo0oo = self.gettime(o000o000o0000ooo0o0o0)
+        oo00ooo0o0o00o0oo0oo0 = self.gettime(ooooo0o000oooo0o0ooo0)
+    def o00o000o0o0ooo0o0o0o0(self, event):
         dlg = wx.TextEntryDialog(None, '设定你的策略名称:', "策略保存", "策略1",
                                  style=wx.OK)
         if dlg.ShowModal() == wx.ID_OK:
@@ -2130,48 +2132,48 @@ class OperationFrame(wx.Frame):
                     dlg_tip.Destroy()
                     dlg.Destroy()
     def save(self, name):
-        global o000oo0ooo0o0o000oo00, oo00000o0oo00o0o0o0o0, o000ooooooooo000o00o0, oo0oo00o00000oo00o000, ooo0oooooo0o0ooo00ooo
-        global oo0o0o0o000o0o00ooooo, o00o0o0000oooo0000ooo, ooo0000000000ooo00000, oo0ooo000o0oo0o00o0o0, ooo0ooo0ooo00oo0ooo0o
-        global osl, e_on, oooo0oooo0ooo000o0oo0          
+        global o00o00o00000ooooo0o0o, o0000ooo00oo000o0o00o, oo0oo00ooooo0000o00o0, o00000o0o0ooo0o0o0oo0, o0ooo0o00o0o00000ooo0
+        global o000o000o0000ooo0o0o0, ooooo0o000oooo0o0ooo0, ooo0ooooo0o000oo0ooo0, o0o00oooo0o0ooo000oo0, oo0oo0oooo0ooo0oo0000
+        global osl, e_on, o0ooo000o00oo0oooo0o0          
         if self.select_stractagy.GetSelection() == 2:
             dlg_tip = wx.MessageBox('请先制定一个策略', '策略保存', wx.OK | wx.ICON_ERROR)
             if dlg_tip == wx.ID_OK:
                 dlg_tip.Destroy()
         elif self.select_stractagy.GetSelection() == 0:
             osl[0] = 0
-            osl[1] = o000oo0ooo0o0o000oo00
-            osl[2] = oo00000o0oo00o0o0o0o0
-            osl[3] = o000ooooooooo000o00o0
-            osl[4] = oo0oo00o00000oo00o000
-            osl[5] = ooo0oooooo0o0ooo00ooo
-            osl[6] = oo0o0o0o000o0o00ooooo
-            osl[7] = o00o0o0000oooo0000ooo
-            osl[8] = ooo0000000000ooo00000
-            osl[9] = oo0ooo000o0oo0o00o0o0
-            osl[10] = ooo0ooo0ooo00oo0ooo0o
+            osl[1] = o00o00o00000ooooo0o0o
+            osl[2] = o0000ooo00oo000o0o00o
+            osl[3] = oo0oo00ooooo0000o00o0
+            osl[4] = o00000o0o0ooo0o0o0oo0
+            osl[5] = o0ooo0o00o0o00000ooo0
+            osl[6] = o000o000o0000ooo0o0o0
+            osl[7] = ooooo0o000oooo0o0ooo0
+            osl[8] = ooo0ooooo0o000oo0ooo0
+            osl[9] = o0o00oooo0o0ooo000oo0
+            osl[10] = oo0oo0oooo0ooo0oo0000
             osl[11] = e_on
-            osl[12] = oooo0oooo0ooo000o0oo0
+            osl[12] = o0ooo000o00oo0oooo0o0
         elif self.select_stractagy.GetSelection() == 1:
             osl[0] = 1
             osl[0] = 1
-            osl[1] = o000oo0ooo0o0o000oo00
-            osl[2] = oo00000o0oo00o0o0o0o0
-            osl[3] = o000ooooooooo000o00o0
-            osl[4] = oo0oo00o00000oo00o000
-            osl[5] = ooo0oooooo0o0ooo00ooo
-            osl[6] = oo0o0o0o000o0o00ooooo
-            osl[7] = o00o0o0000oooo0000ooo
-            osl[8] = ooo0000000000ooo00000
-            osl[9] = oo0ooo000o0oo0o00o0o0
-            osl[10] = ooo0ooo0ooo00oo0ooo0o
+            osl[1] = o00o00o00000ooooo0o0o
+            osl[2] = o0000ooo00oo000o0o00o
+            osl[3] = oo0oo00ooooo0000o00o0
+            osl[4] = o00000o0o0ooo0o0o0oo0
+            osl[5] = o0ooo0o00o0o00000ooo0
+            osl[6] = o000o000o0000ooo0o0o0
+            osl[7] = ooooo0o000oooo0o0ooo0
+            osl[8] = ooo0ooooo0o000oo0ooo0
+            osl[9] = o0o00oooo0o0ooo000oo0
+            osl[10] = oo0oo0oooo0ooo0oo0000
             osl[11] = e_on
-            osl[12] = oooo0oooo0ooo000o0oo0
-        with open('%s.oo0o000o00oo0000oo0o0' % name, 'wb') as spk:
+            osl[12] = o0ooo000o00oo0oooo0o0
+        with open('%s.o00ooo000oooo0oooo00o' % name, 'wb') as spk:
             pickle.dump(osl, spk)
-    def o000ooo0000oooo0ooooo(self, event):
+    def oooo00o0o0oooooooo0o0(self, event):
         import os
         path = os.getcwd()
-        choice = self.ooo0o000o0ooo0000o0o0(path)
+        choice = self.ooooo0oo0000o0ooo00oo(path)
         if choice:
             dlg = wx.SingleChoiceDialog(None, u"请选择策略:", u"策略载入",
                                         choices=choice)
@@ -2187,12 +2189,12 @@ class OperationFrame(wx.Frame):
             if dlg_tip == wx.ID_OK:
                 dlg_tip.Destroy()
     def load(self, path):
-        global osl, e_on, oooo0oooo0ooo000o0oo0
-        global o000oo0ooo0o0o000oo00, oo00000o0oo00o0o0o0o0, o000ooooooooo000o00o0, oo0oo00o00000oo00o000, ooo0oooooo0o0ooo00ooo
-        global oo0o0o0o000o0o00ooooo, o00o0o0000oooo0000ooo, ooo0000000000ooo00000, oo0ooo000o0oo0o00o0o0, ooo0ooo0ooo00oo0ooo0o
-        global oooooo000000ooo00oooo        
-        global twice, oooo00oo00o0o00000o00, oo00ooo0o000o00oo00o0, ooo000o00oo00o0oo0000, o000000000ooo0oooo00o, ooo000o00oo00o0oo0000e            
-        global ooo0o0o0o00o000ooo0oo, o0o00ooo0ooo0o0o00o0o, ooo0o0ooo0000000o0o0o, o000oo0oo0ooo0ooooooo
+        global osl, e_on, o0ooo000o00oo0oooo0o0
+        global o00o00o00000ooooo0o0o, o0000ooo00oo000o0o00o, oo0oo00ooooo0000o00o0, o00000o0o0ooo0o0o0oo0, o0ooo0o00o0o00000ooo0
+        global o000o000o0000ooo0o0o0, ooooo0o000oooo0o0ooo0, ooo0ooooo0o000oo0ooo0, o0o00oooo0o0ooo000oo0, oo0oo0oooo0ooo0oo0000
+        global oo00ooo0oo000o0oo0000        
+        global twice, o0000ooo000000ooo00o0, o0o0000oo000o00o0o0o0, ooo0ooo0o000o00oo000o, oo0000o00o0000oo00oo0, ooo0ooo0o000o00oo000oe            
+        global o0ooo0oo000oo00o000o0, ooo00oo0000o00o0o00o0, o00oo0oo0o0ooooooo0oo, oo00ooo0o0o00o0oo0oo0
         try:
             with open(path, 'rb') as loadstr:
                 osl = pickle.load(loadstr)
@@ -2201,108 +2203,108 @@ class OperationFrame(wx.Frame):
         if osl[0] == 0:      
             self.ss_Hide()
             twice = False
-            oooooo000000ooo00oooo = True
-            oo00ooo0o000o00oo00o0 = True
-            ooo000o00oo00o0oo0000 = False
-            oooo00oo00o0o00000o00 = 1       
-            o000000000ooo0oooo00o = False
-            ooo000o00oo00o0oo0000e = False        
+            oo00ooo0oo000o0oo0000 = True
+            o0o0000oo000o00o0o0o0 = True
+            ooo0ooo0o000o00oo000o = False
+            o0000ooo000000ooo00o0 = 1       
+            oo0000o00o0000oo00oo0 = False
+            ooo0ooo0o000o00oo000oe = False        
             self.select_stractagy.SetSelection(0)
-            self.jiajioooo00o00oo0000oo0o0o.SetValue(osl[1])
-            self.o0ooo000000oo0oooo00o_time.SetValue(osl[2])
+            self.jiajioo000000oooo0oo00oo00.SetValue(osl[1])
+            self.ooo0oo0o000000o00oooo_time.SetValue(osl[2])
             self.jiajia_price.SetValue(osl[3])
             self.yanchi_time.SetValue(osl[4])
             if osl[5] == 100:
-                self.select_o0ooo000000oo0oooo00o.SetSelection(0)
+                self.select_ooo0oo0o000000o00oooo.SetSelection(0)
             elif osl[5] == 200:
-                self.select_o0ooo000000oo0oooo00o.SetSelection(1)
+                self.select_ooo0oo0o000000o00oooo.SetSelection(1)
             else:
-                self.select_o0ooo000000oo0oooo00o.SetSelection(2)
-            o000oo0ooo0o0o000oo00 = osl[1]           
-            oo00000o0oo00o0o0o0o0 = osl[2]           
-            o000ooooooooo000o00o0 = osl[3]           
-            oo0oo00o00000oo00o000 = osl[4]         
-            ooo0oooooo0o0ooo00ooo = osl[5]            
+                self.select_ooo0oo0o000000o00oooo.SetSelection(2)
+            o00o00o00000ooooo0o0o = osl[1]           
+            o0000ooo00oo000o0o00o = osl[2]           
+            oo0oo00ooooo0000o00o0 = osl[3]           
+            o00000o0o0ooo0o0o0oo0 = osl[4]         
+            o0ooo0o00o0o00000ooo0 = osl[5]            
             e_on = osl[11]
-            oooo0oooo0ooo000o0oo0 = osl[12]
+            o0ooo000o00oo0oooo0o0 = osl[12]
             if e_on:
                 self.confirm_choice.SetSelection(0)
-            elif oooo0oooo0ooo000o0oo0:
+            elif o0ooo000o00oo0oooo0o0:
                 self.confirm_choice.SetSelection(1)
-            ooo0o0o0o00o000ooo0oo = self.gettime(o000oo0ooo0o0o000oo00)
-            o0o00ooo0ooo0o0o00o0o = self.gettime(oo00000o0oo00o0o0o0o0)
-            ooo0o0ooo0000000o0o0o = self.gettime(oo0o0o0o000o0o00ooooo)
-            o000oo0oo0ooo0ooooooo = self.gettime(o00o0o0000oooo0000ooo)
+            o0ooo0oo000oo00o000o0 = self.gettime(o00o00o00000ooooo0o0o)
+            ooo00oo0000o00o0o00o0 = self.gettime(o0000ooo00oo000o0o00o)
+            o00oo0oo0o0ooooooo0oo = self.gettime(o000o000o0000ooo0o0o0)
+            oo00ooo0o0o00o0oo0oo0 = self.gettime(ooooo0o000oooo0o0ooo0)
         elif osl[0] == 1:      
-            oooooo000000ooo00oooo = True
+            oo00ooo0oo000o0oo0000 = True
             twice = True
-            oo00ooo0o000o00oo00o0 = True
-            ooo000o00oo00o0oo0000 = False
-            oooo00oo00o0o00000o00 = 1       
-            o000000000ooo0oooo00o = False
-            ooo000o00oo00o0oo0000e = False        
-            self.oo000000o0ooo00000ooo()
+            o0o0000oo000o00o0o0o0 = True
+            ooo0ooo0o000o00oo000o = False
+            o0000ooo000000ooo00o0 = 1       
+            oo0000o00o0000oo00oo0 = False
+            ooo0ooo0o000o00oo000oe = False        
+            self.oo000oo0oooooo00ooo00()
             self.select_stractagy.SetSelection(1)
-            self.jiajioooo00o00oo0000oo0o0o.SetValue(osl[1])
-            self.o0ooo000000oo0oooo00o_time.SetValue(osl[2])
+            self.jiajioo000000oooo0oo00oo00.SetValue(osl[1])
+            self.ooo0oo0o000000o00oooo_time.SetValue(osl[2])
             self.jiajia_price.SetValue(osl[3])
             self.yanchi_time.SetValue(osl[4])
             if osl[5] == 100:
-                self.select_o0ooo000000oo0oooo00o.SetSelection(0)
+                self.select_ooo0oo0o000000o00oooo.SetSelection(0)
             elif osl[5] == 200:
-                self.select_o0ooo000000oo0oooo00o.SetSelection(1)
+                self.select_ooo0oo0o000000o00oooo.SetSelection(1)
             else:
-                self.select_o0ooo000000oo0oooo00o.SetSelection(2)
-            self.jiajioooo00o00oo0000oo0o0o2.SetValue(osl[6])
-            self.o0ooo000000oo0oooo00o_time2.SetValue(osl[7])
+                self.select_ooo0oo0o000000o00oooo.SetSelection(2)
+            self.jiajioo000000oooo0oo00oo002.SetValue(osl[6])
+            self.ooo0oo0o000000o00oooo_time2.SetValue(osl[7])
             self.jiajia_price2.SetValue(osl[8])
             self.yanchi_time2.SetValue(osl[9])
             if osl[10] == 100:
-                self.select_o0ooo000000oo0oooo00o2.SetSelection(0)
+                self.select_ooo0oo0o000000o00oooo2.SetSelection(0)
             elif osl[10] == 200:
-                self.select_o0ooo000000oo0oooo00o2.SetSelection(1)
+                self.select_ooo0oo0o000000o00oooo2.SetSelection(1)
             else:
-                self.select_o0ooo000000oo0oooo00o2.SetSelection(2)
-            o000oo0ooo0o0o000oo00 = osl[1]           
-            oo00000o0oo00o0o0o0o0 = osl[2]           
-            o000ooooooooo000o00o0 = osl[3]           
-            oo0oo00o00000oo00o000 = osl[4]         
-            ooo0oooooo0o0ooo00ooo = osl[5]            
-            oo0o0o0o000o0o00ooooo = osl[6]            
-            o00o0o0000oooo0000ooo = osl[7]           
-            ooo0000000000ooo00000 = osl[8]           
-            oo0ooo000o0oo0o00o0o0 = osl[9]           
-            ooo0ooo0ooo00oo0ooo0o = osl[10]              
+                self.select_ooo0oo0o000000o00oooo2.SetSelection(2)
+            o00o00o00000ooooo0o0o = osl[1]           
+            o0000ooo00oo000o0o00o = osl[2]           
+            oo0oo00ooooo0000o00o0 = osl[3]           
+            o00000o0o0ooo0o0o0oo0 = osl[4]         
+            o0ooo0o00o0o00000ooo0 = osl[5]            
+            o000o000o0000ooo0o0o0 = osl[6]            
+            ooooo0o000oooo0o0ooo0 = osl[7]           
+            ooo0ooooo0o000oo0ooo0 = osl[8]           
+            o0o00oooo0o0ooo000oo0 = osl[9]           
+            oo0oo0oooo0ooo0oo0000 = osl[10]              
             e_on = osl[11]
-            oooo0oooo0ooo000o0oo0 = osl[12]
+            o0ooo000o00oo0oooo0o0 = osl[12]
             if e_on:
                 self.confirm_choice.SetSelection(0)
-            elif oooo0oooo0ooo000o0oo0:
+            elif o0ooo000o00oo0oooo0o0:
                 self.confirm_choice.SetSelection(1)
-            ooo0o0o0o00o000ooo0oo = self.gettime(o000oo0ooo0o0o000oo00)
-            o0o00ooo0ooo0o0o00o0o = self.gettime(oo00000o0oo00o0o0o0o0)
-            ooo0o0ooo0000000o0o0o = self.gettime(oo0o0o0o000o0o00ooooo)
-            o000oo0oo0ooo0ooooooo = self.gettime(o00o0o0000oooo0000ooo)
-    def ooo0o000o0ooo0000o0o0(self, path):
+            o0ooo0oo000oo00o000o0 = self.gettime(o00o00o00000ooooo0o0o)
+            ooo00oo0000o00o0o00o0 = self.gettime(o0000ooo00oo000o0o00o)
+            o00oo0oo0o0ooooooo0oo = self.gettime(o000o000o0000ooo0o0o0)
+            oo00ooo0o0o00o0oo0oo0 = self.gettime(ooooo0o000oooo0o0ooo0)
+    def ooooo0oo0000o0ooo00oo(self, path):
         L = []
         for root, dirs, files in os.walk(path):
             for file in files:
-                if os.path.splitext(file)[1] == '.oo0o000o00oo0000oo0o0':
+                if os.path.splitext(file)[1] == '.o00ooo000oooo0oooo00o':
                     L.append(os.path.join(root, file))
         return L
-    def ooo00o0oo0oo00o00ooo0(self, event):
+    def o000o00o0oo0oooo0o0o0(self, event):
         pass
-    def o00000000000o000oo000(self, a):          
+    def o0ooo000ooooooo0o000o(self, a):          
         final_time = time.mktime(time.strptime(a, '%Y-%m-%d %H:%M:%S'))
         return final_time          
-    def oo000o0000ooo000000oo(self):
+    def o00000o0000000oo0o0o0(self):
         tem1 = time.time()
         a = time.strftime('%Y-%m-%d', time.localtime(tem1))
         return a             
     def gettime(self, choice):                          
-        tem = self.oo000o0000ooo000000oo()
+        tem = self.o00000o0000000oo0o0o0()
         b = tem + ' 11:29:' + str(int(choice))
-        c = self.o00000000000o000oo000(b) + float(choice) - int(choice)
+        c = self.o0ooo000ooooooo0o000o(b) + float(choice) - int(choice)
         return c                 
 class LowestpriceWindow(wx.Panel):
     def __init__(self, parent):
@@ -2312,8 +2314,8 @@ class LowestpriceWindow(wx.Panel):
         self.Bind(wx.EVT_TIMER, self.OnTimer, self.timer)             
         self.timer.Start(100)          
     def Draw(self, dc):          
-        global o0000o0o0000000o00o0o
-        st = str(o0000o0o0000000o00o0o)
+        global o0oo0ooo0o00oo00o0o00
+        st = str(o0oo0ooo0o00oo00o0o00)
         w, h = self.GetClientSize()
         dc.SetBackground(wx.Brush(self.GetBackgroundColour()))
         dc.Clear()
@@ -2321,8 +2323,8 @@ class LowestpriceWindow(wx.Panel):
         tw, th = dc.GetTextExtent(st)
         dc.DrawText(st, (w - tw) / 2, (h) / 2 - th / 2)
     def Modify(self, dc):      
-        global o0000o0o0000000o00o0o
-        st = str(o0000o0o0000000o00o0o)
+        global o0oo0ooo0o00oo00o0o00
+        st = str(o0oo0ooo0o00oo00o0o00)
         w, h = self.GetClientSize()
         dc.SetBackground(wx.Brush(self.GetBackgroundColour()))
         dc.Clear()
@@ -2337,7 +2339,7 @@ class LowestpriceWindow(wx.Panel):
         self.Draw(dc)
 class LowestpriceFrame(wx.Frame):
     def __init__(self):
-        wx.Frame.__init__(self, None, title="wx.Timer", size=(200, 50), pos=o0o00o0000o0oo0o00o00frame_pos,
+        wx.Frame.__init__(self, None, title="wx.Timer", size=(200, 50), pos=ooo00o0oo00oo0ooo0o00frame_pos,
                           style=wx.FRAME_TOOL_WINDOW | wx.STAY_ON_TOP)
         LowestpriceWindow(self)
 import string
@@ -2381,7 +2383,7 @@ class LoginFrame(wx.Frame):
         self.loginbtn.Bind(wx.EVT_BUTTON, self.OnLogin, self.loginbtn)
         self.purchaselink = hyperlink.HyperLinkCtrl(self.panel, -1, u"购买账号")
         self.purchaselink.UnsetToolTip()
-        self.purchaselink.Bind(hyperlink.EVT_HYPERLINK_LEFT, self.oo0o00o00o00o0o00o000)
+        self.purchaselink.Bind(hyperlink.EVT_HYPERLINK_LEFT, self.o0000oo0o0o000oo0oo0o)
         self.purchaselink.AutoBrowse(False)
         self.purchaselink.EnableRollover(True)
         self.purchaselink.SetUnderlines(False, False, True)
@@ -2389,7 +2391,7 @@ class LoginFrame(wx.Frame):
         self.purchaselink.UpdateLink()
         self.helplink = hyperlink.HyperLinkCtrl(self.panel, -1, u"查看帮助")
         self.helplink.UnsetToolTip()
-        self.helplink.Bind(hyperlink.EVT_HYPERLINK_LEFT, self.oo0o00o00o00o0o00o000)
+        self.helplink.Bind(hyperlink.EVT_HYPERLINK_LEFT, self.o0000oo0o0o000oo0oo0o)
         self.helplink.AutoBrowse(False)
         self.helplink.EnableRollover(True)
         self.helplink.SetUnderlines(False, False, True)
@@ -2401,31 +2403,31 @@ class LoginFrame(wx.Frame):
         self.sizer_v1.Add(self.linkbox, flag=wx.ALIGN_CENTER | wx.ALL, border=5)
         self.SetSizer(self.sizer_v1)
         self.Center()         
-        pub.subscribe(self.o0oo0oooooooo0oo0o0o0, "connect")
+        pub.subscribe(self.oo00ooooo0oooo0o0o0oo, "connect")
         self.hashthread = HashThread()
-    def o0oo0oooooooo0oo0o0o0(self):
+    def oo00ooooo0oooo0o0o0oo(self):
         self.loginbtn.Enable()
-        global o0o00o00ooo000o0o00o0, url2, url3          
-        if o0o00o00ooo000o0o00o0['result'] == 'login success':
+        global oo00oooo0o00oooo0o0o0, url2, url3          
+        if oo00oooo0o00oooo0o0o0['result'] == 'login success':
             self.Destroy()
             self.topframe = TopFrame('小鲜肉拍牌', version)
             self.topframe.Show(True)
-            if oo000oo0oooo00ooo000o == 'helong' or oo000oo0oooo00ooo000o == 'yuanjunkai' or oo000oo0oooo00ooo000o == 'zs':
+            if ooo0000oo00ooooo00oo0 == 'helong' or ooo0000oo00ooooo00oo0 == 'yuanjunkai' or ooo0000oo00ooooo00oo0 == 'zs':
                 url2 = 'http://moni.51hupai.org/'
             else:
-                url2 = o0o00o00ooo000o0o00o0['url_dianxin']
-            url3 = o0o00o00ooo000o0o00o0['url_nodianxin']
-        elif o0o00o00ooo000o0o00o0['result'] == 'net error':
+                url2 = oo00oooo0o00oooo0o0o0['url_dianxin']
+            url3 = oo00oooo0o00oooo0o0o0['url_nodianxin']
+        elif oo00oooo0o00oooo0o0o0['result'] == 'net error':
             wx.MessageBox('连接服务器失败', '用户登录', wx.OK | wx.ICON_ERROR)
-        elif o0o00o00ooo000o0o00o0['result'] == 'repeat':
+        elif oo00oooo0o00oooo0o0o0['result'] == 'repeat':
             wx.MessageBox('重复登录，稍后再试', '用户登录', wx.OK | wx.ICON_ERROR)
-        elif o0o00o00ooo000o0o00o0['result'] == 'wrong account':
+        elif oo00oooo0o00oooo0o0o0['result'] == 'wrong account':
             wx.MessageBox('账号错误', '用户登录', wx.OK | wx.ICON_ERROR)
-        elif o0o00o00ooo000o0o00o0['result'] == 'wrong password':
+        elif oo00oooo0o00oooo0o0o0['result'] == 'wrong password':
             wx.MessageBox('密码错误', '用户登录', wx.OK | wx.ICON_ERROR)
         else:
             wx.MessageBox('登录失败', '用户登录', wx.OK | wx.ICON_ERROR)
-    def ooo0000000o0oo0oo0o00(self, event):
+    def oo0o0oo0o000oo00o0o0o(self, event):
         dc = event.GetDC()
         if not dc:
             dc = wx.ClientDC(self)
@@ -2438,7 +2440,7 @@ class LoginFrame(wx.Frame):
         event.Skip()
         sys.exit(None)
     def OnLogin(self, event):
-        global oo000oo0oooo00ooo000o, o0oooo0oooo0000oooo00
+        global ooo0000oo00ooooo00oo0, ooo00000o0oo0oooooo0o
         username = self.userText.GetValue()
         password = self.passText.GetValue()
         if username == "":
@@ -2448,17 +2450,17 @@ class LoginFrame(wx.Frame):
             wx.MessageBox('请输入密码！')
             self.passText.SetFocus()
         else:
-            oo000oo0oooo00ooo000o = username               
-            o0oooo0oooo0000oooo00 = password
+            ooo0000oo00ooooo00oo0 = username               
+            ooo00000o0oo0oooooo0o = password
             self.loginthread = LoginThread()
             namepsd = [username, password]
             with open('your.name', 'wb') as userfile:
                 pickle.dump(namepsd, userfile)
             event.GetEventObject().Disable()
-    def oo0o00o00o00o0o00o000(self, event):
+    def o0000oo0o0o000oo0oo0o(self, event):
         print("购买")
 class UserValidator(wx.Validator):
-    ''' o0o00o000o0o00ooo00o0s data as it is entered into the text controls. '''
+    ''' o0o000oo00o000o000o00s data as it is entered into the text controls. '''
     def __init__(self, flag):
         wx.Validator.__init__(self)
         self.flag = flag
@@ -2466,27 +2468,27 @@ class UserValidator(wx.Validator):
     def Clone(self):
         '''Required Validator method'''
         return UserValidator(self.flag)
-    def o0o00o000o0o00ooo00o0(self, win):
+    def o0o000oo00o000o000o00(self, win):
         return True
-    def o0o0o00oo000o0o000o00(self):
+    def oo0o0o000oo000o0o0ooo(self):
         return True
-    def oo0o00ooo000oo000oo0o(self):
+    def ooo0o00o0oooo0ooo00oo(self):
         return True
     def OnChar(self, event):
         pass
 class PassValidator(wx.Validator):
-    ''' o0o00o000o0o00ooo00o0s data as it is entered into the text controls. '''
+    ''' o0o000oo00o000o000o00s data as it is entered into the text controls. '''
     def __init__(self):
         wx.Validator.__init__(self)
         self.Bind(wx.EVT_CHAR, self.OnChar)
     def Clone(self):
         '''Required Validator method'''
         return PassValidator()
-    def o0o00o000o0o00ooo00o0(self, win):
+    def o0o000oo00o000o000o00(self, win):
         return True
-    def o0o0o00oo000o0o000o00(self):
+    def oo0o0o000oo000o0o0ooo(self):
         return True
-    def oo0o00ooo000oo000oo0o(self):
+    def ooo0o00o0oooo0ooo00oo(self):
         return True
     def OnChar(self, event):
         pass
@@ -2500,15 +2502,15 @@ class TimeThread(Thread):
         self.start()                    
     def run(self):
         """Run Worker Thread."""
-        global oooo00o00oo0000oo0o0o, o0oo0ooo000oo0oo00oo0
+        global oo000000oooo0oo00oo00, oo0oo0ooo000000oo0000
         for i in range(1000000):
             a = time.clock()
             time.sleep(0.1)
             b = time.clock()
-            oooo00o00oo0000oo0o0o += b - a                
-            o0oo0ooo000oo0oo00oo0 += b - a
-            if o0oo0ooo000oo0oo00oo0 >= 60:
-                o0oo0ooo000oo0oo00oo0 = 0
+            oo000000oooo0oo00oo00 += b - a                
+            oo0oo0ooo000000oo0000 += b - a
+            if oo0oo0ooo000000oo0000 >= 60:
+                oo0oo0ooo000000oo0000 = 0
 class OpenwebThread(Thread):
     def __init__(self, url):
         """Init Worker Thread Class."""
@@ -2527,14 +2529,14 @@ class DeleteThread(Thread):
         self.start()                    
     def run(self):
         """Run Worker Thread."""
-        Click2(o000o0oo000o000o0o00o[6][0] + 17, o000o0oo000o000o0o00o[6][1])
+        Click2(oo0o0oo0o0o0oo00o0oo0[6][0] + 17, oo0o0oo0o0o0oo00o0oo0[6][1])
         for i in range(15):
             Delete()
-        if ooooo00o000o0o00oo0o0:
-            o0oo0000o000o0o0oo000()
+        if ooo0o0000oo0oo0o00ooo:
+            oo0o00o0ooo0o00oooooo()
         else:
             Paste()      
-        Click(o000o0oo000o000o0o00o[1][0], o000o0oo000o000o0o00o[1][1])
+        Click(oo0o0oo0o0o0oo00o0oo0[1][0], oo0o0oo0o0o0oo00o0oo0[1][1])
 class HashThread(Thread):
     def __init__(self):
         """Init Worker Thread Class."""
@@ -2552,22 +2554,22 @@ class HashThread(Thread):
             winreg.SetValueEx(key, '%s'%name, 0, winreg.REG_DWORD, 0x00002710)                    
         except:
             print('error in set value!')
-class o00ooo0oo00o0oo00o0o0Thread(Thread):
+class oooooo0o0oooo0o0o0o0oThread(Thread):
     def __init__(self):
         Thread.__init__(self)
         self.setDaemon(True)
         self.start()
     def run(self):
         for i in range(1000000):
-            global o0oo00o0000000000o0oo
-            if o0oo00o0000000000o0oo:
+            global oooo0oo0ooooooo000o0o
+            if oooo0oo0ooooooo000o0o:
                 try:
                     print("找着呢")
-                    o00ooo0oo00o0oo00o0o0()      
+                    oooooo0o0oooo0o0o0o0o()      
                     time.sleep(0.1)          
                 except:
-                    logging.error("o00ooo0oo00o0oo00o0o0thread error")
-                    print("o00ooo0oo00o0oo00o0o0thread error")
+                    logging.error("oooooo0o0oooo0o0o0o0othread error")
+                    print("oooooo0o0oooo0o0o0o0othread error")
 class confirmThread(threading.Thread):
     def __init__(self, *args, **kwargs):
         super(confirmThread, self).__init__(*args, **kwargs)
@@ -2580,11 +2582,11 @@ class confirmThread(threading.Thread):
     def run(self):
         while self.__running.isSet():
             self.__flag.wait()                                         
-            time.sleep(0.05)
-            global oooo00oo00o0o00000o00
-            if oooo00oo00o0o00000o00 == 2:
+            time.sleep(0.035)
+            global o0000ooo000000ooo00o0
+            if o0000ooo000000ooo00o0 == 2:
                 try:
-                    oooo00o00o00ooo00oo00()
+                    oo0oooooo0o0000000o00()
                 except:
                     print("查找确认出错")
     def pause(self):
@@ -2594,9 +2596,9 @@ class confirmThread(threading.Thread):
     def stop(self):
         self.__flag.set()                        
         self.__running.clear()            
-class oo0o0000o000ooo0000ooThread(Thread):
+class o0oo0o0oo000ooo0oooooThread(Thread):
     def __init__(self, *args, **kwargs):
-        super(oo0o0000o000ooo0000ooThread, self).__init__(*args, **kwargs)
+        super(o0oo0o0oo000ooo0oooooThread, self).__init__(*args, **kwargs)
         self.__flag = threading.Event()             
         self.__flag.set()           
         self.__running = threading.Event()             
@@ -2607,9 +2609,9 @@ class oo0o0000o000ooo0000ooThread(Thread):
         while self.__running.isSet():
             self.__flag.wait()                                         
             logging.info("刷")
-            time.sleep(0.05)
+            time.sleep(0.035)
             try:
-                oo0o00oo000o0ooooooo0()
+                oo0000o00000000o0oo00()
             except:
                 print("刷新失败")
     def pause(self):
@@ -2650,9 +2652,9 @@ class LoginThread(Thread):
         self.setDaemon(True)
         self.start()                    
     def run(self):
-        global oo000oo0oooo00ooo000o, o0o00o00ooo000o0o00o0
-        o0o00o00ooo000o0o00o0 = o000oo0000o0oo0o000o0()
-        print(o0o00o00ooo000o0o00o0)
+        global ooo0000oo00ooooo00oo0, oo00oooo0o00oooo0o0o0
+        oo00oooo0o00oooo0o0o0 = o000oo0oooo00o0000oo0()
+        print(oo00oooo0o00oooo0o0o0)
         wx.CallAfter(pub.sendMessage, "connect")
 class controlThread(Thread):
     def __init__(self):
@@ -2672,7 +2674,7 @@ class KeepThread(Thread):
     def run(self):
         for i in range(1000000):
             time.sleep(90)
-            ooo0ooooo0o00oooo0000()
+            o000000000o0ooooo0oo0()
 class TijiaoThread(Thread):
     def __init__(self):
         """Init Worker Thread Class."""
@@ -2680,51 +2682,51 @@ class TijiaoThread(Thread):
         self.setDaemon(True)
         self.start()                    
     def run(self):
-        global oo0oo0oooo00oo00oo00o, oo0oo0oooo00oo0ooo00o, o0ooo00ooooo00ooooo0o, o0000o0o0000000o00o0o, o0ooo0ooo00o0o0o0o0oo, o0oo000o000000oo00000
-        global o0oo0ooo000oo0oo00oo0, oooooo000000ooo00oooo, ooooo00o000o0o00oo0o0, ooo000o00oo00o0oo0000, o000000000ooo0oooo00o, ooo0o0ooo0000000o0o0o, o000oo0oo0ooo0ooooooo
-        global ooo0oooooo0o0ooo00ooo, ooo0ooo0ooo00oo0ooo0o, oooo00oo00o0o00000o00, o000000000ooo0oooo00o, oo00ooo0o000o00oo00o0, ooo000o00oo00o0oo0000, ooo000o00oo00o0oo0000e
+        global oo000ooooo00ooo0ooooo, oooooo0000o0o00o0000o, o0ooo00ooo0o0o00o00oo, o0oo0ooo0o00oo00o0o00, oo000oo00o0oo0o0000oo, oooooo0o0000o0o0oo0o0
+        global oo0oo0ooo000000oo0000, oo00ooo0oo000o0oo0000, ooo0o0000oo0oo0o00ooo, ooo0ooo0o000o00oo000o, oo0000o00o0000oo00oo0, o00oo0oo0o0ooooooo0oo, oo00ooo0o0o00o0oo0oo0
+        global o0ooo0o00o0o00000ooo0, oo0oo0oooo0ooo0oo0000, o0000ooo000000ooo00o0, oo0000o00o0000oo00oo0, o0o0000oo000o00o0o0o0, ooo0ooo0o000o00oo000o, ooo0ooo0o000o00oo000oe
         for i in range(10000000):
             time.sleep(0.05)              
-            if ooo000o00oo00o0oo0000 and oooooo000000ooo00oooo and oooooo00o000o00o000oo and o000000000ooo0oooo00o:                       
-                if oooo00oo00o0o00000o00 == 1 and oooo00o00oo0000oo0o0o >= o0o00ooo0ooo0o0o00o0o and not ooo000o00oo00o0oo0000e:            
-                    ooo000o00oo00o0oo0000 = False
-                    TopFrame.oo0000o0oo0000o0o0o0o()        
-                    ooo000o00oo00o0oo0000 = False
-                    logging.info("Rone_o0ooo000000oo0oooo00o %s%s%s%s" % (ooo000o00oo00o0oo0000, oooooo000000ooo00oooo, oooooo00o000o00o000oo, o000000000ooo0oooo00o))
-                    logging.info("Rone_o0ooo000000oo0oooo00o %s%s%s" % (oooo00oo00o0o00000o00, oooo00o00oo0000oo0o0o, o0o00ooo0ooo0o0o00o0o))
-                    ooo000o00oo00o0oo0000e = True
-                elif oooo00oo00o0o00000o00 == 2 and oooo00o00oo0000oo0o0o >= o000oo0oo0ooo0ooooooo:            
-                    ooo000o00oo00o0oo0000 = False
-                    TopFrame.oo0000o0oo0000o0o0o0o()        
-                    ooo000o00oo00o0oo0000 = False
-                    logging.info("Rsecond_o0ooo000000oo0oooo00o %s%s%s%s" % (ooo000o00oo00o0oo0000, oooooo000000ooo00oooo, oooooo00o000o00o000oo, o000000000ooo0oooo00o))
-                    logging.info("Rsecond_o0ooo000000oo0oooo00o %s%s%s" % (oooo00oo00o0o00000o00, oooo00o00oo0000oo0o0o, o000oo0oo0ooo0ooooooo))
-                elif oooo00oo00o0o00000o00 == 1 and o0000o0o0000000o00o0o >= o0ooo0ooo00o0o0o0o0oo - 300 - ooo0oooooo0o0ooo00ooo and oooo00o00oo0000oo0o0o <= o0o00ooo0ooo0o0o00o0o - oo0oo00o00000oo00o000 and not ooo000o00oo00o0oo0000e:        
-                    ooo000o00oo00o0oo0000 = False
-                    ooo000o00oo00o0oo0000 = False                        
-                    TopFrame.o0oo0ooooo000o0oooo00()        
-                    logging.info("Rone_o0ooo000000oo0oooo00o %s%s%s%s" % (ooo000o00oo00o0oo0000, oooooo000000ooo00oooo, oooooo00o000o00o000oo, o000000000ooo0oooo00o))
-                    logging.info("Rone_o0ooo000000oo0oooo00o %s%s%s" % (oooo00oo00o0o00000o00, o0000o0o0000000o00o0o, o0ooo0ooo00o0o0o0o0oo))
-                    ooo000o00oo00o0oo0000e = True
-                elif oooo00oo00o0o00000o00 == 2 and o0000o0o0000000o00o0o >= o0oo000o000000oo00000 - 300 - ooo0ooo0ooo00oo0ooo0o and oooo00o00oo0000oo0o0o <= o000oo0oo0ooo0ooooooo - oo0ooo000o0oo0o00o0o0:        
-                    ooo000o00oo00o0oo0000 = False
-                    ooo000o00oo00o0oo0000 = False                        
-                    TopFrame.o0oo0ooooo000o0oooo00()        
-                    logging.info("Rsecond_o0ooo000000oo0oooo00o %s%s%s%s" % (ooo000o00oo00o0oo0000, oooooo000000ooo00oooo, oooooo00o000o00o000oo, o000000000ooo0oooo00o))
-                    logging.info("Rsecond_o0ooo000000oo0oooo00o %s%s%s" % (oooo00oo00o0o00000o00, o0000o0o0000000o00o0o, o0oo000o000000oo00000))
-            if oooooo000000ooo00oooo and oooooo00o000o00o000oo and oo00ooo0o000o00oo00o0:                       
-                if oooo00oo00o0o00000o00 == 1 and ooo0o0o0o00o000ooo0oo <= oooo00o00oo0000oo0o0o <= ooo0o0o0o00o000ooo0oo + 0.6:            
-                    TopFrame.o0ooo0oo00oooooo00000()        
-                    o0ooo0ooo00o0o0o0o0oo = o0000o0o0000000o00o0o + o000ooooooooo000o00o0
-                    ooo000o00oo00o0oo0000 = True   
-                    logging.info("Rone_oo000oo0o000000o0o0oo %s%s" % (oooooo000000ooo00oooo, oooooo00o000o00o000oo))
-                    logging.info("Rone_oo000oo0o000000o0o0oo %s%s" % (o000oo0ooo0o0o000oo00, ooo0o0o0o00o000ooo0oo))
-                elif oooo00oo00o0o00000o00 == 2 and twice and ooo0o0ooo0000000o0o0o <= oooo00o00oo0000oo0o0o:            
-                    TopFrame.o0ooo0oo00oooooo00000()        
-                    o0oo000o000000oo00000 = o0000o0o0000000o00o0o + ooo0000000000ooo00000
-                    ooo000o00oo00o0oo0000 = True
-                    logging.info("Rsecond_oo000oo0o000000o0o0oo %s%s" % (oooooo000000ooo00oooo, oooooo00o000o00o000oo))
-                    logging.info("Rsecond_oo000oo0o000000o0o0oo %s%s" % (oo0o0o0o000o0o00ooooo, ooo0o0ooo0000000o0o0o))
+            if ooo0ooo0o000o00oo000o and oo00ooo0oo000o0oo0000 and oooo000000o00o00oo0oo and oo0000o00o0000oo00oo0:                       
+                if o0000ooo000000ooo00o0 == 1 and oo000000oooo0oo00oo00 >= ooo00oo0000o00o0o00o0 and not ooo0ooo0o000o00oo000oe:            
+                    ooo0ooo0o000o00oo000o = False
+                    TopFrame.oo0o0oo0000o0000o0000()        
+                    ooo0ooo0o000o00oo000o = False
+                    logging.info("Rone_ooo0oo0o000000o00oooo %s%s%s%s" % (ooo0ooo0o000o00oo000o, oo00ooo0oo000o0oo0000, oooo000000o00o00oo0oo, oo0000o00o0000oo00oo0))
+                    logging.info("Rone_ooo0oo0o000000o00oooo %s%s%s" % (o0000ooo000000ooo00o0, oo000000oooo0oo00oo00, ooo00oo0000o00o0o00o0))
+                    ooo0ooo0o000o00oo000oe = True
+                elif o0000ooo000000ooo00o0 == 2 and oo000000oooo0oo00oo00 >= oo00ooo0o0o00o0oo0oo0:            
+                    ooo0ooo0o000o00oo000o = False
+                    TopFrame.oo0o0oo0000o0000o0000()        
+                    ooo0ooo0o000o00oo000o = False
+                    logging.info("Rsecond_ooo0oo0o000000o00oooo %s%s%s%s" % (ooo0ooo0o000o00oo000o, oo00ooo0oo000o0oo0000, oooo000000o00o00oo0oo, oo0000o00o0000oo00oo0))
+                    logging.info("Rsecond_ooo0oo0o000000o00oooo %s%s%s" % (o0000ooo000000ooo00o0, oo000000oooo0oo00oo00, oo00ooo0o0o00o0oo0oo0))
+                elif o0000ooo000000ooo00o0 == 1 and o0oo0ooo0o00oo00o0o00 >= oo000oo00o0oo0o0000oo - 300 - o0ooo0o00o0o00000ooo0 and oo000000oooo0oo00oo00 <= ooo00oo0000o00o0o00o0 - o00000o0o0ooo0o0o0oo0 and not ooo0ooo0o000o00oo000oe:        
+                    ooo0ooo0o000o00oo000o = False
+                    ooo0ooo0o000o00oo000o = False                        
+                    TopFrame.o00ooo000o0o00oo00000()        
+                    logging.info("Rone_ooo0oo0o000000o00oooo %s%s%s%s" % (ooo0ooo0o000o00oo000o, oo00ooo0oo000o0oo0000, oooo000000o00o00oo0oo, oo0000o00o0000oo00oo0))
+                    logging.info("Rone_ooo0oo0o000000o00oooo %s%s%s" % (o0000ooo000000ooo00o0, o0oo0ooo0o00oo00o0o00, oo000oo00o0oo0o0000oo))
+                    ooo0ooo0o000o00oo000oe = True
+                elif o0000ooo000000ooo00o0 == 2 and o0oo0ooo0o00oo00o0o00 >= oooooo0o0000o0o0oo0o0 - 300 - oo0oo0oooo0ooo0oo0000 and oo000000oooo0oo00oo00 <= oo00ooo0o0o00o0oo0oo0 - o0o00oooo0o0ooo000oo0:        
+                    ooo0ooo0o000o00oo000o = False
+                    ooo0ooo0o000o00oo000o = False                        
+                    TopFrame.o00ooo000o0o00oo00000()        
+                    logging.info("Rsecond_ooo0oo0o000000o00oooo %s%s%s%s" % (ooo0ooo0o000o00oo000o, oo00ooo0oo000o0oo0000, oooo000000o00o00oo0oo, oo0000o00o0000oo00oo0))
+                    logging.info("Rsecond_ooo0oo0o000000o00oooo %s%s%s" % (o0000ooo000000ooo00o0, o0oo0ooo0o00oo00o0o00, oooooo0o0000o0o0oo0o0))
+            if oo00ooo0oo000o0oo0000 and oooo000000o00o00oo0oo and o0o0000oo000o00o0o0o0:                       
+                if o0000ooo000000ooo00o0 == 1 and o0ooo0oo000oo00o000o0 <= oo000000oooo0oo00oo00 <= o0ooo0oo000oo00o000o0 + 0.6:            
+                    TopFrame.o0o00oo0o0000ooo0000o()        
+                    oo000oo00o0oo0o0000oo = o0oo0ooo0o00oo00o0o00 + oo0oo00ooooo0000o00o0
+                    ooo0ooo0o000o00oo000o = True   
+                    logging.info("Rone_o00o0ooooooo0oo0ooo00 %s%s" % (oo00ooo0oo000o0oo0000, oooo000000o00o00oo0oo))
+                    logging.info("Rone_o00o0ooooooo0oo0ooo00 %s%s" % (o00o00o00000ooooo0o0o, o0ooo0oo000oo00o000o0))
+                elif o0000ooo000000ooo00o0 == 2 and twice and o00oo0oo0o0ooooooo0oo <= oo000000oooo0oo00oo00:            
+                    TopFrame.o0o00oo0o0000ooo0000o()        
+                    oooooo0o0000o0o0oo0o0 = o0oo0ooo0o00oo00o0o00 + ooo0ooooo0o000oo0ooo0
+                    ooo0ooo0o000o00oo000o = True
+                    logging.info("Rsecond_o00o0ooooooo0oo0ooo00 %s%s" % (oo00ooo0oo000o0oo0000, oooo000000o00o00oo0oo))
+                    logging.info("Rsecond_o00o0ooooooo0oo0ooo00 %s%s" % (o000o000o0000ooo0o0o0, o00oo0oo0o0ooooooo0oo))
 class MoniTijiaoThread(Thread):
     def __init__(self):
         """Init Worker Thread Class."""
@@ -2732,48 +2734,48 @@ class MoniTijiaoThread(Thread):
         self.setDaemon(True)
         self.start()                    
     def run(self):
-        global o0oo0ooo000oo0oo00oo0, oooooo000000ooo00oooo, ooooo00o000o0o00oo0o0, ooo000o00oo00o0oo0000, o0ooo0ooo00o0o0o0o0oo, o0oo000o000000oo00000, o000ooooooooo000o00o0, ooo0000000000ooo00000
-        global oooo00oo00o0o00000o00, o000000000ooo0oooo00o, ooo0oooooo0o0ooo00ooo, ooo0ooo0ooo00oo0ooo0o, ooo000o00oo00o0oo0000e
+        global oo0oo0ooo000000oo0000, oo00ooo0oo000o0oo0000, ooo0o0000oo0oo0o00ooo, ooo0ooo0o000o00oo000o, oo000oo00o0oo0o0000oo, oooooo0o0000o0o0oo0o0, oo0oo00ooooo0000o00o0, ooo0ooooo0o000oo0ooo0
+        global o0000ooo000000ooo00o0, oo0000o00o0000oo00oo0, o0ooo0o00o0o00000ooo0, oo0oo0oooo0ooo0oo0000, ooo0ooo0o000o00oo000oe
         for i in range(10000000):
             time.sleep(0.05)              
-            if ooo000o00oo00o0oo0000 and oooooo000000ooo00oooo and ooooo00o000o0o00oo0o0 and o000000000ooo0oooo00o:                     
-                if oooo00oo00o0o00000o00 == 1 and o0oo0ooo000oo0oo00oo0 >= oo00000o0oo00o0o0o0o0 and not ooo000o00oo00o0oo0000e:            
-                    TopFrame.oo0000o0oo0000o0o0o0o()        
-                    logging.info("moni one_o0ooo000000oo0oooo00o %s %s %s %s" % (ooo000o00oo00o0oo0000, oooooo000000ooo00oooo, ooooo00o000o0o00oo0o0, o000000000ooo0oooo00o))
-                    logging.info("moni one_o0ooo000000oo0oooo00o %s %s %s" % (oooo00oo00o0o00000o00, o0oo0ooo000oo0oo00oo0, oo00000o0oo00o0o0o0o0))
-                    ooo000o00oo00o0oo0000 = False
-                    ooo000o00oo00o0oo0000e = True         
-                elif oooo00oo00o0o00000o00 == 2 and o0oo0ooo000oo0oo00oo0 >= o00o0o0000oooo0000ooo and twice:            
-                    TopFrame.oo0000o0oo0000o0o0o0o()        
-                    logging.info("moni1 second_o0ooo000000oo0oooo00o %s %s %s %s" % (ooo000o00oo00o0oo0000, oooooo000000ooo00oooo, ooooo00o000o0o00oo0o0, o000000000ooo0oooo00o))
-                    logging.info("moni second_o0ooo000000oo0oooo00o %s %s %s" % (oooo00oo00o0o00000o00, o0oo0ooo000oo0oo00oo0, o00o0o0000oooo0000ooo))
-                    ooo000o00oo00o0oo0000 = False
-                elif oooo00oo00o0o00000o00 == 1 and o0000o0o0000000o00o0o >= o0ooo0ooo00o0o0o0o0oo - 300 - ooo0oooooo0o0ooo00ooo and not ooo000o00oo00o0oo0000e:        
-                    ooo000o00oo00o0oo0000 = False                        
-                    TopFrame.o0oo0ooooo000o0oooo00()        
-                    logging.info("moni one_o0ooo000000oo0oooo00o %s %s %s %s" % (ooo000o00oo00o0oo0000, oooooo000000ooo00oooo, ooooo00o000o0o00oo0o0, o000000000ooo0oooo00o))
-                    logging.info("moni one_o0ooo000000oo0oooo00o %s %s %s" % (oooo00oo00o0o00000o00, o0000o0o0000000o00o0o, o0ooo0ooo00o0o0o0o0oo))
-                    ooo000o00oo00o0oo0000e = True         
-                elif oooo00oo00o0o00000o00 == 2 and o0000o0o0000000o00o0o >= o0oo000o000000oo00000 - 300 - ooo0ooo0ooo00oo0ooo0o and twice:        
-                    ooo000o00oo00o0oo0000 = False                        
-                    TopFrame.o0oo0ooooo000o0oooo00()        
-                    logging.info("moni2 second_o0ooo000000oo0oooo00o %s%s%s%s" % (ooo000o00oo00o0oo0000, oooooo000000ooo00oooo, ooooo00o000o0o00oo0o0, o000000000ooo0oooo00o))
-                    logging.info("moni second_o0ooo000000oo0oooo00o %s%s%s" % (oooo00oo00o0o00000o00, o0000o0o0000000o00o0o, o0oo000o000000oo00000))
-            if oooooo000000ooo00oooo and ooooo00o000o0o00oo0o0 and oo00ooo0o000o00oo00o0:                     
-                if oooo00oo00o0o00000o00 == 1 and o000oo0ooo0o0o000oo00 <= o0oo0ooo000oo0oo00oo0 <= o000oo0ooo0o0o000oo00 + 0.6:            
-                    TopFrame.o0ooo0oo00oooooo00000()        
+            if ooo0ooo0o000o00oo000o and oo00ooo0oo000o0oo0000 and ooo0o0000oo0oo0o00ooo and oo0000o00o0000oo00oo0:                     
+                if o0000ooo000000ooo00o0 == 1 and oo0oo0ooo000000oo0000 >= o0000ooo00oo000o0o00o and not ooo0ooo0o000o00oo000oe:            
+                    TopFrame.oo0o0oo0000o0000o0000()        
+                    logging.info("moni one_ooo0oo0o000000o00oooo %s %s %s %s" % (ooo0ooo0o000o00oo000o, oo00ooo0oo000o0oo0000, ooo0o0000oo0oo0o00ooo, oo0000o00o0000oo00oo0))
+                    logging.info("moni one_ooo0oo0o000000o00oooo %s %s %s" % (o0000ooo000000ooo00o0, oo0oo0ooo000000oo0000, o0000ooo00oo000o0o00o))
+                    ooo0ooo0o000o00oo000o = False
+                    ooo0ooo0o000o00oo000oe = True         
+                elif o0000ooo000000ooo00o0 == 2 and oo0oo0ooo000000oo0000 >= ooooo0o000oooo0o0ooo0 and twice:            
+                    TopFrame.oo0o0oo0000o0000o0000()        
+                    logging.info("moni1 second_ooo0oo0o000000o00oooo %s %s %s %s" % (ooo0ooo0o000o00oo000o, oo00ooo0oo000o0oo0000, ooo0o0000oo0oo0o00ooo, oo0000o00o0000oo00oo0))
+                    logging.info("moni second_ooo0oo0o000000o00oooo %s %s %s" % (o0000ooo000000ooo00o0, oo0oo0ooo000000oo0000, ooooo0o000oooo0o0ooo0))
+                    ooo0ooo0o000o00oo000o = False
+                elif o0000ooo000000ooo00o0 == 1 and o0oo0ooo0o00oo00o0o00 >= oo000oo00o0oo0o0000oo - 300 - o0ooo0o00o0o00000ooo0 and not ooo0ooo0o000o00oo000oe:        
+                    ooo0ooo0o000o00oo000o = False                        
+                    TopFrame.o00ooo000o0o00oo00000()        
+                    logging.info("moni one_ooo0oo0o000000o00oooo %s %s %s %s" % (ooo0ooo0o000o00oo000o, oo00ooo0oo000o0oo0000, ooo0o0000oo0oo0o00ooo, oo0000o00o0000oo00oo0))
+                    logging.info("moni one_ooo0oo0o000000o00oooo %s %s %s" % (o0000ooo000000ooo00o0, o0oo0ooo0o00oo00o0o00, oo000oo00o0oo0o0000oo))
+                    ooo0ooo0o000o00oo000oe = True         
+                elif o0000ooo000000ooo00o0 == 2 and o0oo0ooo0o00oo00o0o00 >= oooooo0o0000o0o0oo0o0 - 300 - oo0oo0oooo0ooo0oo0000 and twice:        
+                    ooo0ooo0o000o00oo000o = False                        
+                    TopFrame.o00ooo000o0o00oo00000()        
+                    logging.info("moni2 second_ooo0oo0o000000o00oooo %s%s%s%s" % (ooo0ooo0o000o00oo000o, oo00ooo0oo000o0oo0000, ooo0o0000oo0oo0o00ooo, oo0000o00o0000oo00oo0))
+                    logging.info("moni second_ooo0oo0o000000o00oooo %s%s%s" % (o0000ooo000000ooo00o0, o0oo0ooo0o00oo00o0o00, oooooo0o0000o0o0oo0o0))
+            if oo00ooo0oo000o0oo0000 and ooo0o0000oo0oo0o00ooo and o0o0000oo000o00o0o0o0:                     
+                if o0000ooo000000ooo00o0 == 1 and o00o00o00000ooooo0o0o <= oo0oo0ooo000000oo0000 <= o00o00o00000ooooo0o0o + 0.6:            
+                    TopFrame.o0o00oo0o0000ooo0000o()        
                     print("第一次")
-                    o0ooo0ooo00o0o0o0o0oo = o0000o0o0000000o00o0o + o000ooooooooo000o00o0
-                    ooo000o00oo00o0oo0000 = True
-                    logging.info("moni one_oo000oo0o000000o0o0oo %s %s" % (oooooo000000ooo00oooo, ooooo00o000o0o00oo0o0))
-                    logging.info("moni one_oo000oo0o000000o0o0oo %s %s" % (o000oo0ooo0o0o000oo00, o0oo0ooo000oo0oo00oo0))
-                elif oooo00oo00o0o00000o00 == 2 and twice and oo0o0o0o000o0o00ooooo < o0oo0ooo000oo0oo00oo0:
-                    TopFrame.o0ooo0oo00oooooo00000()        
+                    oo000oo00o0oo0o0000oo = o0oo0ooo0o00oo00o0o00 + oo0oo00ooooo0000o00o0
+                    ooo0ooo0o000o00oo000o = True
+                    logging.info("moni one_o00o0ooooooo0oo0ooo00 %s %s" % (oo00ooo0oo000o0oo0000, ooo0o0000oo0oo0o00ooo))
+                    logging.info("moni one_o00o0ooooooo0oo0ooo00 %s %s" % (o00o00o00000ooooo0o0o, oo0oo0ooo000000oo0000))
+                elif o0000ooo000000ooo00o0 == 2 and twice and o000o000o0000ooo0o0o0 < oo0oo0ooo000000oo0000:
+                    TopFrame.o0o00oo0o0000ooo0000o()        
                     print("第二次")
-                    o0oo000o000000oo00000 = o0000o0o0000000o00o0o + ooo0000000000ooo00000
-                    ooo000o00oo00o0oo0000 = True
-                    logging.info("moni second_oo000oo0o000000o0o0oo %s %s" % (oooooo000000ooo00oooo, ooooo00o000o0o00oo0o0))
-                    logging.info("moni second_oo000oo0o000000o0o0oo %s %s" % (oo0o0o0o000o0o00ooooo, o0oo0ooo000oo0oo00oo0))
+                    oooooo0o0000o0o0oo0o0 = o0oo0ooo0o00oo00o0o00 + ooo0ooooo0o000oo0ooo0
+                    ooo0ooo0o000o00oo000o = True
+                    logging.info("moni second_o00o0ooooooo0oo0ooo00 %s %s" % (oo00ooo0oo000o0oo0000, ooo0o0000oo0oo0o00ooo))
+                    logging.info("moni second_o00o0ooooooo0oo0ooo00 %s %s" % (o000o000o0000ooo0o0o0, oo0oo0ooo000000oo0000))
 class Infoframe(wx.Frame):
     def __init__(self, name, user, psd):               
         wx.Frame.__init__(self, None, -1, name, size=(300, 240), style=wx.CAPTION | wx.CLOSE_BOX)
@@ -2781,7 +2783,7 @@ class Infoframe(wx.Frame):
         self.panel = wx.Panel(self, size=(300, 220))
         self.icon = wx.Icon(mainicon, wx.BITMAP_TYPE_ICO)
         self.SetIcon(self.icon)
-o000000oo0oo00o0o0000 = "本地IE"
+ooo0oo00o0ooo000o0oo0 = "本地IE"
 class Guopaiframe(wx.Dialog):
     def __init__(self, name):               
         wx.Frame.__init__(self, None, -1, name, size=(195, 265), style=wx.CAPTION | wx.CLOSE_BOX)
@@ -2789,15 +2791,15 @@ class Guopaiframe(wx.Dialog):
         self.panel = wx.Panel(self, size=(195, 270))
         self.icon = wx.Icon(mainicon, wx.BITMAP_TYPE_ICO)
         self.SetIcon(self.icon)
-        self.o000000oo0oo00o0o0000 = o000000oo0oo00o0o0000
+        self.ooo0oo00o0ooo000o0oo0 = ooo0oo00o0ooo000o0oo0
         self.dianxin = wx.Button(self.panel, label="上海电信", pos=(20, 10), size=(140, 60))
         self.nodianxin = wx.Button(self.panel, label="非电信", pos=(20, 80), size=(140, 60))
-        self.userweb = wx.Button(self.panel, label=self.o000000oo0oo00o0o0000, pos=(20, 150), size=(140, 60))
+        self.userweb = wx.Button(self.panel, label=self.ooo0oo00o0ooo000o0oo0, pos=(20, 150), size=(140, 60))
         self.dianxin.SetFont(wx.Font(20, wx.SWISS, wx.NORMAL, wx.NORMAL))
         self.nodianxin.SetFont(wx.Font(20, wx.SWISS, wx.NORMAL, wx.NORMAL))
         self.userweb.SetFont(wx.Font(20, wx.SWISS, wx.NORMAL, wx.NORMAL))
         self.Bind(wx.EVT_BUTTON, self.Dianxin, self.dianxin)
-        self.Bind(wx.EVT_BUTTON, self.o00o00ooo0o0o0oo0oooo, self.nodianxin)
+        self.Bind(wx.EVT_BUTTON, self.oo0oo0o00ooo0o0oo0oo0, self.nodianxin)
         self.Bind(wx.EVT_BUTTON, self.UserWeb, self.userweb)
         self.Center()
         self.ShowModal()
@@ -2805,26 +2807,26 @@ class Guopaiframe(wx.Dialog):
         wx.CallAfter(pub.sendMessage, "open dianxin")
         self.Destroy()
         event.Skip()
-    def o00o00ooo0o0o0oo0oooo(self, event):
+    def oo0oo0o00ooo0o0oo0oo0(self, event):
         wx.CallAfter(pub.sendMessage, "open nodianxin")
         self.Destroy()
         event.Skip()
     def UserWeb(self, event):
-        global o000000oo0oo00o0o0000, oooooo00o000o00o000oo
-        if o000000oo0oo00o0o0000 == '本地IE' and not oooooo00o000o00o000oo:
-            oooooo00o000o00o000oo = True            
-            o000000oo0oo00o0o0000 = '关闭辅助'
+        global ooo0oo00o0ooo000o0oo0, oooo000000o00o00oo0oo
+        if ooo0oo00o0ooo000o0oo0 == '本地IE' and not oooo000000o00o00oo0oo:
+            oooo000000o00o00oo0oo = True            
+            ooo0oo00o0ooo000o0oo0 = '关闭辅助'
             wx.CallAfter(pub.sendMessage, "open userweb")
         else:
-            o000000oo0oo00o0o0000 = '本地IE'
-            oooooo00o000o00o000oo = False            
+            ooo0oo00o0ooo000o0oo0 = '本地IE'
+            oooo000000o00o00oo0oo = False            
             TopFrame.Close()
             try:
                 yan = self.FindWindowById(18)
                 yan.Destroy()
-                global ooo0o0oo00ooo0o0o0000
+                global o00oo0o000o000o00oo0o
                 print("关闭成功")
-                ooo0o0oo00ooo0o0o0000 = False
+                o00oo0o000o000o00oo0o = False
             except:
                 pass
         self.Destroy()
@@ -2847,11 +2849,11 @@ class SketchApp(wx.App):
         loginframe.Show(True)
         return True
 if __name__ == '__main__':
-    o00o0o0o000o00o0oo0o0()
-    o0ooooo0ooooo00oo0o0o()            
+    o00oo00oooooo000o0o0o()
+    o0o000o000oo00o0000oo()            
     app = SketchApp()
     confirmthread = confirmThread()       
-    oo0o0000o000ooo0000oothread = oo0o0000o000ooo0000ooThread()       
-    finposthread = o00ooo0oo00o0oo00o0o0Thread()        
+    o0oo0o0oo000ooo0ooooothread = o0oo0o0oo000ooo0oooooThread()       
+    finposthread = oooooo0o0oooo0o0o0o0oThread()        
     cutimgthread = cutimgThread()        
     app.MainLoop()
