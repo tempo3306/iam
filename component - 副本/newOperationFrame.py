@@ -6,11 +6,11 @@
 import wx
 from PIL import Image,ImageGrab
 import time
-from component.timeFrame import TimeFrame, MoniTimeFrame  # 时间窗口
-from component.YanzhengmaFrame import YanzhengmaFrame  # 验证码放大窗口
-from component.imgcut import cut_pic, find_yan_confirm
+from .timeFrame import TimeFrame, MoniTimeFrame  # 时间窗口
+from .YanzhengmaFrame import YanzhengmaFrame  # 验证码放大窗口
+from .imgcut import cut_pic, find_yan_confirm
 import pickle, os ,imagehash
-from component.variable import set_val,get_val
+from .variable import set_val,get_val
 class StatusPanel(wx.Panel):
     def __init__(self, parent):
         wx.Panel.__init__(self, parent=parent)
@@ -63,15 +63,8 @@ class AccountPanel(wx.Panel):
 class StrategyPanel(wx.Panel):
     def __init__(self, parent):
         wx.Panel.__init__(self, parent=parent)
-        one_real_time1 = get_val('one_real_time1')
-        second_real_time1 = get_val('second_real_time1')
-        one_real_time2 = get_val('one_real_time2')
-        second_real_time2 = get_val('second_real_time2')
-        one_time1 = get_val('one_time1')
-        one_time2 = get_val('one_time2')
-        second_time1 = get_val('second_time1')
-        second_time2 = get_val('second_time2')
-        Yanzhengmasize = get_val('Yanzhengmasize')
+        global one_real_time1, second_real_time1, one_real_time2, second_real_time2
+        global one_time1, one_time2, second_time1 ,second_time2 ,Yanzhengmasize
         set_val('one_real_time1',self.gettime(one_time1))
         set_val('one_real_time2',self.gettime(one_time2))
         set_val('second_real_time1',self.gettime(second_time1))
@@ -246,21 +239,9 @@ class StrategyPanel(wx.Panel):
         self.operationtimer.Start(1000)
         self.yanzhengmaframe = YanzhengmaFrame(Yanzhengmasize)
     def Price_view(self, event):
-        price_view = get_val('price_view')
-        web_on = get_val('web_on')
-        price_on = get_val('price_on')
-        view_time = get_val('view_time')
-        yanzhengma_view = get_val('yanzhengma_view')
-        Pricesize = get_val('Pricesize')
-        Yanzhengmasize = get_val('Yanzhengmasize')
-        yanzhengma_close = get_val('yanzhengma_close')
-        yanzhengma_count = get_val('yanzhengma_count')
-        price_count = get_val('price_count')
-        yanzhengma_move = get_val('yanzhengma_move')
-        Pos_price = get_val('Pos_price')
-        imgpos_yanzhengma = get_val('imgpos_yanzhengma')
-        yanzhengma_hash = get_val('yanzhengma_hash')
-        Pos_yanzhengmaframe = get_val('Pos_yanzhengmaframe')
+        global price_view, web_on, price_on, view_time, yanzhengma_view, Pricesize, Yanzhengmasize, yanzhengma_close
+        global yanzhengma_count, price_count, yanzhengma_move ,Pos_price
+        global imgpos_yanzhengma, yanzhengma_hash ,Pos_yanzhengmaframe
         if yanzhengma_move:
             yan = self.FindWindowById(18)
             if yan:
@@ -290,7 +271,7 @@ class StrategyPanel(wx.Panel):
             set_val('yanzhengma_close',False)
             cut_pic(imgpos_yanzhengma, Yanzhengmasize, "yanzhengma.png")  # 直接调用得到 png
             image = "yanzhengma.png"
-            yanzhengma_img = get_val('yanzhengma_img')
+            global yanzhengma_img
             set_val('yanzhengma_img',Image.open("yanzhengma.png"))
             yan_hash = imagehash.dhash(yanzhengma_img)
             if not yanzhengma_hash:  # 第一次
@@ -308,17 +289,14 @@ class StrategyPanel(wx.Panel):
                 finally:
                     pass
     def Yan_close(self, event):
-        yanzhengma_view = get_val('yanzhengma_view')
-        yanzhengma_close = get_val('yanzhengma_close')
+        global yanzhengma_view, yanzhengma_close
         find_yan_confirm()
     def Price_count(self, event):
-        price_count = get_val('price_count')
-        yanzhengma_count = get_val('yanzhengma_count')
+        global price_count, yanzhengma_count
         set_val('price_count',1)
         set_val('yanzhengma_count',1)
         file = 'sc_new.png'
-        web_on = get_val('web_on')
-        strategy_on = get_val('strategy_on')
+        global web_on, strategy_on
         if web_on and strategy_on:
             self.lowestframe.Show(True)
         if not os.path.exists(file):
@@ -329,11 +307,11 @@ class StrategyPanel(wx.Panel):
         if not strategy_on or not web_on:
             self.lowestframe.Show(False)
     def Screen_shot(self, box, size, name):
-        Pricesize = get_val('Pricesize')
+        global Pricesize
         region = ImageGrab.grab(box)
         region.resize(size, Image.ANTIALIAS).save(name)
     def Screen_shot_yanzhengma(self, box, size, name):
-        Pricesize = get_val('Pricesize')
+        global Pricesize
         region = ImageGrab.grab(box)
         cut_pic(region, size, name)
     @staticmethod
@@ -348,20 +326,9 @@ class StrategyPanel(wx.Panel):
         except:
             pass
     def opt(self, event):
-        tijiao_num = get_val('tijiao_num')
-        tijiao_one = get_val('tijiao_one')
-        chujia_on = get_val('chujia_on')
-        moni_on = get_val('moni_on')
-        guopai_on = get_val('guopai_on')
-        strategy_on = get_val('strategy_on')
-        moni_second = get_val('moni_second')
-        one_time1 = get_val('one_time1')
-        twice = get_val('twice')
-        tijiao_num = get_val('tijiao_num')
-        chujia_on = get_val('chujia_on')
-        tijiao_on = get_val('tijiao_on')
-        tijiao_OK = get_val('tijiao_OK')
-        tijiao_one = get_val('tijiao_one')
+        global tijiao_num, tijiao_one, chujia_on ,moni_on, guopai_on
+        global strategy_on ,moni_second, one_time1
+        global twice, tijiao_num, chujia_on, tijiao_on, tijiao_OK, tijiao_one  # 二次出价触发开关
         if moni_second < one_time1 and moni_on and not twice:  # 单次还原
             set_val('twice',False)
             set_val('chujia_on',True)
@@ -377,28 +344,19 @@ class StrategyPanel(wx.Panel):
             set_val('tijiao_OK',False)
             set_val('tijiao_one',False)  #单枪未开
     def Add_time(self, event):
-        a_time = get_val('a_time')
-        moni_second = get_val('moni_second')
-        moni_on = get_val('moni_on')
-        guopai_on = get_val('guopai_on')
+        global a_time, moni_second, moni_on, guopai_on
         if moni_on:
             set_val('moni_second',0.1)
         else:
             set_val('a_time',0.1)
     def Minus_time(self, event):
-        a_time = get_val('a_time')
-        moni_second = get_val('moni_second')
-        moni_on = get_val('moni_on')
-        guopai_on = get_val('guopai_on')
+        global a_time, moni_second, moni_on, guopai_on
         if moni_on:
             set_val('moni_second',0.1)
         else:
             set_val('a_time',0.1)
     def Add_second(self, event):
-        a_time = get_val('a_time')
-        moni_second = get_val('moni_second')
-        moni_on = get_val('moni_on')
-        guopai_on = get_val('guopai_on')
+        global a_time, moni_second, moni_on, guopai_on
         if moni_on:
             set_val('moni_second',1)
             if moni_second >= 60:
@@ -406,10 +364,7 @@ class StrategyPanel(wx.Panel):
         else:
             set_val('a_time',1)
     def Minus_second(self, event):
-        a_time = get_val('a_time')
-        moni_second = get_val('moni_second')
-        moni_on = get_val('moni_on')
-        guopai_on = get_val('guopai_on')
+        global a_time, moni_second, moni_on, guopai_on
         if moni_on:
             set_val('moni_second',1)
             if moni_second <= 0:
@@ -418,10 +373,7 @@ class StrategyPanel(wx.Panel):
             set_val('a_time',1)
     def Timeview(self, event):
         timeSelected = event.GetEventObject()
-        view_time = get_val('view_time')
-        time_on = get_val('time_on')
-        moni_on = get_val('moni_on')
-        guopai_on = get_val('guopai_on')
+        global view_time, time_on ,moni_on ,guopai_on
         if timeSelected.IsChecked():
             set_val('view_time',True)
             set_val('time_on',True)
@@ -437,8 +389,7 @@ class StrategyPanel(wx.Panel):
             elif moni_on:
                 self.timeframe2.Show(False)
     def Opentime(self):
-        moni_on = get_val('moni_on')
-        guopai_on = get_val('guopai_on')
+        global moni_on,guopai_on
         if moni_on:
             try:
                 self.timeframe2.Show(True)
@@ -459,8 +410,7 @@ class StrategyPanel(wx.Panel):
         except:
             pass
     def Confirmchoice(self, event):
-        e_on = get_val('e_on')
-        enter_on = get_val('enter_on')
+        global e_on, enter_on
         con = self.confirm_choice.GetSelection()
         if con == 0:
             set_val('e_on',True)
@@ -469,13 +419,7 @@ class StrategyPanel(wx.Panel):
             set_val('e_on',False)
             set_val('enter_on',True)
     def Jiajia_time(self, event):
-        one_advance = get_val('one_advance')
-        one_delay = get_val('one_delay')
-        one_diff = get_val('one_diff')
-        one_time1 = get_val('one_time1')
-        one_time2 = get_val('one_time2')
-        one_real_time1 = get_val('one_real_time1')
-        one_real_time2 = get_val('one_real_time2')
+        global one_advance, one_delay, one_diff, one_time1, one_time2, one_real_time1, one_real_time2
         tem = self.jiajia_time.GetValue()
         templist = [40 + i * 0.1 for i in range(151)]
         if tem in templist:
@@ -485,11 +429,7 @@ class StrategyPanel(wx.Panel):
         else:
             self.jiajia_time.SetValue(one_time1)
     def Jiajia_price(self, event):
-        one_advance = get_val('one_advance')
-        one_delay = get_val('one_delay')
-        one_diff = get_val('one_diff')
-        one_time1 = get_val('one_time1')
-        one_time2 = get_val('one_time2')
+        global one_advance, one_delay, one_diff, one_time1, one_time2
         templist = [300 + i * 100 for i in range(13)]
         tem = self.jiajia_price.GetValue()
         if tem in templist:
@@ -497,11 +437,7 @@ class StrategyPanel(wx.Panel):
         else:
             self.jiajia_price.SetValue(one_diff)
     def Select_tijiao(self, event):
-        one_advance = get_val('one_advance')
-        one_delay = get_val('one_delay')
-        one_diff = get_val('one_diff')
-        one_time1 = get_val('one_time1')
-        one_time2 = get_val('one_time2')
+        global one_advance, one_delay, one_diff, one_time1, one_time2
         select = self.select_tijiao.GetString(self.select_tijiao.GetSelection())
         if select == u"提前100":
             set_val('one_advance',100)
@@ -510,11 +446,7 @@ class StrategyPanel(wx.Panel):
         else:
             set_val('one_advance',0)
     def Yanchi_time(self, event):
-        one_advance = get_val('one_advance')
-        one_delay = get_val('one_delay')
-        one_diff = get_val('one_diff')
-        one_time1 = get_val('one_time1')
-        one_time2 = get_val('one_time2')
+        global one_advance, one_delay, one_diff, one_time1, one_time2
         templist = ['0.%d' % i for i in range(11)]
         templist.append('1.0')
         tem = str(self.yanchi_time.GetValue())
@@ -523,12 +455,7 @@ class StrategyPanel(wx.Panel):
         else:
             self.yanchi_time.SetValue(one_delay)
     def Tijiao_time(self, event):
-        one_advance = get_val('one_advance')
-        one_delay = get_val('one_delay')
-        one_diff = get_val('one_diff')
-        one_time1 = get_val('one_time1')
-        one_time2 = get_val('one_time2')
-        one_real_time2 = get_val('one_real_time2')
+        global one_advance, one_delay, one_diff, one_time1, one_time2, one_real_time2
         tem = self.tijiao_time.GetValue()
         templist = [40 + i * 0.1 for i in range(171)]
         if tem in templist:
@@ -537,12 +464,7 @@ class StrategyPanel(wx.Panel):
         else:
             self.tijiao_time.SetValue(one_time2)
     def Jiajia_time2(self, event):
-        second_advance = get_val('second_advance')
-        second_delay = get_val('second_delay')
-        second_diff = get_val('second_diff')
-        second_time1 = get_val('second_time1')
-        second_time2 = get_val('second_time2')
-        second_real_time1 = get_val('second_real_time1')
+        global second_advance, second_delay, second_diff, second_time1, second_time2, second_real_time1
         tem = self.jiajia_time2.GetValue()
         templist = [40 + i * 0.1 for i in range(151)]
         if tem in templist:
@@ -551,16 +473,8 @@ class StrategyPanel(wx.Panel):
         else:
             self.jiajia_time2.SetValue(second_time1)
     def Jiajia_price2(self, event):
-        second_advance = get_val('second_advance')
-        second_delay = get_val('second_delay')
-        second_diff = get_val('second_diff')
-        second_time1 = get_val('second_time1')
-        second_time2 = get_val('second_time2')
-        one_advance = get_val('one_advance')
-        one_delay = get_val('one_delay')
-        one_diff = get_val('one_diff')
-        one_time1 = get_val('one_time1')
-        one_time2 = get_val('one_time2')
+        global second_advance, second_delay, second_diff, second_time1, second_time2
+        global one_advance, one_delay, one_diff, one_time1, one_time2
         templist = [300 + i * 100 for i in range(13)]
         tem = self.jiajia_price2.GetValue()
         if tem in templist:
@@ -568,11 +482,7 @@ class StrategyPanel(wx.Panel):
         else:
             self.jiajia_price2.SetValue(second_diff)
     def Select_tijiao2(self, event):
-        second_advance = get_val('second_advance')
-        second_delay = get_val('second_delay')
-        second_diff = get_val('second_diff')
-        second_time1 = get_val('second_time1')
-        second_time2 = get_val('second_time2')
+        global second_advance, second_delay, second_diff, second_time1, second_time2
         select = self.select_tijiao2.GetString(self.select_tijiao2.GetSelection())
         if select == u"提前100":
             set_val('second_advance',100)
@@ -581,11 +491,7 @@ class StrategyPanel(wx.Panel):
         else:
             set_val('second_advance',0)
     def Yanchi_time2(self, event):
-        second_advance = get_val('second_advance')
-        second_delay = get_val('second_delay')
-        second_diff = get_val('second_diff')
-        second_time1 = get_val('second_time1')
-        second_time2 = get_val('second_time2')
+        global second_advance, second_delay, second_diff, second_time1, second_time2
         templist = ['0.%d' % i for i in range(11)]  # 符点数运算BUG
         templist.append('1.0')
         tem = str(self.yanchi_time2.GetValue())
@@ -594,12 +500,7 @@ class StrategyPanel(wx.Panel):
         else:
             self.yanchi_time2.SetValue(second_delay)
     def Tijiao_time2(self, event):
-        second_advance = get_val('second_advance')
-        second_delay = get_val('second_delay')
-        second_diff = get_val('second_diff')
-        second_time1 = get_val('second_time1')
-        second_time2 = get_val('second_time2')
-        second_real_time2 = get_val('second_real_time2')
+        global second_advance, second_delay, second_diff, second_time1, second_time2, second_real_time2
         tem = self.tijiao_time2.GetValue()
         templist = [53 + i * 0.1 for i in range(41)]
         if tem in templist:
@@ -608,13 +509,8 @@ class StrategyPanel(wx.Panel):
         else:
             self.tijiao_time2.SetValue(second_time2)
     def Refresh_panel(self, event):
-        strategy_on = get_val('strategy_on')
-        twice = get_val('twice')
-        tijiao_num = get_val('tijiao_num')
-        chujia_on = get_val('chujia_on')
-        tijiao_on = get_val('tijiao_on')
-        tijiao_OK = get_val('tijiao_OK')
-        tijiao_one = get_val('tijiao_one')
+        global strategy_on  # 策略开启
+        global twice, tijiao_num, chujia_on, tijiao_on, tijiao_OK, tijiao_one  # 二次出价触发开关
         stractagy_selection = self.select_stractagy.GetString(self.select_stractagy.GetSelection())
         if stractagy_selection == u"单枪策略":
             self.ss_Hide()
@@ -670,11 +566,7 @@ class StrategyPanel(wx.Panel):
         self.SetClientSize((280, 255))
         self.Layout()
     def Oneshot_reset(self):
-        one_time1 = get_val('one_time1')
-        one_time2 = get_val('one_time2')
-        one_diff = get_val('one_diff')
-        one_delay = get_val('one_delay')
-        one_advance = get_val('one_advance')
+        global one_time1, one_time2, one_diff, one_delay, one_advance
         self.jiajia_time.SetValue(48.0)
         self.tijiao_time.SetValue(55.0)
         self.jiajia_price.SetValue(700)
@@ -685,25 +577,14 @@ class StrategyPanel(wx.Panel):
         set_val('one_diff',700)  #第一次加价幅度
         set_val('one_delay',0.5)  #第一次延迟
         set_val('one_advance',100)  #第一次提交提前量
-        one_real_time1 = get_val('one_real_time1')
-        second_real_time1 = get_val('second_real_time1')
-        one_real_time2 = get_val('one_real_time2')
-        second_real_time2 = get_val('second_real_time2')
+        global one_real_time1, second_real_time1, one_real_time2, second_real_time2
         set_val('one_real_time1',self.gettime(one_time1))
         set_val('one_real_time2',self.gettime(one_time2))
         set_val('second_real_time1',self.gettime(second_time1))
         set_val('second_real_time2',self.gettime(second_time2))
     def Secondshot_reset(self):
-        one_time1 = get_val('one_time1')
-        one_time2 = get_val('one_time2')
-        one_diff = get_val('one_diff')
-        one_delay = get_val('one_delay')
-        one_advance = get_val('one_advance')
-        second_time1 = get_val('second_time1')
-        second_time2 = get_val('second_time2')
-        second_diff = get_val('second_diff')
-        second_delay = get_val('second_delay')
-        second_advance = get_val('second_advance')
+        global one_time1, one_time2, one_diff, one_delay, one_advance
+        global second_time1, second_time2, second_diff, second_delay, second_advance
         self.jiajia_time.SetValue(40.0)
         self.tijiao_time.SetValue(48.0)
         self.jiajia_price.SetValue(500)
@@ -724,10 +605,7 @@ class StrategyPanel(wx.Panel):
         set_val('second_diff',700)  #第二次加价幅度
         set_val('second_delay',0.5)  #第二次出价延迟
         set_val('second_advance',100)  #第二次出价提交提前量
-        one_real_time1 = get_val('one_real_time1')
-        second_real_time1 = get_val('second_real_time1')
-        one_real_time2 = get_val('one_real_time2')
-        second_real_time2 = get_val('second_real_time2')
+        global one_real_time1, second_real_time1, one_real_time2, second_real_time2
         set_val('one_real_time1',self.gettime(one_time1))
         set_val('one_real_time2',self.gettime(one_time2))
         set_val('second_real_time1',self.gettime(second_time1))
@@ -749,19 +627,9 @@ class StrategyPanel(wx.Panel):
                     dlg_tip.Destroy()
                     dlg.Destroy()
     def save(self, name):
-        one_time1 = get_val('one_time1')
-        one_time2 = get_val('one_time2')
-        one_diff = get_val('one_diff')
-        one_delay = get_val('one_delay')
-        one_advance = get_val('one_advance')
-        second_time1 = get_val('second_time1')
-        second_time2 = get_val('second_time2')
-        second_diff = get_val('second_diff')
-        second_delay = get_val('second_delay')
-        second_advance = get_val('second_advance')
-        osl = get_val('osl')
-        e_on = get_val('e_on')
-        enter_on = get_val('enter_on')
+        global one_time1, one_time2, one_diff, one_delay, one_advance
+        global second_time1, second_time2, second_diff, second_delay, second_advance
+        global osl, e_on, enter_on  # 策略存储容器
         if self.select_stractagy.GetSelection() == 2:
             dlg_tip = wx.MessageBox('请先制定一个策略', '策略保存', wx.OK | wx.ICON_ERROR)
             if dlg_tip == wx.ID_OK:
@@ -816,30 +684,12 @@ class StrategyPanel(wx.Panel):
             if dlg_tip == wx.ID_OK:
                 dlg_tip.Destroy()
     def load(self, path):
-        osl = get_val('osl')
-        e_on = get_val('e_on')
-        enter_on = get_val('enter_on')
-        one_time1 = get_val('one_time1')
-        one_time2 = get_val('one_time2')
-        one_diff = get_val('one_diff')
-        one_delay = get_val('one_delay')
-        one_advance = get_val('one_advance')
-        second_time1 = get_val('second_time1')
-        second_time2 = get_val('second_time2')
-        second_diff = get_val('second_diff')
-        second_delay = get_val('second_delay')
-        second_advance = get_val('second_advance')
-        strategy_on = get_val('strategy_on')
-        twice = get_val('twice')
-        tijiao_num = get_val('tijiao_num')
-        chujia_on = get_val('chujia_on')
-        tijiao_on = get_val('tijiao_on')
-        tijiao_OK = get_val('tijiao_OK')
-        tijiao_one = get_val('tijiao_one')
-        one_real_time1 = get_val('one_real_time1')
-        one_real_time2 = get_val('one_real_time2')
-        second_real_time1 = get_val('second_real_time1')
-        second_real_time2 = get_val('second_real_time2')
+        global osl, e_on, enter_on
+        global one_time1, one_time2, one_diff, one_delay, one_advance
+        global second_time1, second_time2, second_diff, second_delay, second_advance
+        global strategy_on  # 策略开启
+        global twice, tijiao_num, chujia_on, tijiao_on, tijiao_OK, tijiao_one  # 二次出价触发开关
+        global one_real_time1, one_real_time2, second_real_time1, second_real_time2
         try:
             with open(path, 'rb') as loadstr:
                 set_val('osl',pickle.load(loadstr))

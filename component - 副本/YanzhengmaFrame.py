@@ -6,7 +6,7 @@
 '''
 
 import wx
-from component.variable import get_val
+from .variable import get_val
 Yanzhengmasize = get_val('Yanzhengmasize')
 Pos_yanzhengmaframe = get_val('Pos_yanzhengmaframe')
 class YanzhengmaFrame(wx.Frame):

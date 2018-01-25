@@ -6,11 +6,11 @@
 import wx
 from PIL import Image,ImageGrab
 import time
-from component.timeFrame import TimeFrame, MoniTimeFrame  # 时间窗口
-from component.YanzhengmaFrame import YanzhengmaFrame  # 验证码放大窗口
-from component.imgcut import cut_pic, find_yan_confirm
+from .timeFrame import TimeFrame, MoniTimeFrame  # 时间窗口
+from .YanzhengmaFrame import YanzhengmaFrame  # 验证码放大窗口
+from .imgcut import cut_pic, find_yan_confirm
 import pickle, os ,imagehash
-from component.variable import set_val,get_val
+from .variable import set_val,get_val
 class StatusPanel(wx.Panel):
     def __init__(self, parent):
         wx.Panel.__init__(self, parent=parent)
