@@ -104,10 +104,11 @@ class cutimgThread(Thread):
         while self.__running.isSet():
             self.__flag.wait()  # 为True时立即返回, 为False时阻塞直到内部的标识位为True后返回
             time.sleep(0.04)
-            try:
-                cut_img()
-            except:
-                print("截图失败")
+            cut_img()
+            # try:
+            #     cut_img()
+            # except:
+            #     print("截图失败")
     def pause(self):
         self.__flag.clear()  # 设置为False, 让线程阻塞
     def resume(self):

@@ -218,15 +218,13 @@ def OnClick_chujia():
 
 
 def OnH_chujia():
-    yanzhengma_view = get_val('yanzhengma_view')
-    yanzhengma_count = get_val('yanzhengma_count')
     Position = get_val('Position')
     lowest_price = get_val('lowest_price')
-    own_price1 = get_val('own_price1')
     one_diff = get_val('one_diff')
     set_val('yanzhengma_view', True)
     set_val('yanzhengma_count', 0)
     set_val('own_price1', lowest_price + one_diff)
+    own_price1 = get_val('own_price1')
     setText(str(own_price1))
     selfdelete()
     Click(Position[1][0], Position[1][1])

@@ -32,7 +32,6 @@ def ConfirmUser(Username,Password,version):  #修改为参数传递
         target_url = host_ali + r'/main_api/userconfirm/info?' + 'username=%s' % Username + \
                      '&' + 'passwd=%s' % Password+'&'+'version=%s' %version +'&'+"debug=%s" % debug
         # target_url = host_ali + r'/main_api/userconfirm/info?' + 'username=%s' % Username + '&' + 'passwd=%s' % Password
-        print(target_url)
         response = request.urlopen(target_url)
         print(response)
         result = response.read()
@@ -71,6 +70,7 @@ def Logout(Username):
 
 
 def Keeplogin(Username,Password):
+    host_ali = get_val('host_ali')
     host = host_ali
     # host = raw_input("Plz imput destination IP:")
     # data = raw_input("Plz imput what you want to submit:")

@@ -35,13 +35,9 @@ import wx
 import pickle
 import wx.adv
 from PIL import Image
-
-# --------------------------------------------------------------------------------
-##########生成日志文件##########
-
-# --------------------------------------------------------------------------------
-
+import os
 from PIL import ImageGrab
+#组件
 from component.app_thread import cutimgThread,findposThread,HashThread
 from component.app_thread import confirmThread,refreshThread,TijiaoThread,MoniTijiaoThread
 from component.variable import set_val,get_val
@@ -51,14 +47,7 @@ from component.variable import Create_hash,init_val
 
 
 #-------------------------------------------------------------
-# 图片打开提速
-yimg = ImageGrab.grab().save("yanzhengma.png")
-yanzhengma_img = Image.open("yanzhengma.png")  # 打开图片的全局变量 ,提升第一次打开的速度
-set_val('yanzhengma_img',yanzhengma_img)
-#变量初始化
-Create_hash()
 
-init_val()
 #--------------------------------------------------------------
 #创建app
 class SketchApp(wx.App):
@@ -87,13 +76,26 @@ class SketchApp(wx.App):
 
 
 if __name__ == '__main__':
-    # getwebpath()  # 初始化浏览器地址
+    ## getwebpath()  # 初始化浏览器地址
+    # 图片打开提速
+    yimg = ImageGrab.grab().save("yanzhengma.png")
+    yanzhengma_img = Image.open("yanzhengma.png")  # 打开图片的全局变量 ,提升第一次打开的速度
+    set_val('yanzhengma_img', yanzhengma_img)
+    # 变量初始化
+    Create_hash()
+    init_val()
+    ###获取路径
+    allpath = os.path.abspath(os.path.realpath(sys.argv[0]))
+    path = os.path.split(allpath)[0] + '\\'  # 分割
+    set_val('path', path)
+    iconpath = path + 'ico.ico'  # 图标路径
+    set_val('mainicon', iconpath)
     app = SketchApp()
-    # 打开刷新与确认进程
-    # confirmthread = confirmThread()  #确认线程
-    # refreshthread = refreshThread()  #刷新线程
-    # finposthread = findposThread()   #定位线程
-    # cutimgthread = cutimgThread()   #截图线程
+    ## 打开刷新与确认进程
+    confirmthread = confirmThread()  #确认线程
+    refreshthread = refreshThread()  #刷新线程
+    finposthread = findposThread()   #定位线程
+    cutimgthread = cutimgThread()   #截图线程
     app.MainLoop()
 
 # self.Bind(wx.EVT_KEY_DOWN, self.OnKeyDown)

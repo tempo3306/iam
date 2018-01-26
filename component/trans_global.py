@@ -61,7 +61,6 @@ def trans_getval(filename, newname):
         finalcontent = []
         for content in contents:
             co = content.split("#")[0]  #去注释
-            print(co)
             con = co.split()
             if con:
                 if con[0] == 'global':

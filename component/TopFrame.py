@@ -15,13 +15,14 @@ from component.imgcut import findpos, timeset, Price_read
 from component.WebFrame import WebFrame
 from component.GuopaiFrame import GuopaiFrame
 
-mainicon = get_val('mainicon')
+
 
 
 class TopFrame(wx.Frame):
     def __init__(self, name, rev):  ##########版本号
         Px = get_val('Px')
         Py = get_val('Py')
+        mainicon = get_val('mainicon')
         wx.Frame.__init__(self, None, 1, name,
                           size=(280, 300), pos=(Px - 120, Py), style=wx.CAPTION | wx.CLOSE_BOX | wx.MINIMIZE_BOX)
         self.Bind(wx.EVT_CLOSE, self.OnClose)
@@ -345,6 +346,7 @@ class TopFrame(wx.Frame):
         pricelist = get_val('pricelist')
         moni_second = get_val('moni_second')
         a_time = get_val('a_time')
+        moni_on  = get_val('moni_on')
         try:
             price = int(Price_read())  # 获取当前最低价
             if price in pricelist:  # 字典查找
@@ -374,7 +376,7 @@ class TopFrame(wx.Frame):
         guopai_on = get_val('guopai_on')
         moni_on = get_val('moni_on')
         imgpos_currenttime = get_val('imgpos_currenttime')
-        moni_cecond = get_val('moni_cecond')
+        moni_second = get_val('moni_cecond')
         a_time = get_val('a_time')
         timeset(guopai_on, moni_on, imgpos_currenttime, moni_second, a_time, 'maindata.xml')  # 调用时间同步
 

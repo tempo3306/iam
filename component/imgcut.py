@@ -195,7 +195,6 @@ def timeset(guopai_on, moni_on, imgpos_currenttime, moni_second, a_time, maindat
         pass
     return (moni_second, a_time)
 
-
 def findpos():
     sc = ImageGrab.grab().convert('L')
     img = np.asarray(sc)
@@ -204,46 +203,28 @@ def findpos():
     w, h = template.shape[::-1]
     res = cv2.matchTemplate(img, template, cv2.TM_CCOEFF_NORMED)
     min_val, max_val, min_loc, max_loc = cv2.minMaxLoc(res)
-    px_lowestprice = get_val('px_lowestprice')
-    py_lowestprice = get_val('py_lowestprice')
     px_relative = get_val('px_relative')
     py_relative = get_val('py_relative')
-    Px_lowestprice = get_val('Px_lowestprice')
-    Py_lowestprice = get_val('Py_lowestprice')
-    Px = get_val('Px')
-    Py = get_val('Py')
-    refresh_area = get_val('refresh_area')
-    confirm_area = get_val('confirm_area')
-    Pos_timeframe = get_val('Pos_timeframe')
-    Pos_controlframe = get_val('Pos_controlframe')
-    Pos_yanzhengma = get_val('Pos_yanzhengma')
-    Pos_yanzhengmaframe = get_val('Pos_yanzhengmaframe')
-    yan_confirm_area = get_val('yan_confirm_area')
-    use_area = get_val('use_area')
-    sc_area = get_val('sc_area')
     Position = get_val('Position')
-    refresh_area = get_val('refresh_area')
-    confirm_area = get_val('confirm_area')
-    Pos_timeframe = get_val('Pos_timeframe')
-    Pos_controlframe = get_val('Pos_controlframe')
-    Pos_yanzhengma = get_val('Pos_yanzhengma')
-    Pos_yanzhengmaframe = get_val('Pos_yanzhengmaframe')
-    yan_confirm_area = get_val('yan_confirm_area')
-    Px_currenttime = get_val('Px_currenttime')
-    Py_currenttime = get_val('Py_currenttime')
-    ghostbutton_pos = get_val('ghostbutton_pos')
     P_relative2 = get_val('P_relative2')
     if max_val > 0.9:  # 找不到不动作
         set_val('px_lowestprice', max_loc[0] + px_relative)
         set_val('py_lowestprice', max_loc[1] + py_relative)
+        px_lowestprice = get_val('px_lowestprice')
+        py_lowestprice = get_val('py_lowestprice')
         set_val('Px_lowestprice', px_lowestprice)
         set_val('Py_lowestprice', py_lowestprice)
+        Px_lowestprice = get_val('Px_lowestprice')
+        Py_lowestprice = get_val('Py_lowestprice')
         set_val('Px_currenttime', Px_lowestprice - 27)  # 参考最低成交价位置
         set_val('Py_currenttime', Py_lowestprice - 14)
+
         set_val('ghostbutton_pos', [px_lowestprice - 9, py_lowestprice + 84])
+
         for i in range(len(Position)):
             Position[i][0] = Px_lowestprice + P_relative2[i][0]
             Position[i][1] = Py_lowestprice + P_relative2[i][1]
+        set_val('Position',Position)
         set_val('refresh_area', [396 - 150 + Px_lowestprice, 11 - 100 + Py_lowestprice, 396 + 150 + Px_lowestprice,
                                  11 + 100 + Py_lowestprice])
         set_val('confirm_area', [505 - 80 + Px_lowestprice, 68 - 50 + Py_lowestprice, 505 + 80 + Px_lowestprice,
@@ -254,30 +235,37 @@ def findpos():
         set_val('Pos_yanzhengma',
                 [Position[5][0] - 277, Position[5][1] - 65, Position[5][0] - 97, Position[5][1] + 45])  # 验证码所在位置
         set_val('Pos_yanzhengmaframe', [Px_lowestprice + 297, Py_lowestprice - 283])  # 验证码框放置位置
-        Pos_timeframe = [245 - 344 + Px_lowestprice, 399 - 183 + Py_lowestprice]
-        findpos_on = get_val('findpos_on')
-        yanzhengma_move = get_val('yanzhengma_move')
+        set_val('Pos_timeframe' ,[245 - 344 + Px_lowestprice, 399 - 183 + Py_lowestprice])
         lowestprice_sizex = get_val('lowestprice_sizex')
         lowestprice_sizey = get_val('lowestprice_sizey')
         currenttime_sizex = get_val('currenttime_sizex')
         currenttime_sizey = get_val('currenttime_sizey')
         set_val('findpos_on', False)  # 无需定位
         set_val('yanzhengma_move', True)  # 需要定位
-        lowest = [Px_lowestprice, Py_lowestprice, lowestprice_sizex + Px_lowestprice,
-                  lowestprice_sizey + Py_lowestprice]
-        currenttime = [Px_currenttime, Py_currenttime, Px_currenttime + currenttime_sizex,
-                       Py_currenttime + currenttime_sizey]
+        set_val('lowest' , [Px_lowestprice, Py_lowestprice, lowestprice_sizex + Px_lowestprice,
+                  lowestprice_sizey + Py_lowestprice])
+        Px_currenttime = get_val("Px_currenttime")
+        Py_currenttime = get_val("Py_currenttime")
+        set_val('currenttime', [Px_currenttime, Py_currenttime, Px_currenttime + currenttime_sizex,
+                       Py_currenttime + currenttime_sizey])
         dis_x = 50
         dis_y = 100
         x1 = Px_lowestprice - dis_x  # 截图起始点
         y1 = Py_lowestprice - dis_y
+        lowest = get_val('lowest')
+        refresh_area = get_val('refresh_area')
+        confirm_area = get_val('confirm_area')
+        Pos_yanzhengma = get_val('Pos_yanzhengma')
+        yan_confirm_area = get_val('yan_confirm_area')
+        currenttime = get_val('currenttime')
+
         cal_area = [lowest, refresh_area, confirm_area, Pos_yanzhengma, yan_confirm_area, currenttime]  # 构建截图区域
-        set_val('use_area', [])
+        use_area = []
         set_val('sc_area', [Px_lowestprice - dis_x, Py_lowestprice - dis_y, Px_lowestprice + 600, Py_lowestprice + 120])
         for i in range(len(cal_area)):
             temp = [cal_area[i][0] - x1, cal_area[i][1] - y1, cal_area[i][2] - x1, cal_area[i][3] - y1]
             use_area.append(temp)
-
+        set_val('use_area',use_area)
 
 def only_screenshot(area):  # x,y  pos      w,h size
     x, y = int(area[0]), int(area[1])
@@ -306,21 +294,17 @@ def only_screenshot(area):  # x,y  pos      w,h size
 def cut_img():  # 将所得的img 处理成  lowestprice_img   confirm_img  yanzhengma_confirm_img  refresh_img
     use_area = get_val('use_area')
     sc_area = get_val('sc_area')
-    imgpos_lowestprice = get_val('imgpos_lowestprice')
-    imgpos_yanzhengma = get_val('imgpos_yanzhengma')
-    imgpos_refresh = get_val('imgpos_refresh')
-    imgpos_confirm = get_val('imgpos_confirm')
-    imgpos_yanzhengmaconfirm = get_val('imgpos_yanzhengmaconfirm')
-    imgpos_currenttime = get_val('imgpos_currenttime')
     img = only_screenshot(sc_area)  # 获取得到的截图
     img = np.asarray(img)  # 转化为numpy数组
-    set_val('imgpos_lowestprice', img[use_area[0][1]:use_area[0][3], use_area[0][0]:use_area[0][2]])  # ok
-    set_val('imgpos_refresh', img[use_area[1][1]:use_area[1][3], use_area[1][0]:use_area[1][2]])  # ok
-    set_val('imgpos_confirm', img[use_area[2][1]:use_area[2][3], use_area[2][0]:use_area[2][2]])
-    set_val('imgpos_yanzhengma', img[use_area[3][1]:use_area[3][3], use_area[3][0]:use_area[3][2]])  # ok
-    set_val('imgpos_yanzhengmaconfirm', img[use_area[4][1]:use_area[4][3], use_area[4][0]:use_area[4][2]])  # ok
-    set_val('imgpos_currenttime', img[use_area[5][1]:use_area[5][3], use_area[5][0]:use_area[5][2]])
-
+    try:
+        set_val('imgpos_lowestprice', img[use_area[0][1]:use_area[0][3], use_area[0][0]:use_area[0][2]])  # ok
+        set_val('imgpos_refresh', img[use_area[1][1]:use_area[1][3], use_area[1][0]:use_area[1][2]])  # ok
+        set_val('imgpos_confirm', img[use_area[2][1]:use_area[2][3], use_area[2][0]:use_area[2][2]])
+        set_val('imgpos_yanzhengma', img[use_area[3][1]:use_area[3][3], use_area[3][0]:use_area[3][2]])  # ok
+        set_val('imgpos_yanzhengmaconfirm', img[use_area[4][1]:use_area[4][3], use_area[4][0]:use_area[4][2]])  # ok
+        set_val('imgpos_currenttime', img[use_area[5][1]:use_area[5][3], use_area[5][0]:use_area[5][2]])
+    except:
+        print("cut_img 这里出错")
 
 def findrefresh():
     dick_target = get_val('dick_target')
@@ -339,9 +323,6 @@ def findrefresh():
     min_val, max_val, min_loc, max_loc = cv2.minMaxLoc(res)
     if max_val >= 0.8:
         OnClick_Shuaxin()
-        yanzhengma_view = get_val('yanzhengma_view')
-        yanzhengma_close = get_val('yanzhengma_close')
-        yanzhengma_count = get_val('yanzhengma_count')
         set_val('yanzhengma_view', True)  # 激活放大器
         set_val('yanzhengma_count', 0)  # 归零
 
@@ -365,10 +346,6 @@ def findconfirm():
 
 def find_yan_confirm():
     dick_target = get_val('dick_target')
-    confirm_on = get_val('confirm_on')
-    Position = get_val('Position')
-    yanzhengma_view = get_val('yanzhengma_view')
-    yanzhengma_close = get_val('yanzhengma_close')
     template = dick_target[1]
     imgpos_yanzhengmaconfirm = get_val('imgpos_yanzhengmaconfirm')
     sc = imgpos_yanzhengmaconfirm
@@ -383,8 +360,6 @@ def find_yan_confirm():
 
 def Price_read():
     imgpos_lowestprice = get_val('imgpos_lowestprice')
-    findpos_on = get_val('findpos_on')
-    lowest_price = get_val('lowest_price')
-    set_val('lowest_price', cv2.cvtColor(imgpos_lowestprice, cv2.COLOR_BGR2GRAY))
-    price = readpic(lowest_price, 'maindata.xml')
+    lowest_price_img = cv2.cvtColor(imgpos_lowestprice, cv2.COLOR_BGR2GRAY)
+    price = readpic(lowest_price_img, 'maindata.xml')
     return price

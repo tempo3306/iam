@@ -38,7 +38,7 @@ def Create_hash():
     with open("target.tkl", 'rb')  as tar:
         global dick_target
         dick_target = pickle.load(tar)  # 要寻找对象的对象
-
+        set_val('dick_target',dick_target)
 def init_val():
     set_val('host_ali', "http://hupai.pro")
     set_val('debug', True)

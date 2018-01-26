@@ -11,11 +11,9 @@ from component.app_thread import HashThread,LoginThread
 from component.variable import get_val,set_val
 from component.TopFrame import TopFrame
 import sys,pickle
-mainicon = get_val('mainicon')
-
-
 class LoginFrame(wx.Frame):
     def __init__(self, name, user, psd):  ##########版本号
+        mainicon = get_val('mainicon')
         wx.Frame.__init__(self, None, -1, name, size=(300, 240), style=wx.CAPTION | wx.CLOSE_BOX)
         self.Bind(wx.EVT_CLOSE, self.OnClose)
         self.panel = wx.Panel(self, size=(300, 220))
