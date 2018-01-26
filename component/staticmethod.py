@@ -11,7 +11,9 @@ import time
 import threading
 import pyautogui as pg
 from component.variable import set_val, get_val
-import ctypes,wintypes
+import ctypes
+from ctypes import wintypes
+
 
 def Click(x, y):  # 鼠标点击
     a = win32gui.GetCursorPos()
@@ -139,7 +141,7 @@ def SmartTijiao():
             set_val('tijiao_on', False)
     elif tijiao_num == 1:
         if lowest_price <= own_price1 - 600:
-            timer = threading.Timer(0.5,Tijiao)
+            timer = threading.Timer(0.5, Tijiao)
             timer.start()
             set_val('tijiao_on', False)
             if twice:
@@ -270,10 +272,75 @@ def OnClick_Backspace():
     pg.press('backspace')
 
 
+def tijiao_ok():
+    tijiao_OK = get_val('tijiao_OK')
+    refresh_need = get_val('refresh_need')
+    tijiao_on = get_val('tijiao_on')
+    yanzhengma_close = get_val('yanzhengma_close')
+    yanzhengma_view = get_val('yanzhengma_view')
+    e_on = get_val('e_on')
+    if e_on and tijiao_on:
+        print("tijiao_ok")
+        set_val('tijiao_OK', True)
+        set_val('yanzhengma_view', False)
+        set_val('yanzhengma_close', True)
+
+
+def tijiao_ok2():
+    tijiao_OK = get_val('tijiao_OK')
+    refresh_need = get_val('refresh_need')
+    yanzhengma_close = get_val('yanzhengma_close')
+    yanzhengma_view = get_val('yanzhengma_view')
+    enter_on = get_val('enter_on')
+    tijiao_on = get_val('tijiao_on')
+    if enter_on and tijiao_on:
+        set_val('tijiao_OK', True)
+    if enter_on:
+        set_val('yanzhengma_close', True)
+        set_val('yanzhengma_view', False)
+
+
+def query(cls):
+    query_interval = get_val('query_interval')
+    query_on = get_val('query_on')
+    Position = get_val('Position')
+    if not query_interval and not query_on:
+        set_val('query_on', True)
+        set_val('query_interval', True)
+        setText(str(1000000))  # 出一定超出的价格
+        selfdelete()
+        Click(Position[1][0], Position[1][1])
+        timer1 = threading.Timer(3, cls.query_sleep3)
+        timer1.start()
+        timer2 = threading.Timer(5, cls.query_sleep5)
+        timer2.start()
+    elif query_interval and query_on:
+        Click(Position[7][0], Position[7][1])
+        set_val('query_on', False)
+
+
+def query_sleep3():
+    query_interval = get_val('query_interval')
+    query_on = get_val('query_on')
+    Position = get_val('Position')
+    if query_on:
+        Click(Position[7][0], Position[7][1])
+        set_val('query_on', False)
+
+
+def query_sleep5():
+    query_interval = get_val('query_interval')
+    set_val('query_interval', False)
+
+
+def nothing():
+    pass
+
+
 def Open():
-    global do, web_on
+    do = get_val('do')
     if not do:
-        do = True
+        set_val('do',True)
         # 定义快捷键
         ############################
         VK_CODE = {'0': 0x30, '1': 0x31, '2': 0x32, '3': 0x33, '4': 0x34, '5': 0x35, '6': 0x36, '7': 0x37,
@@ -292,12 +359,13 @@ def Open():
         for id, (vk, modifiers) in HOTKEYS1.items():
             if not user32.RegisterHotKey(None, id, modifiers, vk):
                 print("Unable to register id", id)
-                do = False
+                set_val('do', False)
         for id, (vk, modifiers) in HOTKEYS2.items():
             if not user32.RegisterHotKey(None, id, modifiers, vk):
                 print("Unable to register id", id)
-                do = False
-            web_on = True
+                set_val('do', False)
+            set_val('web_on', True)
+
 
 # 启动监听
 def Listen():
@@ -308,12 +376,12 @@ def Listen():
                    '9': 0x39, 'a': 0x41, 'b': 0x42, 'c': 0x43, 'd': 0x44, 'e': 0x45, 'f': 0x46, 's': 0x53,
                    'q': 0x51, 'h': 0x48}
         HOTKEY_ACTIONS = {
-            1: handle_Jiajia, 2: handle_Chujia, 3: handle_Tijiao,
-            4: handle_Shuaxin, 5: handle_Confirm,
-            6: handle_Yanzhengma, 7: OnClick_Shuaxin, 8: selfTijiao,
+            1: nothing, 2: nothing, 3: nothing,
+            4: nothing, 5: nothing,
+            6: nothing, 7: OnClick_Shuaxin, 8: selfTijiao,
             9: selfChujia, 10: OnClick_Backspace, 11: tijiao_ok,
             12: tijiao_ok2,
-            13: query, 14:OnH_chujia}
+            13: query, 14: OnH_chujia}
         user32 = ctypes.windll.user32
         msg = wintypes.MSG()
         byref = ctypes.byref
@@ -333,10 +401,11 @@ def Listen():
         # for id in HOTKEYS2.keys():
         #     user32.UnregisterHotKey(None, id)
 
+
 def Close():
-    global do
+    do = get_val('do')
     if do:
-        do = False
+        set_val('do',False)
         VK_CODE = {'0': 0x30, '1': 0x31, '2': 0x32, '3': 0x33, '4': 0x34, '5': 0x35, '6': 0x36, '7': 0x37,
                    '8': 0x38,
                    '9': 0x39, 'a': 0x41, 'b': 0x42, 'c': 0x43, 'd': 0x44, 'e': 0x45, 'f': 0x46, 's': 0x53,

@@ -319,15 +319,13 @@ class StrategyPanel(wx.Panel):
         file = 'sc_new.png'
         web_on = get_val('web_on')
         strategy_on = get_val('strategy_on')
-        if web_on and strategy_on:
-            self.lowestframe.Show(True)
+
         if not os.path.exists(file):
             try:
                 self.Price_close()
             except:
                 pass
-        if not strategy_on or not web_on:
-            self.lowestframe.Show(False)
+
     def Screen_shot(self, box, size, name):
         Pricesize = get_val('Pricesize')
         region = ImageGrab.grab(box)

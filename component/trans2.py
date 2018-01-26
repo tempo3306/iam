@@ -14,8 +14,8 @@ def trans_setval(filename, newname):
             con = co[0].strip().split('=')
             co2= "".join(co[1:]).strip() #注释部分
             if len(con) == 2:
-                new1 = "set_val('{0}',{1})".format(con[0],con[1])
-                new3 = "{0} = get_val('{0}')".format(con[0])+'\n'
+                new1 = "set_val('{0}',{1})".format(con[0].strip(),con[1])
+                new3 = "{0} = get_val('{0}')".format(con[0].strip())+'\n'
                 print(new1)
                 if co2:
                     new2 = new1 +"  #"+co2 +"\n"

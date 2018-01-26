@@ -86,7 +86,8 @@ def total(filename):
     trans_setval(filename,newname,globalval)
     trans_getval(newname,finalname)
 
-total("OperationFrame.py")
-total("staticmethod.py")
-total("imgcut.py")
-total("app_thread.py")
+# total("OperationFrame.py")
+# total("staticmethod.py")
+# total("imgcut.py")
+# total("app_thread.py")
+total("TopFrame_backup.py")

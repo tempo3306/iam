@@ -9,11 +9,11 @@ import threading,time
 from threading import Thread
 import winreg
 import sys,os
-from .imgcut import cut_img,findconfirm,findrefresh,findpos
-from .login import ConfirmUser,Keeplogin
-from .staticmethod import OnClick_chujia,OnClick_Tijiao,OnClick_Shuaxin,OnClick_confirm
-from .staticmethod import SmartTijiao
-from .variable import get_val,set_val
+from component.imgcut import cut_img,findconfirm,findrefresh,findpos
+from component.login import ConfirmUser,Keeplogin
+from component.staticmethod import OnClick_chujia,OnClick_Tijiao,OnClick_Shuaxin,OnClick_confirm
+from component.staticmethod import SmartTijiao
+from component.variable import get_val,set_val
 class HashThread(Thread):
     def __init__(self):
         """Init Worker Thread Class."""
@@ -126,6 +126,7 @@ class LoginThread(Thread):
         Password = get_val('Password')
         login_result = get_val('login_result')
         version = get_val('version')
+        print(version,"version")
         set_val('login_result',ConfirmUser(Username,Password,version))
         print(login_result)
         wx.CallAfter(pub.sendMessage, "connect")
@@ -271,3 +272,83 @@ class MoniTijiaoThread(Thread):
                     print("第二次")
                     set_val('own_price2',lowest_price+second_diff)
                     set_val('tijiao_on',True)
+
+# 时间进程
+class TimeThread(Thread):
+    def __init__(self):
+        """Init Worker Thread Class."""
+        Thread.__init__(self)
+        self.setDaemon(True)  # 启动进程之前选择，主进程关闭，子进程跟着关闭
+        self.start()  # start the thread
+
+    # ----------------------------------------------------------------------
+    def run(self):
+        """Run Worker Thread."""
+        # This is the code executing in the new thread.
+        a_time = get_val('a_time')
+        moni_second = get_val('moni_second')
+        for i in range(1000000):
+            a = time.clock()
+            time.sleep(0.1)
+            b = time.clock()
+            a_time += b - a  # 实际运行时间作为真实间隔
+            moni_second += b - a
+            set_val('a_time',a_time)
+            set_val('moni_second',moni_second)
+            if moni_second >= 60:
+                set_val('moni_second' ,0)
+
+# ---------------------------------------
+# 打开浏览器
+# 打开浏览器
+import winreg, re, subprocess
+
+needpath = r'C:\Program Files (x86)\Internet Explorer\iexplore.exe'
+iepath = r'C:\Program Files (x86)\Internet Explorer\iexplore.exe'
+path1 = 'C:\Program Files (x86)'
+path2 = 'C:\Program Files'
+
+
+def getwebpath():
+    global needpath
+    # 查找注册表键值
+    try:
+        key = winreg.OpenKey(winreg.HKEY_CLASSES_ROOT, r"http\shell\open\command")
+        name, value, type = winreg.EnumValue(key, 0)
+        pattern = re.compile("\"*(.+\.exe)")
+        result = re.findall(pattern, value)
+        if result:
+            needpath = result[0]
+            # needpath='"'+result[0]+'"'
+    except:
+        pass
+    if not os.path.exists(needpath):
+        if os.path.exists('C:\Program Files (x86)'):
+            pass
+            # os.walk()
+
+
+def openweb(url):
+    global needpath
+    # command="\""+needpath+"\"" +" "+url  #需要加个空格
+    # path=r'C:\Program Files (x86)\Internet Explorer\iexplore.exe www.baidu.com'
+    subprocess.Popen([needpath, url])
+
+
+def openIE(url):
+    global iepath
+    subprocess.Popen([iepath, url])
+
+class OpenwebThread(Thread):
+    def __init__(self, url):
+        """Init Worker Thread Class."""
+        Thread.__init__(self)
+        self.url = url
+        self.setDaemon(True)  # 启动进程之前选择，主进程关闭，子进程跟着关闭
+        self.start()  # start the thread
+
+    # ----------------------------------------------------------------------
+    def run(self):
+        """Run Worker Thread."""
+        # This is the code executing in the new thread.
+        openweb(self.url)

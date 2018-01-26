@@ -1,0 +1,6 @@
+Fri, 26 Jan 2018 11:00:37 Newlife1.0.py[line:20] DEBUG This is debug message
+Fri, 26 Jan 2018 11:00:37 Newlife1.0.py[line:21] INFO This is info message
+Fri, 26 Jan 2018 11:00:37 Newlife1.0.py[line:22] WARNING This is warning message
+Fri, 26 Jan 2018 11:00:37 Newlife1.0.py[line:23] ERROR This is error message
+Fri, 26 Jan 2018 11:00:39 PngImagePlugin.py[line:130] DEBUG STREAM b'IHDR' 16 13
+Fri, 26 Jan 2018 11:00:39 PngImagePlugin.py[line:130] DEBUG STREAM b'IDAT' 41 65536

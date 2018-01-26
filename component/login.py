@@ -5,7 +5,6 @@
 @time: 2018/1/22 10:37
 '''
 import smtplib
-from .variable import host_ali,debug  #导入网址
 # import time
 # import codecs
 from email.mime.text import MIMEText
@@ -14,11 +13,9 @@ import mimetypes
 import email
 from email.mime.multipart import MIMEMultipart
 # --------------------------------------------------------------------------------
-# 进程管理
-from threading import Thread
-import threading
-from wx.lib.pubsub import pub  # 代替了publisher
+
 import socket, sys, json
+from component.variable import get_val
 
 timeout = 10
 socket.setdefaulttimeout(timeout)  # 设定截止时间
@@ -29,6 +26,8 @@ import json
 #用户登录
 def ConfirmUser(Username,Password,version):  #修改为参数传递
     try:
+        host_ali = get_val('host_ali')
+        debug = get_val('debug')
         # debug 模式
         target_url = host_ali + r'/main_api/userconfirm/info?' + 'username=%s' % Username + \
                      '&' + 'passwd=%s' % Password+'&'+'version=%s' %version +'&'+"debug=%s" % debug
@@ -45,6 +44,7 @@ def ConfirmUser(Username,Password,version):  #修改为参数传递
 
 #登出
 def Logout(Username):
+    host_ali = get_val('host_ali')
     host = host_ali
     # host = raw_input("Plz imput destination IP:")
     # data = raw_input("Plz imput what you want to submit:")

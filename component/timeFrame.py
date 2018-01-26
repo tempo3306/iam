@@ -29,7 +29,7 @@ class ClockWindow(wx.Panel):
         dc.DrawText(st, (w - tw) / 2, (h) / 2 - th / 2)
 
     def Modify(self, dc):  # 更新
-        a_time = get_val()
+        a_time = get_val('a_time')
         time_local = time.localtime(a_time)
         st = time.strftime("%H:%M:%S", time_local)  # + '.' + str(b_time)
         # st="%s:%s:%s"%(b_time[0],b_time[1],b_time[2])
@@ -52,11 +52,13 @@ class ClockWindow(wx.Panel):
 # 国拍时间框显示
 class TimeFrame(wx.Frame):
     def __init__(self):
+        Timesize = get_val('Timesize')
+        Pos_timeframe = get_val('Pos_timeframe')
         wx.Frame.__init__(self, None, title="wx.Timer", size=Timesize, pos=Pos_timeframe,
                           style=wx.FRAME_TOOL_WINDOW | wx.STAY_ON_TOP)
         # wx.Frame.__init__(self, None, -1,'Time',size=(400,160), pos=Pos_timeframe,
         #                   style=wx.FRAME_TOOL_WINDOW|wx.STAY_ON_TOP)
-        ClockWindow(self)
+        ClockWindow(self,Timesize)
 
 
 # -----------------------------------------------------------------------
@@ -102,9 +104,11 @@ class MoniClockWindow(wx.Panel):
 # 国拍时间框显示
 class MoniTimeFrame(wx.Frame):
     def __init__(self):
+        Pos_timeframe = get_val('Pos_timeframe')
+        Timesize = get_val('Timesize')
         wx.Frame.__init__(self, None, title="wx.Timer", size=(200, 50), pos=Pos_timeframe,
                           style=wx.FRAME_TOOL_WINDOW | wx.STAY_ON_TOP)
         # wx.Frame.__init__(self, None, -1,'Time',size=(400,160), pos=Pos_timeframe,
         #                   style=wx.FRAME_TOOL_WINDOW|wx.STAY_ON_TOP)
-        MoniClockWindow(self)
+        MoniClockWindow(self, Timesize)
 

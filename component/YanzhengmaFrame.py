@@ -7,11 +7,12 @@
 
 import wx
 from component.variable import get_val
-Yanzhengmasize = get_val('Yanzhengmasize')
-Pos_yanzhengmaframe = get_val('Pos_yanzhengmaframe')
+
 class YanzhengmaFrame(wx.Frame):
     def __init__(self,size):
         # print(Pos_yanzhengmaframe)
+        Yanzhengmasize = get_val('Yanzhengmasize')
+        Pos_yanzhengmaframe = get_val('Pos_yanzhengmaframe')
         wx.Frame.__init__(self, None, 18, 'Price', size=Yanzhengmasize, pos=Pos_yanzhengmaframe,
                           style=wx.FRAME_TOOL_WINDOW | wx.STAY_ON_TOP
                           )
