@@ -271,7 +271,6 @@ class StrategyPanel(wx.Panel):
                     pass
         price_view = get_val('price_view')
         price_count = get_val('price_count')
-        print(price_view)
         if price_view and price_count >= 4:
             try:
                 self.Price_close()
@@ -287,9 +286,8 @@ class StrategyPanel(wx.Panel):
         yanzhengma_close = get_val("yanzhengma_close")
         if yanzhengma_close:
             try:
-                print(yanzhengma_close,"yanzhengma_close")
+                # print(yanzhengma_close,"yanzhengma_close")
                 yan2 = self.FindWindowById(18)
-                print("触发了")
                 yan2.Show(False)
             except:
                 pass
@@ -391,45 +389,56 @@ class StrategyPanel(wx.Panel):
         a_time = get_val('a_time')
         moni_second = get_val('moni_second')
         moni_on = get_val('moni_on')
-        guopai_on = get_val('guopai_on')
         if moni_on:
-            set_val('moni_second', 0.1)
+            mt = moni_second-0.1
+            if mt >= 60:
+                set_val('moni_second', mt-60)
+            else:
+                print(moni_second)
+                set_val('moni_second', moni_second+0.1)
         else:
-            set_val('a_time', 0.1)
+            set_val('a_time', a_time + 0.1)
 
     def Minus_time(self, event):
         a_time = get_val('a_time')
         moni_second = get_val('moni_second')
         moni_on = get_val('moni_on')
-        guopai_on = get_val('guopai_on')
         if moni_on:
-            set_val('moni_second', 0.1)
+            mt = moni_second-0.1
+            if mt <0:
+                set_val('moni_second', 60+mt)
+            else:
+                set_val('moni_second', moni_second-0.1)
         else:
-            set_val('a_time', 0.1)
+            set_val('a_time', a_time+0.1)
 
     def Add_second(self, event):
         a_time = get_val('a_time')
         moni_second = get_val('moni_second')
         moni_on = get_val('moni_on')
-        guopai_on = get_val('guopai_on')
         if moni_on:
-            set_val('moni_second', 1)
-            if moni_second >= 60:
-                set_val('moni_second', 0)
+            mt = moni_second+1
+            print(moni_second)
+            if mt >= 60:
+                set_val('moni_second', mt-60)
+            else:
+                set_val('moni_second', moni_second+1)
         else:
-            set_val('a_time', 1)
+            set_val('a_time', a_time+1)
 
     def Minus_second(self, event):
         a_time = get_val('a_time')
         moni_second = get_val('moni_second')
         moni_on = get_val('moni_on')
-        guopai_on = get_val('guopai_on')
         if moni_on:
-            set_val('moni_second', 1)
-            if moni_second <= 0:
-                set_val('moni_second', 60)
+            mt = moni_second-1
+            if mt <0:
+                set_val('moni_second', 60+mt)
+            else:
+                set_val('moni_second', moni_second-1)
+
         else:
-            set_val('a_time', 1)
+            set_val('a_time', a_time-1)
 
     def Timeview(self, event):
         timeSelected = event.GetEventObject()

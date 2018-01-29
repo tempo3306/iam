@@ -174,7 +174,7 @@ def readpic(img, maindata):
     return price  # 返回的是price str   也可以是时间
 
 
-def timeset(guopai_on, moni_on, imgpos_currenttime, moni_second, a_time, maindata):
+def timeset(guopai_on, moni_on, imgpos_currenttime, maindata):
     try:
         currenttime = cv2.cvtColor(imgpos_currenttime, cv2.COLOR_BGR2GRAY)
         currenttime = readpic(currenttime, maindata)  # 识别出来的时间
@@ -184,16 +184,15 @@ def timeset(guopai_on, moni_on, imgpos_currenttime, moni_second, a_time, maindat
         if guopai_on:
             print(time.strptime(b, '%Y-%m-%d %H:%M:%S'))
             a_time = time.mktime(time.strptime(b, '%Y-%m-%d %H:%M:%S')) + 0.5  # 转时间戳   补个平均时差
-            moni_second = moni_second
+            set_val('a_time', a_time)
         if moni_on:
             try:
                 moni_second = int(currenttime.split(':')[2]) + 0.5
-                a_time = a_time
+                set_val('moni_second', moni_second)
             except:
                 pass
     except:
         pass
-    return (moni_second, a_time)
 
 def findpos():
     sc = ImageGrab.grab().convert('L')

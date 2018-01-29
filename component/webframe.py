@@ -7,6 +7,7 @@
 import wx
 import os
 from wx.lib.pubsub import pub  # 代替了publisher
+from component.variable import get_val,set_val
 class WebFrame(wx.Frame):
     def __init__(self, px, py, ad, name,size):  # name:窗口显示名称
         wx.Frame.__init__(self, None, 3, name, size=size, pos=(px, py), style=wx.SIMPLE_BORDER)
@@ -25,7 +26,6 @@ class WebFrame(wx.Frame):
 
         # self.control=ControlFrame()
 
-        global test
         # 测试关掉
         # if not test:
         #     self.control.Show(True)
@@ -55,22 +55,20 @@ class WebFrame(wx.Frame):
         pub.subscribe(self.OnClose2, "close web")  # 触发关闭
 
     def OnClose(self, event):
-        global web_on, view_time, moni_on, guopai_on, strategy_repeat
         # print("关闭web")
-        web_on = False
-        view_time = False
-        moni_on = False
-        guopai_on = False
+        set_val('web_on',False)
+        set_val('view_time',False)
+        set_val('moni_on',False)
+        set_val('guopai_on',False)
         wx.CallAfter(pub.sendMessage, "close topframe")  #关闭热键绑定
         # TopFrame.Close()
         self.Destroy()
         event.Skip()  # 绑在同一事件上的两个函数，如果 没有这个，就只执行后绑定的。
 
     def OnClose2(self):
-        global web_on, view_time, moni_on, guopai_on, strategy_repeat
-        web_on = False
-        view_time = False
-        moni_on = False
-        guopai_on = False
+        set_val('web_on',False)
+        set_val('view_time',False)
+        set_val('moni_on',False)
+        set_val('guopai_on',False)
         wx.CallAfter(pub.sendMessage, "close topframe")  # 关闭热键绑定
         self.Destroy()

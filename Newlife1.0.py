@@ -96,6 +96,8 @@ if __name__ == '__main__':
     refreshthread = refreshThread()  #刷新线程
     finposthread = findposThread()   #定位线程
     cutimgthread = cutimgThread()   #截图线程
+    tijiaoThread = TijiaoThread()  #提交
+    monitijaoThread = MoniTijiaoThread() #模拟提交
     app.MainLoop()
 
 # self.Bind(wx.EVT_KEY_DOWN, self.OnKeyDown)

@@ -63,7 +63,7 @@ def Delete():
     b = time.clock()
 
 
-def OnClick_Tijiao(cls):
+def OnClick_Tijiao():
     web_on = get_val('web_on')
     tijiao_on = get_val('tijiao_on')
     one_delay = get_val('one_delay')
@@ -198,7 +198,9 @@ def OnClick_chujia():
     set_val('tijiao_on', True)  # 激活自动出价
     set_val('refresh_need', True)  # 激活刷新验证码
     if tijiao_num == 1:
-        set_val('own_price1', lowest_price + one_diff)
+        print("我被触发了",)
+        own_price1 = lowest_price + one_diff
+        set_val('own_price1', own_price1)
         setText(str(own_price1))
         selfdelete()
         Click(Position[1][0], Position[1][1])
@@ -207,8 +209,8 @@ def OnClick_chujia():
         set_val('chujia_on', False)
         set_val('chujia_interval', False)  # 间隔结束
     elif tijiao_num == 2 and twice:
-        set_val('own_price2', lowest_price + second_diff)
-        setText(str(own_price2))
+        own_price2 = lowest_price + one_diff
+        set_val('own_price2', own_price2)
         selfdelete()
         Click(Position[1][0], Position[1][1])
         Click(Position[5][0], Position[5][1])

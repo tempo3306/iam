@@ -56,6 +56,7 @@ class confirmThread(threading.Thread):
             time.sleep(0.035)
             tijiao_num = get_val('tijiao_num')
             if tijiao_num == 2:
+                print( "确认中")
                 try:
                     findconfirm()
                 except:
@@ -157,38 +158,39 @@ class TijiaoThread(Thread):
         self.setDaemon(True)
         self.start()  # start the thread
     def run(self):
-        tijiao_delay = get_val('tijiao_delay')
-        final_tijiao = get_val('final_tijiao')
-        strategy_price = get_val('strategy_price')
-        lowest_price = get_val('lowest_price')
-        own_price1 = get_val('own_price1')
-        own_price2 = get_val('own_price2')
-        moni_second = get_val('moni_second')
-        strategy_on = get_val('strategy_on')
-        moni_on = get_val('moni_on')
-        tijiao_on = get_val('tijiao_on')
-        tijiao_OK = get_val('tijiao_OK')
-        second_real_time1 = get_val('second_real_time1')
-        second_real_time2 = get_val('second_real_time2')
-        one_advance = get_val('one_advance')
-        second_advance = get_val('second_advance')
-        tijiao_num = get_val('tijiao_num')
-        tijiao_OK = get_val('tijiao_OK')
-        chujia_on = get_val('chujia_on')
-        tijiao_on = get_val('tijiao_on')
-        tijiao_one = get_val('tijiao_one')
-        a_time = get_val('a_time')
-        one_real_time1 = get_val('one_real_time1')
-        one_real_time2 = get_val('one_real_time2')
-        guopai_on = get_val('guopai_on')
-        twice = get_val('twice')
-        one_delay = get_val('one_delay')
-        second_delay = get_val('second_delay')
-        one_diff = get_val('one_diff')
-        second_diff = get_val('second_diff')
         for i in range(10000000):
             time.sleep(0.05)  # 间隔0.1秒判断一次
+            tijiao_delay = get_val('tijiao_delay')
+            final_tijiao = get_val('final_tijiao')
+            strategy_price = get_val('strategy_price')
+            lowest_price = get_val('lowest_price')
+            own_price1 = get_val('own_price1')
+            own_price2 = get_val('own_price2')
+            moni_second = get_val('moni_second')
+            strategy_on = get_val('strategy_on')
+            moni_on = get_val('moni_on')
+            tijiao_on = get_val('tijiao_on')
+            tijiao_OK = get_val('tijiao_OK')
+            second_real_time1 = get_val('second_real_time1')
+            second_real_time2 = get_val('second_real_time2')
+            one_advance = get_val('one_advance')
+            second_advance = get_val('second_advance')
+            tijiao_num = get_val('tijiao_num')
+            tijiao_OK = get_val('tijiao_OK')
+            chujia_on = get_val('chujia_on')
+            tijiao_on = get_val('tijiao_on')
+            tijiao_one = get_val('tijiao_one')
+            a_time = get_val('a_time')
+            one_real_time1 = get_val('one_real_time1')
+            one_real_time2 = get_val('one_real_time2')
+            guopai_on = get_val('guopai_on')
+            twice = get_val('twice')
+            one_delay = get_val('one_delay')
+            second_delay = get_val('second_delay')
+            one_diff = get_val('one_diff')
+            second_diff = get_val('second_diff')
             if tijiao_on and strategy_on and guopai_on and tijiao_OK:  # 判断是否需要提交,国拍开启状态方可触发
+
                 if tijiao_num == 1 and a_time >= one_real_time2 and not tijiao_one:  # 判断是否满足条件
                     set_val('tijiao_on',False)
                     SmartTijiao()  # 调用方法
@@ -223,30 +225,30 @@ class MoniTijiaoThread(Thread):
         self.setDaemon(True)
         self.start()  # start the thread
     def run(self):
-        moni_second = get_val('moni_second')
-        strategy_on = get_val('strategy_on')
-        moni_on = get_val('moni_on')
-        tijiao_on = get_val('tijiao_on')
-        own_price1 = get_val('own_price1')
-        own_price2 = get_val('own_price2')
-        one_diff = get_val('one_diff')
-        second_diff = get_val('second_diff')
-        tijiao_num = get_val('tijiao_num')
-        tijiao_OK = get_val('tijiao_OK')
-        one_advance = get_val('one_advance')
-        second_advance = get_val('second_advance')
-        tijiao_one = get_val('tijiao_one')
-        one_time1 = get_val('one_time1')
-        one_time2 = get_val('one_time2')
-        second_time1 = get_val('second_time1')
-        second_time2 = get_val('second_time2')
-        lowest_price = get_val('lowest_price')
-        chujia_on = get_val('chujia_on')
-        twice = get_val('twice')
-        one_diff = get_val('one_diff')
-        second_diff = get_val('second_diff')
         for i in range(10000000):
             time.sleep(0.05)  # 间隔0.1秒判断一次
+            moni_second = get_val('moni_second')
+            strategy_on = get_val('strategy_on')
+            moni_on = get_val('moni_on')
+            tijiao_on = get_val('tijiao_on')
+            own_price1 = get_val('own_price1')
+            own_price2 = get_val('own_price2')
+            one_diff = get_val('one_diff')
+            second_diff = get_val('second_diff')
+            tijiao_num = get_val('tijiao_num')
+            tijiao_OK = get_val('tijiao_OK')
+            one_advance = get_val('one_advance')
+            second_advance = get_val('second_advance')
+            tijiao_one = get_val('tijiao_one')
+            one_time1 = get_val('one_time1')
+            one_time2 = get_val('one_time2')
+            second_time1 = get_val('second_time1')
+            second_time2 = get_val('second_time2')
+            lowest_price = get_val('lowest_price')
+            chujia_on = get_val('chujia_on')
+            twice = get_val('twice')
+            one_diff = get_val('one_diff')
+            second_diff = get_val('second_diff')
             if tijiao_on and strategy_on and moni_on and tijiao_OK:  # 判断是否需要提交，模拟开启方可触发
                 if tijiao_num == 1 and moni_second >= one_time2 and not tijiao_one:  # 判断是否满足条件
                     SmartTijiao()  # 调用方法
@@ -268,7 +270,7 @@ class MoniTijiaoThread(Thread):
                     print("第一次")
                     set_val('own_price1',lowest_price+one_diff)
                     set_val('tijiao_on',True)
-                elif tijiao_num == 2 and twice and second_time1 < moni_second:
+                elif tijiao_num == 2 and twice and second_time1 <= moni_second:
                     OnClick_chujia()  # 调用方法
                     print("第二次")
                     set_val('own_price2',lowest_price+second_diff)
@@ -286,12 +288,12 @@ class TimeThread(Thread):
     def run(self):
         """Run Worker Thread."""
         # This is the code executing in the new thread.
-        a_time = get_val('a_time')
-        moni_second = get_val('moni_second')
         for i in range(1000000):
             a = time.clock()
             time.sleep(0.1)
             b = time.clock()
+            a_time = get_val('a_time')
+            moni_second = get_val('moni_second')
             a_time += b - a  # 实际运行时间作为真实间隔
             moni_second += b - a
             set_val('a_time',a_time)

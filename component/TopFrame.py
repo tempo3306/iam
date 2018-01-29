@@ -123,20 +123,18 @@ class TopFrame(wx.Frame):
         elif moni_on:
             wx.MessageBox('请关闭模拟页面', '开启模拟失败', wx.OK | wx.ICON_ERROR)
         else:
-            print("ggghh")
             Open()
             do = get_val('do')
             if do:
                 set_val('moni_on', True)  # 模拟打开
                 set_val('ad_view', True)
                 set_val('web_on', True)
+                set_val('strategy_on',True)
                 self.fr = WebFrame(Px, Py, False, '小鲜肉模拟', (websize[0], websize[1]))
-                if time_on:
-                    self.operationframe.Opentime()
-                if not strategy_repeat:  # 判断自动出价进程是否开启
-                    self.monitijiaothread = MoniTijiaoThread()  # 开启模拟自动出价
-                    self.tijiaothread = TijiaoThread()  # 开启模拟自动出价
-                    set_val('strategy_repeat', True)
+
+                # if not strategy_repeat:  # 判断自动出价进程是否开启
+                #     self.monitijiaothread = MoniTijiaoThread()  # 开启模拟自动出价
+                #     set_val('strategy_repeat', True)
                 browser = wx.html2.WebView.New(self.fr, size=(websize[0] + 48, websize[1] + 40), pos=webview_pos,
                                                style=wx.BORDER_NONE)
                 browser.LoadURL(url1)
@@ -148,6 +146,7 @@ class TopFrame(wx.Frame):
             Listen()
 
     def Openurlchoice(self, event):
+        mainicon = get_val('mainicon')
         guopai = GuopaiFrame("国拍", mainicon)
 
     def OpenGuopai_dianxin(self):
@@ -160,6 +159,7 @@ class TopFrame(wx.Frame):
         tijiao_OK = get_val('tijiao_OK')
         twice = get_val('twice')
         timer0 = threading.Timer(5, findpos)
+        webview_pos = get_val('webview_pos')
         set_val('strategy_on', True)
         set_val('twice', False)
         set_val('chujia_on', True)
@@ -175,22 +175,21 @@ class TopFrame(wx.Frame):
         moni_on = get_val('moni_on')
         guopai_on = get_val('guopai_on')
         strategy_repeat = get_val('strategy_repeat')
+
         if moni_on:
             wx.MessageBox('请关闭模拟页面', '开启国拍失败', wx.OK | wx.ICON_ERROR)
         elif guopai_on:
             wx.MessageBox('国拍已经打开', '开启国拍失败', wx.OK | wx.ICON_ERROR)
         else:
             Open()
+            do = get_val('do')
             if do:
                 set_val('ad_view', True)
                 set_val('guopai_on', True)
                 self.fr = WebFrame(Px, Py, False, '沪牌一号 国拍', (websize[0], websize[1]))  # 暂时关闭广告
-                if time_on:
-                    self.operationframe.Opentime()
-                if not strategy_repeat:  # 判断自动出价进程是否开启
-                    self.monitijiaothread = MoniTijiaoThread()  # 开启模拟自动出价
-                    self.tijiaothread = TijiaoThread()  # 开启模拟自动出价
-                    set_val('strategy_repeat', True)
+
+                # if not strategy_repeat:  # 判断自动出价进程是否开启
+                #     set_val('strategy_repeat', True)
                 browser = wx.html2.WebView.New(self.fr, size=(websize[0] + 48, websize[1] + 40), pos=webview_pos,
                                                style=wx.BORDER_NONE)
                 browser.LoadURL(url2)
@@ -217,6 +216,7 @@ class TopFrame(wx.Frame):
         set_val('tijiao_on', False)
         set_val('tijiao_num', 1)  # 初始化
         set_val('tijiao_OK', False)
+        webview_pos = get_val('webview_pos')
         Px = get_val('Px')
         Py = get_val('Py')
         url3 = get_val('url3')
@@ -238,10 +238,10 @@ class TopFrame(wx.Frame):
                 self.fr = WebFrame(Px, Py, False, '沪牌一号 国拍', (websize[0], websize[1]))  # 暂时关闭广告
                 if time_on:
                     self.operationframe.Opentime()
-                if not strategy_repeat:  # 判断自动出价进程是否开启
-                    self.monitijiaothread = MoniTijiaoThread()  # 开启模拟自动出价
-                    self.tijiaothread = TijiaoThread()  # 开启模拟自动出价
-                    set_val('strategy_repeat', True)
+                # if not strategy_repeat:  # 判断自动出价进程是否开启
+                #     self.monitijiaothread = MoniTijiaoThread()  # 开启模拟自动出价
+                #     self.tijiaothread = TijiaoThread()  # 开启模拟自动出价
+                #     set_val('strategy_repeat', True)
                 browser = wx.html2.WebView.New(self.fr, size=(websize[0] + 48, websize[1] + 40), pos=webview_pos,
                                                style=wx.BORDER_NONE)
                 browser.LoadURL(url3)
@@ -280,13 +280,13 @@ class TopFrame(wx.Frame):
         if do:
             set_val('ad_view', True)
             set_val('guopai_on', True)
-            if time_on:
-                self.operationframe.Opentime()
+            # if time_on:
+            #     self.operationframe.Opentime()
             if not strategy_repeat:  # 判断自动出价进程是否开启
-                self.monitijiaothread = MoniTijiaoThread()  # 开启模拟自动出价
-                self.tijiaothread = TijiaoThread()  # 开启模拟自动出价
+                # self.monitijiaothread = MoniTijiaoThread()  # 开启模拟自动出价
+                # self.tijiaothread = TijiaoThread()  # 开启模拟自动出价
                 set_val('strategy_repeat', True)
-                openIE(url3)
+                # openIE(url3)
                 Listen()
         else:
             wx.MessageBox('请检查其它软件热键占用', '辅助启用失败', wx.OK | wx.ICON_ERROR)
@@ -376,9 +376,7 @@ class TopFrame(wx.Frame):
         guopai_on = get_val('guopai_on')
         moni_on = get_val('moni_on')
         imgpos_currenttime = get_val('imgpos_currenttime')
-        moni_second = get_val('moni_cecond')
-        a_time = get_val('a_time')
-        timeset(guopai_on, moni_on, imgpos_currenttime, moni_second, a_time, 'maindata.xml')  # 调用时间同步
+        timeset(guopai_on, moni_on, imgpos_currenttime, 'maindata.xml')  # 调用时间同步
 
     def MainControl(self, event):
         web_on = get_val('web_on')
