@@ -29,14 +29,15 @@ def ConfirmUser(Username,Password,version):  #修改为参数传递
         host_ali = get_val('host_ali')
         debug = get_val('debug')
         # debug 模式
-        target_url = host_ali + r'/main_api/userconfirm/info?' + 'username=%s' % Username + \
+        target_url = host_ali + r'/bid/bid_login/?' + 'username=%s' % Username + \
                      '&' + 'passwd=%s' % Password+'&'+'version=%s' %version +'&'+"debug=%s" % debug
         # target_url = host_ali + r'/main_api/userconfirm/info?' + 'username=%s' % Username + '&' + 'passwd=%s' % Password
+        print(target_url)
         response = request.urlopen(target_url)
-        print(response)
         result = response.read()
         result = str(result, encoding='utf-8')
         result = json.loads(result)
+        print(result)
     except:
         return {'result': 'net error'}
     return result

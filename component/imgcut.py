@@ -303,7 +303,8 @@ def cut_img():  # 将所得的img 处理成  lowestprice_img   confirm_img  yanz
         set_val('imgpos_yanzhengmaconfirm', img[use_area[4][1]:use_area[4][3], use_area[4][0]:use_area[4][2]])  # ok
         set_val('imgpos_currenttime', img[use_area[5][1]:use_area[5][3], use_area[5][0]:use_area[5][2]])
     except:
-        print("cut_img 这里出错")
+        pass
+        # print("cut_img 这里出错")
 
 def findrefresh():
     dick_target = get_val('dick_target')

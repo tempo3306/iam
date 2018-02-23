@@ -15,6 +15,14 @@ import numpy as np
 
 vars = {}
 
+
+##热键对应KEY
+keycode = {}
+for i in range(65,91):
+    keycode[chr(i)] = i
+
+
+
 #初始化变量
 #--------------------------------------------------
 #修改变量值

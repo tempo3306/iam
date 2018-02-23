@@ -341,7 +341,7 @@ def Open():
     do = get_val('do')
     if not do:
         set_val('do',True)
-        # 定义快捷键
+        # 定义快捷键                                                                         /
         ############################
         VK_CODE = {'0': 0x30, '1': 0x31, '2': 0x32, '3': 0x33, '4': 0x34, '5': 0x35, '6': 0x36, '7': 0x37,
                    '8': 0x38,
@@ -386,6 +386,7 @@ def Listen():
         msg = wintypes.MSG()
         byref = ctypes.byref
         while user32.GetMessageA(byref(msg), None, 0, 0) != 0:
+            # print("listening")
             if msg.message == win32con.WM_HOTKEY:
                 action_to_take = HOTKEY_ACTIONS.get(msg.wParam)
                 if action_to_take:
@@ -424,3 +425,33 @@ def Close():
             user32.UnregisterHotKey(None, id)
     else:
         pass
+
+
+# 创建一个确认进程
+class listenThread(threading.Thread):
+    def __init__(self, *args, **kwargs):
+        super(listenThread, self).__init__(*args, **kwargs)
+        self.__flag = threading.Event()  # 用于暂停线程的标识
+        self.__flag.set()  # 设置为True
+        self.__running = threading.Event()  # 用于停止线程的标识
+        self.__running.set()  # 将running设置为True
+        self.setDaemon(True)
+        self.start()
+
+    def run(self):
+        while 1:
+            print("fdsfds")
+            Listen()
+        # while self.__running.isSet():
+        #     self.__flag.wait()  # 为True时立即返回, 为False时阻塞直到内部的标识位为True后返回
+        #     Listen()
+
+    def pause(self):
+        self.__flag.clear()  # 设置为False, 让线程阻塞
+
+    def resume(self):
+        self.__flag.set()  # 设置为True, 让线程停止阻塞
+
+    def stop(self):
+        self.__flag.set()  # 将线程从暂停状态恢复, 如何已经暂停的话
+        self.__running.clear()  # 设置为False

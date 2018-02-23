@@ -1,4 +1,3 @@
-
 ####################
 # 参数
 # id Topframe 1    Operationframe 2  guopaiweb 3 controlframe 4
@@ -43,10 +42,6 @@ from component.app_thread import confirmThread,refreshThread,TijiaoThread,MoniTi
 from component.variable import set_val,get_val
 from component.LoginFrame import LoginFrame
 from component.variable import Create_hash,init_val
-
-
-
-#-------------------------------------------------------------
 
 #--------------------------------------------------------------
 #创建app

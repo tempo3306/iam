@@ -104,6 +104,7 @@ class LoginFrame(wx.Frame):
         url3 = get_val('url3')
         version = get_val('version')
         Username = get_val('Username')
+
         if login_result['result'] == 'login success':
             self.Destroy()
             self.topframe = TopFrame('小鲜肉拍牌', version)

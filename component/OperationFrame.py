@@ -253,7 +253,6 @@ class StrategyPanel(wx.Panel):
         self.yanzhengmaframe = YanzhengmaFrame(Yanzhengmasize)
 
     def Price_view(self, event):
-        price_view = get_val('price_view')
         Pricesize = get_val('Pricesize')
         Yanzhengmasize = get_val('Yanzhengmasize')
         yanzhengma_move = get_val('yanzhengma_move')

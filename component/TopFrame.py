@@ -140,10 +140,11 @@ class TopFrame(wx.Frame):
                 browser.LoadURL(url1)
                 browser.CanSetZoomType(False)
                 self.fr.Show()
+                Listen()
             else:
                 wx.MessageBox('请检查其它软件热键占用', '辅助启用失败', wx.OK | wx.ICON_ERROR)
                 Close()
-            Listen()
+            # listenthread = listenThread()
 
     def Openurlchoice(self, event):
         mainicon = get_val('mainicon')
