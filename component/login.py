@@ -23,14 +23,15 @@ socket.setdefaulttimeout(timeout)  # 设定截止时间
 from urllib import request
 import json
 
-#用户登录
-def ConfirmUser(Username,Password,version):  #修改为参数传递
+
+# 用户登录
+def ConfirmUser(Username, Password, version):  # 修改为参数传递
     try:
         host_ali = get_val('host_ali')
         debug = get_val('debug')
         # debug 模式
         target_url = host_ali + r'/bid/bid_login/?' + 'username=%s' % Username + \
-                     '&' + 'passwd=%s' % Password+'&'+'version=%s' %version +'&'+"debug=%s" % debug
+                     '&' + 'passwd=%s' % Password + '&' + 'version=%s' % version + '&' + "debug=%s" % debug
         # target_url = host_ali + r'/main_api/userconfirm/info?' + 'username=%s' % Username + '&' + 'passwd=%s' % Password
         print(target_url)
         response = request.urlopen(target_url)
@@ -42,7 +43,8 @@ def ConfirmUser(Username,Password,version):  #修改为参数传递
         return {'result': 'net error'}
     return result
 
-#登出
+
+# 登出
 def Logout(Username):
     host_ali = get_val('host_ali')
     host = host_ali
@@ -70,7 +72,7 @@ def Logout(Username):
     # logging.info("Submit Log Out Complete")
 
 
-def Keeplogin(Username,Password):
+def Keeplogin(Username, Password):
     host_ali = get_val('host_ali')
     host = host_ali
     # host = raw_input("Plz imput destination IP:")

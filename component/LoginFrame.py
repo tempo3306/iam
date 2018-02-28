@@ -7,10 +7,12 @@
 import wx.lib.agw.hyperlink as hyperlink
 from wx.lib.pubsub import pub
 import wx
-from component.app_thread import HashThread,LoginThread
-from component.variable import get_val,set_val
+from component.app_thread import HashThread, LoginThread
+from component.variable import get_val, set_val
 from component.TopFrame import TopFrame
-import sys,pickle
+import sys, pickle
+
+
 class LoginFrame(wx.Frame):
     def __init__(self, name, user, psd):  ##########版本号
         mainicon = get_val('mainicon')
@@ -20,21 +22,11 @@ class LoginFrame(wx.Frame):
         self.icon = wx.Icon(mainicon, wx.BITMAP_TYPE_ICO)
         self.SetIcon(self.icon)
 
-        # self.panel.SetBackgroundColour((0,188, 255))
-        # self.panel.Bind(wx.EVT_ERASE_BACKGROUND, self.OnEraseBack)
-
-        # # 设置字体
-        # font_button = wx.Font(10, wx.SCRIPT, wx.NORMAL, wx.BOLD)
-        # font2 = wx.Font(15, wx.SCRIPT, wx.NORMAL, wx.NORMAL)
-        # font3 = wx.Font(25, wx.TELETYPE, wx.NORMAL, wx.NORMAL)
-        # font_userlabel = wx.Font(15, wx.TELETYPE, wx.NORMAL, wx.NORMAL)
-
         # 主sizer
         self.sizer_v1 = wx.BoxSizer(wx.VERTICAL)
         self.welcomelabel = wx.StaticText(self.panel, -1, label="请输入用户名和密码", style=wx.ALIGN_CENTER)
         self.sizer_v1.Add(self.welcomelabel, flag=wx.ALIGN_CENTER | wx.ALL, border=10)
 
-        # self.btnSizer = wx.StdDialogButtonSizer()
         self.userbox = wx.BoxSizer(wx.HORIZONTAL)
         self.userlabel = wx.StaticText(self.panel, -1, label="账号")
         self.userText = wx.TextCtrl(self.panel, -1, size=(150, -1),
@@ -90,7 +82,8 @@ class LoginFrame(wx.Frame):
         self.sizer_v1.Add(self.linkbox, flag=wx.ALIGN_CENTER | wx.ALL, border=5)
 
         self.SetSizer(self.sizer_v1)
-        self.Center()  # 初始化居中
+        # 初始化居中
+        self.Center()
 
         pub.subscribe(self.connect_success, "connect")
         # pub.subscribe(self.connect_failure, "connect failure")
@@ -100,8 +93,6 @@ class LoginFrame(wx.Frame):
     def connect_success(self):
         self.loginbtn.Enable()
         login_result = get_val('login_result')
-        url2 = get_val('url2')
-        url3 = get_val('url3')
         version = get_val('version')
         Username = get_val('Username')
 
@@ -112,7 +103,7 @@ class LoginFrame(wx.Frame):
             print(login_result)
             ##这里作为测试用
             if Username == 'helong' or Username == 'yuanjunkai' or Username == 'zs':
-                set_val('url2' , 'http://moni.51hupai.org/')
+                set_val('url2', 'http://moni.51hupai.org/')
             else:
                 set_val('url2', login_result['url_dianxin'])
                 url2 = login_result['url_dianxin']
@@ -129,24 +120,11 @@ class LoginFrame(wx.Frame):
         else:
             wx.MessageBox('登录失败', '用户登录', wx.OK | wx.ICON_ERROR)
 
-    def OnEraseBack(self, event):
-        dc = event.GetDC()
-        if not dc:
-            dc = wx.ClientDC(self)
-            rect = self.GetUpdateRegion().GetBox()
-            dc.SetClippingRect(rect)
-        dc.Clear()
-        bmp = wx.Bitmap("blue.jpg")
-        dc.DrawBitmap(bmp, 0, 0)
 
     def OnClose(self, event):
         event.Skip()
         sys.exit(None)
 
-    # def connect_failure(self):
-    #     self.loginBtn.Enable()
-    #     # self.loginthread.terminate()
-    #     wx.MessageBox('连接服务器失败', '用户登录', wx.OK | wx.ICON_ERROR)
 
     def OnLogin(self, event):
         username = self.userText.GetValue()
@@ -159,8 +137,8 @@ class LoginFrame(wx.Frame):
             self.passText.SetFocus()
             # loginthread=TestThread()
         else:
-            set_val('Username',username) # 保存用户输入的账号密码
-            set_val('Password',password)
+            set_val('Username', username)  # 保存用户输入的账号密码
+            set_val('Password', password)
             self.loginthread = LoginThread()
             namepsd = [username, password]
             with open('your.name', 'wb') as userfile:

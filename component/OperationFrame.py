@@ -11,36 +11,95 @@ from component.YanzhengmaFrame import YanzhengmaFrame  # 验证码放大窗口
 from component.imgcut import cut_pic, find_yan_confirm
 import pickle, os, imagehash
 from component.variable import set_val, get_val
+from component.imgcut import findpos, timeset
+from wx.lib.pubsub import pub
 
-
+#-----------------------------------------------------------
 class StatusPanel(wx.Panel):
     def __init__(self, parent):
         wx.Panel.__init__(self, parent=parent)
         self.control = wx.StaticBox(self, -1, "功能区域")
         self.controlbox = wx.StaticBoxSizer(self.control, wx.VERTICAL)
-        self.controlgrid = wx.GridBagSizer(4, 4)  # 网格组件
-        self.closeButton = wx.Button(self)  # 关闭WEB
-        self.timeButton = wx.Button(self)  # 时间
-        self.posajustButton = wx.Button(self)  # 位置调整
-        self.timeajustButton = wx.Button(self)  # 时间同步
-        self.controlgrid.Add(self.closeButton, pos=(0, 0))  # 布局
-        self.controlgrid.Add(self.timeButton, pos=(0, 1))
+        self.controlgrid = wx.GridBagSizer(4, 2)  # 网格组件
+
+        ##功能区
+        self.timeviewButton = wx.Button(self, label='显示时间')  # 关闭WEB
+        self.remotetimeButton = wx.Button(self, label='同步服务器时间')  # 时间
+        self.posajustButton = wx.Button(self, label='刷新定位')  # 位置调整
+        self.localtimeButton = wx.Button(self, label='同步本地时间')  # 时间同步
+
+        ##绑定
+        self.timeviewButton.Bind(wx.EVT_BUTTON, self.time)
+        self.remotetimeButton.Bind(wx.EVT_BUTTON, self.getremotetime)
+        self.posajustButton.Bind(wx.EVT_BUTTON, self.posautoajust)
+        self.localtimeButton.Bind(wx.EVT_BUTTON, self.timeautoajust)
+
+        self.controlgrid.Add(self.timeviewButton, pos=(0, 0))  # 布局
+        self.controlgrid.Add(self.remotetimeButton, pos=(0, 1))
         self.controlgrid.Add(self.posajustButton, pos=(1, 0))
-        self.controlgrid.Add(self.timeajustButton, pos=(1, 1))
+        self.controlgrid.Add(self.localtimeButton, pos=(1, 1))
+
+        #时间区
+        self.timeview = wx.CheckBox(self, -1, label=u'显示时间')  # 开启时间显示
+        self.Bind(wx.EVT_CHECKBOX, self.Timeview, self.timeview)
+        hbox1 = wx.BoxSizer(wx.HORIZONTAL)
+        hbox1.Add(self.timeview)
+        self.button1 = wx.Button(self, label='+1s', size=(35, 25))
+        self.Bind(wx.EVT_BUTTON, self.Add_second, self.button1)
+        self.button2 = wx.Button(self, label='-1s', size=(35, 25))
+        self.Bind(wx.EVT_BUTTON, self.Minus_second, self.button2)
+        self.button3 = wx.Button(self, label='+0.1s', size=(35, 25))
+        self.Bind(wx.EVT_BUTTON, self.Add_time, self.button3)
+        self.button4 = wx.Button(self, label='-0.1s', size=(35, 25))
+        self.Bind(wx.EVT_BUTTON, self.Minus_time, self.button4)
+        hbox1.Add(self.button1)
+        hbox1.Add(self.button2)
+        hbox1.Add(self.button3)
+        hbox1.Add(self.button4)
+
+        ##确认方式
+        confirm_choice = ["E键", "回车"]
+        self.confirm_choice = wx.Choice(self, -1, choices=confirm_choice)
+        self.confirm_choice.SetSelection(0)
+        self.Bind(wx.EVT_CHOICE, self.Confirmchoice, self.confirm_choice)
+
+        self.confirm_label = wx.StaticText(self, label=u"确认提交方式     ")
+        hbox2 = wx.BoxSizer(wx.HORIZONTAL)
+        hbox2.Add(self.confirm_label, flag=wx.TOP, border=4)
+        hbox2.Add(self.confirm_choice)
+
         self.controlbox.Add(self.controlgrid)  # 把网格组加到 功能框内
+        self.controlbox.Add(hbox1)
+        self.controlbox.Add(hbox2)
+
+
+    ###状态区
         self.status = wx.StaticBox(self, -1, "状态显示")
         self.statusbox = wx.StaticBoxSizer(self.status, wx.VERTICAL)
-        self.statusgrid = wx.GridBagSizer(6, 6)
-        self.net_status = wx.StaticText(self, -1, label="当前网速")
-        self.lowestprice_status = wx.StaticText(self, -1, label="当前最低成交价")
-        self.userprice_status = wx.StaticText(self, -1, label="出价状态")
-        self.time_status = wx.StaticText(self, -1, label="与出价时间相差")
-        self.price_status = wx.StaticText(self, -1, label="价格相差")
-        self.statusgrid.Add(self.net_status, pos=(0, 0))
-        self.statusgrid.Add(self.lowestprice_status, pos=(1, 0))
-        self.statusgrid.Add(self.userprice_status, pos=(2, 0))
-        self.statusgrid.Add(self.time_status, pos=(3, 0))
-        self.statusgrid.Add(self.price_status, pos=(4, 0))
+        self.statusgrid = wx.GridBagSizer(4, 2)
+
+        self.net_status_text = wx.StaticText(self, -1, label="当前网速：")
+        self.net_status = wx.StaticText(self, -1, label="5ms",  size=(70,20))
+        self.lowestprice_status = wx.StaticText(self, -1, label="当前最低成交价：")
+        self.lowestprice = wx.StaticText(self, -1, label="90000")
+        self.userprice_status = wx.StaticText(self, -1, label="出价状态：")
+        self.userprice = wx.StaticText(self, -1, label="90000")
+        self.time_status = wx.StaticText(self, -1, label="与出价时间相差：")
+        self.time = wx.StaticText(self, -1, label="1秒")
+        self.price_status = wx.StaticText(self, -1, label="价格相差：")
+        self.price = wx.StaticText(self, -1, label="100")
+
+        self.statusgrid.Add(self.net_status_text, pos=(0, 0), flag=wx.RIGHT, border=5)
+        self.statusgrid.Add(self.net_status, pos=(0, 1))
+        self.statusgrid.Add(self.lowestprice_status, pos=(1, 0), flag=wx.RIGHT, border=5)
+        self.statusgrid.Add(self.lowestprice, pos=(1,1))
+        self.statusgrid.Add(self.userprice_status, pos=(2, 0), flag=wx.RIGHT, border=5)
+        self.statusgrid.Add(self.userprice, pos=(2,1))
+        self.statusgrid.Add(self.time_status, pos=(3, 0), flag=wx.RIGHT, border=5)
+        self.statusgrid.Add(self.time, pos=(3,1))
+        self.statusgrid.Add(self.price_status, pos=(4, 0), flag=wx.RIGHT, border=5)
+        self.statusgrid.Add(self.price, pos=(4,1))
+
         self.statusbox.Add(self.statusgrid)
         self.reminder = wx.StaticBox(self, -1, "提示")
         self.reminderbox = wx.StaticBoxSizer(self.reminder, wx.VERTICAL)
@@ -51,11 +110,150 @@ class StatusPanel(wx.Panel):
         self.remindervbox.Add(self.hotkey_smartprice)
         self.reminderbox.Add(self.remindervbox)
         self.vbox = wx.BoxSizer(wx.VERTICAL)
-        self.vbox.Add(self.controlbox)
-        self.vbox.Add(self.statusbox)
-        self.vbox.Add(self.reminderbox)
+        self.vbox.Add(self.controlbox, flag=wx.BOTTOM, border=10 )
+        self.vbox.Add(self.statusbox, flag=wx.BOTTOM, border=10)
+        self.vbox.Add(self.reminderbox, flag=wx.BOTTOM, border=10)
         self.SetSizer(self.vbox)
 
+    ## 创建一个timer事件，修改状态
+        self.status_timer = wx.Timer(self)
+        self.Bind(wx.EVT_TIMER, self.status_Timer, self.status_timer)
+        self.status_timer.Start(100)
+    ## 创建时间框
+        self.timeframe1 = TimeFrame()
+        self.timeframe1.Show(False)
+        self.timeframe2 = MoniTimeFrame()
+        self.timeframe2.Show(False)
+
+    def status_Timer(self,event):
+        now_ping = get_val('now_ping')
+        lowest_price = get_val('lowest_price')
+        if now_ping != 'timeout':
+            self.net_status.SetLabel("%sms"%now_ping)
+        else:
+            self.net_status.SetLabel("%s"%now_ping)
+        self.lowestprice.SetLabel(str(lowest_price))
+
+
+    ##
+    def time(self, event):
+        pass
+
+    ## 获取服务器时间
+    def getremotetime(self, event):
+        pass
+
+    ## 同步本地时间
+    def timeautoajust(self, event):
+        guopai_on = get_val('guopai_on')
+        moni_on = get_val('moni_on')
+        imgpos_currenttime = get_val('imgpos_currenttime')
+        timeset(guopai_on, moni_on, imgpos_currenttime, 'maindata.xml')  # 调用时间同步
+
+    ##刷新定位
+    def posautoajust(self, event):
+        findpos()
+
+    ##时间显示
+    def Timeview(self, event):
+        timeSelected = event.GetEventObject()
+        view_time = get_val('view_time')
+        time_on = get_val('time_on')
+        moni_on = get_val('moni_on')
+        guopai_on = get_val('guopai_on')
+        if timeSelected.IsChecked():
+            set_val('view_time', True)
+            set_val('time_on', True)
+            if guopai_on:
+                self.timeframe1.Show(True)
+            elif moni_on:
+                self.timeframe2.Show(True)
+        else:
+            set_val('view_time', False)
+            set_val('time_on', False)
+            if guopai_on:
+                self.timeframe1.Show(False)
+            elif moni_on:
+                self.timeframe2.Show(False)
+
+
+    ##时间调整
+    def Add_time(self, event):
+        a_time = get_val('a_time')
+        moni_second = get_val('moni_second')
+        moni_on = get_val('moni_on')
+        if moni_on:
+            mt = moni_second - 0.1
+            if mt >= 60:
+                set_val('moni_second', mt - 60)
+            else:
+                print(moni_second)
+                set_val('moni_second', moni_second + 0.1)
+        else:
+            set_val('a_time', a_time + 0.1)
+
+    def Minus_time(self, event):
+        a_time = get_val('a_time')
+        moni_second = get_val('moni_second')
+        moni_on = get_val('moni_on')
+        if moni_on:
+            mt = moni_second - 0.1
+            if mt < 0:
+                set_val('moni_second', 60 + mt)
+            else:
+                set_val('moni_second', moni_second - 0.1)
+        else:
+            set_val('a_time', a_time + 0.1)
+
+    def Add_second(self, event):
+        a_time = get_val('a_time')
+        moni_second = get_val('moni_second')
+        moni_on = get_val('moni_on')
+        if moni_on:
+            mt = moni_second + 1
+            print(moni_second)
+            if mt >= 60:
+                set_val('moni_second', mt - 60)
+            else:
+                set_val('moni_second', moni_second + 1)
+        else:
+            set_val('a_time', a_time + 1)
+
+    def Minus_second(self, event):
+        a_time = get_val('a_time')
+        moni_second = get_val('moni_second')
+        moni_on = get_val('moni_on')
+        if moni_on:
+            mt = moni_second - 1
+            if mt < 0:
+                set_val('moni_second', 60 + mt)
+            else:
+                set_val('moni_second', moni_second - 1)
+
+        else:
+            set_val('a_time', a_time - 1)
+
+    #关闭时间显示
+    def Closetime(self):
+        try:
+            self.timeframe1.Show(False)
+        except:
+            pass
+        try:
+            self.timeframe2.Show(False)
+        except:
+            pass
+
+    def Confirmchoice(self, event):
+        con = self.confirm_choice.GetSelection()
+        if con == 0:
+            set_val('e_on', True)
+            set_val('enter_on', False)
+        elif con == 1:
+            set_val('e_on', False)
+            set_val('enter_on', True)
+
+#-----------------------------------------------------------
 
 class AccountPanel(wx.Panel):
     def __init__(self, parent):
@@ -69,10 +267,6 @@ class AccountPanel(wx.Panel):
 class StrategyPanel(wx.Panel):
     def __init__(self, parent):
         wx.Panel.__init__(self, parent=parent)
-        one_real_time1 = get_val('one_real_time1')
-        second_real_time1 = get_val('second_real_time1')
-        one_real_time2 = get_val('one_real_time2')
-        second_real_time2 = get_val('second_real_time2')
         one_time1 = get_val('one_time1')
         one_time2 = get_val('one_time2')
         second_time1 = get_val('second_time1')
@@ -97,32 +291,11 @@ class StrategyPanel(wx.Panel):
         self.select_stractagy = wx.Choice(self, -1, choices=stractagy_choices, size=(100, 50))
         hbox1.Add(self.select_stractagy)
         self.select_stractagy.SetSelection(0)
-        self.timeview = wx.CheckBox(self, -1, label=u'显示时间')  # 开启时间显示
-        hbox2 = wx.BoxSizer(wx.HORIZONTAL)
-        hbox2.Add(self.timeview)
-        self.button1 = wx.Button(self, label='+1s', size=(35, 25))
-        self.Bind(wx.EVT_BUTTON, self.Add_second, self.button1)
-        self.button2 = wx.Button(self, label='-1s', size=(35, 25))
-        self.Bind(wx.EVT_BUTTON, self.Minus_second, self.button2)
-        self.button3 = wx.Button(self, label='+0.1s', size=(35, 25))
-        self.Bind(wx.EVT_BUTTON, self.Add_time, self.button3)
-        self.button4 = wx.Button(self, label='-0.1s', size=(35, 25))
-        self.Bind(wx.EVT_BUTTON, self.Minus_time, self.button4)
-        hbox2.Add(self.button1)
-        hbox2.Add(self.button2)
-        hbox2.Add(self.button3)
-        hbox2.Add(self.button4)
+
+
         vb1 = wx.BoxSizer(wx.VERTICAL)
         vb1.Add(hbox1)
-        vb1.Add(hbox2)
-        confirm_choice = ["E键", "回车"]
-        self.confirm_choice = wx.Choice(self, -1, choices=confirm_choice)
-        self.confirm_choice.SetSelection(0)
-        self.confirm_label = wx.StaticText(self, label=u"确认提交方式     ")
-        hbox3 = wx.BoxSizer(wx.HORIZONTAL)
-        hbox3.Add(self.confirm_label, flag=wx.TOP, border=4)
-        hbox3.Add(self.confirm_choice)
-        vb1.Add(hbox3)
+
         self.strategy_save = wx.Button(self, label="保存策略", size=(60, 35))
         self.strategy_load = wx.Button(self, label="载入策略", size=(60, 35))
         self.save_info = wx.Button(self, label="用户信息", size=(60, 35))
@@ -131,6 +304,7 @@ class StrategyPanel(wx.Panel):
         hbox4.Add(self.strategy_load)
         hbox4.Add(self.save_info)
         vb1.Add(hbox4)
+
         oneshot = wx.StaticBox(self, -1, u'单枪策略:')
         self.oneshotSizer = wx.StaticBoxSizer(oneshot, wx.VERTICAL)
         gridsizer1 = wx.GridBagSizer(4, 4)
@@ -227,8 +401,6 @@ class StrategyPanel(wx.Panel):
         self.secondsizer_Shown = False  # 二次出价默认关闭
         self.oneshotsizer_Shown = True  # 单次出价默认开启
         self.vbox1.Hide(self.secondshotSizer)  # 默认关闭二次出价
-        self.Bind(wx.EVT_CHECKBOX, self.Timeview, self.timeview)
-        self.Bind(wx.EVT_CHOICE, self.Confirmchoice, self.confirm_choice)
         self.Bind(wx.EVT_BUTTON, self.Strategy_save, self.strategy_save)
         self.Bind(wx.EVT_BUTTON, self.Strategy_load, self.strategy_load)
         self.Bind(wx.EVT_BUTTON, self.Save_info, self.save_info)
@@ -271,10 +443,6 @@ class StrategyPanel(wx.Panel):
         price_view = get_val('price_view')
         price_count = get_val('price_count')
         if price_view and price_count >= 4:
-            try:
-                self.Price_close()
-            except:
-                pass
             self.Screen_shot(Pos_price, Pricesize, "userprice.png")
             set_val('price_view', False)
             set_val('price_on', True)
@@ -322,12 +490,6 @@ class StrategyPanel(wx.Panel):
         yanzhengma_count = get_val('yanzhengma_count')
         set_val('price_count', 1 + price_count)
         set_val('yanzhengma_count', 1 + yanzhengma_count)
-        file = 'sc_new.png'
-        if not os.path.exists(file):
-            try:
-                self.Price_close()
-            except:
-                pass
 
     def Screen_shot(self, box, size, name):
         Pricesize = get_val('Pricesize')
@@ -341,34 +503,14 @@ class StrategyPanel(wx.Panel):
         region = ImageGrab.grab(box)
         cut_pic(region, size, name)
 
-    @staticmethod
-    def Del_shot():
-        try:
-            os.remove("sc_new.png")
-        except:
-            pass
 
-    def Price_close(self):
-        try:
-            self.priceframe.Destroy()
-        except:
-            pass
 
     def opt(self, event):
-        tijiao_num = get_val('tijiao_num')
-        tijiao_one = get_val('tijiao_one')
-        chujia_on = get_val('chujia_on')
         moni_on = get_val('moni_on')
-        guopai_on = get_val('guopai_on')
-        strategy_on = get_val('strategy_on')
         moni_second = get_val('moni_second')
         one_time1 = get_val('one_time1')
         twice = get_val('twice')
-        tijiao_num = get_val('tijiao_num')
-        chujia_on = get_val('chujia_on')
-        tijiao_on = get_val('tijiao_on')
-        tijiao_OK = get_val('tijiao_OK')
-        tijiao_one = get_val('tijiao_one')
+
         if moni_second < one_time1 and moni_on and not twice:  # 单次还原
             set_val('twice', False)
             set_val('chujia_on', True)
@@ -384,125 +526,9 @@ class StrategyPanel(wx.Panel):
             set_val('tijiao_OK', False)
             set_val('tijiao_one', False)  # 单枪未开
 
-    def Add_time(self, event):
-        a_time = get_val('a_time')
-        moni_second = get_val('moni_second')
-        moni_on = get_val('moni_on')
-        if moni_on:
-            mt = moni_second-0.1
-            if mt >= 60:
-                set_val('moni_second', mt-60)
-            else:
-                print(moni_second)
-                set_val('moni_second', moni_second+0.1)
-        else:
-            set_val('a_time', a_time + 0.1)
-
-    def Minus_time(self, event):
-        a_time = get_val('a_time')
-        moni_second = get_val('moni_second')
-        moni_on = get_val('moni_on')
-        if moni_on:
-            mt = moni_second-0.1
-            if mt <0:
-                set_val('moni_second', 60+mt)
-            else:
-                set_val('moni_second', moni_second-0.1)
-        else:
-            set_val('a_time', a_time+0.1)
-
-    def Add_second(self, event):
-        a_time = get_val('a_time')
-        moni_second = get_val('moni_second')
-        moni_on = get_val('moni_on')
-        if moni_on:
-            mt = moni_second+1
-            print(moni_second)
-            if mt >= 60:
-                set_val('moni_second', mt-60)
-            else:
-                set_val('moni_second', moni_second+1)
-        else:
-            set_val('a_time', a_time+1)
-
-    def Minus_second(self, event):
-        a_time = get_val('a_time')
-        moni_second = get_val('moni_second')
-        moni_on = get_val('moni_on')
-        if moni_on:
-            mt = moni_second-1
-            if mt <0:
-                set_val('moni_second', 60+mt)
-            else:
-                set_val('moni_second', moni_second-1)
-
-        else:
-            set_val('a_time', a_time-1)
-
-    def Timeview(self, event):
-        timeSelected = event.GetEventObject()
-        view_time = get_val('view_time')
-        time_on = get_val('time_on')
-        moni_on = get_val('moni_on')
-        guopai_on = get_val('guopai_on')
-        if timeSelected.IsChecked():
-            set_val('view_time', True)
-            set_val('time_on', True)
-            if guopai_on:
-                self.timeframe1.Show(True)
-            elif moni_on:
-                self.timeframe2.Show(True)
-        else:
-            set_val('view_time', False)
-            set_val('time_on', False)
-            if guopai_on:
-                self.timeframe1.Show(False)
-            elif moni_on:
-                self.timeframe2.Show(False)
-
-    def Opentime(self):
-        moni_on = get_val('moni_on')
-        guopai_on = get_val('guopai_on')
-        if moni_on:
-            try:
-                self.timeframe2.Show(True)
-            except:
-                pass
-        elif guopai_on:
-            try:
-                self.timeframe1.Show(True)
-            except:
-                pass
-
-    def Closetime(self):
-        try:
-            self.timeframe1.Show(False)
-        except:
-            pass
-        try:
-            self.timeframe2.Show(False)
-        except:
-            pass
-
-    def Confirmchoice(self, event):
-        e_on = get_val('e_on')
-        enter_on = get_val('enter_on')
-        con = self.confirm_choice.GetSelection()
-        if con == 0:
-            set_val('e_on', True)
-            set_val('enter_on', False)
-        elif con == 1:
-            set_val('e_on', False)
-            set_val('enter_on', True)
 
     def Jiajia_time(self, event):
-        one_advance = get_val('one_advance')
-        one_delay = get_val('one_delay')
-        one_diff = get_val('one_diff')
         one_time1 = get_val('one_time1')
-        one_time2 = get_val('one_time2')
-        one_real_time1 = get_val('one_real_time1')
-        one_real_time2 = get_val('one_real_time2')
         tem = self.jiajia_time.GetValue()
         templist = [40 + i * 0.1 for i in range(151)]
         if tem in templist:
@@ -513,11 +539,7 @@ class StrategyPanel(wx.Panel):
             self.jiajia_time.SetValue(one_time1)
 
     def Jiajia_price(self, event):
-        one_advance = get_val('one_advance')
-        one_delay = get_val('one_delay')
         one_diff = get_val('one_diff')
-        one_time1 = get_val('one_time1')
-        one_time2 = get_val('one_time2')
         templist = [300 + i * 100 for i in range(13)]
         tem = self.jiajia_price.GetValue()
         if tem in templist:
@@ -526,11 +548,6 @@ class StrategyPanel(wx.Panel):
             self.jiajia_price.SetValue(one_diff)
 
     def Select_tijiao(self, event):
-        one_advance = get_val('one_advance')
-        one_delay = get_val('one_delay')
-        one_diff = get_val('one_diff')
-        one_time1 = get_val('one_time1')
-        one_time2 = get_val('one_time2')
         select = self.select_tijiao.GetString(self.select_tijiao.GetSelection())
         if select == u"提前100":
             set_val('one_advance', 100)
@@ -540,11 +557,7 @@ class StrategyPanel(wx.Panel):
             set_val('one_advance', 0)
 
     def Yanchi_time(self, event):
-        one_advance = get_val('one_advance')
         one_delay = get_val('one_delay')
-        one_diff = get_val('one_diff')
-        one_time1 = get_val('one_time1')
-        one_time2 = get_val('one_time2')
         templist = ['0.%d' % i for i in range(11)]
         templist.append('1.0')
         tem = str(self.yanchi_time.GetValue())
@@ -569,12 +582,7 @@ class StrategyPanel(wx.Panel):
             self.tijiao_time.SetValue(one_time2)
 
     def Jiajia_time2(self, event):
-        second_advance = get_val('second_advance')
-        second_delay = get_val('second_delay')
-        second_diff = get_val('second_diff')
         second_time1 = get_val('second_time1')
-        second_time2 = get_val('second_time2')
-        second_real_time1 = get_val('second_real_time1')
         tem = self.jiajia_time2.GetValue()
         templist = [40 + i * 0.1 for i in range(151)]
         if tem in templist:
@@ -584,16 +592,7 @@ class StrategyPanel(wx.Panel):
             self.jiajia_time2.SetValue(second_time1)
 
     def Jiajia_price2(self, event):
-        second_advance = get_val('second_advance')
-        second_delay = get_val('second_delay')
         second_diff = get_val('second_diff')
-        second_time1 = get_val('second_time1')
-        second_time2 = get_val('second_time2')
-        one_advance = get_val('one_advance')
-        one_delay = get_val('one_delay')
-        one_diff = get_val('one_diff')
-        one_time1 = get_val('one_time1')
-        one_time2 = get_val('one_time2')
         templist = [300 + i * 100 for i in range(13)]
         tem = self.jiajia_price2.GetValue()
         if tem in templist:
@@ -602,11 +601,6 @@ class StrategyPanel(wx.Panel):
             self.jiajia_price2.SetValue(second_diff)
 
     def Select_tijiao2(self, event):
-        second_advance = get_val('second_advance')
-        second_delay = get_val('second_delay')
-        second_diff = get_val('second_diff')
-        second_time1 = get_val('second_time1')
-        second_time2 = get_val('second_time2')
         select = self.select_tijiao2.GetString(self.select_tijiao2.GetSelection())
         if select == u"提前100":
             set_val('second_advance', 100)
@@ -616,11 +610,7 @@ class StrategyPanel(wx.Panel):
             set_val('second_advance', 0)
 
     def Yanchi_time2(self, event):
-        second_advance = get_val('second_advance')
         second_delay = get_val('second_delay')
-        second_diff = get_val('second_diff')
-        second_time1 = get_val('second_time1')
-        second_time2 = get_val('second_time2')
         templist = ['0.%d' % i for i in range(11)]  # 符点数运算BUG
         templist.append('1.0')
         tem = str(self.yanchi_time2.GetValue())
@@ -630,12 +620,7 @@ class StrategyPanel(wx.Panel):
             self.yanchi_time2.SetValue(second_delay)
 
     def Tijiao_time2(self, event):
-        second_advance = get_val('second_advance')
-        second_delay = get_val('second_delay')
-        second_diff = get_val('second_diff')
-        second_time1 = get_val('second_time1')
         second_time2 = get_val('second_time2')
-        second_real_time2 = get_val('second_real_time2')
         tem = self.tijiao_time2.GetValue()
         templist = [53 + i * 0.1 for i in range(41)]
         if tem in templist:
@@ -645,13 +630,6 @@ class StrategyPanel(wx.Panel):
             self.tijiao_time2.SetValue(second_time2)
 
     def Refresh_panel(self, event):
-        strategy_on = get_val('strategy_on')
-        twice = get_val('twice')
-        tijiao_num = get_val('tijiao_num')
-        chujia_on = get_val('chujia_on')
-        tijiao_on = get_val('tijiao_on')
-        tijiao_OK = get_val('tijiao_OK')
-        tijiao_one = get_val('tijiao_one')
         stractagy_selection = self.select_stractagy.GetString(self.select_stractagy.GetSelection())
         if stractagy_selection == u"单枪策略":
             self.ss_Hide()
@@ -713,9 +691,7 @@ class StrategyPanel(wx.Panel):
     def Oneshot_reset(self):
         one_time1 = get_val('one_time1')
         one_time2 = get_val('one_time2')
-        one_diff = get_val('one_diff')
-        one_delay = get_val('one_delay')
-        one_advance = get_val('one_advance')
+
         self.jiajia_time.SetValue(48.0)
         self.tijiao_time.SetValue(55.0)
         self.jiajia_price.SetValue(700)
@@ -726,10 +702,9 @@ class StrategyPanel(wx.Panel):
         set_val('one_diff', 700)  # 第一次加价幅度
         set_val('one_delay', 0.5)  # 第一次延迟
         set_val('one_advance', 100)  # 第一次提交提前量
-        one_real_time1 = get_val('one_real_time1')
-        second_real_time1 = get_val('second_real_time1')
-        one_real_time2 = get_val('one_real_time2')
-        second_real_time2 = get_val('second_real_time2')
+
+        second_time1 = get_val('second_time1')
+        second_time2 = get_val('second_time2')
         set_val('one_real_time1', self.gettime(one_time1))
         set_val('one_real_time2', self.gettime(one_time2))
         set_val('second_real_time1', self.gettime(second_time1))
@@ -738,14 +713,8 @@ class StrategyPanel(wx.Panel):
     def Secondshot_reset(self):
         one_time1 = get_val('one_time1')
         one_time2 = get_val('one_time2')
-        one_diff = get_val('one_diff')
-        one_delay = get_val('one_delay')
-        one_advance = get_val('one_advance')
         second_time1 = get_val('second_time1')
         second_time2 = get_val('second_time2')
-        second_diff = get_val('second_diff')
-        second_delay = get_val('second_delay')
-        second_advance = get_val('second_advance')
         self.jiajia_time.SetValue(40.0)
         self.tijiao_time.SetValue(48.0)
         self.jiajia_price.SetValue(500)
@@ -766,10 +735,6 @@ class StrategyPanel(wx.Panel):
         set_val('second_diff', 700)  # 第二次加价幅度
         set_val('second_delay', 0.5)  # 第二次出价延迟
         set_val('second_advance', 100)  # 第二次出价提交提前量
-        one_real_time1 = get_val('one_real_time1')
-        second_real_time1 = get_val('second_real_time1')
-        one_real_time2 = get_val('one_real_time2')
-        second_real_time2 = get_val('second_real_time2')
         set_val('one_real_time1', self.gettime(one_time1))
         set_val('one_real_time2', self.gettime(one_time2))
         set_val('second_real_time1', self.gettime(second_time1))
@@ -867,25 +832,9 @@ class StrategyPanel(wx.Panel):
         enter_on = get_val('enter_on')
         one_time1 = get_val('one_time1')
         one_time2 = get_val('one_time2')
-        one_diff = get_val('one_diff')
-        one_delay = get_val('one_delay')
-        one_advance = get_val('one_advance')
         second_time1 = get_val('second_time1')
         second_time2 = get_val('second_time2')
-        second_diff = get_val('second_diff')
-        second_delay = get_val('second_delay')
-        second_advance = get_val('second_advance')
-        strategy_on = get_val('strategy_on')
-        twice = get_val('twice')
-        tijiao_num = get_val('tijiao_num')
-        chujia_on = get_val('chujia_on')
-        tijiao_on = get_val('tijiao_on')
-        tijiao_OK = get_val('tijiao_OK')
-        tijiao_one = get_val('tijiao_one')
-        one_real_time1 = get_val('one_real_time1')
-        one_real_time2 = get_val('one_real_time2')
-        second_real_time1 = get_val('second_real_time1')
-        second_real_time2 = get_val('second_real_time2')
+
         try:
             with open(path, 'rb') as loadstr:
                 set_val('osl', pickle.load(loadstr))
@@ -1006,8 +955,8 @@ class StrategyPanel(wx.Panel):
 
 class OperationFrame(wx.Frame):
     def __init__(self, Px, Py, mainicon):  # name:窗口显示名称
-        wx.Frame.__init__(self, None, 2, title="沪牌一号", pos=(Px + 902, Py), size=(300, 625), \
-                          style=wx.FRAME_NO_TASKBAR | wx.CAPTION | wx.CLOSE_BOX)  # wx.FRAME_TOOL_WINDOW|   |wx.STAY_ON_TOP
+        wx.Frame.__init__(self, None, 2, title="小鲜肉代拍", pos=(Px + 902, Py), size=(300, 625), \
+                          style=wx.FRAME_NO_TASKBAR | wx.CAPTION | wx.STAY_ON_TOP | wx.CLOSE_BOX)  # wx.FRAME_TOOL_WINDOW|   |wx.STAY_ON_TOP
         self.Bind(wx.EVT_CLOSE, self.OnClose)
         self.icon = wx.Icon(mainicon, wx.BITMAP_TYPE_ICO)
         self.SetIcon(self.icon)
@@ -1025,5 +974,16 @@ class OperationFrame(wx.Frame):
         self.Layout()
         self.Show(False)  # 初始隐藏
 
+        pub.subscribe(self.OnClose2, "close operation")
+
+
     def OnClose(self, event):
+        main = self.FindWindowById(1)
+        main.Show(True)
+        wx.CallAfter(pub.sendMessage, "close webframe")  # 关闭热键绑定
+        self.Show(False)
+
+    def OnClose2(self):
+        main = self.FindWindowById(1)
+        main.Show(True)
         self.Show(False)

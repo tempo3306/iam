@@ -8,9 +8,11 @@
 #################国拍时间显示##################
 import wx
 import time
-from component.variable import get_val,set_val
+from component.variable import get_val, set_val
+
+
 class ClockWindow(wx.Panel):
-    def __init__(self, parent,Timesize):
+    def __init__(self, parent, Timesize):
         wx.Window.__init__(self, parent, size=Timesize)
         self.Bind(wx.EVT_PAINT, self.OnPaint)
         self.timer = wx.Timer(self)  # 创建定时器
@@ -58,13 +60,13 @@ class TimeFrame(wx.Frame):
                           style=wx.FRAME_TOOL_WINDOW | wx.STAY_ON_TOP)
         # wx.Frame.__init__(self, None, -1,'Time',size=(400,160), pos=Pos_timeframe,
         #                   style=wx.FRAME_TOOL_WINDOW|wx.STAY_ON_TOP)
-        ClockWindow(self,Timesize)
+        ClockWindow(self, Timesize)
 
 
 # -----------------------------------------------------------------------
 #################模拟时间显示##################
 class MoniClockWindow(wx.Panel):
-    def __init__(self, parent,Timesize):
+    def __init__(self, parent, Timesize):
         wx.Window.__init__(self, parent, size=Timesize)
         self.Bind(wx.EVT_PAINT, self.OnPaint)
         self.timer = wx.Timer(self)  # 创建定时器
@@ -72,7 +74,7 @@ class MoniClockWindow(wx.Panel):
         self.timer.Start(100)  # 设定时间间隔
 
     def Draw(self, dc):  # 绘制当前时间
-        moni_second =get_val('moni_second')
+        moni_second = get_val('moni_second')
         st = "%s:%s:%s" % (11, 29, moni_second)
         w, h = self.GetClientSize()
         dc.SetBackground(wx.Brush(self.GetBackgroundColour()))
@@ -82,7 +84,7 @@ class MoniClockWindow(wx.Panel):
         dc.DrawText(st, (w - tw) / 2, (h) / 2 - th / 2)
 
     def Modify(self, dc):  # 更新
-        moni_second = get_val('moni_second') #取得全局变量的值
+        moni_second = get_val('moni_second')  # 取得全局变量的值
         moni_s = int(moni_second)  # 整数化
         st = "%s:%s:%s" % (11, 29, moni_s)
         w, h = self.GetClientSize()
@@ -111,4 +113,3 @@ class MoniTimeFrame(wx.Frame):
         # wx.Frame.__init__(self, None, -1,'Time',size=(400,160), pos=Pos_timeframe,
         #                   style=wx.FRAME_TOOL_WINDOW|wx.STAY_ON_TOP)
         MoniClockWindow(self, Timesize)
-

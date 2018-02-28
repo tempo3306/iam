@@ -2,21 +2,27 @@
 '''
 @author: zhushen
 @contact: 810909753@q.com
-@time: 2018/2/23 17:56
+@time: 2018/2/28 13:09
 '''
-from urllib import request
-import json
-import time
+import unittest
 
-a = time.time()
 
-target_url = "http://hupai.pro/bid/bid_login/?username=shooter1&passwd=123456&debug=True"
+def division_funtion(x, y):
+    return x / y
 
-response = request.urlopen(target_url)
-result = response.read()
-result = str(result, encoding='utf-8')
-result = json.loads(result)
 
-print(result)
-b = time.time()
-print(b-a)
+class TestDivision(unittest.TestCase):
+    def test_int(self):
+        self.assertEqual(division_funtion(9, 3), 3)
+
+    def test_int2(self):
+        self.assertEqual(division_funtion(9, 4), 2.25)
+
+    def test_float(self):
+        self.assertEqual(division_funtion(4.2, 3), 1.4)
+
+
+if __name__ == '__main__':
+    unittest.main()
+    
+    

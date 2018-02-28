@@ -6,11 +6,10 @@
 '''
 from component.variable import get_val, set_val
 
+
 def keep_alive(Username, Password):
     pass
 
+
 def get_strategy(Username):
     pass
-
-
-

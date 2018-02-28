@@ -198,7 +198,7 @@ def OnClick_chujia():
     set_val('tijiao_on', True)  # 激活自动出价
     set_val('refresh_need', True)  # 激活刷新验证码
     if tijiao_num == 1:
-        print("我被触发了",)
+        print("我被触发了", )
         own_price1 = lowest_price + one_diff
         set_val('own_price1', own_price1)
         setText(str(own_price1))
@@ -209,8 +209,9 @@ def OnClick_chujia():
         set_val('chujia_on', False)
         set_val('chujia_interval', False)  # 间隔结束
     elif tijiao_num == 2 and twice:
-        own_price2 = lowest_price + one_diff
+        own_price2 = lowest_price + second_diff
         set_val('own_price2', own_price2)
+        setText(str(own_price2)) #复制价格到粘贴板
         selfdelete()
         Click(Position[1][0], Position[1][1])
         Click(Position[5][0], Position[5][1])
@@ -340,7 +341,7 @@ def nothing():
 def Open():
     do = get_val('do')
     if not do:
-        set_val('do',True)
+        set_val('do', True)
         # 定义快捷键                                                                         /
         ############################
         VK_CODE = {'0': 0x30, '1': 0x31, '2': 0x32, '3': 0x33, '4': 0x34, '5': 0x35, '6': 0x36, '7': 0x37,
@@ -406,7 +407,7 @@ def Listen():
 def Close():
     do = get_val('do')
     if do:
-        set_val('do',False)
+        set_val('do', False)
         VK_CODE = {'0': 0x30, '1': 0x31, '2': 0x32, '3': 0x33, '4': 0x34, '5': 0x35, '6': 0x36, '7': 0x37,
                    '8': 0x38,
                    '9': 0x39, 'a': 0x41, 'b': 0x42, 'c': 0x43, 'd': 0x44, 'e': 0x45, 'f': 0x46, 's': 0x53,

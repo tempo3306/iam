@@ -194,6 +194,7 @@ def timeset(guopai_on, moni_on, imgpos_currenttime, maindata):
     except:
         pass
 
+
 def findpos():
     sc = ImageGrab.grab().convert('L')
     img = np.asarray(sc)
@@ -223,7 +224,7 @@ def findpos():
         for i in range(len(Position)):
             Position[i][0] = Px_lowestprice + P_relative2[i][0]
             Position[i][1] = Py_lowestprice + P_relative2[i][1]
-        set_val('Position',Position)
+        set_val('Position', Position)
         set_val('refresh_area', [396 - 150 + Px_lowestprice, 11 - 100 + Py_lowestprice, 396 + 150 + Px_lowestprice,
                                  11 + 100 + Py_lowestprice])
         set_val('confirm_area', [505 - 80 + Px_lowestprice, 68 - 50 + Py_lowestprice, 505 + 80 + Px_lowestprice,
@@ -234,19 +235,19 @@ def findpos():
         set_val('Pos_yanzhengma',
                 [Position[5][0] - 277, Position[5][1] - 65, Position[5][0] - 97, Position[5][1] + 45])  # 验证码所在位置
         set_val('Pos_yanzhengmaframe', [Px_lowestprice + 297, Py_lowestprice - 283])  # 验证码框放置位置
-        set_val('Pos_timeframe' ,[245 - 344 + Px_lowestprice, 399 - 183 + Py_lowestprice])
+        set_val('Pos_timeframe', [245 - 344 + Px_lowestprice, 399 - 183 + Py_lowestprice])
         lowestprice_sizex = get_val('lowestprice_sizex')
         lowestprice_sizey = get_val('lowestprice_sizey')
         currenttime_sizex = get_val('currenttime_sizex')
         currenttime_sizey = get_val('currenttime_sizey')
         set_val('findpos_on', False)  # 无需定位
         set_val('yanzhengma_move', True)  # 需要定位
-        set_val('lowest' , [Px_lowestprice, Py_lowestprice, lowestprice_sizex + Px_lowestprice,
-                  lowestprice_sizey + Py_lowestprice])
+        set_val('lowest', [Px_lowestprice, Py_lowestprice, lowestprice_sizex + Px_lowestprice,
+                           lowestprice_sizey + Py_lowestprice])
         Px_currenttime = get_val("Px_currenttime")
         Py_currenttime = get_val("Py_currenttime")
         set_val('currenttime', [Px_currenttime, Py_currenttime, Px_currenttime + currenttime_sizex,
-                       Py_currenttime + currenttime_sizey])
+                                Py_currenttime + currenttime_sizey])
         dis_x = 50
         dis_y = 100
         x1 = Px_lowestprice - dis_x  # 截图起始点
@@ -264,7 +265,8 @@ def findpos():
         for i in range(len(cal_area)):
             temp = [cal_area[i][0] - x1, cal_area[i][1] - y1, cal_area[i][2] - x1, cal_area[i][3] - y1]
             use_area.append(temp)
-        set_val('use_area',use_area)
+        set_val('use_area', use_area)
+
 
 def only_screenshot(area):  # x,y  pos      w,h size
     x, y = int(area[0]), int(area[1])
@@ -305,6 +307,7 @@ def cut_img():  # 将所得的img 处理成  lowestprice_img   confirm_img  yanz
     except:
         pass
         # print("cut_img 这里出错")
+
 
 def findrefresh():
     dick_target = get_val('dick_target')

@@ -7,12 +7,13 @@
 import wx
 import os
 from wx.lib.pubsub import pub  # 代替了publisher
-from component.variable import get_val,set_val
+from component.variable import get_val, set_val
 from component.staticmethod import *
 
+
 class WebFrame(wx.Frame):
-    def __init__(self, px, py, ad, name,size):  # name:窗口显示名称
-        wx.Frame.__init__(self, None, 3, name, size=size, pos=(px, py), style = wx.SIMPLE_BORDER)
+    def __init__(self, px, py, ad, name, size):  # name:窗口显示名称
+        wx.Frame.__init__(self, None, 3, name, size=size, pos=(px, py), style=wx.SIMPLE_BORDER)
 
         # wx.Frame.__init__(self,None, -1,title="大师拍牌 QQ 178456661 - 3.663",size=(websize[0], websize[1]),\
         #  pos=(px, py),style=wx.DEFAULT_FRAME_STYLE|wx.STAY_ON_TOP&~(wx.RESIZE_BORDER))
@@ -20,65 +21,28 @@ class WebFrame(wx.Frame):
 
         self.Bind(wx.EVT_CLOSE, self.OnClose)
         self.ad2 = ad
-
-
-        panel = wx.Panel(self, wx.ID_ANY)
-
-        # panel.Bind(wx.EVT_KEY_DOWN, self.OnKeyDown)
-
-        # self.Bind(wx.EVT_MENU, self.onKeyCombo, id=randomId)
-        # accel_tbl = wx.AcceleratorTable([(wx.ACCEL_CTRL, ord('Q'), randomId)])
-        # self.SetAcceleratorTable(accel_tbl)
-
-    def OnKeyDown(self, event):
-        keycode = event.GetKeyCode()
-
-        print(keycode)
-
-        # if chr(keycode) == 'S':
-        #     print("S")
-        #     # OnClick_Shuaxin()
-        # elif chr(keycode) == 'F':
-        #
-        #     selfTijiao()
-        # elif chr(keycode) == 'D':
-        #     selfChujia()
-        # elif keycode == wx.WXK_SPACE:
-        #     OnClick_Backspace()
-        # elif chr(keycode) == 'E':
-        #     tijiao_ok()
-        # elif keycode == wx.WXK_RETURN:
-        #     tijiao_ok2()
-        # elif chr(keycode) == 'Q':
-        #     print("Q")
-        #     # query()
-        # elif chr(keycode) == 'H':
-        #     OnH_chujia()
-        # else:
-        #     event.Skip()
+        pub.subscribe(self.OnClose2, "close webframe")  #绑定关闭消息
 
     def OnClose(self, event):
         # print("关闭web")
-        set_val('web_on',False)
-        set_val('view_time',False)
-        set_val('moni_on',False)
-        set_val('guopai_on',False)
-        wx.CallAfter(pub.sendMessage, "close topframe")  #关闭热键绑定
-        # TopFrame.Close()
+        wx.CallAfter(pub.sendMessage, "close operation") #关闭operation
+        set_val('web_on', False)
+        set_val('view_time', False)
+        set_val('moni_on', False)
+        set_val('guopai_on', False)
         self.Destroy()
         event.Skip()  # 绑在同一事件上的两个函数，如果 没有这个，就只执行后绑定的。
 
-    def OnClose2(self):
-        set_val('web_on',False)
-        set_val('view_time',False)
-        set_val('moni_on',False)
-        set_val('guopai_on',False)
-        wx.CallAfter(pub.sendMessage, "close topframe")  # 关闭热键绑定
+    def OnClose2(self):  #pubsub消息机制不能带EVENT
+        set_val('web_on', False)
+        set_val('view_time', False)
+        set_val('moni_on', False)
+        set_val('guopai_on', False)
         self.Destroy()
 
 
 if __name__ == "__main__":
     app = wx.App(False)
-    frame = WebFrame(0, 0, False, "fsdf", (400,400))
+    frame = WebFrame(0, 0, False, "模拟", (400, 400))
     frame.Show()
     app.MainLoop()

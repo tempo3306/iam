@@ -8,48 +8,52 @@
 管理所有的全局变量  
 global 关键字在一个文件内是唯一的
 '''
-import pickle,time
+import pickle, time
 import pyautogui as pg
 import numpy as np
 
-
 vars = {}
-
 
 ##热键对应KEY
 keycode = {}
-for i in range(65,91):
+for i in range(65, 91):
     keycode[chr(i)] = i
 
 
-
-#初始化变量
-#--------------------------------------------------
-#修改变量值
-def set_val(key,value):
+# 初始化变量
+# --------------------------------------------------
+# 修改变量值
+def set_val(key, value):
     global vars
     try:
         vars[key] = value
     except:
         pass
-#获取变量值
+
+
+# 获取变量值
 def get_val(key):
     try:
         val = vars[key]
         return val
     except KeyError:
         return 'Null'
-#--------------------------------------------------
-#变量初始化
+
+
+# --------------------------------------------------
+# 变量初始化
 ####初始化hash字典
 def Create_hash():
     with open("target.tkl", 'rb')  as tar:
         global dick_target
         dick_target = pickle.load(tar)  # 要寻找对象的对象
-        set_val('dick_target',dick_target)
+        set_val('dick_target', dick_target)
+
+
 def init_val():
     set_val('host_ali', "http://hupai.pro")
     set_val('debug', True)
+    set_val('now_ping', 0)  #实时网速
     set_val('version', '1.0')
     set_val('num', 0)
     set_val('avt', 90100)
@@ -139,8 +143,8 @@ def init_val():
     P_relative = get_val('P_relative')
     set_val('P_relative2', [[647, -98], [650, 8], [400, 89], [396, 11], [505, 68], [585, 8], [565, 5], [586, 86]])
     set_val('Position', [[0, 0] for i in range(len(P_relative))])
-    set_val('px_ajust',0)
-    set_val('py_ajust',0)
+    set_val('px_ajust', 0)
+    set_val('py_ajust', 0)
     set_val('px_price', 770 - 171)
     px_price = get_val('px_price')
     set_val('py_price', 260)
@@ -249,4 +253,3 @@ def init_val():
     set_val('impos_yanzhengma', np.array(nptemp))  # 验证码
     set_val('imgpos_yanzhengmaconfirm', np.array(nptemp))  # 验证码确认键
     set_val('imgpos_currenttime', np.array(nptemp))  # 当前时间
-

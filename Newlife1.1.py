@@ -76,6 +76,7 @@ if __name__ == '__main__':
     # 变量初始化
     Create_hash()
     init_val()
+    set_val('version', 1.01)
     ###获取路径
     allpath = os.path.abspath(os.path.realpath(sys.argv[0]))
     path = os.path.split(allpath)[0] + '\\'  # 分割
@@ -89,7 +90,7 @@ if __name__ == '__main__':
     finposthread = findposThread()   #定位线程
     cutimgthread = cutimgThread()   #截图线程
     tijiaoThread = TijiaoThread()  #提交
-    monitijaoThread = MoniTijiaoThread() #模拟提交
+    # monitijaoThread = MoniTijiaoThread() #模拟提交
     app.MainLoop()
 
 # self.Bind(wx.EVT_KEY_DOWN, self.OnKeyDown)

@@ -8,8 +8,9 @@
 import wx
 from component.variable import get_val
 
+
 class YanzhengmaFrame(wx.Frame):
-    def __init__(self,size):
+    def __init__(self, size):
         # print(Pos_yanzhengmaframe)
         Yanzhengmasize = get_val('Yanzhengmasize')
         Pos_yanzhengmaframe = get_val('Pos_yanzhengmaframe')

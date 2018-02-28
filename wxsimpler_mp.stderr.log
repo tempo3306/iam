@@ -1,0 +1,2 @@
+test.py:44: wxPyDeprecationWarning: Call to deprecated item. Use SetToolTip instead.
+  self.start_bt.SetToolTipString('Start the execution of tasks')

@@ -4,7 +4,8 @@
 @contact: 810909753@q.com
 @time: 2018/1/22 14:30
 '''
-import logging,time
+import logging, time
+
 timenow = time.time()
 # 转换成localtime
 time_local = time.localtime(timenow)
