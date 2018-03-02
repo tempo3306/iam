@@ -11,7 +11,7 @@ from component.staticmethod import *
 
 class WebFrame(wx.Frame):
     def __init__(self, px, py, ad, name, size):  # name:窗口显示名称
-        wx.Frame.__init__(self, None, 3, name, size=size, pos=(px, py), style=wx.SIMPLE_BORDER | wx.STAY_ON_TOP)
+        wx.Frame.__init__(self, None, 3, name, size=size, pos=(px, py), style=wx.SIMPLE_BORDER)
 
         # wx.Frame.__init__(self,None, -1,title="大师拍牌 QQ 178456661 - 3.663",size=(websize[0], websize[1]),\
         #  pos=(px, py),style=wx.DEFAULT_FRAME_STYLE|wx.STAY_ON_TOP&~(wx.RESIZE_BORDER))

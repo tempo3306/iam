@@ -10,7 +10,8 @@ timenow = time.time()
 # 转换成localtime
 time_local = time.localtime(timenow)
 # 转换成新的时间格式(2016-05-09 18:59:20)
-myapplog = time.strftime("%Y%m%d%H%M%S", time_local)
+# myapplog = time.strftime("%Y%m%d%H%M%S", time_local)
+myapplog = "mylog"
 logging.basicConfig(level=logging.DEBUG,
                     format='%(asctime)s %(filename)s[line:%(lineno)d] %(levelname)s %(message)s',
                     datefmt='%a, %d %b %Y %H:%M:%S',

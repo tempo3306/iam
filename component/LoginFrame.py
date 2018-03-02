@@ -24,20 +24,28 @@ class LoginFrame(wx.Frame):
 
         # 主sizer
         self.sizer_v1 = wx.BoxSizer(wx.VERTICAL)
-        self.welcomelabel = wx.StaticText(self.panel, -1, label="请输入用户名和密码", style=wx.ALIGN_CENTER)
+        self.welcomelabel = wx.StaticText(self.panel, -1, label="小鲜肉代拍", style=wx.ALIGN_CENTER)
         self.sizer_v1.Add(self.welcomelabel, flag=wx.ALIGN_CENTER | wx.ALL, border=10)
 
         self.userbox = wx.BoxSizer(wx.HORIZONTAL)
+        ##登录图标
+        self.bmp_account = wx.StaticBitmap(self.panel, -1)
+        # self.bmp_account.SetBitmap(wx.Bitmap('login.png'))
         self.userlabel = wx.StaticText(self.panel, -1, label="账号")
         self.userText = wx.TextCtrl(self.panel, -1, size=(150, -1),
                                     style=wx.TE_CENTER | wx.TE_PROCESS_ENTER)
+        # self.userbox.Add(self.bmp_account)
         self.userbox.Add(self.userlabel, flag=wx.ALIGN_CENTER | wx.ALL, border=5)
         self.userbox.Add(self.userText, flag=wx.ALIGN_CENTER_HORIZONTAL | wx.ALL, border=5)
 
+
         self.passbox = wx.BoxSizer(wx.HORIZONTAL)
+        self.bmp_password = wx.StaticBitmap(self.panel, -1)
+        # self.bmp_password.SetBitmap(wx.Bitmap('password.png'))
         self.passlabel = wx.StaticText(self.panel, -1, label="密码")
         self.passText = wx.TextCtrl(self.panel, -1, size=(150, -1),
                                     style=wx.TE_CENTER | wx.TE_PROCESS_ENTER | wx.TE_PASSWORD)
+        # self.passbox.Add(self.bmp_password, flag=wx.ALIGN_CENTER | wx.ALL, border=5)
         self.passbox.Add(self.passlabel, flag=wx.ALIGN_CENTER | wx.ALL, border=5)
         self.passbox.Add(self.passText, flag=wx.ALIGN_CENTER_HORIZONTAL | wx.ALL, border=5)
         if user:
@@ -50,7 +58,7 @@ class LoginFrame(wx.Frame):
         self.Bind(wx.EVT_TEXT_ENTER, self.OnLogin, self.userText)
         self.Bind(wx.EVT_TEXT_ENTER, self.OnLogin, self.passText)
 
-        self.monibtn = wx.Button(self.panel, -1, label="模拟", size=(90, 30))
+        self.monibtn = wx.Button(self.panel, -1, label="免费模拟", size=(90, 30))
         self.loginbtn = wx.Button(self.panel, -1, label="登录", size=(90, 30))
         self.btnSizer = wx.BoxSizer(wx.HORIZONTAL)
         self.btnSizer.Add(self.monibtn, flag=wx.ALIGN_LEFT | wx.ALL, border=3)
@@ -67,7 +75,7 @@ class LoginFrame(wx.Frame):
         self.purchaselink.OpenInSameWindow(True)
         self.purchaselink.UpdateLink()
 
-        self.helplink = hyperlink.HyperLinkCtrl(self.panel, -1, u"查看帮助")
+        self.helplink = hyperlink.HyperLinkCtrl(self.panel, -1, u"忘记密码")
         self.helplink.UnsetToolTip()
         self.helplink.Bind(hyperlink.EVT_HYPERLINK_LEFT, self.Purchase)
         self.helplink.AutoBrowse(False)

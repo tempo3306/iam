@@ -192,7 +192,7 @@ def OnClick_chujia():
     set_val('tijiao_on', True)  # 激活自动出价
     set_val('refresh_need', True)  # 激活刷新验证码
     if tijiao_num == 1:
-        print("我被触发了", )
+        print("我被触发了",  )
         own_price1 = lowest_price + one_diff
         set_val('own_price1', own_price1)
         setText(str(own_price1))

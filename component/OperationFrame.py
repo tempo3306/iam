@@ -27,7 +27,7 @@ class StatusPanel(wx.Panel):
         self.timeviewButton = wx.Button(self, label='显示时间', size=(105,30))  # 未来扩展
         self.remotetimeButton = wx.Button(self, label='同步服务器时间', size=(105,30))  # 时间
         self.posajustButton = wx.Button(self, label='刷新定位', size=(105,30))  # 位置调整
-        self.localtimeButton = wx.Button(self, label='同步本地时间', size=(105,30))  # 时间同步
+        self.localtimeButton = wx.Button(self, label='同步网页时间', size=(105,30))  # 时间同步
 
         ##绑定
         self.timeviewButton.Bind(wx.EVT_BUTTON, self.time)
@@ -357,7 +357,7 @@ class StrategyPanel(wx.Panel):
         tijiao_label = wx.StaticText(self, label=u"强制提交时间")
         gridsizer1.Add(tijiao_label, pos=(2, 0), flag=wx.TOP, border=4)
         self.tijiao_time = wx.SpinCtrlDouble(self, -1, "", size=(68, 25))
-        self.tijiao_time.SetRange(40.0, 57.0)
+        self.tijiao_time.SetRange(40.0, 59.0)
         self.tijiao_time.SetValue(55.0)
         self.tijiao_time.SetIncrement(0.1)
         gridsizer1.Add(self.tijiao_time, pos=(2, 1))
@@ -397,7 +397,7 @@ class StrategyPanel(wx.Panel):
         tijiao_label2 = wx.StaticText(self, label=u"强制提交时间")
         gridsizer2.Add(tijiao_label2, pos=(2, 0), flag=wx.TOP, border=4)
         self.tijiao_time2 = wx.SpinCtrlDouble(self, -1, "", size=(68, 25))
-        self.tijiao_time2.SetRange(53.0, 57.0)
+        self.tijiao_time2.SetRange(52.0, 59.0)
         self.tijiao_time2.SetValue(55.0)
         self.tijiao_time2.SetIncrement(0.1)
         gridsizer2.Add(self.tijiao_time2, pos=(2, 1))
@@ -551,7 +551,7 @@ class StrategyPanel(wx.Panel):
         tem = self.jiajia_time.GetValue()
         templist = [40 + i * 0.1 for i in range(151)]
         if tem in templist:
-            set_val('one_time1', tem)
+            one_time1 = tem
             set_val('one_time1', float(one_time1))
             set_val('one_real_time1', self.gettime(one_time1))  # 计算得到的时间戳
         else:
@@ -586,16 +586,12 @@ class StrategyPanel(wx.Panel):
             self.yanchi_time.SetValue(one_delay)
 
     def Tijiao_time(self, event):
-        one_advance = get_val('one_advance')
-        one_delay = get_val('one_delay')
-        one_diff = get_val('one_diff')
-        one_time1 = get_val('one_time1')
         one_time2 = get_val('one_time2')
-        one_real_time2 = get_val('one_real_time2')
         tem = self.tijiao_time.GetValue()
-        templist = [40 + i * 0.1 for i in range(171)]
+        templist = [40 + i * 0.1 for i in range(191)]
         if tem in templist:
-            set_val('one_time2', float(tem))
+            one_time2 = tem
+            set_val('one_time2', float(one_time2))
             set_val('one_real_time2', self.gettime(one_time2))  # 计算得到的时间戳
         else:
             self.tijiao_time.SetValue(one_time2)
@@ -603,12 +599,15 @@ class StrategyPanel(wx.Panel):
     def Jiajia_time2(self, event):
         second_time1 = get_val('second_time1')
         tem = self.jiajia_time2.GetValue()
-        templist = [40 + i * 0.1 for i in range(151)]
+        templist = [40 + i * 0.1 for i in range(191)]
         if tem in templist:
+            second_time1 = tem
             set_val('second_time1', float(tem))
             set_val('second_real_time1', self.gettime(second_time1))  # 计算得到的时间戳
         else:
             self.jiajia_time2.SetValue(second_time1)
+
+
 
     def Jiajia_price2(self, event):
         second_diff = get_val('second_diff')
@@ -641,8 +640,9 @@ class StrategyPanel(wx.Panel):
     def Tijiao_time2(self, event):
         second_time2 = get_val('second_time2')
         tem = self.tijiao_time2.GetValue()
-        templist = [53 + i * 0.1 for i in range(41)]
+        templist = [53 + i * 0.1 for i in range(51)]
         if tem in templist:
+            second_time2 = tem
             set_val('second_time2', float(tem))
             set_val('second_real_time2', self.gettime(second_time2))  # 计算得到的时间戳
         else:
@@ -708,9 +708,6 @@ class StrategyPanel(wx.Panel):
         self.Layout()
 
     def Oneshot_reset(self):
-        one_time1 = get_val('one_time1')
-        one_time2 = get_val('one_time2')
-
         self.jiajia_time.SetValue(48.0)
         self.tijiao_time.SetValue(55.0)
         self.jiajia_price.SetValue(700)
@@ -721,7 +718,8 @@ class StrategyPanel(wx.Panel):
         set_val('one_diff', 700)  # 第一次加价幅度
         set_val('one_delay', 0.5)  # 第一次延迟
         set_val('one_advance', 100)  # 第一次提交提前量
-
+        one_time1 = get_val('one_time1')
+        one_time2 = get_val('one_time2')
         second_time1 = get_val('second_time1')
         second_time2 = get_val('second_time2')
         set_val('one_real_time1', self.gettime(one_time1))
@@ -730,10 +728,6 @@ class StrategyPanel(wx.Panel):
         set_val('second_real_time2', self.gettime(second_time2))
 
     def Secondshot_reset(self):
-        one_time1 = get_val('one_time1')
-        one_time2 = get_val('one_time2')
-        second_time1 = get_val('second_time1')
-        second_time2 = get_val('second_time2')
         self.jiajia_time.SetValue(40.0)
         self.tijiao_time.SetValue(48.0)
         self.jiajia_price.SetValue(500)
@@ -754,6 +748,10 @@ class StrategyPanel(wx.Panel):
         set_val('second_diff', 700)  # 第二次加价幅度
         set_val('second_delay', 0.5)  # 第二次出价延迟
         set_val('second_advance', 100)  # 第二次出价提交提前量
+        one_time1 = get_val('one_time1')
+        one_time2 = get_val('one_time2')
+        second_time1 = get_val('second_time1')
+        second_time2 = get_val('second_time2')
         set_val('one_real_time1', self.gettime(one_time1))
         set_val('one_real_time2', self.gettime(one_time2))
         set_val('second_real_time1', self.gettime(second_time1))
@@ -984,7 +982,7 @@ class StrategyPanel(wx.Panel):
 class OperationFrame(wx.Frame):
     def __init__(self, Px, Py, mainicon):  # name:窗口显示名称
         wx.Frame.__init__(self, None, 2, title="小鲜肉代拍", pos=(Px + 902, Py), size=(300, 625), \
-                          style=wx.FRAME_NO_TASKBAR | wx.CAPTION | wx.STAY_ON_TOP | wx.CLOSE_BOX)  # wx.FRAME_TOOL_WINDOW|   |wx.STAY_ON_TOP
+                          style=wx.FRAME_NO_TASKBAR | wx.CAPTION | wx.CLOSE_BOX)  # wx.FRAME_TOOL_WINDOW|   |wx.STAY_ON_TOP
         self.Bind(wx.EVT_CLOSE, self.OnClose)
         self.icon = wx.Icon(mainicon, wx.BITMAP_TYPE_ICO)
         self.SetIcon(self.icon)
