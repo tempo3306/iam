@@ -7,11 +7,10 @@ import wx
 from wx.lib.pubsub import pub
 import threading, time
 from threading import Thread
-import winreg
 import sys, os
 from component.imgcut import cut_img, findconfirm, findrefresh, findpos
 from component.login import ConfirmUser, Keeplogin
-from component.staticmethod import OnClick_chujia, OnClick_Tijiao, OnClick_Shuaxin, OnClick_confirm
+from component.staticmethod import OnClick_chujia, OnClick_Tijiao
 from component.staticmethod import SmartTijiao
 from component.variable import get_val, set_val
 

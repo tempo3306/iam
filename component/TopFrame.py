@@ -5,12 +5,9 @@
 '''
 import wx
 import wx.html2
-import time
 from wx.lib.pubsub import pub
-from component.variable import set_val, get_val
 from component.OperationFrame import OperationFrame
-from component.timeFrame import TimeFrame, MoniTimeFrame
-from component.app_thread import TimeThread, MoniTijiaoThread, TijiaoThread, OpenwebThread
+from component.app_thread import TimeThread, OpenwebThread
 from component.staticmethod import *
 from component.imgcut import findpos, timeset, Price_read
 from component.WebFrame import WebFrame
@@ -319,10 +316,12 @@ class TopFrame(wx.Frame):
         if ret == wx.OK:
             import sys
             self.Show(False)
-
             wx.GetApp().ExitMainLoop()
             event.Skip()
             sys.exit(None)
+
+
+
 
     def OnOpenAssist(self):
         Open()

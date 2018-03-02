@@ -13,20 +13,21 @@ import pickle, os, imagehash
 from component.variable import set_val, get_val
 from component.imgcut import findpos, timeset
 from wx.lib.pubsub import pub
+from component.variable import set_val, get_val
 
 #-----------------------------------------------------------
 class StatusPanel(wx.Panel):
     def __init__(self, parent):
-        wx.Panel.__init__(self, parent=parent)
+        wx.Panel.__init__(self, parent=parent, id=20)
         self.control = wx.StaticBox(self, -1, "功能区域")
         self.controlbox = wx.StaticBoxSizer(self.control, wx.VERTICAL)
         self.controlgrid = wx.GridBagSizer(4, 2)  # 网格组件
 
         ##功能区
-        self.timeviewButton = wx.Button(self, label='显示时间')  # 关闭WEB
-        self.remotetimeButton = wx.Button(self, label='同步服务器时间')  # 时间
-        self.posajustButton = wx.Button(self, label='刷新定位')  # 位置调整
-        self.localtimeButton = wx.Button(self, label='同步本地时间')  # 时间同步
+        self.timeviewButton = wx.Button(self, label='显示时间', size=(105,30))  # 未来扩展
+        self.remotetimeButton = wx.Button(self, label='同步服务器时间', size=(105,30))  # 时间
+        self.posajustButton = wx.Button(self, label='刷新定位', size=(105,30))  # 位置调整
+        self.localtimeButton = wx.Button(self, label='同步本地时间', size=(105,30))  # 时间同步
 
         ##绑定
         self.timeviewButton.Bind(wx.EVT_BUTTON, self.time)
@@ -104,8 +105,16 @@ class StatusPanel(wx.Panel):
         self.reminder = wx.StaticBox(self, -1, "提示")
         self.reminderbox = wx.StaticBoxSizer(self.reminder, wx.VERTICAL)
         self.remindervbox = wx.BoxSizer(wx.VERTICAL)
-        self.hotkey_confirm = wx.StaticText(self, -1, label="回车 确认")
-        self.hotkey_smartprice = wx.StaticText(self, -1, label="智能出价")
+
+        self.status_hbox1 = wx.BoxSizer(wx.HORIZONTAL)
+        self.current_strategy_label = wx.StaticText(self, -1, label="当前策略：")
+        self.current_strategy = wx.StaticText(self, -1, label="")
+        self.status_hbox1.Add(self.current_strategy_label)
+        self.status_hbox1.Add(self.current_strategy)
+
+        self.hotkey_confirm = wx.StaticText(self, -1, label="出价确认：")
+        self.hotkey_smartprice = wx.StaticText(self, -1, label="智能出价：")
+        self.remindervbox.Add(self.status_hbox1)
         self.remindervbox.Add(self.hotkey_confirm)
         self.remindervbox.Add(self.hotkey_smartprice)
         self.reminderbox.Add(self.remindervbox)
@@ -124,6 +133,10 @@ class StatusPanel(wx.Panel):
         self.timeframe1.Show(False)
         self.timeframe2 = MoniTimeFrame()
         self.timeframe2.Show(False)
+
+    #############消息区域
+        pub.subscribe(self.change_strategy, 'change strategy')
+
 
     def status_Timer(self,event):
         now_ping = get_val('now_ping')
@@ -252,6 +265,12 @@ class StatusPanel(wx.Panel):
         elif con == 1:
             set_val('e_on', False)
             set_val('enter_on', True)
+
+    #######
+    def change_strategy(self):
+        current_strategy_name = get_val('current_strategy_name')
+        self.current_strategy.SetLabel(current_strategy_name)
+
 
 #-----------------------------------------------------------
 
@@ -740,22 +759,6 @@ class StrategyPanel(wx.Panel):
         set_val('second_real_time1', self.gettime(second_time1))
         set_val('second_real_time2', self.gettime(second_time2))
 
-    def Strategy_save(self, event):
-        dlg = wx.TextEntryDialog(None, '设定你的策略名称:', "策略保存", "策略1",
-                                 style=wx.OK)
-        if dlg.ShowModal() == wx.ID_OK:
-            name = dlg.GetValue()
-            if name:
-                dlg_tip = wx.MessageBox('保存成功', '策略保存', wx.OK | wx.ICON_INFORMATION)
-                if dlg_tip == wx.ID_OK:
-                    dlg_tip.Destroy()
-                    dlg.Destroy()
-                self.save(name)
-            else:
-                dlg_tip = wx.MessageBox('名称不能为空', '策略保存', wx.OK | wx.ICON_ERROR)
-                if dlg_tip == wx.ID_OK:
-                    dlg_tip.Destroy()
-                    dlg.Destroy()
 
     def save(self, name):
         one_time1 = get_val('one_time1')
@@ -806,7 +809,26 @@ class StrategyPanel(wx.Panel):
             osl[12] = enter_on
         with open('%s.strategy' % name, 'wb') as spk:
             pickle.dump(osl, spk)
+    #策略保存
+    def Strategy_save(self, event):
+        dlg = wx.TextEntryDialog(None, '设定你的策略名称:', "策略保存", "策略1",
+                                 style=wx.OK)
+        if dlg.ShowModal() == wx.ID_OK:
+            name = dlg.GetValue()
+            set_val('strategy_name', name)
+            if name:
+                dlg_tip = wx.MessageBox('保存成功', '策略保存', wx.OK | wx.ICON_INFORMATION)
+                if dlg_tip == wx.ID_OK:
+                    dlg_tip.Destroy()
+                    dlg.Destroy()
+                self.save(name)
+            else:
+                dlg_tip = wx.MessageBox('名称不能为空', '策略保存', wx.OK | wx.ICON_ERROR)
+                if dlg_tip == wx.ID_OK:
+                    dlg_tip.Destroy()
+                    dlg.Destroy()
 
+    #策略修改
     def Strategy_load(self, event):
         import os
         path = os.getcwd()
@@ -820,6 +842,10 @@ class StrategyPanel(wx.Panel):
                 if dlg_tip.ShowModal() == wx.ID_OK:
                     dlg_tip.Destroy()
                 self.load(path)
+                (filepath, tempfilename) = os.path.split(path)
+                (filename, extension) = os.path.splitext(tempfilename)
+                set_val('current_strategy_name', filename)
+                wx.CallAfter(pub.sendMessage, "change strategy")
             dlg.Destroy()
         else:
             dlg_tip = wx.MessageBox('找不到任何保存的策略', '策略载入', wx.OK | wx.ICON_ERROR)
@@ -867,10 +893,11 @@ class StrategyPanel(wx.Panel):
             set_val('one_advance', osl[5])  # 第一次提交提前量
             set_val('e_on', osl[11])
             set_val('enter_on', osl[12])
+            statuspad = self.FindWindowById(20)
             if e_on:
-                self.confirm_choice.SetSelection(0)
+                statuspad.confirm_choice.SetSelection(0)
             elif enter_on:
-                self.confirm_choice.SetSelection(1)
+                statuspad.confirm_choice.SetSelection(1)
             set_val('one_real_time1', self.gettime(one_time1))
             set_val('one_real_time2', self.gettime(one_time2))
             set_val('second_real_time1', self.gettime(second_time1))
@@ -917,10 +944,11 @@ class StrategyPanel(wx.Panel):
             set_val('second_advance', osl[10])  # 第二次出价提交提前量
             set_val('e_on', osl[11])
             set_val('enter_on', osl[12])
+            statuspad = self.FindWindowById(20)
             if e_on:
-                self.confirm_choice.SetSelection(0)
+                statuspad.confirm_choice.SetSelection(0)
             elif enter_on:
-                self.confirm_choice.SetSelection(1)
+                statuspad.confirm_choice.SetSelection(1)
             set_val('one_real_time1', self.gettime(one_time1))
             set_val('one_real_time2', self.gettime(one_time2))
             set_val('second_real_time1', self.gettime(second_time1))
@@ -978,10 +1006,20 @@ class OperationFrame(wx.Frame):
 
 
     def OnClose(self, event):
-        main = self.FindWindowById(1)
-        main.Show(True)
-        wx.CallAfter(pub.sendMessage, "close webframe")  # 关闭热键绑定
-        self.Show(False)
+        guopai_on = get_val('guopai_on')
+        if guopai_on:
+            ret = wx.MessageBox('真的要退出吗?', '确认', wx.OK | wx.CANCEL)
+            if ret == wx.OK:
+                main = self.FindWindowById(1)
+                main.Show(True)
+                wx.CallAfter(pub.sendMessage, "close webframe")  # 关闭热键绑定
+                self.Show(False)
+        else:
+            main = self.FindWindowById(1)
+            main.Show(True)
+            wx.CallAfter(pub.sendMessage, "close webframe")  # 关闭热键绑定
+            self.Show(False)
+
 
     def OnClose2(self):
         main = self.FindWindowById(1)

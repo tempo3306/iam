@@ -34,9 +34,9 @@ from PIL import Image
 import os
 from PIL import ImageGrab
 #组件
-from component.app_thread import cutimgThread,findposThread,HashThread
-from component.app_thread import confirmThread,refreshThread,TijiaoThread,MoniTijiaoThread
-from component.variable import set_val,get_val
+from component.app_thread import cutimgThread,findposThread
+from component.app_thread import confirmThread,refreshThread,TijiaoThread
+from component.variable import set_val
 from component.LoginFrame import LoginFrame
 from component.variable import Create_hash,init_val
 
@@ -44,16 +44,6 @@ from component.variable import Create_hash,init_val
 #创建app
 class SketchApp(wx.App):
     def OnInit(self):
-        # try:
-        #     bitmap = wx.Bitmap('start.png', wx.BITMAP_TYPE_PNG)
-        #
-        #     wx.adv.SplashScreen(bitmap, wx.adv.SPLASH_CENTRE_ON_SCREEN | wx.adv.SPLASH_TIMEOUT,
-        #                                  1500, None, -1, wx.DefaultPosition, size=(300,240),
-        #                                 style=wx.BORDER_SIMPLE | wx.STAY_ON_TOP)
-        #
-        #     wx.Yield()
-        # except:
-        #     pass
         try:
             with open("your.name", 'rb') as name:
                 namepsd = pickle.load(name)
@@ -76,7 +66,7 @@ if __name__ == '__main__':
     # 变量初始化
     Create_hash()
     init_val()
-    set_val('version', 1.01)
+    set_val('version', 1.02)
     ###获取路径
     allpath = os.path.abspath(os.path.realpath(sys.argv[0]))
     path = os.path.split(allpath)[0] + '\\'  # 分割

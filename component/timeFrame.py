@@ -8,7 +8,7 @@
 #################国拍时间显示##################
 import wx
 import time
-from component.variable import get_val, set_val
+from component.variable import get_val
 
 
 class ClockWindow(wx.Panel):

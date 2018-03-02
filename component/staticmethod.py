@@ -64,15 +64,9 @@ def Delete():
 
 
 def OnClick_Tijiao():
-    web_on = get_val('web_on')
-    tijiao_on = get_val('tijiao_on')
     one_delay = get_val('one_delay')
     second_delay = get_val('second_delay')
     tijiao_num = get_val('tijiao_num')
-    tijiao_on = get_val('tijiao_on')
-    chujia_on = get_val('chujia_on')
-    confirm_one = get_val('confirm_one')
-    confirm_need = get_val('confirm_need')
     twice = get_val('twice')
     set_val('confirm_need', True)
     if tijiao_num == 1:

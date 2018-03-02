@@ -5,18 +5,17 @@
 @time: 2018/1/22 13:58
 '''
 import wx
-import os
 from wx.lib.pubsub import pub  # 代替了publisher
-from component.variable import get_val, set_val
 from component.staticmethod import *
 
 
 class WebFrame(wx.Frame):
     def __init__(self, px, py, ad, name, size):  # name:窗口显示名称
-        wx.Frame.__init__(self, None, 3, name, size=size, pos=(px, py), style=wx.SIMPLE_BORDER)
+        wx.Frame.__init__(self, None, 3, name, size=size, pos=(px, py), style=wx.SIMPLE_BORDER | wx.STAY_ON_TOP)
 
         # wx.Frame.__init__(self,None, -1,title="大师拍牌 QQ 178456661 - 3.663",size=(websize[0], websize[1]),\
         #  pos=(px, py),style=wx.DEFAULT_FRAME_STYLE|wx.STAY_ON_TOP&~(wx.RESIZE_BORDER))
+        # wx.DEFAULT_FRAME_STYLE^(wx.RESIZE_BORDER|wx.MAXIMIZE_BOX|wx.MINIMIZE_BOX|wx.CLOSE_BOX))
         # wx.DEFAULT_FRAME_STYLE^(wx.RESIZE_BORDER|wx.MAXIMIZE_BOX|wx.MINIMIZE_BOX|wx.CLOSE_BOX))
 
         self.Bind(wx.EVT_CLOSE, self.OnClose)
@@ -25,13 +24,26 @@ class WebFrame(wx.Frame):
 
     def OnClose(self, event):
         # print("关闭web")
-        wx.CallAfter(pub.sendMessage, "close operation") #关闭operation
-        set_val('web_on', False)
-        set_val('view_time', False)
-        set_val('moni_on', False)
-        set_val('guopai_on', False)
-        self.Destroy()
-        event.Skip()  # 绑在同一事件上的两个函数，如果 没有这个，就只执行后绑定的。
+        guopai_on = get_val('guopai_on')
+        if guopai_on:
+            ret = wx.MessageBox('真的要退出吗?', '确认', wx.OK | wx.CANCEL)
+            if ret == wx.OK:
+                wx.CallAfter(pub.sendMessage, "close operation") #关闭operation
+                set_val('web_on', False)
+                set_val('view_time', False)
+                set_val('moni_on', False)
+                set_val('guopai_on', False)
+                self.Destroy()
+                event.Skip()  # 绑在同一事件上的两个函数，如果 没有这个，就只执行后绑定的。
+        else:
+            wx.CallAfter(pub.sendMessage, "close operation")  # 关闭operation
+            set_val('web_on', False)
+            set_val('view_time', False)
+            set_val('moni_on', False)
+            set_val('guopai_on', False)
+            self.Destroy()
+            event.Skip()  # 绑在同一事件上的两个函数，如果 没有这个，就只执行后绑定的。
+
 
     def OnClose2(self):  #pubsub消息机制不能带EVENT
         set_val('web_on', False)

@@ -51,6 +51,8 @@ def Create_hash():
 
 
 def init_val():
+    set_val('strategy_name', '') #策略名称
+    set_val('current_strategy_name', '') #当前策略
     set_val('host_ali', "http://hupai.pro")
     set_val('debug', True)
     set_val('now_ping', 0)  #实时网速

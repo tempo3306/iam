@@ -5,16 +5,13 @@
 @time: 2018/1/22 10:37
 '''
 import smtplib
-# import time
-# import codecs
-from email.mime.text import MIMEText
 import os
 import mimetypes
 import email
 from email.mime.multipart import MIMEMultipart
 # --------------------------------------------------------------------------------
 
-import socket, sys, json
+import socket
 from component.variable import get_val
 
 timeout = 10
