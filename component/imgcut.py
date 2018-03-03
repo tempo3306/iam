@@ -305,8 +305,7 @@ def cut_img():  # 将所得的img 处理成  lowestprice_img   confirm_img  yanz
         set_val('imgpos_yanzhengmaconfirm', img[use_area[4][1]:use_area[4][3], use_area[4][0]:use_area[4][2]])  # ok
         set_val('imgpos_currenttime', img[use_area[5][1]:use_area[5][3], use_area[5][0]:use_area[5][2]])
     except:
-        pass
-        # print("cut_img 这里出错")
+        print("cut_img 这里出错")
 
 
 def findrefresh():
@@ -363,6 +362,15 @@ def find_yan_confirm():
 
 def Price_read():
     imgpos_lowestprice = get_val('imgpos_lowestprice')
+    # avt = get_val('avt')
+    # avt+=1
+    # if avt == 200 or avt == 201:
+    #     avt =0
+    # set_val('avt', avt)
+    # cv2.imwrite(r'./pic/%s.png'%avt, imgpos_lowestprice)
+
     lowest_price_img = cv2.cvtColor(imgpos_lowestprice, cv2.COLOR_BGR2GRAY)
+
     price = readpic(lowest_price_img, 'maindata.xml')
+
     return price

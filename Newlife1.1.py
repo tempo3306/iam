@@ -5,6 +5,7 @@
 # 新增验证码放大器功能
 # 时间同步
 import logging,time
+version = 1.03  #版本号
 timenow = time.time()
 # 转换成localtime
 time_local = time.localtime(timenow)
@@ -66,7 +67,7 @@ if __name__ == '__main__':
     # 变量初始化
     Create_hash()
     init_val()
-    set_val('version', 1.02)
+    set_val('version', version)
     ###获取路径
     allpath = os.path.abspath(os.path.realpath(sys.argv[0]))
     path = os.path.split(allpath)[0] + '\\'  # 分割

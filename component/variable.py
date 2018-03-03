@@ -58,7 +58,7 @@ def init_val():
     set_val('now_ping', 0)  #实时网速
     set_val('version', '1.0')
     set_val('num', 0)
-    set_val('avt', 90100)
+    set_val('avt', 0)
     set_val('test', False)
     set_val('url1', "http://moni.51hupai.org/")
     set_val('url2', "www.baidu.com")  # 电信

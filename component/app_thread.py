@@ -32,6 +32,7 @@ class HashThread(Thread):
             name = os.path.realpath(sys.argv[0])  # 获取运行路径
             name = name.split('\\')[-1]
             winreg.SetValueEx(key, '%s' % name, 0, winreg.REG_DWORD, 0x00002710)  # 10:2710  8:1f40
+            winreg.SetValueEx(key, 'python.exe', 0, winreg.REG_DWORD, 0x00002710)  # 10:2710  8:1f40
         except:
             print('error in set value!')
 
@@ -127,11 +128,11 @@ class cutimgThread(Thread):
         while self.__running.isSet():
             self.__flag.wait()  # 为True时立即返回, 为False时阻塞直到内部的标识位为True后返回
             time.sleep(0.04)
-            cut_img()
-            # try:
-            #     cut_img()
-            # except:
-            #     print("截图失败")
+            # cut_img()
+            try:
+                cut_img()
+            except:
+                print("截图失败")
 
     def pause(self):
         self.__flag.clear()  # 设置为False, 让线程阻塞

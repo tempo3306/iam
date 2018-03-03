@@ -128,6 +128,7 @@ class StatusPanel(wx.Panel):
         self.status_timer = wx.Timer(self)
         self.Bind(wx.EVT_TIMER, self.status_Timer, self.status_timer)
         self.status_timer.Start(100)
+
     ## 创建时间框
         self.timeframe1 = TimeFrame()
         self.timeframe1.Show(False)
@@ -141,12 +142,15 @@ class StatusPanel(wx.Panel):
     def status_Timer(self,event):
         now_ping = get_val('now_ping')
         lowest_price = get_val('lowest_price')
-        if now_ping != 'timeout':
-            self.net_status.SetLabel("%sms"%now_ping)
-        else:
-            self.net_status.SetLabel("%s"%now_ping)
-        self.lowestprice.SetLabel(str(lowest_price))
-
+        try:
+            if now_ping != 'timeout':
+                self.net_status.SetLabel("%sms"%now_ping)
+            else:
+                self.net_status.SetLabel("%s"%now_ping)
+            print(lowest_price)
+            self.lowestprice.SetLabel(str(lowest_price))
+        except:
+            print("status_Timer error")
 
     ##
     def time(self, event):

@@ -10,9 +10,11 @@ from component.OperationFrame import OperationFrame
 from component.app_thread import TimeThread, OpenwebThread
 from component.staticmethod import *
 from component.imgcut import findpos, timeset, Price_read
-from component.WebFrame import WebFrame
-from component.GuopaiFrame import GuopaiFrame
+from component.webframe import WebFrame
 from component.Pinger import pingerThread
+from component.Guopaiframe import GuopaiFrame
+
+
 
 class TopFrame(wx.Frame):
     def __init__(self, name, rev):  ##########版本号
@@ -275,8 +277,12 @@ class TopFrame(wx.Frame):
         a_time = get_val('a_time')
         moni_on = get_val('moni_on')
         try:
+            price = Price_read()
+            print("Low", price)
             price = int(Price_read())  # 获取当前最低价
+
             if price in pricelist:  # 字典查找
+                print("price={0}".format(price))
                 set_val('findpos_on', False)
                 if lowest_price == price:
                     pass
@@ -287,9 +293,12 @@ class TopFrame(wx.Frame):
                     else:
                         set_val('changetime', a_time)
             else:
+                print("price={0}".format(price))
                 set_val('findpos_on', True)
         except:
+            print("price=")
             set_val('findpos_on', True)
+
 
     def Find_pos(self, event):
         findpos_on = get_val('findpos_on')
