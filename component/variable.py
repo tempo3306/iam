@@ -11,6 +11,8 @@ global 关键字在一个文件内是唯一的
 import pickle, time
 import pyautogui as pg
 import numpy as np
+import logging
+logger = logging.getLogger()
 
 vars = {}
 
@@ -28,7 +30,7 @@ def set_val(key, value):
     try:
         vars[key] = value
     except:
-        pass
+        logger.exception('this is an exception message')
 
 
 # 获取变量值

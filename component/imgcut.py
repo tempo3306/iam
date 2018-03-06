@@ -12,7 +12,8 @@ import numpy as np
 import time
 from component.staticmethod import OnClick_Shuaxin, OnClick_confirm
 from component.variable import set_val, get_val
-
+import logging
+logger = logging.getLogger()
 
 def cut_pic(img, size, name):
     img = np.asarray(img)
@@ -190,9 +191,10 @@ def timeset(guopai_on, moni_on, imgpos_currenttime, maindata):
                 moni_second = int(currenttime.split(':')[2]) + 0.5
                 set_val('moni_second', moni_second)
             except:
-                pass
+                logger.exception('this is an exception message')
+
     except:
-        pass
+        logger.exception('this is an exception message')
 
 
 def findpos():
@@ -305,7 +307,8 @@ def cut_img():  # 将所得的img 处理成  lowestprice_img   confirm_img  yanz
         set_val('imgpos_yanzhengmaconfirm', img[use_area[4][1]:use_area[4][3], use_area[4][0]:use_area[4][2]])  # ok
         set_val('imgpos_currenttime', img[use_area[5][1]:use_area[5][3], use_area[5][0]:use_area[5][2]])
     except:
-        print("cut_img 这里出错")
+        logger.error("cut_img 这里出错")
+        logger.exception('this is an exception message')
 
 
 def findrefresh():

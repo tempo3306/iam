@@ -15,6 +15,9 @@ from component.imgcut import findpos, timeset
 from wx.lib.pubsub import pub
 from component.variable import set_val, get_val
 
+import logging
+logger = logging.getLogger()
+
 #-----------------------------------------------------------
 class StatusPanel(wx.Panel):
     def __init__(self, parent):
@@ -53,6 +56,7 @@ class StatusPanel(wx.Panel):
         self.Bind(wx.EVT_BUTTON, self.Add_time, self.button3)
         self.button4 = wx.Button(self, label='-0.1s', size=(35, 25))
         self.Bind(wx.EVT_BUTTON, self.Minus_time, self.button4)
+
         hbox1.Add(self.button1)
         hbox1.Add(self.button2)
         hbox1.Add(self.button3)
@@ -150,7 +154,9 @@ class StatusPanel(wx.Panel):
             print(lowest_price)
             self.lowestprice.SetLabel(str(lowest_price))
         except:
-            print("status_Timer error")
+            logger.error("status_Timer error")
+            logger.exception('this is an exception message')
+
 
     ##
     def time(self, event):
@@ -174,8 +180,6 @@ class StatusPanel(wx.Panel):
     ##时间显示
     def Timeview(self, event):
         timeSelected = event.GetEventObject()
-        view_time = get_val('view_time')
-        time_on = get_val('time_on')
         moni_on = get_val('moni_on')
         guopai_on = get_val('guopai_on')
         if timeSelected.IsChecked():
@@ -190,7 +194,9 @@ class StatusPanel(wx.Panel):
             set_val('time_on', False)
             if guopai_on:
                 self.timeframe1.Show(False)
+                self.timeframe2.Show(False)
             elif moni_on:
+                self.timeframe2.Show(False)
                 self.timeframe2.Show(False)
 
 
@@ -255,11 +261,13 @@ class StatusPanel(wx.Panel):
         try:
             self.timeframe1.Show(False)
         except:
-            pass
+            logger.exception('this is an exception message')
+
         try:
             self.timeframe2.Show(False)
         except:
-            pass
+            logger.exception('this is an exception message')
+
 
     def Confirmchoice(self, event):
         con = self.confirm_choice.GetSelection()
@@ -462,7 +470,8 @@ class StrategyPanel(wx.Panel):
                     yan.Move(Pos_yanzhengmaframe)  # 移动到新位置
                     set_val('yanzhengma_move', False)  # 无需动作
                 except:
-                    pass
+                    logger.exception('this is an exception message')
+
         price_view = get_val('price_view')
         price_count = get_val('price_count')
         if price_view and price_count >= 4:
@@ -480,7 +489,8 @@ class StrategyPanel(wx.Panel):
                 yan2 = self.FindWindowById(18)
                 yan2.Show(False)
             except:
-                pass
+                logger.exception('this is an exception message')
+
         yanzhengma_view = get_val('yanzhengma_view')
         if yanzhengma_view:
             set_val('yanzhengma_close', False)
@@ -501,7 +511,8 @@ class StrategyPanel(wx.Panel):
                     yan.ShowImage(yanpath)
                     yan.Show()
                 except:  # 找不到的情况下也要重新创建
-                    pass
+                    logger.exception('this is an exception message')
+
                 finally:
                     pass
 
@@ -867,7 +878,8 @@ class StrategyPanel(wx.Panel):
             with open(path, 'rb') as loadstr:
                 set_val('osl', pickle.load(loadstr))
         except:
-            pass
+            logger.exception('this is an exception message')
+
         if osl[0] == 0:  # 单次
             self.ss_Hide()
             set_val('twice', False)

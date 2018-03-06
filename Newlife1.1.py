@@ -5,7 +5,7 @@
 # 新增验证码放大器功能
 # 时间同步
 import logging,time
-version = 1.03  #版本号
+version = 1.04  #版本号
 timenow = time.time()
 # 转换成localtime
 time_local = time.localtime(timenow)
@@ -17,10 +17,8 @@ logging.basicConfig(level=logging.DEBUG,
                     filename='%s.log' % myapplog,
                     filemode='w')
 
-logging.debug('This is debug message')
-logging.info('This is info message')
-logging.warning('This is warning message')
-logging.error('This is error message')
+root = logging.getLogger()
+print(root.name,type(root),root.parent,id(root))
 # ----------------------------------------------------------------
 # 导入模块#####################
 import sys

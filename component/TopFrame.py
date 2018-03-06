@@ -10,9 +10,9 @@ from component.OperationFrame import OperationFrame
 from component.app_thread import TimeThread, OpenwebThread
 from component.staticmethod import *
 from component.imgcut import findpos, timeset, Price_read
-from component.webframe import WebFrame
+from component.WebFrame import WebFrame
 from component.Pinger import pingerThread
-from component.Guopaiframe import GuopaiFrame
+from component.GuopaiFrame import GuopaiFrame
 
 
 
@@ -167,6 +167,8 @@ class TopFrame(wx.Frame):
             if do:
                 set_val('ad_view', True)
                 set_val('guopai_on', True)
+                set_val('web_on', True)
+                set_val('strategy_on', True)
                 self.fr = WebFrame(Px, Py, False, '沪牌一号 国拍', (websize[0], websize[1]))  # 暂时关闭广告
 
                 browser = wx.html2.WebView.New(self.fr, size=(websize[0] + 48, websize[1] + 40), pos=webview_pos,
@@ -207,6 +209,8 @@ class TopFrame(wx.Frame):
             if do:
                 set_val('ad_view', True)
                 set_val('guopai_on', True)
+                set_val('web_on', True)
+                set_val('strategy_on', True)
                 self.fr = WebFrame(Px, Py, False, '沪牌一号 国拍', (websize[0], websize[1]))  # 暂时关闭广告
 
                 browser = wx.html2.WebView.New(self.fr, size=(websize[0] + 48, websize[1] + 40), pos=webview_pos,
@@ -318,7 +322,9 @@ class TopFrame(wx.Frame):
         web_on = get_val('web_on')
         time_on = get_val('time_on')
         if not web_on and time_on:  # 网页关就把时间关掉
+            set_val('time_on', False)
             self.operationframe.status_tab.Closetime()
+            self.operationframe.status_tab.timeview.SetValue(0)
 
     def OnClose(self, event):
         ret = wx.MessageBox('真的要退出助手吗?', '确认', wx.OK | wx.CANCEL)

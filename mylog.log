@@ -1,6 +1,2228 @@
-Sat, 03 Mar 2018 14:53:03 Newlife1.1.py[line:20] DEBUG This is debug message
-Sat, 03 Mar 2018 14:53:03 Newlife1.1.py[line:21] INFO This is info message
-Sat, 03 Mar 2018 14:53:03 Newlife1.1.py[line:22] WARNING This is warning message
-Sat, 03 Mar 2018 14:53:03 Newlife1.1.py[line:23] ERROR This is error message
-Sat, 03 Mar 2018 14:53:04 PngImagePlugin.py[line:137] DEBUG STREAM b'IHDR' 16 13
-Sat, 03 Mar 2018 14:53:04 PngImagePlugin.py[line:137] DEBUG STREAM b'IDAT' 41 65536
+Tue, 06 Mar 2018 09:56:29 PngImagePlugin.py[line:130] DEBUG STREAM b'IHDR' 16 13
+Tue, 06 Mar 2018 09:56:29 PngImagePlugin.py[line:130] DEBUG STREAM b'IDAT' 41 65536
+Tue, 06 Mar 2018 09:56:29 app_thread.py[line:108] ERROR 刷新失败
+Tue, 06 Mar 2018 09:56:29 app_thread.py[line:109] ERROR this is an exception message
+Traceback (most recent call last):
+  File "F:/BestAssistant\component\app_thread.py", line 106, in run
+    findrefresh()
+  File "F:/BestAssistant\component\imgcut.py", line 325, in findrefresh
+    img = cv2.cvtColor(sc, cv2.COLOR_BGR2GRAY)  # 转灰度图
+cv2.error: C:\projects\opencv-python\opencv\modules\imgproc\src\color.cpp:10600: error: (-215) depth == CV_8U || depth == CV_16U || depth == CV_32F in function cv::cvtColor
+
+Tue, 06 Mar 2018 09:56:29 imgcut.py[line:310] ERROR cut_img 这里出错
+Tue, 06 Mar 2018 09:56:29 imgcut.py[line:311] ERROR this is an exception message
+Traceback (most recent call last):
+  File "F:/BestAssistant\component\imgcut.py", line 303, in cut_img
+    set_val('imgpos_lowestprice', img[use_area[0][1]:use_area[0][3], use_area[0][0]:use_area[0][2]])  # ok
+IndexError: list index out of range
+Tue, 06 Mar 2018 09:56:29 app_thread.py[line:108] ERROR 刷新失败
+Tue, 06 Mar 2018 09:56:29 app_thread.py[line:109] ERROR this is an exception message
+Traceback (most recent call last):
+  File "F:/BestAssistant\component\app_thread.py", line 106, in run
+    findrefresh()
+  File "F:/BestAssistant\component\imgcut.py", line 325, in findrefresh
+    img = cv2.cvtColor(sc, cv2.COLOR_BGR2GRAY)  # 转灰度图
+cv2.error: C:\projects\opencv-python\opencv\modules\imgproc\src\color.cpp:10600: error: (-215) depth == CV_8U || depth == CV_16U || depth == CV_32F in function cv::cvtColor
+
+Tue, 06 Mar 2018 09:56:29 imgcut.py[line:310] ERROR cut_img 这里出错
+Tue, 06 Mar 2018 09:56:29 imgcut.py[line:311] ERROR this is an exception message
+Traceback (most recent call last):
+  File "F:/BestAssistant\component\imgcut.py", line 303, in cut_img
+    set_val('imgpos_lowestprice', img[use_area[0][1]:use_area[0][3], use_area[0][0]:use_area[0][2]])  # ok
+IndexError: list index out of range
+Tue, 06 Mar 2018 09:56:29 app_thread.py[line:108] ERROR 刷新失败
+Tue, 06 Mar 2018 09:56:29 app_thread.py[line:109] ERROR this is an exception message
+Traceback (most recent call last):
+  File "F:/BestAssistant\component\app_thread.py", line 106, in run
+    findrefresh()
+  File "F:/BestAssistant\component\imgcut.py", line 325, in findrefresh
+    img = cv2.cvtColor(sc, cv2.COLOR_BGR2GRAY)  # 转灰度图
+cv2.error: C:\projects\opencv-python\opencv\modules\imgproc\src\color.cpp:10600: error: (-215) depth == CV_8U || depth == CV_16U || depth == CV_32F in function cv::cvtColor
+
+Tue, 06 Mar 2018 09:56:29 app_thread.py[line:108] ERROR 刷新失败
+Tue, 06 Mar 2018 09:56:29 app_thread.py[line:109] ERROR this is an exception message
+Traceback (most recent call last):
+  File "F:/BestAssistant\component\app_thread.py", line 106, in run
+    findrefresh()
+  File "F:/BestAssistant\component\imgcut.py", line 325, in findrefresh
+    img = cv2.cvtColor(sc, cv2.COLOR_BGR2GRAY)  # 转灰度图
+cv2.error: C:\projects\opencv-python\opencv\modules\imgproc\src\color.cpp:10600: error: (-215) depth == CV_8U || depth == CV_16U || depth == CV_32F in function cv::cvtColor
+
+Tue, 06 Mar 2018 09:56:29 imgcut.py[line:310] ERROR cut_img 这里出错
+Tue, 06 Mar 2018 09:56:29 imgcut.py[line:311] ERROR this is an exception message
+Traceback (most recent call last):
+  File "F:/BestAssistant\component\imgcut.py", line 303, in cut_img
+    set_val('imgpos_lowestprice', img[use_area[0][1]:use_area[0][3], use_area[0][0]:use_area[0][2]])  # ok
+IndexError: list index out of range
+Tue, 06 Mar 2018 09:56:29 app_thread.py[line:108] ERROR 刷新失败
+Tue, 06 Mar 2018 09:56:29 app_thread.py[line:109] ERROR this is an exception message
+Traceback (most recent call last):
+  File "F:/BestAssistant\component\app_thread.py", line 106, in run
+    findrefresh()
+  File "F:/BestAssistant\component\imgcut.py", line 325, in findrefresh
+    img = cv2.cvtColor(sc, cv2.COLOR_BGR2GRAY)  # 转灰度图
+cv2.error: C:\projects\opencv-python\opencv\modules\imgproc\src\color.cpp:10600: error: (-215) depth == CV_8U || depth == CV_16U || depth == CV_32F in function cv::cvtColor
+
+Tue, 06 Mar 2018 09:56:29 imgcut.py[line:310] ERROR cut_img 这里出错
+Tue, 06 Mar 2018 09:56:29 imgcut.py[line:311] ERROR this is an exception message
+Traceback (most recent call last):
+  File "F:/BestAssistant\component\imgcut.py", line 303, in cut_img
+    set_val('imgpos_lowestprice', img[use_area[0][1]:use_area[0][3], use_area[0][0]:use_area[0][2]])  # ok
+IndexError: list index out of range
+Tue, 06 Mar 2018 09:56:29 app_thread.py[line:108] ERROR 刷新失败
+Tue, 06 Mar 2018 09:56:29 app_thread.py[line:109] ERROR this is an exception message
+Traceback (most recent call last):
+  File "F:/BestAssistant\component\app_thread.py", line 106, in run
+    findrefresh()
+  File "F:/BestAssistant\component\imgcut.py", line 325, in findrefresh
+    img = cv2.cvtColor(sc, cv2.COLOR_BGR2GRAY)  # 转灰度图
+cv2.error: C:\projects\opencv-python\opencv\modules\imgproc\src\color.cpp:10600: error: (-215) depth == CV_8U || depth == CV_16U || depth == CV_32F in function cv::cvtColor
+
+Tue, 06 Mar 2018 09:56:29 imgcut.py[line:310] ERROR cut_img 这里出错
+Tue, 06 Mar 2018 09:56:29 imgcut.py[line:311] ERROR this is an exception message
+Traceback (most recent call last):
+  File "F:/BestAssistant\component\imgcut.py", line 303, in cut_img
+    set_val('imgpos_lowestprice', img[use_area[0][1]:use_area[0][3], use_area[0][0]:use_area[0][2]])  # ok
+IndexError: list index out of range
+Tue, 06 Mar 2018 09:56:29 app_thread.py[line:108] ERROR 刷新失败
+Tue, 06 Mar 2018 09:56:29 app_thread.py[line:109] ERROR this is an exception message
+Traceback (most recent call last):
+  File "F:/BestAssistant\component\app_thread.py", line 106, in run
+    findrefresh()
+  File "F:/BestAssistant\component\imgcut.py", line 325, in findrefresh
+    img = cv2.cvtColor(sc, cv2.COLOR_BGR2GRAY)  # 转灰度图
+cv2.error: C:\projects\opencv-python\opencv\modules\imgproc\src\color.cpp:10600: error: (-215) depth == CV_8U || depth == CV_16U || depth == CV_32F in function cv::cvtColor
+
+Tue, 06 Mar 2018 09:56:29 imgcut.py[line:310] ERROR cut_img 这里出错
+Tue, 06 Mar 2018 09:56:29 imgcut.py[line:311] ERROR this is an exception message
+Traceback (most recent call last):
+  File "F:/BestAssistant\component\imgcut.py", line 303, in cut_img
+    set_val('imgpos_lowestprice', img[use_area[0][1]:use_area[0][3], use_area[0][0]:use_area[0][2]])  # ok
+IndexError: list index out of range
+Tue, 06 Mar 2018 09:56:29 app_thread.py[line:108] ERROR 刷新失败
+Tue, 06 Mar 2018 09:56:29 app_thread.py[line:109] ERROR this is an exception message
+Traceback (most recent call last):
+  File "F:/BestAssistant\component\app_thread.py", line 106, in run
+    findrefresh()
+  File "F:/BestAssistant\component\imgcut.py", line 325, in findrefresh
+    img = cv2.cvtColor(sc, cv2.COLOR_BGR2GRAY)  # 转灰度图
+cv2.error: C:\projects\opencv-python\opencv\modules\imgproc\src\color.cpp:10600: error: (-215) depth == CV_8U || depth == CV_16U || depth == CV_32F in function cv::cvtColor
+
+Tue, 06 Mar 2018 09:56:29 imgcut.py[line:310] ERROR cut_img 这里出错
+Tue, 06 Mar 2018 09:56:29 imgcut.py[line:311] ERROR this is an exception message
+Traceback (most recent call last):
+  File "F:/BestAssistant\component\imgcut.py", line 303, in cut_img
+    set_val('imgpos_lowestprice', img[use_area[0][1]:use_area[0][3], use_area[0][0]:use_area[0][2]])  # ok
+IndexError: list index out of range
+Tue, 06 Mar 2018 09:56:29 app_thread.py[line:108] ERROR 刷新失败
+Tue, 06 Mar 2018 09:56:29 app_thread.py[line:109] ERROR this is an exception message
+Traceback (most recent call last):
+  File "F:/BestAssistant\component\app_thread.py", line 106, in run
+    findrefresh()
+  File "F:/BestAssistant\component\imgcut.py", line 325, in findrefresh
+    img = cv2.cvtColor(sc, cv2.COLOR_BGR2GRAY)  # 转灰度图
+cv2.error: C:\projects\opencv-python\opencv\modules\imgproc\src\color.cpp:10600: error: (-215) depth == CV_8U || depth == CV_16U || depth == CV_32F in function cv::cvtColor
+
+Tue, 06 Mar 2018 09:56:29 app_thread.py[line:108] ERROR 刷新失败
+Tue, 06 Mar 2018 09:56:29 app_thread.py[line:109] ERROR this is an exception message
+Traceback (most recent call last):
+  File "F:/BestAssistant\component\app_thread.py", line 106, in run
+    findrefresh()
+  File "F:/BestAssistant\component\imgcut.py", line 325, in findrefresh
+    img = cv2.cvtColor(sc, cv2.COLOR_BGR2GRAY)  # 转灰度图
+cv2.error: C:\projects\opencv-python\opencv\modules\imgproc\src\color.cpp:10600: error: (-215) depth == CV_8U || depth == CV_16U || depth == CV_32F in function cv::cvtColor
+
+Tue, 06 Mar 2018 09:56:29 imgcut.py[line:310] ERROR cut_img 这里出错
+Tue, 06 Mar 2018 09:56:29 imgcut.py[line:311] ERROR this is an exception message
+Traceback (most recent call last):
+  File "F:/BestAssistant\component\imgcut.py", line 303, in cut_img
+    set_val('imgpos_lowestprice', img[use_area[0][1]:use_area[0][3], use_area[0][0]:use_area[0][2]])  # ok
+IndexError: list index out of range
+Tue, 06 Mar 2018 09:56:29 app_thread.py[line:108] ERROR 刷新失败
+Tue, 06 Mar 2018 09:56:29 app_thread.py[line:109] ERROR this is an exception message
+Traceback (most recent call last):
+  File "F:/BestAssistant\component\app_thread.py", line 106, in run
+    findrefresh()
+  File "F:/BestAssistant\component\imgcut.py", line 325, in findrefresh
+    img = cv2.cvtColor(sc, cv2.COLOR_BGR2GRAY)  # 转灰度图
+cv2.error: C:\projects\opencv-python\opencv\modules\imgproc\src\color.cpp:10600: error: (-215) depth == CV_8U || depth == CV_16U || depth == CV_32F in function cv::cvtColor
+
+Tue, 06 Mar 2018 09:56:29 app_thread.py[line:108] ERROR 刷新失败
+Tue, 06 Mar 2018 09:56:29 app_thread.py[line:109] ERROR this is an exception message
+Traceback (most recent call last):
+  File "F:/BestAssistant\component\app_thread.py", line 106, in run
+    findrefresh()
+  File "F:/BestAssistant\component\imgcut.py", line 325, in findrefresh
+    img = cv2.cvtColor(sc, cv2.COLOR_BGR2GRAY)  # 转灰度图
+cv2.error: C:\projects\opencv-python\opencv\modules\imgproc\src\color.cpp:10600: error: (-215) depth == CV_8U || depth == CV_16U || depth == CV_32F in function cv::cvtColor
+
+Tue, 06 Mar 2018 09:56:29 imgcut.py[line:310] ERROR cut_img 这里出错
+Tue, 06 Mar 2018 09:56:29 imgcut.py[line:311] ERROR this is an exception message
+Traceback (most recent call last):
+  File "F:/BestAssistant\component\imgcut.py", line 303, in cut_img
+    set_val('imgpos_lowestprice', img[use_area[0][1]:use_area[0][3], use_area[0][0]:use_area[0][2]])  # ok
+IndexError: list index out of range
+Tue, 06 Mar 2018 09:56:29 app_thread.py[line:108] ERROR 刷新失败
+Tue, 06 Mar 2018 09:56:29 app_thread.py[line:109] ERROR this is an exception message
+Traceback (most recent call last):
+  File "F:/BestAssistant\component\app_thread.py", line 106, in run
+    findrefresh()
+  File "F:/BestAssistant\component\imgcut.py", line 325, in findrefresh
+    img = cv2.cvtColor(sc, cv2.COLOR_BGR2GRAY)  # 转灰度图
+cv2.error: C:\projects\opencv-python\opencv\modules\imgproc\src\color.cpp:10600: error: (-215) depth == CV_8U || depth == CV_16U || depth == CV_32F in function cv::cvtColor
+
+Tue, 06 Mar 2018 09:56:29 app_thread.py[line:108] ERROR 刷新失败
+Tue, 06 Mar 2018 09:56:29 app_thread.py[line:109] ERROR this is an exception message
+Traceback (most recent call last):
+  File "F:/BestAssistant\component\app_thread.py", line 106, in run
+    findrefresh()
+  File "F:/BestAssistant\component\imgcut.py", line 325, in findrefresh
+    img = cv2.cvtColor(sc, cv2.COLOR_BGR2GRAY)  # 转灰度图
+cv2.error: C:\projects\opencv-python\opencv\modules\imgproc\src\color.cpp:10600: error: (-215) depth == CV_8U || depth == CV_16U || depth == CV_32F in function cv::cvtColor
+
+Tue, 06 Mar 2018 09:56:29 imgcut.py[line:310] ERROR cut_img 这里出错
+Tue, 06 Mar 2018 09:56:29 imgcut.py[line:311] ERROR this is an exception message
+Traceback (most recent call last):
+  File "F:/BestAssistant\component\imgcut.py", line 303, in cut_img
+    set_val('imgpos_lowestprice', img[use_area[0][1]:use_area[0][3], use_area[0][0]:use_area[0][2]])  # ok
+IndexError: list index out of range
+Tue, 06 Mar 2018 09:56:30 app_thread.py[line:108] ERROR 刷新失败
+Tue, 06 Mar 2018 09:56:30 app_thread.py[line:109] ERROR this is an exception message
+Traceback (most recent call last):
+  File "F:/BestAssistant\component\app_thread.py", line 106, in run
+    findrefresh()
+  File "F:/BestAssistant\component\imgcut.py", line 325, in findrefresh
+    img = cv2.cvtColor(sc, cv2.COLOR_BGR2GRAY)  # 转灰度图
+cv2.error: C:\projects\opencv-python\opencv\modules\imgproc\src\color.cpp:10600: error: (-215) depth == CV_8U || depth == CV_16U || depth == CV_32F in function cv::cvtColor
+
+Tue, 06 Mar 2018 09:56:30 imgcut.py[line:310] ERROR cut_img 这里出错
+Tue, 06 Mar 2018 09:56:30 imgcut.py[line:311] ERROR this is an exception message
+Traceback (most recent call last):
+  File "F:/BestAssistant\component\imgcut.py", line 303, in cut_img
+    set_val('imgpos_lowestprice', img[use_area[0][1]:use_area[0][3], use_area[0][0]:use_area[0][2]])  # ok
+IndexError: list index out of range
+Tue, 06 Mar 2018 09:56:30 app_thread.py[line:108] ERROR 刷新失败
+Tue, 06 Mar 2018 09:56:30 app_thread.py[line:109] ERROR this is an exception message
+Traceback (most recent call last):
+  File "F:/BestAssistant\component\app_thread.py", line 106, in run
+    findrefresh()
+  File "F:/BestAssistant\component\imgcut.py", line 325, in findrefresh
+    img = cv2.cvtColor(sc, cv2.COLOR_BGR2GRAY)  # 转灰度图
+cv2.error: C:\projects\opencv-python\opencv\modules\imgproc\src\color.cpp:10600: error: (-215) depth == CV_8U || depth == CV_16U || depth == CV_32F in function cv::cvtColor
+
+Tue, 06 Mar 2018 09:56:30 imgcut.py[line:310] ERROR cut_img 这里出错
+Tue, 06 Mar 2018 09:56:30 imgcut.py[line:311] ERROR this is an exception message
+Traceback (most recent call last):
+  File "F:/BestAssistant\component\imgcut.py", line 303, in cut_img
+    set_val('imgpos_lowestprice', img[use_area[0][1]:use_area[0][3], use_area[0][0]:use_area[0][2]])  # ok
+IndexError: list index out of range
+Tue, 06 Mar 2018 09:56:30 app_thread.py[line:108] ERROR 刷新失败
+Tue, 06 Mar 2018 09:56:30 app_thread.py[line:109] ERROR this is an exception message
+Traceback (most recent call last):
+  File "F:/BestAssistant\component\app_thread.py", line 106, in run
+    findrefresh()
+  File "F:/BestAssistant\component\imgcut.py", line 325, in findrefresh
+    img = cv2.cvtColor(sc, cv2.COLOR_BGR2GRAY)  # 转灰度图
+cv2.error: C:\projects\opencv-python\opencv\modules\imgproc\src\color.cpp:10600: error: (-215) depth == CV_8U || depth == CV_16U || depth == CV_32F in function cv::cvtColor
+
+Tue, 06 Mar 2018 09:56:30 imgcut.py[line:310] ERROR cut_img 这里出错
+Tue, 06 Mar 2018 09:56:30 imgcut.py[line:311] ERROR this is an exception message
+Traceback (most recent call last):
+  File "F:/BestAssistant\component\imgcut.py", line 303, in cut_img
+    set_val('imgpos_lowestprice', img[use_area[0][1]:use_area[0][3], use_area[0][0]:use_area[0][2]])  # ok
+IndexError: list index out of range
+Tue, 06 Mar 2018 09:56:30 app_thread.py[line:108] ERROR 刷新失败
+Tue, 06 Mar 2018 09:56:30 app_thread.py[line:109] ERROR this is an exception message
+Traceback (most recent call last):
+  File "F:/BestAssistant\component\app_thread.py", line 106, in run
+    findrefresh()
+  File "F:/BestAssistant\component\imgcut.py", line 325, in findrefresh
+    img = cv2.cvtColor(sc, cv2.COLOR_BGR2GRAY)  # 转灰度图
+cv2.error: C:\projects\opencv-python\opencv\modules\imgproc\src\color.cpp:10600: error: (-215) depth == CV_8U || depth == CV_16U || depth == CV_32F in function cv::cvtColor
+
+Tue, 06 Mar 2018 09:56:30 imgcut.py[line:310] ERROR cut_img 这里出错
+Tue, 06 Mar 2018 09:56:30 imgcut.py[line:311] ERROR this is an exception message
+Traceback (most recent call last):
+  File "F:/BestAssistant\component\imgcut.py", line 303, in cut_img
+    set_val('imgpos_lowestprice', img[use_area[0][1]:use_area[0][3], use_area[0][0]:use_area[0][2]])  # ok
+IndexError: list index out of range
+Tue, 06 Mar 2018 09:56:30 app_thread.py[line:108] ERROR 刷新失败
+Tue, 06 Mar 2018 09:56:30 app_thread.py[line:109] ERROR this is an exception message
+Traceback (most recent call last):
+  File "F:/BestAssistant\component\app_thread.py", line 106, in run
+    findrefresh()
+  File "F:/BestAssistant\component\imgcut.py", line 325, in findrefresh
+    img = cv2.cvtColor(sc, cv2.COLOR_BGR2GRAY)  # 转灰度图
+cv2.error: C:\projects\opencv-python\opencv\modules\imgproc\src\color.cpp:10600: error: (-215) depth == CV_8U || depth == CV_16U || depth == CV_32F in function cv::cvtColor
+
+Tue, 06 Mar 2018 09:56:30 app_thread.py[line:108] ERROR 刷新失败
+Tue, 06 Mar 2018 09:56:30 app_thread.py[line:109] ERROR this is an exception message
+Traceback (most recent call last):
+  File "F:/BestAssistant\component\app_thread.py", line 106, in run
+    findrefresh()
+  File "F:/BestAssistant\component\imgcut.py", line 325, in findrefresh
+    img = cv2.cvtColor(sc, cv2.COLOR_BGR2GRAY)  # 转灰度图
+cv2.error: C:\projects\opencv-python\opencv\modules\imgproc\src\color.cpp:10600: error: (-215) depth == CV_8U || depth == CV_16U || depth == CV_32F in function cv::cvtColor
+
+Tue, 06 Mar 2018 09:56:30 imgcut.py[line:310] ERROR cut_img 这里出错
+Tue, 06 Mar 2018 09:56:30 imgcut.py[line:311] ERROR this is an exception message
+Traceback (most recent call last):
+  File "F:/BestAssistant\component\imgcut.py", line 303, in cut_img
+    set_val('imgpos_lowestprice', img[use_area[0][1]:use_area[0][3], use_area[0][0]:use_area[0][2]])  # ok
+IndexError: list index out of range
+Tue, 06 Mar 2018 09:56:30 app_thread.py[line:108] ERROR 刷新失败
+Tue, 06 Mar 2018 09:56:30 app_thread.py[line:109] ERROR this is an exception message
+Traceback (most recent call last):
+  File "F:/BestAssistant\component\app_thread.py", line 106, in run
+    findrefresh()
+  File "F:/BestAssistant\component\imgcut.py", line 325, in findrefresh
+    img = cv2.cvtColor(sc, cv2.COLOR_BGR2GRAY)  # 转灰度图
+cv2.error: C:\projects\opencv-python\opencv\modules\imgproc\src\color.cpp:10600: error: (-215) depth == CV_8U || depth == CV_16U || depth == CV_32F in function cv::cvtColor
+
+Tue, 06 Mar 2018 09:56:30 imgcut.py[line:310] ERROR cut_img 这里出错
+Tue, 06 Mar 2018 09:56:30 imgcut.py[line:311] ERROR this is an exception message
+Traceback (most recent call last):
+  File "F:/BestAssistant\component\imgcut.py", line 303, in cut_img
+    set_val('imgpos_lowestprice', img[use_area[0][1]:use_area[0][3], use_area[0][0]:use_area[0][2]])  # ok
+IndexError: list index out of range
+Tue, 06 Mar 2018 09:56:30 app_thread.py[line:108] ERROR 刷新失败
+Tue, 06 Mar 2018 09:56:30 app_thread.py[line:109] ERROR this is an exception message
+Traceback (most recent call last):
+  File "F:/BestAssistant\component\app_thread.py", line 106, in run
+    findrefresh()
+  File "F:/BestAssistant\component\imgcut.py", line 325, in findrefresh
+    img = cv2.cvtColor(sc, cv2.COLOR_BGR2GRAY)  # 转灰度图
+cv2.error: C:\projects\opencv-python\opencv\modules\imgproc\src\color.cpp:10600: error: (-215) depth == CV_8U || depth == CV_16U || depth == CV_32F in function cv::cvtColor
+
+Tue, 06 Mar 2018 09:56:30 imgcut.py[line:310] ERROR cut_img 这里出错
+Tue, 06 Mar 2018 09:56:30 imgcut.py[line:311] ERROR this is an exception message
+Traceback (most recent call last):
+  File "F:/BestAssistant\component\imgcut.py", line 303, in cut_img
+    set_val('imgpos_lowestprice', img[use_area[0][1]:use_area[0][3], use_area[0][0]:use_area[0][2]])  # ok
+IndexError: list index out of range
+Tue, 06 Mar 2018 09:56:30 app_thread.py[line:108] ERROR 刷新失败
+Tue, 06 Mar 2018 09:56:30 app_thread.py[line:109] ERROR this is an exception message
+Traceback (most recent call last):
+  File "F:/BestAssistant\component\app_thread.py", line 106, in run
+    findrefresh()
+  File "F:/BestAssistant\component\imgcut.py", line 325, in findrefresh
+    img = cv2.cvtColor(sc, cv2.COLOR_BGR2GRAY)  # 转灰度图
+cv2.error: C:\projects\opencv-python\opencv\modules\imgproc\src\color.cpp:10600: error: (-215) depth == CV_8U || depth == CV_16U || depth == CV_32F in function cv::cvtColor
+
+Tue, 06 Mar 2018 09:56:30 app_thread.py[line:108] ERROR 刷新失败
+Tue, 06 Mar 2018 09:56:30 app_thread.py[line:109] ERROR this is an exception message
+Traceback (most recent call last):
+  File "F:/BestAssistant\component\app_thread.py", line 106, in run
+    findrefresh()
+  File "F:/BestAssistant\component\imgcut.py", line 325, in findrefresh
+    img = cv2.cvtColor(sc, cv2.COLOR_BGR2GRAY)  # 转灰度图
+cv2.error: C:\projects\opencv-python\opencv\modules\imgproc\src\color.cpp:10600: error: (-215) depth == CV_8U || depth == CV_16U || depth == CV_32F in function cv::cvtColor
+
+Tue, 06 Mar 2018 09:56:30 imgcut.py[line:310] ERROR cut_img 这里出错
+Tue, 06 Mar 2018 09:56:30 imgcut.py[line:311] ERROR this is an exception message
+Traceback (most recent call last):
+  File "F:/BestAssistant\component\imgcut.py", line 303, in cut_img
+    set_val('imgpos_lowestprice', img[use_area[0][1]:use_area[0][3], use_area[0][0]:use_area[0][2]])  # ok
+IndexError: list index out of range
+Tue, 06 Mar 2018 09:56:30 app_thread.py[line:108] ERROR 刷新失败
+Tue, 06 Mar 2018 09:56:30 app_thread.py[line:109] ERROR this is an exception message
+Traceback (most recent call last):
+  File "F:/BestAssistant\component\app_thread.py", line 106, in run
+    findrefresh()
+  File "F:/BestAssistant\component\imgcut.py", line 325, in findrefresh
+    img = cv2.cvtColor(sc, cv2.COLOR_BGR2GRAY)  # 转灰度图
+cv2.error: C:\projects\opencv-python\opencv\modules\imgproc\src\color.cpp:10600: error: (-215) depth == CV_8U || depth == CV_16U || depth == CV_32F in function cv::cvtColor
+
+Tue, 06 Mar 2018 09:56:30 app_thread.py[line:108] ERROR 刷新失败
+Tue, 06 Mar 2018 09:56:30 app_thread.py[line:109] ERROR this is an exception message
+Traceback (most recent call last):
+  File "F:/BestAssistant\component\app_thread.py", line 106, in run
+    findrefresh()
+  File "F:/BestAssistant\component\imgcut.py", line 325, in findrefresh
+    img = cv2.cvtColor(sc, cv2.COLOR_BGR2GRAY)  # 转灰度图
+cv2.error: C:\projects\opencv-python\opencv\modules\imgproc\src\color.cpp:10600: error: (-215) depth == CV_8U || depth == CV_16U || depth == CV_32F in function cv::cvtColor
+
+Tue, 06 Mar 2018 09:56:30 imgcut.py[line:310] ERROR cut_img 这里出错
+Tue, 06 Mar 2018 09:56:30 imgcut.py[line:311] ERROR this is an exception message
+Traceback (most recent call last):
+  File "F:/BestAssistant\component\imgcut.py", line 303, in cut_img
+    set_val('imgpos_lowestprice', img[use_area[0][1]:use_area[0][3], use_area[0][0]:use_area[0][2]])  # ok
+IndexError: list index out of range
+Tue, 06 Mar 2018 09:56:30 imgcut.py[line:310] ERROR cut_img 这里出错
+Tue, 06 Mar 2018 09:56:30 imgcut.py[line:311] ERROR this is an exception message
+Traceback (most recent call last):
+  File "F:/BestAssistant\component\imgcut.py", line 303, in cut_img
+    set_val('imgpos_lowestprice', img[use_area[0][1]:use_area[0][3], use_area[0][0]:use_area[0][2]])  # ok
+IndexError: list index out of range
+Tue, 06 Mar 2018 09:56:30 app_thread.py[line:108] ERROR 刷新失败
+Tue, 06 Mar 2018 09:56:30 app_thread.py[line:109] ERROR this is an exception message
+Traceback (most recent call last):
+  File "F:/BestAssistant\component\app_thread.py", line 106, in run
+    findrefresh()
+  File "F:/BestAssistant\component\imgcut.py", line 325, in findrefresh
+    img = cv2.cvtColor(sc, cv2.COLOR_BGR2GRAY)  # 转灰度图
+cv2.error: C:\projects\opencv-python\opencv\modules\imgproc\src\color.cpp:10600: error: (-215) depth == CV_8U || depth == CV_16U || depth == CV_32F in function cv::cvtColor
+
+Tue, 06 Mar 2018 09:56:30 app_thread.py[line:108] ERROR 刷新失败
+Tue, 06 Mar 2018 09:56:30 app_thread.py[line:109] ERROR this is an exception message
+Traceback (most recent call last):
+  File "F:/BestAssistant\component\app_thread.py", line 106, in run
+    findrefresh()
+  File "F:/BestAssistant\component\imgcut.py", line 325, in findrefresh
+    img = cv2.cvtColor(sc, cv2.COLOR_BGR2GRAY)  # 转灰度图
+cv2.error: C:\projects\opencv-python\opencv\modules\imgproc\src\color.cpp:10600: error: (-215) depth == CV_8U || depth == CV_16U || depth == CV_32F in function cv::cvtColor
+
+Tue, 06 Mar 2018 09:56:30 imgcut.py[line:310] ERROR cut_img 这里出错
+Tue, 06 Mar 2018 09:56:30 imgcut.py[line:311] ERROR this is an exception message
+Traceback (most recent call last):
+  File "F:/BestAssistant\component\imgcut.py", line 303, in cut_img
+    set_val('imgpos_lowestprice', img[use_area[0][1]:use_area[0][3], use_area[0][0]:use_area[0][2]])  # ok
+IndexError: list index out of range
+Tue, 06 Mar 2018 09:56:30 app_thread.py[line:108] ERROR 刷新失败
+Tue, 06 Mar 2018 09:56:30 app_thread.py[line:109] ERROR this is an exception message
+Traceback (most recent call last):
+  File "F:/BestAssistant\component\app_thread.py", line 106, in run
+    findrefresh()
+  File "F:/BestAssistant\component\imgcut.py", line 325, in findrefresh
+    img = cv2.cvtColor(sc, cv2.COLOR_BGR2GRAY)  # 转灰度图
+cv2.error: C:\projects\opencv-python\opencv\modules\imgproc\src\color.cpp:10600: error: (-215) depth == CV_8U || depth == CV_16U || depth == CV_32F in function cv::cvtColor
+
+Tue, 06 Mar 2018 09:56:30 imgcut.py[line:310] ERROR cut_img 这里出错
+Tue, 06 Mar 2018 09:56:30 imgcut.py[line:311] ERROR this is an exception message
+Traceback (most recent call last):
+  File "F:/BestAssistant\component\imgcut.py", line 303, in cut_img
+    set_val('imgpos_lowestprice', img[use_area[0][1]:use_area[0][3], use_area[0][0]:use_area[0][2]])  # ok
+IndexError: list index out of range
+Tue, 06 Mar 2018 09:56:30 app_thread.py[line:108] ERROR 刷新失败
+Tue, 06 Mar 2018 09:56:30 app_thread.py[line:109] ERROR this is an exception message
+Traceback (most recent call last):
+  File "F:/BestAssistant\component\app_thread.py", line 106, in run
+    findrefresh()
+  File "F:/BestAssistant\component\imgcut.py", line 325, in findrefresh
+    img = cv2.cvtColor(sc, cv2.COLOR_BGR2GRAY)  # 转灰度图
+cv2.error: C:\projects\opencv-python\opencv\modules\imgproc\src\color.cpp:10600: error: (-215) depth == CV_8U || depth == CV_16U || depth == CV_32F in function cv::cvtColor
+
+Tue, 06 Mar 2018 09:56:30 imgcut.py[line:310] ERROR cut_img 这里出错
+Tue, 06 Mar 2018 09:56:30 imgcut.py[line:311] ERROR this is an exception message
+Traceback (most recent call last):
+  File "F:/BestAssistant\component\imgcut.py", line 303, in cut_img
+    set_val('imgpos_lowestprice', img[use_area[0][1]:use_area[0][3], use_area[0][0]:use_area[0][2]])  # ok
+IndexError: list index out of range
+Tue, 06 Mar 2018 09:56:30 app_thread.py[line:108] ERROR 刷新失败
+Tue, 06 Mar 2018 09:56:30 app_thread.py[line:109] ERROR this is an exception message
+Traceback (most recent call last):
+  File "F:/BestAssistant\component\app_thread.py", line 106, in run
+    findrefresh()
+  File "F:/BestAssistant\component\imgcut.py", line 325, in findrefresh
+    img = cv2.cvtColor(sc, cv2.COLOR_BGR2GRAY)  # 转灰度图
+cv2.error: C:\projects\opencv-python\opencv\modules\imgproc\src\color.cpp:10600: error: (-215) depth == CV_8U || depth == CV_16U || depth == CV_32F in function cv::cvtColor
+
+Tue, 06 Mar 2018 09:56:31 app_thread.py[line:108] ERROR 刷新失败
+Tue, 06 Mar 2018 09:56:31 app_thread.py[line:109] ERROR this is an exception message
+Traceback (most recent call last):
+  File "F:/BestAssistant\component\app_thread.py", line 106, in run
+    findrefresh()
+  File "F:/BestAssistant\component\imgcut.py", line 325, in findrefresh
+    img = cv2.cvtColor(sc, cv2.COLOR_BGR2GRAY)  # 转灰度图
+cv2.error: C:\projects\opencv-python\opencv\modules\imgproc\src\color.cpp:10600: error: (-215) depth == CV_8U || depth == CV_16U || depth == CV_32F in function cv::cvtColor
+
+Tue, 06 Mar 2018 09:56:31 imgcut.py[line:310] ERROR cut_img 这里出错
+Tue, 06 Mar 2018 09:56:31 imgcut.py[line:311] ERROR this is an exception message
+Traceback (most recent call last):
+  File "F:/BestAssistant\component\imgcut.py", line 303, in cut_img
+    set_val('imgpos_lowestprice', img[use_area[0][1]:use_area[0][3], use_area[0][0]:use_area[0][2]])  # ok
+IndexError: list index out of range
+Tue, 06 Mar 2018 09:56:31 app_thread.py[line:108] ERROR 刷新失败
+Tue, 06 Mar 2018 09:56:31 app_thread.py[line:109] ERROR this is an exception message
+Traceback (most recent call last):
+  File "F:/BestAssistant\component\app_thread.py", line 106, in run
+    findrefresh()
+  File "F:/BestAssistant\component\imgcut.py", line 325, in findrefresh
+    img = cv2.cvtColor(sc, cv2.COLOR_BGR2GRAY)  # 转灰度图
+cv2.error: C:\projects\opencv-python\opencv\modules\imgproc\src\color.cpp:10600: error: (-215) depth == CV_8U || depth == CV_16U || depth == CV_32F in function cv::cvtColor
+
+Tue, 06 Mar 2018 09:56:31 imgcut.py[line:310] ERROR cut_img 这里出错
+Tue, 06 Mar 2018 09:56:31 imgcut.py[line:311] ERROR this is an exception message
+Traceback (most recent call last):
+  File "F:/BestAssistant\component\imgcut.py", line 303, in cut_img
+    set_val('imgpos_lowestprice', img[use_area[0][1]:use_area[0][3], use_area[0][0]:use_area[0][2]])  # ok
+IndexError: list index out of range
+Tue, 06 Mar 2018 09:56:31 app_thread.py[line:108] ERROR 刷新失败
+Tue, 06 Mar 2018 09:56:31 app_thread.py[line:109] ERROR this is an exception message
+Traceback (most recent call last):
+  File "F:/BestAssistant\component\app_thread.py", line 106, in run
+    findrefresh()
+  File "F:/BestAssistant\component\imgcut.py", line 325, in findrefresh
+    img = cv2.cvtColor(sc, cv2.COLOR_BGR2GRAY)  # 转灰度图
+cv2.error: C:\projects\opencv-python\opencv\modules\imgproc\src\color.cpp:10600: error: (-215) depth == CV_8U || depth == CV_16U || depth == CV_32F in function cv::cvtColor
+
+Tue, 06 Mar 2018 09:56:31 imgcut.py[line:310] ERROR cut_img 这里出错
+Tue, 06 Mar 2018 09:56:31 imgcut.py[line:311] ERROR this is an exception message
+Traceback (most recent call last):
+  File "F:/BestAssistant\component\imgcut.py", line 303, in cut_img
+    set_val('imgpos_lowestprice', img[use_area[0][1]:use_area[0][3], use_area[0][0]:use_area[0][2]])  # ok
+IndexError: list index out of range
+Tue, 06 Mar 2018 09:56:31 imgcut.py[line:310] ERROR cut_img 这里出错
+Tue, 06 Mar 2018 09:56:31 imgcut.py[line:311] ERROR this is an exception message
+Traceback (most recent call last):
+  File "F:/BestAssistant\component\imgcut.py", line 303, in cut_img
+    set_val('imgpos_lowestprice', img[use_area[0][1]:use_area[0][3], use_area[0][0]:use_area[0][2]])  # ok
+IndexError: list index out of range
+Tue, 06 Mar 2018 09:56:31 app_thread.py[line:108] ERROR 刷新失败
+Tue, 06 Mar 2018 09:56:31 app_thread.py[line:109] ERROR this is an exception message
+Traceback (most recent call last):
+  File "F:/BestAssistant\component\app_thread.py", line 106, in run
+    findrefresh()
+  File "F:/BestAssistant\component\imgcut.py", line 325, in findrefresh
+    img = cv2.cvtColor(sc, cv2.COLOR_BGR2GRAY)  # 转灰度图
+cv2.error: C:\projects\opencv-python\opencv\modules\imgproc\src\color.cpp:10600: error: (-215) depth == CV_8U || depth == CV_16U || depth == CV_32F in function cv::cvtColor
+
+Tue, 06 Mar 2018 09:56:31 app_thread.py[line:108] ERROR 刷新失败
+Tue, 06 Mar 2018 09:56:31 app_thread.py[line:109] ERROR this is an exception message
+Traceback (most recent call last):
+  File "F:/BestAssistant\component\app_thread.py", line 106, in run
+    findrefresh()
+  File "F:/BestAssistant\component\imgcut.py", line 325, in findrefresh
+    img = cv2.cvtColor(sc, cv2.COLOR_BGR2GRAY)  # 转灰度图
+cv2.error: C:\projects\opencv-python\opencv\modules\imgproc\src\color.cpp:10600: error: (-215) depth == CV_8U || depth == CV_16U || depth == CV_32F in function cv::cvtColor
+
+Tue, 06 Mar 2018 09:56:31 app_thread.py[line:108] ERROR 刷新失败
+Tue, 06 Mar 2018 09:56:31 app_thread.py[line:109] ERROR this is an exception message
+Traceback (most recent call last):
+  File "F:/BestAssistant\component\app_thread.py", line 106, in run
+    findrefresh()
+  File "F:/BestAssistant\component\imgcut.py", line 325, in findrefresh
+    img = cv2.cvtColor(sc, cv2.COLOR_BGR2GRAY)  # 转灰度图
+cv2.error: C:\projects\opencv-python\opencv\modules\imgproc\src\color.cpp:10600: error: (-215) depth == CV_8U || depth == CV_16U || depth == CV_32F in function cv::cvtColor
+
+Tue, 06 Mar 2018 09:56:31 imgcut.py[line:310] ERROR cut_img 这里出错
+Tue, 06 Mar 2018 09:56:31 imgcut.py[line:311] ERROR this is an exception message
+Traceback (most recent call last):
+  File "F:/BestAssistant\component\imgcut.py", line 303, in cut_img
+    set_val('imgpos_lowestprice', img[use_area[0][1]:use_area[0][3], use_area[0][0]:use_area[0][2]])  # ok
+IndexError: list index out of range
+Tue, 06 Mar 2018 09:56:31 app_thread.py[line:108] ERROR 刷新失败
+Tue, 06 Mar 2018 09:56:31 app_thread.py[line:109] ERROR this is an exception message
+Traceback (most recent call last):
+  File "F:/BestAssistant\component\app_thread.py", line 106, in run
+    findrefresh()
+  File "F:/BestAssistant\component\imgcut.py", line 325, in findrefresh
+    img = cv2.cvtColor(sc, cv2.COLOR_BGR2GRAY)  # 转灰度图
+cv2.error: C:\projects\opencv-python\opencv\modules\imgproc\src\color.cpp:10600: error: (-215) depth == CV_8U || depth == CV_16U || depth == CV_32F in function cv::cvtColor
+
+Tue, 06 Mar 2018 09:56:31 app_thread.py[line:108] ERROR 刷新失败
+Tue, 06 Mar 2018 09:56:31 app_thread.py[line:109] ERROR this is an exception message
+Traceback (most recent call last):
+  File "F:/BestAssistant\component\app_thread.py", line 106, in run
+    findrefresh()
+  File "F:/BestAssistant\component\imgcut.py", line 325, in findrefresh
+    img = cv2.cvtColor(sc, cv2.COLOR_BGR2GRAY)  # 转灰度图
+cv2.error: C:\projects\opencv-python\opencv\modules\imgproc\src\color.cpp:10600: error: (-215) depth == CV_8U || depth == CV_16U || depth == CV_32F in function cv::cvtColor
+
+Tue, 06 Mar 2018 09:56:31 imgcut.py[line:310] ERROR cut_img 这里出错
+Tue, 06 Mar 2018 09:56:31 imgcut.py[line:311] ERROR this is an exception message
+Traceback (most recent call last):
+  File "F:/BestAssistant\component\imgcut.py", line 303, in cut_img
+    set_val('imgpos_lowestprice', img[use_area[0][1]:use_area[0][3], use_area[0][0]:use_area[0][2]])  # ok
+IndexError: list index out of range
+Tue, 06 Mar 2018 09:56:31 app_thread.py[line:108] ERROR 刷新失败
+Tue, 06 Mar 2018 09:56:31 app_thread.py[line:109] ERROR this is an exception message
+Traceback (most recent call last):
+  File "F:/BestAssistant\component\app_thread.py", line 106, in run
+    findrefresh()
+  File "F:/BestAssistant\component\imgcut.py", line 325, in findrefresh
+    img = cv2.cvtColor(sc, cv2.COLOR_BGR2GRAY)  # 转灰度图
+cv2.error: C:\projects\opencv-python\opencv\modules\imgproc\src\color.cpp:10600: error: (-215) depth == CV_8U || depth == CV_16U || depth == CV_32F in function cv::cvtColor
+
+Tue, 06 Mar 2018 09:56:31 imgcut.py[line:310] ERROR cut_img 这里出错
+Tue, 06 Mar 2018 09:56:31 app_thread.py[line:108] ERROR 刷新失败
+Tue, 06 Mar 2018 09:56:31 app_thread.py[line:109] ERROR this is an exception message
+Traceback (most recent call last):
+  File "F:/BestAssistant\component\app_thread.py", line 106, in run
+    findrefresh()
+  File "F:/BestAssistant\component\imgcut.py", line 325, in findrefresh
+    img = cv2.cvtColor(sc, cv2.COLOR_BGR2GRAY)  # 转灰度图
+cv2.error: C:\projects\opencv-python\opencv\modules\imgproc\src\color.cpp:10600: error: (-215) depth == CV_8U || depth == CV_16U || depth == CV_32F in function cv::cvtColor
+
+Tue, 06 Mar 2018 09:56:31 imgcut.py[line:311] ERROR this is an exception message
+Traceback (most recent call last):
+  File "F:/BestAssistant\component\imgcut.py", line 303, in cut_img
+    set_val('imgpos_lowestprice', img[use_area[0][1]:use_area[0][3], use_area[0][0]:use_area[0][2]])  # ok
+IndexError: list index out of range
+Tue, 06 Mar 2018 09:56:31 app_thread.py[line:108] ERROR 刷新失败
+Tue, 06 Mar 2018 09:56:31 app_thread.py[line:109] ERROR this is an exception message
+Traceback (most recent call last):
+  File "F:/BestAssistant\component\app_thread.py", line 106, in run
+    findrefresh()
+  File "F:/BestAssistant\component\imgcut.py", line 325, in findrefresh
+    img = cv2.cvtColor(sc, cv2.COLOR_BGR2GRAY)  # 转灰度图
+cv2.error: C:\projects\opencv-python\opencv\modules\imgproc\src\color.cpp:10600: error: (-215) depth == CV_8U || depth == CV_16U || depth == CV_32F in function cv::cvtColor
+
+Tue, 06 Mar 2018 09:56:31 app_thread.py[line:108] ERROR 刷新失败
+Tue, 06 Mar 2018 09:56:31 imgcut.py[line:310] ERROR cut_img 这里出错
+Tue, 06 Mar 2018 09:56:31 app_thread.py[line:109] ERROR this is an exception message
+Traceback (most recent call last):
+  File "F:/BestAssistant\component\app_thread.py", line 106, in run
+    findrefresh()
+  File "F:/BestAssistant\component\imgcut.py", line 325, in findrefresh
+    img = cv2.cvtColor(sc, cv2.COLOR_BGR2GRAY)  # 转灰度图
+cv2.error: C:\projects\opencv-python\opencv\modules\imgproc\src\color.cpp:10600: error: (-215) depth == CV_8U || depth == CV_16U || depth == CV_32F in function cv::cvtColor
+
+Tue, 06 Mar 2018 09:56:31 imgcut.py[line:311] ERROR this is an exception message
+Traceback (most recent call last):
+  File "F:/BestAssistant\component\imgcut.py", line 303, in cut_img
+    set_val('imgpos_lowestprice', img[use_area[0][1]:use_area[0][3], use_area[0][0]:use_area[0][2]])  # ok
+IndexError: list index out of range
+Tue, 06 Mar 2018 09:56:31 app_thread.py[line:108] ERROR 刷新失败
+Tue, 06 Mar 2018 09:56:31 app_thread.py[line:109] ERROR this is an exception message
+Traceback (most recent call last):
+  File "F:/BestAssistant\component\app_thread.py", line 106, in run
+    findrefresh()
+  File "F:/BestAssistant\component\imgcut.py", line 325, in findrefresh
+    img = cv2.cvtColor(sc, cv2.COLOR_BGR2GRAY)  # 转灰度图
+cv2.error: C:\projects\opencv-python\opencv\modules\imgproc\src\color.cpp:10600: error: (-215) depth == CV_8U || depth == CV_16U || depth == CV_32F in function cv::cvtColor
+
+Tue, 06 Mar 2018 09:56:31 imgcut.py[line:310] ERROR cut_img 这里出错
+Tue, 06 Mar 2018 09:56:31 imgcut.py[line:311] ERROR this is an exception message
+Traceback (most recent call last):
+  File "F:/BestAssistant\component\imgcut.py", line 303, in cut_img
+    set_val('imgpos_lowestprice', img[use_area[0][1]:use_area[0][3], use_area[0][0]:use_area[0][2]])  # ok
+IndexError: list index out of range
+Tue, 06 Mar 2018 09:56:31 app_thread.py[line:108] ERROR 刷新失败
+Tue, 06 Mar 2018 09:56:31 app_thread.py[line:109] ERROR this is an exception message
+Traceback (most recent call last):
+  File "F:/BestAssistant\component\app_thread.py", line 106, in run
+    findrefresh()
+  File "F:/BestAssistant\component\imgcut.py", line 325, in findrefresh
+    img = cv2.cvtColor(sc, cv2.COLOR_BGR2GRAY)  # 转灰度图
+cv2.error: C:\projects\opencv-python\opencv\modules\imgproc\src\color.cpp:10600: error: (-215) depth == CV_8U || depth == CV_16U || depth == CV_32F in function cv::cvtColor
+
+Tue, 06 Mar 2018 09:56:31 app_thread.py[line:108] ERROR 刷新失败
+Tue, 06 Mar 2018 09:56:31 app_thread.py[line:109] ERROR this is an exception message
+Traceback (most recent call last):
+  File "F:/BestAssistant\component\app_thread.py", line 106, in run
+    findrefresh()
+  File "F:/BestAssistant\component\imgcut.py", line 325, in findrefresh
+    img = cv2.cvtColor(sc, cv2.COLOR_BGR2GRAY)  # 转灰度图
+cv2.error: C:\projects\opencv-python\opencv\modules\imgproc\src\color.cpp:10600: error: (-215) depth == CV_8U || depth == CV_16U || depth == CV_32F in function cv::cvtColor
+
+Tue, 06 Mar 2018 09:56:32 imgcut.py[line:310] ERROR cut_img 这里出错
+Tue, 06 Mar 2018 09:56:32 imgcut.py[line:311] ERROR this is an exception message
+Traceback (most recent call last):
+  File "F:/BestAssistant\component\imgcut.py", line 303, in cut_img
+    set_val('imgpos_lowestprice', img[use_area[0][1]:use_area[0][3], use_area[0][0]:use_area[0][2]])  # ok
+IndexError: list index out of range
+Tue, 06 Mar 2018 09:56:32 app_thread.py[line:108] ERROR 刷新失败
+Tue, 06 Mar 2018 09:56:32 app_thread.py[line:109] ERROR this is an exception message
+Traceback (most recent call last):
+  File "F:/BestAssistant\component\app_thread.py", line 106, in run
+    findrefresh()
+  File "F:/BestAssistant\component\imgcut.py", line 325, in findrefresh
+    img = cv2.cvtColor(sc, cv2.COLOR_BGR2GRAY)  # 转灰度图
+cv2.error: C:\projects\opencv-python\opencv\modules\imgproc\src\color.cpp:10600: error: (-215) depth == CV_8U || depth == CV_16U || depth == CV_32F in function cv::cvtColor
+
+Tue, 06 Mar 2018 09:56:32 app_thread.py[line:108] ERROR 刷新失败
+Tue, 06 Mar 2018 09:56:32 app_thread.py[line:109] ERROR this is an exception message
+Traceback (most recent call last):
+  File "F:/BestAssistant\component\app_thread.py", line 106, in run
+    findrefresh()
+  File "F:/BestAssistant\component\imgcut.py", line 325, in findrefresh
+    img = cv2.cvtColor(sc, cv2.COLOR_BGR2GRAY)  # 转灰度图
+cv2.error: C:\projects\opencv-python\opencv\modules\imgproc\src\color.cpp:10600: error: (-215) depth == CV_8U || depth == CV_16U || depth == CV_32F in function cv::cvtColor
+
+Tue, 06 Mar 2018 09:56:32 imgcut.py[line:310] ERROR cut_img 这里出错
+Tue, 06 Mar 2018 09:56:32 imgcut.py[line:311] ERROR this is an exception message
+Traceback (most recent call last):
+  File "F:/BestAssistant\component\imgcut.py", line 303, in cut_img
+    set_val('imgpos_lowestprice', img[use_area[0][1]:use_area[0][3], use_area[0][0]:use_area[0][2]])  # ok
+IndexError: list index out of range
+Tue, 06 Mar 2018 09:56:32 app_thread.py[line:108] ERROR 刷新失败
+Tue, 06 Mar 2018 09:56:32 app_thread.py[line:109] ERROR this is an exception message
+Traceback (most recent call last):
+  File "F:/BestAssistant\component\app_thread.py", line 106, in run
+    findrefresh()
+  File "F:/BestAssistant\component\imgcut.py", line 325, in findrefresh
+    img = cv2.cvtColor(sc, cv2.COLOR_BGR2GRAY)  # 转灰度图
+cv2.error: C:\projects\opencv-python\opencv\modules\imgproc\src\color.cpp:10600: error: (-215) depth == CV_8U || depth == CV_16U || depth == CV_32F in function cv::cvtColor
+
+Tue, 06 Mar 2018 09:56:32 imgcut.py[line:310] ERROR cut_img 这里出错
+Tue, 06 Mar 2018 09:56:32 imgcut.py[line:311] ERROR this is an exception message
+Traceback (most recent call last):
+  File "F:/BestAssistant\component\imgcut.py", line 303, in cut_img
+    set_val('imgpos_lowestprice', img[use_area[0][1]:use_area[0][3], use_area[0][0]:use_area[0][2]])  # ok
+IndexError: list index out of range
+Tue, 06 Mar 2018 09:56:32 app_thread.py[line:108] ERROR 刷新失败
+Tue, 06 Mar 2018 09:56:32 app_thread.py[line:109] ERROR this is an exception message
+Traceback (most recent call last):
+  File "F:/BestAssistant\component\app_thread.py", line 106, in run
+    findrefresh()
+  File "F:/BestAssistant\component\imgcut.py", line 325, in findrefresh
+    img = cv2.cvtColor(sc, cv2.COLOR_BGR2GRAY)  # 转灰度图
+cv2.error: C:\projects\opencv-python\opencv\modules\imgproc\src\color.cpp:10600: error: (-215) depth == CV_8U || depth == CV_16U || depth == CV_32F in function cv::cvtColor
+
+Tue, 06 Mar 2018 09:56:32 imgcut.py[line:310] ERROR cut_img 这里出错
+Tue, 06 Mar 2018 09:56:32 imgcut.py[line:311] ERROR this is an exception message
+Traceback (most recent call last):
+  File "F:/BestAssistant\component\imgcut.py", line 303, in cut_img
+    set_val('imgpos_lowestprice', img[use_area[0][1]:use_area[0][3], use_area[0][0]:use_area[0][2]])  # ok
+IndexError: list index out of range
+Tue, 06 Mar 2018 09:56:32 app_thread.py[line:108] ERROR 刷新失败
+Tue, 06 Mar 2018 09:56:32 app_thread.py[line:109] ERROR this is an exception message
+Traceback (most recent call last):
+  File "F:/BestAssistant\component\app_thread.py", line 106, in run
+    findrefresh()
+  File "F:/BestAssistant\component\imgcut.py", line 325, in findrefresh
+    img = cv2.cvtColor(sc, cv2.COLOR_BGR2GRAY)  # 转灰度图
+cv2.error: C:\projects\opencv-python\opencv\modules\imgproc\src\color.cpp:10600: error: (-215) depth == CV_8U || depth == CV_16U || depth == CV_32F in function cv::cvtColor
+
+Tue, 06 Mar 2018 09:56:32 app_thread.py[line:108] ERROR 刷新失败
+Tue, 06 Mar 2018 09:56:32 app_thread.py[line:109] ERROR this is an exception message
+Traceback (most recent call last):
+  File "F:/BestAssistant\component\app_thread.py", line 106, in run
+    findrefresh()
+  File "F:/BestAssistant\component\imgcut.py", line 325, in findrefresh
+    img = cv2.cvtColor(sc, cv2.COLOR_BGR2GRAY)  # 转灰度图
+cv2.error: C:\projects\opencv-python\opencv\modules\imgproc\src\color.cpp:10600: error: (-215) depth == CV_8U || depth == CV_16U || depth == CV_32F in function cv::cvtColor
+
+Tue, 06 Mar 2018 09:56:32 imgcut.py[line:310] ERROR cut_img 这里出错
+Tue, 06 Mar 2018 09:56:32 imgcut.py[line:311] ERROR this is an exception message
+Traceback (most recent call last):
+  File "F:/BestAssistant\component\imgcut.py", line 303, in cut_img
+    set_val('imgpos_lowestprice', img[use_area[0][1]:use_area[0][3], use_area[0][0]:use_area[0][2]])  # ok
+IndexError: list index out of range
+Tue, 06 Mar 2018 09:56:32 app_thread.py[line:108] ERROR 刷新失败
+Tue, 06 Mar 2018 09:56:32 app_thread.py[line:109] ERROR this is an exception message
+Traceback (most recent call last):
+  File "F:/BestAssistant\component\app_thread.py", line 106, in run
+    findrefresh()
+  File "F:/BestAssistant\component\imgcut.py", line 325, in findrefresh
+    img = cv2.cvtColor(sc, cv2.COLOR_BGR2GRAY)  # 转灰度图
+cv2.error: C:\projects\opencv-python\opencv\modules\imgproc\src\color.cpp:10600: error: (-215) depth == CV_8U || depth == CV_16U || depth == CV_32F in function cv::cvtColor
+
+Tue, 06 Mar 2018 09:56:32 imgcut.py[line:310] ERROR cut_img 这里出错
+Tue, 06 Mar 2018 09:56:32 imgcut.py[line:311] ERROR this is an exception message
+Traceback (most recent call last):
+  File "F:/BestAssistant\component\imgcut.py", line 303, in cut_img
+    set_val('imgpos_lowestprice', img[use_area[0][1]:use_area[0][3], use_area[0][0]:use_area[0][2]])  # ok
+IndexError: list index out of range
+Tue, 06 Mar 2018 09:56:32 app_thread.py[line:108] ERROR 刷新失败
+Tue, 06 Mar 2018 09:56:32 app_thread.py[line:109] ERROR this is an exception message
+Traceback (most recent call last):
+  File "F:/BestAssistant\component\app_thread.py", line 106, in run
+    findrefresh()
+  File "F:/BestAssistant\component\imgcut.py", line 325, in findrefresh
+    img = cv2.cvtColor(sc, cv2.COLOR_BGR2GRAY)  # 转灰度图
+cv2.error: C:\projects\opencv-python\opencv\modules\imgproc\src\color.cpp:10600: error: (-215) depth == CV_8U || depth == CV_16U || depth == CV_32F in function cv::cvtColor
+
+Tue, 06 Mar 2018 09:56:32 imgcut.py[line:310] ERROR cut_img 这里出错
+Tue, 06 Mar 2018 09:56:32 imgcut.py[line:311] ERROR this is an exception message
+Traceback (most recent call last):
+  File "F:/BestAssistant\component\imgcut.py", line 303, in cut_img
+    set_val('imgpos_lowestprice', img[use_area[0][1]:use_area[0][3], use_area[0][0]:use_area[0][2]])  # ok
+IndexError: list index out of range
+Tue, 06 Mar 2018 09:56:32 app_thread.py[line:108] ERROR 刷新失败
+Tue, 06 Mar 2018 09:56:32 app_thread.py[line:109] ERROR this is an exception message
+Traceback (most recent call last):
+  File "F:/BestAssistant\component\app_thread.py", line 106, in run
+    findrefresh()
+  File "F:/BestAssistant\component\imgcut.py", line 325, in findrefresh
+    img = cv2.cvtColor(sc, cv2.COLOR_BGR2GRAY)  # 转灰度图
+cv2.error: C:\projects\opencv-python\opencv\modules\imgproc\src\color.cpp:10600: error: (-215) depth == CV_8U || depth == CV_16U || depth == CV_32F in function cv::cvtColor
+
+Tue, 06 Mar 2018 09:56:32 imgcut.py[line:310] ERROR cut_img 这里出错
+Tue, 06 Mar 2018 09:56:32 imgcut.py[line:311] ERROR this is an exception message
+Traceback (most recent call last):
+  File "F:/BestAssistant\component\imgcut.py", line 303, in cut_img
+    set_val('imgpos_lowestprice', img[use_area[0][1]:use_area[0][3], use_area[0][0]:use_area[0][2]])  # ok
+IndexError: list index out of range
+Tue, 06 Mar 2018 09:56:32 app_thread.py[line:108] ERROR 刷新失败
+Tue, 06 Mar 2018 09:56:32 app_thread.py[line:109] ERROR this is an exception message
+Traceback (most recent call last):
+  File "F:/BestAssistant\component\app_thread.py", line 106, in run
+    findrefresh()
+  File "F:/BestAssistant\component\imgcut.py", line 325, in findrefresh
+    img = cv2.cvtColor(sc, cv2.COLOR_BGR2GRAY)  # 转灰度图
+cv2.error: C:\projects\opencv-python\opencv\modules\imgproc\src\color.cpp:10600: error: (-215) depth == CV_8U || depth == CV_16U || depth == CV_32F in function cv::cvtColor
+
+Tue, 06 Mar 2018 09:56:32 app_thread.py[line:108] ERROR 刷新失败
+Tue, 06 Mar 2018 09:56:32 imgcut.py[line:310] ERROR cut_img 这里出错
+Tue, 06 Mar 2018 09:56:32 imgcut.py[line:311] ERROR this is an exception message
+Traceback (most recent call last):
+  File "F:/BestAssistant\component\imgcut.py", line 303, in cut_img
+    set_val('imgpos_lowestprice', img[use_area[0][1]:use_area[0][3], use_area[0][0]:use_area[0][2]])  # ok
+IndexError: list index out of range
+Tue, 06 Mar 2018 09:56:32 app_thread.py[line:109] ERROR this is an exception message
+Traceback (most recent call last):
+  File "F:/BestAssistant\component\app_thread.py", line 106, in run
+    findrefresh()
+  File "F:/BestAssistant\component\imgcut.py", line 325, in findrefresh
+    img = cv2.cvtColor(sc, cv2.COLOR_BGR2GRAY)  # 转灰度图
+cv2.error: C:\projects\opencv-python\opencv\modules\imgproc\src\color.cpp:10600: error: (-215) depth == CV_8U || depth == CV_16U || depth == CV_32F in function cv::cvtColor
+
+Tue, 06 Mar 2018 09:56:32 app_thread.py[line:108] ERROR 刷新失败
+Tue, 06 Mar 2018 09:56:32 app_thread.py[line:109] ERROR this is an exception message
+Traceback (most recent call last):
+  File "F:/BestAssistant\component\app_thread.py", line 106, in run
+    findrefresh()
+  File "F:/BestAssistant\component\imgcut.py", line 325, in findrefresh
+    img = cv2.cvtColor(sc, cv2.COLOR_BGR2GRAY)  # 转灰度图
+cv2.error: C:\projects\opencv-python\opencv\modules\imgproc\src\color.cpp:10600: error: (-215) depth == CV_8U || depth == CV_16U || depth == CV_32F in function cv::cvtColor
+
+Tue, 06 Mar 2018 09:56:32 imgcut.py[line:310] ERROR cut_img 这里出错
+Tue, 06 Mar 2018 09:56:32 imgcut.py[line:311] ERROR this is an exception message
+Traceback (most recent call last):
+  File "F:/BestAssistant\component\imgcut.py", line 303, in cut_img
+    set_val('imgpos_lowestprice', img[use_area[0][1]:use_area[0][3], use_area[0][0]:use_area[0][2]])  # ok
+IndexError: list index out of range
+Tue, 06 Mar 2018 09:56:33 app_thread.py[line:108] ERROR 刷新失败
+Tue, 06 Mar 2018 09:56:33 app_thread.py[line:109] ERROR this is an exception message
+Traceback (most recent call last):
+  File "F:/BestAssistant\component\app_thread.py", line 106, in run
+    findrefresh()
+  File "F:/BestAssistant\component\imgcut.py", line 325, in findrefresh
+    img = cv2.cvtColor(sc, cv2.COLOR_BGR2GRAY)  # 转灰度图
+cv2.error: C:\projects\opencv-python\opencv\modules\imgproc\src\color.cpp:10600: error: (-215) depth == CV_8U || depth == CV_16U || depth == CV_32F in function cv::cvtColor
+
+Tue, 06 Mar 2018 09:56:33 imgcut.py[line:310] ERROR cut_img 这里出错
+Tue, 06 Mar 2018 09:56:33 imgcut.py[line:311] ERROR this is an exception message
+Traceback (most recent call last):
+  File "F:/BestAssistant\component\imgcut.py", line 303, in cut_img
+    set_val('imgpos_lowestprice', img[use_area[0][1]:use_area[0][3], use_area[0][0]:use_area[0][2]])  # ok
+IndexError: list index out of range
+Tue, 06 Mar 2018 09:56:33 app_thread.py[line:108] ERROR 刷新失败
+Tue, 06 Mar 2018 09:56:33 app_thread.py[line:109] ERROR this is an exception message
+Traceback (most recent call last):
+  File "F:/BestAssistant\component\app_thread.py", line 106, in run
+    findrefresh()
+  File "F:/BestAssistant\component\imgcut.py", line 325, in findrefresh
+    img = cv2.cvtColor(sc, cv2.COLOR_BGR2GRAY)  # 转灰度图
+cv2.error: C:\projects\opencv-python\opencv\modules\imgproc\src\color.cpp:10600: error: (-215) depth == CV_8U || depth == CV_16U || depth == CV_32F in function cv::cvtColor
+
+Tue, 06 Mar 2018 09:56:33 imgcut.py[line:310] ERROR cut_img 这里出错
+Tue, 06 Mar 2018 09:56:33 imgcut.py[line:311] ERROR this is an exception message
+Traceback (most recent call last):
+  File "F:/BestAssistant\component\imgcut.py", line 303, in cut_img
+    set_val('imgpos_lowestprice', img[use_area[0][1]:use_area[0][3], use_area[0][0]:use_area[0][2]])  # ok
+IndexError: list index out of range
+Tue, 06 Mar 2018 09:56:33 app_thread.py[line:108] ERROR 刷新失败
+Tue, 06 Mar 2018 09:56:33 app_thread.py[line:109] ERROR this is an exception message
+Traceback (most recent call last):
+  File "F:/BestAssistant\component\app_thread.py", line 106, in run
+    findrefresh()
+  File "F:/BestAssistant\component\imgcut.py", line 325, in findrefresh
+    img = cv2.cvtColor(sc, cv2.COLOR_BGR2GRAY)  # 转灰度图
+cv2.error: C:\projects\opencv-python\opencv\modules\imgproc\src\color.cpp:10600: error: (-215) depth == CV_8U || depth == CV_16U || depth == CV_32F in function cv::cvtColor
+
+Tue, 06 Mar 2018 09:56:33 imgcut.py[line:310] ERROR cut_img 这里出错
+Tue, 06 Mar 2018 09:56:33 imgcut.py[line:311] ERROR this is an exception message
+Traceback (most recent call last):
+  File "F:/BestAssistant\component\imgcut.py", line 303, in cut_img
+    set_val('imgpos_lowestprice', img[use_area[0][1]:use_area[0][3], use_area[0][0]:use_area[0][2]])  # ok
+IndexError: list index out of range
+Tue, 06 Mar 2018 09:56:33 app_thread.py[line:108] ERROR 刷新失败
+Tue, 06 Mar 2018 09:56:33 app_thread.py[line:109] ERROR this is an exception message
+Traceback (most recent call last):
+  File "F:/BestAssistant\component\app_thread.py", line 106, in run
+    findrefresh()
+  File "F:/BestAssistant\component\imgcut.py", line 325, in findrefresh
+    img = cv2.cvtColor(sc, cv2.COLOR_BGR2GRAY)  # 转灰度图
+cv2.error: C:\projects\opencv-python\opencv\modules\imgproc\src\color.cpp:10600: error: (-215) depth == CV_8U || depth == CV_16U || depth == CV_32F in function cv::cvtColor
+
+Tue, 06 Mar 2018 09:56:33 app_thread.py[line:108] ERROR 刷新失败
+Tue, 06 Mar 2018 09:56:33 app_thread.py[line:109] ERROR this is an exception message
+Traceback (most recent call last):
+  File "F:/BestAssistant\component\app_thread.py", line 106, in run
+    findrefresh()
+  File "F:/BestAssistant\component\imgcut.py", line 325, in findrefresh
+    img = cv2.cvtColor(sc, cv2.COLOR_BGR2GRAY)  # 转灰度图
+cv2.error: C:\projects\opencv-python\opencv\modules\imgproc\src\color.cpp:10600: error: (-215) depth == CV_8U || depth == CV_16U || depth == CV_32F in function cv::cvtColor
+
+Tue, 06 Mar 2018 09:56:33 imgcut.py[line:310] ERROR cut_img 这里出错
+Tue, 06 Mar 2018 09:56:33 imgcut.py[line:311] ERROR this is an exception message
+Traceback (most recent call last):
+  File "F:/BestAssistant\component\imgcut.py", line 303, in cut_img
+    set_val('imgpos_lowestprice', img[use_area[0][1]:use_area[0][3], use_area[0][0]:use_area[0][2]])  # ok
+IndexError: list index out of range
+Tue, 06 Mar 2018 09:56:33 app_thread.py[line:108] ERROR 刷新失败
+Tue, 06 Mar 2018 09:56:33 app_thread.py[line:109] ERROR this is an exception message
+Traceback (most recent call last):
+  File "F:/BestAssistant\component\app_thread.py", line 106, in run
+    findrefresh()
+  File "F:/BestAssistant\component\imgcut.py", line 325, in findrefresh
+    img = cv2.cvtColor(sc, cv2.COLOR_BGR2GRAY)  # 转灰度图
+cv2.error: C:\projects\opencv-python\opencv\modules\imgproc\src\color.cpp:10600: error: (-215) depth == CV_8U || depth == CV_16U || depth == CV_32F in function cv::cvtColor
+
+Tue, 06 Mar 2018 09:56:33 imgcut.py[line:310] ERROR cut_img 这里出错
+Tue, 06 Mar 2018 09:56:33 imgcut.py[line:311] ERROR this is an exception message
+Traceback (most recent call last):
+  File "F:/BestAssistant\component\imgcut.py", line 303, in cut_img
+    set_val('imgpos_lowestprice', img[use_area[0][1]:use_area[0][3], use_area[0][0]:use_area[0][2]])  # ok
+IndexError: list index out of range
+Tue, 06 Mar 2018 09:56:33 app_thread.py[line:108] ERROR 刷新失败
+Tue, 06 Mar 2018 09:56:33 app_thread.py[line:109] ERROR this is an exception message
+Traceback (most recent call last):
+  File "F:/BestAssistant\component\app_thread.py", line 106, in run
+    findrefresh()
+  File "F:/BestAssistant\component\imgcut.py", line 325, in findrefresh
+    img = cv2.cvtColor(sc, cv2.COLOR_BGR2GRAY)  # 转灰度图
+cv2.error: C:\projects\opencv-python\opencv\modules\imgproc\src\color.cpp:10600: error: (-215) depth == CV_8U || depth == CV_16U || depth == CV_32F in function cv::cvtColor
+
+Tue, 06 Mar 2018 09:56:33 imgcut.py[line:310] ERROR cut_img 这里出错
+Tue, 06 Mar 2018 09:56:33 imgcut.py[line:311] ERROR this is an exception message
+Traceback (most recent call last):
+  File "F:/BestAssistant\component\imgcut.py", line 303, in cut_img
+    set_val('imgpos_lowestprice', img[use_area[0][1]:use_area[0][3], use_area[0][0]:use_area[0][2]])  # ok
+IndexError: list index out of range
+Tue, 06 Mar 2018 09:56:33 app_thread.py[line:108] ERROR 刷新失败
+Tue, 06 Mar 2018 09:56:33 app_thread.py[line:109] ERROR this is an exception message
+Traceback (most recent call last):
+  File "F:/BestAssistant\component\app_thread.py", line 106, in run
+    findrefresh()
+  File "F:/BestAssistant\component\imgcut.py", line 325, in findrefresh
+    img = cv2.cvtColor(sc, cv2.COLOR_BGR2GRAY)  # 转灰度图
+cv2.error: C:\projects\opencv-python\opencv\modules\imgproc\src\color.cpp:10600: error: (-215) depth == CV_8U || depth == CV_16U || depth == CV_32F in function cv::cvtColor
+
+Tue, 06 Mar 2018 09:56:33 app_thread.py[line:108] ERROR 刷新失败
+Tue, 06 Mar 2018 09:56:33 app_thread.py[line:109] ERROR this is an exception message
+Traceback (most recent call last):
+  File "F:/BestAssistant\component\app_thread.py", line 106, in run
+    findrefresh()
+  File "F:/BestAssistant\component\imgcut.py", line 325, in findrefresh
+    img = cv2.cvtColor(sc, cv2.COLOR_BGR2GRAY)  # 转灰度图
+cv2.error: C:\projects\opencv-python\opencv\modules\imgproc\src\color.cpp:10600: error: (-215) depth == CV_8U || depth == CV_16U || depth == CV_32F in function cv::cvtColor
+
+Tue, 06 Mar 2018 09:56:33 imgcut.py[line:310] ERROR cut_img 这里出错
+Tue, 06 Mar 2018 09:56:33 imgcut.py[line:311] ERROR this is an exception message
+Traceback (most recent call last):
+  File "F:/BestAssistant\component\imgcut.py", line 303, in cut_img
+    set_val('imgpos_lowestprice', img[use_area[0][1]:use_area[0][3], use_area[0][0]:use_area[0][2]])  # ok
+IndexError: list index out of range
+Tue, 06 Mar 2018 09:56:33 app_thread.py[line:108] ERROR 刷新失败
+Tue, 06 Mar 2018 09:56:33 app_thread.py[line:109] ERROR this is an exception message
+Traceback (most recent call last):
+  File "F:/BestAssistant\component\app_thread.py", line 106, in run
+    findrefresh()
+  File "F:/BestAssistant\component\imgcut.py", line 325, in findrefresh
+    img = cv2.cvtColor(sc, cv2.COLOR_BGR2GRAY)  # 转灰度图
+cv2.error: C:\projects\opencv-python\opencv\modules\imgproc\src\color.cpp:10600: error: (-215) depth == CV_8U || depth == CV_16U || depth == CV_32F in function cv::cvtColor
+
+Tue, 06 Mar 2018 09:56:33 app_thread.py[line:108] ERROR 刷新失败
+Tue, 06 Mar 2018 09:56:33 app_thread.py[line:109] ERROR this is an exception message
+Traceback (most recent call last):
+  File "F:/BestAssistant\component\app_thread.py", line 106, in run
+    findrefresh()
+  File "F:/BestAssistant\component\imgcut.py", line 325, in findrefresh
+    img = cv2.cvtColor(sc, cv2.COLOR_BGR2GRAY)  # 转灰度图
+cv2.error: C:\projects\opencv-python\opencv\modules\imgproc\src\color.cpp:10600: error: (-215) depth == CV_8U || depth == CV_16U || depth == CV_32F in function cv::cvtColor
+
+Tue, 06 Mar 2018 09:56:33 imgcut.py[line:310] ERROR cut_img 这里出错
+Tue, 06 Mar 2018 09:56:33 imgcut.py[line:311] ERROR this is an exception message
+Traceback (most recent call last):
+  File "F:/BestAssistant\component\imgcut.py", line 303, in cut_img
+    set_val('imgpos_lowestprice', img[use_area[0][1]:use_area[0][3], use_area[0][0]:use_area[0][2]])  # ok
+IndexError: list index out of range
+Tue, 06 Mar 2018 09:56:33 app_thread.py[line:108] ERROR 刷新失败
+Tue, 06 Mar 2018 09:56:33 app_thread.py[line:109] ERROR this is an exception message
+Traceback (most recent call last):
+  File "F:/BestAssistant\component\app_thread.py", line 106, in run
+    findrefresh()
+  File "F:/BestAssistant\component\imgcut.py", line 325, in findrefresh
+    img = cv2.cvtColor(sc, cv2.COLOR_BGR2GRAY)  # 转灰度图
+cv2.error: C:\projects\opencv-python\opencv\modules\imgproc\src\color.cpp:10600: error: (-215) depth == CV_8U || depth == CV_16U || depth == CV_32F in function cv::cvtColor
+
+Tue, 06 Mar 2018 09:56:33 imgcut.py[line:310] ERROR cut_img 这里出错
+Tue, 06 Mar 2018 09:56:33 imgcut.py[line:311] ERROR this is an exception message
+Traceback (most recent call last):
+  File "F:/BestAssistant\component\imgcut.py", line 303, in cut_img
+    set_val('imgpos_lowestprice', img[use_area[0][1]:use_area[0][3], use_area[0][0]:use_area[0][2]])  # ok
+IndexError: list index out of range
+Tue, 06 Mar 2018 09:56:33 app_thread.py[line:108] ERROR 刷新失败
+Tue, 06 Mar 2018 09:56:33 app_thread.py[line:109] ERROR this is an exception message
+Traceback (most recent call last):
+  File "F:/BestAssistant\component\app_thread.py", line 106, in run
+    findrefresh()
+  File "F:/BestAssistant\component\imgcut.py", line 325, in findrefresh
+    img = cv2.cvtColor(sc, cv2.COLOR_BGR2GRAY)  # 转灰度图
+cv2.error: C:\projects\opencv-python\opencv\modules\imgproc\src\color.cpp:10600: error: (-215) depth == CV_8U || depth == CV_16U || depth == CV_32F in function cv::cvtColor
+
+Tue, 06 Mar 2018 09:56:33 imgcut.py[line:310] ERROR cut_img 这里出错
+Tue, 06 Mar 2018 09:56:33 imgcut.py[line:311] ERROR this is an exception message
+Traceback (most recent call last):
+  File "F:/BestAssistant\component\imgcut.py", line 303, in cut_img
+    set_val('imgpos_lowestprice', img[use_area[0][1]:use_area[0][3], use_area[0][0]:use_area[0][2]])  # ok
+IndexError: list index out of range
+Tue, 06 Mar 2018 09:56:33 app_thread.py[line:108] ERROR 刷新失败
+Tue, 06 Mar 2018 09:56:33 app_thread.py[line:109] ERROR this is an exception message
+Traceback (most recent call last):
+  File "F:/BestAssistant\component\app_thread.py", line 106, in run
+    findrefresh()
+  File "F:/BestAssistant\component\imgcut.py", line 325, in findrefresh
+    img = cv2.cvtColor(sc, cv2.COLOR_BGR2GRAY)  # 转灰度图
+cv2.error: C:\projects\opencv-python\opencv\modules\imgproc\src\color.cpp:10600: error: (-215) depth == CV_8U || depth == CV_16U || depth == CV_32F in function cv::cvtColor
+
+Tue, 06 Mar 2018 09:56:33 app_thread.py[line:108] ERROR 刷新失败
+Tue, 06 Mar 2018 09:56:33 imgcut.py[line:310] ERROR cut_img 这里出错
+Tue, 06 Mar 2018 09:56:33 app_thread.py[line:109] ERROR this is an exception message
+Traceback (most recent call last):
+  File "F:/BestAssistant\component\app_thread.py", line 106, in run
+    findrefresh()
+  File "F:/BestAssistant\component\imgcut.py", line 325, in findrefresh
+    img = cv2.cvtColor(sc, cv2.COLOR_BGR2GRAY)  # 转灰度图
+cv2.error: C:\projects\opencv-python\opencv\modules\imgproc\src\color.cpp:10600: error: (-215) depth == CV_8U || depth == CV_16U || depth == CV_32F in function cv::cvtColor
+
+Tue, 06 Mar 2018 09:56:33 imgcut.py[line:311] ERROR this is an exception message
+Traceback (most recent call last):
+  File "F:/BestAssistant\component\imgcut.py", line 303, in cut_img
+    set_val('imgpos_lowestprice', img[use_area[0][1]:use_area[0][3], use_area[0][0]:use_area[0][2]])  # ok
+IndexError: list index out of range
+Tue, 06 Mar 2018 09:56:33 app_thread.py[line:108] ERROR 刷新失败
+Tue, 06 Mar 2018 09:56:33 app_thread.py[line:109] ERROR this is an exception message
+Traceback (most recent call last):
+  File "F:/BestAssistant\component\app_thread.py", line 106, in run
+    findrefresh()
+  File "F:/BestAssistant\component\imgcut.py", line 325, in findrefresh
+    img = cv2.cvtColor(sc, cv2.COLOR_BGR2GRAY)  # 转灰度图
+cv2.error: C:\projects\opencv-python\opencv\modules\imgproc\src\color.cpp:10600: error: (-215) depth == CV_8U || depth == CV_16U || depth == CV_32F in function cv::cvtColor
+
+Tue, 06 Mar 2018 09:56:33 imgcut.py[line:310] ERROR cut_img 这里出错
+Tue, 06 Mar 2018 09:56:33 imgcut.py[line:311] ERROR this is an exception message
+Traceback (most recent call last):
+  File "F:/BestAssistant\component\imgcut.py", line 303, in cut_img
+    set_val('imgpos_lowestprice', img[use_area[0][1]:use_area[0][3], use_area[0][0]:use_area[0][2]])  # ok
+IndexError: list index out of range
+Tue, 06 Mar 2018 09:56:34 app_thread.py[line:108] ERROR 刷新失败
+Tue, 06 Mar 2018 09:56:34 app_thread.py[line:109] ERROR this is an exception message
+Traceback (most recent call last):
+  File "F:/BestAssistant\component\app_thread.py", line 106, in run
+    findrefresh()
+  File "F:/BestAssistant\component\imgcut.py", line 325, in findrefresh
+    img = cv2.cvtColor(sc, cv2.COLOR_BGR2GRAY)  # 转灰度图
+cv2.error: C:\projects\opencv-python\opencv\modules\imgproc\src\color.cpp:10600: error: (-215) depth == CV_8U || depth == CV_16U || depth == CV_32F in function cv::cvtColor
+
+Tue, 06 Mar 2018 09:56:34 imgcut.py[line:310] ERROR cut_img 这里出错
+Tue, 06 Mar 2018 09:56:34 imgcut.py[line:311] ERROR this is an exception message
+Traceback (most recent call last):
+  File "F:/BestAssistant\component\imgcut.py", line 303, in cut_img
+    set_val('imgpos_lowestprice', img[use_area[0][1]:use_area[0][3], use_area[0][0]:use_area[0][2]])  # ok
+IndexError: list index out of range
+Tue, 06 Mar 2018 09:56:34 app_thread.py[line:108] ERROR 刷新失败
+Tue, 06 Mar 2018 09:56:34 app_thread.py[line:109] ERROR this is an exception message
+Traceback (most recent call last):
+  File "F:/BestAssistant\component\app_thread.py", line 106, in run
+    findrefresh()
+  File "F:/BestAssistant\component\imgcut.py", line 325, in findrefresh
+    img = cv2.cvtColor(sc, cv2.COLOR_BGR2GRAY)  # 转灰度图
+cv2.error: C:\projects\opencv-python\opencv\modules\imgproc\src\color.cpp:10600: error: (-215) depth == CV_8U || depth == CV_16U || depth == CV_32F in function cv::cvtColor
+
+Tue, 06 Mar 2018 09:56:34 app_thread.py[line:108] ERROR 刷新失败
+Tue, 06 Mar 2018 09:56:34 app_thread.py[line:109] ERROR this is an exception message
+Traceback (most recent call last):
+  File "F:/BestAssistant\component\app_thread.py", line 106, in run
+    findrefresh()
+  File "F:/BestAssistant\component\imgcut.py", line 325, in findrefresh
+    img = cv2.cvtColor(sc, cv2.COLOR_BGR2GRAY)  # 转灰度图
+cv2.error: C:\projects\opencv-python\opencv\modules\imgproc\src\color.cpp:10600: error: (-215) depth == CV_8U || depth == CV_16U || depth == CV_32F in function cv::cvtColor
+
+Tue, 06 Mar 2018 09:56:34 imgcut.py[line:310] ERROR cut_img 这里出错
+Tue, 06 Mar 2018 09:56:34 imgcut.py[line:311] ERROR this is an exception message
+Traceback (most recent call last):
+  File "F:/BestAssistant\component\imgcut.py", line 303, in cut_img
+    set_val('imgpos_lowestprice', img[use_area[0][1]:use_area[0][3], use_area[0][0]:use_area[0][2]])  # ok
+IndexError: list index out of range
+Tue, 06 Mar 2018 09:56:34 app_thread.py[line:108] ERROR 刷新失败
+Tue, 06 Mar 2018 09:56:34 app_thread.py[line:109] ERROR this is an exception message
+Traceback (most recent call last):
+  File "F:/BestAssistant\component\app_thread.py", line 106, in run
+    findrefresh()
+  File "F:/BestAssistant\component\imgcut.py", line 325, in findrefresh
+    img = cv2.cvtColor(sc, cv2.COLOR_BGR2GRAY)  # 转灰度图
+cv2.error: C:\projects\opencv-python\opencv\modules\imgproc\src\color.cpp:10600: error: (-215) depth == CV_8U || depth == CV_16U || depth == CV_32F in function cv::cvtColor
+
+Tue, 06 Mar 2018 09:56:34 imgcut.py[line:310] ERROR cut_img 这里出错
+Tue, 06 Mar 2018 09:56:34 imgcut.py[line:311] ERROR this is an exception message
+Traceback (most recent call last):
+  File "F:/BestAssistant\component\imgcut.py", line 303, in cut_img
+    set_val('imgpos_lowestprice', img[use_area[0][1]:use_area[0][3], use_area[0][0]:use_area[0][2]])  # ok
+IndexError: list index out of range
+Tue, 06 Mar 2018 09:56:34 app_thread.py[line:108] ERROR 刷新失败
+Tue, 06 Mar 2018 09:56:34 app_thread.py[line:109] ERROR this is an exception message
+Traceback (most recent call last):
+  File "F:/BestAssistant\component\app_thread.py", line 106, in run
+    findrefresh()
+  File "F:/BestAssistant\component\imgcut.py", line 325, in findrefresh
+    img = cv2.cvtColor(sc, cv2.COLOR_BGR2GRAY)  # 转灰度图
+cv2.error: C:\projects\opencv-python\opencv\modules\imgproc\src\color.cpp:10600: error: (-215) depth == CV_8U || depth == CV_16U || depth == CV_32F in function cv::cvtColor
+
+Tue, 06 Mar 2018 09:56:34 app_thread.py[line:108] ERROR 刷新失败
+Tue, 06 Mar 2018 09:56:34 app_thread.py[line:109] ERROR this is an exception message
+Traceback (most recent call last):
+  File "F:/BestAssistant\component\app_thread.py", line 106, in run
+    findrefresh()
+  File "F:/BestAssistant\component\imgcut.py", line 325, in findrefresh
+    img = cv2.cvtColor(sc, cv2.COLOR_BGR2GRAY)  # 转灰度图
+cv2.error: C:\projects\opencv-python\opencv\modules\imgproc\src\color.cpp:10600: error: (-215) depth == CV_8U || depth == CV_16U || depth == CV_32F in function cv::cvtColor
+
+Tue, 06 Mar 2018 09:56:34 app_thread.py[line:108] ERROR 刷新失败
+Tue, 06 Mar 2018 09:56:34 app_thread.py[line:109] ERROR this is an exception message
+Traceback (most recent call last):
+  File "F:/BestAssistant\component\app_thread.py", line 106, in run
+    findrefresh()
+  File "F:/BestAssistant\component\imgcut.py", line 325, in findrefresh
+    img = cv2.cvtColor(sc, cv2.COLOR_BGR2GRAY)  # 转灰度图
+cv2.error: C:\projects\opencv-python\opencv\modules\imgproc\src\color.cpp:10600: error: (-215) depth == CV_8U || depth == CV_16U || depth == CV_32F in function cv::cvtColor
+
+Tue, 06 Mar 2018 09:56:34 imgcut.py[line:310] ERROR cut_img 这里出错
+Tue, 06 Mar 2018 09:56:34 imgcut.py[line:311] ERROR this is an exception message
+Traceback (most recent call last):
+  File "F:/BestAssistant\component\imgcut.py", line 303, in cut_img
+    set_val('imgpos_lowestprice', img[use_area[0][1]:use_area[0][3], use_area[0][0]:use_area[0][2]])  # ok
+IndexError: list index out of range
+Tue, 06 Mar 2018 09:56:34 app_thread.py[line:108] ERROR 刷新失败
+Tue, 06 Mar 2018 09:56:34 app_thread.py[line:109] ERROR this is an exception message
+Traceback (most recent call last):
+  File "F:/BestAssistant\component\app_thread.py", line 106, in run
+    findrefresh()
+  File "F:/BestAssistant\component\imgcut.py", line 325, in findrefresh
+    img = cv2.cvtColor(sc, cv2.COLOR_BGR2GRAY)  # 转灰度图
+cv2.error: C:\projects\opencv-python\opencv\modules\imgproc\src\color.cpp:10600: error: (-215) depth == CV_8U || depth == CV_16U || depth == CV_32F in function cv::cvtColor
+
+Tue, 06 Mar 2018 09:56:34 imgcut.py[line:310] ERROR cut_img 这里出错
+Tue, 06 Mar 2018 09:56:34 imgcut.py[line:311] ERROR this is an exception message
+Traceback (most recent call last):
+  File "F:/BestAssistant\component\imgcut.py", line 303, in cut_img
+    set_val('imgpos_lowestprice', img[use_area[0][1]:use_area[0][3], use_area[0][0]:use_area[0][2]])  # ok
+IndexError: list index out of range
+Tue, 06 Mar 2018 09:56:34 app_thread.py[line:108] ERROR 刷新失败
+Tue, 06 Mar 2018 09:56:34 app_thread.py[line:109] ERROR this is an exception message
+Traceback (most recent call last):
+  File "F:/BestAssistant\component\app_thread.py", line 106, in run
+    findrefresh()
+  File "F:/BestAssistant\component\imgcut.py", line 325, in findrefresh
+    img = cv2.cvtColor(sc, cv2.COLOR_BGR2GRAY)  # 转灰度图
+cv2.error: C:\projects\opencv-python\opencv\modules\imgproc\src\color.cpp:10600: error: (-215) depth == CV_8U || depth == CV_16U || depth == CV_32F in function cv::cvtColor
+
+Tue, 06 Mar 2018 09:56:34 imgcut.py[line:310] ERROR cut_img 这里出错
+Tue, 06 Mar 2018 09:56:34 imgcut.py[line:311] ERROR this is an exception message
+Traceback (most recent call last):
+  File "F:/BestAssistant\component\imgcut.py", line 303, in cut_img
+    set_val('imgpos_lowestprice', img[use_area[0][1]:use_area[0][3], use_area[0][0]:use_area[0][2]])  # ok
+IndexError: list index out of range
+Tue, 06 Mar 2018 09:56:34 app_thread.py[line:108] ERROR 刷新失败
+Tue, 06 Mar 2018 09:56:34 app_thread.py[line:109] ERROR this is an exception message
+Traceback (most recent call last):
+  File "F:/BestAssistant\component\app_thread.py", line 106, in run
+    findrefresh()
+  File "F:/BestAssistant\component\imgcut.py", line 325, in findrefresh
+    img = cv2.cvtColor(sc, cv2.COLOR_BGR2GRAY)  # 转灰度图
+cv2.error: C:\projects\opencv-python\opencv\modules\imgproc\src\color.cpp:10600: error: (-215) depth == CV_8U || depth == CV_16U || depth == CV_32F in function cv::cvtColor
+
+Tue, 06 Mar 2018 09:56:34 imgcut.py[line:310] ERROR cut_img 这里出错
+Tue, 06 Mar 2018 09:56:34 imgcut.py[line:311] ERROR this is an exception message
+Traceback (most recent call last):
+  File "F:/BestAssistant\component\imgcut.py", line 303, in cut_img
+    set_val('imgpos_lowestprice', img[use_area[0][1]:use_area[0][3], use_area[0][0]:use_area[0][2]])  # ok
+IndexError: list index out of range
+Tue, 06 Mar 2018 09:56:34 app_thread.py[line:108] ERROR 刷新失败
+Tue, 06 Mar 2018 09:56:34 app_thread.py[line:109] ERROR this is an exception message
+Traceback (most recent call last):
+  File "F:/BestAssistant\component\app_thread.py", line 106, in run
+    findrefresh()
+  File "F:/BestAssistant\component\imgcut.py", line 325, in findrefresh
+    img = cv2.cvtColor(sc, cv2.COLOR_BGR2GRAY)  # 转灰度图
+cv2.error: C:\projects\opencv-python\opencv\modules\imgproc\src\color.cpp:10600: error: (-215) depth == CV_8U || depth == CV_16U || depth == CV_32F in function cv::cvtColor
+
+Tue, 06 Mar 2018 09:56:34 imgcut.py[line:310] ERROR cut_img 这里出错
+Tue, 06 Mar 2018 09:56:34 imgcut.py[line:311] ERROR this is an exception message
+Traceback (most recent call last):
+  File "F:/BestAssistant\component\imgcut.py", line 303, in cut_img
+    set_val('imgpos_lowestprice', img[use_area[0][1]:use_area[0][3], use_area[0][0]:use_area[0][2]])  # ok
+IndexError: list index out of range
+Tue, 06 Mar 2018 09:56:34 app_thread.py[line:108] ERROR 刷新失败
+Tue, 06 Mar 2018 09:56:34 app_thread.py[line:109] ERROR this is an exception message
+Traceback (most recent call last):
+  File "F:/BestAssistant\component\app_thread.py", line 106, in run
+    findrefresh()
+  File "F:/BestAssistant\component\imgcut.py", line 325, in findrefresh
+    img = cv2.cvtColor(sc, cv2.COLOR_BGR2GRAY)  # 转灰度图
+cv2.error: C:\projects\opencv-python\opencv\modules\imgproc\src\color.cpp:10600: error: (-215) depth == CV_8U || depth == CV_16U || depth == CV_32F in function cv::cvtColor
+
+Tue, 06 Mar 2018 09:56:34 app_thread.py[line:108] ERROR 刷新失败
+Tue, 06 Mar 2018 09:56:34 app_thread.py[line:109] ERROR this is an exception message
+Traceback (most recent call last):
+  File "F:/BestAssistant\component\app_thread.py", line 106, in run
+    findrefresh()
+  File "F:/BestAssistant\component\imgcut.py", line 325, in findrefresh
+    img = cv2.cvtColor(sc, cv2.COLOR_BGR2GRAY)  # 转灰度图
+cv2.error: C:\projects\opencv-python\opencv\modules\imgproc\src\color.cpp:10600: error: (-215) depth == CV_8U || depth == CV_16U || depth == CV_32F in function cv::cvtColor
+
+Tue, 06 Mar 2018 09:56:34 imgcut.py[line:310] ERROR cut_img 这里出错
+Tue, 06 Mar 2018 09:56:34 imgcut.py[line:311] ERROR this is an exception message
+Traceback (most recent call last):
+  File "F:/BestAssistant\component\imgcut.py", line 303, in cut_img
+    set_val('imgpos_lowestprice', img[use_area[0][1]:use_area[0][3], use_area[0][0]:use_area[0][2]])  # ok
+IndexError: list index out of range
+Tue, 06 Mar 2018 09:56:34 app_thread.py[line:108] ERROR 刷新失败
+Tue, 06 Mar 2018 09:56:34 app_thread.py[line:109] ERROR this is an exception message
+Traceback (most recent call last):
+  File "F:/BestAssistant\component\app_thread.py", line 106, in run
+    findrefresh()
+  File "F:/BestAssistant\component\imgcut.py", line 325, in findrefresh
+    img = cv2.cvtColor(sc, cv2.COLOR_BGR2GRAY)  # 转灰度图
+cv2.error: C:\projects\opencv-python\opencv\modules\imgproc\src\color.cpp:10600: error: (-215) depth == CV_8U || depth == CV_16U || depth == CV_32F in function cv::cvtColor
+
+Tue, 06 Mar 2018 09:56:34 app_thread.py[line:108] ERROR 刷新失败
+Tue, 06 Mar 2018 09:56:34 app_thread.py[line:109] ERROR this is an exception message
+Traceback (most recent call last):
+  File "F:/BestAssistant\component\app_thread.py", line 106, in run
+    findrefresh()
+  File "F:/BestAssistant\component\imgcut.py", line 325, in findrefresh
+    img = cv2.cvtColor(sc, cv2.COLOR_BGR2GRAY)  # 转灰度图
+cv2.error: C:\projects\opencv-python\opencv\modules\imgproc\src\color.cpp:10600: error: (-215) depth == CV_8U || depth == CV_16U || depth == CV_32F in function cv::cvtColor
+
+Tue, 06 Mar 2018 09:56:34 imgcut.py[line:310] ERROR cut_img 这里出错
+Tue, 06 Mar 2018 09:56:34 imgcut.py[line:311] ERROR this is an exception message
+Traceback (most recent call last):
+  File "F:/BestAssistant\component\imgcut.py", line 303, in cut_img
+    set_val('imgpos_lowestprice', img[use_area[0][1]:use_area[0][3], use_area[0][0]:use_area[0][2]])  # ok
+IndexError: list index out of range
+Tue, 06 Mar 2018 09:56:35 app_thread.py[line:108] ERROR 刷新失败
+Tue, 06 Mar 2018 09:56:35 app_thread.py[line:109] ERROR this is an exception message
+Traceback (most recent call last):
+  File "F:/BestAssistant\component\app_thread.py", line 106, in run
+    findrefresh()
+  File "F:/BestAssistant\component\imgcut.py", line 325, in findrefresh
+    img = cv2.cvtColor(sc, cv2.COLOR_BGR2GRAY)  # 转灰度图
+cv2.error: C:\projects\opencv-python\opencv\modules\imgproc\src\color.cpp:10600: error: (-215) depth == CV_8U || depth == CV_16U || depth == CV_32F in function cv::cvtColor
+
+Tue, 06 Mar 2018 09:56:35 imgcut.py[line:310] ERROR cut_img 这里出错
+Tue, 06 Mar 2018 09:56:35 imgcut.py[line:311] ERROR this is an exception message
+Traceback (most recent call last):
+  File "F:/BestAssistant\component\imgcut.py", line 303, in cut_img
+    set_val('imgpos_lowestprice', img[use_area[0][1]:use_area[0][3], use_area[0][0]:use_area[0][2]])  # ok
+IndexError: list index out of range
+Tue, 06 Mar 2018 09:56:35 app_thread.py[line:108] ERROR 刷新失败
+Tue, 06 Mar 2018 09:56:35 app_thread.py[line:109] ERROR this is an exception message
+Traceback (most recent call last):
+  File "F:/BestAssistant\component\app_thread.py", line 106, in run
+    findrefresh()
+  File "F:/BestAssistant\component\imgcut.py", line 325, in findrefresh
+    img = cv2.cvtColor(sc, cv2.COLOR_BGR2GRAY)  # 转灰度图
+cv2.error: C:\projects\opencv-python\opencv\modules\imgproc\src\color.cpp:10600: error: (-215) depth == CV_8U || depth == CV_16U || depth == CV_32F in function cv::cvtColor
+
+Tue, 06 Mar 2018 09:56:35 app_thread.py[line:108] ERROR 刷新失败
+Tue, 06 Mar 2018 09:56:35 app_thread.py[line:109] ERROR this is an exception message
+Traceback (most recent call last):
+  File "F:/BestAssistant\component\app_thread.py", line 106, in run
+    findrefresh()
+  File "F:/BestAssistant\component\imgcut.py", line 325, in findrefresh
+    img = cv2.cvtColor(sc, cv2.COLOR_BGR2GRAY)  # 转灰度图
+cv2.error: C:\projects\opencv-python\opencv\modules\imgproc\src\color.cpp:10600: error: (-215) depth == CV_8U || depth == CV_16U || depth == CV_32F in function cv::cvtColor
+
+Tue, 06 Mar 2018 09:56:35 app_thread.py[line:108] ERROR 刷新失败
+Tue, 06 Mar 2018 09:56:35 imgcut.py[line:310] ERROR cut_img 这里出错
+Tue, 06 Mar 2018 09:56:35 app_thread.py[line:109] ERROR this is an exception message
+Traceback (most recent call last):
+  File "F:/BestAssistant\component\app_thread.py", line 106, in run
+    findrefresh()
+  File "F:/BestAssistant\component\imgcut.py", line 325, in findrefresh
+    img = cv2.cvtColor(sc, cv2.COLOR_BGR2GRAY)  # 转灰度图
+cv2.error: C:\projects\opencv-python\opencv\modules\imgproc\src\color.cpp:10600: error: (-215) depth == CV_8U || depth == CV_16U || depth == CV_32F in function cv::cvtColor
+
+Tue, 06 Mar 2018 09:56:35 imgcut.py[line:311] ERROR this is an exception message
+Traceback (most recent call last):
+  File "F:/BestAssistant\component\imgcut.py", line 303, in cut_img
+    set_val('imgpos_lowestprice', img[use_area[0][1]:use_area[0][3], use_area[0][0]:use_area[0][2]])  # ok
+IndexError: list index out of range
+Tue, 06 Mar 2018 09:56:35 app_thread.py[line:108] ERROR 刷新失败
+Tue, 06 Mar 2018 09:56:35 app_thread.py[line:109] ERROR this is an exception message
+Traceback (most recent call last):
+  File "F:/BestAssistant\component\app_thread.py", line 106, in run
+    findrefresh()
+  File "F:/BestAssistant\component\imgcut.py", line 325, in findrefresh
+    img = cv2.cvtColor(sc, cv2.COLOR_BGR2GRAY)  # 转灰度图
+cv2.error: C:\projects\opencv-python\opencv\modules\imgproc\src\color.cpp:10600: error: (-215) depth == CV_8U || depth == CV_16U || depth == CV_32F in function cv::cvtColor
+
+Tue, 06 Mar 2018 09:56:35 imgcut.py[line:310] ERROR cut_img 这里出错
+Tue, 06 Mar 2018 09:56:35 imgcut.py[line:311] ERROR this is an exception message
+Traceback (most recent call last):
+  File "F:/BestAssistant\component\imgcut.py", line 303, in cut_img
+    set_val('imgpos_lowestprice', img[use_area[0][1]:use_area[0][3], use_area[0][0]:use_area[0][2]])  # ok
+IndexError: list index out of range
+Tue, 06 Mar 2018 09:56:35 app_thread.py[line:108] ERROR 刷新失败
+Tue, 06 Mar 2018 09:56:35 app_thread.py[line:109] ERROR this is an exception message
+Traceback (most recent call last):
+  File "F:/BestAssistant\component\app_thread.py", line 106, in run
+    findrefresh()
+  File "F:/BestAssistant\component\imgcut.py", line 325, in findrefresh
+    img = cv2.cvtColor(sc, cv2.COLOR_BGR2GRAY)  # 转灰度图
+cv2.error: C:\projects\opencv-python\opencv\modules\imgproc\src\color.cpp:10600: error: (-215) depth == CV_8U || depth == CV_16U || depth == CV_32F in function cv::cvtColor
+
+Tue, 06 Mar 2018 09:56:35 imgcut.py[line:310] ERROR cut_img 这里出错
+Tue, 06 Mar 2018 09:56:35 imgcut.py[line:311] ERROR this is an exception message
+Traceback (most recent call last):
+  File "F:/BestAssistant\component\imgcut.py", line 303, in cut_img
+    set_val('imgpos_lowestprice', img[use_area[0][1]:use_area[0][3], use_area[0][0]:use_area[0][2]])  # ok
+IndexError: list index out of range
+Tue, 06 Mar 2018 09:56:35 imgcut.py[line:310] ERROR cut_img 这里出错
+Tue, 06 Mar 2018 09:56:35 imgcut.py[line:311] ERROR this is an exception message
+Traceback (most recent call last):
+  File "F:/BestAssistant\component\imgcut.py", line 303, in cut_img
+    set_val('imgpos_lowestprice', img[use_area[0][1]:use_area[0][3], use_area[0][0]:use_area[0][2]])  # ok
+IndexError: list index out of range
+Tue, 06 Mar 2018 09:56:35 app_thread.py[line:108] ERROR 刷新失败
+Tue, 06 Mar 2018 09:56:35 app_thread.py[line:109] ERROR this is an exception message
+Traceback (most recent call last):
+  File "F:/BestAssistant\component\app_thread.py", line 106, in run
+    findrefresh()
+  File "F:/BestAssistant\component\imgcut.py", line 325, in findrefresh
+    img = cv2.cvtColor(sc, cv2.COLOR_BGR2GRAY)  # 转灰度图
+cv2.error: C:\projects\opencv-python\opencv\modules\imgproc\src\color.cpp:10600: error: (-215) depth == CV_8U || depth == CV_16U || depth == CV_32F in function cv::cvtColor
+
+Tue, 06 Mar 2018 09:56:35 imgcut.py[line:310] ERROR cut_img 这里出错
+Tue, 06 Mar 2018 09:56:35 imgcut.py[line:311] ERROR this is an exception message
+Traceback (most recent call last):
+  File "F:/BestAssistant\component\imgcut.py", line 303, in cut_img
+    set_val('imgpos_lowestprice', img[use_area[0][1]:use_area[0][3], use_area[0][0]:use_area[0][2]])  # ok
+IndexError: list index out of range
+Tue, 06 Mar 2018 09:56:35 app_thread.py[line:108] ERROR 刷新失败
+Tue, 06 Mar 2018 09:56:35 app_thread.py[line:109] ERROR this is an exception message
+Traceback (most recent call last):
+  File "F:/BestAssistant\component\app_thread.py", line 106, in run
+    findrefresh()
+  File "F:/BestAssistant\component\imgcut.py", line 325, in findrefresh
+    img = cv2.cvtColor(sc, cv2.COLOR_BGR2GRAY)  # 转灰度图
+cv2.error: C:\projects\opencv-python\opencv\modules\imgproc\src\color.cpp:10600: error: (-215) depth == CV_8U || depth == CV_16U || depth == CV_32F in function cv::cvtColor
+
+Tue, 06 Mar 2018 09:56:35 imgcut.py[line:310] ERROR cut_img 这里出错
+Tue, 06 Mar 2018 09:56:35 imgcut.py[line:311] ERROR this is an exception message
+Traceback (most recent call last):
+  File "F:/BestAssistant\component\imgcut.py", line 303, in cut_img
+    set_val('imgpos_lowestprice', img[use_area[0][1]:use_area[0][3], use_area[0][0]:use_area[0][2]])  # ok
+IndexError: list index out of range
+Tue, 06 Mar 2018 09:56:35 app_thread.py[line:108] ERROR 刷新失败
+Tue, 06 Mar 2018 09:56:35 app_thread.py[line:109] ERROR this is an exception message
+Traceback (most recent call last):
+  File "F:/BestAssistant\component\app_thread.py", line 106, in run
+    findrefresh()
+  File "F:/BestAssistant\component\imgcut.py", line 325, in findrefresh
+    img = cv2.cvtColor(sc, cv2.COLOR_BGR2GRAY)  # 转灰度图
+cv2.error: C:\projects\opencv-python\opencv\modules\imgproc\src\color.cpp:10600: error: (-215) depth == CV_8U || depth == CV_16U || depth == CV_32F in function cv::cvtColor
+
+Tue, 06 Mar 2018 09:56:35 imgcut.py[line:310] ERROR cut_img 这里出错
+Tue, 06 Mar 2018 09:56:35 imgcut.py[line:311] ERROR this is an exception message
+Traceback (most recent call last):
+  File "F:/BestAssistant\component\imgcut.py", line 303, in cut_img
+    set_val('imgpos_lowestprice', img[use_area[0][1]:use_area[0][3], use_area[0][0]:use_area[0][2]])  # ok
+IndexError: list index out of range
+Tue, 06 Mar 2018 09:56:35 app_thread.py[line:108] ERROR 刷新失败
+Tue, 06 Mar 2018 09:56:35 app_thread.py[line:109] ERROR this is an exception message
+Traceback (most recent call last):
+  File "F:/BestAssistant\component\app_thread.py", line 106, in run
+    findrefresh()
+  File "F:/BestAssistant\component\imgcut.py", line 325, in findrefresh
+    img = cv2.cvtColor(sc, cv2.COLOR_BGR2GRAY)  # 转灰度图
+cv2.error: C:\projects\opencv-python\opencv\modules\imgproc\src\color.cpp:10600: error: (-215) depth == CV_8U || depth == CV_16U || depth == CV_32F in function cv::cvtColor
+
+Tue, 06 Mar 2018 09:56:35 app_thread.py[line:108] ERROR 刷新失败
+Tue, 06 Mar 2018 09:56:35 app_thread.py[line:109] ERROR this is an exception message
+Traceback (most recent call last):
+  File "F:/BestAssistant\component\app_thread.py", line 106, in run
+    findrefresh()
+  File "F:/BestAssistant\component\imgcut.py", line 325, in findrefresh
+    img = cv2.cvtColor(sc, cv2.COLOR_BGR2GRAY)  # 转灰度图
+cv2.error: C:\projects\opencv-python\opencv\modules\imgproc\src\color.cpp:10600: error: (-215) depth == CV_8U || depth == CV_16U || depth == CV_32F in function cv::cvtColor
+
+Tue, 06 Mar 2018 09:56:35 imgcut.py[line:310] ERROR cut_img 这里出错
+Tue, 06 Mar 2018 09:56:35 imgcut.py[line:311] ERROR this is an exception message
+Traceback (most recent call last):
+  File "F:/BestAssistant\component\imgcut.py", line 303, in cut_img
+    set_val('imgpos_lowestprice', img[use_area[0][1]:use_area[0][3], use_area[0][0]:use_area[0][2]])  # ok
+IndexError: list index out of range
+Tue, 06 Mar 2018 09:56:35 app_thread.py[line:108] ERROR 刷新失败
+Tue, 06 Mar 2018 09:56:35 app_thread.py[line:109] ERROR this is an exception message
+Traceback (most recent call last):
+  File "F:/BestAssistant\component\app_thread.py", line 106, in run
+    findrefresh()
+  File "F:/BestAssistant\component\imgcut.py", line 325, in findrefresh
+    img = cv2.cvtColor(sc, cv2.COLOR_BGR2GRAY)  # 转灰度图
+cv2.error: C:\projects\opencv-python\opencv\modules\imgproc\src\color.cpp:10600: error: (-215) depth == CV_8U || depth == CV_16U || depth == CV_32F in function cv::cvtColor
+
+Tue, 06 Mar 2018 09:56:35 imgcut.py[line:310] ERROR cut_img 这里出错
+Tue, 06 Mar 2018 09:56:35 imgcut.py[line:311] ERROR this is an exception message
+Traceback (most recent call last):
+  File "F:/BestAssistant\component\imgcut.py", line 303, in cut_img
+    set_val('imgpos_lowestprice', img[use_area[0][1]:use_area[0][3], use_area[0][0]:use_area[0][2]])  # ok
+IndexError: list index out of range
+Tue, 06 Mar 2018 09:56:35 app_thread.py[line:108] ERROR 刷新失败
+Tue, 06 Mar 2018 09:56:35 app_thread.py[line:109] ERROR this is an exception message
+Traceback (most recent call last):
+  File "F:/BestAssistant\component\app_thread.py", line 106, in run
+    findrefresh()
+  File "F:/BestAssistant\component\imgcut.py", line 325, in findrefresh
+    img = cv2.cvtColor(sc, cv2.COLOR_BGR2GRAY)  # 转灰度图
+cv2.error: C:\projects\opencv-python\opencv\modules\imgproc\src\color.cpp:10600: error: (-215) depth == CV_8U || depth == CV_16U || depth == CV_32F in function cv::cvtColor
+
+Tue, 06 Mar 2018 09:56:36 imgcut.py[line:310] ERROR cut_img 这里出错
+Tue, 06 Mar 2018 09:56:36 imgcut.py[line:311] ERROR this is an exception message
+Traceback (most recent call last):
+  File "F:/BestAssistant\component\imgcut.py", line 303, in cut_img
+    set_val('imgpos_lowestprice', img[use_area[0][1]:use_area[0][3], use_area[0][0]:use_area[0][2]])  # ok
+IndexError: list index out of range
+Tue, 06 Mar 2018 09:56:36 app_thread.py[line:108] ERROR 刷新失败
+Tue, 06 Mar 2018 09:56:36 app_thread.py[line:109] ERROR this is an exception message
+Traceback (most recent call last):
+  File "F:/BestAssistant\component\app_thread.py", line 106, in run
+    findrefresh()
+  File "F:/BestAssistant\component\imgcut.py", line 325, in findrefresh
+    img = cv2.cvtColor(sc, cv2.COLOR_BGR2GRAY)  # 转灰度图
+cv2.error: C:\projects\opencv-python\opencv\modules\imgproc\src\color.cpp:10600: error: (-215) depth == CV_8U || depth == CV_16U || depth == CV_32F in function cv::cvtColor
+
+Tue, 06 Mar 2018 09:56:36 imgcut.py[line:310] ERROR cut_img 这里出错
+Tue, 06 Mar 2018 09:56:36 imgcut.py[line:311] ERROR this is an exception message
+Traceback (most recent call last):
+  File "F:/BestAssistant\component\imgcut.py", line 303, in cut_img
+    set_val('imgpos_lowestprice', img[use_area[0][1]:use_area[0][3], use_area[0][0]:use_area[0][2]])  # ok
+IndexError: list index out of range
+Tue, 06 Mar 2018 09:56:36 app_thread.py[line:108] ERROR 刷新失败
+Tue, 06 Mar 2018 09:56:36 app_thread.py[line:109] ERROR this is an exception message
+Traceback (most recent call last):
+  File "F:/BestAssistant\component\app_thread.py", line 106, in run
+    findrefresh()
+  File "F:/BestAssistant\component\imgcut.py", line 325, in findrefresh
+    img = cv2.cvtColor(sc, cv2.COLOR_BGR2GRAY)  # 转灰度图
+cv2.error: C:\projects\opencv-python\opencv\modules\imgproc\src\color.cpp:10600: error: (-215) depth == CV_8U || depth == CV_16U || depth == CV_32F in function cv::cvtColor
+
+Tue, 06 Mar 2018 09:56:36 imgcut.py[line:310] ERROR cut_img 这里出错
+Tue, 06 Mar 2018 09:56:36 imgcut.py[line:311] ERROR this is an exception message
+Traceback (most recent call last):
+  File "F:/BestAssistant\component\imgcut.py", line 303, in cut_img
+    set_val('imgpos_lowestprice', img[use_area[0][1]:use_area[0][3], use_area[0][0]:use_area[0][2]])  # ok
+IndexError: list index out of range
+Tue, 06 Mar 2018 09:56:36 app_thread.py[line:108] ERROR 刷新失败
+Tue, 06 Mar 2018 09:56:36 app_thread.py[line:109] ERROR this is an exception message
+Traceback (most recent call last):
+  File "F:/BestAssistant\component\app_thread.py", line 106, in run
+    findrefresh()
+  File "F:/BestAssistant\component\imgcut.py", line 325, in findrefresh
+    img = cv2.cvtColor(sc, cv2.COLOR_BGR2GRAY)  # 转灰度图
+cv2.error: C:\projects\opencv-python\opencv\modules\imgproc\src\color.cpp:10600: error: (-215) depth == CV_8U || depth == CV_16U || depth == CV_32F in function cv::cvtColor
+
+Tue, 06 Mar 2018 09:56:36 imgcut.py[line:310] ERROR cut_img 这里出错
+Tue, 06 Mar 2018 09:56:36 imgcut.py[line:311] ERROR this is an exception message
+Traceback (most recent call last):
+  File "F:/BestAssistant\component\imgcut.py", line 303, in cut_img
+    set_val('imgpos_lowestprice', img[use_area[0][1]:use_area[0][3], use_area[0][0]:use_area[0][2]])  # ok
+IndexError: list index out of range
+Tue, 06 Mar 2018 09:56:36 app_thread.py[line:108] ERROR 刷新失败
+Tue, 06 Mar 2018 09:56:36 app_thread.py[line:109] ERROR this is an exception message
+Traceback (most recent call last):
+  File "F:/BestAssistant\component\app_thread.py", line 106, in run
+    findrefresh()
+  File "F:/BestAssistant\component\imgcut.py", line 325, in findrefresh
+    img = cv2.cvtColor(sc, cv2.COLOR_BGR2GRAY)  # 转灰度图
+cv2.error: C:\projects\opencv-python\opencv\modules\imgproc\src\color.cpp:10600: error: (-215) depth == CV_8U || depth == CV_16U || depth == CV_32F in function cv::cvtColor
+
+Tue, 06 Mar 2018 09:56:36 imgcut.py[line:310] ERROR cut_img 这里出错
+Tue, 06 Mar 2018 09:56:36 imgcut.py[line:311] ERROR this is an exception message
+Traceback (most recent call last):
+  File "F:/BestAssistant\component\imgcut.py", line 303, in cut_img
+    set_val('imgpos_lowestprice', img[use_area[0][1]:use_area[0][3], use_area[0][0]:use_area[0][2]])  # ok
+IndexError: list index out of range
+Tue, 06 Mar 2018 09:56:36 app_thread.py[line:108] ERROR 刷新失败
+Tue, 06 Mar 2018 09:56:36 app_thread.py[line:109] ERROR this is an exception message
+Traceback (most recent call last):
+  File "F:/BestAssistant\component\app_thread.py", line 106, in run
+    findrefresh()
+  File "F:/BestAssistant\component\imgcut.py", line 325, in findrefresh
+    img = cv2.cvtColor(sc, cv2.COLOR_BGR2GRAY)  # 转灰度图
+cv2.error: C:\projects\opencv-python\opencv\modules\imgproc\src\color.cpp:10600: error: (-215) depth == CV_8U || depth == CV_16U || depth == CV_32F in function cv::cvtColor
+
+Tue, 06 Mar 2018 09:56:36 imgcut.py[line:310] ERROR cut_img 这里出错
+Tue, 06 Mar 2018 09:56:36 imgcut.py[line:311] ERROR this is an exception message
+Traceback (most recent call last):
+  File "F:/BestAssistant\component\imgcut.py", line 303, in cut_img
+    set_val('imgpos_lowestprice', img[use_area[0][1]:use_area[0][3], use_area[0][0]:use_area[0][2]])  # ok
+IndexError: list index out of range
+Tue, 06 Mar 2018 09:56:36 app_thread.py[line:108] ERROR 刷新失败
+Tue, 06 Mar 2018 09:56:36 app_thread.py[line:109] ERROR this is an exception message
+Traceback (most recent call last):
+  File "F:/BestAssistant\component\app_thread.py", line 106, in run
+    findrefresh()
+  File "F:/BestAssistant\component\imgcut.py", line 325, in findrefresh
+    img = cv2.cvtColor(sc, cv2.COLOR_BGR2GRAY)  # 转灰度图
+cv2.error: C:\projects\opencv-python\opencv\modules\imgproc\src\color.cpp:10600: error: (-215) depth == CV_8U || depth == CV_16U || depth == CV_32F in function cv::cvtColor
+
+Tue, 06 Mar 2018 09:56:36 imgcut.py[line:310] ERROR cut_img 这里出错
+Tue, 06 Mar 2018 09:56:36 imgcut.py[line:311] ERROR this is an exception message
+Traceback (most recent call last):
+  File "F:/BestAssistant\component\imgcut.py", line 303, in cut_img
+    set_val('imgpos_lowestprice', img[use_area[0][1]:use_area[0][3], use_area[0][0]:use_area[0][2]])  # ok
+IndexError: list index out of range
+Tue, 06 Mar 2018 09:56:36 app_thread.py[line:108] ERROR 刷新失败
+Tue, 06 Mar 2018 09:56:36 app_thread.py[line:109] ERROR this is an exception message
+Traceback (most recent call last):
+  File "F:/BestAssistant\component\app_thread.py", line 106, in run
+    findrefresh()
+  File "F:/BestAssistant\component\imgcut.py", line 325, in findrefresh
+    img = cv2.cvtColor(sc, cv2.COLOR_BGR2GRAY)  # 转灰度图
+cv2.error: C:\projects\opencv-python\opencv\modules\imgproc\src\color.cpp:10600: error: (-215) depth == CV_8U || depth == CV_16U || depth == CV_32F in function cv::cvtColor
+
+Tue, 06 Mar 2018 09:56:36 imgcut.py[line:310] ERROR cut_img 这里出错
+Tue, 06 Mar 2018 09:56:36 imgcut.py[line:311] ERROR this is an exception message
+Traceback (most recent call last):
+  File "F:/BestAssistant\component\imgcut.py", line 303, in cut_img
+    set_val('imgpos_lowestprice', img[use_area[0][1]:use_area[0][3], use_area[0][0]:use_area[0][2]])  # ok
+IndexError: list index out of range
+Tue, 06 Mar 2018 09:56:36 app_thread.py[line:108] ERROR 刷新失败
+Tue, 06 Mar 2018 09:56:36 app_thread.py[line:109] ERROR this is an exception message
+Traceback (most recent call last):
+  File "F:/BestAssistant\component\app_thread.py", line 106, in run
+    findrefresh()
+  File "F:/BestAssistant\component\imgcut.py", line 325, in findrefresh
+    img = cv2.cvtColor(sc, cv2.COLOR_BGR2GRAY)  # 转灰度图
+cv2.error: C:\projects\opencv-python\opencv\modules\imgproc\src\color.cpp:10600: error: (-215) depth == CV_8U || depth == CV_16U || depth == CV_32F in function cv::cvtColor
+
+Tue, 06 Mar 2018 09:56:36 imgcut.py[line:310] ERROR cut_img 这里出错
+Tue, 06 Mar 2018 09:56:36 app_thread.py[line:108] ERROR 刷新失败
+Tue, 06 Mar 2018 09:56:36 imgcut.py[line:311] ERROR this is an exception message
+Traceback (most recent call last):
+  File "F:/BestAssistant\component\imgcut.py", line 303, in cut_img
+    set_val('imgpos_lowestprice', img[use_area[0][1]:use_area[0][3], use_area[0][0]:use_area[0][2]])  # ok
+IndexError: list index out of range
+Tue, 06 Mar 2018 09:56:36 app_thread.py[line:109] ERROR this is an exception message
+Traceback (most recent call last):
+  File "F:/BestAssistant\component\app_thread.py", line 106, in run
+    findrefresh()
+  File "F:/BestAssistant\component\imgcut.py", line 325, in findrefresh
+    img = cv2.cvtColor(sc, cv2.COLOR_BGR2GRAY)  # 转灰度图
+cv2.error: C:\projects\opencv-python\opencv\modules\imgproc\src\color.cpp:10600: error: (-215) depth == CV_8U || depth == CV_16U || depth == CV_32F in function cv::cvtColor
+
+Tue, 06 Mar 2018 09:56:36 imgcut.py[line:310] ERROR cut_img 这里出错
+Tue, 06 Mar 2018 09:56:36 imgcut.py[line:311] ERROR this is an exception message
+Traceback (most recent call last):
+  File "F:/BestAssistant\component\imgcut.py", line 303, in cut_img
+    set_val('imgpos_lowestprice', img[use_area[0][1]:use_area[0][3], use_area[0][0]:use_area[0][2]])  # ok
+IndexError: list index out of range
+Tue, 06 Mar 2018 09:56:36 app_thread.py[line:108] ERROR 刷新失败
+Tue, 06 Mar 2018 09:56:36 app_thread.py[line:109] ERROR this is an exception message
+Traceback (most recent call last):
+  File "F:/BestAssistant\component\app_thread.py", line 106, in run
+    findrefresh()
+  File "F:/BestAssistant\component\imgcut.py", line 325, in findrefresh
+    img = cv2.cvtColor(sc, cv2.COLOR_BGR2GRAY)  # 转灰度图
+cv2.error: C:\projects\opencv-python\opencv\modules\imgproc\src\color.cpp:10600: error: (-215) depth == CV_8U || depth == CV_16U || depth == CV_32F in function cv::cvtColor
+
+Tue, 06 Mar 2018 09:56:36 app_thread.py[line:108] ERROR 刷新失败
+Tue, 06 Mar 2018 09:56:36 app_thread.py[line:109] ERROR this is an exception message
+Traceback (most recent call last):
+  File "F:/BestAssistant\component\app_thread.py", line 106, in run
+    findrefresh()
+  File "F:/BestAssistant\component\imgcut.py", line 325, in findrefresh
+    img = cv2.cvtColor(sc, cv2.COLOR_BGR2GRAY)  # 转灰度图
+cv2.error: C:\projects\opencv-python\opencv\modules\imgproc\src\color.cpp:10600: error: (-215) depth == CV_8U || depth == CV_16U || depth == CV_32F in function cv::cvtColor
+
+Tue, 06 Mar 2018 09:56:36 imgcut.py[line:310] ERROR cut_img 这里出错
+Tue, 06 Mar 2018 09:56:36 imgcut.py[line:311] ERROR this is an exception message
+Traceback (most recent call last):
+  File "F:/BestAssistant\component\imgcut.py", line 303, in cut_img
+    set_val('imgpos_lowestprice', img[use_area[0][1]:use_area[0][3], use_area[0][0]:use_area[0][2]])  # ok
+IndexError: list index out of range
+Tue, 06 Mar 2018 09:56:36 app_thread.py[line:108] ERROR 刷新失败
+Tue, 06 Mar 2018 09:56:36 app_thread.py[line:109] ERROR this is an exception message
+Traceback (most recent call last):
+  File "F:/BestAssistant\component\app_thread.py", line 106, in run
+    findrefresh()
+  File "F:/BestAssistant\component\imgcut.py", line 325, in findrefresh
+    img = cv2.cvtColor(sc, cv2.COLOR_BGR2GRAY)  # 转灰度图
+cv2.error: C:\projects\opencv-python\opencv\modules\imgproc\src\color.cpp:10600: error: (-215) depth == CV_8U || depth == CV_16U || depth == CV_32F in function cv::cvtColor
+
+Tue, 06 Mar 2018 09:56:36 imgcut.py[line:310] ERROR cut_img 这里出错
+Tue, 06 Mar 2018 09:56:36 imgcut.py[line:311] ERROR this is an exception message
+Traceback (most recent call last):
+  File "F:/BestAssistant\component\imgcut.py", line 303, in cut_img
+    set_val('imgpos_lowestprice', img[use_area[0][1]:use_area[0][3], use_area[0][0]:use_area[0][2]])  # ok
+IndexError: list index out of range
+Tue, 06 Mar 2018 09:56:36 app_thread.py[line:108] ERROR 刷新失败
+Tue, 06 Mar 2018 09:56:36 app_thread.py[line:109] ERROR this is an exception message
+Traceback (most recent call last):
+  File "F:/BestAssistant\component\app_thread.py", line 106, in run
+    findrefresh()
+  File "F:/BestAssistant\component\imgcut.py", line 325, in findrefresh
+    img = cv2.cvtColor(sc, cv2.COLOR_BGR2GRAY)  # 转灰度图
+cv2.error: C:\projects\opencv-python\opencv\modules\imgproc\src\color.cpp:10600: error: (-215) depth == CV_8U || depth == CV_16U || depth == CV_32F in function cv::cvtColor
+
+Tue, 06 Mar 2018 09:56:36 imgcut.py[line:310] ERROR cut_img 这里出错
+Tue, 06 Mar 2018 09:56:36 imgcut.py[line:311] ERROR this is an exception message
+Traceback (most recent call last):
+  File "F:/BestAssistant\component\imgcut.py", line 303, in cut_img
+    set_val('imgpos_lowestprice', img[use_area[0][1]:use_area[0][3], use_area[0][0]:use_area[0][2]])  # ok
+IndexError: list index out of range
+Tue, 06 Mar 2018 09:56:36 app_thread.py[line:108] ERROR 刷新失败
+Tue, 06 Mar 2018 09:56:36 app_thread.py[line:109] ERROR this is an exception message
+Traceback (most recent call last):
+  File "F:/BestAssistant\component\app_thread.py", line 106, in run
+    findrefresh()
+  File "F:/BestAssistant\component\imgcut.py", line 325, in findrefresh
+    img = cv2.cvtColor(sc, cv2.COLOR_BGR2GRAY)  # 转灰度图
+cv2.error: C:\projects\opencv-python\opencv\modules\imgproc\src\color.cpp:10600: error: (-215) depth == CV_8U || depth == CV_16U || depth == CV_32F in function cv::cvtColor
+
+Tue, 06 Mar 2018 09:56:36 app_thread.py[line:108] ERROR 刷新失败
+Tue, 06 Mar 2018 09:56:36 app_thread.py[line:109] ERROR this is an exception message
+Traceback (most recent call last):
+  File "F:/BestAssistant\component\app_thread.py", line 106, in run
+    findrefresh()
+  File "F:/BestAssistant\component\imgcut.py", line 325, in findrefresh
+    img = cv2.cvtColor(sc, cv2.COLOR_BGR2GRAY)  # 转灰度图
+cv2.error: C:\projects\opencv-python\opencv\modules\imgproc\src\color.cpp:10600: error: (-215) depth == CV_8U || depth == CV_16U || depth == CV_32F in function cv::cvtColor
+
+Tue, 06 Mar 2018 09:56:36 imgcut.py[line:310] ERROR cut_img 这里出错
+Tue, 06 Mar 2018 09:56:36 imgcut.py[line:311] ERROR this is an exception message
+Traceback (most recent call last):
+  File "F:/BestAssistant\component\imgcut.py", line 303, in cut_img
+    set_val('imgpos_lowestprice', img[use_area[0][1]:use_area[0][3], use_area[0][0]:use_area[0][2]])  # ok
+IndexError: list index out of range
+Tue, 06 Mar 2018 09:56:36 app_thread.py[line:108] ERROR 刷新失败
+Tue, 06 Mar 2018 09:56:36 app_thread.py[line:109] ERROR this is an exception message
+Traceback (most recent call last):
+  File "F:/BestAssistant\component\app_thread.py", line 106, in run
+    findrefresh()
+  File "F:/BestAssistant\component\imgcut.py", line 325, in findrefresh
+    img = cv2.cvtColor(sc, cv2.COLOR_BGR2GRAY)  # 转灰度图
+cv2.error: C:\projects\opencv-python\opencv\modules\imgproc\src\color.cpp:10600: error: (-215) depth == CV_8U || depth == CV_16U || depth == CV_32F in function cv::cvtColor
+
+Tue, 06 Mar 2018 09:56:36 imgcut.py[line:310] ERROR cut_img 这里出错
+Tue, 06 Mar 2018 09:56:36 imgcut.py[line:311] ERROR this is an exception message
+Traceback (most recent call last):
+  File "F:/BestAssistant\component\imgcut.py", line 303, in cut_img
+    set_val('imgpos_lowestprice', img[use_area[0][1]:use_area[0][3], use_area[0][0]:use_area[0][2]])  # ok
+IndexError: list index out of range
+Tue, 06 Mar 2018 09:56:36 app_thread.py[line:108] ERROR 刷新失败
+Tue, 06 Mar 2018 09:56:36 app_thread.py[line:109] ERROR this is an exception message
+Traceback (most recent call last):
+  File "F:/BestAssistant\component\app_thread.py", line 106, in run
+    findrefresh()
+  File "F:/BestAssistant\component\imgcut.py", line 325, in findrefresh
+    img = cv2.cvtColor(sc, cv2.COLOR_BGR2GRAY)  # 转灰度图
+cv2.error: C:\projects\opencv-python\opencv\modules\imgproc\src\color.cpp:10600: error: (-215) depth == CV_8U || depth == CV_16U || depth == CV_32F in function cv::cvtColor
+
+Tue, 06 Mar 2018 09:56:37 imgcut.py[line:310] ERROR cut_img 这里出错
+Tue, 06 Mar 2018 09:56:37 imgcut.py[line:311] ERROR this is an exception message
+Traceback (most recent call last):
+  File "F:/BestAssistant\component\imgcut.py", line 303, in cut_img
+    set_val('imgpos_lowestprice', img[use_area[0][1]:use_area[0][3], use_area[0][0]:use_area[0][2]])  # ok
+IndexError: list index out of range
+Tue, 06 Mar 2018 09:56:37 app_thread.py[line:108] ERROR 刷新失败
+Tue, 06 Mar 2018 09:56:37 app_thread.py[line:109] ERROR this is an exception message
+Traceback (most recent call last):
+  File "F:/BestAssistant\component\app_thread.py", line 106, in run
+    findrefresh()
+  File "F:/BestAssistant\component\imgcut.py", line 325, in findrefresh
+    img = cv2.cvtColor(sc, cv2.COLOR_BGR2GRAY)  # 转灰度图
+cv2.error: C:\projects\opencv-python\opencv\modules\imgproc\src\color.cpp:10600: error: (-215) depth == CV_8U || depth == CV_16U || depth == CV_32F in function cv::cvtColor
+
+Tue, 06 Mar 2018 09:56:37 imgcut.py[line:310] ERROR cut_img 这里出错
+Tue, 06 Mar 2018 09:56:37 imgcut.py[line:311] ERROR this is an exception message
+Traceback (most recent call last):
+  File "F:/BestAssistant\component\imgcut.py", line 303, in cut_img
+    set_val('imgpos_lowestprice', img[use_area[0][1]:use_area[0][3], use_area[0][0]:use_area[0][2]])  # ok
+IndexError: list index out of range
+Tue, 06 Mar 2018 09:56:37 app_thread.py[line:108] ERROR 刷新失败
+Tue, 06 Mar 2018 09:56:37 app_thread.py[line:109] ERROR this is an exception message
+Traceback (most recent call last):
+  File "F:/BestAssistant\component\app_thread.py", line 106, in run
+    findrefresh()
+  File "F:/BestAssistant\component\imgcut.py", line 325, in findrefresh
+    img = cv2.cvtColor(sc, cv2.COLOR_BGR2GRAY)  # 转灰度图
+cv2.error: C:\projects\opencv-python\opencv\modules\imgproc\src\color.cpp:10600: error: (-215) depth == CV_8U || depth == CV_16U || depth == CV_32F in function cv::cvtColor
+
+Tue, 06 Mar 2018 09:56:37 app_thread.py[line:108] ERROR 刷新失败
+Tue, 06 Mar 2018 09:56:37 imgcut.py[line:310] ERROR cut_img 这里出错
+Tue, 06 Mar 2018 09:56:37 app_thread.py[line:109] ERROR this is an exception message
+Traceback (most recent call last):
+  File "F:/BestAssistant\component\app_thread.py", line 106, in run
+    findrefresh()
+  File "F:/BestAssistant\component\imgcut.py", line 325, in findrefresh
+    img = cv2.cvtColor(sc, cv2.COLOR_BGR2GRAY)  # 转灰度图
+cv2.error: C:\projects\opencv-python\opencv\modules\imgproc\src\color.cpp:10600: error: (-215) depth == CV_8U || depth == CV_16U || depth == CV_32F in function cv::cvtColor
+
+Tue, 06 Mar 2018 09:56:37 imgcut.py[line:311] ERROR this is an exception message
+Traceback (most recent call last):
+  File "F:/BestAssistant\component\imgcut.py", line 303, in cut_img
+    set_val('imgpos_lowestprice', img[use_area[0][1]:use_area[0][3], use_area[0][0]:use_area[0][2]])  # ok
+IndexError: list index out of range
+Tue, 06 Mar 2018 09:56:37 imgcut.py[line:310] ERROR cut_img 这里出错
+Tue, 06 Mar 2018 09:56:37 imgcut.py[line:311] ERROR this is an exception message
+Traceback (most recent call last):
+  File "F:/BestAssistant\component\imgcut.py", line 303, in cut_img
+    set_val('imgpos_lowestprice', img[use_area[0][1]:use_area[0][3], use_area[0][0]:use_area[0][2]])  # ok
+IndexError: list index out of range
+Tue, 06 Mar 2018 09:56:37 app_thread.py[line:108] ERROR 刷新失败
+Tue, 06 Mar 2018 09:56:37 app_thread.py[line:109] ERROR this is an exception message
+Traceback (most recent call last):
+  File "F:/BestAssistant\component\app_thread.py", line 106, in run
+    findrefresh()
+  File "F:/BestAssistant\component\imgcut.py", line 325, in findrefresh
+    img = cv2.cvtColor(sc, cv2.COLOR_BGR2GRAY)  # 转灰度图
+cv2.error: C:\projects\opencv-python\opencv\modules\imgproc\src\color.cpp:10600: error: (-215) depth == CV_8U || depth == CV_16U || depth == CV_32F in function cv::cvtColor
+
+Tue, 06 Mar 2018 09:56:37 app_thread.py[line:108] ERROR 刷新失败
+Tue, 06 Mar 2018 09:56:37 app_thread.py[line:109] ERROR this is an exception message
+Traceback (most recent call last):
+  File "F:/BestAssistant\component\app_thread.py", line 106, in run
+    findrefresh()
+  File "F:/BestAssistant\component\imgcut.py", line 325, in findrefresh
+    img = cv2.cvtColor(sc, cv2.COLOR_BGR2GRAY)  # 转灰度图
+cv2.error: C:\projects\opencv-python\opencv\modules\imgproc\src\color.cpp:10600: error: (-215) depth == CV_8U || depth == CV_16U || depth == CV_32F in function cv::cvtColor
+
+Tue, 06 Mar 2018 09:56:37 imgcut.py[line:310] ERROR cut_img 这里出错
+Tue, 06 Mar 2018 09:56:37 imgcut.py[line:311] ERROR this is an exception message
+Traceback (most recent call last):
+  File "F:/BestAssistant\component\imgcut.py", line 303, in cut_img
+    set_val('imgpos_lowestprice', img[use_area[0][1]:use_area[0][3], use_area[0][0]:use_area[0][2]])  # ok
+IndexError: list index out of range
+Tue, 06 Mar 2018 09:56:37 app_thread.py[line:108] ERROR 刷新失败
+Tue, 06 Mar 2018 09:56:37 app_thread.py[line:109] ERROR this is an exception message
+Traceback (most recent call last):
+  File "F:/BestAssistant\component\app_thread.py", line 106, in run
+    findrefresh()
+  File "F:/BestAssistant\component\imgcut.py", line 325, in findrefresh
+    img = cv2.cvtColor(sc, cv2.COLOR_BGR2GRAY)  # 转灰度图
+cv2.error: C:\projects\opencv-python\opencv\modules\imgproc\src\color.cpp:10600: error: (-215) depth == CV_8U || depth == CV_16U || depth == CV_32F in function cv::cvtColor
+
+Tue, 06 Mar 2018 09:56:37 imgcut.py[line:310] ERROR cut_img 这里出错
+Tue, 06 Mar 2018 09:56:37 app_thread.py[line:108] ERROR 刷新失败
+Tue, 06 Mar 2018 09:56:37 imgcut.py[line:311] ERROR this is an exception message
+Traceback (most recent call last):
+  File "F:/BestAssistant\component\imgcut.py", line 303, in cut_img
+    set_val('imgpos_lowestprice', img[use_area[0][1]:use_area[0][3], use_area[0][0]:use_area[0][2]])  # ok
+IndexError: list index out of range
+Tue, 06 Mar 2018 09:56:37 app_thread.py[line:109] ERROR this is an exception message
+Traceback (most recent call last):
+  File "F:/BestAssistant\component\app_thread.py", line 106, in run
+    findrefresh()
+  File "F:/BestAssistant\component\imgcut.py", line 325, in findrefresh
+    img = cv2.cvtColor(sc, cv2.COLOR_BGR2GRAY)  # 转灰度图
+cv2.error: C:\projects\opencv-python\opencv\modules\imgproc\src\color.cpp:10600: error: (-215) depth == CV_8U || depth == CV_16U || depth == CV_32F in function cv::cvtColor
+
+Tue, 06 Mar 2018 09:56:37 imgcut.py[line:310] ERROR cut_img 这里出错
+Tue, 06 Mar 2018 09:56:37 imgcut.py[line:311] ERROR this is an exception message
+Traceback (most recent call last):
+  File "F:/BestAssistant\component\imgcut.py", line 303, in cut_img
+    set_val('imgpos_lowestprice', img[use_area[0][1]:use_area[0][3], use_area[0][0]:use_area[0][2]])  # ok
+IndexError: list index out of range
+Tue, 06 Mar 2018 09:56:37 app_thread.py[line:108] ERROR 刷新失败
+Tue, 06 Mar 2018 09:56:37 app_thread.py[line:109] ERROR this is an exception message
+Traceback (most recent call last):
+  File "F:/BestAssistant\component\app_thread.py", line 106, in run
+    findrefresh()
+  File "F:/BestAssistant\component\imgcut.py", line 325, in findrefresh
+    img = cv2.cvtColor(sc, cv2.COLOR_BGR2GRAY)  # 转灰度图
+cv2.error: C:\projects\opencv-python\opencv\modules\imgproc\src\color.cpp:10600: error: (-215) depth == CV_8U || depth == CV_16U || depth == CV_32F in function cv::cvtColor
+
+Tue, 06 Mar 2018 09:56:37 imgcut.py[line:310] ERROR cut_img 这里出错
+Tue, 06 Mar 2018 09:56:37 imgcut.py[line:311] ERROR this is an exception message
+Traceback (most recent call last):
+  File "F:/BestAssistant\component\imgcut.py", line 303, in cut_img
+    set_val('imgpos_lowestprice', img[use_area[0][1]:use_area[0][3], use_area[0][0]:use_area[0][2]])  # ok
+IndexError: list index out of range
+Tue, 06 Mar 2018 09:56:37 app_thread.py[line:108] ERROR 刷新失败
+Tue, 06 Mar 2018 09:56:37 app_thread.py[line:109] ERROR this is an exception message
+Traceback (most recent call last):
+  File "F:/BestAssistant\component\app_thread.py", line 106, in run
+    findrefresh()
+  File "F:/BestAssistant\component\imgcut.py", line 325, in findrefresh
+    img = cv2.cvtColor(sc, cv2.COLOR_BGR2GRAY)  # 转灰度图
+cv2.error: C:\projects\opencv-python\opencv\modules\imgproc\src\color.cpp:10600: error: (-215) depth == CV_8U || depth == CV_16U || depth == CV_32F in function cv::cvtColor
+
+Tue, 06 Mar 2018 09:56:37 app_thread.py[line:108] ERROR 刷新失败
+Tue, 06 Mar 2018 09:56:37 app_thread.py[line:109] ERROR this is an exception message
+Traceback (most recent call last):
+  File "F:/BestAssistant\component\app_thread.py", line 106, in run
+    findrefresh()
+  File "F:/BestAssistant\component\imgcut.py", line 325, in findrefresh
+    img = cv2.cvtColor(sc, cv2.COLOR_BGR2GRAY)  # 转灰度图
+cv2.error: C:\projects\opencv-python\opencv\modules\imgproc\src\color.cpp:10600: error: (-215) depth == CV_8U || depth == CV_16U || depth == CV_32F in function cv::cvtColor
+
+Tue, 06 Mar 2018 09:56:37 imgcut.py[line:310] ERROR cut_img 这里出错
+Tue, 06 Mar 2018 09:56:37 imgcut.py[line:311] ERROR this is an exception message
+Traceback (most recent call last):
+  File "F:/BestAssistant\component\imgcut.py", line 303, in cut_img
+    set_val('imgpos_lowestprice', img[use_area[0][1]:use_area[0][3], use_area[0][0]:use_area[0][2]])  # ok
+IndexError: list index out of range
+Tue, 06 Mar 2018 09:56:37 app_thread.py[line:108] ERROR 刷新失败
+Tue, 06 Mar 2018 09:56:37 app_thread.py[line:109] ERROR this is an exception message
+Traceback (most recent call last):
+  File "F:/BestAssistant\component\app_thread.py", line 106, in run
+    findrefresh()
+  File "F:/BestAssistant\component\imgcut.py", line 325, in findrefresh
+    img = cv2.cvtColor(sc, cv2.COLOR_BGR2GRAY)  # 转灰度图
+cv2.error: C:\projects\opencv-python\opencv\modules\imgproc\src\color.cpp:10600: error: (-215) depth == CV_8U || depth == CV_16U || depth == CV_32F in function cv::cvtColor
+
+Tue, 06 Mar 2018 09:56:37 imgcut.py[line:310] ERROR cut_img 这里出错
+Tue, 06 Mar 2018 09:56:37 imgcut.py[line:311] ERROR this is an exception message
+Traceback (most recent call last):
+  File "F:/BestAssistant\component\imgcut.py", line 303, in cut_img
+    set_val('imgpos_lowestprice', img[use_area[0][1]:use_area[0][3], use_area[0][0]:use_area[0][2]])  # ok
+IndexError: list index out of range
+Tue, 06 Mar 2018 09:56:37 app_thread.py[line:108] ERROR 刷新失败
+Tue, 06 Mar 2018 09:56:37 app_thread.py[line:109] ERROR this is an exception message
+Traceback (most recent call last):
+  File "F:/BestAssistant\component\app_thread.py", line 106, in run
+    findrefresh()
+  File "F:/BestAssistant\component\imgcut.py", line 325, in findrefresh
+    img = cv2.cvtColor(sc, cv2.COLOR_BGR2GRAY)  # 转灰度图
+cv2.error: C:\projects\opencv-python\opencv\modules\imgproc\src\color.cpp:10600: error: (-215) depth == CV_8U || depth == CV_16U || depth == CV_32F in function cv::cvtColor
+
+Tue, 06 Mar 2018 09:56:37 imgcut.py[line:310] ERROR cut_img 这里出错
+Tue, 06 Mar 2018 09:56:37 imgcut.py[line:311] ERROR this is an exception message
+Traceback (most recent call last):
+  File "F:/BestAssistant\component\imgcut.py", line 303, in cut_img
+    set_val('imgpos_lowestprice', img[use_area[0][1]:use_area[0][3], use_area[0][0]:use_area[0][2]])  # ok
+IndexError: list index out of range
+Tue, 06 Mar 2018 09:56:37 app_thread.py[line:108] ERROR 刷新失败
+Tue, 06 Mar 2018 09:56:37 app_thread.py[line:109] ERROR this is an exception message
+Traceback (most recent call last):
+  File "F:/BestAssistant\component\app_thread.py", line 106, in run
+    findrefresh()
+  File "F:/BestAssistant\component\imgcut.py", line 325, in findrefresh
+    img = cv2.cvtColor(sc, cv2.COLOR_BGR2GRAY)  # 转灰度图
+cv2.error: C:\projects\opencv-python\opencv\modules\imgproc\src\color.cpp:10600: error: (-215) depth == CV_8U || depth == CV_16U || depth == CV_32F in function cv::cvtColor
+
+Tue, 06 Mar 2018 09:56:37 app_thread.py[line:108] ERROR 刷新失败
+Tue, 06 Mar 2018 09:56:37 app_thread.py[line:109] ERROR this is an exception message
+Traceback (most recent call last):
+  File "F:/BestAssistant\component\app_thread.py", line 106, in run
+    findrefresh()
+  File "F:/BestAssistant\component\imgcut.py", line 325, in findrefresh
+    img = cv2.cvtColor(sc, cv2.COLOR_BGR2GRAY)  # 转灰度图
+cv2.error: C:\projects\opencv-python\opencv\modules\imgproc\src\color.cpp:10600: error: (-215) depth == CV_8U || depth == CV_16U || depth == CV_32F in function cv::cvtColor
+
+Tue, 06 Mar 2018 09:56:37 imgcut.py[line:310] ERROR cut_img 这里出错
+Tue, 06 Mar 2018 09:56:37 imgcut.py[line:311] ERROR this is an exception message
+Traceback (most recent call last):
+  File "F:/BestAssistant\component\imgcut.py", line 303, in cut_img
+    set_val('imgpos_lowestprice', img[use_area[0][1]:use_area[0][3], use_area[0][0]:use_area[0][2]])  # ok
+IndexError: list index out of range
+Tue, 06 Mar 2018 09:56:37 app_thread.py[line:108] ERROR 刷新失败
+Tue, 06 Mar 2018 09:56:37 app_thread.py[line:109] ERROR this is an exception message
+Traceback (most recent call last):
+  File "F:/BestAssistant\component\app_thread.py", line 106, in run
+    findrefresh()
+  File "F:/BestAssistant\component\imgcut.py", line 325, in findrefresh
+    img = cv2.cvtColor(sc, cv2.COLOR_BGR2GRAY)  # 转灰度图
+cv2.error: C:\projects\opencv-python\opencv\modules\imgproc\src\color.cpp:10600: error: (-215) depth == CV_8U || depth == CV_16U || depth == CV_32F in function cv::cvtColor
+
+Tue, 06 Mar 2018 09:56:37 imgcut.py[line:310] ERROR cut_img 这里出错
+Tue, 06 Mar 2018 09:56:37 imgcut.py[line:311] ERROR this is an exception message
+Traceback (most recent call last):
+  File "F:/BestAssistant\component\imgcut.py", line 303, in cut_img
+    set_val('imgpos_lowestprice', img[use_area[0][1]:use_area[0][3], use_area[0][0]:use_area[0][2]])  # ok
+IndexError: list index out of range
+Tue, 06 Mar 2018 09:56:37 app_thread.py[line:108] ERROR 刷新失败
+Tue, 06 Mar 2018 09:56:37 app_thread.py[line:109] ERROR this is an exception message
+Traceback (most recent call last):
+  File "F:/BestAssistant\component\app_thread.py", line 106, in run
+    findrefresh()
+  File "F:/BestAssistant\component\imgcut.py", line 325, in findrefresh
+    img = cv2.cvtColor(sc, cv2.COLOR_BGR2GRAY)  # 转灰度图
+cv2.error: C:\projects\opencv-python\opencv\modules\imgproc\src\color.cpp:10600: error: (-215) depth == CV_8U || depth == CV_16U || depth == CV_32F in function cv::cvtColor
+
+Tue, 06 Mar 2018 09:56:38 imgcut.py[line:310] ERROR cut_img 这里出错
+Tue, 06 Mar 2018 09:56:38 imgcut.py[line:311] ERROR this is an exception message
+Traceback (most recent call last):
+  File "F:/BestAssistant\component\imgcut.py", line 303, in cut_img
+    set_val('imgpos_lowestprice', img[use_area[0][1]:use_area[0][3], use_area[0][0]:use_area[0][2]])  # ok
+IndexError: list index out of range
+Tue, 06 Mar 2018 09:56:38 app_thread.py[line:108] ERROR 刷新失败
+Tue, 06 Mar 2018 09:56:38 app_thread.py[line:109] ERROR this is an exception message
+Traceback (most recent call last):
+  File "F:/BestAssistant\component\app_thread.py", line 106, in run
+    findrefresh()
+  File "F:/BestAssistant\component\imgcut.py", line 325, in findrefresh
+    img = cv2.cvtColor(sc, cv2.COLOR_BGR2GRAY)  # 转灰度图
+cv2.error: C:\projects\opencv-python\opencv\modules\imgproc\src\color.cpp:10600: error: (-215) depth == CV_8U || depth == CV_16U || depth == CV_32F in function cv::cvtColor
+
+Tue, 06 Mar 2018 09:56:38 app_thread.py[line:108] ERROR 刷新失败
+Tue, 06 Mar 2018 09:56:38 app_thread.py[line:109] ERROR this is an exception message
+Traceback (most recent call last):
+  File "F:/BestAssistant\component\app_thread.py", line 106, in run
+    findrefresh()
+  File "F:/BestAssistant\component\imgcut.py", line 325, in findrefresh
+    img = cv2.cvtColor(sc, cv2.COLOR_BGR2GRAY)  # 转灰度图
+cv2.error: C:\projects\opencv-python\opencv\modules\imgproc\src\color.cpp:10600: error: (-215) depth == CV_8U || depth == CV_16U || depth == CV_32F in function cv::cvtColor
+
+Tue, 06 Mar 2018 09:56:38 app_thread.py[line:108] ERROR 刷新失败
+Tue, 06 Mar 2018 09:56:38 app_thread.py[line:109] ERROR this is an exception message
+Traceback (most recent call last):
+  File "F:/BestAssistant\component\app_thread.py", line 106, in run
+    findrefresh()
+  File "F:/BestAssistant\component\imgcut.py", line 325, in findrefresh
+    img = cv2.cvtColor(sc, cv2.COLOR_BGR2GRAY)  # 转灰度图
+cv2.error: C:\projects\opencv-python\opencv\modules\imgproc\src\color.cpp:10600: error: (-215) depth == CV_8U || depth == CV_16U || depth == CV_32F in function cv::cvtColor
+
+Tue, 06 Mar 2018 09:56:38 imgcut.py[line:310] ERROR cut_img 这里出错
+Tue, 06 Mar 2018 09:56:38 imgcut.py[line:311] ERROR this is an exception message
+Traceback (most recent call last):
+  File "F:/BestAssistant\component\imgcut.py", line 303, in cut_img
+    set_val('imgpos_lowestprice', img[use_area[0][1]:use_area[0][3], use_area[0][0]:use_area[0][2]])  # ok
+IndexError: list index out of range
+Tue, 06 Mar 2018 09:56:38 app_thread.py[line:108] ERROR 刷新失败
+Tue, 06 Mar 2018 09:56:38 app_thread.py[line:109] ERROR this is an exception message
+Traceback (most recent call last):
+  File "F:/BestAssistant\component\app_thread.py", line 106, in run
+    findrefresh()
+  File "F:/BestAssistant\component\imgcut.py", line 325, in findrefresh
+    img = cv2.cvtColor(sc, cv2.COLOR_BGR2GRAY)  # 转灰度图
+cv2.error: C:\projects\opencv-python\opencv\modules\imgproc\src\color.cpp:10600: error: (-215) depth == CV_8U || depth == CV_16U || depth == CV_32F in function cv::cvtColor
+
+Tue, 06 Mar 2018 09:56:38 imgcut.py[line:310] ERROR cut_img 这里出错
+Tue, 06 Mar 2018 09:56:38 imgcut.py[line:311] ERROR this is an exception message
+Traceback (most recent call last):
+  File "F:/BestAssistant\component\imgcut.py", line 303, in cut_img
+    set_val('imgpos_lowestprice', img[use_area[0][1]:use_area[0][3], use_area[0][0]:use_area[0][2]])  # ok
+IndexError: list index out of range
+Tue, 06 Mar 2018 09:56:38 app_thread.py[line:108] ERROR 刷新失败
+Tue, 06 Mar 2018 09:56:38 app_thread.py[line:109] ERROR this is an exception message
+Traceback (most recent call last):
+  File "F:/BestAssistant\component\app_thread.py", line 106, in run
+    findrefresh()
+  File "F:/BestAssistant\component\imgcut.py", line 325, in findrefresh
+    img = cv2.cvtColor(sc, cv2.COLOR_BGR2GRAY)  # 转灰度图
+cv2.error: C:\projects\opencv-python\opencv\modules\imgproc\src\color.cpp:10600: error: (-215) depth == CV_8U || depth == CV_16U || depth == CV_32F in function cv::cvtColor
+
+Tue, 06 Mar 2018 09:56:38 imgcut.py[line:310] ERROR cut_img 这里出错
+Tue, 06 Mar 2018 09:56:38 imgcut.py[line:311] ERROR this is an exception message
+Traceback (most recent call last):
+  File "F:/BestAssistant\component\imgcut.py", line 303, in cut_img
+    set_val('imgpos_lowestprice', img[use_area[0][1]:use_area[0][3], use_area[0][0]:use_area[0][2]])  # ok
+IndexError: list index out of range
+Tue, 06 Mar 2018 09:56:38 app_thread.py[line:108] ERROR 刷新失败
+Tue, 06 Mar 2018 09:56:38 app_thread.py[line:109] ERROR this is an exception message
+Traceback (most recent call last):
+  File "F:/BestAssistant\component\app_thread.py", line 106, in run
+    findrefresh()
+  File "F:/BestAssistant\component\imgcut.py", line 325, in findrefresh
+    img = cv2.cvtColor(sc, cv2.COLOR_BGR2GRAY)  # 转灰度图
+cv2.error: C:\projects\opencv-python\opencv\modules\imgproc\src\color.cpp:10600: error: (-215) depth == CV_8U || depth == CV_16U || depth == CV_32F in function cv::cvtColor
+
+Tue, 06 Mar 2018 09:56:38 app_thread.py[line:108] ERROR 刷新失败
+Tue, 06 Mar 2018 09:56:38 app_thread.py[line:109] ERROR this is an exception message
+Traceback (most recent call last):
+  File "F:/BestAssistant\component\app_thread.py", line 106, in run
+    findrefresh()
+  File "F:/BestAssistant\component\imgcut.py", line 325, in findrefresh
+    img = cv2.cvtColor(sc, cv2.COLOR_BGR2GRAY)  # 转灰度图
+cv2.error: C:\projects\opencv-python\opencv\modules\imgproc\src\color.cpp:10600: error: (-215) depth == CV_8U || depth == CV_16U || depth == CV_32F in function cv::cvtColor
+
+Tue, 06 Mar 2018 09:56:38 app_thread.py[line:108] ERROR 刷新失败
+Tue, 06 Mar 2018 09:56:38 app_thread.py[line:109] ERROR this is an exception message
+Traceback (most recent call last):
+  File "F:/BestAssistant\component\app_thread.py", line 106, in run
+    findrefresh()
+  File "F:/BestAssistant\component\imgcut.py", line 325, in findrefresh
+    img = cv2.cvtColor(sc, cv2.COLOR_BGR2GRAY)  # 转灰度图
+cv2.error: C:\projects\opencv-python\opencv\modules\imgproc\src\color.cpp:10600: error: (-215) depth == CV_8U || depth == CV_16U || depth == CV_32F in function cv::cvtColor
+
+Tue, 06 Mar 2018 09:56:38 imgcut.py[line:310] ERROR cut_img 这里出错
+Tue, 06 Mar 2018 09:56:38 imgcut.py[line:311] ERROR this is an exception message
+Traceback (most recent call last):
+  File "F:/BestAssistant\component\imgcut.py", line 303, in cut_img
+    set_val('imgpos_lowestprice', img[use_area[0][1]:use_area[0][3], use_area[0][0]:use_area[0][2]])  # ok
+IndexError: list index out of range
+Tue, 06 Mar 2018 09:56:38 app_thread.py[line:108] ERROR 刷新失败
+Tue, 06 Mar 2018 09:56:38 app_thread.py[line:109] ERROR this is an exception message
+Traceback (most recent call last):
+  File "F:/BestAssistant\component\app_thread.py", line 106, in run
+    findrefresh()
+  File "F:/BestAssistant\component\imgcut.py", line 325, in findrefresh
+    img = cv2.cvtColor(sc, cv2.COLOR_BGR2GRAY)  # 转灰度图
+cv2.error: C:\projects\opencv-python\opencv\modules\imgproc\src\color.cpp:10600: error: (-215) depth == CV_8U || depth == CV_16U || depth == CV_32F in function cv::cvtColor
+
+Tue, 06 Mar 2018 09:56:38 app_thread.py[line:108] ERROR 刷新失败
+Tue, 06 Mar 2018 09:56:38 app_thread.py[line:109] ERROR this is an exception message
+Traceback (most recent call last):
+  File "F:/BestAssistant\component\app_thread.py", line 106, in run
+    findrefresh()
+  File "F:/BestAssistant\component\imgcut.py", line 325, in findrefresh
+    img = cv2.cvtColor(sc, cv2.COLOR_BGR2GRAY)  # 转灰度图
+cv2.error: C:\projects\opencv-python\opencv\modules\imgproc\src\color.cpp:10600: error: (-215) depth == CV_8U || depth == CV_16U || depth == CV_32F in function cv::cvtColor
+
+Tue, 06 Mar 2018 09:56:38 imgcut.py[line:310] ERROR cut_img 这里出错
+Tue, 06 Mar 2018 09:56:38 imgcut.py[line:311] ERROR this is an exception message
+Traceback (most recent call last):
+  File "F:/BestAssistant\component\imgcut.py", line 303, in cut_img
+    set_val('imgpos_lowestprice', img[use_area[0][1]:use_area[0][3], use_area[0][0]:use_area[0][2]])  # ok
+IndexError: list index out of range
+Tue, 06 Mar 2018 09:56:38 app_thread.py[line:108] ERROR 刷新失败
+Tue, 06 Mar 2018 09:56:38 app_thread.py[line:109] ERROR this is an exception message
+Traceback (most recent call last):
+  File "F:/BestAssistant\component\app_thread.py", line 106, in run
+    findrefresh()
+  File "F:/BestAssistant\component\imgcut.py", line 325, in findrefresh
+    img = cv2.cvtColor(sc, cv2.COLOR_BGR2GRAY)  # 转灰度图
+cv2.error: C:\projects\opencv-python\opencv\modules\imgproc\src\color.cpp:10600: error: (-215) depth == CV_8U || depth == CV_16U || depth == CV_32F in function cv::cvtColor
+
+Tue, 06 Mar 2018 09:56:38 imgcut.py[line:310] ERROR cut_img 这里出错
+Tue, 06 Mar 2018 09:56:38 imgcut.py[line:311] ERROR this is an exception message
+Traceback (most recent call last):
+  File "F:/BestAssistant\component\imgcut.py", line 303, in cut_img
+    set_val('imgpos_lowestprice', img[use_area[0][1]:use_area[0][3], use_area[0][0]:use_area[0][2]])  # ok
+IndexError: list index out of range
+Tue, 06 Mar 2018 09:56:38 app_thread.py[line:108] ERROR 刷新失败
+Tue, 06 Mar 2018 09:56:38 app_thread.py[line:109] ERROR this is an exception message
+Traceback (most recent call last):
+  File "F:/BestAssistant\component\app_thread.py", line 106, in run
+    findrefresh()
+  File "F:/BestAssistant\component\imgcut.py", line 325, in findrefresh
+    img = cv2.cvtColor(sc, cv2.COLOR_BGR2GRAY)  # 转灰度图
+cv2.error: C:\projects\opencv-python\opencv\modules\imgproc\src\color.cpp:10600: error: (-215) depth == CV_8U || depth == CV_16U || depth == CV_32F in function cv::cvtColor
+
+Tue, 06 Mar 2018 09:56:38 app_thread.py[line:108] ERROR 刷新失败
+Tue, 06 Mar 2018 09:56:38 app_thread.py[line:109] ERROR this is an exception message
+Traceback (most recent call last):
+  File "F:/BestAssistant\component\app_thread.py", line 106, in run
+    findrefresh()
+  File "F:/BestAssistant\component\imgcut.py", line 325, in findrefresh
+    img = cv2.cvtColor(sc, cv2.COLOR_BGR2GRAY)  # 转灰度图
+cv2.error: C:\projects\opencv-python\opencv\modules\imgproc\src\color.cpp:10600: error: (-215) depth == CV_8U || depth == CV_16U || depth == CV_32F in function cv::cvtColor
+
+Tue, 06 Mar 2018 09:56:38 imgcut.py[line:310] ERROR cut_img 这里出错
+Tue, 06 Mar 2018 09:56:38 imgcut.py[line:311] ERROR this is an exception message
+Traceback (most recent call last):
+  File "F:/BestAssistant\component\imgcut.py", line 303, in cut_img
+    set_val('imgpos_lowestprice', img[use_area[0][1]:use_area[0][3], use_area[0][0]:use_area[0][2]])  # ok
+IndexError: list index out of range
+Tue, 06 Mar 2018 09:56:38 app_thread.py[line:108] ERROR 刷新失败
+Tue, 06 Mar 2018 09:56:38 app_thread.py[line:109] ERROR this is an exception message
+Traceback (most recent call last):
+  File "F:/BestAssistant\component\app_thread.py", line 106, in run
+    findrefresh()
+  File "F:/BestAssistant\component\imgcut.py", line 325, in findrefresh
+    img = cv2.cvtColor(sc, cv2.COLOR_BGR2GRAY)  # 转灰度图
+cv2.error: C:\projects\opencv-python\opencv\modules\imgproc\src\color.cpp:10600: error: (-215) depth == CV_8U || depth == CV_16U || depth == CV_32F in function cv::cvtColor
+
+Tue, 06 Mar 2018 09:56:38 imgcut.py[line:310] ERROR cut_img 这里出错
+Tue, 06 Mar 2018 09:56:38 imgcut.py[line:311] ERROR this is an exception message
+Traceback (most recent call last):
+  File "F:/BestAssistant\component\imgcut.py", line 303, in cut_img
+    set_val('imgpos_lowestprice', img[use_area[0][1]:use_area[0][3], use_area[0][0]:use_area[0][2]])  # ok
+IndexError: list index out of range
+Tue, 06 Mar 2018 09:56:38 app_thread.py[line:108] ERROR 刷新失败
+Tue, 06 Mar 2018 09:56:38 app_thread.py[line:109] ERROR this is an exception message
+Traceback (most recent call last):
+  File "F:/BestAssistant\component\app_thread.py", line 106, in run
+    findrefresh()
+  File "F:/BestAssistant\component\imgcut.py", line 325, in findrefresh
+    img = cv2.cvtColor(sc, cv2.COLOR_BGR2GRAY)  # 转灰度图
+cv2.error: C:\projects\opencv-python\opencv\modules\imgproc\src\color.cpp:10600: error: (-215) depth == CV_8U || depth == CV_16U || depth == CV_32F in function cv::cvtColor
+
+Tue, 06 Mar 2018 09:56:38 imgcut.py[line:310] ERROR cut_img 这里出错
+Tue, 06 Mar 2018 09:56:38 imgcut.py[line:311] ERROR this is an exception message
+Traceback (most recent call last):
+  File "F:/BestAssistant\component\imgcut.py", line 303, in cut_img
+    set_val('imgpos_lowestprice', img[use_area[0][1]:use_area[0][3], use_area[0][0]:use_area[0][2]])  # ok
+IndexError: list index out of range
+Tue, 06 Mar 2018 09:56:38 app_thread.py[line:108] ERROR 刷新失败
+Tue, 06 Mar 2018 09:56:38 app_thread.py[line:109] ERROR this is an exception message
+Traceback (most recent call last):
+  File "F:/BestAssistant\component\app_thread.py", line 106, in run
+    findrefresh()
+  File "F:/BestAssistant\component\imgcut.py", line 325, in findrefresh
+    img = cv2.cvtColor(sc, cv2.COLOR_BGR2GRAY)  # 转灰度图
+cv2.error: C:\projects\opencv-python\opencv\modules\imgproc\src\color.cpp:10600: error: (-215) depth == CV_8U || depth == CV_16U || depth == CV_32F in function cv::cvtColor
+
+Tue, 06 Mar 2018 09:56:38 imgcut.py[line:310] ERROR cut_img 这里出错
+Tue, 06 Mar 2018 09:56:38 imgcut.py[line:311] ERROR this is an exception message
+Traceback (most recent call last):
+  File "F:/BestAssistant\component\imgcut.py", line 303, in cut_img
+    set_val('imgpos_lowestprice', img[use_area[0][1]:use_area[0][3], use_area[0][0]:use_area[0][2]])  # ok
+IndexError: list index out of range
+Tue, 06 Mar 2018 09:56:38 app_thread.py[line:108] ERROR 刷新失败
+Tue, 06 Mar 2018 09:56:38 app_thread.py[line:109] ERROR this is an exception message
+Traceback (most recent call last):
+  File "F:/BestAssistant\component\app_thread.py", line 106, in run
+    findrefresh()
+  File "F:/BestAssistant\component\imgcut.py", line 325, in findrefresh
+    img = cv2.cvtColor(sc, cv2.COLOR_BGR2GRAY)  # 转灰度图
+cv2.error: C:\projects\opencv-python\opencv\modules\imgproc\src\color.cpp:10600: error: (-215) depth == CV_8U || depth == CV_16U || depth == CV_32F in function cv::cvtColor
+
+Tue, 06 Mar 2018 09:56:39 imgcut.py[line:310] ERROR cut_img 这里出错
+Tue, 06 Mar 2018 09:56:39 imgcut.py[line:311] ERROR this is an exception message
+Traceback (most recent call last):
+  File "F:/BestAssistant\component\imgcut.py", line 303, in cut_img
+    set_val('imgpos_lowestprice', img[use_area[0][1]:use_area[0][3], use_area[0][0]:use_area[0][2]])  # ok
+IndexError: list index out of range
+Tue, 06 Mar 2018 09:56:39 app_thread.py[line:108] ERROR 刷新失败
+Tue, 06 Mar 2018 09:56:39 app_thread.py[line:109] ERROR this is an exception message
+Traceback (most recent call last):
+  File "F:/BestAssistant\component\app_thread.py", line 106, in run
+    findrefresh()
+  File "F:/BestAssistant\component\imgcut.py", line 325, in findrefresh
+    img = cv2.cvtColor(sc, cv2.COLOR_BGR2GRAY)  # 转灰度图
+cv2.error: C:\projects\opencv-python\opencv\modules\imgproc\src\color.cpp:10600: error: (-215) depth == CV_8U || depth == CV_16U || depth == CV_32F in function cv::cvtColor
+
+Tue, 06 Mar 2018 09:56:39 app_thread.py[line:108] ERROR 刷新失败
+Tue, 06 Mar 2018 09:56:39 app_thread.py[line:109] ERROR this is an exception message
+Traceback (most recent call last):
+  File "F:/BestAssistant\component\app_thread.py", line 106, in run
+    findrefresh()
+  File "F:/BestAssistant\component\imgcut.py", line 325, in findrefresh
+    img = cv2.cvtColor(sc, cv2.COLOR_BGR2GRAY)  # 转灰度图
+cv2.error: C:\projects\opencv-python\opencv\modules\imgproc\src\color.cpp:10600: error: (-215) depth == CV_8U || depth == CV_16U || depth == CV_32F in function cv::cvtColor
+
+Tue, 06 Mar 2018 09:56:41 PngImagePlugin.py[line:130] DEBUG STREAM b'IHDR' 16 13
+Tue, 06 Mar 2018 09:56:41 PngImagePlugin.py[line:130] DEBUG STREAM b'IDAT' 41 8192
+Tue, 06 Mar 2018 09:56:41 PngImagePlugin.py[line:130] DEBUG STREAM b'IHDR' 16 13
+Tue, 06 Mar 2018 09:56:41 PngImagePlugin.py[line:130] DEBUG STREAM b'IDAT' 41 985
+Tue, 06 Mar 2018 09:56:41 PngImagePlugin.py[line:130] DEBUG STREAM b'IHDR' 16 13
+Tue, 06 Mar 2018 09:56:41 PngImagePlugin.py[line:130] DEBUG STREAM b'IDAT' 41 8192
+Tue, 06 Mar 2018 09:56:41 PngImagePlugin.py[line:130] DEBUG STREAM b'IHDR' 16 13
+Tue, 06 Mar 2018 09:56:41 PngImagePlugin.py[line:130] DEBUG STREAM b'IDAT' 41 8192
+Tue, 06 Mar 2018 09:56:41 PngImagePlugin.py[line:130] DEBUG STREAM b'IHDR' 16 13
+Tue, 06 Mar 2018 09:56:41 PngImagePlugin.py[line:130] DEBUG STREAM b'IDAT' 41 8192
+Tue, 06 Mar 2018 09:56:41 PngImagePlugin.py[line:130] DEBUG STREAM b'IHDR' 16 13
+Tue, 06 Mar 2018 09:56:41 PngImagePlugin.py[line:130] DEBUG STREAM b'IDAT' 41 8192
+Tue, 06 Mar 2018 09:56:41 PngImagePlugin.py[line:130] DEBUG STREAM b'IHDR' 16 13
+Tue, 06 Mar 2018 09:56:41 PngImagePlugin.py[line:130] DEBUG STREAM b'IDAT' 41 8192
+Tue, 06 Mar 2018 09:56:41 PngImagePlugin.py[line:130] DEBUG STREAM b'IHDR' 16 13
+Tue, 06 Mar 2018 09:56:41 PngImagePlugin.py[line:130] DEBUG STREAM b'IDAT' 41 8192
+Tue, 06 Mar 2018 09:56:42 PngImagePlugin.py[line:130] DEBUG STREAM b'IHDR' 16 13
+Tue, 06 Mar 2018 09:56:42 PngImagePlugin.py[line:130] DEBUG STREAM b'IDAT' 41 8192
+Tue, 06 Mar 2018 09:56:42 PngImagePlugin.py[line:130] DEBUG STREAM b'IHDR' 16 13
+Tue, 06 Mar 2018 09:56:42 PngImagePlugin.py[line:130] DEBUG STREAM b'IDAT' 41 8192
+Tue, 06 Mar 2018 09:56:42 PngImagePlugin.py[line:130] DEBUG STREAM b'IHDR' 16 13
+Tue, 06 Mar 2018 09:56:42 PngImagePlugin.py[line:130] DEBUG STREAM b'IDAT' 41 8192
+Tue, 06 Mar 2018 09:56:42 PngImagePlugin.py[line:130] DEBUG STREAM b'IHDR' 16 13
+Tue, 06 Mar 2018 09:56:42 PngImagePlugin.py[line:130] DEBUG STREAM b'IDAT' 41 8192
+Tue, 06 Mar 2018 09:56:42 PngImagePlugin.py[line:130] DEBUG STREAM b'IHDR' 16 13
+Tue, 06 Mar 2018 09:56:42 PngImagePlugin.py[line:130] DEBUG STREAM b'IDAT' 41 8192
+Tue, 06 Mar 2018 09:56:42 PngImagePlugin.py[line:130] DEBUG STREAM b'IHDR' 16 13
+Tue, 06 Mar 2018 09:56:42 PngImagePlugin.py[line:130] DEBUG STREAM b'IDAT' 41 8192
+Tue, 06 Mar 2018 09:56:42 PngImagePlugin.py[line:130] DEBUG STREAM b'IHDR' 16 13
+Tue, 06 Mar 2018 09:56:42 PngImagePlugin.py[line:130] DEBUG STREAM b'IDAT' 41 8192
+Tue, 06 Mar 2018 09:56:42 PngImagePlugin.py[line:130] DEBUG STREAM b'IHDR' 16 13
+Tue, 06 Mar 2018 09:56:42 PngImagePlugin.py[line:130] DEBUG STREAM b'IDAT' 41 8192
+Tue, 06 Mar 2018 09:56:42 PngImagePlugin.py[line:130] DEBUG STREAM b'IHDR' 16 13
+Tue, 06 Mar 2018 09:56:42 PngImagePlugin.py[line:130] DEBUG STREAM b'IDAT' 41 8192
+Tue, 06 Mar 2018 09:56:42 PngImagePlugin.py[line:130] DEBUG STREAM b'IHDR' 16 13
+Tue, 06 Mar 2018 09:56:42 PngImagePlugin.py[line:130] DEBUG STREAM b'IDAT' 41 8192
+Tue, 06 Mar 2018 09:56:42 PngImagePlugin.py[line:130] DEBUG STREAM b'IHDR' 16 13
+Tue, 06 Mar 2018 09:56:42 PngImagePlugin.py[line:130] DEBUG STREAM b'IDAT' 41 8192
+Tue, 06 Mar 2018 09:56:42 PngImagePlugin.py[line:130] DEBUG STREAM b'IHDR' 16 13
+Tue, 06 Mar 2018 09:56:42 PngImagePlugin.py[line:130] DEBUG STREAM b'IDAT' 41 8192
+Tue, 06 Mar 2018 09:56:42 PngImagePlugin.py[line:130] DEBUG STREAM b'IHDR' 16 13
+Tue, 06 Mar 2018 09:56:42 PngImagePlugin.py[line:130] DEBUG STREAM b'IDAT' 41 8192
+Tue, 06 Mar 2018 09:56:42 PngImagePlugin.py[line:130] DEBUG STREAM b'IHDR' 16 13
+Tue, 06 Mar 2018 09:56:42 PngImagePlugin.py[line:130] DEBUG STREAM b'IDAT' 41 8192
+Tue, 06 Mar 2018 09:56:42 PngImagePlugin.py[line:130] DEBUG STREAM b'IHDR' 16 13
+Tue, 06 Mar 2018 09:56:42 PngImagePlugin.py[line:130] DEBUG STREAM b'IDAT' 41 8192
+Tue, 06 Mar 2018 09:56:42 PngImagePlugin.py[line:130] DEBUG STREAM b'IHDR' 16 13
+Tue, 06 Mar 2018 09:56:42 PngImagePlugin.py[line:130] DEBUG STREAM b'IDAT' 41 8192
+Tue, 06 Mar 2018 09:56:42 PngImagePlugin.py[line:130] DEBUG STREAM b'IHDR' 16 13
+Tue, 06 Mar 2018 09:56:42 PngImagePlugin.py[line:130] DEBUG STREAM b'IDAT' 41 8192
+Tue, 06 Mar 2018 09:56:42 PngImagePlugin.py[line:130] DEBUG STREAM b'IHDR' 16 13
+Tue, 06 Mar 2018 09:56:42 PngImagePlugin.py[line:130] DEBUG STREAM b'IDAT' 41 8192
+Tue, 06 Mar 2018 09:56:42 PngImagePlugin.py[line:130] DEBUG STREAM b'IHDR' 16 13
+Tue, 06 Mar 2018 09:56:42 PngImagePlugin.py[line:130] DEBUG STREAM b'IDAT' 41 8192
+Tue, 06 Mar 2018 09:56:42 PngImagePlugin.py[line:130] DEBUG STREAM b'IHDR' 16 13
+Tue, 06 Mar 2018 09:56:42 PngImagePlugin.py[line:130] DEBUG STREAM b'IDAT' 41 8192
+Tue, 06 Mar 2018 09:56:42 PngImagePlugin.py[line:130] DEBUG STREAM b'IHDR' 16 13
+Tue, 06 Mar 2018 09:56:42 PngImagePlugin.py[line:130] DEBUG STREAM b'IDAT' 41 8192
+Tue, 06 Mar 2018 09:56:42 PngImagePlugin.py[line:130] DEBUG STREAM b'IHDR' 16 13
+Tue, 06 Mar 2018 09:56:42 PngImagePlugin.py[line:130] DEBUG STREAM b'IDAT' 41 8192
+Tue, 06 Mar 2018 09:56:42 PngImagePlugin.py[line:130] DEBUG STREAM b'IHDR' 16 13
+Tue, 06 Mar 2018 09:56:42 PngImagePlugin.py[line:130] DEBUG STREAM b'IDAT' 41 8192
+Tue, 06 Mar 2018 09:56:42 PngImagePlugin.py[line:130] DEBUG STREAM b'IHDR' 16 13
+Tue, 06 Mar 2018 09:56:42 PngImagePlugin.py[line:130] DEBUG STREAM b'IDAT' 41 8192
+Tue, 06 Mar 2018 09:56:42 PngImagePlugin.py[line:130] DEBUG STREAM b'IHDR' 16 13
+Tue, 06 Mar 2018 09:56:42 PngImagePlugin.py[line:130] DEBUG STREAM b'IDAT' 41 8192
+Tue, 06 Mar 2018 09:56:42 PngImagePlugin.py[line:130] DEBUG STREAM b'IHDR' 16 13
+Tue, 06 Mar 2018 09:56:42 PngImagePlugin.py[line:130] DEBUG STREAM b'IDAT' 41 8192
+Tue, 06 Mar 2018 09:56:42 PngImagePlugin.py[line:130] DEBUG STREAM b'IHDR' 16 13
+Tue, 06 Mar 2018 09:56:42 PngImagePlugin.py[line:130] DEBUG STREAM b'IDAT' 41 8192
+Tue, 06 Mar 2018 09:56:42 PngImagePlugin.py[line:130] DEBUG STREAM b'IHDR' 16 13
+Tue, 06 Mar 2018 09:56:42 PngImagePlugin.py[line:130] DEBUG STREAM b'IDAT' 41 8192
+Tue, 06 Mar 2018 09:56:42 PngImagePlugin.py[line:130] DEBUG STREAM b'IHDR' 16 13
+Tue, 06 Mar 2018 09:56:42 PngImagePlugin.py[line:130] DEBUG STREAM b'IDAT' 41 8192
+Tue, 06 Mar 2018 09:56:42 PngImagePlugin.py[line:130] DEBUG STREAM b'IHDR' 16 13
+Tue, 06 Mar 2018 09:56:42 PngImagePlugin.py[line:130] DEBUG STREAM b'IDAT' 41 8192
+Tue, 06 Mar 2018 09:56:42 PngImagePlugin.py[line:130] DEBUG STREAM b'IHDR' 16 13
+Tue, 06 Mar 2018 09:56:42 PngImagePlugin.py[line:130] DEBUG STREAM b'IDAT' 41 8192
+Tue, 06 Mar 2018 09:56:42 PngImagePlugin.py[line:130] DEBUG STREAM b'IHDR' 16 13
+Tue, 06 Mar 2018 09:56:42 PngImagePlugin.py[line:130] DEBUG STREAM b'IDAT' 41 8192
+Tue, 06 Mar 2018 09:56:42 PngImagePlugin.py[line:130] DEBUG STREAM b'IHDR' 16 13
+Tue, 06 Mar 2018 09:56:42 PngImagePlugin.py[line:130] DEBUG STREAM b'IDAT' 41 8192
+Tue, 06 Mar 2018 09:56:42 PngImagePlugin.py[line:130] DEBUG STREAM b'IHDR' 16 13
+Tue, 06 Mar 2018 09:56:42 PngImagePlugin.py[line:130] DEBUG STREAM b'IDAT' 41 8192
+Tue, 06 Mar 2018 09:56:42 PngImagePlugin.py[line:130] DEBUG STREAM b'IHDR' 16 13
+Tue, 06 Mar 2018 09:56:42 PngImagePlugin.py[line:130] DEBUG STREAM b'IDAT' 41 8192
+Tue, 06 Mar 2018 09:56:42 PngImagePlugin.py[line:130] DEBUG STREAM b'IHDR' 16 13
+Tue, 06 Mar 2018 09:56:42 PngImagePlugin.py[line:130] DEBUG STREAM b'IDAT' 41 8192
+Tue, 06 Mar 2018 09:56:42 PngImagePlugin.py[line:130] DEBUG STREAM b'IHDR' 16 13
+Tue, 06 Mar 2018 09:56:42 PngImagePlugin.py[line:130] DEBUG STREAM b'IDAT' 41 8192
+Tue, 06 Mar 2018 09:56:42 PngImagePlugin.py[line:130] DEBUG STREAM b'IHDR' 16 13
+Tue, 06 Mar 2018 09:56:42 PngImagePlugin.py[line:130] DEBUG STREAM b'IDAT' 41 8192
+Tue, 06 Mar 2018 09:56:42 PngImagePlugin.py[line:130] DEBUG STREAM b'IHDR' 16 13
+Tue, 06 Mar 2018 09:56:42 PngImagePlugin.py[line:130] DEBUG STREAM b'IDAT' 41 8192
+Tue, 06 Mar 2018 09:56:42 PngImagePlugin.py[line:130] DEBUG STREAM b'IHDR' 16 13
+Tue, 06 Mar 2018 09:56:42 PngImagePlugin.py[line:130] DEBUG STREAM b'IDAT' 41 8192
+Tue, 06 Mar 2018 09:56:42 PngImagePlugin.py[line:130] DEBUG STREAM b'IHDR' 16 13
+Tue, 06 Mar 2018 09:56:42 PngImagePlugin.py[line:130] DEBUG STREAM b'IDAT' 41 8192
+Tue, 06 Mar 2018 09:56:44 PngImagePlugin.py[line:130] DEBUG STREAM b'IHDR' 16 13
+Tue, 06 Mar 2018 09:56:44 PngImagePlugin.py[line:130] DEBUG STREAM b'IDAT' 41 8192
+Tue, 06 Mar 2018 09:56:44 PngImagePlugin.py[line:130] DEBUG STREAM b'IHDR' 16 13
+Tue, 06 Mar 2018 09:56:44 PngImagePlugin.py[line:130] DEBUG STREAM b'IDAT' 41 8192
+Tue, 06 Mar 2018 09:56:44 PngImagePlugin.py[line:130] DEBUG STREAM b'IHDR' 16 13
+Tue, 06 Mar 2018 09:56:44 PngImagePlugin.py[line:130] DEBUG STREAM b'IDAT' 41 8192
+Tue, 06 Mar 2018 09:56:44 PngImagePlugin.py[line:130] DEBUG STREAM b'IHDR' 16 13
+Tue, 06 Mar 2018 09:56:44 PngImagePlugin.py[line:130] DEBUG STREAM b'IDAT' 41 8192
+Tue, 06 Mar 2018 09:56:44 PngImagePlugin.py[line:130] DEBUG STREAM b'IHDR' 16 13
+Tue, 06 Mar 2018 09:56:44 PngImagePlugin.py[line:130] DEBUG STREAM b'IDAT' 41 8192
+Tue, 06 Mar 2018 09:56:44 PngImagePlugin.py[line:130] DEBUG STREAM b'IHDR' 16 13
+Tue, 06 Mar 2018 09:56:44 PngImagePlugin.py[line:130] DEBUG STREAM b'IDAT' 41 8192
+Tue, 06 Mar 2018 09:56:44 PngImagePlugin.py[line:130] DEBUG STREAM b'IHDR' 16 13
+Tue, 06 Mar 2018 09:56:44 PngImagePlugin.py[line:130] DEBUG STREAM b'IDAT' 41 8192
+Tue, 06 Mar 2018 09:56:44 PngImagePlugin.py[line:130] DEBUG STREAM b'IHDR' 16 13
+Tue, 06 Mar 2018 09:56:44 PngImagePlugin.py[line:130] DEBUG STREAM b'IDAT' 41 8192
+Tue, 06 Mar 2018 09:56:44 PngImagePlugin.py[line:130] DEBUG STREAM b'IHDR' 16 13
+Tue, 06 Mar 2018 09:56:44 PngImagePlugin.py[line:130] DEBUG STREAM b'IDAT' 41 8192
+Tue, 06 Mar 2018 09:56:44 PngImagePlugin.py[line:130] DEBUG STREAM b'IHDR' 16 13
+Tue, 06 Mar 2018 09:56:44 PngImagePlugin.py[line:130] DEBUG STREAM b'IDAT' 41 8192
+Tue, 06 Mar 2018 09:56:44 PngImagePlugin.py[line:130] DEBUG STREAM b'IHDR' 16 13
+Tue, 06 Mar 2018 09:56:44 PngImagePlugin.py[line:130] DEBUG STREAM b'IDAT' 41 8192
+Tue, 06 Mar 2018 09:56:44 PngImagePlugin.py[line:130] DEBUG STREAM b'IHDR' 16 13
+Tue, 06 Mar 2018 09:56:44 PngImagePlugin.py[line:130] DEBUG STREAM b'IDAT' 41 8192
+Tue, 06 Mar 2018 09:56:44 PngImagePlugin.py[line:130] DEBUG STREAM b'IHDR' 16 13
+Tue, 06 Mar 2018 09:56:44 PngImagePlugin.py[line:130] DEBUG STREAM b'IDAT' 41 8192
+Tue, 06 Mar 2018 09:56:44 PngImagePlugin.py[line:130] DEBUG STREAM b'IHDR' 16 13
+Tue, 06 Mar 2018 09:56:44 PngImagePlugin.py[line:130] DEBUG STREAM b'IDAT' 41 8192
+Tue, 06 Mar 2018 09:56:44 PngImagePlugin.py[line:130] DEBUG STREAM b'IHDR' 16 13
+Tue, 06 Mar 2018 09:56:44 PngImagePlugin.py[line:130] DEBUG STREAM b'IDAT' 41 8192
+Tue, 06 Mar 2018 09:56:44 PngImagePlugin.py[line:130] DEBUG STREAM b'IHDR' 16 13
+Tue, 06 Mar 2018 09:56:44 PngImagePlugin.py[line:130] DEBUG STREAM b'IDAT' 41 8192
+Tue, 06 Mar 2018 09:56:44 PngImagePlugin.py[line:130] DEBUG STREAM b'IHDR' 16 13
+Tue, 06 Mar 2018 09:56:44 PngImagePlugin.py[line:130] DEBUG STREAM b'IDAT' 41 8192
+Tue, 06 Mar 2018 09:56:44 PngImagePlugin.py[line:130] DEBUG STREAM b'IHDR' 16 13
+Tue, 06 Mar 2018 09:56:44 PngImagePlugin.py[line:130] DEBUG STREAM b'IDAT' 41 8192
+Tue, 06 Mar 2018 09:56:44 PngImagePlugin.py[line:130] DEBUG STREAM b'IHDR' 16 13
+Tue, 06 Mar 2018 09:56:44 PngImagePlugin.py[line:130] DEBUG STREAM b'IDAT' 41 8192
+Tue, 06 Mar 2018 09:56:44 PngImagePlugin.py[line:130] DEBUG STREAM b'IHDR' 16 13
+Tue, 06 Mar 2018 09:56:44 PngImagePlugin.py[line:130] DEBUG STREAM b'IDAT' 41 8192
+Tue, 06 Mar 2018 09:56:44 PngImagePlugin.py[line:130] DEBUG STREAM b'IHDR' 16 13
+Tue, 06 Mar 2018 09:56:44 PngImagePlugin.py[line:130] DEBUG STREAM b'IDAT' 41 8192
+Tue, 06 Mar 2018 09:56:44 PngImagePlugin.py[line:130] DEBUG STREAM b'IHDR' 16 13
+Tue, 06 Mar 2018 09:56:44 PngImagePlugin.py[line:130] DEBUG STREAM b'IDAT' 41 8192
+Tue, 06 Mar 2018 09:56:44 PngImagePlugin.py[line:130] DEBUG STREAM b'IHDR' 16 13
+Tue, 06 Mar 2018 09:56:44 PngImagePlugin.py[line:130] DEBUG STREAM b'IDAT' 41 8192
+Tue, 06 Mar 2018 09:56:44 PngImagePlugin.py[line:130] DEBUG STREAM b'IHDR' 16 13
+Tue, 06 Mar 2018 09:56:44 PngImagePlugin.py[line:130] DEBUG STREAM b'IDAT' 41 8192
+Tue, 06 Mar 2018 09:56:44 PngImagePlugin.py[line:130] DEBUG STREAM b'IHDR' 16 13
+Tue, 06 Mar 2018 09:56:44 PngImagePlugin.py[line:130] DEBUG STREAM b'IDAT' 41 8192
+Tue, 06 Mar 2018 09:56:44 PngImagePlugin.py[line:130] DEBUG STREAM b'IHDR' 16 13
+Tue, 06 Mar 2018 09:56:44 PngImagePlugin.py[line:130] DEBUG STREAM b'IDAT' 41 8192
+Tue, 06 Mar 2018 09:56:44 PngImagePlugin.py[line:130] DEBUG STREAM b'IHDR' 16 13
+Tue, 06 Mar 2018 09:56:44 PngImagePlugin.py[line:130] DEBUG STREAM b'IDAT' 41 8192
+Tue, 06 Mar 2018 09:56:44 PngImagePlugin.py[line:130] DEBUG STREAM b'IHDR' 16 13
+Tue, 06 Mar 2018 09:56:44 PngImagePlugin.py[line:130] DEBUG STREAM b'IDAT' 41 8192
+Tue, 06 Mar 2018 09:56:44 PngImagePlugin.py[line:130] DEBUG STREAM b'IHDR' 16 13
+Tue, 06 Mar 2018 09:56:44 PngImagePlugin.py[line:130] DEBUG STREAM b'IDAT' 41 8192

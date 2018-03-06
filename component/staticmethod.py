@@ -243,10 +243,6 @@ def selfdelete():
 
 
 def selfChujia():
-    price_view = get_val('price_view')
-    price_count = get_val('price_count')
-    yanzhengma_count = get_val('yanzhengma_count')
-    yanzhengma_view = get_val('yanzhengma_view')
     Position = get_val('Position')
     Click(Position[4][0], Position[4][1])
     Click(Position[0][0], Position[0][1])
@@ -295,7 +291,7 @@ def tijiao_ok2():
         set_val('yanzhengma_view', False)
 
 
-def query(cls):
+def query():
     query_interval = get_val('query_interval')
     query_on = get_val('query_on')
     Position = get_val('Position')
@@ -305,17 +301,16 @@ def query(cls):
         setText(str(1000000))  # 出一定超出的价格
         selfdelete()
         Click(Position[1][0], Position[1][1])
-        timer1 = threading.Timer(3, cls.query_sleep3)
+        timer1 = threading.Timer(4, query_sleep4)
         timer1.start()
-        timer2 = threading.Timer(5, cls.query_sleep5)
+        timer2 = threading.Timer(6, query_sleep6)
         timer2.start()
     elif query_interval and query_on:
         Click(Position[7][0], Position[7][1])
         set_val('query_on', False)
 
 
-def query_sleep3():
-    query_interval = get_val('query_interval')
+def query_sleep4():
     query_on = get_val('query_on')
     Position = get_val('Position')
     if query_on:
@@ -323,8 +318,7 @@ def query_sleep3():
         set_val('query_on', False)
 
 
-def query_sleep5():
-    query_interval = get_val('query_interval')
+def query_sleep6():
     set_val('query_interval', False)
 
 
