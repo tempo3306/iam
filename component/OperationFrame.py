@@ -118,9 +118,33 @@ class StatusPanel(wx.Panel):
 
         self.hotkey_confirm = wx.StaticText(self, -1, label="出价确认：")
         self.hotkey_smartprice = wx.StaticText(self, -1, label="智能出价：")
+        #当前出价情况
+        self.first_hbox = wx.BoxSizer(wx.HORIZONTAL)
+        self.second_hbox = wx.BoxSizer(wx.HORIZONTAL)
+        self.third_hbox = wx.BoxSizer(wx.HORIZONTAL)
+
+        self.current_price = wx.StaticText(self, -1, label="出价状态")
+        self.first_price_label = wx.StaticText(self, -1, label="第一次出价：")
+        self.first_price = wx.StaticText(self, -1, label="100")
+        self.first_hbox.Add(self.first_price_label)
+        self.first_hbox.Add(self.first_price)
+        self.second_price_label = wx.StaticText(self, -1, label="第二次出价：")
+        self.second_price = wx.StaticText(self, -1, label="无")
+        self.second_hbox.Add(self.second_price_label)
+        self.second_hbox.Add(self.second_price)
+        self.third_price_label = wx.StaticText(self, -1, label="第三次出价：")
+        self.third_price = wx.StaticText(self, -1, label="无")
+        self.third_hbox.Add(self.third_price_label)
+        self.third_hbox.Add(self.third_price)
+
         self.remindervbox.Add(self.status_hbox1)
         self.remindervbox.Add(self.hotkey_confirm)
         self.remindervbox.Add(self.hotkey_smartprice)
+        self.remindervbox.Add(self.current_price, flag=wx.TOP, border=5)
+        self.remindervbox.Add(self.first_hbox)
+        self.remindervbox.Add(self.second_hbox)
+        self.remindervbox.Add(self.third_hbox)
+
         self.reminderbox.Add(self.remindervbox)
         self.vbox = wx.BoxSizer(wx.VERTICAL)
         self.vbox.Add(self.controlbox, flag=wx.BOTTOM, border=10 )
