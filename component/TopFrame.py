@@ -282,11 +282,9 @@ class TopFrame(wx.Frame):
         moni_on = get_val('moni_on')
         try:
             price = Price_read()
-            print("Low", price)
             price = int(Price_read())  # 获取当前最低价
 
             if price in pricelist:  # 字典查找
-                print("price={0}".format(price))
                 set_val('findpos_on', False)
                 if lowest_price == price:
                     pass
@@ -297,10 +295,8 @@ class TopFrame(wx.Frame):
                     else:
                         set_val('changetime', a_time)
             else:
-                print("price={0}".format(price))
                 set_val('findpos_on', True)
         except:
-            print("price=")
             set_val('findpos_on', True)
 
 

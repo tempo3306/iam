@@ -53,6 +53,9 @@ def Create_hash():
 
 
 def init_val():
+    set_val('remotetime_url', "https://hupai.pro/bid/remotetime")
+    set_val('userprice', 0) #当前出价 如果为0则表示未出价
+    set_val('usertime', -1) #当前截止时间 如果为 -1表示未出价
     set_val('strategy_name', '') #策略名称
     set_val('current_strategy_name', '') #当前策略
     set_val('host_ali', "http://hupai.pro")

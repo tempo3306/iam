@@ -228,7 +228,6 @@ class TijiaoThread(Thread):
                 one_diff = get_val('one_diff')
                 second_diff = get_val('second_diff')
                 if tijiao_on and strategy_on and guopai_on and tijiao_OK:  # 判断是否需要提交,国拍开启状态方可触发
-
                     if tijiao_num == 1 and a_time >= one_real_time2 and not tijiao_one:  # 判断是否满足条件
                         set_val('tijiao_on', False)
                         SmartTijiao()  # 调用方法
@@ -245,13 +244,20 @@ class TijiaoThread(Thread):
                     elif tijiao_num == 2 and lowest_price >= own_price2 - 300 - second_advance and a_time <= second_real_time2 - second_delay:  # 价格判断
                         set_val('tijiao_on', False)  # 执行提交之后只能通过选择进程开启自动提交
                         OnClick_Tijiao()  # 调用方法
+
                 if strategy_on and guopai_on and chujia_on:  # 判断是否需要提交,国拍开启状态方可触发
                     if tijiao_num == 1 and one_real_time1 <= a_time <= one_real_time1 + 0.6:  # 判断是否满足条件
                         set_val('own_price1', lowest_price + one_diff)
+                        set_val('userprice', lowest_price + one_diff)
+                        set_val('usertime', one_real_time2) #设定当前的截止时间
+                        wx.CallAfter(pub.sendMessage, 'change userprice')
                         set_val('tijiao_on', True)
                         OnClick_chujia()  # 调用出价
                     elif tijiao_num == 2 and twice and second_real_time1 <= a_time:  # 判断是否满足条件
                         set_val('own_price2', lowest_price + second_diff)
+                        set_val('userprice', lowest_price + second_diff)
+                        set_val('usertime', second_real_time2) #设定当前的截止时间
+                        wx.CallAfter(pub.sendMessage, 'change userprice')
                         set_val('tijiao_on', True)
                         OnClick_chujia()  # 调用出价
 
@@ -294,13 +300,17 @@ class TijiaoThread(Thread):
                 if strategy_on and moni_on and chujia_on:  # 判断是否需要出价,模拟开启方可触发
                     if tijiao_num == 1 and one_time1 <= moni_second <= one_time1 + 0.6:  # 判断是否满足条件
                         OnClick_chujia()  # 调用方法
-                        print("第一次")
                         set_val('own_price1', lowest_price + one_diff)
+                        set_val('userprice', lowest_price + one_diff)
+                        set_val('usertime', one_time2) #设定当前的截止时间
+                        wx.CallAfter(pub.sendMessage, 'change userprice')
                         set_val('tijiao_on', True)
                     elif tijiao_num == 2 and twice and second_time1 <= moni_second:
                         OnClick_chujia()  # 调用方法
-                        print("第二次")
                         set_val('own_price2', lowest_price + second_diff)
+                        set_val('userprice', lowest_price + second_diff) #当前的出价
+                        set_val('usertime', second_time2)
+                        wx.CallAfter(pub.sendMessage, 'change userprice')
                         set_val('tijiao_on', True)
             except:
                 logger.error("提交出错")
@@ -447,3 +457,24 @@ class OpenwebThread(Thread):
         """Run Worker Thread."""
         # This is the code executing in the new thread.
         openweb(self.url)
+
+class GetremotetimeThread(Thread):
+    def __init__(self, url):
+        """Init Worker Thread Class."""
+        Thread.__init__(self)
+        self.url = url
+        self.setDaemon(True)  # 启动进程之前选择，主进程关闭，子进程跟着关闭
+        self.start()  # start the thread
+
+    # ----------------------------------------------------------------------
+    def run(self):
+        """Run Worker Thread."""
+        # This is the code executing in the new thread.
+        from component.staticmethod import web_request
+        try:
+            remotetime_url = get_val('remotetime_url')
+            result = web_request(remotetime_url)
+            remotetime = result['remotetime']
+            set_val('a_time', remotetime+0.3) #补网络延迟
+        except:
+            logger.exception('this is an exception message')

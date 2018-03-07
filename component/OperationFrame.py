@@ -87,12 +87,12 @@ class StatusPanel(wx.Panel):
         self.net_status = wx.StaticText(self, -1, label="5ms",  size=(70,20))
         self.lowestprice_status = wx.StaticText(self, -1, label="当前最低成交价：")
         self.lowestprice = wx.StaticText(self, -1, label="90000")
-        self.userprice_status = wx.StaticText(self, -1, label="出价状态：")
-        self.userprice = wx.StaticText(self, -1, label="90000")
+        self.userprice_status = wx.StaticText(self, -1, label="当前出价：")
+        self.userprice = wx.StaticText(self, -1, label="未出价")
         self.time_status = wx.StaticText(self, -1, label="与出价时间相差：")
-        self.time = wx.StaticText(self, -1, label="1秒")
+        self.timediff = wx.StaticText(self, -1, label="1秒")
         self.price_status = wx.StaticText(self, -1, label="价格相差：")
-        self.price = wx.StaticText(self, -1, label="100")
+        self.pricediff = wx.StaticText(self, -1, label="100")
 
         self.statusgrid.Add(self.net_status_text, pos=(0, 0), flag=wx.RIGHT, border=5)
         self.statusgrid.Add(self.net_status, pos=(0, 1))
@@ -101,51 +101,50 @@ class StatusPanel(wx.Panel):
         self.statusgrid.Add(self.userprice_status, pos=(2, 0), flag=wx.RIGHT, border=5)
         self.statusgrid.Add(self.userprice, pos=(2,1))
         self.statusgrid.Add(self.time_status, pos=(3, 0), flag=wx.RIGHT, border=5)
-        self.statusgrid.Add(self.time, pos=(3,1))
+        self.statusgrid.Add(self.timediff, pos=(3,1))
         self.statusgrid.Add(self.price_status, pos=(4, 0), flag=wx.RIGHT, border=5)
-        self.statusgrid.Add(self.price, pos=(4,1))
+        self.statusgrid.Add(self.pricediff, pos=(4,1))
 
         self.statusbox.Add(self.statusgrid)
+
+        ##提示框
         self.reminder = wx.StaticBox(self, -1, "提示")
         self.reminderbox = wx.StaticBoxSizer(self.reminder, wx.VERTICAL)
         self.remindervbox = wx.BoxSizer(wx.VERTICAL)
+        self.remindergrid = wx.GridBagSizer(6, 2)
 
-        self.status_hbox1 = wx.BoxSizer(wx.HORIZONTAL)
         self.current_strategy_label = wx.StaticText(self, -1, label="当前策略：")
         self.current_strategy = wx.StaticText(self, -1, label="")
-        self.status_hbox1.Add(self.current_strategy_label)
-        self.status_hbox1.Add(self.current_strategy)
 
-        self.hotkey_confirm = wx.StaticText(self, -1, label="出价确认：")
-        self.hotkey_smartprice = wx.StaticText(self, -1, label="智能出价：")
+        self.hotkey_confirm_label = wx.StaticText(self, -1, label="热键状态：")
+        self.hotkey_confirm = wx.StaticText(self, -1, label="启动正常", size=(100,20))
+
+        self.hotkey_smartprice_label = wx.StaticText(self, -1, label="智能出价：")
+        self.hotkey_smartprice = wx.StaticText(self, -1, label="未开启")
         #当前出价情况
-        self.first_hbox = wx.BoxSizer(wx.HORIZONTAL)
-        self.second_hbox = wx.BoxSizer(wx.HORIZONTAL)
-        self.third_hbox = wx.BoxSizer(wx.HORIZONTAL)
-
         self.current_price = wx.StaticText(self, -1, label="出价状态")
         self.first_price_label = wx.StaticText(self, -1, label="第一次出价：")
         self.first_price = wx.StaticText(self, -1, label="100")
-        self.first_hbox.Add(self.first_price_label)
-        self.first_hbox.Add(self.first_price)
         self.second_price_label = wx.StaticText(self, -1, label="第二次出价：")
         self.second_price = wx.StaticText(self, -1, label="无")
-        self.second_hbox.Add(self.second_price_label)
-        self.second_hbox.Add(self.second_price)
         self.third_price_label = wx.StaticText(self, -1, label="第三次出价：")
         self.third_price = wx.StaticText(self, -1, label="无")
-        self.third_hbox.Add(self.third_price_label)
-        self.third_hbox.Add(self.third_price)
 
-        self.remindervbox.Add(self.status_hbox1)
-        self.remindervbox.Add(self.hotkey_confirm)
-        self.remindervbox.Add(self.hotkey_smartprice)
-        self.remindervbox.Add(self.current_price, flag=wx.TOP, border=5)
-        self.remindervbox.Add(self.first_hbox)
-        self.remindervbox.Add(self.second_hbox)
-        self.remindervbox.Add(self.third_hbox)
+        self.remindergrid.Add(self.current_strategy_label, pos=(0, 0), flag=wx.RIGHT, border=20)
+        self.remindergrid.Add(self.current_strategy, pos=(0, 1))
+        self.remindergrid.Add(self.hotkey_confirm_label, pos=(1, 0), flag=wx.RIGHT, border=20)
+        self.remindergrid.Add(self.hotkey_confirm, pos=(1,1))
+        self.remindergrid.Add(self.hotkey_smartprice_label, pos=(2, 0), flag=wx.RIGHT, border=20)
+        self.remindergrid.Add(self.hotkey_smartprice, pos=(2,1))
+        self.remindergrid.Add(self.current_price, pos=(3, 0))
+        self.remindergrid.Add(self.first_price_label, pos=(4, 0), flag=wx.RIGHT, border=20)
+        self.remindergrid.Add(self.first_price, pos=(4,1))
+        self.remindergrid.Add(self.second_price_label, pos=(5, 0), flag=wx.RIGHT, border=20)
+        self.remindergrid.Add(self.second_price, pos=(5,1))
+        self.remindergrid.Add(self.third_price_label, pos=(6, 0), flag=wx.RIGHT, border=20)
+        self.remindergrid.Add(self.third_price, pos=(6,1))
 
-        self.reminderbox.Add(self.remindervbox)
+        self.reminderbox.Add(self.remindergrid)
         self.vbox = wx.BoxSizer(wx.VERTICAL)
         self.vbox.Add(self.controlbox, flag=wx.BOTTOM, border=10 )
         self.vbox.Add(self.statusbox, flag=wx.BOTTOM, border=10)
@@ -165,7 +164,7 @@ class StatusPanel(wx.Panel):
 
     #############消息区域
         pub.subscribe(self.change_strategy, 'change strategy')
-
+        pub.subscribe(self.change_userprice, 'change userprice') #修改当前用户出价
 
     def status_Timer(self,event):
         now_ping = get_val('now_ping')
@@ -175,8 +174,39 @@ class StatusPanel(wx.Panel):
                 self.net_status.SetLabel("%sms"%now_ping)
             else:
                 self.net_status.SetLabel("%s"%now_ping)
-            print(lowest_price)
             self.lowestprice.SetLabel(str(lowest_price))
+            #显示当前价格与价格相差
+            userprice = get_val('userprice')
+            tijiao_on = get_val('tijiao_on')
+            usertime = get_val('usertime')
+            moni_on = get_val('moni_on')
+            if userprice and tijiao_on:
+                max_price = get_val('lowest_price') + 300
+                diff_price = int(userprice) - max_price
+                self.pricediff.SetLabel(str(diff_price))
+            #显示截止时间与当前时间相差
+                if moni_on:
+                    currenttime = get_val('moni_second')
+                    timediff = float(usertime) - float(currenttime)
+                    self.timediff.SetLabel('{:.1f}'.format(timediff))
+                else:
+                    currenttime = get_val('a_time')
+                    timediff = float(usertime) - float(currenttime)
+                    self.timediff.SetLabel('{:.1f}'.format(timediff))
+            #热键状态
+                open = get_val('open')
+                label = self.hotkey_confirm.GetLabel()
+                if open and label == '异常状态':
+                    self.hotkey_confirm.SetLabel('启动正常')
+                elif not open:
+                    self.hotkey_confirm.SetLabel('未开启')
+            #如果不是处于提交状态
+            elif not tijiao_on:
+                label = self.price_status.GetLabel()
+                if label != '未出价':
+                    self.userprice.SetLabel('未出价')  #出价状态还原
+                    self.pricediff.SetLabel('未出价')
+                    self.timediff.SetLabel('未出价')
         except:
             logger.error("status_Timer error")
             logger.exception('this is an exception message')
@@ -188,7 +218,8 @@ class StatusPanel(wx.Panel):
 
     ## 获取服务器时间
     def getremotetime(self, event):
-        pass
+        from component.app_thread import GetremotetimeThread
+        getremotetimethread = GetremotetimeThread()
 
     ## 同步本地时间
     def timeautoajust(self, event):
@@ -234,7 +265,6 @@ class StatusPanel(wx.Panel):
             if mt >= 60:
                 set_val('moni_second', mt - 60)
             else:
-                print(moni_second)
                 set_val('moni_second', moni_second + 0.1)
         else:
             set_val('a_time', a_time + 0.1)
@@ -258,7 +288,6 @@ class StatusPanel(wx.Panel):
         moni_on = get_val('moni_on')
         if moni_on:
             mt = moni_second + 1
-            print(moni_second)
             if mt >= 60:
                 set_val('moni_second', mt - 60)
             else:
@@ -307,8 +336,10 @@ class StatusPanel(wx.Panel):
         current_strategy_name = get_val('current_strategy_name')
         self.current_strategy.SetLabel(current_strategy_name)
 
+    def change_userprice(self):
+        userprice = get_val('userprice')
+        self.userprice.SetLabel(str(userprice))
 
-#-----------------------------------------------------------
 
 class AccountPanel(wx.Panel):
     def __init__(self, parent):
@@ -443,8 +474,10 @@ class StrategyPanel(wx.Panel):
         self.stractagySizer.Add(vb1, 0, wx.ALL | wx.CENTER, 5)
         self.vbox1 = wx.BoxSizer(wx.VERTICAL)
         title = wx.StaticText(self, -1, label=u"拍牌功能设置")
+
         warning = wx.StaticText(self, -1, label=u"10点半需要进行第一次出价")
         warning.SetForegroundColour('red')
+
         line = wx.StaticLine(self, -1)
         self.vbox1.Add(title, 0, wx.ALL | wx.LEFT, 10)
         self.vbox1.Add(warning, 0, wx.LEFT, 10)
@@ -590,6 +623,7 @@ class StrategyPanel(wx.Panel):
         tem = self.jiajia_time.GetValue()
         templist = [40 + i * 0.1 for i in range(151)]
         if tem in templist:
+            print("tem", tem)
             one_time1 = tem
             set_val('one_time1', float(one_time1))
             set_val('one_real_time1', self.gettime(one_time1))  # 计算得到的时间戳
@@ -627,19 +661,21 @@ class StrategyPanel(wx.Panel):
     def Tijiao_time(self, event):
         one_time2 = get_val('one_time2')
         tem = self.tijiao_time.GetValue()
-        templist = [40 + i * 0.1 for i in range(191)]
-        if tem in templist:
+        templist = [400 + i * 1 for i in range(191)]
+        if int(tem*10) in templist:
             one_time2 = tem
             set_val('one_time2', float(one_time2))
             set_val('one_real_time2', self.gettime(one_time2))  # 计算得到的时间戳
         else:
             self.tijiao_time.SetValue(one_time2)
 
+
+
     def Jiajia_time2(self, event):
         second_time1 = get_val('second_time1')
         tem = self.jiajia_time2.GetValue()
-        templist = [40 + i * 0.1 for i in range(191)]
-        if tem in templist:
+        templist = [400 + i * 1 for i in range(191)]
+        if int(tem*10) in templist:
             second_time1 = tem
             set_val('second_time1', float(tem))
             set_val('second_real_time1', self.gettime(second_time1))  # 计算得到的时间戳
@@ -679,6 +715,7 @@ class StrategyPanel(wx.Panel):
     def Tijiao_time2(self, event):
         second_time2 = get_val('second_time2')
         tem = self.tijiao_time2.GetValue()
+        print("Tijiao_time2", tem)
         templist = [53 + i * 0.1 for i in range(51)]
         if tem in templist:
             second_time2 = tem

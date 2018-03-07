@@ -14,6 +14,18 @@ from component.variable import set_val, get_val
 import ctypes
 from ctypes import wintypes
 
+#网络请求
+def web_request(url):
+    import ssl, json
+    from urllib import request
+    ssl._create_default_https_context = ssl._create_unverified_context  # 关闭证书验证
+    response = request.urlopen(url)
+    result = response.read()
+    result = str(result, encoding='utf-8')
+    result = json.loads(result)
+    return result
+
+
 
 def Click(x, y):  # 鼠标点击
     a = win32gui.GetCursorPos()
@@ -429,7 +441,6 @@ class listenThread(threading.Thread):
 
     def run(self):
         while 1:
-            print("fdsfds")
             Listen()
         # while self.__running.isSet():
         #     self.__flag.wait()  # 为True时立即返回, 为False时阻塞直到内部的标识位为True后返回

@@ -9,6 +9,7 @@ import os, logging
 import mimetypes
 import email
 from email.mime.multipart import MIMEMultipart
+from component.staticmethod import web_request
 # --------------------------------------------------------------------------------
 
 import socket
@@ -27,16 +28,10 @@ def ConfirmUser(Username, Password, version):  # 修改为参数传递
         host_ali = get_val('host_ali')
         debug = get_val('debug')
         # debug 模式
-        import ssl
-        ssl._create_default_https_context = ssl._create_unverified_context  # 关闭证书验证
         target_url = host_ali + r'/bid/bid_login/?' + 'username=%s' % Username + \
                      '&' + 'passwd=%s' % Password + '&' + 'version=%s' % version + '&' + "debug=%s" % debug
         # target_url = host_ali + r'/main_api/userconfirm/info?' + 'username=%s' % Username + '&' + 'passwd=%s' % Password
-        print(target_url)
-        response = request.urlopen(target_url)
-        result = response.read()
-        result = str(result, encoding='utf-8')
-        result = json.loads(result)
+        result = web_request(target_url)
         print(result)
     except:
         logger.error("登录出现异常")
