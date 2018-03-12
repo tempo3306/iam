@@ -27,18 +27,18 @@ class StatusPanel(wx.Panel):
         self.controlgrid = wx.GridBagSizer(4, 2)  # 网格组件
 
         ##功能区
-        self.timeviewButton = wx.Button(self, label='显示时间', size=(105,30))  # 未来扩展
+        self.priceviewButton = wx.Button(self, label='导出跳价', size=(105,30))  # 未来扩展
         self.remotetimeButton = wx.Button(self, label='同步服务器时间', size=(105,30))  # 时间
         self.posajustButton = wx.Button(self, label='刷新定位', size=(105,30))  # 位置调整
         self.localtimeButton = wx.Button(self, label='同步网页时间', size=(105,30))  # 时间同步
 
         ##绑定
-        self.timeviewButton.Bind(wx.EVT_BUTTON, self.time)
+        self.priceviewButton.Bind(wx.EVT_BUTTON, self.priceview)
         self.remotetimeButton.Bind(wx.EVT_BUTTON, self.getremotetime)
         self.posajustButton.Bind(wx.EVT_BUTTON, self.posautoajust)
         self.localtimeButton.Bind(wx.EVT_BUTTON, self.timeautoajust)
 
-        self.controlgrid.Add(self.timeviewButton, pos=(0, 0))  # 布局
+        self.controlgrid.Add(self.priceviewButton, pos=(0, 0))  # 布局
         self.controlgrid.Add(self.remotetimeButton, pos=(0, 1))
         self.controlgrid.Add(self.posajustButton, pos=(1, 0))
         self.controlgrid.Add(self.localtimeButton, pos=(1, 1))
@@ -213,8 +213,15 @@ class StatusPanel(wx.Panel):
 
 
     ##
-    def time(self, event):
-        pass
+    def priceview(self, event):
+        price_list = get_val('price_list')
+        with open('price_list.txt', 'w') as price_file:
+            for index,price in enumerate(price_list):
+                text = "{0}秒： {1}".format(index, price)
+                price_file.write(text)
+                price_file.write('\n')
+
+
 
     ## 获取服务器时间
     def getremotetime(self, event):

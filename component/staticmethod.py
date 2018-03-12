@@ -14,7 +14,8 @@ from component.variable import set_val, get_val
 import ctypes
 from ctypes import wintypes
 
-#网络请求
+
+# 网络请求
 def web_request(url):
     import ssl, json
     from urllib import request
@@ -24,7 +25,6 @@ def web_request(url):
     result = str(result, encoding='utf-8')
     result = json.loads(result)
     return result
-
 
 
 def Click(x, y):  # 鼠标点击
@@ -183,28 +183,18 @@ def OnClick_confirm():
 
 
 def OnClick_chujia():
-    web_on = get_val('web_on')
     lowest_price = get_val('lowest_price')
-    yanzhengma_count = get_val('yanzhengma_count')
     Position = get_val('Position')
     tijiao_num = get_val('tijiao_num')
-    own_price1 = get_val('own_price1')
-    own_price2 = get_val('own_price2')
     one_diff = get_val('one_diff')
     second_diff = get_val('second_diff')
-    tijiao_on = get_val('tijiao_on')
-    chujia_on = get_val('chujia_on')
     twice = get_val('twice')
-    refresh_need = get_val('refresh_need')
-    refresh_one = get_val('refresh_one')
-    chujia_interval = get_val('chujia_interval')
-    yanzhengma_view = get_val('yanzhengma_view')
+
     set_val('yanzhengma_count', 0)  # 计数器，制造延迟
     set_val('yanzhengma_view', True)  # 打开验证码放大器
     set_val('tijiao_on', True)  # 激活自动出价
     set_val('refresh_need', True)  # 激活刷新验证码
     if tijiao_num == 1:
-        print("我被触发了",  )
         own_price1 = lowest_price + one_diff
         set_val('own_price1', own_price1)
         setText(str(own_price1))
@@ -214,10 +204,15 @@ def OnClick_chujia():
         set_val('tijiao_on', True)
         set_val('chujia_on', False)
         set_val('chujia_interval', False)  # 间隔结束
+
+        ##5秒后调用取消出价
+        timer = threading.Timer(5, Cancel_chujia)
+        timer.start()
+
     elif tijiao_num == 2 and twice:
         own_price2 = lowest_price + second_diff
         set_val('own_price2', own_price2)
-        setText(str(own_price2)) #复制价格到粘贴板
+        setText(str(own_price2))  # 复制价格到粘贴板
         selfdelete()
         Click(Position[1][0], Position[1][1])
         Click(Position[5][0], Position[5][1])
@@ -225,6 +220,36 @@ def OnClick_chujia():
         set_val('chujia_on', False)
         set_val('chujia_interval', False)  # 间隔结束
 
+##如果一直处理提交状态和查找验证码阶段，取消后重新出价
+def Cancel_chujia():
+    tijiao_on = get_val('tijiao_on')
+    yanzhengma_find = get_val('yanzhengma_find')
+
+    print("触发")
+    if tijiao_on and not yanzhengma_find:
+        print("触发2")
+        Position = get_val('Position')
+        Click(Position[7][0], Position[7][1]) #取消
+        own_price = get_val('own_price1')
+        setText(str(own_price))
+        selfdelete()
+        Click(Position[1][0], Position[1][1])
+        Click(Position[5][0], Position[5][1])
+        #验证码放大打开
+        set_val('yanzhengma_count', 0)  # 计数器，制造延迟
+        set_val('yanzhengma_view', True)  # 打开验证码放大器
+##测试用
+def Cancel_chujia_test():
+    Position = get_val('Position')
+    Click(Position[7][0], Position[7][1]) #取消
+    own_price = get_val('own_price1')
+    setText(str(own_price))
+    selfdelete()
+    Click(Position[1][0], Position[1][1])
+    Click(Position[5][0], Position[5][1])
+    # 验证码放大打开
+    set_val('yanzhengma_count', 0)  # 计数器，制造延迟
+    set_val('yanzhengma_view', True)  # 打开验证码放大器
 
 def OnH_chujia():
     Position = get_val('Position')
@@ -377,7 +402,7 @@ def Listen():
                    '9': 0x39, 'a': 0x41, 'b': 0x42, 'c': 0x43, 'd': 0x44, 'e': 0x45, 'f': 0x46, 's': 0x53,
                    'q': 0x51, 'h': 0x48}
         HOTKEY_ACTIONS = {
-            1: nothing, 2: nothing, 3: nothing,
+            1: Cancel_chujia_test, 2: OnClick_chujia, 3: nothing,
             4: nothing, 5: nothing,
             6: nothing, 7: OnClick_Shuaxin, 8: selfTijiao,
             9: selfChujia, 10: OnClick_Backspace, 11: tijiao_ok,
@@ -455,3 +480,21 @@ class listenThread(threading.Thread):
     def stop(self):
         self.__flag.set()  # 将线程从暂停状态恢复, 如何已经暂停的话
         self.__running.clear()  # 设置为False
+
+
+##时间转化
+##将当前时间与 价格列表对应起来
+def trans_time():
+    pricelist = get_val('price_list')
+    moni_on = get_val('moni_on')
+    lowest_price = get_val('lowest_price')
+    if moni_on:
+        moni_second = int(get_val('moni_second'))
+        pricelist[moni_second] = lowest_price
+    else:
+        a_time = get_val('a_time')
+        structtime = time.localtime(a_time)
+        timestr = time.strftime("%H-%M-%S", structtime)
+        hour, minute, second = timestr.split('-')
+        if int(hour) == 11 and int(minute) == 29:
+            pricelist[int(second)] = lowest_price

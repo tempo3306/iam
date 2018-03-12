@@ -51,8 +51,12 @@ def Create_hash():
         dick_target = pickle.load(tar)  # 要寻找对象的对象
         set_val('dick_target', dick_target)
 
+##price_list 价格对应时间的表
+price_list = [80000 for i in range(60)]  #0-59
+
 
 def init_val():
+    set_val('price_list', price_list)
     set_val('remotetime_url', "https://hupai.pro/bid/remotetime")
     set_val('userprice', 0) #当前出价 如果为0则表示未出价
     set_val('usertime', -1) #当前截止时间 如果为 -1表示未出价
@@ -76,6 +80,7 @@ def init_val():
     set_val('price_view', False)  # 显示价格,控制截图
     set_val('yanzhengma_view', False)  # 验证码放大,控制截图
     set_val('yanzhengma_close', True)  # 关闭验证码放大窗
+    set_val('yanzhengma_find', True)  # 验证码是否找到 默认True 发现需要查找 之后变为False
     set_val('yanzhengma_move', True)  # 是否需要移动
     set_val('yanzhengma_hash', 0)  # 前一个验证码截图  如果变化就刷新 ，不变化就不动作
     set_val('price_on', False)  # 价格是否显示
@@ -148,6 +153,9 @@ def init_val():
     set_val('P_relative',
             [[343, -66], [346, 40], [96, 121], [92, 43], [201, 100], [281, 40], [261, 37], [282, 118]])  # 各按钮相对于WEB位置
     P_relative = get_val('P_relative')
+
+    ## 相对于最低成交价位置
+#   ## 0:加价  1：出价 2：提交  3：刷新   4 ：确认   5：验证码    6:验证码输入框     7：取消
     set_val('P_relative2', [[647, -98], [650, 8], [400, 89], [396, 11], [505, 68], [585, 8], [565, 5], [586, 86]])
     set_val('Position', [[0, 0] for i in range(len(P_relative))])
     set_val('px_ajust', 0)

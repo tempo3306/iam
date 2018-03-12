@@ -80,7 +80,7 @@ class TopFrame(wx.Frame):
         self.timer2.Start(100)  # 设定时间间隔
         self.timer3 = wx.Timer(self)
         self.Bind(wx.EVT_TIMER, self.Lowest_price, self.timer3)  # 设置一个截屏取价  和查看时间
-        self.timer3.Start(50)
+        self.timer3.Start(60)
 
         ## 链接到子frame
         pub.subscribe(self.OpenGuopai_dianxin, "open dianxin")  # 打开电信
@@ -287,9 +287,10 @@ class TopFrame(wx.Frame):
             if price in pricelist:  # 字典查找
                 set_val('findpos_on', False)
                 if lowest_price == price:
-                    pass
+                    trans_time() #保存价格
                 else:
                     set_val('lowest_price', price)
+                    trans_time() #保存价格
                     if moni_on:
                         set_val('changetime', moni_second)
                     else:
