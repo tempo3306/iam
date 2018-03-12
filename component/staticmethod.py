@@ -220,6 +220,7 @@ def OnClick_chujia():
         set_val('chujia_on', False)
         set_val('chujia_interval', False)  # 间隔结束
 
+
 ##如果一直处理提交状态和查找验证码阶段，取消后重新出价
 def Cancel_chujia():
     tijiao_on = get_val('tijiao_on')
@@ -229,19 +230,21 @@ def Cancel_chujia():
     if tijiao_on and not yanzhengma_find:
         print("触发2")
         Position = get_val('Position')
-        Click(Position[7][0], Position[7][1]) #取消
-        own_price = get_val('own_price1')
-        setText(str(own_price))
+        Click(Position[7][0], Position[7][1])  # 取消
+        userprice = get_val('userprice')
+        setText(str(userprice))
         selfdelete()
         Click(Position[1][0], Position[1][1])
         Click(Position[5][0], Position[5][1])
-        #验证码放大打开
+        # 验证码放大打开
         set_val('yanzhengma_count', 0)  # 计数器，制造延迟
         set_val('yanzhengma_view', True)  # 打开验证码放大器
+
+
 ##测试用
 def Cancel_chujia_test():
     Position = get_val('Position')
-    Click(Position[7][0], Position[7][1]) #取消
+    Click(Position[7][0], Position[7][1])  # 取消
     own_price = get_val('own_price1')
     setText(str(own_price))
     selfdelete()
@@ -250,6 +253,7 @@ def Cancel_chujia_test():
     # 验证码放大打开
     set_val('yanzhengma_count', 0)  # 计数器，制造延迟
     set_val('yanzhengma_view', True)  # 打开验证码放大器
+
 
 def OnH_chujia():
     Position = get_val('Position')
@@ -498,3 +502,27 @@ def trans_time():
         hour, minute, second = timestr.split('-')
         if int(hour) == 11 and int(minute) == 29:
             pricelist[int(second)] = lowest_price
+
+
+##智能出价
+time_price = {'35': 1200,
+              '36': 1100, '37': 1100, '38': 1100, '39': 1100, '40': 1100, '41': 1100,
+              '42': 1100, '43': 1100, '44': 1000, '45': 1000, '46': 900, '47': 800,
+              '48': 800, '49': 700, '50': 700, '51': 600, '52': 600, '53': 500, '54': 500,
+              '55': 500, '56': 300
+              }
+
+
+def smart_price():
+    moni_on = get_val('moni_on')
+    lowest_price = get_val('lowest_price')
+    if moni_on:
+        moni_second = int(get_val('moni_second'))
+        return time_price[str(moni_second)] + lowest_price
+    else:
+        a_time = get_val('a_time')
+        structtime = time.localtime(a_time)
+        timestr = time.strftime("%H-%M-%S", structtime)
+        hour, minute, second = timestr.split('-')
+        if int(hour) == 11 and int(minute) == 29:
+            return  [str(int(second))] + lowest_price

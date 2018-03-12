@@ -12,6 +12,7 @@ from component.imgcut import cut_img, findconfirm, findrefresh, findpos
 from component.login import ConfirmUser, Keeplogin
 from component.staticmethod import OnClick_chujia, OnClick_Tijiao
 from component.staticmethod import SmartTijiao
+from component.staticmethod import Cancel_chujia
 from component.variable import get_val, set_val
 import logging
 logger = logging.getLogger()
@@ -204,7 +205,7 @@ class TijiaoThread(Thread):
     def run(self):
         for i in range(10000000):
             try:
-                time.sleep(0.05)  # 间隔0.1秒判断一次
+                time.sleep(0.05)  # 间隔0.05秒判断一次
                 lowest_price = get_val('lowest_price')
                 own_price1 = get_val('own_price1')
                 own_price2 = get_val('own_price2')
@@ -227,6 +228,7 @@ class TijiaoThread(Thread):
                 second_delay = get_val('second_delay')
                 one_diff = get_val('one_diff')
                 second_diff = get_val('second_diff')
+                ##提交
                 if tijiao_on and strategy_on and guopai_on and tijiao_OK:  # 判断是否需要提交,国拍开启状态方可触发
                     if tijiao_num == 1 and a_time >= one_real_time2 and not tijiao_one:  # 判断是否满足条件
                         set_val('tijiao_on', False)
@@ -260,6 +262,89 @@ class TijiaoThread(Thread):
                         wx.CallAfter(pub.sendMessage, 'change userprice')
                         set_val('tijiao_on', True)
                         OnClick_chujia()  # 调用出价
+##-----------------------------------------
+                ##智能判断价格是否合理
+                #以50秒为参考   1100  600   1200  700   1300   800
+                smart_ajust = get_val('smart_ajust')
+                userprice = get_val('userprice')
+                one_diff = get_val('one_diff')
+                smart_ajust_time = get_val('smart_ajust_time')
+
+                if smart_ajust and tijiao_on and one_diff == 1000 \
+                        and a_time >= smart_ajust_time:
+                    userprice2 = lowest_price + 500
+                    diff = userprice2 - userprice
+                    if diff == 0 or diff == -100 or  diff == -200 or diff == -300:
+                        pass
+                    elif diff<-300 or diff>300:
+                        set_val('userprice', lowest_price + 500)
+                        Cancel_chujia()
+                    elif diff == 300:
+                        set_val('userprice', lowest_price + 600)
+                        Cancel_chujia()
+                    elif diff == 200:
+                        set_val('userprice', lowest_price + 700)
+                        Cancel_chujia()
+                    elif diff == 100:
+                        set_val('userprice', lowest_price + 800)
+                        Cancel_chujia()
+
+                elif smart_ajust and tijiao_on and one_diff == 1100 \
+                        and a_time >= smart_ajust_time:
+                    userprice2 = lowest_price + 600
+                    diff = userprice2 - userprice
+                    if diff == 0 or diff == 100 or  diff == -100 or diff == -200:
+                        pass
+                    elif diff == -300:
+                        set_val('userprice', lowest_price+500)
+                        Cancel_chujia()
+                    elif diff<-300 or diff>300:
+                        set_val('userprice', lowest_price+600)
+                        Cancel_chujia()
+                    elif diff == 300:
+                        set_val('userprice', lowest_price+700)
+                        Cancel_chujia()
+                    elif diff == 200:
+                        set_val('userprice', lowest_price+800)
+                        Cancel_chujia()
+                elif smart_ajust and tijiao_on and one_diff == 1200 \
+                        and a_time >= smart_ajust_time:
+                    userprice2 = lowest_price + 700
+                    diff = userprice2 - userprice
+                    if diff == 0 or diff == 100  or diff == 200 or  diff == -100 :
+                        pass
+                    elif diff == -200:
+                        set_val('userprice', lowest_price+500)
+                        Cancel_chujia()
+                    elif diff == -300:
+                        set_val('userprice', lowest_price+600)
+                        Cancel_chujia()
+                    elif diff<-300 or diff>300:
+                        set_val('userprice', lowest_price+700)
+                        Cancel_chujia()
+                    elif diff == 300:
+                        set_val('userprice', lowest_price+800)
+                        Cancel_chujia()
+                elif smart_ajust and tijiao_on and one_diff == 1300 \
+                        and a_time >= smart_ajust_time:
+                    userprice2 = lowest_price + 800
+                    diff = userprice2 - userprice
+                    if diff == 0 or diff == 100 or  diff == 200 or diff == 300:
+                        pass
+                    elif diff == -100:
+                        set_val('userprice', lowest_price+500)
+                        Cancel_chujia()
+                    elif diff == -200:
+                        set_val('userprice', lowest_price+600)
+                        Cancel_chujia()
+                    elif diff == -300:
+                        set_val('userprice', lowest_price+700)
+                        Cancel_chujia()
+                    elif diff < -300 or diff > 300:
+                        set_val('userprice', lowest_price+800)
+                        Cancel_chujia()
+
+### -----------------------------------------
 
                 ## 模拟提交
                 moni_second = get_val('moni_second')

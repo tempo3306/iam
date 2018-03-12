@@ -260,6 +260,7 @@ def init_val():
     set_val('query_on', False)  # 是否处于查询状态
     set_val('sc_area', [Px_lowestprice - 10, Py_lowestprice - 100, Px_lowestprice + 600, Py_lowestprice + 120])
     set_val('use_area', [])
+
     set_val('nptemp', [])
     nptemp = get_val('nptemp')
     set_val('imgpos_lowestprice', np.array(nptemp))  # 最低成交价
@@ -268,3 +269,7 @@ def init_val():
     set_val('impos_yanzhengma', np.array(nptemp))  # 验证码
     set_val('imgpos_yanzhengmaconfirm', np.array(nptemp))  # 验证码确认键
     set_val('imgpos_currenttime', np.array(nptemp))  # 当前时间
+
+    ##智能出价服务
+    set_val('smart_ajust', False) #智能调整出价，默认关闭
+    set_val('smart_ajust_time', 10000000000) #智能调整触发时间
