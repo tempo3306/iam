@@ -10,9 +10,9 @@ from component.OperationFrame import OperationFrame
 from component.app_thread import TimeThread, OpenwebThread
 from component.staticmethod import *
 from component.imgcut import findpos, timeset, Price_read
-from component.WebFrame import WebFrame
+from component.webframe import WebFrame
 from component.Pinger import pingerThread
-from component.GuopaiFrame import GuopaiFrame
+from component.Guopaiframe import GuopaiFrame
 
 
 

@@ -225,7 +225,6 @@ def OnClick_chujia():
 def Cancel_chujia():
     tijiao_on = get_val('tijiao_on')
     yanzhengma_find = get_val('yanzhengma_find')
-
     print("触发")
     if tijiao_on and not yanzhengma_find:
         print("触发2")
@@ -239,6 +238,17 @@ def Cancel_chujia():
         # 验证码放大打开
         set_val('yanzhengma_count', 0)  # 计数器，制造延迟
         set_val('yanzhengma_view', True)  # 打开验证码放大器
+
+def Smart_ajust_chujia(price):
+    Position = get_val('Position')
+    Click(Position[7][0], Position[7][1])  # 取消
+    setText(str(price))
+    selfdelete()
+    Click(Position[1][0], Position[1][1])
+    Click(Position[5][0], Position[5][1])
+    # 验证码放大打开
+    set_val('yanzhengma_count', 0)  # 计数器，制造延迟
+    set_val('yanzhengma_view', True)  # 打开验证码放大器
 
 
 ##测试用

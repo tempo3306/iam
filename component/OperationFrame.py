@@ -353,8 +353,19 @@ class AccountPanel(wx.Panel):
         wx.Panel.__init__(self, parent=parent)
         btn = wx.Button(self, label="3")
         sizer = wx.BoxSizer(wx.VERTICAL)
+        self.smart_ajust = wx.CheckBox(self, -1, label=u'智能调整')  # 开启时间显示
+
         sizer.Add(btn, 0, wx.ALL, 10)
+        sizer.Add(self.smart_ajust)
         self.SetSizer(sizer)
+
+        self.Bind(wx.EVT_CHECKBOX, self.Smart_ajust, self.smart_ajust)
+
+    def Smart_ajust(self,event):
+        if self.smart_ajust.IsChecked():
+            set_val('smart_ajust', True) #开启自动价格调整
+        else:
+            set_val('smart_ajust', False) #关闭自动价格调整
 
 
 class StrategyPanel(wx.Panel):

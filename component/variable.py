@@ -272,4 +272,9 @@ def init_val():
 
     ##智能出价服务
     set_val('smart_ajust', False) #智能调整出价，默认关闭
-    set_val('smart_ajust_time', 10000000000) #智能调整触发时间
+
+    a = time.strftime('%Y-%m-%d', time.localtime(time.time()))
+    b = a + ' ' + '11:29:50'
+    a_time = time.mktime(time.strptime(b, '%Y-%m-%d %H:%M:%S')) # 转时间戳   补个平均时差
+    set_val('smart_ajust_time_guopai', a_time) #智能调整触发时间
+    set_val('smart_ajust_time_moni', 50) #智能调整触发时间
