@@ -630,7 +630,6 @@ class StrategyPanel(wx.Panel):
         tem = self.jiajia_time.GetValue()
         templist = [40 + i * 0.1 for i in range(151)]
         if tem in templist:
-            print("tem", tem)
             one_time1 = tem
             set_val('one_time1', float(one_time1))
             set_val('one_real_time1', self.gettime(one_time1))  # 计算得到的时间戳
@@ -933,108 +932,113 @@ class StrategyPanel(wx.Panel):
             if dlg_tip == wx.ID_OK:
                 dlg_tip.Destroy()
 
+    ##执行策略导入
     def load(self, path):
-        osl = get_val('osl')
-        e_on = get_val('e_on')
-        enter_on = get_val('enter_on')
-        one_time1 = get_val('one_time1')
-        one_time2 = get_val('one_time2')
-        second_time1 = get_val('second_time1')
-        second_time2 = get_val('second_time2')
-
         try:
             with open(path, 'rb') as loadstr:
                 set_val('osl', pickle.load(loadstr))
+            osl = get_val('osl')
+            if osl[0] == 0:  # 单次
+                self.ss_Hide()
+                set_val('twice', False)
+                set_val('strategy_on', True)
+                set_val('chujia_on', True)
+                set_val('tijiao_on', False)
+                set_val('tijiao_num', 1)  # 初始化
+                set_val('tijiao_OK', False)
+                set_val('tijiao_one', False)  # 单枪未开
+                self.select_stractagy.SetSelection(0)
+                self.jiajia_time.SetValue(osl[1])
+                self.tijiao_time.SetValue(osl[2])
+                self.jiajia_price.SetValue(osl[3])
+                self.yanchi_time.SetValue(osl[4])
+                if osl[5] == 100:
+                    self.select_tijiao.SetSelection(0)
+                elif osl[5] == 200:
+                    self.select_tijiao.SetSelection(1)
+                else:
+                    self.select_tijiao.SetSelection(2)
+                set_val('one_time1', osl[1])  # 第一次出价加价
+                set_val('one_time2', osl[2])  # 第一次出价提交
+                set_val('one_diff', osl[3])  # 第一次加价幅度
+                set_val('one_delay', osl[4])  # 第一次延迟
+                set_val('one_advance', osl[5])  # 第一次提交提前量
+                set_val('e_on', osl[11])
+                set_val('enter_on', osl[12])
+                statuspad = self.FindWindowById(20)
+                e_on = get_val('e_on')
+                enter_on = get_val('enter_on')
+                if e_on:
+                    statuspad.confirm_choice.SetSelection(0)
+                elif enter_on:
+                    statuspad.confirm_choice.SetSelection(1)
+                one_time1 = get_val('one_time1')
+                one_time2 = get_val('one_time2')
+                second_time1 = get_val('second_time1')
+                second_time2 = get_val('second_time2')
+                set_val('one_real_time1', self.gettime(one_time1))
+                set_val('one_real_time2', self.gettime(one_time2))
+                set_val('second_real_time1', self.gettime(second_time1))
+                set_val('second_real_time2', self.gettime(second_time2))
+            elif osl[0] == 1:  # 双枪
+                set_val('strategy_on', True)
+                set_val('twice', True)
+                set_val('chujia_on', True)
+                set_val('tijiao_on', False)
+                set_val('tijiao_num', 1)  # 初始化
+                set_val('tijiao_OK', False)
+                set_val('tijiao_one', False)  # 单枪未开
+                self.ss_Shown()
+                self.select_stractagy.SetSelection(1)
+                self.jiajia_time.SetValue(osl[1])
+                self.tijiao_time.SetValue(osl[2])
+                self.jiajia_price.SetValue(osl[3])
+                self.yanchi_time.SetValue(osl[4])
+                if osl[5] == 100:
+                    self.select_tijiao.SetSelection(0)
+                elif osl[5] == 200:
+                    self.select_tijiao.SetSelection(1)
+                else:
+                    self.select_tijiao.SetSelection(2)
+                self.jiajia_time2.SetValue(osl[6])
+                self.tijiao_time2.SetValue(osl[7])
+                self.jiajia_price2.SetValue(osl[8])
+                self.yanchi_time2.SetValue(osl[9])
+                if osl[10] == 100:
+                    self.select_tijiao2.SetSelection(0)
+                elif osl[10] == 200:
+                    self.select_tijiao2.SetSelection(1)
+                else:
+                    self.select_tijiao2.SetSelection(2)
+                set_val('one_time1', osl[1])  # 第一次出价加价
+                set_val('one_time2', osl[2])  # 第一次出价提交
+                set_val('one_diff', osl[3])  # 第一次加价幅度
+                set_val('one_delay', osl[4])  # 第一次延迟
+                set_val('one_advance', osl[5])  # 第一次提交提前量
+                set_val('second_time1', osl[6])  # 第二次次出价加价
+                set_val('second_time2', osl[7])  # 第二次出价提交
+                set_val('second_diff', osl[8])  # 第二次加价幅度
+                set_val('second_delay', osl[9])  # 第二次出价延迟
+                set_val('second_advance', osl[10])  # 第二次出价提交提前量
+                set_val('e_on', osl[11])
+                set_val('enter_on', osl[12])
+                statuspad = self.FindWindowById(20)
+                e_on = get_val('e_on')
+                enter_on = get_val('enter_on')
+                if e_on:
+                    statuspad.confirm_choice.SetSelection(0)
+                elif enter_on:
+                    statuspad.confirm_choice.SetSelection(1)
+                one_time1 = get_val('one_time1')
+                one_time2 = get_val('one_time2')
+                second_time1 = get_val('second_time1')
+                second_time2 = get_val('second_time2')
+                set_val('one_real_time1', self.gettime(one_time1))
+                set_val('one_real_time2', self.gettime(one_time2))
+                set_val('second_real_time1', self.gettime(second_time1))
+                set_val('second_real_time2', self.gettime(second_time2))
         except:
             logger.exception('this is an exception message')
-
-        if osl[0] == 0:  # 单次
-            self.ss_Hide()
-            set_val('twice', False)
-            set_val('strategy_on', True)
-            set_val('chujia_on', True)
-            set_val('tijiao_on', False)
-            set_val('tijiao_num', 1)  # 初始化
-            set_val('tijiao_OK', False)
-            set_val('tijiao_one', False)  # 单枪未开
-            self.select_stractagy.SetSelection(0)
-            self.jiajia_time.SetValue(osl[1])
-            self.tijiao_time.SetValue(osl[2])
-            self.jiajia_price.SetValue(osl[3])
-            self.yanchi_time.SetValue(osl[4])
-            if osl[5] == 100:
-                self.select_tijiao.SetSelection(0)
-            elif osl[5] == 200:
-                self.select_tijiao.SetSelection(1)
-            else:
-                self.select_tijiao.SetSelection(2)
-            set_val('one_time1', osl[1])  # 第一次出价加价
-            set_val('one_time2', osl[2])  # 第一次出价提交
-            set_val('one_diff', osl[3])  # 第一次加价幅度
-            set_val('one_delay', osl[4])  # 第一次延迟
-            set_val('one_advance', osl[5])  # 第一次提交提前量
-            set_val('e_on', osl[11])
-            set_val('enter_on', osl[12])
-            statuspad = self.FindWindowById(20)
-            if e_on:
-                statuspad.confirm_choice.SetSelection(0)
-            elif enter_on:
-                statuspad.confirm_choice.SetSelection(1)
-            set_val('one_real_time1', self.gettime(one_time1))
-            set_val('one_real_time2', self.gettime(one_time2))
-            set_val('second_real_time1', self.gettime(second_time1))
-            set_val('second_real_time2', self.gettime(second_time2))
-        elif osl[0] == 1:  # 双枪
-            set_val('strategy_on', True)
-            set_val('twice', True)
-            set_val('chujia_on', True)
-            set_val('tijiao_on', False)
-            set_val('tijiao_num', 1)  # 初始化
-            set_val('tijiao_OK', False)
-            set_val('tijiao_one', False)  # 单枪未开
-            self.ss_Shown()
-            self.select_stractagy.SetSelection(1)
-            self.jiajia_time.SetValue(osl[1])
-            self.tijiao_time.SetValue(osl[2])
-            self.jiajia_price.SetValue(osl[3])
-            self.yanchi_time.SetValue(osl[4])
-            if osl[5] == 100:
-                self.select_tijiao.SetSelection(0)
-            elif osl[5] == 200:
-                self.select_tijiao.SetSelection(1)
-            else:
-                self.select_tijiao.SetSelection(2)
-            self.jiajia_time2.SetValue(osl[6])
-            self.tijiao_time2.SetValue(osl[7])
-            self.jiajia_price2.SetValue(osl[8])
-            self.yanchi_time2.SetValue(osl[9])
-            if osl[10] == 100:
-                self.select_tijiao2.SetSelection(0)
-            elif osl[10] == 200:
-                self.select_tijiao2.SetSelection(1)
-            else:
-                self.select_tijiao2.SetSelection(2)
-            set_val('one_time1', osl[1])  # 第一次出价加价
-            set_val('one_time2', osl[2])  # 第一次出价提交
-            set_val('one_diff', osl[3])  # 第一次加价幅度
-            set_val('one_delay', osl[4])  # 第一次延迟
-            set_val('one_advance', osl[5])  # 第一次提交提前量
-            set_val('second_time1', osl[6])  # 第二次次出价加价
-            set_val('second_time2', osl[7])  # 第二次出价提交
-            set_val('second_diff', osl[8])  # 第二次加价幅度
-            set_val('second_delay', osl[9])  # 第二次出价延迟
-            set_val('second_advance', osl[10])  # 第二次出价提交提前量
-            set_val('e_on', osl[11])
-            set_val('enter_on', osl[12])
-            statuspad = self.FindWindowById(20)
-            if e_on:
-                statuspad.confirm_choice.SetSelection(0)
-            elif enter_on:
-                statuspad.confirm_choice.SetSelection(1)
-            set_val('one_real_time1', self.gettime(one_time1))
-            set_val('one_real_time2', self.gettime(one_time2))
-            set_val('second_real_time1', self.gettime(second_time1))
-            set_val('second_real_time2', self.gettime(second_time2))
 
     def findfiles(self, path):
         L = []

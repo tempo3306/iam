@@ -21,7 +21,7 @@ class LoginFrame(wx.Frame):
         self.panel = wx.Panel(self, size=(300, 220))
         self.icon = wx.Icon(mainicon, wx.BITMAP_TYPE_ICO)
         self.SetIcon(self.icon)
-        self.panel.SetBackgroundColour((240, 255, 255))
+        # self.panel.SetBackgroundColour((240, 255, 255))
 
         # 主sizer
         self.sizer_v1 = wx.BoxSizer(wx.VERTICAL)
