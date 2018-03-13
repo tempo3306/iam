@@ -26,8 +26,11 @@ class WebFrame(wx.Frame):
         # print("关闭web")
         guopai_on = get_val('guopai_on')
         if guopai_on:
-            ret = wx.MessageBox('真的要退出吗?', '确认', wx.OK | wx.CANCEL)
-            if ret == wx.OK:
+            dlg = wx.MessageDialog(None, "确认要关闭国拍吗?",
+                                   '关闭国拍页面',
+                                   wx.YES_NO | wx.ICON_WARNING | wx.STAY_ON_TOP)
+            ret = dlg.ShowModal()
+            if ret == wx.ID_YES:
                 wx.CallAfter(pub.sendMessage, "close operation") #关闭operation
                 set_val('web_on', False)
                 set_val('view_time', False)
@@ -35,6 +38,7 @@ class WebFrame(wx.Frame):
                 set_val('guopai_on', False)
                 self.Destroy()
                 event.Skip()  # 绑在同一事件上的两个函数，如果 没有这个，就只执行后绑定的。
+            dlg.Destroy()
         else:
             wx.CallAfter(pub.sendMessage, "close operation")  # 关闭operation
             set_val('web_on', False)
@@ -43,6 +47,7 @@ class WebFrame(wx.Frame):
             set_val('guopai_on', False)
             self.Destroy()
             event.Skip()  # 绑在同一事件上的两个函数，如果 没有这个，就只执行后绑定的。
+
 
 
     def OnClose2(self):  #pubsub消息机制不能带EVENT

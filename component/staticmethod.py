@@ -204,9 +204,10 @@ def OnClick_chujia():
         set_val('tijiao_on', True)
         set_val('chujia_on', False)
         set_val('chujia_interval', False)  # 间隔结束
-
+        ##提交关闭
+        set_val('tijiao_OK', False)
         ##5秒后调用取消出价
-        timer = threading.Timer(5, Cancel_chujia)
+        timer = threading.Timer(6, Cancel_chujia)
         timer.start()
 
     elif tijiao_num == 2 and twice:
@@ -219,13 +220,14 @@ def OnClick_chujia():
         set_val('tijiao_on', True)
         set_val('chujia_on', False)
         set_val('chujia_interval', False)  # 间隔结束
-
+        ##提交关闭
+        set_val('tijiao_OK', False)
 
 ##如果一直处理提交状态和查找验证码阶段，取消后重新出价
 def Cancel_chujia():
     tijiao_on = get_val('tijiao_on')
     yanzhengma_find = get_val('yanzhengma_find')
-    print("触发")
+    print("cancel+触发")
     if tijiao_on and not yanzhengma_find:
         print("触发2")
         Position = get_val('Position')
@@ -238,7 +240,10 @@ def Cancel_chujia():
         # 验证码放大打开
         set_val('yanzhengma_count', 0)  # 计数器，制造延迟
         set_val('yanzhengma_view', True)  # 打开验证码放大器
+        ##提交关闭
+        set_val('tijiao_OK', False)
 
+##智能调整
 def Smart_ajust_chujia(price):
     Position = get_val('Position')
     Click(Position[7][0], Position[7][1])  # 取消
@@ -249,7 +254,8 @@ def Smart_ajust_chujia(price):
     # 验证码放大打开
     set_val('yanzhengma_count', 0)  # 计数器，制造延迟
     set_val('yanzhengma_view', True)  # 打开验证码放大器
-
+    ##提交关闭
+    set_val('tijiao_OK', False)
 
 ##测试用
 def Cancel_chujia_test():
@@ -263,7 +269,8 @@ def Cancel_chujia_test():
     # 验证码放大打开
     set_val('yanzhengma_count', 0)  # 计数器，制造延迟
     set_val('yanzhengma_view', True)  # 打开验证码放大器
-
+    ##提交关闭
+    set_val('tijiao_OK', False)
 
 def OnH_chujia():
     Position = get_val('Position')

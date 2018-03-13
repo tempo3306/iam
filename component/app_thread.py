@@ -273,110 +273,27 @@ class TijiaoThread(Thread):
                 smart_ajust_time_moni = get_val('smart_ajust_time_moni')
                 if strategy_on and guopai_on and tijiao_on and smart_ajust:
                     if smart_ajust_time_guopai <= a_time <= smart_ajust_time_guopai + 0.6:
-                        if smart_ajust and tijiao_on and one_diff == 1000 \
-                                and a_time >= smart_ajust_time:
-                            userprice2 = lowest_price + 500
-                            diff = userprice2 - userprice
-                            if diff == 0 or diff == -100 or  diff == -200 or diff == -300:
-                                pass
-                            elif diff<-300 or diff>300:
-                                set_val('userprice', lowest_price + 500)
-                                Smart_ajust_chujia()
-                            elif diff == 300:
-                                set_val('userprice', lowest_price + 600)
-                                Smart_ajust_chujia()
-                            elif diff == 200:
-                                set_val('userprice', lowest_price + 700)
-                                Smart_ajust_chujia()
-                            elif diff == 100:
-                                set_val('userprice', lowest_price + 800)
-                                Smart_ajust_chujia()
-
-                        elif smart_ajust and tijiao_on and one_diff == 1100 \
-                                and a_time >= smart_ajust_time:
-                            userprice2 = lowest_price + 600
-                            diff = userprice2 - userprice
-                            if diff == 0 or diff == 100 or  diff == -100 or diff == -200:
-                                pass
-                            elif diff == -300:
-                                set_val('userprice', lowest_price+500)
-                                Smart_ajust_chujia()
-                            elif diff<-300 or diff>300:
-                                set_val('userprice', lowest_price+600)
-                                Smart_ajust_chujia()
-                            elif diff == 300:
-                                set_val('userprice', lowest_price+700)
-                                Smart_ajust_chujia()
-                            elif diff == 200:
-                                set_val('userprice', lowest_price+800)
-                                Smart_ajust_chujia()
-                        elif smart_ajust and tijiao_on and one_diff == 1200 \
-                                and a_time >= smart_ajust_time:
-                            userprice2 = lowest_price + 700
-                            diff = userprice2 - userprice
-                            if diff == 0 or diff == 100  or diff == 200 or  diff == -100 :
-                                pass
-                            elif diff == -200:
-                                set_val('userprice', lowest_price+500)
-                                Smart_ajust_chujia()
-                            elif diff == -300:
-                                set_val('userprice', lowest_price+600)
-                                Smart_ajust_chujia()
-                            elif diff<-300 or diff>300:
-                                set_val('userprice', lowest_price+700)
-                                Smart_ajust_chujia()
-                            elif diff == 300:
-                                set_val('userprice', lowest_price+800)
-                                Smart_ajust_chujia()
-                        elif smart_ajust and tijiao_on and one_diff == 1300 \
-                                and a_time >= smart_ajust_time:
-                            userprice2 = lowest_price + 800
-                            diff = userprice2 - userprice
-                            if diff == 0 or diff == 100 or  diff == 200 or diff == 300:
-                                pass
-                            elif diff == -100:
-                                set_val('userprice', lowest_price+500)
-                                Smart_ajust_chujia()
-                            elif diff == -200:
-                                set_val('userprice', lowest_price+600)
-                                Smart_ajust_chujia()
-                            elif diff == -300:
-                                set_val('userprice', lowest_price+700)
-                                Smart_ajust_chujia()
-                            elif diff < -300 or diff > 300:
-                                set_val('userprice', lowest_price+800)
-                                Smart_ajust_chujia()
-
-                ####模拟触发
-                moni_on = get_val('moni_on')
-                moni_second = get_val('moni_second')
-                if tijiao_on and strategy_on and moni_on and tijiao_OK and smart_ajust:
-                    if smart_ajust_time_moni <= moni_second <= smart_ajust_time_moni + 0.6:
                         if one_diff == 1000:
                             userprice2 = lowest_price + 500
                             diff = userprice2 - userprice
-                            print(diff)
                             if diff == 0 or diff == -100 or  diff == -200 or diff == -300:
-                                print("+0.2")
+                                pass
                             elif diff<-300 or diff>300:
-                                print("+0.3")
+                                userprice = lowest_price + 500
                                 set_val('userprice', lowest_price + 500)
-                                Smart_ajust_chujia()
+                                Smart_ajust_chujia(userprice)
                             elif diff == 300:
-                                print("+0.4")
-
+                                userprice = lowest_price + 600
                                 set_val('userprice', lowest_price + 600)
-                                Smart_ajust_chujia()
+                                Smart_ajust_chujia(userprice)
                             elif diff == 200:
-                                print("+0.5")
-
+                                userprice = lowest_price + 700
                                 set_val('userprice', lowest_price + 700)
-                                Smart_ajust_chujia()
+                                Smart_ajust_chujia(userprice)
                             elif diff == 100:
-                                print("+0.6")
-
+                                userprice = lowest_price + 800
                                 set_val('userprice', lowest_price + 800)
-                                Smart_ajust_chujia()
+                                Smart_ajust_chujia(userprice)
 
                         elif one_diff == 1100:
                             userprice2 = lowest_price + 600
@@ -384,57 +301,155 @@ class TijiaoThread(Thread):
                             if diff == 0 or diff == 100 or  diff == -100 or diff == -200:
                                 pass
                             elif diff == -300:
+                                userprice = lowest_price + 500
                                 set_val('userprice', lowest_price+500)
-                                Smart_ajust_chujia()
+                                Smart_ajust_chujia(userprice)
                             elif diff<-300 or diff>300:
+                                userprice = lowest_price + 600
                                 set_val('userprice', lowest_price+600)
-                                Smart_ajust_chujia()
+                                Smart_ajust_chujia(userprice)
                             elif diff == 300:
+                                userprice = lowest_price + 700
                                 set_val('userprice', lowest_price+700)
-                                Smart_ajust_chujia()
+                                Smart_ajust_chujia(userprice)
                             elif diff == 200:
+                                userprice = lowest_price + 800
                                 set_val('userprice', lowest_price+800)
-                                Smart_ajust_chujia()
+                                Smart_ajust_chujia(userprice)
                         elif one_diff == 1200:
-                            print("+0.1")
                             userprice2 = lowest_price + 700
                             diff = userprice2 - userprice
                             if diff == 0 or diff == 100  or diff == 200 or  diff == -100 :
-                                print("+0.2")
+                                pass
                             elif diff == -200:
-                                print("+0.3")
+                                userprice = lowest_price + 500
                                 set_val('userprice', lowest_price+500)
-                                Smart_ajust_chujia()
+                                Smart_ajust_chujia(userprice)
                             elif diff == -300:
-                                print("+0.4")
+                                userprice = lowest_price + 600
                                 set_val('userprice', lowest_price+600)
-                                Smart_ajust_chujia()
+                                Smart_ajust_chujia(userprice)
                             elif diff<-300 or diff>300:
-                                print("+0.5")
+                                userprice = lowest_price + 700
                                 set_val('userprice', lowest_price+700)
-                                Smart_ajust_chujia()
+                                Smart_ajust_chujia(userprice)
                             elif diff == 300:
-                                print("+0.6")
+                                userprice = lowest_price + 800
                                 set_val('userprice', lowest_price+800)
-                                Smart_ajust_chujia()
+                                Smart_ajust_chujia(userprice)
                         elif one_diff == 1300:
                             userprice2 = lowest_price + 800
                             diff = userprice2 - userprice
                             if diff == 0 or diff == 100 or  diff == 200 or diff == 300:
                                 pass
                             elif diff == -100:
+                                userprice = lowest_price + 500
                                 set_val('userprice', lowest_price+500)
-                                Smart_ajust_chujia()
+                                Smart_ajust_chujia(userprice)
                             elif diff == -200:
+                                userprice = lowest_price + 600
                                 set_val('userprice', lowest_price+600)
-                                Smart_ajust_chujia()
+                                Smart_ajust_chujia(userprice)
                             elif diff == -300:
+                                userprice = lowest_price + 700
                                 set_val('userprice', lowest_price+700)
-                                Smart_ajust_chujia()
+                                Smart_ajust_chujia(userprice)
                             elif diff < -300 or diff > 300:
+                                userprice = lowest_price + 800
                                 set_val('userprice', lowest_price+800)
-                                Smart_ajust_chujia()
+                                Smart_ajust_chujia(userprice)
 
+                ####模拟触发
+                moni_on = get_val('moni_on')
+                moni_second = get_val('moni_second')
+                if strategy_on and moni_on and tijiao_on and smart_ajust:
+                    if smart_ajust_time_moni <= moni_second <= smart_ajust_time_moni + 0.6:
+                        if one_diff == 1000:
+                            userprice2 = lowest_price + 500
+                            diff = userprice2 - userprice
+                            print(diff)
+                            if diff == 0 or diff == -100 or  diff == -200 or diff == -300:
+                                pass
+                            elif diff<-300 or diff>300:
+                                userprice = lowest_price + 500
+                                set_val('userprice', lowest_price + 500)
+                                Smart_ajust_chujia(userprice)
+                            elif diff == 300:
+                                userprice = lowest_price + 600
+                                set_val('userprice', lowest_price + 600)
+                                Smart_ajust_chujia(userprice)
+                            elif diff == 200:
+                                userprice = lowest_price + 700
+                                set_val('userprice', lowest_price + 700)
+                                Smart_ajust_chujia(userprice)
+                            elif diff == 100:
+                                userprice = lowest_price + 800
+                                set_val('userprice', lowest_price + 800)
+                                Smart_ajust_chujia(userprice)
+
+                        elif one_diff == 1100:
+                            userprice2 = lowest_price + 600
+                            diff = userprice2 - userprice
+                            if diff == 0 or diff == 100 or  diff == -100 or diff == -200:
+                                pass
+                            elif diff == -300:
+                                userprice = lowest_price + 500
+                                set_val('userprice', lowest_price+500)
+                                Smart_ajust_chujia(userprice)
+                            elif diff<-300 or diff>300:
+                                userprice = lowest_price + 600
+                                set_val('userprice', lowest_price+600)
+                                Smart_ajust_chujia(userprice)
+                            elif diff == 300:
+                                userprice = lowest_price + 700
+                                set_val('userprice', lowest_price+700)
+                                Smart_ajust_chujia(userprice)
+                            elif diff == 200:
+                                userprice = lowest_price + 800
+                                set_val('userprice', lowest_price+800)
+                                Smart_ajust_chujia(userprice)
+                        elif one_diff == 1200:
+                            userprice2 = lowest_price + 700
+                            diff = userprice2 - userprice
+                            if diff == 0 or diff == 100  or diff == 200 or  diff == -100 :
+                                pass
+                            elif diff == -200:
+                                userprice = lowest_price + 500
+                                set_val('userprice', lowest_price+500)
+                                Smart_ajust_chujia(userprice)
+                            elif diff == -300:
+                                userprice = lowest_price + 600
+                                set_val('userprice', lowest_price+600)
+                                Smart_ajust_chujia(userprice)
+                            elif diff<-300 or diff>300:
+                                userprice = lowest_price + 700
+                                set_val('userprice', lowest_price+700)
+                                Smart_ajust_chujia(userprice)
+                            elif diff == 300:
+                                userprice = lowest_price + 800
+                                set_val('userprice', lowest_price+800)
+                                Smart_ajust_chujia(userprice)
+                        elif one_diff == 1300:
+                            userprice2 = lowest_price + 800
+                            diff = userprice2 - userprice
+                            if diff == 0 or diff == 100 or  diff == 200 or diff == 300:
+                                pass
+                            elif diff == -100:
+                                userprice = lowest_price + 500
+                                set_val('userprice', lowest_price+500)
+                                Smart_ajust_chujia(userprice)
+                            elif diff == -200:
+                                userprice = lowest_price + 600
+                                set_val('userprice', lowest_price+600)
+                                Smart_ajust_chujia(userprice)
+                            elif diff == -300:
+                                userprice = lowest_price + 700
+                                set_val('userprice', lowest_price+700)
+                                Smart_ajust_chujia(userprice)
+                            elif diff < -300 or diff > 300:
+                                userprice = lowest_price + 800
+                                set_val('userprice', lowest_price+800)
+                                Smart_ajust_chujia(userprice)
 ##-----------------------------------------------------------------------------
                 ## 模拟提交
                 moni_second = get_val('moni_second')

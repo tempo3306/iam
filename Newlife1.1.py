@@ -5,7 +5,7 @@
 # 新增验证码放大器功能
 # 时间同步
 import logging,time
-version = 1.11  #版本号
+version = 1.12  #版本号
 timenow = time.time()
 # 转换成localtime
 time_local = time.localtime(timenow)

@@ -1105,12 +1105,16 @@ class OperationFrame(wx.Frame):
     def OnClose(self, event):
         guopai_on = get_val('guopai_on')
         if guopai_on:
-            ret = wx.MessageBox('真的要退出吗?', '确认', wx.OK | wx.CANCEL)
-            if ret == wx.OK:
+            dlg = wx.MessageDialog(None, "确认要关闭国拍吗?",
+                                   '关闭国拍页面',
+                                   wx.YES_NO | wx.ICON_WARNING | wx.STAY_ON_TOP)
+            ret = dlg.ShowModal()
+            if ret == wx.ID_YES:
                 main = self.FindWindowById(1)
                 main.Show(True)
                 wx.CallAfter(pub.sendMessage, "close webframe")  # 关闭热键绑定
                 self.Show(False)
+            dlg.Destroy()
         else:
             main = self.FindWindowById(1)
             main.Show(True)
