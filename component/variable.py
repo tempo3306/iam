@@ -83,6 +83,8 @@ def init_val():
     set_val('yanzhengma_find', True)  # 验证码是否找到 默认True 发现需要查找 之后变为False
     set_val('yanzhengma_move', True)  # 是否需要移动
     set_val('yanzhengma_hash', 0)  # 前一个验证码截图  如果变化就刷新 ，不变化就不动作
+    set_val('yanzhengma_change', True) #判定是否变化
+
     set_val('price_on', False)  # 价格是否显示
     set_val('price_count', 0)  # 辅助计时，正确显示价格
     set_val('yanzhengma_count', 0)  # 辅助计时，正确显示价格

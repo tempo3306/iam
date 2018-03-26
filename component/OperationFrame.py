@@ -18,6 +18,16 @@ from component.variable import set_val, get_val
 import logging
 logger = logging.getLogger()
 
+##初始化打开PNG
+import sys
+allpath = os.path.abspath(os.path.realpath(sys.argv[0]))
+path = os.path.split(allpath)[0] + '\\'  # 分割
+set_val('path', path)
+path = get_val('path')
+yanpath = path + "\\yanzhengma.png"
+yanzhengma_img = Image.open(yanpath)
+set_val('yanzhengma_img', yanzhengma_img)
+
 #-----------------------------------------------------------
 class StatusPanel(wx.Panel):
     def __init__(self, parent):
@@ -382,10 +392,15 @@ class StrategyPanel(wx.Panel):
         set_val('second_real_time2', self.gettime(second_time2))
         self.timer1 = wx.Timer(self)
         self.Bind(wx.EVT_TIMER, self.Price_view, self.timer1)  # 绑定一个定时器事件，主判断
-        self.timer1.Start(10)  # 设定时间间隔
-        self.timer2 = wx.Timer(self)
-        self.Bind(wx.EVT_TIMER, self.Price_count, self.timer2)  #
-        self.timer2.Start(100)  # 设定时间间隔
+        self.timer1.Start(35)  # 设定时间间隔
+
+        ## 换成线程处理
+        # self.timer2 = wx.Timer(self)
+        # self.Bind(wx.EVT_TIMER, self.Price_count, self.timer2)  #
+        # self.timer2.Start(100)  # 设定时间间隔
+
+
+
         stractagy = wx.StaticBox(self, -1, u'选择策略:')
         self.stractagySizer = wx.StaticBoxSizer(stractagy, wx.VERTICAL)
         stractagy_label = wx.StaticText(self, label=u"设定拍牌策略", size=(100, 50))
@@ -553,6 +568,7 @@ class StrategyPanel(wx.Panel):
             self.Screen_shot(Pos_price, Pricesize, "userprice.png")
             set_val('price_view', False)
             set_val('price_on', True)
+
         yanzhengma_count = get_val("yanzhengma_count")
         yanzhengma_close = get_val("yanzhengma_close")
         if yanzhengma_count >= 5 and not yanzhengma_close:  # 0.5秒之后没有确认触发关闭验证码
@@ -567,20 +583,11 @@ class StrategyPanel(wx.Panel):
                 logger.exception('this is an exception message')
 
         yanzhengma_view = get_val('yanzhengma_view')
-        if yanzhengma_view:
-            set_val('yanzhengma_close', False)
-            path = get_val('path')
-            yanpath = path + "\\yanzhengma.png"
-            cut_pic(imgpos_yanzhengma, Yanzhengmasize, yanpath)  # 直接调用得到 png
-            set_val('yanzhengma_img', Image.open(yanpath))
-            yanzhengma_img = get_val('yanzhengma_img')
-            yan_hash = imagehash.dhash(yanzhengma_img)
-            if not yanzhengma_hash:  # 第一次
-                set_val('yanzhengma_hash', yan_hash)
-            elif yan_hash == yanzhengma_hash:  # 验证码没变化
+        yanzhengma_change = get_val('yanzhengma_change')  #默认是True
+        if  yanzhengma_view:
+            if not yanzhengma_change :
                 pass
             else:
-                set_val('yanzhengma_hash', yan_hash)
                 try:
                     yan = self.FindWindowById(18)
                     yan.ShowImage(yanpath)

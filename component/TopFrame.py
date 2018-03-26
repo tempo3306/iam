@@ -78,9 +78,9 @@ class TopFrame(wx.Frame):
         self.timer2 = wx.Timer(self)
         self.Bind(wx.EVT_TIMER, self.MainControl, self.timer2)  # 绑定一个定时器事件，主判断
         self.timer2.Start(100)  # 设定时间间隔
-        self.timer3 = wx.Timer(self)
-        self.Bind(wx.EVT_TIMER, self.Lowest_price, self.timer3)  # 设置一个截屏取价  和查看时间
-        self.timer3.Start(60)
+        # self.timer3 = wx.Timer(self)
+        # self.Bind(wx.EVT_TIMER, self.Lowest_price, self.timer3)  # 设置一个截屏取价  和查看时间
+        # self.timer3.Start(60)
 
         ## 链接到子frame
         pub.subscribe(self.OpenGuopai_dianxin, "open dianxin")  # 打开电信
@@ -89,6 +89,10 @@ class TopFrame(wx.Frame):
 
         #创建网速测试线程  通过这个线程控制启动或关闭
         self.pinger = pingerThread()
+
+        ## browser
+        self.browser = wx.html2.WebView.New()
+
 
     def webopen(self):
         self.Show(False)
@@ -126,10 +130,10 @@ class TopFrame(wx.Frame):
                 set_val('strategy_on', True)
                 self.fr = WebFrame(Px, Py, False, '小鲜肉模拟', (websize[0], websize[1]))
 
-                browser = wx.html2.WebView.New(self.fr, size=(websize[0] + 48, websize[1] + 40), pos=webview_pos,
+                self.browser = wx.html2.WebView.New(self.fr, size=(websize[0] + 48, websize[1] + 40), pos=webview_pos,
                                                style=wx.BORDER_NONE)
-                browser.LoadURL(url1)
-                browser.CanSetZoomType(False)
+                self.browser.LoadURL(url1)
+                self.browser.CanSetZoomType(False)
                 self.fr.Show()
                 # 关闭主界面，打开策略设置
                 self.webopen()
@@ -283,7 +287,6 @@ class TopFrame(wx.Frame):
         try:
             price = Price_read()
             price = int(Price_read())  # 获取当前最低价
-
             if price in pricelist:  # 字典查找
                 set_val('findpos_on', False)
                 if lowest_price == price:

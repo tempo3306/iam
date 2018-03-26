@@ -52,13 +52,12 @@ def Paste():  # ctrl + V
     win32api.keybd_event(86, 0, win32con.KEYEVENTF_KEYUP, 0)  # 释放按键
     win32api.keybd_event(17, 0, win32con.KEYEVENTF_KEYUP, 0)
 
-
-def Paste_moni():
-    win32api.keybd_event(17, 0, 0, 0)  # ctrl的键位码是17
-    win32api.keybd_event(86, 0, 0, 0)  # v的键位码是86
-    win32api.keybd_event(86, 0, win32con.KEYEVENTF_KEYUP, 0)  # 释放按键
-    win32api.keybd_event(17, 0, win32con.KEYEVENTF_KEYUP, 0)
-
+import wx
+def Paste_moni(price):
+    topframe = wx.FindWindowById(1)
+    browser = topframe.browser
+    script = "$('#selfwrite').val('{0}')".format(price)
+    browser.RunScript(script)
 
 def setText(aString):
     aString = aString.encode('utf-8')
@@ -197,8 +196,12 @@ def OnClick_chujia():
     if tijiao_num == 1:
         own_price1 = lowest_price + one_diff
         set_val('own_price1', own_price1)
-        setText(str(own_price1))
-        selfdelete()
+        moni_on =  get_val('moni_on')
+        if not moni_on:
+            setText(str(own_price1))
+            selfdelete()
+        else:
+            Paste_moni(own_price1)
         Click(Position[1][0], Position[1][1])
         Click(Position[5][0], Position[5][1])
         set_val('tijiao_on', True)
@@ -213,8 +216,12 @@ def OnClick_chujia():
     elif tijiao_num == 2 and twice:
         own_price2 = lowest_price + second_diff
         set_val('own_price2', own_price2)
-        setText(str(own_price2))  # 复制价格到粘贴板
-        selfdelete()
+        moni_on =  get_val('moni_on')
+        if not moni_on:
+            setText(str(own_price2))
+            selfdelete()
+        else:
+            Paste_moni(own_price2)
         Click(Position[1][0], Position[1][1])
         Click(Position[5][0], Position[5][1])
         set_val('tijiao_on', True)
@@ -281,23 +288,23 @@ def OnH_chujia():
     set_val('own_price1', lowest_price + one_diff)
     own_price1 = get_val('own_price1')
     setText(str(own_price1))
-    selfdelete()
+    moni_on = get_val('moni_on')
+    if not moni_on:
+        selfdelete()
+    else:
+        Paste_moni(own_price1)
+
     Click(Position[1][0], Position[1][1])
     Click(Position[5][0], Position[5][1])
 
 
 def selfdelete():
     Position = get_val('Position')
-    moni_on = get_val('moni_on')
     Click2(Position[6][0], Position[6][1] - 5)
     Click2(Position[6][0], Position[6][1])
     Click2(Position[6][0], Position[6][1])
     Delete()
-    Delete()
-    if moni_on:
-        Paste_moni()  # 粘贴
-    else:
-        Paste()  # 真粘贴
+    Paste()  # 真粘贴
 
 
 def selfChujia():
@@ -356,8 +363,12 @@ def query():
     if not query_interval and not query_on:
         set_val('query_on', True)
         set_val('query_interval', True)
-        setText(str(1000000))  # 出一定超出的价格
-        selfdelete()
+        moni_on = get_val('moni_on')
+        if not moni_on:
+            setText(str(1000000))  # 出一定超出的价格
+            selfdelete()
+        else:
+            Paste_moni(1000000)
         Click(Position[1][0], Position[1][1])
         timer1 = threading.Timer(4, query_sleep4)
         timer1.start()
@@ -519,6 +530,8 @@ def trans_time():
         hour, minute, second = timestr.split('-')
         if int(hour) == 11 and int(minute) == 29:
             pricelist[int(second)] = lowest_price
+
+
 
 
 ##智能出价

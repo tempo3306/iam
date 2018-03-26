@@ -8,12 +8,16 @@ from wx.lib.pubsub import pub
 import threading, time
 from threading import Thread
 import sys, os
-from component.imgcut import cut_img, findconfirm, findrefresh, findpos
+from component.imgcut import cut_img, findconfirm, findrefresh, findpos, Price_read, cut_pic
 from component.login import ConfirmUser, Keeplogin
 from component.staticmethod import OnClick_chujia, OnClick_Tijiao
 from component.staticmethod import SmartTijiao
 from component.staticmethod import Smart_ajust_chujia
+from component.staticmethod import trans_time
 from component.variable import get_val, set_val
+from PIL import Image
+import imagehash
+
 import logging
 logger = logging.getLogger()
 
@@ -590,6 +594,11 @@ class TimeThread(Thread):
             if moni_second >= 60:
                 set_val('moni_second', 0)
 
+            ##计数，保证间隔
+            price_count = get_val('price_count')
+            yanzhengma_count = get_val('yanzhengma_count')
+            set_val('price_count', 1 + price_count)
+            set_val('yanzhengma_count', 1 + yanzhengma_count)
 
 # ---------------------------------------
 # 打开浏览器
@@ -668,3 +677,61 @@ class GetremotetimeThread(Thread):
             set_val('a_time', remotetime+0.3) #补网络延迟
         except:
             logger.exception('this is an exception message')
+
+## 设置一个截屏取价  和查看时间
+##
+class LowestpfriceThread(Thread):
+    def __init__(self):
+        Thread.__init__(self)
+        self.setDaemon(True)
+        self.start()
+
+    def run(self):
+        for i in range(10000000):
+            time.sleep(0.035)
+            lowest_price = get_val('lowest_price')
+            pricelist = get_val('pricelist')
+            moni_second = get_val('moni_second')
+            a_time = get_val('a_time')
+            moni_on = get_val('moni_on')
+            try:
+                price = int(Price_read())  # 获取当前最低价
+                if price in pricelist:  # 字典查找
+                    set_val('findpos_on', False)
+                    if lowest_price == price:
+                        trans_time()  # 保存价格
+                    else:
+                        set_val('lowest_price', price)
+                        trans_time()  # 保存价格
+                        if moni_on:
+                            set_val('changetime', moni_second)
+                        else:
+                            set_val('changetime', a_time)
+                else:
+                    set_val('findpos_on', True)
+            except:
+                set_val('findpos_on', True)
+
+            ##验证码放大是否需要刷新
+            yanzhengma_view = get_val('yanzhengma_view')
+            imgpos_yanzhengma = get_val('imgpos_yanzhengma')
+            Yanzhengmasize = get_val('Yanzhengmasize')
+            yanzhengma_hash = get_val('yanzhengma_hash')
+
+            if yanzhengma_view:
+                set_val('yanzhengma_close', False)
+                path = get_val('path')
+                yanpath = path + "\\yanzhengma.png"
+                cut_pic(imgpos_yanzhengma, Yanzhengmasize, yanpath)  # 直接调用得到 png
+
+                yanzhengma_img = Image.open(yanpath)
+
+                set_val('yanzhengma_img', yanzhengma_img)
+                yanzhengma_img = get_val('yanzhengma_img')
+                yan_hash = imagehash.dhash(yanzhengma_img)
+                if not yanzhengma_hash:  # 第一次
+                    set_val('yanzhengma_hash', yan_hash)
+                elif yan_hash == yanzhengma_hash:  # 验证码没变化
+                    set_val('yanzhengma_change', False)
+                else:
+                    set_val('yanzhengma_change', True)  #发生变化了

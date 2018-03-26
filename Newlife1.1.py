@@ -4,8 +4,9 @@
 # 无确认
 # 新增验证码放大器功能
 # 时间同步
-import logging,time
-version = '1.13s'  #版本号
+import logging, time
+
+version = '1.13s'  # 版本号
 timenow = time.time()
 # 转换成localtime
 time_local = time.localtime(timenow)
@@ -18,12 +19,12 @@ logging.basicConfig(level=logging.DEBUG,
                     filemode='w')
 
 root = logging.getLogger()
-print(root.name,type(root),root.parent,id(root))
+print(root.name, type(root), root.parent, id(root))
 # ----------------------------------------------------------------
 # 导入模块#####################
 import sys
 
-#判断运行平台
+# 判断运行平台
 if sys.platform != 'win32':
     exit()
 
@@ -32,15 +33,16 @@ import wx.adv
 from PIL import Image
 import os
 from PIL import ImageGrab
-#组件
-from component.app_thread import cutimgThread,findposThread
-from component.app_thread import confirmThread,refreshThread,TijiaoThread
+# 组件
+from component.app_thread import cutimgThread, findposThread
+from component.app_thread import confirmThread, refreshThread, TijiaoThread
 from component.variable import set_val
 from component.LoginFrame import LoginFrame
-from component.variable import Create_hash,init_val
+from component.variable import Create_hash, init_val, get_val
 
-#--------------------------------------------------------------
-#创建app
+
+# --------------------------------------------------------------
+# 创建app
 class SketchApp(wx.App):
     def OnInit(self):
         try:
@@ -67,18 +69,16 @@ if __name__ == '__main__':
     init_val()
     set_val('version', version)
     ###获取路径
-    allpath = os.path.abspath(os.path.realpath(sys.argv[0]))
-    path = os.path.split(allpath)[0] + '\\'  # 分割
-    set_val('path', path)
+    path = get_val('path')
     iconpath = path + 'ico.ico'  # 图标路径
     set_val('mainicon', iconpath)
     app = SketchApp()
     ## 打开刷新与确认进程
-    confirmthread = confirmThread()  #确认线程
-    refreshthread = refreshThread()  #刷新线程
-    finposthread = findposThread()   #定位线程
-    cutimgthread = cutimgThread()   #截图线程
-    tijiaoThread = TijiaoThread()  #提交
+    confirmthread = confirmThread()  # 确认线程
+    refreshthread = refreshThread()  # 刷新线程
+    finposthread = findposThread()  # 定位线程
+    cutimgthread = cutimgThread()  # 截图线程
+    tijiaoThread = TijiaoThread()  # 提交
     # monitijaoThread = MoniTijiaoThread() #模拟提交
     app.MainLoop()
 
