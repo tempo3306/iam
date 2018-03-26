@@ -21,6 +21,18 @@ import imagehash
 import logging
 logger = logging.getLogger()
 
+##初始化打开PNG
+import sys
+allpath = os.path.abspath(os.path.realpath(sys.argv[0]))
+path = os.path.split(allpath)[0] + '\\'  # 分割
+set_val('path', path)
+path = get_val('path')
+yanpath = path + "\\yanzhengma.png"
+yanzhengma_img = Image.open(yanpath)
+set_val('yanpath', yanpath)
+set_val('yanzhengma_img', yanzhengma_img)
+
+
 
 class HashThread(Thread):
     def __init__(self):
@@ -689,6 +701,7 @@ class LowestpfriceThread(Thread):
     def run(self):
         for i in range(10000000):
             time.sleep(0.035)
+            a = time.time()
             lowest_price = get_val('lowest_price')
             pricelist = get_val('pricelist')
             moni_second = get_val('moni_second')
@@ -712,20 +725,23 @@ class LowestpfriceThread(Thread):
             except:
                 set_val('findpos_on', True)
 
+            c = time.time()
+            print(c-a, 'c-a')
+
             ##验证码放大是否需要刷新
             yanzhengma_view = get_val('yanzhengma_view')
             imgpos_yanzhengma = get_val('imgpos_yanzhengma')
             Yanzhengmasize = get_val('Yanzhengmasize')
             yanzhengma_hash = get_val('yanzhengma_hash')
 
+            print(yanzhengma_view, 'yanzhengma_view')
+
             if yanzhengma_view:
                 set_val('yanzhengma_close', False)
                 path = get_val('path')
                 yanpath = path + "\\yanzhengma.png"
-                cut_pic(imgpos_yanzhengma, Yanzhengmasize, yanpath)  # 直接调用得到 png
-
+                cut_pic(imgpos_yanzhengma, Yanzhengmasize, yanpath)  # 直接调用得到 png 保存图片
                 yanzhengma_img = Image.open(yanpath)
-
                 set_val('yanzhengma_img', yanzhengma_img)
                 yanzhengma_img = get_val('yanzhengma_img')
                 yan_hash = imagehash.dhash(yanzhengma_img)
@@ -734,4 +750,8 @@ class LowestpfriceThread(Thread):
                 elif yan_hash == yanzhengma_hash:  # 验证码没变化
                     set_val('yanzhengma_change', False)
                 else:
+                    set_val('yanzhengma_hash', yan_hash)
                     set_val('yanzhengma_change', True)  #发生变化了
+
+            b = time.time()
+            print(b-a, 'b-a')

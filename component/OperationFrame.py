@@ -18,15 +18,6 @@ from component.variable import set_val, get_val
 import logging
 logger = logging.getLogger()
 
-##初始化打开PNG
-import sys
-allpath = os.path.abspath(os.path.realpath(sys.argv[0]))
-path = os.path.split(allpath)[0] + '\\'  # 分割
-set_val('path', path)
-path = get_val('path')
-yanpath = path + "\\yanzhengma.png"
-yanzhengma_img = Image.open(yanpath)
-set_val('yanzhengma_img', yanzhengma_img)
 
 #-----------------------------------------------------------
 class StatusPanel(wx.Panel):
@@ -547,11 +538,8 @@ class StrategyPanel(wx.Panel):
 
     def Price_view(self, event):
         Pricesize = get_val('Pricesize')
-        Yanzhengmasize = get_val('Yanzhengmasize')
         yanzhengma_move = get_val('yanzhengma_move')
         Pos_price = get_val('Pos_price')
-        imgpos_yanzhengma = get_val('imgpos_yanzhengma')
-        yanzhengma_hash = get_val('yanzhengma_hash')
         Pos_yanzhengmaframe = get_val('Pos_yanzhengmaframe')
         if yanzhengma_move:
             yan = self.FindWindowById(18)
@@ -571,12 +559,14 @@ class StrategyPanel(wx.Panel):
 
         yanzhengma_count = get_val("yanzhengma_count")
         yanzhengma_close = get_val("yanzhengma_close")
+
         if yanzhengma_count >= 5 and not yanzhengma_close:  # 0.5秒之后没有确认触发关闭验证码
             find_yan_confirm()
         yanzhengma_close = get_val("yanzhengma_close")
+
+
         if yanzhengma_close:
             try:
-                # print(yanzhengma_close,"yanzhengma_close")
                 yan2 = self.FindWindowById(18)
                 yan2.Show(False)
             except:
@@ -589,6 +579,7 @@ class StrategyPanel(wx.Panel):
                 pass
             else:
                 try:
+                    yanpath = get_val('yanpath')
                     yan = self.FindWindowById(18)
                     yan.ShowImage(yanpath)
                     yan.Show()

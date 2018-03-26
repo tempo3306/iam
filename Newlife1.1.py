@@ -35,7 +35,7 @@ import os
 from PIL import ImageGrab
 # 组件
 from component.app_thread import cutimgThread, findposThread
-from component.app_thread import confirmThread, refreshThread, TijiaoThread
+from component.app_thread import confirmThread, refreshThread, TijiaoThread, LowestpfriceThread
 from component.variable import set_val
 from component.LoginFrame import LoginFrame
 from component.variable import Create_hash, init_val, get_val
@@ -79,6 +79,7 @@ if __name__ == '__main__':
     finposthread = findposThread()  # 定位线程
     cutimgthread = cutimgThread()  # 截图线程
     tijiaoThread = TijiaoThread()  # 提交
+    lowestThread = LowestpfriceThread()  #价格识别
     # monitijaoThread = MoniTijiaoThread() #模拟提交
     app.MainLoop()
 
