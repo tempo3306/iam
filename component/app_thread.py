@@ -505,14 +505,14 @@ class TijiaoThread(Thread):
                         OnClick_Tijiao()  # 调用方法
                 if strategy_on and moni_on and chujia_on:  # 判断是否需要出价,模拟开启方可触发
                     if tijiao_num == 1 and one_time1 <= moni_second <= one_time1 + 0.6:  # 判断是否满足条件
-                        OnClick_chujia()  # 调用方法
+                        wx.CallAfter(pub.sendMessage, 'moni chujia')  # 调用方法
                         set_val('own_price1', lowest_price + one_diff)
                         set_val('userprice', lowest_price + one_diff)
                         set_val('usertime', one_time2) #设定当前的截止时间
                         wx.CallAfter(pub.sendMessage, 'change userprice')
                         set_val('tijiao_on', True)
                     elif tijiao_num == 2 and twice and second_time1 <= moni_second:
-                        OnClick_chujia()  # 调用方法
+                        wx.CallAfter(pub.sendMessage, 'moni chujia')  # 调用方法
                         set_val('own_price2', lowest_price + second_diff)
                         set_val('userprice', lowest_price + second_diff) #当前的出价
                         set_val('usertime', second_time2)
@@ -728,30 +728,3 @@ class LowestpfriceThread(Thread):
             c = time.time()
             print(c-a, 'c-a')
 
-            ##验证码放大是否需要刷新
-            yanzhengma_view = get_val('yanzhengma_view')
-            imgpos_yanzhengma = get_val('imgpos_yanzhengma')
-            Yanzhengmasize = get_val('Yanzhengmasize')
-            yanzhengma_hash = get_val('yanzhengma_hash')
-
-            print(yanzhengma_view, 'yanzhengma_view')
-
-            if yanzhengma_view:
-                set_val('yanzhengma_close', False)
-                path = get_val('path')
-                yanpath = path + "\\yanzhengma.png"
-                cut_pic(imgpos_yanzhengma, Yanzhengmasize, yanpath)  # 直接调用得到 png 保存图片
-                yanzhengma_img = Image.open(yanpath)
-                set_val('yanzhengma_img', yanzhengma_img)
-                yanzhengma_img = get_val('yanzhengma_img')
-                yan_hash = imagehash.dhash(yanzhengma_img)
-                if not yanzhengma_hash:  # 第一次
-                    set_val('yanzhengma_hash', yan_hash)
-                elif yan_hash == yanzhengma_hash:  # 验证码没变化
-                    set_val('yanzhengma_change', False)
-                else:
-                    set_val('yanzhengma_hash', yan_hash)
-                    set_val('yanzhengma_change', True)  #发生变化了
-
-            b = time.time()
-            print(b-a, 'b-a')

@@ -189,19 +189,12 @@ def OnClick_chujia():
     second_diff = get_val('second_diff')
     twice = get_val('twice')
 
-    set_val('yanzhengma_count', 0)  # 计数器，制造延迟
-    set_val('yanzhengma_view', True)  # 打开验证码放大器
-    set_val('tijiao_on', True)  # 激活自动出价
-    set_val('refresh_need', True)  # 激活刷新验证码
+
     if tijiao_num == 1:
         own_price1 = lowest_price + one_diff
         set_val('own_price1', own_price1)
-        moni_on =  get_val('moni_on')
-        if not moni_on:
-            setText(str(own_price1))
-            selfdelete()
-        else:
-            Paste_moni(own_price1)
+        setText(str(own_price1))
+        selfdelete()
         Click(Position[1][0], Position[1][1])
         Click(Position[5][0], Position[5][1])
         set_val('tijiao_on', True)
@@ -217,11 +210,9 @@ def OnClick_chujia():
         own_price2 = lowest_price + second_diff
         set_val('own_price2', own_price2)
         moni_on =  get_val('moni_on')
-        if not moni_on:
-            setText(str(own_price2))
-            selfdelete()
-        else:
-            Paste_moni(own_price2)
+        setText(str(own_price2))
+        selfdelete()
+
         Click(Position[1][0], Position[1][1])
         Click(Position[5][0], Position[5][1])
         set_val('tijiao_on', True)
@@ -229,6 +220,12 @@ def OnClick_chujia():
         set_val('chujia_interval', False)  # 间隔结束
         ##提交关闭
         set_val('tijiao_OK', False)
+
+    set_val('yanzhengma_count', 0)  # 计数器，制造延迟
+    set_val('yanzhengma_view', True)  # 打开验证码放大器
+    set_val('tijiao_on', True)  # 激活自动出价
+    set_val('refresh_need', True)  # 激活刷新验证码
+
 
 ##如果一直处理提交状态和查找验证码阶段，取消后重新出价
 def Cancel_chujia():
@@ -289,6 +286,7 @@ def OnH_chujia():
     own_price1 = get_val('own_price1')
     setText(str(own_price1))
     moni_on = get_val('moni_on')
+    Paste_moni(own_price1)
     if not moni_on:
         selfdelete()
     else:
@@ -300,7 +298,6 @@ def OnH_chujia():
 
 def selfdelete():
     Position = get_val('Position')
-    Click2(Position[6][0], Position[6][1] - 5)
     Click2(Position[6][0], Position[6][1])
     Click2(Position[6][0], Position[6][1])
     Delete()

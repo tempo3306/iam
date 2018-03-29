@@ -86,13 +86,62 @@ class TopFrame(wx.Frame):
         pub.subscribe(self.OpenGuopai_dianxin, "open dianxin")  # 打开电信
         pub.subscribe(self.OpenGuopai_nodianxin, "open nodianxin")  # 打开非电信
         pub.subscribe(self.Close, "close topframe")  #
-
+        pub.subscribe(self.moni_chujia, "moni chujia")
         #创建网速测试线程  通过这个线程控制启动或关闭
         self.pinger = pingerThread()
 
         ## browser
         self.browser = wx.html2.WebView.New()
 
+
+    def moni_chujia(self):
+        lowest_price = get_val('lowest_price')
+        Position = get_val('Position')
+        tijiao_num = get_val('tijiao_num')
+        one_diff = get_val('one_diff')
+        second_diff = get_val('second_diff')
+        twice = get_val('twice')
+
+        if tijiao_num == 1:
+            own_price1 = lowest_price + one_diff
+            set_val('own_price1', own_price1)
+            moni_on = get_val('moni_on')
+
+            script = "$('#selfwrite').val('{0}')".format(own_price1)
+            self.browser.RunScript(script)
+
+
+            Click(Position[1][0], Position[1][1])
+            Click(Position[5][0], Position[5][1])
+            set_val('tijiao_on', True)
+            set_val('chujia_on', False)
+            set_val('chujia_interval', False)  # 间隔结束
+            ##提交关闭
+            set_val('tijiao_OK', False)
+            ##5秒后调用取消出价
+            timer = threading.Timer(6, Cancel_chujia)
+            timer.start()
+
+        elif tijiao_num == 2 and twice:
+            own_price2 = lowest_price + second_diff
+            set_val('own_price2', own_price2)
+            moni_on = get_val('moni_on')
+
+            script = "$('#selfwrite').val('{0}')".format(own_price2)
+            self.browser.RunScript(script)
+
+            Click(Position[1][0], Position[1][1])
+            Click(Position[5][0], Position[5][1])
+            set_val('tijiao_on', True)
+            set_val('chujia_on', False)
+            set_val('chujia_interval', False)  # 间隔结束
+            ##提交关闭
+            set_val('tijiao_OK', False)
+
+        set_val('yanzhengma_count', 0)  # 计数器，制造延迟
+        set_val('yanzhengma_view', True)  # 打开验证码放大器
+        set_val('tijiao_on', True)  # 激活自动出价
+        set_val('refresh_need', True)  # 激活刷新验证码
 
     def webopen(self):
         self.Show(False)

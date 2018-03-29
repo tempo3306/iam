@@ -574,6 +574,29 @@ class StrategyPanel(wx.Panel):
 
         yanzhengma_view = get_val('yanzhengma_view')
         yanzhengma_change = get_val('yanzhengma_change')  #默认是True
+        yanzhengma_view = get_val('yanzhengma_view')
+        imgpos_yanzhengma = get_val('imgpos_yanzhengma')
+        Yanzhengmasize = get_val('Yanzhengmasize')
+        yanzhengma_hash = get_val('yanzhengma_hash')
+
+        ##验证码放大是否需要刷新
+        if yanzhengma_view:
+            set_val('yanzhengma_close', False)
+            path = get_val('path')
+            yanpath = path + "\\yanzhengma.png"
+            cut_pic(imgpos_yanzhengma, Yanzhengmasize, yanpath)  # 直接调用得到 png 保存图片
+            yanzhengma_img = Image.open(yanpath)
+            set_val('yanzhengma_img', yanzhengma_img)
+            yanzhengma_img = get_val('yanzhengma_img')
+            yan_hash = imagehash.dhash(yanzhengma_img)
+            if not yanzhengma_hash:  # 第一次
+                set_val('yanzhengma_hash', yan_hash)
+            elif yan_hash == yanzhengma_hash:  # 验证码没变化
+                set_val('yanzhengma_change', False)
+            else:
+                set_val('yanzhengma_hash', yan_hash)
+                set_val('yanzhengma_change', True)  # 发生变化了
+
         if  yanzhengma_view:
             if not yanzhengma_change :
                 pass

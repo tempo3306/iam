@@ -112,7 +112,7 @@ class LoginFrame(wx.Frame):
             print(login_result)
             ##这里作为测试用
             if Username == 'helong' or Username == 'yuanjunkai' or Username == 'zs':
-                set_val('url1', 'http://192.168.3.20:3000/bid/moni/')
+                set_val('url1', 'https://hupai.pro/bid/moni/')
                 set_val('url2', 'http://moni.51hupai.org/')
             else:
                 set_val('url2', login_result['url_dianxin'])

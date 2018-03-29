@@ -326,13 +326,13 @@ def findrefresh():
     res = cv2.matchTemplate(img, template, cv2.TM_CCOEFF_NORMED)
     min_val, max_val, min_loc, max_loc = cv2.minMaxLoc(res)
     yanzhengma_find = get_val('yanzhengma_find')
-    if max_val >= 0.8 and yanzhengma_find:
+    if max_val >= 0.8:
+        print("refresh")
         OnClick_Shuaxin() #刷新验证码
         set_val('yanzhengma_view', True)  # 激活放大器
         set_val('yanzhengma_count', 0)  # 归零
         set_val('yanzhengma_find', False) #表示需要确认是否找到验证码
-    elif max_val <0.8: #代表刷新成功
-        set_val('yanzhengma_find', True)
+
 
 
 def findconfirm():
