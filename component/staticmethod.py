@@ -278,10 +278,18 @@ def Cancel_chujia_test():
 
 def OnH_chujia():
     moni_on = get_val('moni_on')
-    from wx.lib.pubsub import pub
     if moni_on:
-        print("fdsfsdf")
-        wx.CallAfter(pub.sendMessage, 'change userprice')
+        Position = get_val('Position')
+        lowest_price = get_val('lowest_price')
+        one_diff = get_val('one_diff')
+        set_val('yanzhengma_view', True)
+        set_val('yanzhengma_count', 0)
+        set_val('own_price1', lowest_price + one_diff)
+        own_price1 = get_val('own_price1')
+        setText(str(own_price1))
+        Paste_moni(own_price1)
+        Click(Position[1][0], Position[1][1])
+        Click(Position[5][0], Position[5][1])
     else:
         OnH_guopai_chujia()
 

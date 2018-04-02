@@ -1,9 +1,9 @@
-Mon, 02 Apr 2018 18:47:13 PngImagePlugin.py[line:137] DEBUG STREAM b'IHDR' 16 13
-Mon, 02 Apr 2018 18:47:13 PngImagePlugin.py[line:137] DEBUG STREAM b'IDAT' 41 8192
-Mon, 02 Apr 2018 18:47:13 PngImagePlugin.py[line:137] DEBUG STREAM b'IHDR' 16 13
-Mon, 02 Apr 2018 18:47:13 PngImagePlugin.py[line:137] DEBUG STREAM b'IDAT' 41 65536
-Mon, 02 Apr 2018 18:47:13 app_thread.py[line:125] ERROR 刷新失败
-Mon, 02 Apr 2018 18:47:13 app_thread.py[line:126] ERROR this is an exception message
+Mon, 02 Apr 2018 19:24:51 PngImagePlugin.py[line:137] DEBUG STREAM b'IHDR' 16 13
+Mon, 02 Apr 2018 19:24:51 PngImagePlugin.py[line:137] DEBUG STREAM b'IDAT' 41 65536
+Mon, 02 Apr 2018 19:24:51 PngImagePlugin.py[line:137] DEBUG STREAM b'IHDR' 16 13
+Mon, 02 Apr 2018 19:24:51 PngImagePlugin.py[line:137] DEBUG STREAM b'IDAT' 41 65536
+Mon, 02 Apr 2018 19:24:51 app_thread.py[line:125] ERROR 刷新失败
+Mon, 02 Apr 2018 19:24:51 app_thread.py[line:126] ERROR this is an exception message
 Traceback (most recent call last):
   File "E:\hupai\component\app_thread.py", line 123, in run
     findrefresh()
@@ -11,8 +11,8 @@ Traceback (most recent call last):
     img = cv2.cvtColor(sc, cv2.COLOR_BGR2GRAY)  # 转灰度图
 cv2.error: C:\projects\opencv-python\opencv\modules\imgproc\src\color.cpp:11073: error: (-215) depth == 0 || depth == 2 || depth == 5 in function cv::cvtColor
 
-Mon, 02 Apr 2018 18:47:13 app_thread.py[line:125] ERROR 刷新失败
-Mon, 02 Apr 2018 18:47:13 app_thread.py[line:126] ERROR this is an exception message
+Mon, 02 Apr 2018 19:24:51 app_thread.py[line:125] ERROR 刷新失败
+Mon, 02 Apr 2018 19:24:51 app_thread.py[line:126] ERROR this is an exception message
 Traceback (most recent call last):
   File "E:\hupai\component\app_thread.py", line 123, in run
     findrefresh()
@@ -20,14 +20,14 @@ Traceback (most recent call last):
     img = cv2.cvtColor(sc, cv2.COLOR_BGR2GRAY)  # 转灰度图
 cv2.error: C:\projects\opencv-python\opencv\modules\imgproc\src\color.cpp:11073: error: (-215) depth == 0 || depth == 2 || depth == 5 in function cv::cvtColor
 
-Mon, 02 Apr 2018 18:47:13 imgcut.py[line:371] ERROR cut_img 这里出错
-Mon, 02 Apr 2018 18:47:13 imgcut.py[line:372] ERROR this is an exception message
+Mon, 02 Apr 2018 19:24:51 imgcut.py[line:371] ERROR cut_img 这里出错
+Mon, 02 Apr 2018 19:24:51 imgcut.py[line:372] ERROR this is an exception message
 Traceback (most recent call last):
   File "E:\hupai\component\imgcut.py", line 364, in cut_img
     set_val('imgpos_lowestprice', img[use_area[0][1]:use_area[0][3], use_area[0][0]:use_area[0][2]])  # ok
 IndexError: list index out of range
-Mon, 02 Apr 2018 18:47:13 app_thread.py[line:125] ERROR 刷新失败
-Mon, 02 Apr 2018 18:47:13 app_thread.py[line:126] ERROR this is an exception message
+Mon, 02 Apr 2018 19:24:52 app_thread.py[line:125] ERROR 刷新失败
+Mon, 02 Apr 2018 19:24:52 app_thread.py[line:126] ERROR this is an exception message
 Traceback (most recent call last):
   File "E:\hupai\component\app_thread.py", line 123, in run
     findrefresh()
@@ -35,14 +35,23 @@ Traceback (most recent call last):
     img = cv2.cvtColor(sc, cv2.COLOR_BGR2GRAY)  # 转灰度图
 cv2.error: C:\projects\opencv-python\opencv\modules\imgproc\src\color.cpp:11073: error: (-215) depth == 0 || depth == 2 || depth == 5 in function cv::cvtColor
 
-Mon, 02 Apr 2018 18:47:13 imgcut.py[line:371] ERROR cut_img 这里出错
-Mon, 02 Apr 2018 18:47:13 imgcut.py[line:372] ERROR this is an exception message
+Mon, 02 Apr 2018 19:24:52 app_thread.py[line:125] ERROR 刷新失败
+Mon, 02 Apr 2018 19:24:52 app_thread.py[line:126] ERROR this is an exception message
+Traceback (most recent call last):
+  File "E:\hupai\component\app_thread.py", line 123, in run
+    findrefresh()
+  File "E:\hupai\component\imgcut.py", line 386, in findrefresh
+    img = cv2.cvtColor(sc, cv2.COLOR_BGR2GRAY)  # 转灰度图
+cv2.error: C:\projects\opencv-python\opencv\modules\imgproc\src\color.cpp:11073: error: (-215) depth == 0 || depth == 2 || depth == 5 in function cv::cvtColor
+
+Mon, 02 Apr 2018 19:24:52 imgcut.py[line:371] ERROR cut_img 这里出错
+Mon, 02 Apr 2018 19:24:52 imgcut.py[line:372] ERROR this is an exception message
 Traceback (most recent call last):
   File "E:\hupai\component\imgcut.py", line 364, in cut_img
     set_val('imgpos_lowestprice', img[use_area[0][1]:use_area[0][3], use_area[0][0]:use_area[0][2]])  # ok
 IndexError: list index out of range
-Mon, 02 Apr 2018 18:47:13 app_thread.py[line:125] ERROR 刷新失败
-Mon, 02 Apr 2018 18:47:13 app_thread.py[line:126] ERROR this is an exception message
+Mon, 02 Apr 2018 19:24:52 app_thread.py[line:125] ERROR 刷新失败
+Mon, 02 Apr 2018 19:24:52 app_thread.py[line:126] ERROR this is an exception message
 Traceback (most recent call last):
   File "E:\hupai\component\app_thread.py", line 123, in run
     findrefresh()
@@ -50,14 +59,23 @@ Traceback (most recent call last):
     img = cv2.cvtColor(sc, cv2.COLOR_BGR2GRAY)  # 转灰度图
 cv2.error: C:\projects\opencv-python\opencv\modules\imgproc\src\color.cpp:11073: error: (-215) depth == 0 || depth == 2 || depth == 5 in function cv::cvtColor
 
-Mon, 02 Apr 2018 18:47:13 imgcut.py[line:371] ERROR cut_img 这里出错
-Mon, 02 Apr 2018 18:47:13 imgcut.py[line:372] ERROR this is an exception message
+Mon, 02 Apr 2018 19:24:52 app_thread.py[line:125] ERROR 刷新失败
+Mon, 02 Apr 2018 19:24:52 app_thread.py[line:126] ERROR this is an exception message
+Traceback (most recent call last):
+  File "E:\hupai\component\app_thread.py", line 123, in run
+    findrefresh()
+  File "E:\hupai\component\imgcut.py", line 386, in findrefresh
+    img = cv2.cvtColor(sc, cv2.COLOR_BGR2GRAY)  # 转灰度图
+cv2.error: C:\projects\opencv-python\opencv\modules\imgproc\src\color.cpp:11073: error: (-215) depth == 0 || depth == 2 || depth == 5 in function cv::cvtColor
+
+Mon, 02 Apr 2018 19:24:52 imgcut.py[line:371] ERROR cut_img 这里出错
+Mon, 02 Apr 2018 19:24:52 imgcut.py[line:372] ERROR this is an exception message
 Traceback (most recent call last):
   File "E:\hupai\component\imgcut.py", line 364, in cut_img
     set_val('imgpos_lowestprice', img[use_area[0][1]:use_area[0][3], use_area[0][0]:use_area[0][2]])  # ok
 IndexError: list index out of range
-Mon, 02 Apr 2018 18:47:13 app_thread.py[line:125] ERROR 刷新失败
-Mon, 02 Apr 2018 18:47:13 app_thread.py[line:126] ERROR this is an exception message
+Mon, 02 Apr 2018 19:24:52 app_thread.py[line:125] ERROR 刷新失败
+Mon, 02 Apr 2018 19:24:52 app_thread.py[line:126] ERROR this is an exception message
 Traceback (most recent call last):
   File "E:\hupai\component\app_thread.py", line 123, in run
     findrefresh()
@@ -65,23 +83,14 @@ Traceback (most recent call last):
     img = cv2.cvtColor(sc, cv2.COLOR_BGR2GRAY)  # 转灰度图
 cv2.error: C:\projects\opencv-python\opencv\modules\imgproc\src\color.cpp:11073: error: (-215) depth == 0 || depth == 2 || depth == 5 in function cv::cvtColor
 
-Mon, 02 Apr 2018 18:47:13 app_thread.py[line:125] ERROR 刷新失败
-Mon, 02 Apr 2018 18:47:13 app_thread.py[line:126] ERROR this is an exception message
-Traceback (most recent call last):
-  File "E:\hupai\component\app_thread.py", line 123, in run
-    findrefresh()
-  File "E:\hupai\component\imgcut.py", line 386, in findrefresh
-    img = cv2.cvtColor(sc, cv2.COLOR_BGR2GRAY)  # 转灰度图
-cv2.error: C:\projects\opencv-python\opencv\modules\imgproc\src\color.cpp:11073: error: (-215) depth == 0 || depth == 2 || depth == 5 in function cv::cvtColor
-
-Mon, 02 Apr 2018 18:47:13 imgcut.py[line:371] ERROR cut_img 这里出错
-Mon, 02 Apr 2018 18:47:13 imgcut.py[line:372] ERROR this is an exception message
+Mon, 02 Apr 2018 19:24:52 imgcut.py[line:371] ERROR cut_img 这里出错
+Mon, 02 Apr 2018 19:24:52 imgcut.py[line:372] ERROR this is an exception message
 Traceback (most recent call last):
   File "E:\hupai\component\imgcut.py", line 364, in cut_img
     set_val('imgpos_lowestprice', img[use_area[0][1]:use_area[0][3], use_area[0][0]:use_area[0][2]])  # ok
 IndexError: list index out of range
-Mon, 02 Apr 2018 18:47:13 app_thread.py[line:125] ERROR 刷新失败
-Mon, 02 Apr 2018 18:47:13 app_thread.py[line:126] ERROR this is an exception message
+Mon, 02 Apr 2018 19:24:52 app_thread.py[line:125] ERROR 刷新失败
+Mon, 02 Apr 2018 19:24:52 app_thread.py[line:126] ERROR this is an exception message
 Traceback (most recent call last):
   File "E:\hupai\component\app_thread.py", line 123, in run
     findrefresh()
@@ -89,14 +98,14 @@ Traceback (most recent call last):
     img = cv2.cvtColor(sc, cv2.COLOR_BGR2GRAY)  # 转灰度图
 cv2.error: C:\projects\opencv-python\opencv\modules\imgproc\src\color.cpp:11073: error: (-215) depth == 0 || depth == 2 || depth == 5 in function cv::cvtColor
 
-Mon, 02 Apr 2018 18:47:13 imgcut.py[line:371] ERROR cut_img 这里出错
-Mon, 02 Apr 2018 18:47:13 imgcut.py[line:372] ERROR this is an exception message
+Mon, 02 Apr 2018 19:24:52 imgcut.py[line:371] ERROR cut_img 这里出错
+Mon, 02 Apr 2018 19:24:52 imgcut.py[line:372] ERROR this is an exception message
 Traceback (most recent call last):
   File "E:\hupai\component\imgcut.py", line 364, in cut_img
     set_val('imgpos_lowestprice', img[use_area[0][1]:use_area[0][3], use_area[0][0]:use_area[0][2]])  # ok
 IndexError: list index out of range
-Mon, 02 Apr 2018 18:47:13 app_thread.py[line:125] ERROR 刷新失败
-Mon, 02 Apr 2018 18:47:13 app_thread.py[line:126] ERROR this is an exception message
+Mon, 02 Apr 2018 19:24:52 app_thread.py[line:125] ERROR 刷新失败
+Mon, 02 Apr 2018 19:24:52 app_thread.py[line:126] ERROR this is an exception message
 Traceback (most recent call last):
   File "E:\hupai\component\app_thread.py", line 123, in run
     findrefresh()
@@ -104,14 +113,23 @@ Traceback (most recent call last):
     img = cv2.cvtColor(sc, cv2.COLOR_BGR2GRAY)  # 转灰度图
 cv2.error: C:\projects\opencv-python\opencv\modules\imgproc\src\color.cpp:11073: error: (-215) depth == 0 || depth == 2 || depth == 5 in function cv::cvtColor
 
-Mon, 02 Apr 2018 18:47:13 imgcut.py[line:371] ERROR cut_img 这里出错
-Mon, 02 Apr 2018 18:47:13 imgcut.py[line:372] ERROR this is an exception message
+Mon, 02 Apr 2018 19:24:52 app_thread.py[line:125] ERROR 刷新失败
+Mon, 02 Apr 2018 19:24:52 app_thread.py[line:126] ERROR this is an exception message
+Traceback (most recent call last):
+  File "E:\hupai\component\app_thread.py", line 123, in run
+    findrefresh()
+  File "E:\hupai\component\imgcut.py", line 386, in findrefresh
+    img = cv2.cvtColor(sc, cv2.COLOR_BGR2GRAY)  # 转灰度图
+cv2.error: C:\projects\opencv-python\opencv\modules\imgproc\src\color.cpp:11073: error: (-215) depth == 0 || depth == 2 || depth == 5 in function cv::cvtColor
+
+Mon, 02 Apr 2018 19:24:52 imgcut.py[line:371] ERROR cut_img 这里出错
+Mon, 02 Apr 2018 19:24:52 imgcut.py[line:372] ERROR this is an exception message
 Traceback (most recent call last):
   File "E:\hupai\component\imgcut.py", line 364, in cut_img
     set_val('imgpos_lowestprice', img[use_area[0][1]:use_area[0][3], use_area[0][0]:use_area[0][2]])  # ok
 IndexError: list index out of range
-Mon, 02 Apr 2018 18:47:13 app_thread.py[line:125] ERROR 刷新失败
-Mon, 02 Apr 2018 18:47:13 app_thread.py[line:126] ERROR this is an exception message
+Mon, 02 Apr 2018 19:24:52 app_thread.py[line:125] ERROR 刷新失败
+Mon, 02 Apr 2018 19:24:52 app_thread.py[line:126] ERROR this is an exception message
 Traceback (most recent call last):
   File "E:\hupai\component\app_thread.py", line 123, in run
     findrefresh()
@@ -119,14 +137,23 @@ Traceback (most recent call last):
     img = cv2.cvtColor(sc, cv2.COLOR_BGR2GRAY)  # 转灰度图
 cv2.error: C:\projects\opencv-python\opencv\modules\imgproc\src\color.cpp:11073: error: (-215) depth == 0 || depth == 2 || depth == 5 in function cv::cvtColor
 
-Mon, 02 Apr 2018 18:47:14 imgcut.py[line:371] ERROR cut_img 这里出错
-Mon, 02 Apr 2018 18:47:14 imgcut.py[line:372] ERROR this is an exception message
+Mon, 02 Apr 2018 19:24:52 app_thread.py[line:125] ERROR 刷新失败
+Mon, 02 Apr 2018 19:24:52 app_thread.py[line:126] ERROR this is an exception message
+Traceback (most recent call last):
+  File "E:\hupai\component\app_thread.py", line 123, in run
+    findrefresh()
+  File "E:\hupai\component\imgcut.py", line 386, in findrefresh
+    img = cv2.cvtColor(sc, cv2.COLOR_BGR2GRAY)  # 转灰度图
+cv2.error: C:\projects\opencv-python\opencv\modules\imgproc\src\color.cpp:11073: error: (-215) depth == 0 || depth == 2 || depth == 5 in function cv::cvtColor
+
+Mon, 02 Apr 2018 19:24:52 imgcut.py[line:371] ERROR cut_img 这里出错
+Mon, 02 Apr 2018 19:24:52 imgcut.py[line:372] ERROR this is an exception message
 Traceback (most recent call last):
   File "E:\hupai\component\imgcut.py", line 364, in cut_img
     set_val('imgpos_lowestprice', img[use_area[0][1]:use_area[0][3], use_area[0][0]:use_area[0][2]])  # ok
 IndexError: list index out of range
-Mon, 02 Apr 2018 18:47:14 app_thread.py[line:125] ERROR 刷新失败
-Mon, 02 Apr 2018 18:47:14 app_thread.py[line:126] ERROR this is an exception message
+Mon, 02 Apr 2018 19:24:52 app_thread.py[line:125] ERROR 刷新失败
+Mon, 02 Apr 2018 19:24:52 app_thread.py[line:126] ERROR this is an exception message
 Traceback (most recent call last):
   File "E:\hupai\component\app_thread.py", line 123, in run
     findrefresh()
@@ -134,23 +161,14 @@ Traceback (most recent call last):
     img = cv2.cvtColor(sc, cv2.COLOR_BGR2GRAY)  # 转灰度图
 cv2.error: C:\projects\opencv-python\opencv\modules\imgproc\src\color.cpp:11073: error: (-215) depth == 0 || depth == 2 || depth == 5 in function cv::cvtColor
 
-Mon, 02 Apr 2018 18:47:14 app_thread.py[line:125] ERROR 刷新失败
-Mon, 02 Apr 2018 18:47:14 imgcut.py[line:371] ERROR cut_img 这里出错
-Mon, 02 Apr 2018 18:47:14 app_thread.py[line:126] ERROR this is an exception message
-Traceback (most recent call last):
-  File "E:\hupai\component\app_thread.py", line 123, in run
-    findrefresh()
-  File "E:\hupai\component\imgcut.py", line 386, in findrefresh
-    img = cv2.cvtColor(sc, cv2.COLOR_BGR2GRAY)  # 转灰度图
-cv2.error: C:\projects\opencv-python\opencv\modules\imgproc\src\color.cpp:11073: error: (-215) depth == 0 || depth == 2 || depth == 5 in function cv::cvtColor
-
-Mon, 02 Apr 2018 18:47:14 imgcut.py[line:372] ERROR this is an exception message
+Mon, 02 Apr 2018 19:24:52 imgcut.py[line:371] ERROR cut_img 这里出错
+Mon, 02 Apr 2018 19:24:52 imgcut.py[line:372] ERROR this is an exception message
 Traceback (most recent call last):
   File "E:\hupai\component\imgcut.py", line 364, in cut_img
     set_val('imgpos_lowestprice', img[use_area[0][1]:use_area[0][3], use_area[0][0]:use_area[0][2]])  # ok
 IndexError: list index out of range
-Mon, 02 Apr 2018 18:47:14 app_thread.py[line:125] ERROR 刷新失败
-Mon, 02 Apr 2018 18:47:14 app_thread.py[line:126] ERROR this is an exception message
+Mon, 02 Apr 2018 19:24:52 app_thread.py[line:125] ERROR 刷新失败
+Mon, 02 Apr 2018 19:24:52 app_thread.py[line:126] ERROR this is an exception message
 Traceback (most recent call last):
   File "E:\hupai\component\app_thread.py", line 123, in run
     findrefresh()
@@ -158,14 +176,14 @@ Traceback (most recent call last):
     img = cv2.cvtColor(sc, cv2.COLOR_BGR2GRAY)  # 转灰度图
 cv2.error: C:\projects\opencv-python\opencv\modules\imgproc\src\color.cpp:11073: error: (-215) depth == 0 || depth == 2 || depth == 5 in function cv::cvtColor
 
-Mon, 02 Apr 2018 18:47:14 imgcut.py[line:371] ERROR cut_img 这里出错
-Mon, 02 Apr 2018 18:47:14 imgcut.py[line:372] ERROR this is an exception message
+Mon, 02 Apr 2018 19:24:52 imgcut.py[line:371] ERROR cut_img 这里出错
+Mon, 02 Apr 2018 19:24:52 imgcut.py[line:372] ERROR this is an exception message
 Traceback (most recent call last):
   File "E:\hupai\component\imgcut.py", line 364, in cut_img
     set_val('imgpos_lowestprice', img[use_area[0][1]:use_area[0][3], use_area[0][0]:use_area[0][2]])  # ok
 IndexError: list index out of range
-Mon, 02 Apr 2018 18:47:14 app_thread.py[line:125] ERROR 刷新失败
-Mon, 02 Apr 2018 18:47:14 app_thread.py[line:126] ERROR this is an exception message
+Mon, 02 Apr 2018 19:24:52 app_thread.py[line:125] ERROR 刷新失败
+Mon, 02 Apr 2018 19:24:52 app_thread.py[line:126] ERROR this is an exception message
 Traceback (most recent call last):
   File "E:\hupai\component\app_thread.py", line 123, in run
     findrefresh()
@@ -173,14 +191,23 @@ Traceback (most recent call last):
     img = cv2.cvtColor(sc, cv2.COLOR_BGR2GRAY)  # 转灰度图
 cv2.error: C:\projects\opencv-python\opencv\modules\imgproc\src\color.cpp:11073: error: (-215) depth == 0 || depth == 2 || depth == 5 in function cv::cvtColor
 
-Mon, 02 Apr 2018 18:47:14 imgcut.py[line:371] ERROR cut_img 这里出错
-Mon, 02 Apr 2018 18:47:14 imgcut.py[line:372] ERROR this is an exception message
+Mon, 02 Apr 2018 19:24:52 app_thread.py[line:125] ERROR 刷新失败
+Mon, 02 Apr 2018 19:24:52 app_thread.py[line:126] ERROR this is an exception message
+Traceback (most recent call last):
+  File "E:\hupai\component\app_thread.py", line 123, in run
+    findrefresh()
+  File "E:\hupai\component\imgcut.py", line 386, in findrefresh
+    img = cv2.cvtColor(sc, cv2.COLOR_BGR2GRAY)  # 转灰度图
+cv2.error: C:\projects\opencv-python\opencv\modules\imgproc\src\color.cpp:11073: error: (-215) depth == 0 || depth == 2 || depth == 5 in function cv::cvtColor
+
+Mon, 02 Apr 2018 19:24:52 imgcut.py[line:371] ERROR cut_img 这里出错
+Mon, 02 Apr 2018 19:24:52 imgcut.py[line:372] ERROR this is an exception message
 Traceback (most recent call last):
   File "E:\hupai\component\imgcut.py", line 364, in cut_img
     set_val('imgpos_lowestprice', img[use_area[0][1]:use_area[0][3], use_area[0][0]:use_area[0][2]])  # ok
 IndexError: list index out of range
-Mon, 02 Apr 2018 18:47:14 app_thread.py[line:125] ERROR 刷新失败
-Mon, 02 Apr 2018 18:47:14 app_thread.py[line:126] ERROR this is an exception message
+Mon, 02 Apr 2018 19:24:53 app_thread.py[line:125] ERROR 刷新失败
+Mon, 02 Apr 2018 19:24:53 app_thread.py[line:126] ERROR this is an exception message
 Traceback (most recent call last):
   File "E:\hupai\component\app_thread.py", line 123, in run
     findrefresh()
@@ -188,9 +215,8 @@ Traceback (most recent call last):
     img = cv2.cvtColor(sc, cv2.COLOR_BGR2GRAY)  # 转灰度图
 cv2.error: C:\projects\opencv-python\opencv\modules\imgproc\src\color.cpp:11073: error: (-215) depth == 0 || depth == 2 || depth == 5 in function cv::cvtColor
 
-Mon, 02 Apr 2018 18:47:14 app_thread.py[line:125] ERROR 刷新失败
-Mon, 02 Apr 2018 18:47:14 imgcut.py[line:371] ERROR cut_img 这里出错
-Mon, 02 Apr 2018 18:47:14 app_thread.py[line:126] ERROR this is an exception message
+Mon, 02 Apr 2018 19:24:53 app_thread.py[line:125] ERROR 刷新失败
+Mon, 02 Apr 2018 19:24:53 app_thread.py[line:126] ERROR this is an exception message
 Traceback (most recent call last):
   File "E:\hupai\component\app_thread.py", line 123, in run
     findrefresh()
@@ -198,13 +224,14 @@ Traceback (most recent call last):
     img = cv2.cvtColor(sc, cv2.COLOR_BGR2GRAY)  # 转灰度图
 cv2.error: C:\projects\opencv-python\opencv\modules\imgproc\src\color.cpp:11073: error: (-215) depth == 0 || depth == 2 || depth == 5 in function cv::cvtColor
 
-Mon, 02 Apr 2018 18:47:14 imgcut.py[line:372] ERROR this is an exception message
+Mon, 02 Apr 2018 19:24:53 imgcut.py[line:371] ERROR cut_img 这里出错
+Mon, 02 Apr 2018 19:24:53 imgcut.py[line:372] ERROR this is an exception message
 Traceback (most recent call last):
   File "E:\hupai\component\imgcut.py", line 364, in cut_img
     set_val('imgpos_lowestprice', img[use_area[0][1]:use_area[0][3], use_area[0][0]:use_area[0][2]])  # ok
 IndexError: list index out of range
-Mon, 02 Apr 2018 18:47:14 app_thread.py[line:125] ERROR 刷新失败
-Mon, 02 Apr 2018 18:47:14 app_thread.py[line:126] ERROR this is an exception message
+Mon, 02 Apr 2018 19:24:53 app_thread.py[line:125] ERROR 刷新失败
+Mon, 02 Apr 2018 19:24:53 app_thread.py[line:126] ERROR this is an exception message
 Traceback (most recent call last):
   File "E:\hupai\component\app_thread.py", line 123, in run
     findrefresh()
@@ -212,14 +239,14 @@ Traceback (most recent call last):
     img = cv2.cvtColor(sc, cv2.COLOR_BGR2GRAY)  # 转灰度图
 cv2.error: C:\projects\opencv-python\opencv\modules\imgproc\src\color.cpp:11073: error: (-215) depth == 0 || depth == 2 || depth == 5 in function cv::cvtColor
 
-Mon, 02 Apr 2018 18:47:14 imgcut.py[line:371] ERROR cut_img 这里出错
-Mon, 02 Apr 2018 18:47:14 imgcut.py[line:372] ERROR this is an exception message
+Mon, 02 Apr 2018 19:24:53 imgcut.py[line:371] ERROR cut_img 这里出错
+Mon, 02 Apr 2018 19:24:53 imgcut.py[line:372] ERROR this is an exception message
 Traceback (most recent call last):
   File "E:\hupai\component\imgcut.py", line 364, in cut_img
     set_val('imgpos_lowestprice', img[use_area[0][1]:use_area[0][3], use_area[0][0]:use_area[0][2]])  # ok
 IndexError: list index out of range
-Mon, 02 Apr 2018 18:47:14 app_thread.py[line:125] ERROR 刷新失败
-Mon, 02 Apr 2018 18:47:14 app_thread.py[line:126] ERROR this is an exception message
+Mon, 02 Apr 2018 19:24:53 app_thread.py[line:125] ERROR 刷新失败
+Mon, 02 Apr 2018 19:24:53 app_thread.py[line:126] ERROR this is an exception message
 Traceback (most recent call last):
   File "E:\hupai\component\app_thread.py", line 123, in run
     findrefresh()
@@ -227,14 +254,14 @@ Traceback (most recent call last):
     img = cv2.cvtColor(sc, cv2.COLOR_BGR2GRAY)  # 转灰度图
 cv2.error: C:\projects\opencv-python\opencv\modules\imgproc\src\color.cpp:11073: error: (-215) depth == 0 || depth == 2 || depth == 5 in function cv::cvtColor
 
-Mon, 02 Apr 2018 18:47:14 imgcut.py[line:371] ERROR cut_img 这里出错
-Mon, 02 Apr 2018 18:47:14 imgcut.py[line:372] ERROR this is an exception message
+Mon, 02 Apr 2018 19:24:53 imgcut.py[line:371] ERROR cut_img 这里出错
+Mon, 02 Apr 2018 19:24:53 imgcut.py[line:372] ERROR this is an exception message
 Traceback (most recent call last):
   File "E:\hupai\component\imgcut.py", line 364, in cut_img
     set_val('imgpos_lowestprice', img[use_area[0][1]:use_area[0][3], use_area[0][0]:use_area[0][2]])  # ok
 IndexError: list index out of range
-Mon, 02 Apr 2018 18:47:14 app_thread.py[line:125] ERROR 刷新失败
-Mon, 02 Apr 2018 18:47:14 app_thread.py[line:126] ERROR this is an exception message
+Mon, 02 Apr 2018 19:24:53 app_thread.py[line:125] ERROR 刷新失败
+Mon, 02 Apr 2018 19:24:53 app_thread.py[line:126] ERROR this is an exception message
 Traceback (most recent call last):
   File "E:\hupai\component\app_thread.py", line 123, in run
     findrefresh()
@@ -242,8 +269,8 @@ Traceback (most recent call last):
     img = cv2.cvtColor(sc, cv2.COLOR_BGR2GRAY)  # 转灰度图
 cv2.error: C:\projects\opencv-python\opencv\modules\imgproc\src\color.cpp:11073: error: (-215) depth == 0 || depth == 2 || depth == 5 in function cv::cvtColor
 
-Mon, 02 Apr 2018 18:47:14 app_thread.py[line:125] ERROR 刷新失败
-Mon, 02 Apr 2018 18:47:14 app_thread.py[line:126] ERROR this is an exception message
+Mon, 02 Apr 2018 19:24:53 app_thread.py[line:125] ERROR 刷新失败
+Mon, 02 Apr 2018 19:24:53 app_thread.py[line:126] ERROR this is an exception message
 Traceback (most recent call last):
   File "E:\hupai\component\app_thread.py", line 123, in run
     findrefresh()
@@ -251,14 +278,14 @@ Traceback (most recent call last):
     img = cv2.cvtColor(sc, cv2.COLOR_BGR2GRAY)  # 转灰度图
 cv2.error: C:\projects\opencv-python\opencv\modules\imgproc\src\color.cpp:11073: error: (-215) depth == 0 || depth == 2 || depth == 5 in function cv::cvtColor
 
-Mon, 02 Apr 2018 18:47:14 imgcut.py[line:371] ERROR cut_img 这里出错
-Mon, 02 Apr 2018 18:47:14 imgcut.py[line:372] ERROR this is an exception message
+Mon, 02 Apr 2018 19:24:53 imgcut.py[line:371] ERROR cut_img 这里出错
+Mon, 02 Apr 2018 19:24:53 imgcut.py[line:372] ERROR this is an exception message
 Traceback (most recent call last):
   File "E:\hupai\component\imgcut.py", line 364, in cut_img
     set_val('imgpos_lowestprice', img[use_area[0][1]:use_area[0][3], use_area[0][0]:use_area[0][2]])  # ok
 IndexError: list index out of range
-Mon, 02 Apr 2018 18:47:14 app_thread.py[line:125] ERROR 刷新失败
-Mon, 02 Apr 2018 18:47:14 app_thread.py[line:126] ERROR this is an exception message
+Mon, 02 Apr 2018 19:24:53 app_thread.py[line:125] ERROR 刷新失败
+Mon, 02 Apr 2018 19:24:53 app_thread.py[line:126] ERROR this is an exception message
 Traceback (most recent call last):
   File "E:\hupai\component\app_thread.py", line 123, in run
     findrefresh()
@@ -266,14 +293,23 @@ Traceback (most recent call last):
     img = cv2.cvtColor(sc, cv2.COLOR_BGR2GRAY)  # 转灰度图
 cv2.error: C:\projects\opencv-python\opencv\modules\imgproc\src\color.cpp:11073: error: (-215) depth == 0 || depth == 2 || depth == 5 in function cv::cvtColor
 
-Mon, 02 Apr 2018 18:47:14 imgcut.py[line:371] ERROR cut_img 这里出错
-Mon, 02 Apr 2018 18:47:14 imgcut.py[line:372] ERROR this is an exception message
+Mon, 02 Apr 2018 19:24:53 app_thread.py[line:125] ERROR 刷新失败
+Mon, 02 Apr 2018 19:24:53 app_thread.py[line:126] ERROR this is an exception message
+Traceback (most recent call last):
+  File "E:\hupai\component\app_thread.py", line 123, in run
+    findrefresh()
+  File "E:\hupai\component\imgcut.py", line 386, in findrefresh
+    img = cv2.cvtColor(sc, cv2.COLOR_BGR2GRAY)  # 转灰度图
+cv2.error: C:\projects\opencv-python\opencv\modules\imgproc\src\color.cpp:11073: error: (-215) depth == 0 || depth == 2 || depth == 5 in function cv::cvtColor
+
+Mon, 02 Apr 2018 19:24:53 imgcut.py[line:371] ERROR cut_img 这里出错
+Mon, 02 Apr 2018 19:24:53 imgcut.py[line:372] ERROR this is an exception message
 Traceback (most recent call last):
   File "E:\hupai\component\imgcut.py", line 364, in cut_img
     set_val('imgpos_lowestprice', img[use_area[0][1]:use_area[0][3], use_area[0][0]:use_area[0][2]])  # ok
 IndexError: list index out of range
-Mon, 02 Apr 2018 18:47:14 app_thread.py[line:125] ERROR 刷新失败
-Mon, 02 Apr 2018 18:47:14 app_thread.py[line:126] ERROR this is an exception message
+Mon, 02 Apr 2018 19:24:53 app_thread.py[line:125] ERROR 刷新失败
+Mon, 02 Apr 2018 19:24:53 app_thread.py[line:126] ERROR this is an exception message
 Traceback (most recent call last):
   File "E:\hupai\component\app_thread.py", line 123, in run
     findrefresh()
@@ -281,8 +317,8 @@ Traceback (most recent call last):
     img = cv2.cvtColor(sc, cv2.COLOR_BGR2GRAY)  # 转灰度图
 cv2.error: C:\projects\opencv-python\opencv\modules\imgproc\src\color.cpp:11073: error: (-215) depth == 0 || depth == 2 || depth == 5 in function cv::cvtColor
 
-Mon, 02 Apr 2018 18:47:14 app_thread.py[line:125] ERROR 刷新失败
-Mon, 02 Apr 2018 18:47:14 app_thread.py[line:126] ERROR this is an exception message
+Mon, 02 Apr 2018 19:24:53 app_thread.py[line:125] ERROR 刷新失败
+Mon, 02 Apr 2018 19:24:53 app_thread.py[line:126] ERROR this is an exception message
 Traceback (most recent call last):
   File "E:\hupai\component\app_thread.py", line 123, in run
     findrefresh()
@@ -290,14 +326,14 @@ Traceback (most recent call last):
     img = cv2.cvtColor(sc, cv2.COLOR_BGR2GRAY)  # 转灰度图
 cv2.error: C:\projects\opencv-python\opencv\modules\imgproc\src\color.cpp:11073: error: (-215) depth == 0 || depth == 2 || depth == 5 in function cv::cvtColor
 
-Mon, 02 Apr 2018 18:47:14 imgcut.py[line:371] ERROR cut_img 这里出错
-Mon, 02 Apr 2018 18:47:14 imgcut.py[line:372] ERROR this is an exception message
+Mon, 02 Apr 2018 19:24:53 imgcut.py[line:371] ERROR cut_img 这里出错
+Mon, 02 Apr 2018 19:24:53 imgcut.py[line:372] ERROR this is an exception message
 Traceback (most recent call last):
   File "E:\hupai\component\imgcut.py", line 364, in cut_img
     set_val('imgpos_lowestprice', img[use_area[0][1]:use_area[0][3], use_area[0][0]:use_area[0][2]])  # ok
 IndexError: list index out of range
-Mon, 02 Apr 2018 18:47:14 app_thread.py[line:125] ERROR 刷新失败
-Mon, 02 Apr 2018 18:47:14 app_thread.py[line:126] ERROR this is an exception message
+Mon, 02 Apr 2018 19:24:53 app_thread.py[line:125] ERROR 刷新失败
+Mon, 02 Apr 2018 19:24:53 app_thread.py[line:126] ERROR this is an exception message
 Traceback (most recent call last):
   File "E:\hupai\component\app_thread.py", line 123, in run
     findrefresh()
@@ -305,14 +341,23 @@ Traceback (most recent call last):
     img = cv2.cvtColor(sc, cv2.COLOR_BGR2GRAY)  # 转灰度图
 cv2.error: C:\projects\opencv-python\opencv\modules\imgproc\src\color.cpp:11073: error: (-215) depth == 0 || depth == 2 || depth == 5 in function cv::cvtColor
 
-Mon, 02 Apr 2018 18:47:15 imgcut.py[line:371] ERROR cut_img 这里出错
-Mon, 02 Apr 2018 18:47:15 app_thread.py[line:125] ERROR 刷新失败
-Mon, 02 Apr 2018 18:47:15 imgcut.py[line:372] ERROR this is an exception message
+Mon, 02 Apr 2018 19:24:53 app_thread.py[line:125] ERROR 刷新失败
+Mon, 02 Apr 2018 19:24:53 app_thread.py[line:126] ERROR this is an exception message
+Traceback (most recent call last):
+  File "E:\hupai\component\app_thread.py", line 123, in run
+    findrefresh()
+  File "E:\hupai\component\imgcut.py", line 386, in findrefresh
+    img = cv2.cvtColor(sc, cv2.COLOR_BGR2GRAY)  # 转灰度图
+cv2.error: C:\projects\opencv-python\opencv\modules\imgproc\src\color.cpp:11073: error: (-215) depth == 0 || depth == 2 || depth == 5 in function cv::cvtColor
+
+Mon, 02 Apr 2018 19:24:53 imgcut.py[line:371] ERROR cut_img 这里出错
+Mon, 02 Apr 2018 19:24:53 imgcut.py[line:372] ERROR this is an exception message
 Traceback (most recent call last):
   File "E:\hupai\component\imgcut.py", line 364, in cut_img
     set_val('imgpos_lowestprice', img[use_area[0][1]:use_area[0][3], use_area[0][0]:use_area[0][2]])  # ok
 IndexError: list index out of range
-Mon, 02 Apr 2018 18:47:15 app_thread.py[line:126] ERROR this is an exception message
+Mon, 02 Apr 2018 19:24:53 app_thread.py[line:125] ERROR 刷新失败
+Mon, 02 Apr 2018 19:24:53 app_thread.py[line:126] ERROR this is an exception message
 Traceback (most recent call last):
   File "E:\hupai\component\app_thread.py", line 123, in run
     findrefresh()
@@ -320,23 +365,14 @@ Traceback (most recent call last):
     img = cv2.cvtColor(sc, cv2.COLOR_BGR2GRAY)  # 转灰度图
 cv2.error: C:\projects\opencv-python\opencv\modules\imgproc\src\color.cpp:11073: error: (-215) depth == 0 || depth == 2 || depth == 5 in function cv::cvtColor
 
-Mon, 02 Apr 2018 18:47:15 app_thread.py[line:125] ERROR 刷新失败
-Mon, 02 Apr 2018 18:47:15 imgcut.py[line:371] ERROR cut_img 这里出错
-Mon, 02 Apr 2018 18:47:15 app_thread.py[line:126] ERROR this is an exception message
-Traceback (most recent call last):
-  File "E:\hupai\component\app_thread.py", line 123, in run
-    findrefresh()
-  File "E:\hupai\component\imgcut.py", line 386, in findrefresh
-    img = cv2.cvtColor(sc, cv2.COLOR_BGR2GRAY)  # 转灰度图
-cv2.error: C:\projects\opencv-python\opencv\modules\imgproc\src\color.cpp:11073: error: (-215) depth == 0 || depth == 2 || depth == 5 in function cv::cvtColor
-
-Mon, 02 Apr 2018 18:47:15 imgcut.py[line:372] ERROR this is an exception message
+Mon, 02 Apr 2018 19:24:53 imgcut.py[line:371] ERROR cut_img 这里出错
+Mon, 02 Apr 2018 19:24:53 imgcut.py[line:372] ERROR this is an exception message
 Traceback (most recent call last):
   File "E:\hupai\component\imgcut.py", line 364, in cut_img
     set_val('imgpos_lowestprice', img[use_area[0][1]:use_area[0][3], use_area[0][0]:use_area[0][2]])  # ok
 IndexError: list index out of range
-Mon, 02 Apr 2018 18:47:15 app_thread.py[line:125] ERROR 刷新失败
-Mon, 02 Apr 2018 18:47:15 app_thread.py[line:126] ERROR this is an exception message
+Mon, 02 Apr 2018 19:24:53 app_thread.py[line:125] ERROR 刷新失败
+Mon, 02 Apr 2018 19:24:53 app_thread.py[line:126] ERROR this is an exception message
 Traceback (most recent call last):
   File "E:\hupai\component\app_thread.py", line 123, in run
     findrefresh()
@@ -344,14 +380,23 @@ Traceback (most recent call last):
     img = cv2.cvtColor(sc, cv2.COLOR_BGR2GRAY)  # 转灰度图
 cv2.error: C:\projects\opencv-python\opencv\modules\imgproc\src\color.cpp:11073: error: (-215) depth == 0 || depth == 2 || depth == 5 in function cv::cvtColor
 
-Mon, 02 Apr 2018 18:47:15 imgcut.py[line:371] ERROR cut_img 这里出错
-Mon, 02 Apr 2018 18:47:15 imgcut.py[line:372] ERROR this is an exception message
+Mon, 02 Apr 2018 19:24:54 app_thread.py[line:125] ERROR 刷新失败
+Mon, 02 Apr 2018 19:24:54 app_thread.py[line:126] ERROR this is an exception message
+Traceback (most recent call last):
+  File "E:\hupai\component\app_thread.py", line 123, in run
+    findrefresh()
+  File "E:\hupai\component\imgcut.py", line 386, in findrefresh
+    img = cv2.cvtColor(sc, cv2.COLOR_BGR2GRAY)  # 转灰度图
+cv2.error: C:\projects\opencv-python\opencv\modules\imgproc\src\color.cpp:11073: error: (-215) depth == 0 || depth == 2 || depth == 5 in function cv::cvtColor
+
+Mon, 02 Apr 2018 19:24:54 imgcut.py[line:371] ERROR cut_img 这里出错
+Mon, 02 Apr 2018 19:24:54 imgcut.py[line:372] ERROR this is an exception message
 Traceback (most recent call last):
   File "E:\hupai\component\imgcut.py", line 364, in cut_img
     set_val('imgpos_lowestprice', img[use_area[0][1]:use_area[0][3], use_area[0][0]:use_area[0][2]])  # ok
 IndexError: list index out of range
-Mon, 02 Apr 2018 18:47:15 app_thread.py[line:125] ERROR 刷新失败
-Mon, 02 Apr 2018 18:47:15 app_thread.py[line:126] ERROR this is an exception message
+Mon, 02 Apr 2018 19:24:54 app_thread.py[line:125] ERROR 刷新失败
+Mon, 02 Apr 2018 19:24:54 app_thread.py[line:126] ERROR this is an exception message
 Traceback (most recent call last):
   File "E:\hupai\component\app_thread.py", line 123, in run
     findrefresh()
@@ -359,14 +404,32 @@ Traceback (most recent call last):
     img = cv2.cvtColor(sc, cv2.COLOR_BGR2GRAY)  # 转灰度图
 cv2.error: C:\projects\opencv-python\opencv\modules\imgproc\src\color.cpp:11073: error: (-215) depth == 0 || depth == 2 || depth == 5 in function cv::cvtColor
 
-Mon, 02 Apr 2018 18:47:15 imgcut.py[line:371] ERROR cut_img 这里出错
-Mon, 02 Apr 2018 18:47:15 imgcut.py[line:372] ERROR this is an exception message
+Mon, 02 Apr 2018 19:24:54 app_thread.py[line:125] ERROR 刷新失败
+Mon, 02 Apr 2018 19:24:54 app_thread.py[line:126] ERROR this is an exception message
+Traceback (most recent call last):
+  File "E:\hupai\component\app_thread.py", line 123, in run
+    findrefresh()
+  File "E:\hupai\component\imgcut.py", line 386, in findrefresh
+    img = cv2.cvtColor(sc, cv2.COLOR_BGR2GRAY)  # 转灰度图
+cv2.error: C:\projects\opencv-python\opencv\modules\imgproc\src\color.cpp:11073: error: (-215) depth == 0 || depth == 2 || depth == 5 in function cv::cvtColor
+
+Mon, 02 Apr 2018 19:24:54 app_thread.py[line:125] ERROR 刷新失败
+Mon, 02 Apr 2018 19:24:54 imgcut.py[line:371] ERROR cut_img 这里出错
+Mon, 02 Apr 2018 19:24:54 app_thread.py[line:126] ERROR this is an exception message
+Traceback (most recent call last):
+  File "E:\hupai\component\app_thread.py", line 123, in run
+    findrefresh()
+  File "E:\hupai\component\imgcut.py", line 386, in findrefresh
+    img = cv2.cvtColor(sc, cv2.COLOR_BGR2GRAY)  # 转灰度图
+cv2.error: C:\projects\opencv-python\opencv\modules\imgproc\src\color.cpp:11073: error: (-215) depth == 0 || depth == 2 || depth == 5 in function cv::cvtColor
+
+Mon, 02 Apr 2018 19:24:54 imgcut.py[line:372] ERROR this is an exception message
 Traceback (most recent call last):
   File "E:\hupai\component\imgcut.py", line 364, in cut_img
     set_val('imgpos_lowestprice', img[use_area[0][1]:use_area[0][3], use_area[0][0]:use_area[0][2]])  # ok
 IndexError: list index out of range
-Mon, 02 Apr 2018 18:47:15 app_thread.py[line:125] ERROR 刷新失败
-Mon, 02 Apr 2018 18:47:15 app_thread.py[line:126] ERROR this is an exception message
+Mon, 02 Apr 2018 19:24:54 app_thread.py[line:125] ERROR 刷新失败
+Mon, 02 Apr 2018 19:24:54 app_thread.py[line:126] ERROR this is an exception message
 Traceback (most recent call last):
   File "E:\hupai\component\app_thread.py", line 123, in run
     findrefresh()
@@ -374,23 +437,14 @@ Traceback (most recent call last):
     img = cv2.cvtColor(sc, cv2.COLOR_BGR2GRAY)  # 转灰度图
 cv2.error: C:\projects\opencv-python\opencv\modules\imgproc\src\color.cpp:11073: error: (-215) depth == 0 || depth == 2 || depth == 5 in function cv::cvtColor
 
-Mon, 02 Apr 2018 18:47:15 app_thread.py[line:125] ERROR 刷新失败
-Mon, 02 Apr 2018 18:47:15 app_thread.py[line:126] ERROR this is an exception message
-Traceback (most recent call last):
-  File "E:\hupai\component\app_thread.py", line 123, in run
-    findrefresh()
-  File "E:\hupai\component\imgcut.py", line 386, in findrefresh
-    img = cv2.cvtColor(sc, cv2.COLOR_BGR2GRAY)  # 转灰度图
-cv2.error: C:\projects\opencv-python\opencv\modules\imgproc\src\color.cpp:11073: error: (-215) depth == 0 || depth == 2 || depth == 5 in function cv::cvtColor
-
-Mon, 02 Apr 2018 18:47:15 imgcut.py[line:371] ERROR cut_img 这里出错
-Mon, 02 Apr 2018 18:47:15 imgcut.py[line:372] ERROR this is an exception message
+Mon, 02 Apr 2018 19:24:54 imgcut.py[line:371] ERROR cut_img 这里出错
+Mon, 02 Apr 2018 19:24:54 imgcut.py[line:372] ERROR this is an exception message
 Traceback (most recent call last):
   File "E:\hupai\component\imgcut.py", line 364, in cut_img
     set_val('imgpos_lowestprice', img[use_area[0][1]:use_area[0][3], use_area[0][0]:use_area[0][2]])  # ok
 IndexError: list index out of range
-Mon, 02 Apr 2018 18:47:15 app_thread.py[line:125] ERROR 刷新失败
-Mon, 02 Apr 2018 18:47:15 app_thread.py[line:126] ERROR this is an exception message
+Mon, 02 Apr 2018 19:24:54 app_thread.py[line:125] ERROR 刷新失败
+Mon, 02 Apr 2018 19:24:54 app_thread.py[line:126] ERROR this is an exception message
 Traceback (most recent call last):
   File "E:\hupai\component\app_thread.py", line 123, in run
     findrefresh()
@@ -398,8 +452,8 @@ Traceback (most recent call last):
     img = cv2.cvtColor(sc, cv2.COLOR_BGR2GRAY)  # 转灰度图
 cv2.error: C:\projects\opencv-python\opencv\modules\imgproc\src\color.cpp:11073: error: (-215) depth == 0 || depth == 2 || depth == 5 in function cv::cvtColor
 
-Mon, 02 Apr 2018 18:47:15 app_thread.py[line:125] ERROR 刷新失败
-Mon, 02 Apr 2018 18:47:15 app_thread.py[line:126] ERROR this is an exception message
+Mon, 02 Apr 2018 19:24:54 app_thread.py[line:125] ERROR 刷新失败
+Mon, 02 Apr 2018 19:24:54 app_thread.py[line:126] ERROR this is an exception message
 Traceback (most recent call last):
   File "E:\hupai\component\app_thread.py", line 123, in run
     findrefresh()
@@ -407,14 +461,14 @@ Traceback (most recent call last):
     img = cv2.cvtColor(sc, cv2.COLOR_BGR2GRAY)  # 转灰度图
 cv2.error: C:\projects\opencv-python\opencv\modules\imgproc\src\color.cpp:11073: error: (-215) depth == 0 || depth == 2 || depth == 5 in function cv::cvtColor
 
-Mon, 02 Apr 2018 18:47:15 imgcut.py[line:371] ERROR cut_img 这里出错
-Mon, 02 Apr 2018 18:47:15 imgcut.py[line:372] ERROR this is an exception message
+Mon, 02 Apr 2018 19:24:54 imgcut.py[line:371] ERROR cut_img 这里出错
+Mon, 02 Apr 2018 19:24:54 imgcut.py[line:372] ERROR this is an exception message
 Traceback (most recent call last):
   File "E:\hupai\component\imgcut.py", line 364, in cut_img
     set_val('imgpos_lowestprice', img[use_area[0][1]:use_area[0][3], use_area[0][0]:use_area[0][2]])  # ok
 IndexError: list index out of range
-Mon, 02 Apr 2018 18:47:15 app_thread.py[line:125] ERROR 刷新失败
-Mon, 02 Apr 2018 18:47:15 app_thread.py[line:126] ERROR this is an exception message
+Mon, 02 Apr 2018 19:24:54 app_thread.py[line:125] ERROR 刷新失败
+Mon, 02 Apr 2018 19:24:54 app_thread.py[line:126] ERROR this is an exception message
 Traceback (most recent call last):
   File "E:\hupai\component\app_thread.py", line 123, in run
     findrefresh()
@@ -422,8 +476,8 @@ Traceback (most recent call last):
     img = cv2.cvtColor(sc, cv2.COLOR_BGR2GRAY)  # 转灰度图
 cv2.error: C:\projects\opencv-python\opencv\modules\imgproc\src\color.cpp:11073: error: (-215) depth == 0 || depth == 2 || depth == 5 in function cv::cvtColor
 
-Mon, 02 Apr 2018 18:47:15 app_thread.py[line:125] ERROR 刷新失败
-Mon, 02 Apr 2018 18:47:15 app_thread.py[line:126] ERROR this is an exception message
+Mon, 02 Apr 2018 19:24:54 app_thread.py[line:125] ERROR 刷新失败
+Mon, 02 Apr 2018 19:24:54 app_thread.py[line:126] ERROR this is an exception message
 Traceback (most recent call last):
   File "E:\hupai\component\app_thread.py", line 123, in run
     findrefresh()
@@ -431,14 +485,14 @@ Traceback (most recent call last):
     img = cv2.cvtColor(sc, cv2.COLOR_BGR2GRAY)  # 转灰度图
 cv2.error: C:\projects\opencv-python\opencv\modules\imgproc\src\color.cpp:11073: error: (-215) depth == 0 || depth == 2 || depth == 5 in function cv::cvtColor
 
-Mon, 02 Apr 2018 18:47:15 imgcut.py[line:371] ERROR cut_img 这里出错
-Mon, 02 Apr 2018 18:47:15 imgcut.py[line:372] ERROR this is an exception message
+Mon, 02 Apr 2018 19:24:54 imgcut.py[line:371] ERROR cut_img 这里出错
+Mon, 02 Apr 2018 19:24:54 imgcut.py[line:372] ERROR this is an exception message
 Traceback (most recent call last):
   File "E:\hupai\component\imgcut.py", line 364, in cut_img
     set_val('imgpos_lowestprice', img[use_area[0][1]:use_area[0][3], use_area[0][0]:use_area[0][2]])  # ok
 IndexError: list index out of range
-Mon, 02 Apr 2018 18:47:15 app_thread.py[line:125] ERROR 刷新失败
-Mon, 02 Apr 2018 18:47:15 app_thread.py[line:126] ERROR this is an exception message
+Mon, 02 Apr 2018 19:24:54 app_thread.py[line:125] ERROR 刷新失败
+Mon, 02 Apr 2018 19:24:54 app_thread.py[line:126] ERROR this is an exception message
 Traceback (most recent call last):
   File "E:\hupai\component\app_thread.py", line 123, in run
     findrefresh()
@@ -446,14 +500,32 @@ Traceback (most recent call last):
     img = cv2.cvtColor(sc, cv2.COLOR_BGR2GRAY)  # 转灰度图
 cv2.error: C:\projects\opencv-python\opencv\modules\imgproc\src\color.cpp:11073: error: (-215) depth == 0 || depth == 2 || depth == 5 in function cv::cvtColor
 
-Mon, 02 Apr 2018 18:47:15 imgcut.py[line:371] ERROR cut_img 这里出错
-Mon, 02 Apr 2018 18:47:15 imgcut.py[line:372] ERROR this is an exception message
+Mon, 02 Apr 2018 19:24:54 app_thread.py[line:125] ERROR 刷新失败
+Mon, 02 Apr 2018 19:24:54 app_thread.py[line:126] ERROR this is an exception message
+Traceback (most recent call last):
+  File "E:\hupai\component\app_thread.py", line 123, in run
+    findrefresh()
+  File "E:\hupai\component\imgcut.py", line 386, in findrefresh
+    img = cv2.cvtColor(sc, cv2.COLOR_BGR2GRAY)  # 转灰度图
+cv2.error: C:\projects\opencv-python\opencv\modules\imgproc\src\color.cpp:11073: error: (-215) depth == 0 || depth == 2 || depth == 5 in function cv::cvtColor
+
+Mon, 02 Apr 2018 19:24:54 app_thread.py[line:125] ERROR 刷新失败
+Mon, 02 Apr 2018 19:24:54 app_thread.py[line:126] ERROR this is an exception message
+Traceback (most recent call last):
+  File "E:\hupai\component\app_thread.py", line 123, in run
+    findrefresh()
+  File "E:\hupai\component\imgcut.py", line 386, in findrefresh
+    img = cv2.cvtColor(sc, cv2.COLOR_BGR2GRAY)  # 转灰度图
+cv2.error: C:\projects\opencv-python\opencv\modules\imgproc\src\color.cpp:11073: error: (-215) depth == 0 || depth == 2 || depth == 5 in function cv::cvtColor
+
+Mon, 02 Apr 2018 19:24:54 imgcut.py[line:371] ERROR cut_img 这里出错
+Mon, 02 Apr 2018 19:24:54 imgcut.py[line:372] ERROR this is an exception message
 Traceback (most recent call last):
   File "E:\hupai\component\imgcut.py", line 364, in cut_img
     set_val('imgpos_lowestprice', img[use_area[0][1]:use_area[0][3], use_area[0][0]:use_area[0][2]])  # ok
 IndexError: list index out of range
-Mon, 02 Apr 2018 18:47:15 app_thread.py[line:125] ERROR 刷新失败
-Mon, 02 Apr 2018 18:47:15 app_thread.py[line:126] ERROR this is an exception message
+Mon, 02 Apr 2018 19:24:55 app_thread.py[line:125] ERROR 刷新失败
+Mon, 02 Apr 2018 19:24:55 app_thread.py[line:126] ERROR this is an exception message
 Traceback (most recent call last):
   File "E:\hupai\component\app_thread.py", line 123, in run
     findrefresh()
@@ -461,14 +533,23 @@ Traceback (most recent call last):
     img = cv2.cvtColor(sc, cv2.COLOR_BGR2GRAY)  # 转灰度图
 cv2.error: C:\projects\opencv-python\opencv\modules\imgproc\src\color.cpp:11073: error: (-215) depth == 0 || depth == 2 || depth == 5 in function cv::cvtColor
 
-Mon, 02 Apr 2018 18:47:15 imgcut.py[line:371] ERROR cut_img 这里出错
-Mon, 02 Apr 2018 18:47:15 imgcut.py[line:372] ERROR this is an exception message
+Mon, 02 Apr 2018 19:24:55 app_thread.py[line:125] ERROR 刷新失败
+Mon, 02 Apr 2018 19:24:55 app_thread.py[line:126] ERROR this is an exception message
+Traceback (most recent call last):
+  File "E:\hupai\component\app_thread.py", line 123, in run
+    findrefresh()
+  File "E:\hupai\component\imgcut.py", line 386, in findrefresh
+    img = cv2.cvtColor(sc, cv2.COLOR_BGR2GRAY)  # 转灰度图
+cv2.error: C:\projects\opencv-python\opencv\modules\imgproc\src\color.cpp:11073: error: (-215) depth == 0 || depth == 2 || depth == 5 in function cv::cvtColor
+
+Mon, 02 Apr 2018 19:24:55 imgcut.py[line:371] ERROR cut_img 这里出错
+Mon, 02 Apr 2018 19:24:55 imgcut.py[line:372] ERROR this is an exception message
 Traceback (most recent call last):
   File "E:\hupai\component\imgcut.py", line 364, in cut_img
     set_val('imgpos_lowestprice', img[use_area[0][1]:use_area[0][3], use_area[0][0]:use_area[0][2]])  # ok
 IndexError: list index out of range
-Mon, 02 Apr 2018 18:47:15 app_thread.py[line:125] ERROR 刷新失败
-Mon, 02 Apr 2018 18:47:15 app_thread.py[line:126] ERROR this is an exception message
+Mon, 02 Apr 2018 19:24:55 app_thread.py[line:125] ERROR 刷新失败
+Mon, 02 Apr 2018 19:24:55 app_thread.py[line:126] ERROR this is an exception message
 Traceback (most recent call last):
   File "E:\hupai\component\app_thread.py", line 123, in run
     findrefresh()
@@ -476,14 +557,14 @@ Traceback (most recent call last):
     img = cv2.cvtColor(sc, cv2.COLOR_BGR2GRAY)  # 转灰度图
 cv2.error: C:\projects\opencv-python\opencv\modules\imgproc\src\color.cpp:11073: error: (-215) depth == 0 || depth == 2 || depth == 5 in function cv::cvtColor
 
-Mon, 02 Apr 2018 18:47:15 imgcut.py[line:371] ERROR cut_img 这里出错
-Mon, 02 Apr 2018 18:47:15 imgcut.py[line:372] ERROR this is an exception message
+Mon, 02 Apr 2018 19:24:55 imgcut.py[line:371] ERROR cut_img 这里出错
+Mon, 02 Apr 2018 19:24:55 imgcut.py[line:372] ERROR this is an exception message
 Traceback (most recent call last):
   File "E:\hupai\component\imgcut.py", line 364, in cut_img
     set_val('imgpos_lowestprice', img[use_area[0][1]:use_area[0][3], use_area[0][0]:use_area[0][2]])  # ok
 IndexError: list index out of range
-Mon, 02 Apr 2018 18:47:16 app_thread.py[line:125] ERROR 刷新失败
-Mon, 02 Apr 2018 18:47:16 app_thread.py[line:126] ERROR this is an exception message
+Mon, 02 Apr 2018 19:24:55 app_thread.py[line:125] ERROR 刷新失败
+Mon, 02 Apr 2018 19:24:55 app_thread.py[line:126] ERROR this is an exception message
 Traceback (most recent call last):
   File "E:\hupai\component\app_thread.py", line 123, in run
     findrefresh()
@@ -491,14 +572,23 @@ Traceback (most recent call last):
     img = cv2.cvtColor(sc, cv2.COLOR_BGR2GRAY)  # 转灰度图
 cv2.error: C:\projects\opencv-python\opencv\modules\imgproc\src\color.cpp:11073: error: (-215) depth == 0 || depth == 2 || depth == 5 in function cv::cvtColor
 
-Mon, 02 Apr 2018 18:47:16 imgcut.py[line:371] ERROR cut_img 这里出错
-Mon, 02 Apr 2018 18:47:16 imgcut.py[line:372] ERROR this is an exception message
+Mon, 02 Apr 2018 19:24:55 app_thread.py[line:125] ERROR 刷新失败
+Mon, 02 Apr 2018 19:24:55 app_thread.py[line:126] ERROR this is an exception message
+Traceback (most recent call last):
+  File "E:\hupai\component\app_thread.py", line 123, in run
+    findrefresh()
+  File "E:\hupai\component\imgcut.py", line 386, in findrefresh
+    img = cv2.cvtColor(sc, cv2.COLOR_BGR2GRAY)  # 转灰度图
+cv2.error: C:\projects\opencv-python\opencv\modules\imgproc\src\color.cpp:11073: error: (-215) depth == 0 || depth == 2 || depth == 5 in function cv::cvtColor
+
+Mon, 02 Apr 2018 19:24:55 imgcut.py[line:371] ERROR cut_img 这里出错
+Mon, 02 Apr 2018 19:24:55 app_thread.py[line:125] ERROR 刷新失败
+Mon, 02 Apr 2018 19:24:55 imgcut.py[line:372] ERROR this is an exception message
 Traceback (most recent call last):
   File "E:\hupai\component\imgcut.py", line 364, in cut_img
     set_val('imgpos_lowestprice', img[use_area[0][1]:use_area[0][3], use_area[0][0]:use_area[0][2]])  # ok
 IndexError: list index out of range
-Mon, 02 Apr 2018 18:47:16 app_thread.py[line:125] ERROR 刷新失败
-Mon, 02 Apr 2018 18:47:16 app_thread.py[line:126] ERROR this is an exception message
+Mon, 02 Apr 2018 19:24:55 app_thread.py[line:126] ERROR this is an exception message
 Traceback (most recent call last):
   File "E:\hupai\component\app_thread.py", line 123, in run
     findrefresh()
@@ -506,14 +596,23 @@ Traceback (most recent call last):
     img = cv2.cvtColor(sc, cv2.COLOR_BGR2GRAY)  # 转灰度图
 cv2.error: C:\projects\opencv-python\opencv\modules\imgproc\src\color.cpp:11073: error: (-215) depth == 0 || depth == 2 || depth == 5 in function cv::cvtColor
 
-Mon, 02 Apr 2018 18:47:16 imgcut.py[line:371] ERROR cut_img 这里出错
-Mon, 02 Apr 2018 18:47:16 imgcut.py[line:372] ERROR this is an exception message
+Mon, 02 Apr 2018 19:24:55 app_thread.py[line:125] ERROR 刷新失败
+Mon, 02 Apr 2018 19:24:55 app_thread.py[line:126] ERROR this is an exception message
+Traceback (most recent call last):
+  File "E:\hupai\component\app_thread.py", line 123, in run
+    findrefresh()
+  File "E:\hupai\component\imgcut.py", line 386, in findrefresh
+    img = cv2.cvtColor(sc, cv2.COLOR_BGR2GRAY)  # 转灰度图
+cv2.error: C:\projects\opencv-python\opencv\modules\imgproc\src\color.cpp:11073: error: (-215) depth == 0 || depth == 2 || depth == 5 in function cv::cvtColor
+
+Mon, 02 Apr 2018 19:24:55 imgcut.py[line:371] ERROR cut_img 这里出错
+Mon, 02 Apr 2018 19:24:55 imgcut.py[line:372] ERROR this is an exception message
 Traceback (most recent call last):
   File "E:\hupai\component\imgcut.py", line 364, in cut_img
     set_val('imgpos_lowestprice', img[use_area[0][1]:use_area[0][3], use_area[0][0]:use_area[0][2]])  # ok
 IndexError: list index out of range
-Mon, 02 Apr 2018 18:47:16 app_thread.py[line:125] ERROR 刷新失败
-Mon, 02 Apr 2018 18:47:16 app_thread.py[line:126] ERROR this is an exception message
+Mon, 02 Apr 2018 19:24:55 app_thread.py[line:125] ERROR 刷新失败
+Mon, 02 Apr 2018 19:24:55 app_thread.py[line:126] ERROR this is an exception message
 Traceback (most recent call last):
   File "E:\hupai\component\app_thread.py", line 123, in run
     findrefresh()
@@ -521,14 +620,32 @@ Traceback (most recent call last):
     img = cv2.cvtColor(sc, cv2.COLOR_BGR2GRAY)  # 转灰度图
 cv2.error: C:\projects\opencv-python\opencv\modules\imgproc\src\color.cpp:11073: error: (-215) depth == 0 || depth == 2 || depth == 5 in function cv::cvtColor
 
-Mon, 02 Apr 2018 18:47:16 imgcut.py[line:371] ERROR cut_img 这里出错
-Mon, 02 Apr 2018 18:47:16 imgcut.py[line:372] ERROR this is an exception message
+Mon, 02 Apr 2018 19:24:55 app_thread.py[line:125] ERROR 刷新失败
+Mon, 02 Apr 2018 19:24:55 app_thread.py[line:126] ERROR this is an exception message
+Traceback (most recent call last):
+  File "E:\hupai\component\app_thread.py", line 123, in run
+    findrefresh()
+  File "E:\hupai\component\imgcut.py", line 386, in findrefresh
+    img = cv2.cvtColor(sc, cv2.COLOR_BGR2GRAY)  # 转灰度图
+cv2.error: C:\projects\opencv-python\opencv\modules\imgproc\src\color.cpp:11073: error: (-215) depth == 0 || depth == 2 || depth == 5 in function cv::cvtColor
+
+Mon, 02 Apr 2018 19:24:55 app_thread.py[line:125] ERROR 刷新失败
+Mon, 02 Apr 2018 19:24:55 app_thread.py[line:126] ERROR this is an exception message
+Traceback (most recent call last):
+  File "E:\hupai\component\app_thread.py", line 123, in run
+    findrefresh()
+  File "E:\hupai\component\imgcut.py", line 386, in findrefresh
+    img = cv2.cvtColor(sc, cv2.COLOR_BGR2GRAY)  # 转灰度图
+cv2.error: C:\projects\opencv-python\opencv\modules\imgproc\src\color.cpp:11073: error: (-215) depth == 0 || depth == 2 || depth == 5 in function cv::cvtColor
+
+Mon, 02 Apr 2018 19:24:55 imgcut.py[line:371] ERROR cut_img 这里出错
+Mon, 02 Apr 2018 19:24:55 imgcut.py[line:372] ERROR this is an exception message
 Traceback (most recent call last):
   File "E:\hupai\component\imgcut.py", line 364, in cut_img
     set_val('imgpos_lowestprice', img[use_area[0][1]:use_area[0][3], use_area[0][0]:use_area[0][2]])  # ok
 IndexError: list index out of range
-Mon, 02 Apr 2018 18:47:16 app_thread.py[line:125] ERROR 刷新失败
-Mon, 02 Apr 2018 18:47:16 app_thread.py[line:126] ERROR this is an exception message
+Mon, 02 Apr 2018 19:24:55 app_thread.py[line:125] ERROR 刷新失败
+Mon, 02 Apr 2018 19:24:55 app_thread.py[line:126] ERROR this is an exception message
 Traceback (most recent call last):
   File "E:\hupai\component\app_thread.py", line 123, in run
     findrefresh()
@@ -536,14 +653,14 @@ Traceback (most recent call last):
     img = cv2.cvtColor(sc, cv2.COLOR_BGR2GRAY)  # 转灰度图
 cv2.error: C:\projects\opencv-python\opencv\modules\imgproc\src\color.cpp:11073: error: (-215) depth == 0 || depth == 2 || depth == 5 in function cv::cvtColor
 
-Mon, 02 Apr 2018 18:47:16 imgcut.py[line:371] ERROR cut_img 这里出错
-Mon, 02 Apr 2018 18:47:16 imgcut.py[line:372] ERROR this is an exception message
+Mon, 02 Apr 2018 19:24:55 imgcut.py[line:371] ERROR cut_img 这里出错
+Mon, 02 Apr 2018 19:24:55 imgcut.py[line:372] ERROR this is an exception message
 Traceback (most recent call last):
   File "E:\hupai\component\imgcut.py", line 364, in cut_img
     set_val('imgpos_lowestprice', img[use_area[0][1]:use_area[0][3], use_area[0][0]:use_area[0][2]])  # ok
 IndexError: list index out of range
-Mon, 02 Apr 2018 18:47:16 app_thread.py[line:125] ERROR 刷新失败
-Mon, 02 Apr 2018 18:47:16 app_thread.py[line:126] ERROR this is an exception message
+Mon, 02 Apr 2018 19:24:55 app_thread.py[line:125] ERROR 刷新失败
+Mon, 02 Apr 2018 19:24:55 app_thread.py[line:126] ERROR this is an exception message
 Traceback (most recent call last):
   File "E:\hupai\component\app_thread.py", line 123, in run
     findrefresh()
@@ -551,23 +668,14 @@ Traceback (most recent call last):
     img = cv2.cvtColor(sc, cv2.COLOR_BGR2GRAY)  # 转灰度图
 cv2.error: C:\projects\opencv-python\opencv\modules\imgproc\src\color.cpp:11073: error: (-215) depth == 0 || depth == 2 || depth == 5 in function cv::cvtColor
 
-Mon, 02 Apr 2018 18:47:16 app_thread.py[line:125] ERROR 刷新失败
-Mon, 02 Apr 2018 18:47:16 app_thread.py[line:126] ERROR this is an exception message
-Traceback (most recent call last):
-  File "E:\hupai\component\app_thread.py", line 123, in run
-    findrefresh()
-  File "E:\hupai\component\imgcut.py", line 386, in findrefresh
-    img = cv2.cvtColor(sc, cv2.COLOR_BGR2GRAY)  # 转灰度图
-cv2.error: C:\projects\opencv-python\opencv\modules\imgproc\src\color.cpp:11073: error: (-215) depth == 0 || depth == 2 || depth == 5 in function cv::cvtColor
-
-Mon, 02 Apr 2018 18:47:16 imgcut.py[line:371] ERROR cut_img 这里出错
-Mon, 02 Apr 2018 18:47:16 imgcut.py[line:372] ERROR this is an exception message
+Mon, 02 Apr 2018 19:24:55 imgcut.py[line:371] ERROR cut_img 这里出错
+Mon, 02 Apr 2018 19:24:55 imgcut.py[line:372] ERROR this is an exception message
 Traceback (most recent call last):
   File "E:\hupai\component\imgcut.py", line 364, in cut_img
     set_val('imgpos_lowestprice', img[use_area[0][1]:use_area[0][3], use_area[0][0]:use_area[0][2]])  # ok
 IndexError: list index out of range
-Mon, 02 Apr 2018 18:47:16 app_thread.py[line:125] ERROR 刷新失败
-Mon, 02 Apr 2018 18:47:16 app_thread.py[line:126] ERROR this is an exception message
+Mon, 02 Apr 2018 19:24:55 app_thread.py[line:125] ERROR 刷新失败
+Mon, 02 Apr 2018 19:24:55 app_thread.py[line:126] ERROR this is an exception message
 Traceback (most recent call last):
   File "E:\hupai\component\app_thread.py", line 123, in run
     findrefresh()
@@ -575,8 +683,8 @@ Traceback (most recent call last):
     img = cv2.cvtColor(sc, cv2.COLOR_BGR2GRAY)  # 转灰度图
 cv2.error: C:\projects\opencv-python\opencv\modules\imgproc\src\color.cpp:11073: error: (-215) depth == 0 || depth == 2 || depth == 5 in function cv::cvtColor
 
-Mon, 02 Apr 2018 18:47:16 app_thread.py[line:125] ERROR 刷新失败
-Mon, 02 Apr 2018 18:47:16 app_thread.py[line:126] ERROR this is an exception message
+Mon, 02 Apr 2018 19:24:56 app_thread.py[line:125] ERROR 刷新失败
+Mon, 02 Apr 2018 19:24:56 app_thread.py[line:126] ERROR this is an exception message
 Traceback (most recent call last):
   File "E:\hupai\component\app_thread.py", line 123, in run
     findrefresh()
@@ -584,14 +692,14 @@ Traceback (most recent call last):
     img = cv2.cvtColor(sc, cv2.COLOR_BGR2GRAY)  # 转灰度图
 cv2.error: C:\projects\opencv-python\opencv\modules\imgproc\src\color.cpp:11073: error: (-215) depth == 0 || depth == 2 || depth == 5 in function cv::cvtColor
 
-Mon, 02 Apr 2018 18:47:16 imgcut.py[line:371] ERROR cut_img 这里出错
-Mon, 02 Apr 2018 18:47:16 imgcut.py[line:372] ERROR this is an exception message
+Mon, 02 Apr 2018 19:24:56 imgcut.py[line:371] ERROR cut_img 这里出错
+Mon, 02 Apr 2018 19:24:56 imgcut.py[line:372] ERROR this is an exception message
 Traceback (most recent call last):
   File "E:\hupai\component\imgcut.py", line 364, in cut_img
     set_val('imgpos_lowestprice', img[use_area[0][1]:use_area[0][3], use_area[0][0]:use_area[0][2]])  # ok
 IndexError: list index out of range
-Mon, 02 Apr 2018 18:47:16 app_thread.py[line:125] ERROR 刷新失败
-Mon, 02 Apr 2018 18:47:16 app_thread.py[line:126] ERROR this is an exception message
+Mon, 02 Apr 2018 19:24:56 app_thread.py[line:125] ERROR 刷新失败
+Mon, 02 Apr 2018 19:24:56 app_thread.py[line:126] ERROR this is an exception message
 Traceback (most recent call last):
   File "E:\hupai\component\app_thread.py", line 123, in run
     findrefresh()
@@ -599,14 +707,14 @@ Traceback (most recent call last):
     img = cv2.cvtColor(sc, cv2.COLOR_BGR2GRAY)  # 转灰度图
 cv2.error: C:\projects\opencv-python\opencv\modules\imgproc\src\color.cpp:11073: error: (-215) depth == 0 || depth == 2 || depth == 5 in function cv::cvtColor
 
-Mon, 02 Apr 2018 18:47:16 imgcut.py[line:371] ERROR cut_img 这里出错
-Mon, 02 Apr 2018 18:47:16 imgcut.py[line:372] ERROR this is an exception message
+Mon, 02 Apr 2018 19:24:56 imgcut.py[line:371] ERROR cut_img 这里出错
+Mon, 02 Apr 2018 19:24:56 imgcut.py[line:372] ERROR this is an exception message
 Traceback (most recent call last):
   File "E:\hupai\component\imgcut.py", line 364, in cut_img
     set_val('imgpos_lowestprice', img[use_area[0][1]:use_area[0][3], use_area[0][0]:use_area[0][2]])  # ok
 IndexError: list index out of range
-Mon, 02 Apr 2018 18:47:16 app_thread.py[line:125] ERROR 刷新失败
-Mon, 02 Apr 2018 18:47:16 app_thread.py[line:126] ERROR this is an exception message
+Mon, 02 Apr 2018 19:24:56 app_thread.py[line:125] ERROR 刷新失败
+Mon, 02 Apr 2018 19:24:56 app_thread.py[line:126] ERROR this is an exception message
 Traceback (most recent call last):
   File "E:\hupai\component\app_thread.py", line 123, in run
     findrefresh()
@@ -614,14 +722,23 @@ Traceback (most recent call last):
     img = cv2.cvtColor(sc, cv2.COLOR_BGR2GRAY)  # 转灰度图
 cv2.error: C:\projects\opencv-python\opencv\modules\imgproc\src\color.cpp:11073: error: (-215) depth == 0 || depth == 2 || depth == 5 in function cv::cvtColor
 
-Mon, 02 Apr 2018 18:47:16 imgcut.py[line:371] ERROR cut_img 这里出错
-Mon, 02 Apr 2018 18:47:16 imgcut.py[line:372] ERROR this is an exception message
+Mon, 02 Apr 2018 19:24:56 app_thread.py[line:125] ERROR 刷新失败
+Mon, 02 Apr 2018 19:24:56 app_thread.py[line:126] ERROR this is an exception message
+Traceback (most recent call last):
+  File "E:\hupai\component\app_thread.py", line 123, in run
+    findrefresh()
+  File "E:\hupai\component\imgcut.py", line 386, in findrefresh
+    img = cv2.cvtColor(sc, cv2.COLOR_BGR2GRAY)  # 转灰度图
+cv2.error: C:\projects\opencv-python\opencv\modules\imgproc\src\color.cpp:11073: error: (-215) depth == 0 || depth == 2 || depth == 5 in function cv::cvtColor
+
+Mon, 02 Apr 2018 19:24:56 imgcut.py[line:371] ERROR cut_img 这里出错
+Mon, 02 Apr 2018 19:24:56 imgcut.py[line:372] ERROR this is an exception message
 Traceback (most recent call last):
   File "E:\hupai\component\imgcut.py", line 364, in cut_img
     set_val('imgpos_lowestprice', img[use_area[0][1]:use_area[0][3], use_area[0][0]:use_area[0][2]])  # ok
 IndexError: list index out of range
-Mon, 02 Apr 2018 18:47:16 app_thread.py[line:125] ERROR 刷新失败
-Mon, 02 Apr 2018 18:47:16 app_thread.py[line:126] ERROR this is an exception message
+Mon, 02 Apr 2018 19:24:56 app_thread.py[line:125] ERROR 刷新失败
+Mon, 02 Apr 2018 19:24:56 app_thread.py[line:126] ERROR this is an exception message
 Traceback (most recent call last):
   File "E:\hupai\component\app_thread.py", line 123, in run
     findrefresh()
@@ -629,14 +746,14 @@ Traceback (most recent call last):
     img = cv2.cvtColor(sc, cv2.COLOR_BGR2GRAY)  # 转灰度图
 cv2.error: C:\projects\opencv-python\opencv\modules\imgproc\src\color.cpp:11073: error: (-215) depth == 0 || depth == 2 || depth == 5 in function cv::cvtColor
 
-Mon, 02 Apr 2018 18:47:16 imgcut.py[line:371] ERROR cut_img 这里出错
-Mon, 02 Apr 2018 18:47:16 imgcut.py[line:372] ERROR this is an exception message
+Mon, 02 Apr 2018 19:24:56 imgcut.py[line:371] ERROR cut_img 这里出错
+Mon, 02 Apr 2018 19:24:56 imgcut.py[line:372] ERROR this is an exception message
 Traceback (most recent call last):
   File "E:\hupai\component\imgcut.py", line 364, in cut_img
     set_val('imgpos_lowestprice', img[use_area[0][1]:use_area[0][3], use_area[0][0]:use_area[0][2]])  # ok
 IndexError: list index out of range
-Mon, 02 Apr 2018 18:47:16 app_thread.py[line:125] ERROR 刷新失败
-Mon, 02 Apr 2018 18:47:16 app_thread.py[line:126] ERROR this is an exception message
+Mon, 02 Apr 2018 19:24:56 app_thread.py[line:125] ERROR 刷新失败
+Mon, 02 Apr 2018 19:24:56 app_thread.py[line:126] ERROR this is an exception message
 Traceback (most recent call last):
   File "E:\hupai\component\app_thread.py", line 123, in run
     findrefresh()
@@ -644,14 +761,23 @@ Traceback (most recent call last):
     img = cv2.cvtColor(sc, cv2.COLOR_BGR2GRAY)  # 转灰度图
 cv2.error: C:\projects\opencv-python\opencv\modules\imgproc\src\color.cpp:11073: error: (-215) depth == 0 || depth == 2 || depth == 5 in function cv::cvtColor
 
-Mon, 02 Apr 2018 18:47:16 imgcut.py[line:371] ERROR cut_img 这里出错
-Mon, 02 Apr 2018 18:47:16 imgcut.py[line:372] ERROR this is an exception message
+Mon, 02 Apr 2018 19:24:56 app_thread.py[line:125] ERROR 刷新失败
+Mon, 02 Apr 2018 19:24:56 app_thread.py[line:126] ERROR this is an exception message
+Traceback (most recent call last):
+  File "E:\hupai\component\app_thread.py", line 123, in run
+    findrefresh()
+  File "E:\hupai\component\imgcut.py", line 386, in findrefresh
+    img = cv2.cvtColor(sc, cv2.COLOR_BGR2GRAY)  # 转灰度图
+cv2.error: C:\projects\opencv-python\opencv\modules\imgproc\src\color.cpp:11073: error: (-215) depth == 0 || depth == 2 || depth == 5 in function cv::cvtColor
+
+Mon, 02 Apr 2018 19:24:56 imgcut.py[line:371] ERROR cut_img 这里出错
+Mon, 02 Apr 2018 19:24:56 imgcut.py[line:372] ERROR this is an exception message
 Traceback (most recent call last):
   File "E:\hupai\component\imgcut.py", line 364, in cut_img
     set_val('imgpos_lowestprice', img[use_area[0][1]:use_area[0][3], use_area[0][0]:use_area[0][2]])  # ok
 IndexError: list index out of range
-Mon, 02 Apr 2018 18:47:16 app_thread.py[line:125] ERROR 刷新失败
-Mon, 02 Apr 2018 18:47:16 app_thread.py[line:126] ERROR this is an exception message
+Mon, 02 Apr 2018 19:24:56 app_thread.py[line:125] ERROR 刷新失败
+Mon, 02 Apr 2018 19:24:56 app_thread.py[line:126] ERROR this is an exception message
 Traceback (most recent call last):
   File "E:\hupai\component\app_thread.py", line 123, in run
     findrefresh()
@@ -659,8 +785,9 @@ Traceback (most recent call last):
     img = cv2.cvtColor(sc, cv2.COLOR_BGR2GRAY)  # 转灰度图
 cv2.error: C:\projects\opencv-python\opencv\modules\imgproc\src\color.cpp:11073: error: (-215) depth == 0 || depth == 2 || depth == 5 in function cv::cvtColor
 
-Mon, 02 Apr 2018 18:47:16 app_thread.py[line:125] ERROR 刷新失败
-Mon, 02 Apr 2018 18:47:16 app_thread.py[line:126] ERROR this is an exception message
+Mon, 02 Apr 2018 19:24:56 app_thread.py[line:125] ERROR 刷新失败
+Mon, 02 Apr 2018 19:24:56 imgcut.py[line:371] ERROR cut_img 这里出错
+Mon, 02 Apr 2018 19:24:56 app_thread.py[line:126] ERROR this is an exception message
 Traceback (most recent call last):
   File "E:\hupai\component\app_thread.py", line 123, in run
     findrefresh()
@@ -668,14 +795,13 @@ Traceback (most recent call last):
     img = cv2.cvtColor(sc, cv2.COLOR_BGR2GRAY)  # 转灰度图
 cv2.error: C:\projects\opencv-python\opencv\modules\imgproc\src\color.cpp:11073: error: (-215) depth == 0 || depth == 2 || depth == 5 in function cv::cvtColor
 
-Mon, 02 Apr 2018 18:47:16 imgcut.py[line:371] ERROR cut_img 这里出错
-Mon, 02 Apr 2018 18:47:16 imgcut.py[line:372] ERROR this is an exception message
+Mon, 02 Apr 2018 19:24:56 imgcut.py[line:372] ERROR this is an exception message
 Traceback (most recent call last):
   File "E:\hupai\component\imgcut.py", line 364, in cut_img
     set_val('imgpos_lowestprice', img[use_area[0][1]:use_area[0][3], use_area[0][0]:use_area[0][2]])  # ok
 IndexError: list index out of range
-Mon, 02 Apr 2018 18:47:16 app_thread.py[line:125] ERROR 刷新失败
-Mon, 02 Apr 2018 18:47:16 app_thread.py[line:126] ERROR this is an exception message
+Mon, 02 Apr 2018 19:24:56 app_thread.py[line:125] ERROR 刷新失败
+Mon, 02 Apr 2018 19:24:56 app_thread.py[line:126] ERROR this is an exception message
 Traceback (most recent call last):
   File "E:\hupai\component\app_thread.py", line 123, in run
     findrefresh()
@@ -683,14 +809,23 @@ Traceback (most recent call last):
     img = cv2.cvtColor(sc, cv2.COLOR_BGR2GRAY)  # 转灰度图
 cv2.error: C:\projects\opencv-python\opencv\modules\imgproc\src\color.cpp:11073: error: (-215) depth == 0 || depth == 2 || depth == 5 in function cv::cvtColor
 
-Mon, 02 Apr 2018 18:47:16 imgcut.py[line:371] ERROR cut_img 这里出错
-Mon, 02 Apr 2018 18:47:16 imgcut.py[line:372] ERROR this is an exception message
+Mon, 02 Apr 2018 19:24:56 app_thread.py[line:125] ERROR 刷新失败
+Mon, 02 Apr 2018 19:24:56 imgcut.py[line:371] ERROR cut_img 这里出错
+Mon, 02 Apr 2018 19:24:56 app_thread.py[line:126] ERROR this is an exception message
+Traceback (most recent call last):
+  File "E:\hupai\component\app_thread.py", line 123, in run
+    findrefresh()
+  File "E:\hupai\component\imgcut.py", line 386, in findrefresh
+    img = cv2.cvtColor(sc, cv2.COLOR_BGR2GRAY)  # 转灰度图
+cv2.error: C:\projects\opencv-python\opencv\modules\imgproc\src\color.cpp:11073: error: (-215) depth == 0 || depth == 2 || depth == 5 in function cv::cvtColor
+
+Mon, 02 Apr 2018 19:24:56 imgcut.py[line:372] ERROR this is an exception message
 Traceback (most recent call last):
   File "E:\hupai\component\imgcut.py", line 364, in cut_img
     set_val('imgpos_lowestprice', img[use_area[0][1]:use_area[0][3], use_area[0][0]:use_area[0][2]])  # ok
 IndexError: list index out of range
-Mon, 02 Apr 2018 18:47:17 app_thread.py[line:125] ERROR 刷新失败
-Mon, 02 Apr 2018 18:47:17 app_thread.py[line:126] ERROR this is an exception message
+Mon, 02 Apr 2018 19:24:56 app_thread.py[line:125] ERROR 刷新失败
+Mon, 02 Apr 2018 19:24:56 app_thread.py[line:126] ERROR this is an exception message
 Traceback (most recent call last):
   File "E:\hupai\component\app_thread.py", line 123, in run
     findrefresh()
@@ -698,141 +833,99 @@ Traceback (most recent call last):
     img = cv2.cvtColor(sc, cv2.COLOR_BGR2GRAY)  # 转灰度图
 cv2.error: C:\projects\opencv-python\opencv\modules\imgproc\src\color.cpp:11073: error: (-215) depth == 0 || depth == 2 || depth == 5 in function cv::cvtColor
 
-Mon, 02 Apr 2018 18:47:17 imgcut.py[line:371] ERROR cut_img 这里出错
-Mon, 02 Apr 2018 18:47:17 imgcut.py[line:372] ERROR this is an exception message
-Traceback (most recent call last):
-  File "E:\hupai\component\imgcut.py", line 364, in cut_img
-    set_val('imgpos_lowestprice', img[use_area[0][1]:use_area[0][3], use_area[0][0]:use_area[0][2]])  # ok
-IndexError: list index out of range
-Mon, 02 Apr 2018 18:47:17 app_thread.py[line:125] ERROR 刷新失败
-Mon, 02 Apr 2018 18:47:17 app_thread.py[line:126] ERROR this is an exception message
-Traceback (most recent call last):
-  File "E:\hupai\component\app_thread.py", line 123, in run
-    findrefresh()
-  File "E:\hupai\component\imgcut.py", line 386, in findrefresh
-    img = cv2.cvtColor(sc, cv2.COLOR_BGR2GRAY)  # 转灰度图
-cv2.error: C:\projects\opencv-python\opencv\modules\imgproc\src\color.cpp:11073: error: (-215) depth == 0 || depth == 2 || depth == 5 in function cv::cvtColor
-
-Mon, 02 Apr 2018 18:47:17 app_thread.py[line:125] ERROR 刷新失败
-Mon, 02 Apr 2018 18:47:17 imgcut.py[line:371] ERROR cut_img 这里出错
-Mon, 02 Apr 2018 18:47:17 app_thread.py[line:126] ERROR this is an exception message
-Traceback (most recent call last):
-  File "E:\hupai\component\app_thread.py", line 123, in run
-    findrefresh()
-  File "E:\hupai\component\imgcut.py", line 386, in findrefresh
-    img = cv2.cvtColor(sc, cv2.COLOR_BGR2GRAY)  # 转灰度图
-cv2.error: C:\projects\opencv-python\opencv\modules\imgproc\src\color.cpp:11073: error: (-215) depth == 0 || depth == 2 || depth == 5 in function cv::cvtColor
-
-Mon, 02 Apr 2018 18:47:17 imgcut.py[line:372] ERROR this is an exception message
-Traceback (most recent call last):
-  File "E:\hupai\component\imgcut.py", line 364, in cut_img
-    set_val('imgpos_lowestprice', img[use_area[0][1]:use_area[0][3], use_area[0][0]:use_area[0][2]])  # ok
-IndexError: list index out of range
-Mon, 02 Apr 2018 18:47:17 app_thread.py[line:125] ERROR 刷新失败
-Mon, 02 Apr 2018 18:47:17 app_thread.py[line:126] ERROR this is an exception message
-Traceback (most recent call last):
-  File "E:\hupai\component\app_thread.py", line 123, in run
-    findrefresh()
-  File "E:\hupai\component\imgcut.py", line 386, in findrefresh
-    img = cv2.cvtColor(sc, cv2.COLOR_BGR2GRAY)  # 转灰度图
-cv2.error: C:\projects\opencv-python\opencv\modules\imgproc\src\color.cpp:11073: error: (-215) depth == 0 || depth == 2 || depth == 5 in function cv::cvtColor
-
-Mon, 02 Apr 2018 18:47:17 imgcut.py[line:371] ERROR cut_img 这里出错
-Mon, 02 Apr 2018 18:47:17 imgcut.py[line:372] ERROR this is an exception message
-Traceback (most recent call last):
-  File "E:\hupai\component\imgcut.py", line 364, in cut_img
-    set_val('imgpos_lowestprice', img[use_area[0][1]:use_area[0][3], use_area[0][0]:use_area[0][2]])  # ok
-IndexError: list index out of range
-Mon, 02 Apr 2018 18:47:17 app_thread.py[line:125] ERROR 刷新失败
-Mon, 02 Apr 2018 18:47:17 app_thread.py[line:126] ERROR this is an exception message
-Traceback (most recent call last):
-  File "E:\hupai\component\app_thread.py", line 123, in run
-    findrefresh()
-  File "E:\hupai\component\imgcut.py", line 386, in findrefresh
-    img = cv2.cvtColor(sc, cv2.COLOR_BGR2GRAY)  # 转灰度图
-cv2.error: C:\projects\opencv-python\opencv\modules\imgproc\src\color.cpp:11073: error: (-215) depth == 0 || depth == 2 || depth == 5 in function cv::cvtColor
-
-Mon, 02 Apr 2018 18:47:17 imgcut.py[line:371] ERROR cut_img 这里出错
-Mon, 02 Apr 2018 18:47:17 imgcut.py[line:372] ERROR this is an exception message
-Traceback (most recent call last):
-  File "E:\hupai\component\imgcut.py", line 364, in cut_img
-    set_val('imgpos_lowestprice', img[use_area[0][1]:use_area[0][3], use_area[0][0]:use_area[0][2]])  # ok
-IndexError: list index out of range
-Mon, 02 Apr 2018 18:47:17 app_thread.py[line:125] ERROR 刷新失败
-Mon, 02 Apr 2018 18:47:17 app_thread.py[line:126] ERROR this is an exception message
-Traceback (most recent call last):
-  File "E:\hupai\component\app_thread.py", line 123, in run
-    findrefresh()
-  File "E:\hupai\component\imgcut.py", line 386, in findrefresh
-    img = cv2.cvtColor(sc, cv2.COLOR_BGR2GRAY)  # 转灰度图
-cv2.error: C:\projects\opencv-python\opencv\modules\imgproc\src\color.cpp:11073: error: (-215) depth == 0 || depth == 2 || depth == 5 in function cv::cvtColor
-
-Mon, 02 Apr 2018 18:47:17 imgcut.py[line:371] ERROR cut_img 这里出错
-Mon, 02 Apr 2018 18:47:17 imgcut.py[line:372] ERROR this is an exception message
-Traceback (most recent call last):
-  File "E:\hupai\component\imgcut.py", line 364, in cut_img
-    set_val('imgpos_lowestprice', img[use_area[0][1]:use_area[0][3], use_area[0][0]:use_area[0][2]])  # ok
-IndexError: list index out of range
-Mon, 02 Apr 2018 18:47:17 app_thread.py[line:125] ERROR 刷新失败
-Mon, 02 Apr 2018 18:47:17 app_thread.py[line:126] ERROR this is an exception message
-Traceback (most recent call last):
-  File "E:\hupai\component\app_thread.py", line 123, in run
-    findrefresh()
-  File "E:\hupai\component\imgcut.py", line 386, in findrefresh
-    img = cv2.cvtColor(sc, cv2.COLOR_BGR2GRAY)  # 转灰度图
-cv2.error: C:\projects\opencv-python\opencv\modules\imgproc\src\color.cpp:11073: error: (-215) depth == 0 || depth == 2 || depth == 5 in function cv::cvtColor
-
-Mon, 02 Apr 2018 18:47:17 imgcut.py[line:371] ERROR cut_img 这里出错
-Mon, 02 Apr 2018 18:47:17 imgcut.py[line:372] ERROR this is an exception message
-Traceback (most recent call last):
-  File "E:\hupai\component\imgcut.py", line 364, in cut_img
-    set_val('imgpos_lowestprice', img[use_area[0][1]:use_area[0][3], use_area[0][0]:use_area[0][2]])  # ok
-IndexError: list index out of range
-Mon, 02 Apr 2018 18:47:17 app_thread.py[line:125] ERROR 刷新失败
-Mon, 02 Apr 2018 18:47:17 app_thread.py[line:126] ERROR this is an exception message
-Traceback (most recent call last):
-  File "E:\hupai\component\app_thread.py", line 123, in run
-    findrefresh()
-  File "E:\hupai\component\imgcut.py", line 386, in findrefresh
-    img = cv2.cvtColor(sc, cv2.COLOR_BGR2GRAY)  # 转灰度图
-cv2.error: C:\projects\opencv-python\opencv\modules\imgproc\src\color.cpp:11073: error: (-215) depth == 0 || depth == 2 || depth == 5 in function cv::cvtColor
-
-Mon, 02 Apr 2018 18:47:17 imgcut.py[line:371] ERROR cut_img 这里出错
-Mon, 02 Apr 2018 18:47:17 imgcut.py[line:372] ERROR this is an exception message
-Traceback (most recent call last):
-  File "E:\hupai\component\imgcut.py", line 364, in cut_img
-    set_val('imgpos_lowestprice', img[use_area[0][1]:use_area[0][3], use_area[0][0]:use_area[0][2]])  # ok
-IndexError: list index out of range
-Mon, 02 Apr 2018 18:47:17 app_thread.py[line:125] ERROR 刷新失败
-Mon, 02 Apr 2018 18:47:17 app_thread.py[line:126] ERROR this is an exception message
-Traceback (most recent call last):
-  File "E:\hupai\component\app_thread.py", line 123, in run
-    findrefresh()
-  File "E:\hupai\component\imgcut.py", line 386, in findrefresh
-    img = cv2.cvtColor(sc, cv2.COLOR_BGR2GRAY)  # 转灰度图
-cv2.error: C:\projects\opencv-python\opencv\modules\imgproc\src\color.cpp:11073: error: (-215) depth == 0 || depth == 2 || depth == 5 in function cv::cvtColor
-
-Mon, 02 Apr 2018 18:47:17 app_thread.py[line:125] ERROR 刷新失败
-Mon, 02 Apr 2018 18:47:17 app_thread.py[line:126] ERROR this is an exception message
-Traceback (most recent call last):
-  File "E:\hupai\component\app_thread.py", line 123, in run
-    findrefresh()
-  File "E:\hupai\component\imgcut.py", line 386, in findrefresh
-    img = cv2.cvtColor(sc, cv2.COLOR_BGR2GRAY)  # 转灰度图
-cv2.error: C:\projects\opencv-python\opencv\modules\imgproc\src\color.cpp:11073: error: (-215) depth == 0 || depth == 2 || depth == 5 in function cv::cvtColor
-
-Mon, 02 Apr 2018 18:47:17 imgcut.py[line:371] ERROR cut_img 这里出错
-Mon, 02 Apr 2018 18:47:17 imgcut.py[line:372] ERROR this is an exception message
-Traceback (most recent call last):
-  File "E:\hupai\component\imgcut.py", line 364, in cut_img
-    set_val('imgpos_lowestprice', img[use_area[0][1]:use_area[0][3], use_area[0][0]:use_area[0][2]])  # ok
-IndexError: list index out of range
-Mon, 02 Apr 2018 18:47:17 app_thread.py[line:125] ERROR 刷新失败
-Mon, 02 Apr 2018 18:47:17 app_thread.py[line:126] ERROR this is an exception message
-Traceback (most recent call last):
-  File "E:\hupai\component\app_thread.py", line 123, in run
-    findrefresh()
-  File "E:\hupai\component\imgcut.py", line 386, in findrefresh
-    img = cv2.cvtColor(sc, cv2.COLOR_BGR2GRAY)  # 转灰度图
-cv2.error: C:\projects\opencv-python\opencv\modules\imgproc\src\color.cpp:11073: error: (-215) depth == 0 || depth == 2 || depth == 5 in function cv::cvtColor
-
+Mon, 02 Apr 2018 19:25:20 PngImagePlugin.py[line:137] DEBUG STREAM b'IHDR' 16 13
+Mon, 02 Apr 2018 19:25:20 PngImagePlugin.py[line:137] DEBUG STREAM b'IDAT' 41 8192
+Mon, 02 Apr 2018 19:25:20 PngImagePlugin.py[line:137] DEBUG STREAM b'IHDR' 16 13
+Mon, 02 Apr 2018 19:25:20 PngImagePlugin.py[line:137] DEBUG STREAM b'IDAT' 41 8192
+Mon, 02 Apr 2018 19:25:20 PngImagePlugin.py[line:137] DEBUG STREAM b'IHDR' 16 13
+Mon, 02 Apr 2018 19:25:20 PngImagePlugin.py[line:137] DEBUG STREAM b'IDAT' 41 8192
+Mon, 02 Apr 2018 19:25:20 PngImagePlugin.py[line:137] DEBUG STREAM b'IHDR' 16 13
+Mon, 02 Apr 2018 19:25:20 PngImagePlugin.py[line:137] DEBUG STREAM b'IDAT' 41 8192
+Mon, 02 Apr 2018 19:25:20 PngImagePlugin.py[line:137] DEBUG STREAM b'IHDR' 16 13
+Mon, 02 Apr 2018 19:25:20 PngImagePlugin.py[line:137] DEBUG STREAM b'IDAT' 41 8192
+Mon, 02 Apr 2018 19:25:20 PngImagePlugin.py[line:137] DEBUG STREAM b'IHDR' 16 13
+Mon, 02 Apr 2018 19:25:20 PngImagePlugin.py[line:137] DEBUG STREAM b'IDAT' 41 8192
+Mon, 02 Apr 2018 19:25:20 PngImagePlugin.py[line:137] DEBUG STREAM b'IHDR' 16 13
+Mon, 02 Apr 2018 19:25:20 PngImagePlugin.py[line:137] DEBUG STREAM b'IDAT' 41 8192
+Mon, 02 Apr 2018 19:25:21 PngImagePlugin.py[line:137] DEBUG STREAM b'IHDR' 16 13
+Mon, 02 Apr 2018 19:25:21 PngImagePlugin.py[line:137] DEBUG STREAM b'IDAT' 41 8192
+Mon, 02 Apr 2018 19:25:21 PngImagePlugin.py[line:137] DEBUG STREAM b'IHDR' 16 13
+Mon, 02 Apr 2018 19:25:21 PngImagePlugin.py[line:137] DEBUG STREAM b'IDAT' 41 8192
+Mon, 02 Apr 2018 19:25:21 PngImagePlugin.py[line:137] DEBUG STREAM b'IHDR' 16 13
+Mon, 02 Apr 2018 19:25:21 PngImagePlugin.py[line:137] DEBUG STREAM b'IDAT' 41 8192
+Mon, 02 Apr 2018 19:25:21 PngImagePlugin.py[line:137] DEBUG STREAM b'IHDR' 16 13
+Mon, 02 Apr 2018 19:25:21 PngImagePlugin.py[line:137] DEBUG STREAM b'IDAT' 41 8192
+Mon, 02 Apr 2018 19:25:21 PngImagePlugin.py[line:137] DEBUG STREAM b'IHDR' 16 13
+Mon, 02 Apr 2018 19:25:21 PngImagePlugin.py[line:137] DEBUG STREAM b'IDAT' 41 8192
+Mon, 02 Apr 2018 19:25:21 PngImagePlugin.py[line:137] DEBUG STREAM b'IHDR' 16 13
+Mon, 02 Apr 2018 19:25:21 PngImagePlugin.py[line:137] DEBUG STREAM b'IDAT' 41 8192
+Mon, 02 Apr 2018 19:25:21 PngImagePlugin.py[line:137] DEBUG STREAM b'IHDR' 16 13
+Mon, 02 Apr 2018 19:25:21 PngImagePlugin.py[line:137] DEBUG STREAM b'IDAT' 41 8192
+Mon, 02 Apr 2018 19:25:21 PngImagePlugin.py[line:137] DEBUG STREAM b'IHDR' 16 13
+Mon, 02 Apr 2018 19:25:21 PngImagePlugin.py[line:137] DEBUG STREAM b'IDAT' 41 8192
+Mon, 02 Apr 2018 19:25:21 PngImagePlugin.py[line:137] DEBUG STREAM b'IHDR' 16 13
+Mon, 02 Apr 2018 19:25:21 PngImagePlugin.py[line:137] DEBUG STREAM b'IDAT' 41 8192
+Mon, 02 Apr 2018 19:25:21 PngImagePlugin.py[line:137] DEBUG STREAM b'IHDR' 16 13
+Mon, 02 Apr 2018 19:25:21 PngImagePlugin.py[line:137] DEBUG STREAM b'IDAT' 41 8192
+Mon, 02 Apr 2018 19:25:21 PngImagePlugin.py[line:137] DEBUG STREAM b'IHDR' 16 13
+Mon, 02 Apr 2018 19:25:21 PngImagePlugin.py[line:137] DEBUG STREAM b'IDAT' 41 8192
+Mon, 02 Apr 2018 19:25:21 PngImagePlugin.py[line:137] DEBUG STREAM b'IHDR' 16 13
+Mon, 02 Apr 2018 19:25:21 PngImagePlugin.py[line:137] DEBUG STREAM b'IDAT' 41 8192
+Mon, 02 Apr 2018 19:25:21 PngImagePlugin.py[line:137] DEBUG STREAM b'IHDR' 16 13
+Mon, 02 Apr 2018 19:25:21 PngImagePlugin.py[line:137] DEBUG STREAM b'IDAT' 41 8192
+Mon, 02 Apr 2018 19:25:21 PngImagePlugin.py[line:137] DEBUG STREAM b'IHDR' 16 13
+Mon, 02 Apr 2018 19:25:21 PngImagePlugin.py[line:137] DEBUG STREAM b'IDAT' 41 8192
+Mon, 02 Apr 2018 19:25:21 PngImagePlugin.py[line:137] DEBUG STREAM b'IHDR' 16 13
+Mon, 02 Apr 2018 19:25:21 PngImagePlugin.py[line:137] DEBUG STREAM b'IDAT' 41 8192
+Mon, 02 Apr 2018 19:25:21 PngImagePlugin.py[line:137] DEBUG STREAM b'IHDR' 16 13
+Mon, 02 Apr 2018 19:25:21 PngImagePlugin.py[line:137] DEBUG STREAM b'IDAT' 41 8192
+Mon, 02 Apr 2018 19:25:21 PngImagePlugin.py[line:137] DEBUG STREAM b'IHDR' 16 13
+Mon, 02 Apr 2018 19:25:21 PngImagePlugin.py[line:137] DEBUG STREAM b'IDAT' 41 8192
+Mon, 02 Apr 2018 19:25:21 PngImagePlugin.py[line:137] DEBUG STREAM b'IHDR' 16 13
+Mon, 02 Apr 2018 19:25:21 PngImagePlugin.py[line:137] DEBUG STREAM b'IDAT' 41 8192
+Mon, 02 Apr 2018 19:25:21 PngImagePlugin.py[line:137] DEBUG STREAM b'IHDR' 16 13
+Mon, 02 Apr 2018 19:25:21 PngImagePlugin.py[line:137] DEBUG STREAM b'IDAT' 41 8192
+Mon, 02 Apr 2018 19:25:21 PngImagePlugin.py[line:137] DEBUG STREAM b'IHDR' 16 13
+Mon, 02 Apr 2018 19:25:21 PngImagePlugin.py[line:137] DEBUG STREAM b'IDAT' 41 8192
+Mon, 02 Apr 2018 19:25:21 PngImagePlugin.py[line:137] DEBUG STREAM b'IHDR' 16 13
+Mon, 02 Apr 2018 19:25:21 PngImagePlugin.py[line:137] DEBUG STREAM b'IDAT' 41 8192
+Mon, 02 Apr 2018 19:25:21 PngImagePlugin.py[line:137] DEBUG STREAM b'IHDR' 16 13
+Mon, 02 Apr 2018 19:25:21 PngImagePlugin.py[line:137] DEBUG STREAM b'IDAT' 41 8192
+Mon, 02 Apr 2018 19:25:22 PngImagePlugin.py[line:137] DEBUG STREAM b'IHDR' 16 13
+Mon, 02 Apr 2018 19:25:22 PngImagePlugin.py[line:137] DEBUG STREAM b'IDAT' 41 8192
+Mon, 02 Apr 2018 19:25:22 PngImagePlugin.py[line:137] DEBUG STREAM b'IHDR' 16 13
+Mon, 02 Apr 2018 19:25:22 PngImagePlugin.py[line:137] DEBUG STREAM b'IDAT' 41 8192
+Mon, 02 Apr 2018 19:25:22 PngImagePlugin.py[line:137] DEBUG STREAM b'IHDR' 16 13
+Mon, 02 Apr 2018 19:25:22 PngImagePlugin.py[line:137] DEBUG STREAM b'IDAT' 41 8192
+Mon, 02 Apr 2018 19:25:22 PngImagePlugin.py[line:137] DEBUG STREAM b'IHDR' 16 13
+Mon, 02 Apr 2018 19:25:22 PngImagePlugin.py[line:137] DEBUG STREAM b'IDAT' 41 8192
+Mon, 02 Apr 2018 19:25:22 PngImagePlugin.py[line:137] DEBUG STREAM b'IHDR' 16 13
+Mon, 02 Apr 2018 19:25:22 PngImagePlugin.py[line:137] DEBUG STREAM b'IDAT' 41 8192
+Mon, 02 Apr 2018 19:25:22 PngImagePlugin.py[line:137] DEBUG STREAM b'IHDR' 16 13
+Mon, 02 Apr 2018 19:25:22 PngImagePlugin.py[line:137] DEBUG STREAM b'IDAT' 41 8192
+Mon, 02 Apr 2018 19:25:22 PngImagePlugin.py[line:137] DEBUG STREAM b'IHDR' 16 13
+Mon, 02 Apr 2018 19:25:22 PngImagePlugin.py[line:137] DEBUG STREAM b'IDAT' 41 8192
+Mon, 02 Apr 2018 19:25:22 PngImagePlugin.py[line:137] DEBUG STREAM b'IHDR' 16 13
+Mon, 02 Apr 2018 19:25:22 PngImagePlugin.py[line:137] DEBUG STREAM b'IDAT' 41 8192
+Mon, 02 Apr 2018 19:25:22 PngImagePlugin.py[line:137] DEBUG STREAM b'IHDR' 16 13
+Mon, 02 Apr 2018 19:25:22 PngImagePlugin.py[line:137] DEBUG STREAM b'IDAT' 41 8192
+Mon, 02 Apr 2018 19:25:22 PngImagePlugin.py[line:137] DEBUG STREAM b'IHDR' 16 13
+Mon, 02 Apr 2018 19:25:22 PngImagePlugin.py[line:137] DEBUG STREAM b'IDAT' 41 8192
+Mon, 02 Apr 2018 19:25:23 PngImagePlugin.py[line:137] DEBUG STREAM b'IHDR' 16 13
+Mon, 02 Apr 2018 19:25:23 PngImagePlugin.py[line:137] DEBUG STREAM b'IDAT' 41 985
+Mon, 02 Apr 2018 19:25:23 PngImagePlugin.py[line:137] DEBUG STREAM b'IHDR' 16 13
+Mon, 02 Apr 2018 19:25:23 PngImagePlugin.py[line:137] DEBUG STREAM b'IDAT' 41 985
+Mon, 02 Apr 2018 19:25:23 PngImagePlugin.py[line:137] DEBUG STREAM b'IHDR' 16 13
+Mon, 02 Apr 2018 19:25:23 PngImagePlugin.py[line:137] DEBUG STREAM b'IDAT' 41 985
+Mon, 02 Apr 2018 19:25:23 PngImagePlugin.py[line:137] DEBUG STREAM b'IHDR' 16 13
+Mon, 02 Apr 2018 19:25:23 PngImagePlugin.py[line:137] DEBUG STREAM b'IDAT' 41 985
+Mon, 02 Apr 2018 19:25:23 PngImagePlugin.py[line:137] DEBUG STREAM b'IHDR' 16 13
+Mon, 02 Apr 2018 19:25:23 PngImagePlugin.py[line:137] DEBUG STREAM b'IDAT' 41 985
+Mon, 02 Apr 2018 19:25:23 PngImagePlugin.py[line:137] DEBUG STREAM b'IHDR' 16 13
+Mon, 02 Apr 2018 19:25:23 PngImagePlugin.py[line:137] DEBUG STREAM b'IDAT' 41 985
+Mon, 02 Apr 2018 19:25:23 PngImagePlugin.py[line:137] DEBUG STREAM b'IHDR' 16 13
+Mon, 02 Apr 2018 19:25:23 PngImagePlugin.py[line:137] DEBUG STREAM b'IDAT' 41 985
+Mon, 02 Apr 2018 19:25:23 PngImagePlugin.py[line:137] DEBUG STREAM b'IHDR' 16 13
+Mon, 02 Apr 2018 19:25:23 PngImagePlugin.py[line:137] DEBUG STREAM b'IDAT' 41 985
+Mon, 02 Apr 2018 19:25:23 PngImagePlugin.py[line:137] DEBUG STREAM b'IHDR' 16 13
+Mon, 02 Apr 2018 19:25:23 PngImagePlugin.py[line:137] DEBUG STREAM b'IDAT' 41 985
