@@ -23,10 +23,12 @@ logger = logging.getLogger()
 
 ##初始化打开PNG
 import sys
+from PIL import ImageGrab
 allpath = os.path.abspath(os.path.realpath(sys.argv[0]))
 path = os.path.split(allpath)[0] + '\\'  # 分割
 set_val('path', path)
 path = get_val('path')
+yimg = ImageGrab.grab().save("yanzhengma.png")
 yanpath = path + "\\yanzhengma.png"
 yanzhengma_img = Image.open(yanpath)
 set_val('yanpath', yanpath)

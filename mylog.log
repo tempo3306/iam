@@ -1,1136 +1,1677 @@
-Tue, 03 Apr 2018 22:02:33 PngImagePlugin.py[line:137] DEBUG STREAM b'IHDR' 16 13
-Tue, 03 Apr 2018 22:02:33 PngImagePlugin.py[line:137] DEBUG STREAM b'IDAT' 41 1330
-Tue, 03 Apr 2018 22:02:33 PngImagePlugin.py[line:137] DEBUG STREAM b'IHDR' 16 13
-Tue, 03 Apr 2018 22:02:33 PngImagePlugin.py[line:137] DEBUG STREAM b'IDAT' 41 65536
-Tue, 03 Apr 2018 22:02:33 app_thread.py[line:125] ERROR 刷新失败
-Tue, 03 Apr 2018 22:02:33 app_thread.py[line:126] ERROR this is an exception message
+Tue, 03 Apr 2018 22:39:36 PngImagePlugin.py[line:137] DEBUG STREAM b'IHDR' 16 13
+Tue, 03 Apr 2018 22:39:36 PngImagePlugin.py[line:137] DEBUG STREAM b'IDAT' 41 65536
+Tue, 03 Apr 2018 22:39:37 PngImagePlugin.py[line:137] DEBUG STREAM b'IHDR' 16 13
+Tue, 03 Apr 2018 22:39:37 PngImagePlugin.py[line:137] DEBUG STREAM b'IDAT' 41 65536
+Tue, 03 Apr 2018 22:39:37 app_thread.py[line:127] ERROR 刷新失败
+Tue, 03 Apr 2018 22:39:37 app_thread.py[line:128] ERROR this is an exception message
 Traceback (most recent call last):
-  File "E:\hupai\component\app_thread.py", line 123, in run
+  File "E:\hupai\component\app_thread.py", line 125, in run
     findrefresh()
   File "E:\hupai\component\imgcut.py", line 383, in findrefresh
     img = cv2.cvtColor(sc, cv2.COLOR_BGR2GRAY)  # 转灰度图
 cv2.error: C:\projects\opencv-python\opencv\modules\imgproc\src\color.cpp:11073: error: (-215) depth == 0 || depth == 2 || depth == 5 in function cv::cvtColor
 
-Tue, 03 Apr 2018 22:02:33 imgcut.py[line:368] ERROR cut_img 这里出错
-Tue, 03 Apr 2018 22:02:33 imgcut.py[line:369] ERROR this is an exception message
+Tue, 03 Apr 2018 22:39:37 app_thread.py[line:127] ERROR 刷新失败
+Tue, 03 Apr 2018 22:39:37 app_thread.py[line:128] ERROR this is an exception message
 Traceback (most recent call last):
-  File "E:\hupai\component\imgcut.py", line 361, in cut_img
-    set_val('imgpos_lowestprice', img[use_area[0][1]:use_area[0][3], use_area[0][0]:use_area[0][2]])  # ok
-IndexError: list index out of range
-Tue, 03 Apr 2018 22:02:33 app_thread.py[line:125] ERROR 刷新失败
-Tue, 03 Apr 2018 22:02:33 app_thread.py[line:126] ERROR this is an exception message
-Traceback (most recent call last):
-  File "E:\hupai\component\app_thread.py", line 123, in run
+  File "E:\hupai\component\app_thread.py", line 125, in run
     findrefresh()
   File "E:\hupai\component\imgcut.py", line 383, in findrefresh
     img = cv2.cvtColor(sc, cv2.COLOR_BGR2GRAY)  # 转灰度图
 cv2.error: C:\projects\opencv-python\opencv\modules\imgproc\src\color.cpp:11073: error: (-215) depth == 0 || depth == 2 || depth == 5 in function cv::cvtColor
 
-Tue, 03 Apr 2018 22:02:33 app_thread.py[line:125] ERROR 刷新失败
-Tue, 03 Apr 2018 22:02:33 app_thread.py[line:126] ERROR this is an exception message
+Tue, 03 Apr 2018 22:39:37 app_thread.py[line:127] ERROR 刷新失败
+Tue, 03 Apr 2018 22:39:37 app_thread.py[line:128] ERROR this is an exception message
 Traceback (most recent call last):
-  File "E:\hupai\component\app_thread.py", line 123, in run
+  File "E:\hupai\component\app_thread.py", line 125, in run
     findrefresh()
   File "E:\hupai\component\imgcut.py", line 383, in findrefresh
     img = cv2.cvtColor(sc, cv2.COLOR_BGR2GRAY)  # 转灰度图
 cv2.error: C:\projects\opencv-python\opencv\modules\imgproc\src\color.cpp:11073: error: (-215) depth == 0 || depth == 2 || depth == 5 in function cv::cvtColor
 
-Tue, 03 Apr 2018 22:02:33 imgcut.py[line:368] ERROR cut_img 这里出错
-Tue, 03 Apr 2018 22:02:33 imgcut.py[line:369] ERROR this is an exception message
+Tue, 03 Apr 2018 22:39:37 imgcut.py[line:368] ERROR cut_img 这里出错
+Tue, 03 Apr 2018 22:39:37 imgcut.py[line:369] ERROR this is an exception message
 Traceback (most recent call last):
   File "E:\hupai\component\imgcut.py", line 361, in cut_img
     set_val('imgpos_lowestprice', img[use_area[0][1]:use_area[0][3], use_area[0][0]:use_area[0][2]])  # ok
 IndexError: list index out of range
-Tue, 03 Apr 2018 22:02:33 app_thread.py[line:125] ERROR 刷新失败
-Tue, 03 Apr 2018 22:02:33 app_thread.py[line:126] ERROR this is an exception message
+Tue, 03 Apr 2018 22:39:37 app_thread.py[line:127] ERROR 刷新失败
+Tue, 03 Apr 2018 22:39:37 app_thread.py[line:128] ERROR this is an exception message
 Traceback (most recent call last):
-  File "E:\hupai\component\app_thread.py", line 123, in run
+  File "E:\hupai\component\app_thread.py", line 125, in run
     findrefresh()
   File "E:\hupai\component\imgcut.py", line 383, in findrefresh
     img = cv2.cvtColor(sc, cv2.COLOR_BGR2GRAY)  # 转灰度图
 cv2.error: C:\projects\opencv-python\opencv\modules\imgproc\src\color.cpp:11073: error: (-215) depth == 0 || depth == 2 || depth == 5 in function cv::cvtColor
 
-Tue, 03 Apr 2018 22:02:33 imgcut.py[line:368] ERROR cut_img 这里出错
-Tue, 03 Apr 2018 22:02:33 imgcut.py[line:369] ERROR this is an exception message
+Tue, 03 Apr 2018 22:39:37 imgcut.py[line:368] ERROR cut_img 这里出错
+Tue, 03 Apr 2018 22:39:37 imgcut.py[line:369] ERROR this is an exception message
 Traceback (most recent call last):
   File "E:\hupai\component\imgcut.py", line 361, in cut_img
     set_val('imgpos_lowestprice', img[use_area[0][1]:use_area[0][3], use_area[0][0]:use_area[0][2]])  # ok
 IndexError: list index out of range
-Tue, 03 Apr 2018 22:02:33 app_thread.py[line:125] ERROR 刷新失败
-Tue, 03 Apr 2018 22:02:33 app_thread.py[line:126] ERROR this is an exception message
+Tue, 03 Apr 2018 22:39:37 app_thread.py[line:127] ERROR 刷新失败
+Tue, 03 Apr 2018 22:39:37 app_thread.py[line:128] ERROR this is an exception message
 Traceback (most recent call last):
-  File "E:\hupai\component\app_thread.py", line 123, in run
+  File "E:\hupai\component\app_thread.py", line 125, in run
     findrefresh()
   File "E:\hupai\component\imgcut.py", line 383, in findrefresh
     img = cv2.cvtColor(sc, cv2.COLOR_BGR2GRAY)  # 转灰度图
 cv2.error: C:\projects\opencv-python\opencv\modules\imgproc\src\color.cpp:11073: error: (-215) depth == 0 || depth == 2 || depth == 5 in function cv::cvtColor
 
-Tue, 03 Apr 2018 22:02:33 app_thread.py[line:125] ERROR 刷新失败
-Tue, 03 Apr 2018 22:02:33 app_thread.py[line:126] ERROR this is an exception message
+Tue, 03 Apr 2018 22:39:37 app_thread.py[line:127] ERROR 刷新失败
+Tue, 03 Apr 2018 22:39:37 app_thread.py[line:128] ERROR this is an exception message
 Traceback (most recent call last):
-  File "E:\hupai\component\app_thread.py", line 123, in run
+  File "E:\hupai\component\app_thread.py", line 125, in run
     findrefresh()
   File "E:\hupai\component\imgcut.py", line 383, in findrefresh
     img = cv2.cvtColor(sc, cv2.COLOR_BGR2GRAY)  # 转灰度图
 cv2.error: C:\projects\opencv-python\opencv\modules\imgproc\src\color.cpp:11073: error: (-215) depth == 0 || depth == 2 || depth == 5 in function cv::cvtColor
 
-Tue, 03 Apr 2018 22:02:33 imgcut.py[line:368] ERROR cut_img 这里出错
-Tue, 03 Apr 2018 22:02:33 imgcut.py[line:369] ERROR this is an exception message
+Tue, 03 Apr 2018 22:39:37 imgcut.py[line:368] ERROR cut_img 这里出错
+Tue, 03 Apr 2018 22:39:37 imgcut.py[line:369] ERROR this is an exception message
 Traceback (most recent call last):
   File "E:\hupai\component\imgcut.py", line 361, in cut_img
     set_val('imgpos_lowestprice', img[use_area[0][1]:use_area[0][3], use_area[0][0]:use_area[0][2]])  # ok
 IndexError: list index out of range
-Tue, 03 Apr 2018 22:02:33 app_thread.py[line:125] ERROR 刷新失败
-Tue, 03 Apr 2018 22:02:33 app_thread.py[line:126] ERROR this is an exception message
+Tue, 03 Apr 2018 22:39:37 app_thread.py[line:127] ERROR 刷新失败
+Tue, 03 Apr 2018 22:39:37 app_thread.py[line:128] ERROR this is an exception message
 Traceback (most recent call last):
-  File "E:\hupai\component\app_thread.py", line 123, in run
+  File "E:\hupai\component\app_thread.py", line 125, in run
     findrefresh()
   File "E:\hupai\component\imgcut.py", line 383, in findrefresh
     img = cv2.cvtColor(sc, cv2.COLOR_BGR2GRAY)  # 转灰度图
 cv2.error: C:\projects\opencv-python\opencv\modules\imgproc\src\color.cpp:11073: error: (-215) depth == 0 || depth == 2 || depth == 5 in function cv::cvtColor
 
-Tue, 03 Apr 2018 22:02:33 imgcut.py[line:368] ERROR cut_img 这里出错
-Tue, 03 Apr 2018 22:02:33 imgcut.py[line:369] ERROR this is an exception message
+Tue, 03 Apr 2018 22:39:37 imgcut.py[line:368] ERROR cut_img 这里出错
+Tue, 03 Apr 2018 22:39:37 imgcut.py[line:369] ERROR this is an exception message
 Traceback (most recent call last):
   File "E:\hupai\component\imgcut.py", line 361, in cut_img
     set_val('imgpos_lowestprice', img[use_area[0][1]:use_area[0][3], use_area[0][0]:use_area[0][2]])  # ok
 IndexError: list index out of range
-Tue, 03 Apr 2018 22:02:33 app_thread.py[line:125] ERROR 刷新失败
-Tue, 03 Apr 2018 22:02:33 app_thread.py[line:126] ERROR this is an exception message
+Tue, 03 Apr 2018 22:39:38 app_thread.py[line:127] ERROR 刷新失败
+Tue, 03 Apr 2018 22:39:38 app_thread.py[line:128] ERROR this is an exception message
 Traceback (most recent call last):
-  File "E:\hupai\component\app_thread.py", line 123, in run
+  File "E:\hupai\component\app_thread.py", line 125, in run
     findrefresh()
   File "E:\hupai\component\imgcut.py", line 383, in findrefresh
     img = cv2.cvtColor(sc, cv2.COLOR_BGR2GRAY)  # 转灰度图
 cv2.error: C:\projects\opencv-python\opencv\modules\imgproc\src\color.cpp:11073: error: (-215) depth == 0 || depth == 2 || depth == 5 in function cv::cvtColor
 
-Tue, 03 Apr 2018 22:02:34 imgcut.py[line:368] ERROR cut_img 这里出错
-Tue, 03 Apr 2018 22:02:34 imgcut.py[line:369] ERROR this is an exception message
+Tue, 03 Apr 2018 22:39:38 app_thread.py[line:127] ERROR 刷新失败
+Tue, 03 Apr 2018 22:39:38 app_thread.py[line:128] ERROR this is an exception message
+Traceback (most recent call last):
+  File "E:\hupai\component\app_thread.py", line 125, in run
+    findrefresh()
+  File "E:\hupai\component\imgcut.py", line 383, in findrefresh
+    img = cv2.cvtColor(sc, cv2.COLOR_BGR2GRAY)  # 转灰度图
+cv2.error: C:\projects\opencv-python\opencv\modules\imgproc\src\color.cpp:11073: error: (-215) depth == 0 || depth == 2 || depth == 5 in function cv::cvtColor
+
+Tue, 03 Apr 2018 22:39:38 imgcut.py[line:368] ERROR cut_img 这里出错
+Tue, 03 Apr 2018 22:39:38 imgcut.py[line:369] ERROR this is an exception message
 Traceback (most recent call last):
   File "E:\hupai\component\imgcut.py", line 361, in cut_img
     set_val('imgpos_lowestprice', img[use_area[0][1]:use_area[0][3], use_area[0][0]:use_area[0][2]])  # ok
 IndexError: list index out of range
-Tue, 03 Apr 2018 22:02:34 app_thread.py[line:125] ERROR 刷新失败
-Tue, 03 Apr 2018 22:02:34 app_thread.py[line:126] ERROR this is an exception message
+Tue, 03 Apr 2018 22:39:38 app_thread.py[line:127] ERROR 刷新失败
+Tue, 03 Apr 2018 22:39:38 app_thread.py[line:128] ERROR this is an exception message
 Traceback (most recent call last):
-  File "E:\hupai\component\app_thread.py", line 123, in run
+  File "E:\hupai\component\app_thread.py", line 125, in run
     findrefresh()
   File "E:\hupai\component\imgcut.py", line 383, in findrefresh
     img = cv2.cvtColor(sc, cv2.COLOR_BGR2GRAY)  # 转灰度图
 cv2.error: C:\projects\opencv-python\opencv\modules\imgproc\src\color.cpp:11073: error: (-215) depth == 0 || depth == 2 || depth == 5 in function cv::cvtColor
 
-Tue, 03 Apr 2018 22:02:34 imgcut.py[line:368] ERROR cut_img 这里出错
-Tue, 03 Apr 2018 22:02:34 imgcut.py[line:369] ERROR this is an exception message
+Tue, 03 Apr 2018 22:39:38 imgcut.py[line:368] ERROR cut_img 这里出错
+Tue, 03 Apr 2018 22:39:38 imgcut.py[line:369] ERROR this is an exception message
 Traceback (most recent call last):
   File "E:\hupai\component\imgcut.py", line 361, in cut_img
     set_val('imgpos_lowestprice', img[use_area[0][1]:use_area[0][3], use_area[0][0]:use_area[0][2]])  # ok
 IndexError: list index out of range
-Tue, 03 Apr 2018 22:02:34 app_thread.py[line:125] ERROR 刷新失败
-Tue, 03 Apr 2018 22:02:34 app_thread.py[line:126] ERROR this is an exception message
+Tue, 03 Apr 2018 22:39:38 app_thread.py[line:127] ERROR 刷新失败
+Tue, 03 Apr 2018 22:39:38 app_thread.py[line:128] ERROR this is an exception message
 Traceback (most recent call last):
-  File "E:\hupai\component\app_thread.py", line 123, in run
+  File "E:\hupai\component\app_thread.py", line 125, in run
     findrefresh()
   File "E:\hupai\component\imgcut.py", line 383, in findrefresh
     img = cv2.cvtColor(sc, cv2.COLOR_BGR2GRAY)  # 转灰度图
 cv2.error: C:\projects\opencv-python\opencv\modules\imgproc\src\color.cpp:11073: error: (-215) depth == 0 || depth == 2 || depth == 5 in function cv::cvtColor
 
-Tue, 03 Apr 2018 22:02:34 app_thread.py[line:125] ERROR 刷新失败
-Tue, 03 Apr 2018 22:02:34 app_thread.py[line:126] ERROR this is an exception message
-Traceback (most recent call last):
-  File "E:\hupai\component\app_thread.py", line 123, in run
-    findrefresh()
-  File "E:\hupai\component\imgcut.py", line 383, in findrefresh
-    img = cv2.cvtColor(sc, cv2.COLOR_BGR2GRAY)  # 转灰度图
-cv2.error: C:\projects\opencv-python\opencv\modules\imgproc\src\color.cpp:11073: error: (-215) depth == 0 || depth == 2 || depth == 5 in function cv::cvtColor
-
-Tue, 03 Apr 2018 22:02:34 imgcut.py[line:368] ERROR cut_img 这里出错
-Tue, 03 Apr 2018 22:02:34 imgcut.py[line:369] ERROR this is an exception message
+Tue, 03 Apr 2018 22:39:38 imgcut.py[line:368] ERROR cut_img 这里出错
+Tue, 03 Apr 2018 22:39:38 imgcut.py[line:369] ERROR this is an exception message
 Traceback (most recent call last):
   File "E:\hupai\component\imgcut.py", line 361, in cut_img
     set_val('imgpos_lowestprice', img[use_area[0][1]:use_area[0][3], use_area[0][0]:use_area[0][2]])  # ok
 IndexError: list index out of range
-Tue, 03 Apr 2018 22:02:34 app_thread.py[line:125] ERROR 刷新失败
-Tue, 03 Apr 2018 22:02:34 app_thread.py[line:126] ERROR this is an exception message
+Tue, 03 Apr 2018 22:39:38 app_thread.py[line:127] ERROR 刷新失败
+Tue, 03 Apr 2018 22:39:38 app_thread.py[line:128] ERROR this is an exception message
 Traceback (most recent call last):
-  File "E:\hupai\component\app_thread.py", line 123, in run
+  File "E:\hupai\component\app_thread.py", line 125, in run
     findrefresh()
   File "E:\hupai\component\imgcut.py", line 383, in findrefresh
     img = cv2.cvtColor(sc, cv2.COLOR_BGR2GRAY)  # 转灰度图
 cv2.error: C:\projects\opencv-python\opencv\modules\imgproc\src\color.cpp:11073: error: (-215) depth == 0 || depth == 2 || depth == 5 in function cv::cvtColor
 
-Tue, 03 Apr 2018 22:02:34 imgcut.py[line:368] ERROR cut_img 这里出错
-Tue, 03 Apr 2018 22:02:34 imgcut.py[line:369] ERROR this is an exception message
+Tue, 03 Apr 2018 22:39:38 app_thread.py[line:127] ERROR 刷新失败
+Tue, 03 Apr 2018 22:39:38 app_thread.py[line:128] ERROR this is an exception message
+Traceback (most recent call last):
+  File "E:\hupai\component\app_thread.py", line 125, in run
+    findrefresh()
+  File "E:\hupai\component\imgcut.py", line 383, in findrefresh
+    img = cv2.cvtColor(sc, cv2.COLOR_BGR2GRAY)  # 转灰度图
+cv2.error: C:\projects\opencv-python\opencv\modules\imgproc\src\color.cpp:11073: error: (-215) depth == 0 || depth == 2 || depth == 5 in function cv::cvtColor
+
+Tue, 03 Apr 2018 22:39:38 imgcut.py[line:368] ERROR cut_img 这里出错
+Tue, 03 Apr 2018 22:39:38 imgcut.py[line:369] ERROR this is an exception message
 Traceback (most recent call last):
   File "E:\hupai\component\imgcut.py", line 361, in cut_img
     set_val('imgpos_lowestprice', img[use_area[0][1]:use_area[0][3], use_area[0][0]:use_area[0][2]])  # ok
 IndexError: list index out of range
-Tue, 03 Apr 2018 22:02:34 app_thread.py[line:125] ERROR 刷新失败
-Tue, 03 Apr 2018 22:02:34 app_thread.py[line:126] ERROR this is an exception message
+Tue, 03 Apr 2018 22:39:38 app_thread.py[line:127] ERROR 刷新失败
+Tue, 03 Apr 2018 22:39:38 app_thread.py[line:128] ERROR this is an exception message
 Traceback (most recent call last):
-  File "E:\hupai\component\app_thread.py", line 123, in run
+  File "E:\hupai\component\app_thread.py", line 125, in run
     findrefresh()
   File "E:\hupai\component\imgcut.py", line 383, in findrefresh
     img = cv2.cvtColor(sc, cv2.COLOR_BGR2GRAY)  # 转灰度图
 cv2.error: C:\projects\opencv-python\opencv\modules\imgproc\src\color.cpp:11073: error: (-215) depth == 0 || depth == 2 || depth == 5 in function cv::cvtColor
 
-Tue, 03 Apr 2018 22:02:34 imgcut.py[line:368] ERROR cut_img 这里出错
-Tue, 03 Apr 2018 22:02:34 imgcut.py[line:369] ERROR this is an exception message
+Tue, 03 Apr 2018 22:39:38 app_thread.py[line:127] ERROR 刷新失败
+Tue, 03 Apr 2018 22:39:38 imgcut.py[line:368] ERROR cut_img 这里出错
+Tue, 03 Apr 2018 22:39:38 app_thread.py[line:128] ERROR this is an exception message
+Traceback (most recent call last):
+  File "E:\hupai\component\app_thread.py", line 125, in run
+    findrefresh()
+  File "E:\hupai\component\imgcut.py", line 383, in findrefresh
+    img = cv2.cvtColor(sc, cv2.COLOR_BGR2GRAY)  # 转灰度图
+cv2.error: C:\projects\opencv-python\opencv\modules\imgproc\src\color.cpp:11073: error: (-215) depth == 0 || depth == 2 || depth == 5 in function cv::cvtColor
+
+Tue, 03 Apr 2018 22:39:38 imgcut.py[line:369] ERROR this is an exception message
 Traceback (most recent call last):
   File "E:\hupai\component\imgcut.py", line 361, in cut_img
     set_val('imgpos_lowestprice', img[use_area[0][1]:use_area[0][3], use_area[0][0]:use_area[0][2]])  # ok
 IndexError: list index out of range
-Tue, 03 Apr 2018 22:02:34 app_thread.py[line:125] ERROR 刷新失败
-Tue, 03 Apr 2018 22:02:34 app_thread.py[line:126] ERROR this is an exception message
+Tue, 03 Apr 2018 22:39:38 app_thread.py[line:127] ERROR 刷新失败
+Tue, 03 Apr 2018 22:39:38 app_thread.py[line:128] ERROR this is an exception message
 Traceback (most recent call last):
-  File "E:\hupai\component\app_thread.py", line 123, in run
+  File "E:\hupai\component\app_thread.py", line 125, in run
     findrefresh()
   File "E:\hupai\component\imgcut.py", line 383, in findrefresh
     img = cv2.cvtColor(sc, cv2.COLOR_BGR2GRAY)  # 转灰度图
 cv2.error: C:\projects\opencv-python\opencv\modules\imgproc\src\color.cpp:11073: error: (-215) depth == 0 || depth == 2 || depth == 5 in function cv::cvtColor
 
-Tue, 03 Apr 2018 22:02:34 imgcut.py[line:368] ERROR cut_img 这里出错
-Tue, 03 Apr 2018 22:02:34 imgcut.py[line:369] ERROR this is an exception message
+Tue, 03 Apr 2018 22:39:38 imgcut.py[line:368] ERROR cut_img 这里出错
+Tue, 03 Apr 2018 22:39:38 imgcut.py[line:369] ERROR this is an exception message
 Traceback (most recent call last):
   File "E:\hupai\component\imgcut.py", line 361, in cut_img
     set_val('imgpos_lowestprice', img[use_area[0][1]:use_area[0][3], use_area[0][0]:use_area[0][2]])  # ok
 IndexError: list index out of range
-Tue, 03 Apr 2018 22:02:34 app_thread.py[line:125] ERROR 刷新失败
-Tue, 03 Apr 2018 22:02:34 app_thread.py[line:126] ERROR this is an exception message
+Tue, 03 Apr 2018 22:39:38 app_thread.py[line:127] ERROR 刷新失败
+Tue, 03 Apr 2018 22:39:38 app_thread.py[line:128] ERROR this is an exception message
 Traceback (most recent call last):
-  File "E:\hupai\component\app_thread.py", line 123, in run
+  File "E:\hupai\component\app_thread.py", line 125, in run
     findrefresh()
   File "E:\hupai\component\imgcut.py", line 383, in findrefresh
     img = cv2.cvtColor(sc, cv2.COLOR_BGR2GRAY)  # 转灰度图
 cv2.error: C:\projects\opencv-python\opencv\modules\imgproc\src\color.cpp:11073: error: (-215) depth == 0 || depth == 2 || depth == 5 in function cv::cvtColor
 
-Tue, 03 Apr 2018 22:02:34 app_thread.py[line:125] ERROR 刷新失败
-Tue, 03 Apr 2018 22:02:34 app_thread.py[line:126] ERROR this is an exception message
-Traceback (most recent call last):
-  File "E:\hupai\component\app_thread.py", line 123, in run
-    findrefresh()
-  File "E:\hupai\component\imgcut.py", line 383, in findrefresh
-    img = cv2.cvtColor(sc, cv2.COLOR_BGR2GRAY)  # 转灰度图
-cv2.error: C:\projects\opencv-python\opencv\modules\imgproc\src\color.cpp:11073: error: (-215) depth == 0 || depth == 2 || depth == 5 in function cv::cvtColor
-
-Tue, 03 Apr 2018 22:02:34 imgcut.py[line:368] ERROR cut_img 这里出错
-Tue, 03 Apr 2018 22:02:34 imgcut.py[line:369] ERROR this is an exception message
+Tue, 03 Apr 2018 22:39:38 imgcut.py[line:368] ERROR cut_img 这里出错
+Tue, 03 Apr 2018 22:39:38 imgcut.py[line:369] ERROR this is an exception message
 Traceback (most recent call last):
   File "E:\hupai\component\imgcut.py", line 361, in cut_img
     set_val('imgpos_lowestprice', img[use_area[0][1]:use_area[0][3], use_area[0][0]:use_area[0][2]])  # ok
 IndexError: list index out of range
-Tue, 03 Apr 2018 22:02:34 app_thread.py[line:125] ERROR 刷新失败
-Tue, 03 Apr 2018 22:02:34 app_thread.py[line:126] ERROR this is an exception message
+Tue, 03 Apr 2018 22:39:38 app_thread.py[line:127] ERROR 刷新失败
+Tue, 03 Apr 2018 22:39:38 app_thread.py[line:128] ERROR this is an exception message
 Traceback (most recent call last):
-  File "E:\hupai\component\app_thread.py", line 123, in run
+  File "E:\hupai\component\app_thread.py", line 125, in run
     findrefresh()
   File "E:\hupai\component\imgcut.py", line 383, in findrefresh
     img = cv2.cvtColor(sc, cv2.COLOR_BGR2GRAY)  # 转灰度图
 cv2.error: C:\projects\opencv-python\opencv\modules\imgproc\src\color.cpp:11073: error: (-215) depth == 0 || depth == 2 || depth == 5 in function cv::cvtColor
 
-Tue, 03 Apr 2018 22:02:34 imgcut.py[line:368] ERROR cut_img 这里出错
-Tue, 03 Apr 2018 22:02:34 imgcut.py[line:369] ERROR this is an exception message
+Tue, 03 Apr 2018 22:39:38 app_thread.py[line:127] ERROR 刷新失败
+Tue, 03 Apr 2018 22:39:38 app_thread.py[line:128] ERROR this is an exception message
+Traceback (most recent call last):
+  File "E:\hupai\component\app_thread.py", line 125, in run
+    findrefresh()
+  File "E:\hupai\component\imgcut.py", line 383, in findrefresh
+    img = cv2.cvtColor(sc, cv2.COLOR_BGR2GRAY)  # 转灰度图
+cv2.error: C:\projects\opencv-python\opencv\modules\imgproc\src\color.cpp:11073: error: (-215) depth == 0 || depth == 2 || depth == 5 in function cv::cvtColor
+
+Tue, 03 Apr 2018 22:39:38 imgcut.py[line:368] ERROR cut_img 这里出错
+Tue, 03 Apr 2018 22:39:38 app_thread.py[line:127] ERROR 刷新失败
+Tue, 03 Apr 2018 22:39:38 imgcut.py[line:369] ERROR this is an exception message
 Traceback (most recent call last):
   File "E:\hupai\component\imgcut.py", line 361, in cut_img
     set_val('imgpos_lowestprice', img[use_area[0][1]:use_area[0][3], use_area[0][0]:use_area[0][2]])  # ok
 IndexError: list index out of range
-Tue, 03 Apr 2018 22:02:34 app_thread.py[line:125] ERROR 刷新失败
-Tue, 03 Apr 2018 22:02:34 app_thread.py[line:126] ERROR this is an exception message
+Tue, 03 Apr 2018 22:39:38 app_thread.py[line:128] ERROR this is an exception message
 Traceback (most recent call last):
-  File "E:\hupai\component\app_thread.py", line 123, in run
+  File "E:\hupai\component\app_thread.py", line 125, in run
     findrefresh()
   File "E:\hupai\component\imgcut.py", line 383, in findrefresh
     img = cv2.cvtColor(sc, cv2.COLOR_BGR2GRAY)  # 转灰度图
 cv2.error: C:\projects\opencv-python\opencv\modules\imgproc\src\color.cpp:11073: error: (-215) depth == 0 || depth == 2 || depth == 5 in function cv::cvtColor
 
-Tue, 03 Apr 2018 22:02:34 imgcut.py[line:368] ERROR cut_img 这里出错
-Tue, 03 Apr 2018 22:02:34 app_thread.py[line:125] ERROR 刷新失败
-Tue, 03 Apr 2018 22:02:34 imgcut.py[line:369] ERROR this is an exception message
+Tue, 03 Apr 2018 22:39:39 app_thread.py[line:127] ERROR 刷新失败
+Tue, 03 Apr 2018 22:39:39 app_thread.py[line:128] ERROR this is an exception message
+Traceback (most recent call last):
+  File "E:\hupai\component\app_thread.py", line 125, in run
+    findrefresh()
+  File "E:\hupai\component\imgcut.py", line 383, in findrefresh
+    img = cv2.cvtColor(sc, cv2.COLOR_BGR2GRAY)  # 转灰度图
+cv2.error: C:\projects\opencv-python\opencv\modules\imgproc\src\color.cpp:11073: error: (-215) depth == 0 || depth == 2 || depth == 5 in function cv::cvtColor
+
+Tue, 03 Apr 2018 22:39:39 imgcut.py[line:368] ERROR cut_img 这里出错
+Tue, 03 Apr 2018 22:39:39 imgcut.py[line:369] ERROR this is an exception message
 Traceback (most recent call last):
   File "E:\hupai\component\imgcut.py", line 361, in cut_img
     set_val('imgpos_lowestprice', img[use_area[0][1]:use_area[0][3], use_area[0][0]:use_area[0][2]])  # ok
 IndexError: list index out of range
-Tue, 03 Apr 2018 22:02:34 app_thread.py[line:126] ERROR this is an exception message
+Tue, 03 Apr 2018 22:39:39 app_thread.py[line:127] ERROR 刷新失败
+Tue, 03 Apr 2018 22:39:39 app_thread.py[line:128] ERROR this is an exception message
 Traceback (most recent call last):
-  File "E:\hupai\component\app_thread.py", line 123, in run
+  File "E:\hupai\component\app_thread.py", line 125, in run
     findrefresh()
   File "E:\hupai\component\imgcut.py", line 383, in findrefresh
     img = cv2.cvtColor(sc, cv2.COLOR_BGR2GRAY)  # 转灰度图
 cv2.error: C:\projects\opencv-python\opencv\modules\imgproc\src\color.cpp:11073: error: (-215) depth == 0 || depth == 2 || depth == 5 in function cv::cvtColor
 
-Tue, 03 Apr 2018 22:02:34 app_thread.py[line:125] ERROR 刷新失败
-Tue, 03 Apr 2018 22:02:34 app_thread.py[line:126] ERROR this is an exception message
+Tue, 03 Apr 2018 22:39:39 app_thread.py[line:127] ERROR 刷新失败
+Tue, 03 Apr 2018 22:39:39 app_thread.py[line:128] ERROR this is an exception message
 Traceback (most recent call last):
-  File "E:\hupai\component\app_thread.py", line 123, in run
+  File "E:\hupai\component\app_thread.py", line 125, in run
     findrefresh()
   File "E:\hupai\component\imgcut.py", line 383, in findrefresh
     img = cv2.cvtColor(sc, cv2.COLOR_BGR2GRAY)  # 转灰度图
 cv2.error: C:\projects\opencv-python\opencv\modules\imgproc\src\color.cpp:11073: error: (-215) depth == 0 || depth == 2 || depth == 5 in function cv::cvtColor
 
-Tue, 03 Apr 2018 22:02:34 imgcut.py[line:368] ERROR cut_img 这里出错
-Tue, 03 Apr 2018 22:02:34 imgcut.py[line:369] ERROR this is an exception message
+Tue, 03 Apr 2018 22:39:39 imgcut.py[line:368] ERROR cut_img 这里出错
+Tue, 03 Apr 2018 22:39:39 imgcut.py[line:369] ERROR this is an exception message
 Traceback (most recent call last):
   File "E:\hupai\component\imgcut.py", line 361, in cut_img
     set_val('imgpos_lowestprice', img[use_area[0][1]:use_area[0][3], use_area[0][0]:use_area[0][2]])  # ok
 IndexError: list index out of range
-Tue, 03 Apr 2018 22:02:34 app_thread.py[line:125] ERROR 刷新失败
-Tue, 03 Apr 2018 22:02:34 app_thread.py[line:126] ERROR this is an exception message
+Tue, 03 Apr 2018 22:39:39 app_thread.py[line:127] ERROR 刷新失败
+Tue, 03 Apr 2018 22:39:39 app_thread.py[line:128] ERROR this is an exception message
 Traceback (most recent call last):
-  File "E:\hupai\component\app_thread.py", line 123, in run
+  File "E:\hupai\component\app_thread.py", line 125, in run
     findrefresh()
   File "E:\hupai\component\imgcut.py", line 383, in findrefresh
     img = cv2.cvtColor(sc, cv2.COLOR_BGR2GRAY)  # 转灰度图
 cv2.error: C:\projects\opencv-python\opencv\modules\imgproc\src\color.cpp:11073: error: (-215) depth == 0 || depth == 2 || depth == 5 in function cv::cvtColor
 
-Tue, 03 Apr 2018 22:02:34 imgcut.py[line:368] ERROR cut_img 这里出错
-Tue, 03 Apr 2018 22:02:34 imgcut.py[line:369] ERROR this is an exception message
+Tue, 03 Apr 2018 22:39:39 app_thread.py[line:127] ERROR 刷新失败
+Tue, 03 Apr 2018 22:39:39 app_thread.py[line:128] ERROR this is an exception message
+Traceback (most recent call last):
+  File "E:\hupai\component\app_thread.py", line 125, in run
+    findrefresh()
+  File "E:\hupai\component\imgcut.py", line 383, in findrefresh
+    img = cv2.cvtColor(sc, cv2.COLOR_BGR2GRAY)  # 转灰度图
+cv2.error: C:\projects\opencv-python\opencv\modules\imgproc\src\color.cpp:11073: error: (-215) depth == 0 || depth == 2 || depth == 5 in function cv::cvtColor
+
+Tue, 03 Apr 2018 22:39:39 imgcut.py[line:368] ERROR cut_img 这里出错
+Tue, 03 Apr 2018 22:39:39 app_thread.py[line:127] ERROR 刷新失败
+Tue, 03 Apr 2018 22:39:39 imgcut.py[line:369] ERROR this is an exception message
 Traceback (most recent call last):
   File "E:\hupai\component\imgcut.py", line 361, in cut_img
     set_val('imgpos_lowestprice', img[use_area[0][1]:use_area[0][3], use_area[0][0]:use_area[0][2]])  # ok
 IndexError: list index out of range
-Tue, 03 Apr 2018 22:02:34 app_thread.py[line:125] ERROR 刷新失败
-Tue, 03 Apr 2018 22:02:34 app_thread.py[line:126] ERROR this is an exception message
+Tue, 03 Apr 2018 22:39:39 app_thread.py[line:128] ERROR this is an exception message
 Traceback (most recent call last):
-  File "E:\hupai\component\app_thread.py", line 123, in run
+  File "E:\hupai\component\app_thread.py", line 125, in run
     findrefresh()
   File "E:\hupai\component\imgcut.py", line 383, in findrefresh
     img = cv2.cvtColor(sc, cv2.COLOR_BGR2GRAY)  # 转灰度图
 cv2.error: C:\projects\opencv-python\opencv\modules\imgproc\src\color.cpp:11073: error: (-215) depth == 0 || depth == 2 || depth == 5 in function cv::cvtColor
 
-Tue, 03 Apr 2018 22:02:34 app_thread.py[line:125] ERROR 刷新失败
-Tue, 03 Apr 2018 22:02:34 app_thread.py[line:126] ERROR this is an exception message
+Tue, 03 Apr 2018 22:39:39 app_thread.py[line:127] ERROR 刷新失败
+Tue, 03 Apr 2018 22:39:39 app_thread.py[line:128] ERROR this is an exception message
 Traceback (most recent call last):
-  File "E:\hupai\component\app_thread.py", line 123, in run
+  File "E:\hupai\component\app_thread.py", line 125, in run
     findrefresh()
   File "E:\hupai\component\imgcut.py", line 383, in findrefresh
     img = cv2.cvtColor(sc, cv2.COLOR_BGR2GRAY)  # 转灰度图
 cv2.error: C:\projects\opencv-python\opencv\modules\imgproc\src\color.cpp:11073: error: (-215) depth == 0 || depth == 2 || depth == 5 in function cv::cvtColor
 
-Tue, 03 Apr 2018 22:02:35 imgcut.py[line:368] ERROR cut_img 这里出错
-Tue, 03 Apr 2018 22:02:35 imgcut.py[line:369] ERROR this is an exception message
+Tue, 03 Apr 2018 22:39:39 imgcut.py[line:368] ERROR cut_img 这里出错
+Tue, 03 Apr 2018 22:39:39 imgcut.py[line:369] ERROR this is an exception message
 Traceback (most recent call last):
   File "E:\hupai\component\imgcut.py", line 361, in cut_img
     set_val('imgpos_lowestprice', img[use_area[0][1]:use_area[0][3], use_area[0][0]:use_area[0][2]])  # ok
 IndexError: list index out of range
-Tue, 03 Apr 2018 22:02:35 app_thread.py[line:125] ERROR 刷新失败
-Tue, 03 Apr 2018 22:02:35 app_thread.py[line:126] ERROR this is an exception message
+Tue, 03 Apr 2018 22:39:39 app_thread.py[line:127] ERROR 刷新失败
+Tue, 03 Apr 2018 22:39:39 app_thread.py[line:128] ERROR this is an exception message
 Traceback (most recent call last):
-  File "E:\hupai\component\app_thread.py", line 123, in run
+  File "E:\hupai\component\app_thread.py", line 125, in run
     findrefresh()
   File "E:\hupai\component\imgcut.py", line 383, in findrefresh
     img = cv2.cvtColor(sc, cv2.COLOR_BGR2GRAY)  # 转灰度图
 cv2.error: C:\projects\opencv-python\opencv\modules\imgproc\src\color.cpp:11073: error: (-215) depth == 0 || depth == 2 || depth == 5 in function cv::cvtColor
 
-Tue, 03 Apr 2018 22:02:35 app_thread.py[line:125] ERROR 刷新失败
-Tue, 03 Apr 2018 22:02:35 app_thread.py[line:126] ERROR this is an exception message
+Tue, 03 Apr 2018 22:39:39 app_thread.py[line:127] ERROR 刷新失败
+Tue, 03 Apr 2018 22:39:39 app_thread.py[line:128] ERROR this is an exception message
 Traceback (most recent call last):
-  File "E:\hupai\component\app_thread.py", line 123, in run
+  File "E:\hupai\component\app_thread.py", line 125, in run
     findrefresh()
   File "E:\hupai\component\imgcut.py", line 383, in findrefresh
     img = cv2.cvtColor(sc, cv2.COLOR_BGR2GRAY)  # 转灰度图
 cv2.error: C:\projects\opencv-python\opencv\modules\imgproc\src\color.cpp:11073: error: (-215) depth == 0 || depth == 2 || depth == 5 in function cv::cvtColor
 
-Tue, 03 Apr 2018 22:02:35 app_thread.py[line:125] ERROR 刷新失败
-Tue, 03 Apr 2018 22:02:35 app_thread.py[line:126] ERROR this is an exception message
-Traceback (most recent call last):
-  File "E:\hupai\component\app_thread.py", line 123, in run
-    findrefresh()
-  File "E:\hupai\component\imgcut.py", line 383, in findrefresh
-    img = cv2.cvtColor(sc, cv2.COLOR_BGR2GRAY)  # 转灰度图
-cv2.error: C:\projects\opencv-python\opencv\modules\imgproc\src\color.cpp:11073: error: (-215) depth == 0 || depth == 2 || depth == 5 in function cv::cvtColor
-
-Tue, 03 Apr 2018 22:02:35 imgcut.py[line:368] ERROR cut_img 这里出错
-Tue, 03 Apr 2018 22:02:35 imgcut.py[line:369] ERROR this is an exception message
+Tue, 03 Apr 2018 22:39:39 imgcut.py[line:368] ERROR cut_img 这里出错
+Tue, 03 Apr 2018 22:39:39 imgcut.py[line:369] ERROR this is an exception message
 Traceback (most recent call last):
   File "E:\hupai\component\imgcut.py", line 361, in cut_img
     set_val('imgpos_lowestprice', img[use_area[0][1]:use_area[0][3], use_area[0][0]:use_area[0][2]])  # ok
 IndexError: list index out of range
-Tue, 03 Apr 2018 22:02:35 app_thread.py[line:125] ERROR 刷新失败
-Tue, 03 Apr 2018 22:02:35 app_thread.py[line:126] ERROR this is an exception message
+Tue, 03 Apr 2018 22:39:39 app_thread.py[line:127] ERROR 刷新失败
+Tue, 03 Apr 2018 22:39:39 app_thread.py[line:128] ERROR this is an exception message
 Traceback (most recent call last):
-  File "E:\hupai\component\app_thread.py", line 123, in run
+  File "E:\hupai\component\app_thread.py", line 125, in run
     findrefresh()
   File "E:\hupai\component\imgcut.py", line 383, in findrefresh
     img = cv2.cvtColor(sc, cv2.COLOR_BGR2GRAY)  # 转灰度图
 cv2.error: C:\projects\opencv-python\opencv\modules\imgproc\src\color.cpp:11073: error: (-215) depth == 0 || depth == 2 || depth == 5 in function cv::cvtColor
 
-Tue, 03 Apr 2018 22:02:35 imgcut.py[line:368] ERROR cut_img 这里出错
-Tue, 03 Apr 2018 22:02:35 imgcut.py[line:369] ERROR this is an exception message
+Tue, 03 Apr 2018 22:39:39 app_thread.py[line:127] ERROR 刷新失败
+Tue, 03 Apr 2018 22:39:39 app_thread.py[line:128] ERROR this is an exception message
+Traceback (most recent call last):
+  File "E:\hupai\component\app_thread.py", line 125, in run
+    findrefresh()
+  File "E:\hupai\component\imgcut.py", line 383, in findrefresh
+    img = cv2.cvtColor(sc, cv2.COLOR_BGR2GRAY)  # 转灰度图
+cv2.error: C:\projects\opencv-python\opencv\modules\imgproc\src\color.cpp:11073: error: (-215) depth == 0 || depth == 2 || depth == 5 in function cv::cvtColor
+
+Tue, 03 Apr 2018 22:39:39 imgcut.py[line:368] ERROR cut_img 这里出错
+Tue, 03 Apr 2018 22:39:39 imgcut.py[line:369] ERROR this is an exception message
 Traceback (most recent call last):
   File "E:\hupai\component\imgcut.py", line 361, in cut_img
     set_val('imgpos_lowestprice', img[use_area[0][1]:use_area[0][3], use_area[0][0]:use_area[0][2]])  # ok
 IndexError: list index out of range
-Tue, 03 Apr 2018 22:02:35 app_thread.py[line:125] ERROR 刷新失败
-Tue, 03 Apr 2018 22:02:35 app_thread.py[line:126] ERROR this is an exception message
+Tue, 03 Apr 2018 22:39:39 app_thread.py[line:127] ERROR 刷新失败
+Tue, 03 Apr 2018 22:39:39 app_thread.py[line:128] ERROR this is an exception message
 Traceback (most recent call last):
-  File "E:\hupai\component\app_thread.py", line 123, in run
+  File "E:\hupai\component\app_thread.py", line 125, in run
     findrefresh()
   File "E:\hupai\component\imgcut.py", line 383, in findrefresh
     img = cv2.cvtColor(sc, cv2.COLOR_BGR2GRAY)  # 转灰度图
 cv2.error: C:\projects\opencv-python\opencv\modules\imgproc\src\color.cpp:11073: error: (-215) depth == 0 || depth == 2 || depth == 5 in function cv::cvtColor
 
-Tue, 03 Apr 2018 22:02:35 app_thread.py[line:125] ERROR 刷新失败
-Tue, 03 Apr 2018 22:02:35 app_thread.py[line:126] ERROR this is an exception message
-Traceback (most recent call last):
-  File "E:\hupai\component\app_thread.py", line 123, in run
-    findrefresh()
-  File "E:\hupai\component\imgcut.py", line 383, in findrefresh
-    img = cv2.cvtColor(sc, cv2.COLOR_BGR2GRAY)  # 转灰度图
-cv2.error: C:\projects\opencv-python\opencv\modules\imgproc\src\color.cpp:11073: error: (-215) depth == 0 || depth == 2 || depth == 5 in function cv::cvtColor
-
-Tue, 03 Apr 2018 22:02:35 imgcut.py[line:368] ERROR cut_img 这里出错
-Tue, 03 Apr 2018 22:02:35 imgcut.py[line:369] ERROR this is an exception message
+Tue, 03 Apr 2018 22:39:39 imgcut.py[line:368] ERROR cut_img 这里出错
+Tue, 03 Apr 2018 22:39:39 imgcut.py[line:369] ERROR this is an exception message
 Traceback (most recent call last):
   File "E:\hupai\component\imgcut.py", line 361, in cut_img
     set_val('imgpos_lowestprice', img[use_area[0][1]:use_area[0][3], use_area[0][0]:use_area[0][2]])  # ok
 IndexError: list index out of range
-Tue, 03 Apr 2018 22:02:35 app_thread.py[line:125] ERROR 刷新失败
-Tue, 03 Apr 2018 22:02:35 app_thread.py[line:126] ERROR this is an exception message
+Tue, 03 Apr 2018 22:39:39 app_thread.py[line:127] ERROR 刷新失败
+Tue, 03 Apr 2018 22:39:39 app_thread.py[line:128] ERROR this is an exception message
 Traceback (most recent call last):
-  File "E:\hupai\component\app_thread.py", line 123, in run
+  File "E:\hupai\component\app_thread.py", line 125, in run
     findrefresh()
   File "E:\hupai\component\imgcut.py", line 383, in findrefresh
     img = cv2.cvtColor(sc, cv2.COLOR_BGR2GRAY)  # 转灰度图
 cv2.error: C:\projects\opencv-python\opencv\modules\imgproc\src\color.cpp:11073: error: (-215) depth == 0 || depth == 2 || depth == 5 in function cv::cvtColor
 
-Tue, 03 Apr 2018 22:02:35 imgcut.py[line:368] ERROR cut_img 这里出错
-Tue, 03 Apr 2018 22:02:35 imgcut.py[line:369] ERROR this is an exception message
+Tue, 03 Apr 2018 22:39:39 imgcut.py[line:368] ERROR cut_img 这里出错
+Tue, 03 Apr 2018 22:39:39 imgcut.py[line:369] ERROR this is an exception message
 Traceback (most recent call last):
   File "E:\hupai\component\imgcut.py", line 361, in cut_img
     set_val('imgpos_lowestprice', img[use_area[0][1]:use_area[0][3], use_area[0][0]:use_area[0][2]])  # ok
 IndexError: list index out of range
-Tue, 03 Apr 2018 22:02:35 app_thread.py[line:125] ERROR 刷新失败
-Tue, 03 Apr 2018 22:02:35 app_thread.py[line:126] ERROR this is an exception message
+Tue, 03 Apr 2018 22:39:39 app_thread.py[line:127] ERROR 刷新失败
+Tue, 03 Apr 2018 22:39:39 app_thread.py[line:128] ERROR this is an exception message
 Traceback (most recent call last):
-  File "E:\hupai\component\app_thread.py", line 123, in run
+  File "E:\hupai\component\app_thread.py", line 125, in run
     findrefresh()
   File "E:\hupai\component\imgcut.py", line 383, in findrefresh
     img = cv2.cvtColor(sc, cv2.COLOR_BGR2GRAY)  # 转灰度图
 cv2.error: C:\projects\opencv-python\opencv\modules\imgproc\src\color.cpp:11073: error: (-215) depth == 0 || depth == 2 || depth == 5 in function cv::cvtColor
 
-Tue, 03 Apr 2018 22:02:35 app_thread.py[line:125] ERROR 刷新失败
-Tue, 03 Apr 2018 22:02:35 app_thread.py[line:126] ERROR this is an exception message
+Tue, 03 Apr 2018 22:39:40 app_thread.py[line:127] ERROR 刷新失败
+Tue, 03 Apr 2018 22:39:40 app_thread.py[line:128] ERROR this is an exception message
 Traceback (most recent call last):
-  File "E:\hupai\component\app_thread.py", line 123, in run
+  File "E:\hupai\component\app_thread.py", line 125, in run
     findrefresh()
   File "E:\hupai\component\imgcut.py", line 383, in findrefresh
     img = cv2.cvtColor(sc, cv2.COLOR_BGR2GRAY)  # 转灰度图
 cv2.error: C:\projects\opencv-python\opencv\modules\imgproc\src\color.cpp:11073: error: (-215) depth == 0 || depth == 2 || depth == 5 in function cv::cvtColor
 
-Tue, 03 Apr 2018 22:02:35 imgcut.py[line:368] ERROR cut_img 这里出错
-Tue, 03 Apr 2018 22:02:35 imgcut.py[line:369] ERROR this is an exception message
+Tue, 03 Apr 2018 22:39:40 imgcut.py[line:368] ERROR cut_img 这里出错
+Tue, 03 Apr 2018 22:39:40 imgcut.py[line:369] ERROR this is an exception message
 Traceback (most recent call last):
   File "E:\hupai\component\imgcut.py", line 361, in cut_img
     set_val('imgpos_lowestprice', img[use_area[0][1]:use_area[0][3], use_area[0][0]:use_area[0][2]])  # ok
 IndexError: list index out of range
-Tue, 03 Apr 2018 22:02:35 app_thread.py[line:125] ERROR 刷新失败
-Tue, 03 Apr 2018 22:02:35 app_thread.py[line:126] ERROR this is an exception message
+Tue, 03 Apr 2018 22:39:40 app_thread.py[line:127] ERROR 刷新失败
+Tue, 03 Apr 2018 22:39:40 app_thread.py[line:128] ERROR this is an exception message
 Traceback (most recent call last):
-  File "E:\hupai\component\app_thread.py", line 123, in run
+  File "E:\hupai\component\app_thread.py", line 125, in run
     findrefresh()
   File "E:\hupai\component\imgcut.py", line 383, in findrefresh
     img = cv2.cvtColor(sc, cv2.COLOR_BGR2GRAY)  # 转灰度图
 cv2.error: C:\projects\opencv-python\opencv\modules\imgproc\src\color.cpp:11073: error: (-215) depth == 0 || depth == 2 || depth == 5 in function cv::cvtColor
 
-Tue, 03 Apr 2018 22:02:35 imgcut.py[line:368] ERROR cut_img 这里出错
-Tue, 03 Apr 2018 22:02:35 imgcut.py[line:369] ERROR this is an exception message
+Tue, 03 Apr 2018 22:39:40 app_thread.py[line:127] ERROR 刷新失败
+Tue, 03 Apr 2018 22:39:40 app_thread.py[line:128] ERROR this is an exception message
+Traceback (most recent call last):
+  File "E:\hupai\component\app_thread.py", line 125, in run
+    findrefresh()
+  File "E:\hupai\component\imgcut.py", line 383, in findrefresh
+    img = cv2.cvtColor(sc, cv2.COLOR_BGR2GRAY)  # 转灰度图
+cv2.error: C:\projects\opencv-python\opencv\modules\imgproc\src\color.cpp:11073: error: (-215) depth == 0 || depth == 2 || depth == 5 in function cv::cvtColor
+
+Tue, 03 Apr 2018 22:39:40 imgcut.py[line:368] ERROR cut_img 这里出错
+Tue, 03 Apr 2018 22:39:40 imgcut.py[line:369] ERROR this is an exception message
 Traceback (most recent call last):
   File "E:\hupai\component\imgcut.py", line 361, in cut_img
     set_val('imgpos_lowestprice', img[use_area[0][1]:use_area[0][3], use_area[0][0]:use_area[0][2]])  # ok
 IndexError: list index out of range
-Tue, 03 Apr 2018 22:02:35 app_thread.py[line:125] ERROR 刷新失败
-Tue, 03 Apr 2018 22:02:35 app_thread.py[line:126] ERROR this is an exception message
+Tue, 03 Apr 2018 22:39:40 app_thread.py[line:127] ERROR 刷新失败
+Tue, 03 Apr 2018 22:39:40 app_thread.py[line:128] ERROR this is an exception message
 Traceback (most recent call last):
-  File "E:\hupai\component\app_thread.py", line 123, in run
+  File "E:\hupai\component\app_thread.py", line 125, in run
     findrefresh()
   File "E:\hupai\component\imgcut.py", line 383, in findrefresh
     img = cv2.cvtColor(sc, cv2.COLOR_BGR2GRAY)  # 转灰度图
 cv2.error: C:\projects\opencv-python\opencv\modules\imgproc\src\color.cpp:11073: error: (-215) depth == 0 || depth == 2 || depth == 5 in function cv::cvtColor
 
-Tue, 03 Apr 2018 22:02:35 imgcut.py[line:368] ERROR cut_img 这里出错
-Tue, 03 Apr 2018 22:02:35 imgcut.py[line:369] ERROR this is an exception message
+Tue, 03 Apr 2018 22:39:40 app_thread.py[line:127] ERROR 刷新失败
+Tue, 03 Apr 2018 22:39:40 app_thread.py[line:128] ERROR this is an exception message
+Traceback (most recent call last):
+  File "E:\hupai\component\app_thread.py", line 125, in run
+    findrefresh()
+  File "E:\hupai\component\imgcut.py", line 383, in findrefresh
+    img = cv2.cvtColor(sc, cv2.COLOR_BGR2GRAY)  # 转灰度图
+cv2.error: C:\projects\opencv-python\opencv\modules\imgproc\src\color.cpp:11073: error: (-215) depth == 0 || depth == 2 || depth == 5 in function cv::cvtColor
+
+Tue, 03 Apr 2018 22:39:40 imgcut.py[line:368] ERROR cut_img 这里出错
+Tue, 03 Apr 2018 22:39:40 imgcut.py[line:369] ERROR this is an exception message
 Traceback (most recent call last):
   File "E:\hupai\component\imgcut.py", line 361, in cut_img
     set_val('imgpos_lowestprice', img[use_area[0][1]:use_area[0][3], use_area[0][0]:use_area[0][2]])  # ok
 IndexError: list index out of range
-Tue, 03 Apr 2018 22:02:35 app_thread.py[line:125] ERROR 刷新失败
-Tue, 03 Apr 2018 22:02:35 app_thread.py[line:126] ERROR this is an exception message
+Tue, 03 Apr 2018 22:39:40 app_thread.py[line:127] ERROR 刷新失败
+Tue, 03 Apr 2018 22:39:40 app_thread.py[line:128] ERROR this is an exception message
 Traceback (most recent call last):
-  File "E:\hupai\component\app_thread.py", line 123, in run
+  File "E:\hupai\component\app_thread.py", line 125, in run
     findrefresh()
   File "E:\hupai\component\imgcut.py", line 383, in findrefresh
     img = cv2.cvtColor(sc, cv2.COLOR_BGR2GRAY)  # 转灰度图
 cv2.error: C:\projects\opencv-python\opencv\modules\imgproc\src\color.cpp:11073: error: (-215) depth == 0 || depth == 2 || depth == 5 in function cv::cvtColor
 
-Tue, 03 Apr 2018 22:02:35 imgcut.py[line:368] ERROR cut_img 这里出错
-Tue, 03 Apr 2018 22:02:35 imgcut.py[line:369] ERROR this is an exception message
+Tue, 03 Apr 2018 22:39:40 app_thread.py[line:127] ERROR 刷新失败
+Tue, 03 Apr 2018 22:39:40 app_thread.py[line:128] ERROR this is an exception message
+Traceback (most recent call last):
+  File "E:\hupai\component\app_thread.py", line 125, in run
+    findrefresh()
+  File "E:\hupai\component\imgcut.py", line 383, in findrefresh
+    img = cv2.cvtColor(sc, cv2.COLOR_BGR2GRAY)  # 转灰度图
+cv2.error: C:\projects\opencv-python\opencv\modules\imgproc\src\color.cpp:11073: error: (-215) depth == 0 || depth == 2 || depth == 5 in function cv::cvtColor
+
+Tue, 03 Apr 2018 22:39:40 imgcut.py[line:368] ERROR cut_img 这里出错
+Tue, 03 Apr 2018 22:39:40 imgcut.py[line:369] ERROR this is an exception message
 Traceback (most recent call last):
   File "E:\hupai\component\imgcut.py", line 361, in cut_img
     set_val('imgpos_lowestprice', img[use_area[0][1]:use_area[0][3], use_area[0][0]:use_area[0][2]])  # ok
 IndexError: list index out of range
-Tue, 03 Apr 2018 22:02:35 app_thread.py[line:125] ERROR 刷新失败
-Tue, 03 Apr 2018 22:02:35 app_thread.py[line:126] ERROR this is an exception message
+Tue, 03 Apr 2018 22:39:40 app_thread.py[line:127] ERROR 刷新失败
+Tue, 03 Apr 2018 22:39:40 app_thread.py[line:128] ERROR this is an exception message
 Traceback (most recent call last):
-  File "E:\hupai\component\app_thread.py", line 123, in run
+  File "E:\hupai\component\app_thread.py", line 125, in run
     findrefresh()
   File "E:\hupai\component\imgcut.py", line 383, in findrefresh
     img = cv2.cvtColor(sc, cv2.COLOR_BGR2GRAY)  # 转灰度图
 cv2.error: C:\projects\opencv-python\opencv\modules\imgproc\src\color.cpp:11073: error: (-215) depth == 0 || depth == 2 || depth == 5 in function cv::cvtColor
 
-Tue, 03 Apr 2018 22:02:35 imgcut.py[line:368] ERROR cut_img 这里出错
-Tue, 03 Apr 2018 22:02:35 imgcut.py[line:369] ERROR this is an exception message
+Tue, 03 Apr 2018 22:39:40 app_thread.py[line:127] ERROR 刷新失败
+Tue, 03 Apr 2018 22:39:40 app_thread.py[line:128] ERROR this is an exception message
+Traceback (most recent call last):
+  File "E:\hupai\component\app_thread.py", line 125, in run
+    findrefresh()
+  File "E:\hupai\component\imgcut.py", line 383, in findrefresh
+    img = cv2.cvtColor(sc, cv2.COLOR_BGR2GRAY)  # 转灰度图
+cv2.error: C:\projects\opencv-python\opencv\modules\imgproc\src\color.cpp:11073: error: (-215) depth == 0 || depth == 2 || depth == 5 in function cv::cvtColor
+
+Tue, 03 Apr 2018 22:39:40 imgcut.py[line:368] ERROR cut_img 这里出错
+Tue, 03 Apr 2018 22:39:40 imgcut.py[line:369] ERROR this is an exception message
 Traceback (most recent call last):
   File "E:\hupai\component\imgcut.py", line 361, in cut_img
     set_val('imgpos_lowestprice', img[use_area[0][1]:use_area[0][3], use_area[0][0]:use_area[0][2]])  # ok
 IndexError: list index out of range
-Tue, 03 Apr 2018 22:02:35 app_thread.py[line:125] ERROR 刷新失败
-Tue, 03 Apr 2018 22:02:35 app_thread.py[line:126] ERROR this is an exception message
+Tue, 03 Apr 2018 22:39:40 app_thread.py[line:127] ERROR 刷新失败
+Tue, 03 Apr 2018 22:39:40 app_thread.py[line:128] ERROR this is an exception message
 Traceback (most recent call last):
-  File "E:\hupai\component\app_thread.py", line 123, in run
+  File "E:\hupai\component\app_thread.py", line 125, in run
     findrefresh()
   File "E:\hupai\component\imgcut.py", line 383, in findrefresh
     img = cv2.cvtColor(sc, cv2.COLOR_BGR2GRAY)  # 转灰度图
 cv2.error: C:\projects\opencv-python\opencv\modules\imgproc\src\color.cpp:11073: error: (-215) depth == 0 || depth == 2 || depth == 5 in function cv::cvtColor
 
-Tue, 03 Apr 2018 22:02:36 imgcut.py[line:368] ERROR cut_img 这里出错
-Tue, 03 Apr 2018 22:02:36 imgcut.py[line:369] ERROR this is an exception message
+Tue, 03 Apr 2018 22:39:40 app_thread.py[line:127] ERROR 刷新失败
+Tue, 03 Apr 2018 22:39:40 app_thread.py[line:128] ERROR this is an exception message
+Traceback (most recent call last):
+  File "E:\hupai\component\app_thread.py", line 125, in run
+    findrefresh()
+  File "E:\hupai\component\imgcut.py", line 383, in findrefresh
+    img = cv2.cvtColor(sc, cv2.COLOR_BGR2GRAY)  # 转灰度图
+cv2.error: C:\projects\opencv-python\opencv\modules\imgproc\src\color.cpp:11073: error: (-215) depth == 0 || depth == 2 || depth == 5 in function cv::cvtColor
+
+Tue, 03 Apr 2018 22:39:40 app_thread.py[line:127] ERROR 刷新失败
+Tue, 03 Apr 2018 22:39:40 app_thread.py[line:128] ERROR this is an exception message
+Traceback (most recent call last):
+  File "E:\hupai\component\app_thread.py", line 125, in run
+    findrefresh()
+  File "E:\hupai\component\imgcut.py", line 383, in findrefresh
+    img = cv2.cvtColor(sc, cv2.COLOR_BGR2GRAY)  # 转灰度图
+cv2.error: C:\projects\opencv-python\opencv\modules\imgproc\src\color.cpp:11073: error: (-215) depth == 0 || depth == 2 || depth == 5 in function cv::cvtColor
+
+Tue, 03 Apr 2018 22:39:40 imgcut.py[line:368] ERROR cut_img 这里出错
+Tue, 03 Apr 2018 22:39:40 imgcut.py[line:369] ERROR this is an exception message
 Traceback (most recent call last):
   File "E:\hupai\component\imgcut.py", line 361, in cut_img
     set_val('imgpos_lowestprice', img[use_area[0][1]:use_area[0][3], use_area[0][0]:use_area[0][2]])  # ok
 IndexError: list index out of range
-Tue, 03 Apr 2018 22:02:36 app_thread.py[line:125] ERROR 刷新失败
-Tue, 03 Apr 2018 22:02:36 app_thread.py[line:126] ERROR this is an exception message
+Tue, 03 Apr 2018 22:39:40 app_thread.py[line:127] ERROR 刷新失败
+Tue, 03 Apr 2018 22:39:40 app_thread.py[line:128] ERROR this is an exception message
 Traceback (most recent call last):
-  File "E:\hupai\component\app_thread.py", line 123, in run
+  File "E:\hupai\component\app_thread.py", line 125, in run
     findrefresh()
   File "E:\hupai\component\imgcut.py", line 383, in findrefresh
     img = cv2.cvtColor(sc, cv2.COLOR_BGR2GRAY)  # 转灰度图
 cv2.error: C:\projects\opencv-python\opencv\modules\imgproc\src\color.cpp:11073: error: (-215) depth == 0 || depth == 2 || depth == 5 in function cv::cvtColor
 
-Tue, 03 Apr 2018 22:02:36 app_thread.py[line:125] ERROR 刷新失败
-Tue, 03 Apr 2018 22:02:36 app_thread.py[line:126] ERROR this is an exception message
-Traceback (most recent call last):
-  File "E:\hupai\component\app_thread.py", line 123, in run
-    findrefresh()
-  File "E:\hupai\component\imgcut.py", line 383, in findrefresh
-    img = cv2.cvtColor(sc, cv2.COLOR_BGR2GRAY)  # 转灰度图
-cv2.error: C:\projects\opencv-python\opencv\modules\imgproc\src\color.cpp:11073: error: (-215) depth == 0 || depth == 2 || depth == 5 in function cv::cvtColor
-
-Tue, 03 Apr 2018 22:02:36 imgcut.py[line:368] ERROR cut_img 这里出错
-Tue, 03 Apr 2018 22:02:36 imgcut.py[line:369] ERROR this is an exception message
+Tue, 03 Apr 2018 22:39:40 imgcut.py[line:368] ERROR cut_img 这里出错
+Tue, 03 Apr 2018 22:39:40 imgcut.py[line:369] ERROR this is an exception message
 Traceback (most recent call last):
   File "E:\hupai\component\imgcut.py", line 361, in cut_img
     set_val('imgpos_lowestprice', img[use_area[0][1]:use_area[0][3], use_area[0][0]:use_area[0][2]])  # ok
 IndexError: list index out of range
-Tue, 03 Apr 2018 22:02:36 app_thread.py[line:125] ERROR 刷新失败
-Tue, 03 Apr 2018 22:02:36 app_thread.py[line:126] ERROR this is an exception message
+Tue, 03 Apr 2018 22:39:40 app_thread.py[line:127] ERROR 刷新失败
+Tue, 03 Apr 2018 22:39:40 app_thread.py[line:128] ERROR this is an exception message
 Traceback (most recent call last):
-  File "E:\hupai\component\app_thread.py", line 123, in run
+  File "E:\hupai\component\app_thread.py", line 125, in run
     findrefresh()
   File "E:\hupai\component\imgcut.py", line 383, in findrefresh
     img = cv2.cvtColor(sc, cv2.COLOR_BGR2GRAY)  # 转灰度图
 cv2.error: C:\projects\opencv-python\opencv\modules\imgproc\src\color.cpp:11073: error: (-215) depth == 0 || depth == 2 || depth == 5 in function cv::cvtColor
 
-Tue, 03 Apr 2018 22:02:36 app_thread.py[line:125] ERROR 刷新失败
-Tue, 03 Apr 2018 22:02:36 app_thread.py[line:126] ERROR this is an exception message
+Tue, 03 Apr 2018 22:39:41 app_thread.py[line:127] ERROR 刷新失败
+Tue, 03 Apr 2018 22:39:41 app_thread.py[line:128] ERROR this is an exception message
 Traceback (most recent call last):
-  File "E:\hupai\component\app_thread.py", line 123, in run
+  File "E:\hupai\component\app_thread.py", line 125, in run
     findrefresh()
   File "E:\hupai\component\imgcut.py", line 383, in findrefresh
     img = cv2.cvtColor(sc, cv2.COLOR_BGR2GRAY)  # 转灰度图
 cv2.error: C:\projects\opencv-python\opencv\modules\imgproc\src\color.cpp:11073: error: (-215) depth == 0 || depth == 2 || depth == 5 in function cv::cvtColor
 
-Tue, 03 Apr 2018 22:02:36 imgcut.py[line:368] ERROR cut_img 这里出错
-Tue, 03 Apr 2018 22:02:36 imgcut.py[line:369] ERROR this is an exception message
+Tue, 03 Apr 2018 22:39:41 imgcut.py[line:368] ERROR cut_img 这里出错
+Tue, 03 Apr 2018 22:39:41 imgcut.py[line:369] ERROR this is an exception message
 Traceback (most recent call last):
   File "E:\hupai\component\imgcut.py", line 361, in cut_img
     set_val('imgpos_lowestprice', img[use_area[0][1]:use_area[0][3], use_area[0][0]:use_area[0][2]])  # ok
 IndexError: list index out of range
-Tue, 03 Apr 2018 22:02:36 app_thread.py[line:125] ERROR 刷新失败
-Tue, 03 Apr 2018 22:02:36 app_thread.py[line:126] ERROR this is an exception message
+Tue, 03 Apr 2018 22:39:41 app_thread.py[line:127] ERROR 刷新失败
+Tue, 03 Apr 2018 22:39:41 app_thread.py[line:128] ERROR this is an exception message
 Traceback (most recent call last):
-  File "E:\hupai\component\app_thread.py", line 123, in run
+  File "E:\hupai\component\app_thread.py", line 125, in run
     findrefresh()
   File "E:\hupai\component\imgcut.py", line 383, in findrefresh
     img = cv2.cvtColor(sc, cv2.COLOR_BGR2GRAY)  # 转灰度图
 cv2.error: C:\projects\opencv-python\opencv\modules\imgproc\src\color.cpp:11073: error: (-215) depth == 0 || depth == 2 || depth == 5 in function cv::cvtColor
 
-Tue, 03 Apr 2018 22:02:36 imgcut.py[line:368] ERROR cut_img 这里出错
-Tue, 03 Apr 2018 22:02:36 imgcut.py[line:369] ERROR this is an exception message
+Tue, 03 Apr 2018 22:39:41 app_thread.py[line:127] ERROR 刷新失败
+Tue, 03 Apr 2018 22:39:41 app_thread.py[line:128] ERROR this is an exception message
+Traceback (most recent call last):
+  File "E:\hupai\component\app_thread.py", line 125, in run
+    findrefresh()
+  File "E:\hupai\component\imgcut.py", line 383, in findrefresh
+    img = cv2.cvtColor(sc, cv2.COLOR_BGR2GRAY)  # 转灰度图
+cv2.error: C:\projects\opencv-python\opencv\modules\imgproc\src\color.cpp:11073: error: (-215) depth == 0 || depth == 2 || depth == 5 in function cv::cvtColor
+
+Tue, 03 Apr 2018 22:39:41 imgcut.py[line:368] ERROR cut_img 这里出错
+Tue, 03 Apr 2018 22:39:41 imgcut.py[line:369] ERROR this is an exception message
 Traceback (most recent call last):
   File "E:\hupai\component\imgcut.py", line 361, in cut_img
     set_val('imgpos_lowestprice', img[use_area[0][1]:use_area[0][3], use_area[0][0]:use_area[0][2]])  # ok
 IndexError: list index out of range
-Tue, 03 Apr 2018 22:02:36 app_thread.py[line:125] ERROR 刷新失败
-Tue, 03 Apr 2018 22:02:36 app_thread.py[line:126] ERROR this is an exception message
+Tue, 03 Apr 2018 22:39:41 app_thread.py[line:127] ERROR 刷新失败
+Tue, 03 Apr 2018 22:39:41 app_thread.py[line:128] ERROR this is an exception message
 Traceback (most recent call last):
-  File "E:\hupai\component\app_thread.py", line 123, in run
+  File "E:\hupai\component\app_thread.py", line 125, in run
     findrefresh()
   File "E:\hupai\component\imgcut.py", line 383, in findrefresh
     img = cv2.cvtColor(sc, cv2.COLOR_BGR2GRAY)  # 转灰度图
 cv2.error: C:\projects\opencv-python\opencv\modules\imgproc\src\color.cpp:11073: error: (-215) depth == 0 || depth == 2 || depth == 5 in function cv::cvtColor
 
-Tue, 03 Apr 2018 22:02:36 imgcut.py[line:368] ERROR cut_img 这里出错
-Tue, 03 Apr 2018 22:02:36 imgcut.py[line:369] ERROR this is an exception message
+Tue, 03 Apr 2018 22:39:41 app_thread.py[line:127] ERROR 刷新失败
+Tue, 03 Apr 2018 22:39:41 app_thread.py[line:128] ERROR this is an exception message
+Traceback (most recent call last):
+  File "E:\hupai\component\app_thread.py", line 125, in run
+    findrefresh()
+  File "E:\hupai\component\imgcut.py", line 383, in findrefresh
+    img = cv2.cvtColor(sc, cv2.COLOR_BGR2GRAY)  # 转灰度图
+cv2.error: C:\projects\opencv-python\opencv\modules\imgproc\src\color.cpp:11073: error: (-215) depth == 0 || depth == 2 || depth == 5 in function cv::cvtColor
+
+Tue, 03 Apr 2018 22:39:41 imgcut.py[line:368] ERROR cut_img 这里出错
+Tue, 03 Apr 2018 22:39:41 imgcut.py[line:369] ERROR this is an exception message
 Traceback (most recent call last):
   File "E:\hupai\component\imgcut.py", line 361, in cut_img
     set_val('imgpos_lowestprice', img[use_area[0][1]:use_area[0][3], use_area[0][0]:use_area[0][2]])  # ok
 IndexError: list index out of range
-Tue, 03 Apr 2018 22:02:36 app_thread.py[line:125] ERROR 刷新失败
-Tue, 03 Apr 2018 22:02:36 app_thread.py[line:126] ERROR this is an exception message
+Tue, 03 Apr 2018 22:39:41 app_thread.py[line:127] ERROR 刷新失败
+Tue, 03 Apr 2018 22:39:41 app_thread.py[line:128] ERROR this is an exception message
 Traceback (most recent call last):
-  File "E:\hupai\component\app_thread.py", line 123, in run
+  File "E:\hupai\component\app_thread.py", line 125, in run
     findrefresh()
   File "E:\hupai\component\imgcut.py", line 383, in findrefresh
     img = cv2.cvtColor(sc, cv2.COLOR_BGR2GRAY)  # 转灰度图
 cv2.error: C:\projects\opencv-python\opencv\modules\imgproc\src\color.cpp:11073: error: (-215) depth == 0 || depth == 2 || depth == 5 in function cv::cvtColor
 
-Tue, 03 Apr 2018 22:02:36 imgcut.py[line:368] ERROR cut_img 这里出错
-Tue, 03 Apr 2018 22:02:36 imgcut.py[line:369] ERROR this is an exception message
+Tue, 03 Apr 2018 22:39:41 app_thread.py[line:127] ERROR 刷新失败
+Tue, 03 Apr 2018 22:39:41 app_thread.py[line:128] ERROR this is an exception message
+Traceback (most recent call last):
+  File "E:\hupai\component\app_thread.py", line 125, in run
+    findrefresh()
+  File "E:\hupai\component\imgcut.py", line 383, in findrefresh
+    img = cv2.cvtColor(sc, cv2.COLOR_BGR2GRAY)  # 转灰度图
+cv2.error: C:\projects\opencv-python\opencv\modules\imgproc\src\color.cpp:11073: error: (-215) depth == 0 || depth == 2 || depth == 5 in function cv::cvtColor
+
+Tue, 03 Apr 2018 22:39:41 imgcut.py[line:368] ERROR cut_img 这里出错
+Tue, 03 Apr 2018 22:39:41 imgcut.py[line:369] ERROR this is an exception message
 Traceback (most recent call last):
   File "E:\hupai\component\imgcut.py", line 361, in cut_img
     set_val('imgpos_lowestprice', img[use_area[0][1]:use_area[0][3], use_area[0][0]:use_area[0][2]])  # ok
 IndexError: list index out of range
-Tue, 03 Apr 2018 22:02:36 app_thread.py[line:125] ERROR 刷新失败
-Tue, 03 Apr 2018 22:02:36 app_thread.py[line:126] ERROR this is an exception message
+Tue, 03 Apr 2018 22:39:41 app_thread.py[line:127] ERROR 刷新失败
+Tue, 03 Apr 2018 22:39:41 app_thread.py[line:128] ERROR this is an exception message
 Traceback (most recent call last):
-  File "E:\hupai\component\app_thread.py", line 123, in run
+  File "E:\hupai\component\app_thread.py", line 125, in run
     findrefresh()
   File "E:\hupai\component\imgcut.py", line 383, in findrefresh
     img = cv2.cvtColor(sc, cv2.COLOR_BGR2GRAY)  # 转灰度图
 cv2.error: C:\projects\opencv-python\opencv\modules\imgproc\src\color.cpp:11073: error: (-215) depth == 0 || depth == 2 || depth == 5 in function cv::cvtColor
 
-Tue, 03 Apr 2018 22:02:36 imgcut.py[line:368] ERROR cut_img 这里出错
-Tue, 03 Apr 2018 22:02:36 imgcut.py[line:369] ERROR this is an exception message
+Tue, 03 Apr 2018 22:39:41 app_thread.py[line:127] ERROR 刷新失败
+Tue, 03 Apr 2018 22:39:41 app_thread.py[line:128] ERROR this is an exception message
+Traceback (most recent call last):
+  File "E:\hupai\component\app_thread.py", line 125, in run
+    findrefresh()
+  File "E:\hupai\component\imgcut.py", line 383, in findrefresh
+    img = cv2.cvtColor(sc, cv2.COLOR_BGR2GRAY)  # 转灰度图
+cv2.error: C:\projects\opencv-python\opencv\modules\imgproc\src\color.cpp:11073: error: (-215) depth == 0 || depth == 2 || depth == 5 in function cv::cvtColor
+
+Tue, 03 Apr 2018 22:39:41 imgcut.py[line:368] ERROR cut_img 这里出错
+Tue, 03 Apr 2018 22:39:41 imgcut.py[line:369] ERROR this is an exception message
 Traceback (most recent call last):
   File "E:\hupai\component\imgcut.py", line 361, in cut_img
     set_val('imgpos_lowestprice', img[use_area[0][1]:use_area[0][3], use_area[0][0]:use_area[0][2]])  # ok
 IndexError: list index out of range
-Tue, 03 Apr 2018 22:02:36 app_thread.py[line:125] ERROR 刷新失败
-Tue, 03 Apr 2018 22:02:36 app_thread.py[line:126] ERROR this is an exception message
+Tue, 03 Apr 2018 22:39:41 app_thread.py[line:127] ERROR 刷新失败
+Tue, 03 Apr 2018 22:39:41 app_thread.py[line:128] ERROR this is an exception message
 Traceback (most recent call last):
-  File "E:\hupai\component\app_thread.py", line 123, in run
+  File "E:\hupai\component\app_thread.py", line 125, in run
     findrefresh()
   File "E:\hupai\component\imgcut.py", line 383, in findrefresh
     img = cv2.cvtColor(sc, cv2.COLOR_BGR2GRAY)  # 转灰度图
 cv2.error: C:\projects\opencv-python\opencv\modules\imgproc\src\color.cpp:11073: error: (-215) depth == 0 || depth == 2 || depth == 5 in function cv::cvtColor
 
-Tue, 03 Apr 2018 22:02:36 app_thread.py[line:125] ERROR 刷新失败
-Tue, 03 Apr 2018 22:02:36 app_thread.py[line:126] ERROR this is an exception message
-Traceback (most recent call last):
-  File "E:\hupai\component\app_thread.py", line 123, in run
-    findrefresh()
-  File "E:\hupai\component\imgcut.py", line 383, in findrefresh
-    img = cv2.cvtColor(sc, cv2.COLOR_BGR2GRAY)  # 转灰度图
-cv2.error: C:\projects\opencv-python\opencv\modules\imgproc\src\color.cpp:11073: error: (-215) depth == 0 || depth == 2 || depth == 5 in function cv::cvtColor
-
-Tue, 03 Apr 2018 22:02:36 imgcut.py[line:368] ERROR cut_img 这里出错
-Tue, 03 Apr 2018 22:02:36 imgcut.py[line:369] ERROR this is an exception message
+Tue, 03 Apr 2018 22:39:41 imgcut.py[line:368] ERROR cut_img 这里出错
+Tue, 03 Apr 2018 22:39:41 imgcut.py[line:369] ERROR this is an exception message
 Traceback (most recent call last):
   File "E:\hupai\component\imgcut.py", line 361, in cut_img
     set_val('imgpos_lowestprice', img[use_area[0][1]:use_area[0][3], use_area[0][0]:use_area[0][2]])  # ok
 IndexError: list index out of range
-Tue, 03 Apr 2018 22:02:36 app_thread.py[line:125] ERROR 刷新失败
-Tue, 03 Apr 2018 22:02:36 app_thread.py[line:126] ERROR this is an exception message
+Tue, 03 Apr 2018 22:39:41 app_thread.py[line:127] ERROR 刷新失败
+Tue, 03 Apr 2018 22:39:41 app_thread.py[line:128] ERROR this is an exception message
 Traceback (most recent call last):
-  File "E:\hupai\component\app_thread.py", line 123, in run
+  File "E:\hupai\component\app_thread.py", line 125, in run
     findrefresh()
   File "E:\hupai\component\imgcut.py", line 383, in findrefresh
     img = cv2.cvtColor(sc, cv2.COLOR_BGR2GRAY)  # 转灰度图
 cv2.error: C:\projects\opencv-python\opencv\modules\imgproc\src\color.cpp:11073: error: (-215) depth == 0 || depth == 2 || depth == 5 in function cv::cvtColor
 
-Tue, 03 Apr 2018 22:02:36 imgcut.py[line:368] ERROR cut_img 这里出错
-Tue, 03 Apr 2018 22:02:36 imgcut.py[line:369] ERROR this is an exception message
+Tue, 03 Apr 2018 22:39:41 imgcut.py[line:368] ERROR cut_img 这里出错
+Tue, 03 Apr 2018 22:39:41 imgcut.py[line:369] ERROR this is an exception message
 Traceback (most recent call last):
   File "E:\hupai\component\imgcut.py", line 361, in cut_img
     set_val('imgpos_lowestprice', img[use_area[0][1]:use_area[0][3], use_area[0][0]:use_area[0][2]])  # ok
 IndexError: list index out of range
-Tue, 03 Apr 2018 22:02:36 app_thread.py[line:125] ERROR 刷新失败
-Tue, 03 Apr 2018 22:02:36 app_thread.py[line:126] ERROR this is an exception message
+Tue, 03 Apr 2018 22:39:41 app_thread.py[line:127] ERROR 刷新失败
+Tue, 03 Apr 2018 22:39:41 app_thread.py[line:128] ERROR this is an exception message
 Traceback (most recent call last):
-  File "E:\hupai\component\app_thread.py", line 123, in run
+  File "E:\hupai\component\app_thread.py", line 125, in run
     findrefresh()
   File "E:\hupai\component\imgcut.py", line 383, in findrefresh
     img = cv2.cvtColor(sc, cv2.COLOR_BGR2GRAY)  # 转灰度图
 cv2.error: C:\projects\opencv-python\opencv\modules\imgproc\src\color.cpp:11073: error: (-215) depth == 0 || depth == 2 || depth == 5 in function cv::cvtColor
 
-Tue, 03 Apr 2018 22:02:36 imgcut.py[line:368] ERROR cut_img 这里出错
-Tue, 03 Apr 2018 22:02:36 imgcut.py[line:369] ERROR this is an exception message
+Tue, 03 Apr 2018 22:39:41 app_thread.py[line:127] ERROR 刷新失败
+Tue, 03 Apr 2018 22:39:41 app_thread.py[line:128] ERROR this is an exception message
+Traceback (most recent call last):
+  File "E:\hupai\component\app_thread.py", line 125, in run
+    findrefresh()
+  File "E:\hupai\component\imgcut.py", line 383, in findrefresh
+    img = cv2.cvtColor(sc, cv2.COLOR_BGR2GRAY)  # 转灰度图
+cv2.error: C:\projects\opencv-python\opencv\modules\imgproc\src\color.cpp:11073: error: (-215) depth == 0 || depth == 2 || depth == 5 in function cv::cvtColor
+
+Tue, 03 Apr 2018 22:39:41 imgcut.py[line:368] ERROR cut_img 这里出错
+Tue, 03 Apr 2018 22:39:41 imgcut.py[line:369] ERROR this is an exception message
 Traceback (most recent call last):
   File "E:\hupai\component\imgcut.py", line 361, in cut_img
     set_val('imgpos_lowestprice', img[use_area[0][1]:use_area[0][3], use_area[0][0]:use_area[0][2]])  # ok
 IndexError: list index out of range
-Tue, 03 Apr 2018 22:02:36 app_thread.py[line:125] ERROR 刷新失败
-Tue, 03 Apr 2018 22:02:36 app_thread.py[line:126] ERROR this is an exception message
+Tue, 03 Apr 2018 22:39:42 app_thread.py[line:127] ERROR 刷新失败
+Tue, 03 Apr 2018 22:39:42 app_thread.py[line:128] ERROR this is an exception message
 Traceback (most recent call last):
-  File "E:\hupai\component\app_thread.py", line 123, in run
+  File "E:\hupai\component\app_thread.py", line 125, in run
     findrefresh()
   File "E:\hupai\component\imgcut.py", line 383, in findrefresh
     img = cv2.cvtColor(sc, cv2.COLOR_BGR2GRAY)  # 转灰度图
 cv2.error: C:\projects\opencv-python\opencv\modules\imgproc\src\color.cpp:11073: error: (-215) depth == 0 || depth == 2 || depth == 5 in function cv::cvtColor
 
-Tue, 03 Apr 2018 22:02:36 imgcut.py[line:368] ERROR cut_img 这里出错
-Tue, 03 Apr 2018 22:02:36 imgcut.py[line:369] ERROR this is an exception message
+Tue, 03 Apr 2018 22:39:42 app_thread.py[line:127] ERROR 刷新失败
+Tue, 03 Apr 2018 22:39:42 imgcut.py[line:368] ERROR cut_img 这里出错
+Tue, 03 Apr 2018 22:39:42 app_thread.py[line:128] ERROR this is an exception message
+Traceback (most recent call last):
+  File "E:\hupai\component\app_thread.py", line 125, in run
+    findrefresh()
+  File "E:\hupai\component\imgcut.py", line 383, in findrefresh
+    img = cv2.cvtColor(sc, cv2.COLOR_BGR2GRAY)  # 转灰度图
+cv2.error: C:\projects\opencv-python\opencv\modules\imgproc\src\color.cpp:11073: error: (-215) depth == 0 || depth == 2 || depth == 5 in function cv::cvtColor
+
+Tue, 03 Apr 2018 22:39:42 imgcut.py[line:369] ERROR this is an exception message
 Traceback (most recent call last):
   File "E:\hupai\component\imgcut.py", line 361, in cut_img
     set_val('imgpos_lowestprice', img[use_area[0][1]:use_area[0][3], use_area[0][0]:use_area[0][2]])  # ok
 IndexError: list index out of range
-Tue, 03 Apr 2018 22:02:36 app_thread.py[line:125] ERROR 刷新失败
-Tue, 03 Apr 2018 22:02:36 app_thread.py[line:126] ERROR this is an exception message
+Tue, 03 Apr 2018 22:39:42 app_thread.py[line:127] ERROR 刷新失败
+Tue, 03 Apr 2018 22:39:42 app_thread.py[line:128] ERROR this is an exception message
 Traceback (most recent call last):
-  File "E:\hupai\component\app_thread.py", line 123, in run
+  File "E:\hupai\component\app_thread.py", line 125, in run
     findrefresh()
   File "E:\hupai\component\imgcut.py", line 383, in findrefresh
     img = cv2.cvtColor(sc, cv2.COLOR_BGR2GRAY)  # 转灰度图
 cv2.error: C:\projects\opencv-python\opencv\modules\imgproc\src\color.cpp:11073: error: (-215) depth == 0 || depth == 2 || depth == 5 in function cv::cvtColor
 
-Tue, 03 Apr 2018 22:02:36 imgcut.py[line:368] ERROR cut_img 这里出错
-Tue, 03 Apr 2018 22:02:36 imgcut.py[line:369] ERROR this is an exception message
+Tue, 03 Apr 2018 22:39:42 imgcut.py[line:368] ERROR cut_img 这里出错
+Tue, 03 Apr 2018 22:39:42 imgcut.py[line:369] ERROR this is an exception message
 Traceback (most recent call last):
   File "E:\hupai\component\imgcut.py", line 361, in cut_img
     set_val('imgpos_lowestprice', img[use_area[0][1]:use_area[0][3], use_area[0][0]:use_area[0][2]])  # ok
 IndexError: list index out of range
-Tue, 03 Apr 2018 22:02:37 app_thread.py[line:125] ERROR 刷新失败
-Tue, 03 Apr 2018 22:02:37 app_thread.py[line:126] ERROR this is an exception message
+Tue, 03 Apr 2018 22:39:42 app_thread.py[line:127] ERROR 刷新失败
+Tue, 03 Apr 2018 22:39:42 app_thread.py[line:128] ERROR this is an exception message
 Traceback (most recent call last):
-  File "E:\hupai\component\app_thread.py", line 123, in run
+  File "E:\hupai\component\app_thread.py", line 125, in run
     findrefresh()
   File "E:\hupai\component\imgcut.py", line 383, in findrefresh
     img = cv2.cvtColor(sc, cv2.COLOR_BGR2GRAY)  # 转灰度图
 cv2.error: C:\projects\opencv-python\opencv\modules\imgproc\src\color.cpp:11073: error: (-215) depth == 0 || depth == 2 || depth == 5 in function cv::cvtColor
 
-Tue, 03 Apr 2018 22:02:37 app_thread.py[line:125] ERROR 刷新失败
-Tue, 03 Apr 2018 22:02:37 imgcut.py[line:368] ERROR cut_img 这里出错
-Tue, 03 Apr 2018 22:02:37 app_thread.py[line:126] ERROR this is an exception message
-Traceback (most recent call last):
-  File "E:\hupai\component\app_thread.py", line 123, in run
-    findrefresh()
-  File "E:\hupai\component\imgcut.py", line 383, in findrefresh
-    img = cv2.cvtColor(sc, cv2.COLOR_BGR2GRAY)  # 转灰度图
-cv2.error: C:\projects\opencv-python\opencv\modules\imgproc\src\color.cpp:11073: error: (-215) depth == 0 || depth == 2 || depth == 5 in function cv::cvtColor
-
-Tue, 03 Apr 2018 22:02:37 imgcut.py[line:369] ERROR this is an exception message
-Traceback (most recent call last):
-  File "E:\hupai\component\imgcut.py", line 361, in cut_img
-    set_val('imgpos_lowestprice', img[use_area[0][1]:use_area[0][3], use_area[0][0]:use_area[0][2]])  # ok
-IndexError: list index out of range
-Tue, 03 Apr 2018 22:02:37 app_thread.py[line:125] ERROR 刷新失败
-Tue, 03 Apr 2018 22:02:37 app_thread.py[line:126] ERROR this is an exception message
-Traceback (most recent call last):
-  File "E:\hupai\component\app_thread.py", line 123, in run
-    findrefresh()
-  File "E:\hupai\component\imgcut.py", line 383, in findrefresh
-    img = cv2.cvtColor(sc, cv2.COLOR_BGR2GRAY)  # 转灰度图
-cv2.error: C:\projects\opencv-python\opencv\modules\imgproc\src\color.cpp:11073: error: (-215) depth == 0 || depth == 2 || depth == 5 in function cv::cvtColor
-
-Tue, 03 Apr 2018 22:02:37 imgcut.py[line:368] ERROR cut_img 这里出错
-Tue, 03 Apr 2018 22:02:37 imgcut.py[line:369] ERROR this is an exception message
-Traceback (most recent call last):
-  File "E:\hupai\component\imgcut.py", line 361, in cut_img
-    set_val('imgpos_lowestprice', img[use_area[0][1]:use_area[0][3], use_area[0][0]:use_area[0][2]])  # ok
-IndexError: list index out of range
-Tue, 03 Apr 2018 22:02:37 app_thread.py[line:125] ERROR 刷新失败
-Tue, 03 Apr 2018 22:02:37 app_thread.py[line:126] ERROR this is an exception message
-Traceback (most recent call last):
-  File "E:\hupai\component\app_thread.py", line 123, in run
-    findrefresh()
-  File "E:\hupai\component\imgcut.py", line 383, in findrefresh
-    img = cv2.cvtColor(sc, cv2.COLOR_BGR2GRAY)  # 转灰度图
-cv2.error: C:\projects\opencv-python\opencv\modules\imgproc\src\color.cpp:11073: error: (-215) depth == 0 || depth == 2 || depth == 5 in function cv::cvtColor
-
-Tue, 03 Apr 2018 22:02:37 imgcut.py[line:368] ERROR cut_img 这里出错
-Tue, 03 Apr 2018 22:02:37 imgcut.py[line:369] ERROR this is an exception message
-Traceback (most recent call last):
-  File "E:\hupai\component\imgcut.py", line 361, in cut_img
-    set_val('imgpos_lowestprice', img[use_area[0][1]:use_area[0][3], use_area[0][0]:use_area[0][2]])  # ok
-IndexError: list index out of range
-Tue, 03 Apr 2018 22:02:37 app_thread.py[line:125] ERROR 刷新失败
-Tue, 03 Apr 2018 22:02:37 app_thread.py[line:126] ERROR this is an exception message
-Traceback (most recent call last):
-  File "E:\hupai\component\app_thread.py", line 123, in run
-    findrefresh()
-  File "E:\hupai\component\imgcut.py", line 383, in findrefresh
-    img = cv2.cvtColor(sc, cv2.COLOR_BGR2GRAY)  # 转灰度图
-cv2.error: C:\projects\opencv-python\opencv\modules\imgproc\src\color.cpp:11073: error: (-215) depth == 0 || depth == 2 || depth == 5 in function cv::cvtColor
-
-Tue, 03 Apr 2018 22:02:37 app_thread.py[line:125] ERROR 刷新失败
-Tue, 03 Apr 2018 22:02:37 app_thread.py[line:126] ERROR this is an exception message
-Traceback (most recent call last):
-  File "E:\hupai\component\app_thread.py", line 123, in run
-    findrefresh()
-  File "E:\hupai\component\imgcut.py", line 383, in findrefresh
-    img = cv2.cvtColor(sc, cv2.COLOR_BGR2GRAY)  # 转灰度图
-cv2.error: C:\projects\opencv-python\opencv\modules\imgproc\src\color.cpp:11073: error: (-215) depth == 0 || depth == 2 || depth == 5 in function cv::cvtColor
-
-Tue, 03 Apr 2018 22:02:37 app_thread.py[line:125] ERROR 刷新失败
-Tue, 03 Apr 2018 22:02:37 app_thread.py[line:126] ERROR this is an exception message
-Traceback (most recent call last):
-  File "E:\hupai\component\app_thread.py", line 123, in run
-    findrefresh()
-  File "E:\hupai\component\imgcut.py", line 383, in findrefresh
-    img = cv2.cvtColor(sc, cv2.COLOR_BGR2GRAY)  # 转灰度图
-cv2.error: C:\projects\opencv-python\opencv\modules\imgproc\src\color.cpp:11073: error: (-215) depth == 0 || depth == 2 || depth == 5 in function cv::cvtColor
-
-Tue, 03 Apr 2018 22:02:37 imgcut.py[line:368] ERROR cut_img 这里出错
-Tue, 03 Apr 2018 22:02:37 imgcut.py[line:369] ERROR this is an exception message
-Traceback (most recent call last):
-  File "E:\hupai\component\imgcut.py", line 361, in cut_img
-    set_val('imgpos_lowestprice', img[use_area[0][1]:use_area[0][3], use_area[0][0]:use_area[0][2]])  # ok
-IndexError: list index out of range
-Tue, 03 Apr 2018 22:02:37 app_thread.py[line:125] ERROR 刷新失败
-Tue, 03 Apr 2018 22:02:37 app_thread.py[line:126] ERROR this is an exception message
-Traceback (most recent call last):
-  File "E:\hupai\component\app_thread.py", line 123, in run
-    findrefresh()
-  File "E:\hupai\component\imgcut.py", line 383, in findrefresh
-    img = cv2.cvtColor(sc, cv2.COLOR_BGR2GRAY)  # 转灰度图
-cv2.error: C:\projects\opencv-python\opencv\modules\imgproc\src\color.cpp:11073: error: (-215) depth == 0 || depth == 2 || depth == 5 in function cv::cvtColor
-
-Tue, 03 Apr 2018 22:02:37 imgcut.py[line:368] ERROR cut_img 这里出错
-Tue, 03 Apr 2018 22:02:37 imgcut.py[line:369] ERROR this is an exception message
-Traceback (most recent call last):
-  File "E:\hupai\component\imgcut.py", line 361, in cut_img
-    set_val('imgpos_lowestprice', img[use_area[0][1]:use_area[0][3], use_area[0][0]:use_area[0][2]])  # ok
-IndexError: list index out of range
-Tue, 03 Apr 2018 22:02:37 app_thread.py[line:125] ERROR 刷新失败
-Tue, 03 Apr 2018 22:02:37 app_thread.py[line:126] ERROR this is an exception message
-Traceback (most recent call last):
-  File "E:\hupai\component\app_thread.py", line 123, in run
-    findrefresh()
-  File "E:\hupai\component\imgcut.py", line 383, in findrefresh
-    img = cv2.cvtColor(sc, cv2.COLOR_BGR2GRAY)  # 转灰度图
-cv2.error: C:\projects\opencv-python\opencv\modules\imgproc\src\color.cpp:11073: error: (-215) depth == 0 || depth == 2 || depth == 5 in function cv::cvtColor
-
-Tue, 03 Apr 2018 22:02:37 imgcut.py[line:368] ERROR cut_img 这里出错
-Tue, 03 Apr 2018 22:02:37 imgcut.py[line:369] ERROR this is an exception message
-Traceback (most recent call last):
-  File "E:\hupai\component\imgcut.py", line 361, in cut_img
-    set_val('imgpos_lowestprice', img[use_area[0][1]:use_area[0][3], use_area[0][0]:use_area[0][2]])  # ok
-IndexError: list index out of range
-Tue, 03 Apr 2018 22:02:37 app_thread.py[line:125] ERROR 刷新失败
-Tue, 03 Apr 2018 22:02:37 app_thread.py[line:126] ERROR this is an exception message
-Traceback (most recent call last):
-  File "E:\hupai\component\app_thread.py", line 123, in run
-    findrefresh()
-  File "E:\hupai\component\imgcut.py", line 383, in findrefresh
-    img = cv2.cvtColor(sc, cv2.COLOR_BGR2GRAY)  # 转灰度图
-cv2.error: C:\projects\opencv-python\opencv\modules\imgproc\src\color.cpp:11073: error: (-215) depth == 0 || depth == 2 || depth == 5 in function cv::cvtColor
-
-Tue, 03 Apr 2018 22:02:37 imgcut.py[line:368] ERROR cut_img 这里出错
-Tue, 03 Apr 2018 22:02:37 imgcut.py[line:369] ERROR this is an exception message
-Traceback (most recent call last):
-  File "E:\hupai\component\imgcut.py", line 361, in cut_img
-    set_val('imgpos_lowestprice', img[use_area[0][1]:use_area[0][3], use_area[0][0]:use_area[0][2]])  # ok
-IndexError: list index out of range
-Tue, 03 Apr 2018 22:02:37 app_thread.py[line:125] ERROR 刷新失败
-Tue, 03 Apr 2018 22:02:37 app_thread.py[line:126] ERROR this is an exception message
-Traceback (most recent call last):
-  File "E:\hupai\component\app_thread.py", line 123, in run
-    findrefresh()
-  File "E:\hupai\component\imgcut.py", line 383, in findrefresh
-    img = cv2.cvtColor(sc, cv2.COLOR_BGR2GRAY)  # 转灰度图
-cv2.error: C:\projects\opencv-python\opencv\modules\imgproc\src\color.cpp:11073: error: (-215) depth == 0 || depth == 2 || depth == 5 in function cv::cvtColor
-
-Tue, 03 Apr 2018 22:02:37 app_thread.py[line:125] ERROR 刷新失败
-Tue, 03 Apr 2018 22:02:37 app_thread.py[line:126] ERROR this is an exception message
-Traceback (most recent call last):
-  File "E:\hupai\component\app_thread.py", line 123, in run
-    findrefresh()
-  File "E:\hupai\component\imgcut.py", line 383, in findrefresh
-    img = cv2.cvtColor(sc, cv2.COLOR_BGR2GRAY)  # 转灰度图
-cv2.error: C:\projects\opencv-python\opencv\modules\imgproc\src\color.cpp:11073: error: (-215) depth == 0 || depth == 2 || depth == 5 in function cv::cvtColor
-
-Tue, 03 Apr 2018 22:02:37 imgcut.py[line:368] ERROR cut_img 这里出错
-Tue, 03 Apr 2018 22:02:37 imgcut.py[line:369] ERROR this is an exception message
-Traceback (most recent call last):
-  File "E:\hupai\component\imgcut.py", line 361, in cut_img
-    set_val('imgpos_lowestprice', img[use_area[0][1]:use_area[0][3], use_area[0][0]:use_area[0][2]])  # ok
-IndexError: list index out of range
-Tue, 03 Apr 2018 22:02:37 app_thread.py[line:125] ERROR 刷新失败
-Tue, 03 Apr 2018 22:02:37 app_thread.py[line:126] ERROR this is an exception message
-Traceback (most recent call last):
-  File "E:\hupai\component\app_thread.py", line 123, in run
-    findrefresh()
-  File "E:\hupai\component\imgcut.py", line 383, in findrefresh
-    img = cv2.cvtColor(sc, cv2.COLOR_BGR2GRAY)  # 转灰度图
-cv2.error: C:\projects\opencv-python\opencv\modules\imgproc\src\color.cpp:11073: error: (-215) depth == 0 || depth == 2 || depth == 5 in function cv::cvtColor
-
-Tue, 03 Apr 2018 22:02:37 imgcut.py[line:368] ERROR cut_img 这里出错
-Tue, 03 Apr 2018 22:02:37 app_thread.py[line:125] ERROR 刷新失败
-Tue, 03 Apr 2018 22:02:37 imgcut.py[line:369] ERROR this is an exception message
-Traceback (most recent call last):
-  File "E:\hupai\component\imgcut.py", line 361, in cut_img
-    set_val('imgpos_lowestprice', img[use_area[0][1]:use_area[0][3], use_area[0][0]:use_area[0][2]])  # ok
-IndexError: list index out of range
-Tue, 03 Apr 2018 22:02:37 app_thread.py[line:126] ERROR this is an exception message
-Traceback (most recent call last):
-  File "E:\hupai\component\app_thread.py", line 123, in run
-    findrefresh()
-  File "E:\hupai\component\imgcut.py", line 383, in findrefresh
-    img = cv2.cvtColor(sc, cv2.COLOR_BGR2GRAY)  # 转灰度图
-cv2.error: C:\projects\opencv-python\opencv\modules\imgproc\src\color.cpp:11073: error: (-215) depth == 0 || depth == 2 || depth == 5 in function cv::cvtColor
-
-Tue, 03 Apr 2018 22:02:37 app_thread.py[line:125] ERROR 刷新失败
-Tue, 03 Apr 2018 22:02:37 app_thread.py[line:126] ERROR this is an exception message
-Traceback (most recent call last):
-  File "E:\hupai\component\app_thread.py", line 123, in run
-    findrefresh()
-  File "E:\hupai\component\imgcut.py", line 383, in findrefresh
-    img = cv2.cvtColor(sc, cv2.COLOR_BGR2GRAY)  # 转灰度图
-cv2.error: C:\projects\opencv-python\opencv\modules\imgproc\src\color.cpp:11073: error: (-215) depth == 0 || depth == 2 || depth == 5 in function cv::cvtColor
-
-Tue, 03 Apr 2018 22:03:24 PngImagePlugin.py[line:137] DEBUG STREAM b'IHDR' 16 13
-Tue, 03 Apr 2018 22:03:24 PngImagePlugin.py[line:137] DEBUG STREAM b'IDAT' 41 8192
-Tue, 03 Apr 2018 22:03:24 PngImagePlugin.py[line:137] DEBUG STREAM b'IHDR' 16 13
-Tue, 03 Apr 2018 22:03:24 PngImagePlugin.py[line:137] DEBUG STREAM b'IDAT' 41 8192
-Tue, 03 Apr 2018 22:03:24 PngImagePlugin.py[line:137] DEBUG STREAM b'IHDR' 16 13
-Tue, 03 Apr 2018 22:03:24 PngImagePlugin.py[line:137] DEBUG STREAM b'IDAT' 41 8192
-Tue, 03 Apr 2018 22:03:24 PngImagePlugin.py[line:137] DEBUG STREAM b'IHDR' 16 13
-Tue, 03 Apr 2018 22:03:24 PngImagePlugin.py[line:137] DEBUG STREAM b'IDAT' 41 8192
-Tue, 03 Apr 2018 22:03:24 PngImagePlugin.py[line:137] DEBUG STREAM b'IHDR' 16 13
-Tue, 03 Apr 2018 22:03:24 PngImagePlugin.py[line:137] DEBUG STREAM b'IDAT' 41 8192
-Tue, 03 Apr 2018 22:03:24 PngImagePlugin.py[line:137] DEBUG STREAM b'IHDR' 16 13
-Tue, 03 Apr 2018 22:03:24 PngImagePlugin.py[line:137] DEBUG STREAM b'IDAT' 41 8192
-Tue, 03 Apr 2018 22:03:24 PngImagePlugin.py[line:137] DEBUG STREAM b'IHDR' 16 13
-Tue, 03 Apr 2018 22:03:24 PngImagePlugin.py[line:137] DEBUG STREAM b'IDAT' 41 8192
-Tue, 03 Apr 2018 22:03:24 PngImagePlugin.py[line:137] DEBUG STREAM b'IHDR' 16 13
-Tue, 03 Apr 2018 22:03:24 PngImagePlugin.py[line:137] DEBUG STREAM b'IDAT' 41 8192
-Tue, 03 Apr 2018 22:03:24 PngImagePlugin.py[line:137] DEBUG STREAM b'IHDR' 16 13
-Tue, 03 Apr 2018 22:03:24 PngImagePlugin.py[line:137] DEBUG STREAM b'IDAT' 41 8192
-Tue, 03 Apr 2018 22:03:24 PngImagePlugin.py[line:137] DEBUG STREAM b'IHDR' 16 13
-Tue, 03 Apr 2018 22:03:24 PngImagePlugin.py[line:137] DEBUG STREAM b'IDAT' 41 8192
-Tue, 03 Apr 2018 22:03:24 PngImagePlugin.py[line:137] DEBUG STREAM b'IHDR' 16 13
-Tue, 03 Apr 2018 22:03:24 PngImagePlugin.py[line:137] DEBUG STREAM b'IDAT' 41 8192
-Tue, 03 Apr 2018 22:03:24 PngImagePlugin.py[line:137] DEBUG STREAM b'IHDR' 16 13
-Tue, 03 Apr 2018 22:03:24 PngImagePlugin.py[line:137] DEBUG STREAM b'IDAT' 41 8192
-Tue, 03 Apr 2018 22:03:24 PngImagePlugin.py[line:137] DEBUG STREAM b'IHDR' 16 13
-Tue, 03 Apr 2018 22:03:24 PngImagePlugin.py[line:137] DEBUG STREAM b'IDAT' 41 8192
-Tue, 03 Apr 2018 22:03:24 PngImagePlugin.py[line:137] DEBUG STREAM b'IHDR' 16 13
-Tue, 03 Apr 2018 22:03:24 PngImagePlugin.py[line:137] DEBUG STREAM b'IDAT' 41 8192
-Tue, 03 Apr 2018 22:03:24 PngImagePlugin.py[line:137] DEBUG STREAM b'IHDR' 16 13
-Tue, 03 Apr 2018 22:03:24 PngImagePlugin.py[line:137] DEBUG STREAM b'IDAT' 41 8192
-Tue, 03 Apr 2018 22:03:24 PngImagePlugin.py[line:137] DEBUG STREAM b'IHDR' 16 13
-Tue, 03 Apr 2018 22:03:24 PngImagePlugin.py[line:137] DEBUG STREAM b'IDAT' 41 8192
-Tue, 03 Apr 2018 22:03:24 PngImagePlugin.py[line:137] DEBUG STREAM b'IHDR' 16 13
-Tue, 03 Apr 2018 22:03:24 PngImagePlugin.py[line:137] DEBUG STREAM b'IDAT' 41 8192
-Tue, 03 Apr 2018 22:03:24 PngImagePlugin.py[line:137] DEBUG STREAM b'IHDR' 16 13
-Tue, 03 Apr 2018 22:03:24 PngImagePlugin.py[line:137] DEBUG STREAM b'IDAT' 41 8192
-Tue, 03 Apr 2018 22:03:24 PngImagePlugin.py[line:137] DEBUG STREAM b'IHDR' 16 13
-Tue, 03 Apr 2018 22:03:24 PngImagePlugin.py[line:137] DEBUG STREAM b'IDAT' 41 8192
-Tue, 03 Apr 2018 22:03:24 PngImagePlugin.py[line:137] DEBUG STREAM b'IHDR' 16 13
-Tue, 03 Apr 2018 22:03:24 PngImagePlugin.py[line:137] DEBUG STREAM b'IDAT' 41 8192
-Tue, 03 Apr 2018 22:03:24 PngImagePlugin.py[line:137] DEBUG STREAM b'IHDR' 16 13
-Tue, 03 Apr 2018 22:03:24 PngImagePlugin.py[line:137] DEBUG STREAM b'IDAT' 41 8192
-Tue, 03 Apr 2018 22:03:25 PngImagePlugin.py[line:137] DEBUG STREAM b'IHDR' 16 13
-Tue, 03 Apr 2018 22:03:25 PngImagePlugin.py[line:137] DEBUG STREAM b'IDAT' 41 8192
-Tue, 03 Apr 2018 22:03:25 PngImagePlugin.py[line:137] DEBUG STREAM b'IHDR' 16 13
-Tue, 03 Apr 2018 22:03:25 PngImagePlugin.py[line:137] DEBUG STREAM b'IDAT' 41 8192
-Tue, 03 Apr 2018 22:03:25 PngImagePlugin.py[line:137] DEBUG STREAM b'IHDR' 16 13
-Tue, 03 Apr 2018 22:03:25 PngImagePlugin.py[line:137] DEBUG STREAM b'IDAT' 41 8192
-Tue, 03 Apr 2018 22:03:25 PngImagePlugin.py[line:137] DEBUG STREAM b'IHDR' 16 13
-Tue, 03 Apr 2018 22:03:25 PngImagePlugin.py[line:137] DEBUG STREAM b'IDAT' 41 8192
-Tue, 03 Apr 2018 22:03:25 PngImagePlugin.py[line:137] DEBUG STREAM b'IHDR' 16 13
-Tue, 03 Apr 2018 22:03:25 PngImagePlugin.py[line:137] DEBUG STREAM b'IDAT' 41 8192
-Tue, 03 Apr 2018 22:03:25 PngImagePlugin.py[line:137] DEBUG STREAM b'IHDR' 16 13
-Tue, 03 Apr 2018 22:03:25 PngImagePlugin.py[line:137] DEBUG STREAM b'IDAT' 41 8192
-Tue, 03 Apr 2018 22:03:25 PngImagePlugin.py[line:137] DEBUG STREAM b'IHDR' 16 13
-Tue, 03 Apr 2018 22:03:25 PngImagePlugin.py[line:137] DEBUG STREAM b'IDAT' 41 8192
-Tue, 03 Apr 2018 22:03:25 PngImagePlugin.py[line:137] DEBUG STREAM b'IHDR' 16 13
-Tue, 03 Apr 2018 22:03:25 PngImagePlugin.py[line:137] DEBUG STREAM b'IDAT' 41 8192
-Tue, 03 Apr 2018 22:03:25 PngImagePlugin.py[line:137] DEBUG STREAM b'IHDR' 16 13
-Tue, 03 Apr 2018 22:03:25 PngImagePlugin.py[line:137] DEBUG STREAM b'IDAT' 41 8192
-Tue, 03 Apr 2018 22:03:25 PngImagePlugin.py[line:137] DEBUG STREAM b'IHDR' 16 13
-Tue, 03 Apr 2018 22:03:25 PngImagePlugin.py[line:137] DEBUG STREAM b'IDAT' 41 8192
-Tue, 03 Apr 2018 22:03:25 PngImagePlugin.py[line:137] DEBUG STREAM b'IHDR' 16 13
-Tue, 03 Apr 2018 22:03:25 PngImagePlugin.py[line:137] DEBUG STREAM b'IDAT' 41 8192
-Tue, 03 Apr 2018 22:03:25 PngImagePlugin.py[line:137] DEBUG STREAM b'IHDR' 16 13
-Tue, 03 Apr 2018 22:03:25 PngImagePlugin.py[line:137] DEBUG STREAM b'IDAT' 41 8192
-Tue, 03 Apr 2018 22:03:25 PngImagePlugin.py[line:137] DEBUG STREAM b'IHDR' 16 13
-Tue, 03 Apr 2018 22:03:25 PngImagePlugin.py[line:137] DEBUG STREAM b'IDAT' 41 8192
-Tue, 03 Apr 2018 22:03:25 PngImagePlugin.py[line:137] DEBUG STREAM b'IHDR' 16 13
-Tue, 03 Apr 2018 22:03:25 PngImagePlugin.py[line:137] DEBUG STREAM b'IDAT' 41 8192
-Tue, 03 Apr 2018 22:03:25 PngImagePlugin.py[line:137] DEBUG STREAM b'IHDR' 16 13
-Tue, 03 Apr 2018 22:03:25 PngImagePlugin.py[line:137] DEBUG STREAM b'IDAT' 41 8192
-Tue, 03 Apr 2018 22:03:25 PngImagePlugin.py[line:137] DEBUG STREAM b'IHDR' 16 13
-Tue, 03 Apr 2018 22:03:25 PngImagePlugin.py[line:137] DEBUG STREAM b'IDAT' 41 8192
-Tue, 03 Apr 2018 22:03:25 PngImagePlugin.py[line:137] DEBUG STREAM b'IHDR' 16 13
-Tue, 03 Apr 2018 22:03:25 PngImagePlugin.py[line:137] DEBUG STREAM b'IDAT' 41 8192
-Tue, 03 Apr 2018 22:03:25 PngImagePlugin.py[line:137] DEBUG STREAM b'IHDR' 16 13
-Tue, 03 Apr 2018 22:03:25 PngImagePlugin.py[line:137] DEBUG STREAM b'IDAT' 41 8192
-Tue, 03 Apr 2018 22:03:25 PngImagePlugin.py[line:137] DEBUG STREAM b'IHDR' 16 13
-Tue, 03 Apr 2018 22:03:25 PngImagePlugin.py[line:137] DEBUG STREAM b'IDAT' 41 8192
-Tue, 03 Apr 2018 22:03:25 PngImagePlugin.py[line:137] DEBUG STREAM b'IHDR' 16 13
-Tue, 03 Apr 2018 22:03:25 PngImagePlugin.py[line:137] DEBUG STREAM b'IDAT' 41 8192
-Tue, 03 Apr 2018 22:03:25 PngImagePlugin.py[line:137] DEBUG STREAM b'IHDR' 16 13
-Tue, 03 Apr 2018 22:03:25 PngImagePlugin.py[line:137] DEBUG STREAM b'IDAT' 41 8192
-Tue, 03 Apr 2018 22:03:25 PngImagePlugin.py[line:137] DEBUG STREAM b'IHDR' 16 13
-Tue, 03 Apr 2018 22:03:25 PngImagePlugin.py[line:137] DEBUG STREAM b'IDAT' 41 8192
-Tue, 03 Apr 2018 22:03:26 PngImagePlugin.py[line:137] DEBUG STREAM b'IHDR' 16 13
-Tue, 03 Apr 2018 22:03:26 PngImagePlugin.py[line:137] DEBUG STREAM b'IDAT' 41 8192
-Tue, 03 Apr 2018 22:03:26 PngImagePlugin.py[line:137] DEBUG STREAM b'IHDR' 16 13
-Tue, 03 Apr 2018 22:03:26 PngImagePlugin.py[line:137] DEBUG STREAM b'IDAT' 41 8192
-Tue, 03 Apr 2018 22:03:26 PngImagePlugin.py[line:137] DEBUG STREAM b'IHDR' 16 13
-Tue, 03 Apr 2018 22:03:26 PngImagePlugin.py[line:137] DEBUG STREAM b'IDAT' 41 8192
-Tue, 03 Apr 2018 22:03:26 PngImagePlugin.py[line:137] DEBUG STREAM b'IHDR' 16 13
-Tue, 03 Apr 2018 22:03:26 PngImagePlugin.py[line:137] DEBUG STREAM b'IDAT' 41 8192
-Tue, 03 Apr 2018 22:03:26 PngImagePlugin.py[line:137] DEBUG STREAM b'IHDR' 16 13
-Tue, 03 Apr 2018 22:03:26 PngImagePlugin.py[line:137] DEBUG STREAM b'IDAT' 41 8192
-Tue, 03 Apr 2018 22:03:26 PngImagePlugin.py[line:137] DEBUG STREAM b'IHDR' 16 13
-Tue, 03 Apr 2018 22:03:26 PngImagePlugin.py[line:137] DEBUG STREAM b'IDAT' 41 8192
-Tue, 03 Apr 2018 22:03:26 PngImagePlugin.py[line:137] DEBUG STREAM b'IHDR' 16 13
-Tue, 03 Apr 2018 22:03:26 PngImagePlugin.py[line:137] DEBUG STREAM b'IDAT' 41 8192
-Tue, 03 Apr 2018 22:03:26 PngImagePlugin.py[line:137] DEBUG STREAM b'IHDR' 16 13
-Tue, 03 Apr 2018 22:03:26 PngImagePlugin.py[line:137] DEBUG STREAM b'IDAT' 41 8192
-Tue, 03 Apr 2018 22:03:26 PngImagePlugin.py[line:137] DEBUG STREAM b'IHDR' 16 13
-Tue, 03 Apr 2018 22:03:26 PngImagePlugin.py[line:137] DEBUG STREAM b'IDAT' 41 8192
-Tue, 03 Apr 2018 22:03:26 PngImagePlugin.py[line:137] DEBUG STREAM b'IHDR' 16 13
-Tue, 03 Apr 2018 22:03:26 PngImagePlugin.py[line:137] DEBUG STREAM b'IDAT' 41 8192
-Tue, 03 Apr 2018 22:03:26 PngImagePlugin.py[line:137] DEBUG STREAM b'IHDR' 16 13
-Tue, 03 Apr 2018 22:03:26 PngImagePlugin.py[line:137] DEBUG STREAM b'IDAT' 41 8192
-Tue, 03 Apr 2018 22:03:26 PngImagePlugin.py[line:137] DEBUG STREAM b'IHDR' 16 13
-Tue, 03 Apr 2018 22:03:26 PngImagePlugin.py[line:137] DEBUG STREAM b'IDAT' 41 8192
-Tue, 03 Apr 2018 22:03:26 PngImagePlugin.py[line:137] DEBUG STREAM b'IHDR' 16 13
-Tue, 03 Apr 2018 22:03:26 PngImagePlugin.py[line:137] DEBUG STREAM b'IDAT' 41 8192
-Tue, 03 Apr 2018 22:03:26 PngImagePlugin.py[line:137] DEBUG STREAM b'IHDR' 16 13
-Tue, 03 Apr 2018 22:03:26 PngImagePlugin.py[line:137] DEBUG STREAM b'IDAT' 41 8192
-Tue, 03 Apr 2018 22:03:26 PngImagePlugin.py[line:137] DEBUG STREAM b'IHDR' 16 13
-Tue, 03 Apr 2018 22:03:26 PngImagePlugin.py[line:137] DEBUG STREAM b'IDAT' 41 8192
-Tue, 03 Apr 2018 22:03:26 PngImagePlugin.py[line:137] DEBUG STREAM b'IHDR' 16 13
-Tue, 03 Apr 2018 22:03:26 PngImagePlugin.py[line:137] DEBUG STREAM b'IDAT' 41 8192
-Tue, 03 Apr 2018 22:03:26 PngImagePlugin.py[line:137] DEBUG STREAM b'IHDR' 16 13
-Tue, 03 Apr 2018 22:03:26 PngImagePlugin.py[line:137] DEBUG STREAM b'IDAT' 41 8192
-Tue, 03 Apr 2018 22:03:26 PngImagePlugin.py[line:137] DEBUG STREAM b'IHDR' 16 13
-Tue, 03 Apr 2018 22:03:26 PngImagePlugin.py[line:137] DEBUG STREAM b'IDAT' 41 8192
-Tue, 03 Apr 2018 22:03:26 PngImagePlugin.py[line:137] DEBUG STREAM b'IHDR' 16 13
-Tue, 03 Apr 2018 22:03:26 PngImagePlugin.py[line:137] DEBUG STREAM b'IDAT' 41 8192
-Tue, 03 Apr 2018 22:03:26 PngImagePlugin.py[line:137] DEBUG STREAM b'IHDR' 16 13
-Tue, 03 Apr 2018 22:03:26 PngImagePlugin.py[line:137] DEBUG STREAM b'IDAT' 41 8192
-Tue, 03 Apr 2018 22:03:26 PngImagePlugin.py[line:137] DEBUG STREAM b'IHDR' 16 13
-Tue, 03 Apr 2018 22:03:26 PngImagePlugin.py[line:137] DEBUG STREAM b'IDAT' 41 8192
-Tue, 03 Apr 2018 22:03:27 PngImagePlugin.py[line:137] DEBUG STREAM b'IHDR' 16 13
-Tue, 03 Apr 2018 22:03:27 PngImagePlugin.py[line:137] DEBUG STREAM b'IDAT' 41 8192
-Tue, 03 Apr 2018 22:03:27 PngImagePlugin.py[line:137] DEBUG STREAM b'IHDR' 16 13
-Tue, 03 Apr 2018 22:03:27 PngImagePlugin.py[line:137] DEBUG STREAM b'IDAT' 41 8192
-Tue, 03 Apr 2018 22:03:27 PngImagePlugin.py[line:137] DEBUG STREAM b'IHDR' 16 13
-Tue, 03 Apr 2018 22:03:27 PngImagePlugin.py[line:137] DEBUG STREAM b'IDAT' 41 8192
-Tue, 03 Apr 2018 22:03:27 PngImagePlugin.py[line:137] DEBUG STREAM b'IHDR' 16 13
-Tue, 03 Apr 2018 22:03:27 PngImagePlugin.py[line:137] DEBUG STREAM b'IDAT' 41 8192
-Tue, 03 Apr 2018 22:03:27 PngImagePlugin.py[line:137] DEBUG STREAM b'IHDR' 16 13
-Tue, 03 Apr 2018 22:03:27 PngImagePlugin.py[line:137] DEBUG STREAM b'IDAT' 41 8192
-Tue, 03 Apr 2018 22:03:27 PngImagePlugin.py[line:137] DEBUG STREAM b'IHDR' 16 13
-Tue, 03 Apr 2018 22:03:27 PngImagePlugin.py[line:137] DEBUG STREAM b'IDAT' 41 8192
-Tue, 03 Apr 2018 22:03:27 PngImagePlugin.py[line:137] DEBUG STREAM b'IHDR' 16 13
-Tue, 03 Apr 2018 22:03:27 PngImagePlugin.py[line:137] DEBUG STREAM b'IDAT' 41 8192
-Tue, 03 Apr 2018 22:03:27 PngImagePlugin.py[line:137] DEBUG STREAM b'IHDR' 16 13
-Tue, 03 Apr 2018 22:03:27 PngImagePlugin.py[line:137] DEBUG STREAM b'IDAT' 41 8192
-Tue, 03 Apr 2018 22:03:27 PngImagePlugin.py[line:137] DEBUG STREAM b'IHDR' 16 13
-Tue, 03 Apr 2018 22:03:27 PngImagePlugin.py[line:137] DEBUG STREAM b'IDAT' 41 8192
-Tue, 03 Apr 2018 22:03:27 PngImagePlugin.py[line:137] DEBUG STREAM b'IHDR' 16 13
-Tue, 03 Apr 2018 22:03:27 PngImagePlugin.py[line:137] DEBUG STREAM b'IDAT' 41 8192
-Tue, 03 Apr 2018 22:03:27 PngImagePlugin.py[line:137] DEBUG STREAM b'IHDR' 16 13
-Tue, 03 Apr 2018 22:03:27 PngImagePlugin.py[line:137] DEBUG STREAM b'IDAT' 41 8192
-Tue, 03 Apr 2018 22:03:27 PngImagePlugin.py[line:137] DEBUG STREAM b'IHDR' 16 13
-Tue, 03 Apr 2018 22:03:27 PngImagePlugin.py[line:137] DEBUG STREAM b'IDAT' 41 8192
-Tue, 03 Apr 2018 22:03:27 PngImagePlugin.py[line:137] DEBUG STREAM b'IHDR' 16 13
-Tue, 03 Apr 2018 22:03:27 PngImagePlugin.py[line:137] DEBUG STREAM b'IDAT' 41 8192
-Tue, 03 Apr 2018 22:03:27 PngImagePlugin.py[line:137] DEBUG STREAM b'IHDR' 16 13
-Tue, 03 Apr 2018 22:03:27 PngImagePlugin.py[line:137] DEBUG STREAM b'IDAT' 41 8192
-Tue, 03 Apr 2018 22:03:27 PngImagePlugin.py[line:137] DEBUG STREAM b'IHDR' 16 13
-Tue, 03 Apr 2018 22:03:27 PngImagePlugin.py[line:137] DEBUG STREAM b'IDAT' 41 8192
-Tue, 03 Apr 2018 22:03:27 PngImagePlugin.py[line:137] DEBUG STREAM b'IHDR' 16 13
-Tue, 03 Apr 2018 22:03:27 PngImagePlugin.py[line:137] DEBUG STREAM b'IDAT' 41 8192
-Tue, 03 Apr 2018 22:03:27 PngImagePlugin.py[line:137] DEBUG STREAM b'IHDR' 16 13
-Tue, 03 Apr 2018 22:03:27 PngImagePlugin.py[line:137] DEBUG STREAM b'IDAT' 41 8192
-Tue, 03 Apr 2018 22:03:27 PngImagePlugin.py[line:137] DEBUG STREAM b'IHDR' 16 13
-Tue, 03 Apr 2018 22:03:27 PngImagePlugin.py[line:137] DEBUG STREAM b'IDAT' 41 8192
-Tue, 03 Apr 2018 22:03:27 PngImagePlugin.py[line:137] DEBUG STREAM b'IHDR' 16 13
-Tue, 03 Apr 2018 22:03:27 PngImagePlugin.py[line:137] DEBUG STREAM b'IDAT' 41 8192
-Tue, 03 Apr 2018 22:03:27 PngImagePlugin.py[line:137] DEBUG STREAM b'IHDR' 16 13
-Tue, 03 Apr 2018 22:03:27 PngImagePlugin.py[line:137] DEBUG STREAM b'IDAT' 41 8192
-Tue, 03 Apr 2018 22:03:27 PngImagePlugin.py[line:137] DEBUG STREAM b'IHDR' 16 13
-Tue, 03 Apr 2018 22:03:27 PngImagePlugin.py[line:137] DEBUG STREAM b'IDAT' 41 8192
-Tue, 03 Apr 2018 22:03:28 PngImagePlugin.py[line:137] DEBUG STREAM b'IHDR' 16 13
-Tue, 03 Apr 2018 22:03:28 PngImagePlugin.py[line:137] DEBUG STREAM b'IDAT' 41 8192
-Tue, 03 Apr 2018 22:03:28 PngImagePlugin.py[line:137] DEBUG STREAM b'IHDR' 16 13
-Tue, 03 Apr 2018 22:03:28 PngImagePlugin.py[line:137] DEBUG STREAM b'IDAT' 41 8192
-Tue, 03 Apr 2018 22:03:28 PngImagePlugin.py[line:137] DEBUG STREAM b'IHDR' 16 13
-Tue, 03 Apr 2018 22:03:28 PngImagePlugin.py[line:137] DEBUG STREAM b'IDAT' 41 8192
-Tue, 03 Apr 2018 22:03:28 PngImagePlugin.py[line:137] DEBUG STREAM b'IHDR' 16 13
-Tue, 03 Apr 2018 22:03:28 PngImagePlugin.py[line:137] DEBUG STREAM b'IDAT' 41 8192
-Tue, 03 Apr 2018 22:03:28 PngImagePlugin.py[line:137] DEBUG STREAM b'IHDR' 16 13
-Tue, 03 Apr 2018 22:03:28 PngImagePlugin.py[line:137] DEBUG STREAM b'IDAT' 41 8192
-Tue, 03 Apr 2018 22:03:28 PngImagePlugin.py[line:137] DEBUG STREAM b'IHDR' 16 13
-Tue, 03 Apr 2018 22:03:28 PngImagePlugin.py[line:137] DEBUG STREAM b'IDAT' 41 8192
-Tue, 03 Apr 2018 22:03:28 PngImagePlugin.py[line:137] DEBUG STREAM b'IHDR' 16 13
-Tue, 03 Apr 2018 22:03:28 PngImagePlugin.py[line:137] DEBUG STREAM b'IDAT' 41 8192
-Tue, 03 Apr 2018 22:03:28 PngImagePlugin.py[line:137] DEBUG STREAM b'IHDR' 16 13
-Tue, 03 Apr 2018 22:03:28 PngImagePlugin.py[line:137] DEBUG STREAM b'IDAT' 41 8192
-Tue, 03 Apr 2018 22:03:28 PngImagePlugin.py[line:137] DEBUG STREAM b'IHDR' 16 13
-Tue, 03 Apr 2018 22:03:28 PngImagePlugin.py[line:137] DEBUG STREAM b'IDAT' 41 8192
-Tue, 03 Apr 2018 22:03:28 PngImagePlugin.py[line:137] DEBUG STREAM b'IHDR' 16 13
-Tue, 03 Apr 2018 22:03:28 PngImagePlugin.py[line:137] DEBUG STREAM b'IDAT' 41 8192
-Tue, 03 Apr 2018 22:03:28 PngImagePlugin.py[line:137] DEBUG STREAM b'IHDR' 16 13
-Tue, 03 Apr 2018 22:03:28 PngImagePlugin.py[line:137] DEBUG STREAM b'IDAT' 41 8192
-Tue, 03 Apr 2018 22:03:28 PngImagePlugin.py[line:137] DEBUG STREAM b'IHDR' 16 13
-Tue, 03 Apr 2018 22:03:28 PngImagePlugin.py[line:137] DEBUG STREAM b'IDAT' 41 8192
-Tue, 03 Apr 2018 22:03:28 PngImagePlugin.py[line:137] DEBUG STREAM b'IHDR' 16 13
-Tue, 03 Apr 2018 22:03:28 PngImagePlugin.py[line:137] DEBUG STREAM b'IDAT' 41 8192
-Tue, 03 Apr 2018 22:03:28 PngImagePlugin.py[line:137] DEBUG STREAM b'IHDR' 16 13
-Tue, 03 Apr 2018 22:03:28 PngImagePlugin.py[line:137] DEBUG STREAM b'IDAT' 41 8192
-Tue, 03 Apr 2018 22:03:28 PngImagePlugin.py[line:137] DEBUG STREAM b'IHDR' 16 13
-Tue, 03 Apr 2018 22:03:28 PngImagePlugin.py[line:137] DEBUG STREAM b'IDAT' 41 8192
-Tue, 03 Apr 2018 22:03:28 PngImagePlugin.py[line:137] DEBUG STREAM b'IHDR' 16 13
-Tue, 03 Apr 2018 22:03:28 PngImagePlugin.py[line:137] DEBUG STREAM b'IDAT' 41 8192
-Tue, 03 Apr 2018 22:03:28 PngImagePlugin.py[line:137] DEBUG STREAM b'IHDR' 16 13
-Tue, 03 Apr 2018 22:03:28 PngImagePlugin.py[line:137] DEBUG STREAM b'IDAT' 41 8192
-Tue, 03 Apr 2018 22:03:28 PngImagePlugin.py[line:137] DEBUG STREAM b'IHDR' 16 13
-Tue, 03 Apr 2018 22:03:28 PngImagePlugin.py[line:137] DEBUG STREAM b'IDAT' 41 8192
-Tue, 03 Apr 2018 22:03:28 PngImagePlugin.py[line:137] DEBUG STREAM b'IHDR' 16 13
-Tue, 03 Apr 2018 22:03:28 PngImagePlugin.py[line:137] DEBUG STREAM b'IDAT' 41 8192
-Tue, 03 Apr 2018 22:03:28 PngImagePlugin.py[line:137] DEBUG STREAM b'IHDR' 16 13
-Tue, 03 Apr 2018 22:03:28 PngImagePlugin.py[line:137] DEBUG STREAM b'IDAT' 41 8192
-Tue, 03 Apr 2018 22:03:28 PngImagePlugin.py[line:137] DEBUG STREAM b'IHDR' 16 13
-Tue, 03 Apr 2018 22:03:28 PngImagePlugin.py[line:137] DEBUG STREAM b'IDAT' 41 8192
-Tue, 03 Apr 2018 22:03:28 PngImagePlugin.py[line:137] DEBUG STREAM b'IHDR' 16 13
-Tue, 03 Apr 2018 22:03:28 PngImagePlugin.py[line:137] DEBUG STREAM b'IDAT' 41 8192
-Tue, 03 Apr 2018 22:03:29 PngImagePlugin.py[line:137] DEBUG STREAM b'IHDR' 16 13
-Tue, 03 Apr 2018 22:03:29 PngImagePlugin.py[line:137] DEBUG STREAM b'IDAT' 41 8192
-Tue, 03 Apr 2018 22:03:29 PngImagePlugin.py[line:137] DEBUG STREAM b'IHDR' 16 13
-Tue, 03 Apr 2018 22:03:29 PngImagePlugin.py[line:137] DEBUG STREAM b'IDAT' 41 8192
-Tue, 03 Apr 2018 22:03:29 PngImagePlugin.py[line:137] DEBUG STREAM b'IHDR' 16 13
-Tue, 03 Apr 2018 22:03:29 PngImagePlugin.py[line:137] DEBUG STREAM b'IDAT' 41 8192
-Tue, 03 Apr 2018 22:03:29 PngImagePlugin.py[line:137] DEBUG STREAM b'IHDR' 16 13
-Tue, 03 Apr 2018 22:03:29 PngImagePlugin.py[line:137] DEBUG STREAM b'IDAT' 41 8192
-Tue, 03 Apr 2018 22:03:29 PngImagePlugin.py[line:137] DEBUG STREAM b'IHDR' 16 13
-Tue, 03 Apr 2018 22:03:29 PngImagePlugin.py[line:137] DEBUG STREAM b'IDAT' 41 8192
-Tue, 03 Apr 2018 22:03:29 PngImagePlugin.py[line:137] DEBUG STREAM b'IHDR' 16 13
-Tue, 03 Apr 2018 22:03:29 PngImagePlugin.py[line:137] DEBUG STREAM b'IDAT' 41 8192
-Tue, 03 Apr 2018 22:03:29 PngImagePlugin.py[line:137] DEBUG STREAM b'IHDR' 16 13
-Tue, 03 Apr 2018 22:03:29 PngImagePlugin.py[line:137] DEBUG STREAM b'IDAT' 41 8192
-Tue, 03 Apr 2018 22:03:29 PngImagePlugin.py[line:137] DEBUG STREAM b'IHDR' 16 13
-Tue, 03 Apr 2018 22:03:29 PngImagePlugin.py[line:137] DEBUG STREAM b'IDAT' 41 8192
-Tue, 03 Apr 2018 22:03:29 PngImagePlugin.py[line:137] DEBUG STREAM b'IHDR' 16 13
-Tue, 03 Apr 2018 22:03:29 PngImagePlugin.py[line:137] DEBUG STREAM b'IDAT' 41 8192
-Tue, 03 Apr 2018 22:03:29 PngImagePlugin.py[line:137] DEBUG STREAM b'IHDR' 16 13
-Tue, 03 Apr 2018 22:03:29 PngImagePlugin.py[line:137] DEBUG STREAM b'IDAT' 41 8192
-Tue, 03 Apr 2018 22:03:29 PngImagePlugin.py[line:137] DEBUG STREAM b'IHDR' 16 13
-Tue, 03 Apr 2018 22:03:29 PngImagePlugin.py[line:137] DEBUG STREAM b'IDAT' 41 8192
-Tue, 03 Apr 2018 22:03:29 PngImagePlugin.py[line:137] DEBUG STREAM b'IHDR' 16 13
-Tue, 03 Apr 2018 22:03:29 PngImagePlugin.py[line:137] DEBUG STREAM b'IDAT' 41 8192
-Tue, 03 Apr 2018 22:03:29 PngImagePlugin.py[line:137] DEBUG STREAM b'IHDR' 16 13
-Tue, 03 Apr 2018 22:03:29 PngImagePlugin.py[line:137] DEBUG STREAM b'IDAT' 41 8192
-Tue, 03 Apr 2018 22:03:29 PngImagePlugin.py[line:137] DEBUG STREAM b'IHDR' 16 13
-Tue, 03 Apr 2018 22:03:29 PngImagePlugin.py[line:137] DEBUG STREAM b'IDAT' 41 8192
-Tue, 03 Apr 2018 22:03:29 PngImagePlugin.py[line:137] DEBUG STREAM b'IHDR' 16 13
-Tue, 03 Apr 2018 22:03:29 PngImagePlugin.py[line:137] DEBUG STREAM b'IDAT' 41 8192
-Tue, 03 Apr 2018 22:03:29 PngImagePlugin.py[line:137] DEBUG STREAM b'IHDR' 16 13
-Tue, 03 Apr 2018 22:03:29 PngImagePlugin.py[line:137] DEBUG STREAM b'IDAT' 41 8192
-Tue, 03 Apr 2018 22:03:29 PngImagePlugin.py[line:137] DEBUG STREAM b'IHDR' 16 13
-Tue, 03 Apr 2018 22:03:29 PngImagePlugin.py[line:137] DEBUG STREAM b'IDAT' 41 8192
-Tue, 03 Apr 2018 22:03:29 PngImagePlugin.py[line:137] DEBUG STREAM b'IHDR' 16 13
-Tue, 03 Apr 2018 22:03:29 PngImagePlugin.py[line:137] DEBUG STREAM b'IDAT' 41 8192
-Tue, 03 Apr 2018 22:03:29 PngImagePlugin.py[line:137] DEBUG STREAM b'IHDR' 16 13
-Tue, 03 Apr 2018 22:03:29 PngImagePlugin.py[line:137] DEBUG STREAM b'IDAT' 41 8192
-Tue, 03 Apr 2018 22:03:29 PngImagePlugin.py[line:137] DEBUG STREAM b'IHDR' 16 13
-Tue, 03 Apr 2018 22:03:29 PngImagePlugin.py[line:137] DEBUG STREAM b'IDAT' 41 8192
-Tue, 03 Apr 2018 22:03:29 PngImagePlugin.py[line:137] DEBUG STREAM b'IHDR' 16 13
-Tue, 03 Apr 2018 22:03:29 PngImagePlugin.py[line:137] DEBUG STREAM b'IDAT' 41 8192
+Tue, 03 Apr 2018 22:39:52 PngImagePlugin.py[line:137] DEBUG STREAM b'IHDR' 16 13
+Tue, 03 Apr 2018 22:39:52 PngImagePlugin.py[line:137] DEBUG STREAM b'IDAT' 41 8192
+Tue, 03 Apr 2018 22:39:54 PngImagePlugin.py[line:137] DEBUG STREAM b'IHDR' 16 13
+Tue, 03 Apr 2018 22:39:54 PngImagePlugin.py[line:137] DEBUG STREAM b'IDAT' 41 8192
+Tue, 03 Apr 2018 22:39:54 PngImagePlugin.py[line:137] DEBUG STREAM b'IHDR' 16 13
+Tue, 03 Apr 2018 22:39:54 PngImagePlugin.py[line:137] DEBUG STREAM b'IDAT' 41 985
+Tue, 03 Apr 2018 22:39:54 PngImagePlugin.py[line:137] DEBUG STREAM b'IHDR' 16 13
+Tue, 03 Apr 2018 22:39:54 PngImagePlugin.py[line:137] DEBUG STREAM b'IDAT' 41 985
+Tue, 03 Apr 2018 22:39:54 PngImagePlugin.py[line:137] DEBUG STREAM b'IHDR' 16 13
+Tue, 03 Apr 2018 22:39:54 PngImagePlugin.py[line:137] DEBUG STREAM b'IDAT' 41 985
+Tue, 03 Apr 2018 22:39:54 PngImagePlugin.py[line:137] DEBUG STREAM b'IHDR' 16 13
+Tue, 03 Apr 2018 22:39:54 PngImagePlugin.py[line:137] DEBUG STREAM b'IDAT' 41 985
+Tue, 03 Apr 2018 22:39:54 PngImagePlugin.py[line:137] DEBUG STREAM b'IHDR' 16 13
+Tue, 03 Apr 2018 22:39:54 PngImagePlugin.py[line:137] DEBUG STREAM b'IDAT' 41 985
+Tue, 03 Apr 2018 22:39:54 PngImagePlugin.py[line:137] DEBUG STREAM b'IHDR' 16 13
+Tue, 03 Apr 2018 22:39:54 PngImagePlugin.py[line:137] DEBUG STREAM b'IDAT' 41 985
+Tue, 03 Apr 2018 22:39:54 PngImagePlugin.py[line:137] DEBUG STREAM b'IHDR' 16 13
+Tue, 03 Apr 2018 22:39:54 PngImagePlugin.py[line:137] DEBUG STREAM b'IDAT' 41 985
+Tue, 03 Apr 2018 22:39:54 PngImagePlugin.py[line:137] DEBUG STREAM b'IHDR' 16 13
+Tue, 03 Apr 2018 22:39:54 PngImagePlugin.py[line:137] DEBUG STREAM b'IDAT' 41 985
+Tue, 03 Apr 2018 22:39:54 PngImagePlugin.py[line:137] DEBUG STREAM b'IHDR' 16 13
+Tue, 03 Apr 2018 22:39:54 PngImagePlugin.py[line:137] DEBUG STREAM b'IDAT' 41 985
+Tue, 03 Apr 2018 22:40:01 PngImagePlugin.py[line:137] DEBUG STREAM b'IHDR' 16 13
+Tue, 03 Apr 2018 22:40:01 PngImagePlugin.py[line:137] DEBUG STREAM b'IDAT' 41 985
+Tue, 03 Apr 2018 22:40:01 PngImagePlugin.py[line:137] DEBUG STREAM b'IHDR' 16 13
+Tue, 03 Apr 2018 22:40:01 PngImagePlugin.py[line:137] DEBUG STREAM b'IDAT' 41 985
+Tue, 03 Apr 2018 22:40:01 PngImagePlugin.py[line:137] DEBUG STREAM b'IHDR' 16 13
+Tue, 03 Apr 2018 22:40:01 PngImagePlugin.py[line:137] DEBUG STREAM b'IDAT' 41 985
+Tue, 03 Apr 2018 22:40:01 PngImagePlugin.py[line:137] DEBUG STREAM b'IHDR' 16 13
+Tue, 03 Apr 2018 22:40:01 PngImagePlugin.py[line:137] DEBUG STREAM b'IDAT' 41 8192
+Tue, 03 Apr 2018 22:40:01 PngImagePlugin.py[line:137] DEBUG STREAM b'IHDR' 16 13
+Tue, 03 Apr 2018 22:40:01 PngImagePlugin.py[line:137] DEBUG STREAM b'IDAT' 41 8192
+Tue, 03 Apr 2018 22:40:01 PngImagePlugin.py[line:137] DEBUG STREAM b'IHDR' 16 13
+Tue, 03 Apr 2018 22:40:01 PngImagePlugin.py[line:137] DEBUG STREAM b'IDAT' 41 8192
+Tue, 03 Apr 2018 22:40:01 PngImagePlugin.py[line:137] DEBUG STREAM b'IHDR' 16 13
+Tue, 03 Apr 2018 22:40:01 PngImagePlugin.py[line:137] DEBUG STREAM b'IDAT' 41 8192
+Tue, 03 Apr 2018 22:40:01 PngImagePlugin.py[line:137] DEBUG STREAM b'IHDR' 16 13
+Tue, 03 Apr 2018 22:40:01 PngImagePlugin.py[line:137] DEBUG STREAM b'IDAT' 41 8192
+Tue, 03 Apr 2018 22:40:01 PngImagePlugin.py[line:137] DEBUG STREAM b'IHDR' 16 13
+Tue, 03 Apr 2018 22:40:01 PngImagePlugin.py[line:137] DEBUG STREAM b'IDAT' 41 8192
+Tue, 03 Apr 2018 22:40:02 PngImagePlugin.py[line:137] DEBUG STREAM b'IHDR' 16 13
+Tue, 03 Apr 2018 22:40:02 PngImagePlugin.py[line:137] DEBUG STREAM b'IDAT' 41 8192
+Tue, 03 Apr 2018 22:40:02 PngImagePlugin.py[line:137] DEBUG STREAM b'IHDR' 16 13
+Tue, 03 Apr 2018 22:40:02 PngImagePlugin.py[line:137] DEBUG STREAM b'IDAT' 41 8192
+Tue, 03 Apr 2018 22:40:02 PngImagePlugin.py[line:137] DEBUG STREAM b'IHDR' 16 13
+Tue, 03 Apr 2018 22:40:02 PngImagePlugin.py[line:137] DEBUG STREAM b'IDAT' 41 8192
+Tue, 03 Apr 2018 22:40:02 PngImagePlugin.py[line:137] DEBUG STREAM b'IHDR' 16 13
+Tue, 03 Apr 2018 22:40:02 PngImagePlugin.py[line:137] DEBUG STREAM b'IDAT' 41 8192
+Tue, 03 Apr 2018 22:40:02 PngImagePlugin.py[line:137] DEBUG STREAM b'IHDR' 16 13
+Tue, 03 Apr 2018 22:40:02 PngImagePlugin.py[line:137] DEBUG STREAM b'IDAT' 41 8192
+Tue, 03 Apr 2018 22:40:02 PngImagePlugin.py[line:137] DEBUG STREAM b'IHDR' 16 13
+Tue, 03 Apr 2018 22:40:02 PngImagePlugin.py[line:137] DEBUG STREAM b'IDAT' 41 8192
+Tue, 03 Apr 2018 22:40:02 PngImagePlugin.py[line:137] DEBUG STREAM b'IHDR' 16 13
+Tue, 03 Apr 2018 22:40:02 PngImagePlugin.py[line:137] DEBUG STREAM b'IDAT' 41 8192
+Tue, 03 Apr 2018 22:40:02 PngImagePlugin.py[line:137] DEBUG STREAM b'IHDR' 16 13
+Tue, 03 Apr 2018 22:40:02 PngImagePlugin.py[line:137] DEBUG STREAM b'IDAT' 41 8192
+Tue, 03 Apr 2018 22:40:02 PngImagePlugin.py[line:137] DEBUG STREAM b'IHDR' 16 13
+Tue, 03 Apr 2018 22:40:02 PngImagePlugin.py[line:137] DEBUG STREAM b'IDAT' 41 8192
+Tue, 03 Apr 2018 22:40:02 PngImagePlugin.py[line:137] DEBUG STREAM b'IHDR' 16 13
+Tue, 03 Apr 2018 22:40:02 PngImagePlugin.py[line:137] DEBUG STREAM b'IDAT' 41 8192
+Tue, 03 Apr 2018 22:40:02 PngImagePlugin.py[line:137] DEBUG STREAM b'IHDR' 16 13
+Tue, 03 Apr 2018 22:40:02 PngImagePlugin.py[line:137] DEBUG STREAM b'IDAT' 41 8192
+Tue, 03 Apr 2018 22:40:02 PngImagePlugin.py[line:137] DEBUG STREAM b'IHDR' 16 13
+Tue, 03 Apr 2018 22:40:02 PngImagePlugin.py[line:137] DEBUG STREAM b'IDAT' 41 8192
+Tue, 03 Apr 2018 22:40:02 PngImagePlugin.py[line:137] DEBUG STREAM b'IHDR' 16 13
+Tue, 03 Apr 2018 22:40:02 PngImagePlugin.py[line:137] DEBUG STREAM b'IDAT' 41 8192
+Tue, 03 Apr 2018 22:40:02 PngImagePlugin.py[line:137] DEBUG STREAM b'IHDR' 16 13
+Tue, 03 Apr 2018 22:40:02 PngImagePlugin.py[line:137] DEBUG STREAM b'IDAT' 41 8192
+Tue, 03 Apr 2018 22:40:02 PngImagePlugin.py[line:137] DEBUG STREAM b'IHDR' 16 13
+Tue, 03 Apr 2018 22:40:02 PngImagePlugin.py[line:137] DEBUG STREAM b'IDAT' 41 8192
+Tue, 03 Apr 2018 22:40:02 PngImagePlugin.py[line:137] DEBUG STREAM b'IHDR' 16 13
+Tue, 03 Apr 2018 22:40:02 PngImagePlugin.py[line:137] DEBUG STREAM b'IDAT' 41 8192
+Tue, 03 Apr 2018 22:40:02 PngImagePlugin.py[line:137] DEBUG STREAM b'IHDR' 16 13
+Tue, 03 Apr 2018 22:40:02 PngImagePlugin.py[line:137] DEBUG STREAM b'IDAT' 41 8192
+Tue, 03 Apr 2018 22:40:02 PngImagePlugin.py[line:137] DEBUG STREAM b'IHDR' 16 13
+Tue, 03 Apr 2018 22:40:02 PngImagePlugin.py[line:137] DEBUG STREAM b'IDAT' 41 8192
+Tue, 03 Apr 2018 22:40:02 PngImagePlugin.py[line:137] DEBUG STREAM b'IHDR' 16 13
+Tue, 03 Apr 2018 22:40:02 PngImagePlugin.py[line:137] DEBUG STREAM b'IDAT' 41 8192
+Tue, 03 Apr 2018 22:40:02 PngImagePlugin.py[line:137] DEBUG STREAM b'IHDR' 16 13
+Tue, 03 Apr 2018 22:40:02 PngImagePlugin.py[line:137] DEBUG STREAM b'IDAT' 41 8192
+Tue, 03 Apr 2018 22:40:04 PngImagePlugin.py[line:137] DEBUG STREAM b'IHDR' 16 13
+Tue, 03 Apr 2018 22:40:04 PngImagePlugin.py[line:137] DEBUG STREAM b'IDAT' 41 8192
+Tue, 03 Apr 2018 22:40:04 PngImagePlugin.py[line:137] DEBUG STREAM b'IHDR' 16 13
+Tue, 03 Apr 2018 22:40:04 PngImagePlugin.py[line:137] DEBUG STREAM b'IDAT' 41 8192
+Tue, 03 Apr 2018 22:40:04 PngImagePlugin.py[line:137] DEBUG STREAM b'IHDR' 16 13
+Tue, 03 Apr 2018 22:40:04 PngImagePlugin.py[line:137] DEBUG STREAM b'IDAT' 41 985
+Tue, 03 Apr 2018 22:40:04 PngImagePlugin.py[line:137] DEBUG STREAM b'IHDR' 16 13
+Tue, 03 Apr 2018 22:40:04 PngImagePlugin.py[line:137] DEBUG STREAM b'IDAT' 41 985
+Tue, 03 Apr 2018 22:40:04 PngImagePlugin.py[line:137] DEBUG STREAM b'IHDR' 16 13
+Tue, 03 Apr 2018 22:40:04 PngImagePlugin.py[line:137] DEBUG STREAM b'IDAT' 41 985
+Tue, 03 Apr 2018 22:40:04 PngImagePlugin.py[line:137] DEBUG STREAM b'IHDR' 16 13
+Tue, 03 Apr 2018 22:40:04 PngImagePlugin.py[line:137] DEBUG STREAM b'IDAT' 41 985
+Tue, 03 Apr 2018 22:40:04 PngImagePlugin.py[line:137] DEBUG STREAM b'IHDR' 16 13
+Tue, 03 Apr 2018 22:40:04 PngImagePlugin.py[line:137] DEBUG STREAM b'IDAT' 41 985
+Tue, 03 Apr 2018 22:40:05 PngImagePlugin.py[line:137] DEBUG STREAM b'IHDR' 16 13
+Tue, 03 Apr 2018 22:40:05 PngImagePlugin.py[line:137] DEBUG STREAM b'IDAT' 41 985
+Tue, 03 Apr 2018 22:40:05 PngImagePlugin.py[line:137] DEBUG STREAM b'IHDR' 16 13
+Tue, 03 Apr 2018 22:40:05 PngImagePlugin.py[line:137] DEBUG STREAM b'IDAT' 41 985
+Tue, 03 Apr 2018 22:40:05 PngImagePlugin.py[line:137] DEBUG STREAM b'IHDR' 16 13
+Tue, 03 Apr 2018 22:40:05 PngImagePlugin.py[line:137] DEBUG STREAM b'IDAT' 41 985
+Tue, 03 Apr 2018 22:40:13 PngImagePlugin.py[line:137] DEBUG STREAM b'IHDR' 16 13
+Tue, 03 Apr 2018 22:40:13 PngImagePlugin.py[line:137] DEBUG STREAM b'IDAT' 41 985
+Tue, 03 Apr 2018 22:40:13 PngImagePlugin.py[line:137] DEBUG STREAM b'IHDR' 16 13
+Tue, 03 Apr 2018 22:40:13 PngImagePlugin.py[line:137] DEBUG STREAM b'IDAT' 41 985
+Tue, 03 Apr 2018 22:40:13 PngImagePlugin.py[line:137] DEBUG STREAM b'IHDR' 16 13
+Tue, 03 Apr 2018 22:40:13 PngImagePlugin.py[line:137] DEBUG STREAM b'IDAT' 41 985
+Tue, 03 Apr 2018 22:40:13 PngImagePlugin.py[line:137] DEBUG STREAM b'IHDR' 16 13
+Tue, 03 Apr 2018 22:40:13 PngImagePlugin.py[line:137] DEBUG STREAM b'IDAT' 41 8192
+Tue, 03 Apr 2018 22:40:13 PngImagePlugin.py[line:137] DEBUG STREAM b'IHDR' 16 13
+Tue, 03 Apr 2018 22:40:13 PngImagePlugin.py[line:137] DEBUG STREAM b'IDAT' 41 8192
+Tue, 03 Apr 2018 22:40:14 PngImagePlugin.py[line:137] DEBUG STREAM b'IHDR' 16 13
+Tue, 03 Apr 2018 22:40:14 PngImagePlugin.py[line:137] DEBUG STREAM b'IDAT' 41 8192
+Tue, 03 Apr 2018 22:40:14 PngImagePlugin.py[line:137] DEBUG STREAM b'IHDR' 16 13
+Tue, 03 Apr 2018 22:40:14 PngImagePlugin.py[line:137] DEBUG STREAM b'IDAT' 41 8192
+Tue, 03 Apr 2018 22:40:14 PngImagePlugin.py[line:137] DEBUG STREAM b'IHDR' 16 13
+Tue, 03 Apr 2018 22:40:14 PngImagePlugin.py[line:137] DEBUG STREAM b'IDAT' 41 8192
+Tue, 03 Apr 2018 22:40:14 PngImagePlugin.py[line:137] DEBUG STREAM b'IHDR' 16 13
+Tue, 03 Apr 2018 22:40:14 PngImagePlugin.py[line:137] DEBUG STREAM b'IDAT' 41 8192
+Tue, 03 Apr 2018 22:40:14 PngImagePlugin.py[line:137] DEBUG STREAM b'IHDR' 16 13
+Tue, 03 Apr 2018 22:40:14 PngImagePlugin.py[line:137] DEBUG STREAM b'IDAT' 41 8192
+Tue, 03 Apr 2018 22:40:14 PngImagePlugin.py[line:137] DEBUG STREAM b'IHDR' 16 13
+Tue, 03 Apr 2018 22:40:14 PngImagePlugin.py[line:137] DEBUG STREAM b'IDAT' 41 8192
+Tue, 03 Apr 2018 22:40:14 PngImagePlugin.py[line:137] DEBUG STREAM b'IHDR' 16 13
+Tue, 03 Apr 2018 22:40:14 PngImagePlugin.py[line:137] DEBUG STREAM b'IDAT' 41 8192
+Tue, 03 Apr 2018 22:40:14 PngImagePlugin.py[line:137] DEBUG STREAM b'IHDR' 16 13
+Tue, 03 Apr 2018 22:40:14 PngImagePlugin.py[line:137] DEBUG STREAM b'IDAT' 41 8192
+Tue, 03 Apr 2018 22:40:14 PngImagePlugin.py[line:137] DEBUG STREAM b'IHDR' 16 13
+Tue, 03 Apr 2018 22:40:14 PngImagePlugin.py[line:137] DEBUG STREAM b'IDAT' 41 8192
+Tue, 03 Apr 2018 22:40:14 PngImagePlugin.py[line:137] DEBUG STREAM b'IHDR' 16 13
+Tue, 03 Apr 2018 22:40:14 PngImagePlugin.py[line:137] DEBUG STREAM b'IDAT' 41 8192
+Tue, 03 Apr 2018 22:40:14 PngImagePlugin.py[line:137] DEBUG STREAM b'IHDR' 16 13
+Tue, 03 Apr 2018 22:40:14 PngImagePlugin.py[line:137] DEBUG STREAM b'IDAT' 41 8192
+Tue, 03 Apr 2018 22:40:14 PngImagePlugin.py[line:137] DEBUG STREAM b'IHDR' 16 13
+Tue, 03 Apr 2018 22:40:14 PngImagePlugin.py[line:137] DEBUG STREAM b'IDAT' 41 8192
+Tue, 03 Apr 2018 22:40:14 PngImagePlugin.py[line:137] DEBUG STREAM b'IHDR' 16 13
+Tue, 03 Apr 2018 22:40:14 PngImagePlugin.py[line:137] DEBUG STREAM b'IDAT' 41 8192
+Tue, 03 Apr 2018 22:40:14 PngImagePlugin.py[line:137] DEBUG STREAM b'IHDR' 16 13
+Tue, 03 Apr 2018 22:40:14 PngImagePlugin.py[line:137] DEBUG STREAM b'IDAT' 41 8192
+Tue, 03 Apr 2018 22:40:14 PngImagePlugin.py[line:137] DEBUG STREAM b'IHDR' 16 13
+Tue, 03 Apr 2018 22:40:14 PngImagePlugin.py[line:137] DEBUG STREAM b'IDAT' 41 8192
+Tue, 03 Apr 2018 22:40:14 PngImagePlugin.py[line:137] DEBUG STREAM b'IHDR' 16 13
+Tue, 03 Apr 2018 22:40:14 PngImagePlugin.py[line:137] DEBUG STREAM b'IDAT' 41 8192
+Tue, 03 Apr 2018 22:40:14 PngImagePlugin.py[line:137] DEBUG STREAM b'IHDR' 16 13
+Tue, 03 Apr 2018 22:40:14 PngImagePlugin.py[line:137] DEBUG STREAM b'IDAT' 41 8192
+Tue, 03 Apr 2018 22:40:14 PngImagePlugin.py[line:137] DEBUG STREAM b'IHDR' 16 13
+Tue, 03 Apr 2018 22:40:14 PngImagePlugin.py[line:137] DEBUG STREAM b'IDAT' 41 8192
+Tue, 03 Apr 2018 22:40:14 PngImagePlugin.py[line:137] DEBUG STREAM b'IHDR' 16 13
+Tue, 03 Apr 2018 22:40:14 PngImagePlugin.py[line:137] DEBUG STREAM b'IDAT' 41 8192
+Tue, 03 Apr 2018 22:40:14 PngImagePlugin.py[line:137] DEBUG STREAM b'IHDR' 16 13
+Tue, 03 Apr 2018 22:40:14 PngImagePlugin.py[line:137] DEBUG STREAM b'IDAT' 41 8192
+Tue, 03 Apr 2018 22:40:14 PngImagePlugin.py[line:137] DEBUG STREAM b'IHDR' 16 13
+Tue, 03 Apr 2018 22:40:14 PngImagePlugin.py[line:137] DEBUG STREAM b'IDAT' 41 8192
+Tue, 03 Apr 2018 22:40:15 PngImagePlugin.py[line:137] DEBUG STREAM b'IHDR' 16 13
+Tue, 03 Apr 2018 22:40:15 PngImagePlugin.py[line:137] DEBUG STREAM b'IDAT' 41 8192
+Tue, 03 Apr 2018 22:40:15 PngImagePlugin.py[line:137] DEBUG STREAM b'IHDR' 16 13
+Tue, 03 Apr 2018 22:40:15 PngImagePlugin.py[line:137] DEBUG STREAM b'IDAT' 41 8192
+Tue, 03 Apr 2018 22:40:15 PngImagePlugin.py[line:137] DEBUG STREAM b'IHDR' 16 13
+Tue, 03 Apr 2018 22:40:15 PngImagePlugin.py[line:137] DEBUG STREAM b'IDAT' 41 8192
+Tue, 03 Apr 2018 22:40:15 PngImagePlugin.py[line:137] DEBUG STREAM b'IHDR' 16 13
+Tue, 03 Apr 2018 22:40:15 PngImagePlugin.py[line:137] DEBUG STREAM b'IDAT' 41 8192
+Tue, 03 Apr 2018 22:40:15 PngImagePlugin.py[line:137] DEBUG STREAM b'IHDR' 16 13
+Tue, 03 Apr 2018 22:40:15 PngImagePlugin.py[line:137] DEBUG STREAM b'IDAT' 41 8192
+Tue, 03 Apr 2018 22:40:15 PngImagePlugin.py[line:137] DEBUG STREAM b'IHDR' 16 13
+Tue, 03 Apr 2018 22:40:15 PngImagePlugin.py[line:137] DEBUG STREAM b'IDAT' 41 8192
+Tue, 03 Apr 2018 22:40:15 PngImagePlugin.py[line:137] DEBUG STREAM b'IHDR' 16 13
+Tue, 03 Apr 2018 22:40:15 PngImagePlugin.py[line:137] DEBUG STREAM b'IDAT' 41 8192
+Tue, 03 Apr 2018 22:40:15 PngImagePlugin.py[line:137] DEBUG STREAM b'IHDR' 16 13
+Tue, 03 Apr 2018 22:40:15 PngImagePlugin.py[line:137] DEBUG STREAM b'IDAT' 41 8192
+Tue, 03 Apr 2018 22:40:15 PngImagePlugin.py[line:137] DEBUG STREAM b'IHDR' 16 13
+Tue, 03 Apr 2018 22:40:15 PngImagePlugin.py[line:137] DEBUG STREAM b'IDAT' 41 8192
+Tue, 03 Apr 2018 22:40:15 PngImagePlugin.py[line:137] DEBUG STREAM b'IHDR' 16 13
+Tue, 03 Apr 2018 22:40:15 PngImagePlugin.py[line:137] DEBUG STREAM b'IDAT' 41 8192
+Tue, 03 Apr 2018 22:40:15 PngImagePlugin.py[line:137] DEBUG STREAM b'IHDR' 16 13
+Tue, 03 Apr 2018 22:40:15 PngImagePlugin.py[line:137] DEBUG STREAM b'IDAT' 41 8192
+Tue, 03 Apr 2018 22:40:15 PngImagePlugin.py[line:137] DEBUG STREAM b'IHDR' 16 13
+Tue, 03 Apr 2018 22:40:15 PngImagePlugin.py[line:137] DEBUG STREAM b'IDAT' 41 8192
+Tue, 03 Apr 2018 22:40:15 PngImagePlugin.py[line:137] DEBUG STREAM b'IHDR' 16 13
+Tue, 03 Apr 2018 22:40:15 PngImagePlugin.py[line:137] DEBUG STREAM b'IDAT' 41 8192
+Tue, 03 Apr 2018 22:40:15 PngImagePlugin.py[line:137] DEBUG STREAM b'IHDR' 16 13
+Tue, 03 Apr 2018 22:40:15 PngImagePlugin.py[line:137] DEBUG STREAM b'IDAT' 41 8192
+Tue, 03 Apr 2018 22:40:15 PngImagePlugin.py[line:137] DEBUG STREAM b'IHDR' 16 13
+Tue, 03 Apr 2018 22:40:15 PngImagePlugin.py[line:137] DEBUG STREAM b'IDAT' 41 8192
+Tue, 03 Apr 2018 22:40:15 PngImagePlugin.py[line:137] DEBUG STREAM b'IHDR' 16 13
+Tue, 03 Apr 2018 22:40:15 PngImagePlugin.py[line:137] DEBUG STREAM b'IDAT' 41 8192
+Tue, 03 Apr 2018 22:40:15 PngImagePlugin.py[line:137] DEBUG STREAM b'IHDR' 16 13
+Tue, 03 Apr 2018 22:40:15 PngImagePlugin.py[line:137] DEBUG STREAM b'IDAT' 41 8192
+Tue, 03 Apr 2018 22:40:15 PngImagePlugin.py[line:137] DEBUG STREAM b'IHDR' 16 13
+Tue, 03 Apr 2018 22:40:15 PngImagePlugin.py[line:137] DEBUG STREAM b'IDAT' 41 8192
+Tue, 03 Apr 2018 22:40:15 PngImagePlugin.py[line:137] DEBUG STREAM b'IHDR' 16 13
+Tue, 03 Apr 2018 22:40:15 PngImagePlugin.py[line:137] DEBUG STREAM b'IDAT' 41 8192
+Tue, 03 Apr 2018 22:40:15 PngImagePlugin.py[line:137] DEBUG STREAM b'IHDR' 16 13
+Tue, 03 Apr 2018 22:40:15 PngImagePlugin.py[line:137] DEBUG STREAM b'IDAT' 41 8192
+Tue, 03 Apr 2018 22:40:15 PngImagePlugin.py[line:137] DEBUG STREAM b'IHDR' 16 13
+Tue, 03 Apr 2018 22:40:15 PngImagePlugin.py[line:137] DEBUG STREAM b'IDAT' 41 8192
+Tue, 03 Apr 2018 22:40:16 PngImagePlugin.py[line:137] DEBUG STREAM b'IHDR' 16 13
+Tue, 03 Apr 2018 22:40:16 PngImagePlugin.py[line:137] DEBUG STREAM b'IDAT' 41 8192
+Tue, 03 Apr 2018 22:40:16 PngImagePlugin.py[line:137] DEBUG STREAM b'IHDR' 16 13
+Tue, 03 Apr 2018 22:40:16 PngImagePlugin.py[line:137] DEBUG STREAM b'IDAT' 41 8192
+Tue, 03 Apr 2018 22:40:16 PngImagePlugin.py[line:137] DEBUG STREAM b'IHDR' 16 13
+Tue, 03 Apr 2018 22:40:16 PngImagePlugin.py[line:137] DEBUG STREAM b'IDAT' 41 8192
+Tue, 03 Apr 2018 22:40:16 PngImagePlugin.py[line:137] DEBUG STREAM b'IHDR' 16 13
+Tue, 03 Apr 2018 22:40:16 PngImagePlugin.py[line:137] DEBUG STREAM b'IDAT' 41 8192
+Tue, 03 Apr 2018 22:40:16 PngImagePlugin.py[line:137] DEBUG STREAM b'IHDR' 16 13
+Tue, 03 Apr 2018 22:40:16 PngImagePlugin.py[line:137] DEBUG STREAM b'IDAT' 41 8192
+Tue, 03 Apr 2018 22:40:16 PngImagePlugin.py[line:137] DEBUG STREAM b'IHDR' 16 13
+Tue, 03 Apr 2018 22:40:16 PngImagePlugin.py[line:137] DEBUG STREAM b'IDAT' 41 8192
+Tue, 03 Apr 2018 22:40:16 PngImagePlugin.py[line:137] DEBUG STREAM b'IHDR' 16 13
+Tue, 03 Apr 2018 22:40:16 PngImagePlugin.py[line:137] DEBUG STREAM b'IDAT' 41 8192
+Tue, 03 Apr 2018 22:40:16 PngImagePlugin.py[line:137] DEBUG STREAM b'IHDR' 16 13
+Tue, 03 Apr 2018 22:40:16 PngImagePlugin.py[line:137] DEBUG STREAM b'IDAT' 41 8192
+Tue, 03 Apr 2018 22:40:16 PngImagePlugin.py[line:137] DEBUG STREAM b'IHDR' 16 13
+Tue, 03 Apr 2018 22:40:16 PngImagePlugin.py[line:137] DEBUG STREAM b'IDAT' 41 8192
+Tue, 03 Apr 2018 22:40:16 PngImagePlugin.py[line:137] DEBUG STREAM b'IHDR' 16 13
+Tue, 03 Apr 2018 22:40:16 PngImagePlugin.py[line:137] DEBUG STREAM b'IDAT' 41 8192
+Tue, 03 Apr 2018 22:40:16 PngImagePlugin.py[line:137] DEBUG STREAM b'IHDR' 16 13
+Tue, 03 Apr 2018 22:40:16 PngImagePlugin.py[line:137] DEBUG STREAM b'IDAT' 41 8192
+Tue, 03 Apr 2018 22:40:16 PngImagePlugin.py[line:137] DEBUG STREAM b'IHDR' 16 13
+Tue, 03 Apr 2018 22:40:16 PngImagePlugin.py[line:137] DEBUG STREAM b'IDAT' 41 8192
+Tue, 03 Apr 2018 22:40:20 PngImagePlugin.py[line:137] DEBUG STREAM b'IHDR' 16 13
+Tue, 03 Apr 2018 22:40:20 PngImagePlugin.py[line:137] DEBUG STREAM b'IDAT' 41 8192
+Tue, 03 Apr 2018 22:40:20 PngImagePlugin.py[line:137] DEBUG STREAM b'IHDR' 16 13
+Tue, 03 Apr 2018 22:40:20 PngImagePlugin.py[line:137] DEBUG STREAM b'IDAT' 41 8192
+Tue, 03 Apr 2018 22:40:20 PngImagePlugin.py[line:137] DEBUG STREAM b'IHDR' 16 13
+Tue, 03 Apr 2018 22:40:20 PngImagePlugin.py[line:137] DEBUG STREAM b'IDAT' 41 8192
+Tue, 03 Apr 2018 22:40:20 PngImagePlugin.py[line:137] DEBUG STREAM b'IHDR' 16 13
+Tue, 03 Apr 2018 22:40:20 PngImagePlugin.py[line:137] DEBUG STREAM b'IDAT' 41 8192
+Tue, 03 Apr 2018 22:40:20 PngImagePlugin.py[line:137] DEBUG STREAM b'IHDR' 16 13
+Tue, 03 Apr 2018 22:40:20 PngImagePlugin.py[line:137] DEBUG STREAM b'IDAT' 41 8192
+Tue, 03 Apr 2018 22:40:20 PngImagePlugin.py[line:137] DEBUG STREAM b'IHDR' 16 13
+Tue, 03 Apr 2018 22:40:20 PngImagePlugin.py[line:137] DEBUG STREAM b'IDAT' 41 8192
+Tue, 03 Apr 2018 22:40:20 PngImagePlugin.py[line:137] DEBUG STREAM b'IHDR' 16 13
+Tue, 03 Apr 2018 22:40:20 PngImagePlugin.py[line:137] DEBUG STREAM b'IDAT' 41 8192
+Tue, 03 Apr 2018 22:40:20 PngImagePlugin.py[line:137] DEBUG STREAM b'IHDR' 16 13
+Tue, 03 Apr 2018 22:40:20 PngImagePlugin.py[line:137] DEBUG STREAM b'IDAT' 41 8192
+Tue, 03 Apr 2018 22:40:20 PngImagePlugin.py[line:137] DEBUG STREAM b'IHDR' 16 13
+Tue, 03 Apr 2018 22:40:20 PngImagePlugin.py[line:137] DEBUG STREAM b'IDAT' 41 8192
+Tue, 03 Apr 2018 22:40:20 PngImagePlugin.py[line:137] DEBUG STREAM b'IHDR' 16 13
+Tue, 03 Apr 2018 22:40:20 PngImagePlugin.py[line:137] DEBUG STREAM b'IDAT' 41 8192
+Tue, 03 Apr 2018 22:40:20 PngImagePlugin.py[line:137] DEBUG STREAM b'IHDR' 16 13
+Tue, 03 Apr 2018 22:40:20 PngImagePlugin.py[line:137] DEBUG STREAM b'IDAT' 41 8192
+Tue, 03 Apr 2018 22:40:20 PngImagePlugin.py[line:137] DEBUG STREAM b'IHDR' 16 13
+Tue, 03 Apr 2018 22:40:20 PngImagePlugin.py[line:137] DEBUG STREAM b'IDAT' 41 8192
+Tue, 03 Apr 2018 22:40:21 PngImagePlugin.py[line:137] DEBUG STREAM b'IHDR' 16 13
+Tue, 03 Apr 2018 22:40:21 PngImagePlugin.py[line:137] DEBUG STREAM b'IDAT' 41 8192
+Tue, 03 Apr 2018 22:40:21 PngImagePlugin.py[line:137] DEBUG STREAM b'IHDR' 16 13
+Tue, 03 Apr 2018 22:40:21 PngImagePlugin.py[line:137] DEBUG STREAM b'IDAT' 41 8192
+Tue, 03 Apr 2018 22:40:21 PngImagePlugin.py[line:137] DEBUG STREAM b'IHDR' 16 13
+Tue, 03 Apr 2018 22:40:21 PngImagePlugin.py[line:137] DEBUG STREAM b'IDAT' 41 8192
+Tue, 03 Apr 2018 22:40:21 PngImagePlugin.py[line:137] DEBUG STREAM b'IHDR' 16 13
+Tue, 03 Apr 2018 22:40:21 PngImagePlugin.py[line:137] DEBUG STREAM b'IDAT' 41 8192
+Tue, 03 Apr 2018 22:40:21 PngImagePlugin.py[line:137] DEBUG STREAM b'IHDR' 16 13
+Tue, 03 Apr 2018 22:40:21 PngImagePlugin.py[line:137] DEBUG STREAM b'IDAT' 41 8192
+Tue, 03 Apr 2018 22:40:21 PngImagePlugin.py[line:137] DEBUG STREAM b'IHDR' 16 13
+Tue, 03 Apr 2018 22:40:21 PngImagePlugin.py[line:137] DEBUG STREAM b'IDAT' 41 8192
+Tue, 03 Apr 2018 22:40:21 PngImagePlugin.py[line:137] DEBUG STREAM b'IHDR' 16 13
+Tue, 03 Apr 2018 22:40:21 PngImagePlugin.py[line:137] DEBUG STREAM b'IDAT' 41 8192
+Tue, 03 Apr 2018 22:40:21 PngImagePlugin.py[line:137] DEBUG STREAM b'IHDR' 16 13
+Tue, 03 Apr 2018 22:40:21 PngImagePlugin.py[line:137] DEBUG STREAM b'IDAT' 41 8192
+Tue, 03 Apr 2018 22:40:21 PngImagePlugin.py[line:137] DEBUG STREAM b'IHDR' 16 13
+Tue, 03 Apr 2018 22:40:21 PngImagePlugin.py[line:137] DEBUG STREAM b'IDAT' 41 8192
+Tue, 03 Apr 2018 22:40:21 PngImagePlugin.py[line:137] DEBUG STREAM b'IHDR' 16 13
+Tue, 03 Apr 2018 22:40:21 PngImagePlugin.py[line:137] DEBUG STREAM b'IDAT' 41 8192
+Tue, 03 Apr 2018 22:40:21 PngImagePlugin.py[line:137] DEBUG STREAM b'IHDR' 16 13
+Tue, 03 Apr 2018 22:40:21 PngImagePlugin.py[line:137] DEBUG STREAM b'IDAT' 41 8192
+Tue, 03 Apr 2018 22:40:21 PngImagePlugin.py[line:137] DEBUG STREAM b'IHDR' 16 13
+Tue, 03 Apr 2018 22:40:21 PngImagePlugin.py[line:137] DEBUG STREAM b'IDAT' 41 8192
+Tue, 03 Apr 2018 22:40:21 PngImagePlugin.py[line:137] DEBUG STREAM b'IHDR' 16 13
+Tue, 03 Apr 2018 22:40:21 PngImagePlugin.py[line:137] DEBUG STREAM b'IDAT' 41 8192
+Tue, 03 Apr 2018 22:40:21 PngImagePlugin.py[line:137] DEBUG STREAM b'IHDR' 16 13
+Tue, 03 Apr 2018 22:40:21 PngImagePlugin.py[line:137] DEBUG STREAM b'IDAT' 41 8192
+Tue, 03 Apr 2018 22:40:21 PngImagePlugin.py[line:137] DEBUG STREAM b'IHDR' 16 13
+Tue, 03 Apr 2018 22:40:21 PngImagePlugin.py[line:137] DEBUG STREAM b'IDAT' 41 8192
+Tue, 03 Apr 2018 22:40:21 PngImagePlugin.py[line:137] DEBUG STREAM b'IHDR' 16 13
+Tue, 03 Apr 2018 22:40:21 PngImagePlugin.py[line:137] DEBUG STREAM b'IDAT' 41 8192
+Tue, 03 Apr 2018 22:40:21 PngImagePlugin.py[line:137] DEBUG STREAM b'IHDR' 16 13
+Tue, 03 Apr 2018 22:40:21 PngImagePlugin.py[line:137] DEBUG STREAM b'IDAT' 41 8192
+Tue, 03 Apr 2018 22:40:21 PngImagePlugin.py[line:137] DEBUG STREAM b'IHDR' 16 13
+Tue, 03 Apr 2018 22:40:21 PngImagePlugin.py[line:137] DEBUG STREAM b'IDAT' 41 8192
+Tue, 03 Apr 2018 22:40:21 PngImagePlugin.py[line:137] DEBUG STREAM b'IHDR' 16 13
+Tue, 03 Apr 2018 22:40:21 PngImagePlugin.py[line:137] DEBUG STREAM b'IDAT' 41 8192
+Tue, 03 Apr 2018 22:40:21 PngImagePlugin.py[line:137] DEBUG STREAM b'IHDR' 16 13
+Tue, 03 Apr 2018 22:40:21 PngImagePlugin.py[line:137] DEBUG STREAM b'IDAT' 41 8192
+Tue, 03 Apr 2018 22:40:21 PngImagePlugin.py[line:137] DEBUG STREAM b'IHDR' 16 13
+Tue, 03 Apr 2018 22:40:21 PngImagePlugin.py[line:137] DEBUG STREAM b'IDAT' 41 8192
+Tue, 03 Apr 2018 22:40:22 PngImagePlugin.py[line:137] DEBUG STREAM b'IHDR' 16 13
+Tue, 03 Apr 2018 22:40:22 PngImagePlugin.py[line:137] DEBUG STREAM b'IDAT' 41 8192
+Tue, 03 Apr 2018 22:40:22 PngImagePlugin.py[line:137] DEBUG STREAM b'IHDR' 16 13
+Tue, 03 Apr 2018 22:40:22 PngImagePlugin.py[line:137] DEBUG STREAM b'IDAT' 41 8192
+Tue, 03 Apr 2018 22:40:22 PngImagePlugin.py[line:137] DEBUG STREAM b'IHDR' 16 13
+Tue, 03 Apr 2018 22:40:22 PngImagePlugin.py[line:137] DEBUG STREAM b'IDAT' 41 8192
+Tue, 03 Apr 2018 22:40:22 PngImagePlugin.py[line:137] DEBUG STREAM b'IHDR' 16 13
+Tue, 03 Apr 2018 22:40:22 PngImagePlugin.py[line:137] DEBUG STREAM b'IDAT' 41 8192
+Tue, 03 Apr 2018 22:40:22 PngImagePlugin.py[line:137] DEBUG STREAM b'IHDR' 16 13
+Tue, 03 Apr 2018 22:40:22 PngImagePlugin.py[line:137] DEBUG STREAM b'IDAT' 41 8192
+Tue, 03 Apr 2018 22:40:22 PngImagePlugin.py[line:137] DEBUG STREAM b'IHDR' 16 13
+Tue, 03 Apr 2018 22:40:22 PngImagePlugin.py[line:137] DEBUG STREAM b'IDAT' 41 8192
+Tue, 03 Apr 2018 22:40:22 PngImagePlugin.py[line:137] DEBUG STREAM b'IHDR' 16 13
+Tue, 03 Apr 2018 22:40:22 PngImagePlugin.py[line:137] DEBUG STREAM b'IDAT' 41 8192
+Tue, 03 Apr 2018 22:40:22 PngImagePlugin.py[line:137] DEBUG STREAM b'IHDR' 16 13
+Tue, 03 Apr 2018 22:40:22 PngImagePlugin.py[line:137] DEBUG STREAM b'IDAT' 41 8192
+Tue, 03 Apr 2018 22:40:22 PngImagePlugin.py[line:137] DEBUG STREAM b'IHDR' 16 13
+Tue, 03 Apr 2018 22:40:22 PngImagePlugin.py[line:137] DEBUG STREAM b'IDAT' 41 8192
+Tue, 03 Apr 2018 22:40:22 PngImagePlugin.py[line:137] DEBUG STREAM b'IHDR' 16 13
+Tue, 03 Apr 2018 22:40:22 PngImagePlugin.py[line:137] DEBUG STREAM b'IDAT' 41 8192
+Tue, 03 Apr 2018 22:40:22 PngImagePlugin.py[line:137] DEBUG STREAM b'IHDR' 16 13
+Tue, 03 Apr 2018 22:40:22 PngImagePlugin.py[line:137] DEBUG STREAM b'IDAT' 41 8192
+Tue, 03 Apr 2018 22:40:25 PngImagePlugin.py[line:137] DEBUG STREAM b'IHDR' 16 13
+Tue, 03 Apr 2018 22:40:25 PngImagePlugin.py[line:137] DEBUG STREAM b'IDAT' 41 8192
+Tue, 03 Apr 2018 22:40:25 PngImagePlugin.py[line:137] DEBUG STREAM b'IHDR' 16 13
+Tue, 03 Apr 2018 22:40:25 PngImagePlugin.py[line:137] DEBUG STREAM b'IDAT' 41 8192
+Tue, 03 Apr 2018 22:40:25 PngImagePlugin.py[line:137] DEBUG STREAM b'IHDR' 16 13
+Tue, 03 Apr 2018 22:40:25 PngImagePlugin.py[line:137] DEBUG STREAM b'IDAT' 41 8192
+Tue, 03 Apr 2018 22:40:25 PngImagePlugin.py[line:137] DEBUG STREAM b'IHDR' 16 13
+Tue, 03 Apr 2018 22:40:25 PngImagePlugin.py[line:137] DEBUG STREAM b'IDAT' 41 8192
+Tue, 03 Apr 2018 22:40:25 PngImagePlugin.py[line:137] DEBUG STREAM b'IHDR' 16 13
+Tue, 03 Apr 2018 22:40:25 PngImagePlugin.py[line:137] DEBUG STREAM b'IDAT' 41 8192
+Tue, 03 Apr 2018 22:40:25 PngImagePlugin.py[line:137] DEBUG STREAM b'IHDR' 16 13
+Tue, 03 Apr 2018 22:40:25 PngImagePlugin.py[line:137] DEBUG STREAM b'IDAT' 41 8192
+Tue, 03 Apr 2018 22:40:25 PngImagePlugin.py[line:137] DEBUG STREAM b'IHDR' 16 13
+Tue, 03 Apr 2018 22:40:25 PngImagePlugin.py[line:137] DEBUG STREAM b'IDAT' 41 8192
+Tue, 03 Apr 2018 22:40:25 PngImagePlugin.py[line:137] DEBUG STREAM b'IHDR' 16 13
+Tue, 03 Apr 2018 22:40:25 PngImagePlugin.py[line:137] DEBUG STREAM b'IDAT' 41 8192
+Tue, 03 Apr 2018 22:40:25 PngImagePlugin.py[line:137] DEBUG STREAM b'IHDR' 16 13
+Tue, 03 Apr 2018 22:40:25 PngImagePlugin.py[line:137] DEBUG STREAM b'IDAT' 41 8192
+Tue, 03 Apr 2018 22:40:25 PngImagePlugin.py[line:137] DEBUG STREAM b'IHDR' 16 13
+Tue, 03 Apr 2018 22:40:25 PngImagePlugin.py[line:137] DEBUG STREAM b'IDAT' 41 8192
+Tue, 03 Apr 2018 22:40:25 PngImagePlugin.py[line:137] DEBUG STREAM b'IHDR' 16 13
+Tue, 03 Apr 2018 22:40:25 PngImagePlugin.py[line:137] DEBUG STREAM b'IDAT' 41 8192
+Tue, 03 Apr 2018 22:40:25 PngImagePlugin.py[line:137] DEBUG STREAM b'IHDR' 16 13
+Tue, 03 Apr 2018 22:40:25 PngImagePlugin.py[line:137] DEBUG STREAM b'IDAT' 41 8192
+Tue, 03 Apr 2018 22:40:25 PngImagePlugin.py[line:137] DEBUG STREAM b'IHDR' 16 13
+Tue, 03 Apr 2018 22:40:25 PngImagePlugin.py[line:137] DEBUG STREAM b'IDAT' 41 8192
+Tue, 03 Apr 2018 22:40:25 PngImagePlugin.py[line:137] DEBUG STREAM b'IHDR' 16 13
+Tue, 03 Apr 2018 22:40:25 PngImagePlugin.py[line:137] DEBUG STREAM b'IDAT' 41 8192
+Tue, 03 Apr 2018 22:40:25 PngImagePlugin.py[line:137] DEBUG STREAM b'IHDR' 16 13
+Tue, 03 Apr 2018 22:40:25 PngImagePlugin.py[line:137] DEBUG STREAM b'IDAT' 41 8192
+Tue, 03 Apr 2018 22:40:25 PngImagePlugin.py[line:137] DEBUG STREAM b'IHDR' 16 13
+Tue, 03 Apr 2018 22:40:25 PngImagePlugin.py[line:137] DEBUG STREAM b'IDAT' 41 8192
+Tue, 03 Apr 2018 22:40:25 PngImagePlugin.py[line:137] DEBUG STREAM b'IHDR' 16 13
+Tue, 03 Apr 2018 22:40:25 PngImagePlugin.py[line:137] DEBUG STREAM b'IDAT' 41 8192
+Tue, 03 Apr 2018 22:40:26 PngImagePlugin.py[line:137] DEBUG STREAM b'IHDR' 16 13
+Tue, 03 Apr 2018 22:40:26 PngImagePlugin.py[line:137] DEBUG STREAM b'IDAT' 41 8192
+Tue, 03 Apr 2018 22:40:26 PngImagePlugin.py[line:137] DEBUG STREAM b'IHDR' 16 13
+Tue, 03 Apr 2018 22:40:26 PngImagePlugin.py[line:137] DEBUG STREAM b'IDAT' 41 8192
+Tue, 03 Apr 2018 22:40:26 PngImagePlugin.py[line:137] DEBUG STREAM b'IHDR' 16 13
+Tue, 03 Apr 2018 22:40:26 PngImagePlugin.py[line:137] DEBUG STREAM b'IDAT' 41 8192
+Tue, 03 Apr 2018 22:40:26 PngImagePlugin.py[line:137] DEBUG STREAM b'IHDR' 16 13
+Tue, 03 Apr 2018 22:40:26 PngImagePlugin.py[line:137] DEBUG STREAM b'IDAT' 41 8192
+Tue, 03 Apr 2018 22:40:26 PngImagePlugin.py[line:137] DEBUG STREAM b'IHDR' 16 13
+Tue, 03 Apr 2018 22:40:26 PngImagePlugin.py[line:137] DEBUG STREAM b'IDAT' 41 8192
+Tue, 03 Apr 2018 22:40:26 PngImagePlugin.py[line:137] DEBUG STREAM b'IHDR' 16 13
+Tue, 03 Apr 2018 22:40:26 PngImagePlugin.py[line:137] DEBUG STREAM b'IDAT' 41 8192
+Tue, 03 Apr 2018 22:40:26 PngImagePlugin.py[line:137] DEBUG STREAM b'IHDR' 16 13
+Tue, 03 Apr 2018 22:40:26 PngImagePlugin.py[line:137] DEBUG STREAM b'IDAT' 41 8192
+Tue, 03 Apr 2018 22:40:26 PngImagePlugin.py[line:137] DEBUG STREAM b'IHDR' 16 13
+Tue, 03 Apr 2018 22:40:26 PngImagePlugin.py[line:137] DEBUG STREAM b'IDAT' 41 8192
+Tue, 03 Apr 2018 22:40:26 PngImagePlugin.py[line:137] DEBUG STREAM b'IHDR' 16 13
+Tue, 03 Apr 2018 22:40:26 PngImagePlugin.py[line:137] DEBUG STREAM b'IDAT' 41 8192
+Tue, 03 Apr 2018 22:40:26 PngImagePlugin.py[line:137] DEBUG STREAM b'IHDR' 16 13
+Tue, 03 Apr 2018 22:40:26 PngImagePlugin.py[line:137] DEBUG STREAM b'IDAT' 41 8192
+Tue, 03 Apr 2018 22:40:26 PngImagePlugin.py[line:137] DEBUG STREAM b'IHDR' 16 13
+Tue, 03 Apr 2018 22:40:26 PngImagePlugin.py[line:137] DEBUG STREAM b'IDAT' 41 8192
+Tue, 03 Apr 2018 22:40:26 PngImagePlugin.py[line:137] DEBUG STREAM b'IHDR' 16 13
+Tue, 03 Apr 2018 22:40:26 PngImagePlugin.py[line:137] DEBUG STREAM b'IDAT' 41 8192
+Tue, 03 Apr 2018 22:40:26 PngImagePlugin.py[line:137] DEBUG STREAM b'IHDR' 16 13
+Tue, 03 Apr 2018 22:40:26 PngImagePlugin.py[line:137] DEBUG STREAM b'IDAT' 41 8192
+Tue, 03 Apr 2018 22:40:26 PngImagePlugin.py[line:137] DEBUG STREAM b'IHDR' 16 13
+Tue, 03 Apr 2018 22:40:26 PngImagePlugin.py[line:137] DEBUG STREAM b'IDAT' 41 8192
+Tue, 03 Apr 2018 22:40:26 PngImagePlugin.py[line:137] DEBUG STREAM b'IHDR' 16 13
+Tue, 03 Apr 2018 22:40:26 PngImagePlugin.py[line:137] DEBUG STREAM b'IDAT' 41 8192
+Tue, 03 Apr 2018 22:40:26 PngImagePlugin.py[line:137] DEBUG STREAM b'IHDR' 16 13
+Tue, 03 Apr 2018 22:40:26 PngImagePlugin.py[line:137] DEBUG STREAM b'IDAT' 41 8192
+Tue, 03 Apr 2018 22:40:26 PngImagePlugin.py[line:137] DEBUG STREAM b'IHDR' 16 13
+Tue, 03 Apr 2018 22:40:26 PngImagePlugin.py[line:137] DEBUG STREAM b'IDAT' 41 8192
+Tue, 03 Apr 2018 22:40:26 PngImagePlugin.py[line:137] DEBUG STREAM b'IHDR' 16 13
+Tue, 03 Apr 2018 22:40:26 PngImagePlugin.py[line:137] DEBUG STREAM b'IDAT' 41 8192
+Tue, 03 Apr 2018 22:40:26 PngImagePlugin.py[line:137] DEBUG STREAM b'IHDR' 16 13
+Tue, 03 Apr 2018 22:40:26 PngImagePlugin.py[line:137] DEBUG STREAM b'IDAT' 41 8192
+Tue, 03 Apr 2018 22:40:26 PngImagePlugin.py[line:137] DEBUG STREAM b'IHDR' 16 13
+Tue, 03 Apr 2018 22:40:26 PngImagePlugin.py[line:137] DEBUG STREAM b'IDAT' 41 8192
+Tue, 03 Apr 2018 22:40:26 PngImagePlugin.py[line:137] DEBUG STREAM b'IHDR' 16 13
+Tue, 03 Apr 2018 22:40:26 PngImagePlugin.py[line:137] DEBUG STREAM b'IDAT' 41 8192
+Tue, 03 Apr 2018 22:40:27 PngImagePlugin.py[line:137] DEBUG STREAM b'IHDR' 16 13
+Tue, 03 Apr 2018 22:40:27 PngImagePlugin.py[line:137] DEBUG STREAM b'IDAT' 41 8192
+Tue, 03 Apr 2018 22:40:27 PngImagePlugin.py[line:137] DEBUG STREAM b'IHDR' 16 13
+Tue, 03 Apr 2018 22:40:27 PngImagePlugin.py[line:137] DEBUG STREAM b'IDAT' 41 8192
+Tue, 03 Apr 2018 22:40:27 PngImagePlugin.py[line:137] DEBUG STREAM b'IHDR' 16 13
+Tue, 03 Apr 2018 22:40:27 PngImagePlugin.py[line:137] DEBUG STREAM b'IDAT' 41 8192
+Tue, 03 Apr 2018 22:40:27 PngImagePlugin.py[line:137] DEBUG STREAM b'IHDR' 16 13
+Tue, 03 Apr 2018 22:40:27 PngImagePlugin.py[line:137] DEBUG STREAM b'IDAT' 41 8192
+Tue, 03 Apr 2018 22:40:27 PngImagePlugin.py[line:137] DEBUG STREAM b'IHDR' 16 13
+Tue, 03 Apr 2018 22:40:27 PngImagePlugin.py[line:137] DEBUG STREAM b'IDAT' 41 8192
+Tue, 03 Apr 2018 22:40:27 PngImagePlugin.py[line:137] DEBUG STREAM b'IHDR' 16 13
+Tue, 03 Apr 2018 22:40:27 PngImagePlugin.py[line:137] DEBUG STREAM b'IDAT' 41 8192
+Tue, 03 Apr 2018 22:40:27 PngImagePlugin.py[line:137] DEBUG STREAM b'IHDR' 16 13
+Tue, 03 Apr 2018 22:40:27 PngImagePlugin.py[line:137] DEBUG STREAM b'IDAT' 41 8192
+Tue, 03 Apr 2018 22:40:27 PngImagePlugin.py[line:137] DEBUG STREAM b'IHDR' 16 13
+Tue, 03 Apr 2018 22:40:27 PngImagePlugin.py[line:137] DEBUG STREAM b'IDAT' 41 8192
+Tue, 03 Apr 2018 22:40:27 PngImagePlugin.py[line:137] DEBUG STREAM b'IHDR' 16 13
+Tue, 03 Apr 2018 22:40:27 PngImagePlugin.py[line:137] DEBUG STREAM b'IDAT' 41 8192
+Tue, 03 Apr 2018 22:40:27 PngImagePlugin.py[line:137] DEBUG STREAM b'IHDR' 16 13
+Tue, 03 Apr 2018 22:40:27 PngImagePlugin.py[line:137] DEBUG STREAM b'IDAT' 41 8192
+Tue, 03 Apr 2018 22:40:27 PngImagePlugin.py[line:137] DEBUG STREAM b'IHDR' 16 13
+Tue, 03 Apr 2018 22:40:27 PngImagePlugin.py[line:137] DEBUG STREAM b'IDAT' 41 8192
+Tue, 03 Apr 2018 22:40:27 PngImagePlugin.py[line:137] DEBUG STREAM b'IHDR' 16 13
+Tue, 03 Apr 2018 22:40:27 PngImagePlugin.py[line:137] DEBUG STREAM b'IDAT' 41 8192
+Tue, 03 Apr 2018 22:40:27 PngImagePlugin.py[line:137] DEBUG STREAM b'IHDR' 16 13
+Tue, 03 Apr 2018 22:40:27 PngImagePlugin.py[line:137] DEBUG STREAM b'IDAT' 41 8192
+Tue, 03 Apr 2018 22:40:27 PngImagePlugin.py[line:137] DEBUG STREAM b'IHDR' 16 13
+Tue, 03 Apr 2018 22:40:27 PngImagePlugin.py[line:137] DEBUG STREAM b'IDAT' 41 8192
+Tue, 03 Apr 2018 22:40:27 PngImagePlugin.py[line:137] DEBUG STREAM b'IHDR' 16 13
+Tue, 03 Apr 2018 22:40:27 PngImagePlugin.py[line:137] DEBUG STREAM b'IDAT' 41 8192
+Tue, 03 Apr 2018 22:40:27 PngImagePlugin.py[line:137] DEBUG STREAM b'IHDR' 16 13
+Tue, 03 Apr 2018 22:40:27 PngImagePlugin.py[line:137] DEBUG STREAM b'IDAT' 41 8192
+Tue, 03 Apr 2018 22:40:27 PngImagePlugin.py[line:137] DEBUG STREAM b'IHDR' 16 13
+Tue, 03 Apr 2018 22:40:27 PngImagePlugin.py[line:137] DEBUG STREAM b'IDAT' 41 8192
+Tue, 03 Apr 2018 22:40:27 PngImagePlugin.py[line:137] DEBUG STREAM b'IHDR' 16 13
+Tue, 03 Apr 2018 22:40:27 PngImagePlugin.py[line:137] DEBUG STREAM b'IDAT' 41 8192
+Tue, 03 Apr 2018 22:40:27 PngImagePlugin.py[line:137] DEBUG STREAM b'IHDR' 16 13
+Tue, 03 Apr 2018 22:40:27 PngImagePlugin.py[line:137] DEBUG STREAM b'IDAT' 41 8192
+Tue, 03 Apr 2018 22:40:27 PngImagePlugin.py[line:137] DEBUG STREAM b'IHDR' 16 13
+Tue, 03 Apr 2018 22:40:27 PngImagePlugin.py[line:137] DEBUG STREAM b'IDAT' 41 8192
+Tue, 03 Apr 2018 22:40:27 PngImagePlugin.py[line:137] DEBUG STREAM b'IHDR' 16 13
+Tue, 03 Apr 2018 22:40:27 PngImagePlugin.py[line:137] DEBUG STREAM b'IDAT' 41 8192
+Tue, 03 Apr 2018 22:40:28 PngImagePlugin.py[line:137] DEBUG STREAM b'IHDR' 16 13
+Tue, 03 Apr 2018 22:40:28 PngImagePlugin.py[line:137] DEBUG STREAM b'IDAT' 41 8192
+Tue, 03 Apr 2018 22:40:28 PngImagePlugin.py[line:137] DEBUG STREAM b'IHDR' 16 13
+Tue, 03 Apr 2018 22:40:28 PngImagePlugin.py[line:137] DEBUG STREAM b'IDAT' 41 8192
+Tue, 03 Apr 2018 22:40:28 PngImagePlugin.py[line:137] DEBUG STREAM b'IHDR' 16 13
+Tue, 03 Apr 2018 22:40:28 PngImagePlugin.py[line:137] DEBUG STREAM b'IDAT' 41 8192
+Tue, 03 Apr 2018 22:40:28 PngImagePlugin.py[line:137] DEBUG STREAM b'IHDR' 16 13
+Tue, 03 Apr 2018 22:40:28 PngImagePlugin.py[line:137] DEBUG STREAM b'IDAT' 41 8192
+Tue, 03 Apr 2018 22:40:28 PngImagePlugin.py[line:137] DEBUG STREAM b'IHDR' 16 13
+Tue, 03 Apr 2018 22:40:28 PngImagePlugin.py[line:137] DEBUG STREAM b'IDAT' 41 8192
+Tue, 03 Apr 2018 22:40:28 PngImagePlugin.py[line:137] DEBUG STREAM b'IHDR' 16 13
+Tue, 03 Apr 2018 22:40:28 PngImagePlugin.py[line:137] DEBUG STREAM b'IDAT' 41 8192
+Tue, 03 Apr 2018 22:40:28 PngImagePlugin.py[line:137] DEBUG STREAM b'IHDR' 16 13
+Tue, 03 Apr 2018 22:40:28 PngImagePlugin.py[line:137] DEBUG STREAM b'IDAT' 41 8192
+Tue, 03 Apr 2018 22:40:28 PngImagePlugin.py[line:137] DEBUG STREAM b'IHDR' 16 13
+Tue, 03 Apr 2018 22:40:28 PngImagePlugin.py[line:137] DEBUG STREAM b'IDAT' 41 8192
+Tue, 03 Apr 2018 22:40:28 PngImagePlugin.py[line:137] DEBUG STREAM b'IHDR' 16 13
+Tue, 03 Apr 2018 22:40:28 PngImagePlugin.py[line:137] DEBUG STREAM b'IDAT' 41 8192
+Tue, 03 Apr 2018 22:40:28 PngImagePlugin.py[line:137] DEBUG STREAM b'IHDR' 16 13
+Tue, 03 Apr 2018 22:40:28 PngImagePlugin.py[line:137] DEBUG STREAM b'IDAT' 41 8192
+Tue, 03 Apr 2018 22:40:28 PngImagePlugin.py[line:137] DEBUG STREAM b'IHDR' 16 13
+Tue, 03 Apr 2018 22:40:28 PngImagePlugin.py[line:137] DEBUG STREAM b'IDAT' 41 8192
+Tue, 03 Apr 2018 22:40:28 PngImagePlugin.py[line:137] DEBUG STREAM b'IHDR' 16 13
+Tue, 03 Apr 2018 22:40:28 PngImagePlugin.py[line:137] DEBUG STREAM b'IDAT' 41 8192
+Tue, 03 Apr 2018 22:40:28 PngImagePlugin.py[line:137] DEBUG STREAM b'IHDR' 16 13
+Tue, 03 Apr 2018 22:40:28 PngImagePlugin.py[line:137] DEBUG STREAM b'IDAT' 41 8192
+Tue, 03 Apr 2018 22:40:28 PngImagePlugin.py[line:137] DEBUG STREAM b'IHDR' 16 13
+Tue, 03 Apr 2018 22:40:28 PngImagePlugin.py[line:137] DEBUG STREAM b'IDAT' 41 8192
+Tue, 03 Apr 2018 22:40:28 PngImagePlugin.py[line:137] DEBUG STREAM b'IHDR' 16 13
+Tue, 03 Apr 2018 22:40:28 PngImagePlugin.py[line:137] DEBUG STREAM b'IDAT' 41 8192
+Tue, 03 Apr 2018 22:40:28 PngImagePlugin.py[line:137] DEBUG STREAM b'IHDR' 16 13
+Tue, 03 Apr 2018 22:40:28 PngImagePlugin.py[line:137] DEBUG STREAM b'IDAT' 41 8192
+Tue, 03 Apr 2018 22:40:28 PngImagePlugin.py[line:137] DEBUG STREAM b'IHDR' 16 13
+Tue, 03 Apr 2018 22:40:28 PngImagePlugin.py[line:137] DEBUG STREAM b'IDAT' 41 8192
+Tue, 03 Apr 2018 22:40:28 PngImagePlugin.py[line:137] DEBUG STREAM b'IHDR' 16 13
+Tue, 03 Apr 2018 22:40:28 PngImagePlugin.py[line:137] DEBUG STREAM b'IDAT' 41 8192
+Tue, 03 Apr 2018 22:40:28 PngImagePlugin.py[line:137] DEBUG STREAM b'IHDR' 16 13
+Tue, 03 Apr 2018 22:40:28 PngImagePlugin.py[line:137] DEBUG STREAM b'IDAT' 41 8192
+Tue, 03 Apr 2018 22:40:28 PngImagePlugin.py[line:137] DEBUG STREAM b'IHDR' 16 13
+Tue, 03 Apr 2018 22:40:28 PngImagePlugin.py[line:137] DEBUG STREAM b'IDAT' 41 8192
+Tue, 03 Apr 2018 22:40:28 PngImagePlugin.py[line:137] DEBUG STREAM b'IHDR' 16 13
+Tue, 03 Apr 2018 22:40:28 PngImagePlugin.py[line:137] DEBUG STREAM b'IDAT' 41 8192
+Tue, 03 Apr 2018 22:40:28 PngImagePlugin.py[line:137] DEBUG STREAM b'IHDR' 16 13
+Tue, 03 Apr 2018 22:40:28 PngImagePlugin.py[line:137] DEBUG STREAM b'IDAT' 41 8192
+Tue, 03 Apr 2018 22:40:29 PngImagePlugin.py[line:137] DEBUG STREAM b'IHDR' 16 13
+Tue, 03 Apr 2018 22:40:29 PngImagePlugin.py[line:137] DEBUG STREAM b'IDAT' 41 8192
+Tue, 03 Apr 2018 22:40:29 PngImagePlugin.py[line:137] DEBUG STREAM b'IHDR' 16 13
+Tue, 03 Apr 2018 22:40:29 PngImagePlugin.py[line:137] DEBUG STREAM b'IDAT' 41 8192
+Tue, 03 Apr 2018 22:40:29 PngImagePlugin.py[line:137] DEBUG STREAM b'IHDR' 16 13
+Tue, 03 Apr 2018 22:40:29 PngImagePlugin.py[line:137] DEBUG STREAM b'IDAT' 41 8192
+Tue, 03 Apr 2018 22:40:29 PngImagePlugin.py[line:137] DEBUG STREAM b'IHDR' 16 13
+Tue, 03 Apr 2018 22:40:29 PngImagePlugin.py[line:137] DEBUG STREAM b'IDAT' 41 8192
+Tue, 03 Apr 2018 22:40:29 PngImagePlugin.py[line:137] DEBUG STREAM b'IHDR' 16 13
+Tue, 03 Apr 2018 22:40:29 PngImagePlugin.py[line:137] DEBUG STREAM b'IDAT' 41 8192
+Tue, 03 Apr 2018 22:40:29 PngImagePlugin.py[line:137] DEBUG STREAM b'IHDR' 16 13
+Tue, 03 Apr 2018 22:40:29 PngImagePlugin.py[line:137] DEBUG STREAM b'IDAT' 41 8192
+Tue, 03 Apr 2018 22:40:29 PngImagePlugin.py[line:137] DEBUG STREAM b'IHDR' 16 13
+Tue, 03 Apr 2018 22:40:29 PngImagePlugin.py[line:137] DEBUG STREAM b'IDAT' 41 8192
+Tue, 03 Apr 2018 22:40:29 PngImagePlugin.py[line:137] DEBUG STREAM b'IHDR' 16 13
+Tue, 03 Apr 2018 22:40:29 PngImagePlugin.py[line:137] DEBUG STREAM b'IDAT' 41 8192
+Tue, 03 Apr 2018 22:40:29 PngImagePlugin.py[line:137] DEBUG STREAM b'IHDR' 16 13
+Tue, 03 Apr 2018 22:40:29 PngImagePlugin.py[line:137] DEBUG STREAM b'IDAT' 41 8192
+Tue, 03 Apr 2018 22:40:29 PngImagePlugin.py[line:137] DEBUG STREAM b'IHDR' 16 13
+Tue, 03 Apr 2018 22:40:29 PngImagePlugin.py[line:137] DEBUG STREAM b'IDAT' 41 8192
+Tue, 03 Apr 2018 22:40:29 PngImagePlugin.py[line:137] DEBUG STREAM b'IHDR' 16 13
+Tue, 03 Apr 2018 22:40:29 PngImagePlugin.py[line:137] DEBUG STREAM b'IDAT' 41 8192
+Tue, 03 Apr 2018 22:40:29 PngImagePlugin.py[line:137] DEBUG STREAM b'IHDR' 16 13
+Tue, 03 Apr 2018 22:40:29 PngImagePlugin.py[line:137] DEBUG STREAM b'IDAT' 41 8192
+Tue, 03 Apr 2018 22:40:31 PngImagePlugin.py[line:137] DEBUG STREAM b'IHDR' 16 13
+Tue, 03 Apr 2018 22:40:31 PngImagePlugin.py[line:137] DEBUG STREAM b'IDAT' 41 8192
+Tue, 03 Apr 2018 22:40:31 PngImagePlugin.py[line:137] DEBUG STREAM b'IHDR' 16 13
+Tue, 03 Apr 2018 22:40:31 PngImagePlugin.py[line:137] DEBUG STREAM b'IDAT' 41 8192
+Tue, 03 Apr 2018 22:40:31 PngImagePlugin.py[line:137] DEBUG STREAM b'IHDR' 16 13
+Tue, 03 Apr 2018 22:40:32 PngImagePlugin.py[line:137] DEBUG STREAM b'IDAT' 41 8192
+Tue, 03 Apr 2018 22:40:32 PngImagePlugin.py[line:137] DEBUG STREAM b'IHDR' 16 13
+Tue, 03 Apr 2018 22:40:32 PngImagePlugin.py[line:137] DEBUG STREAM b'IDAT' 41 8192
+Tue, 03 Apr 2018 22:40:32 PngImagePlugin.py[line:137] DEBUG STREAM b'IHDR' 16 13
+Tue, 03 Apr 2018 22:40:32 PngImagePlugin.py[line:137] DEBUG STREAM b'IDAT' 41 8192
+Tue, 03 Apr 2018 22:40:32 PngImagePlugin.py[line:137] DEBUG STREAM b'IHDR' 16 13
+Tue, 03 Apr 2018 22:40:32 PngImagePlugin.py[line:137] DEBUG STREAM b'IDAT' 41 8192
+Tue, 03 Apr 2018 22:40:32 PngImagePlugin.py[line:137] DEBUG STREAM b'IHDR' 16 13
+Tue, 03 Apr 2018 22:40:32 PngImagePlugin.py[line:137] DEBUG STREAM b'IDAT' 41 8192
+Tue, 03 Apr 2018 22:40:32 PngImagePlugin.py[line:137] DEBUG STREAM b'IHDR' 16 13
+Tue, 03 Apr 2018 22:40:32 PngImagePlugin.py[line:137] DEBUG STREAM b'IDAT' 41 8192
+Tue, 03 Apr 2018 22:40:32 PngImagePlugin.py[line:137] DEBUG STREAM b'IHDR' 16 13
+Tue, 03 Apr 2018 22:40:32 PngImagePlugin.py[line:137] DEBUG STREAM b'IDAT' 41 8192
+Tue, 03 Apr 2018 22:40:32 PngImagePlugin.py[line:137] DEBUG STREAM b'IHDR' 16 13
+Tue, 03 Apr 2018 22:40:32 PngImagePlugin.py[line:137] DEBUG STREAM b'IDAT' 41 8192
+Tue, 03 Apr 2018 22:40:32 PngImagePlugin.py[line:137] DEBUG STREAM b'IHDR' 16 13
+Tue, 03 Apr 2018 22:40:32 PngImagePlugin.py[line:137] DEBUG STREAM b'IDAT' 41 8192
+Tue, 03 Apr 2018 22:40:32 PngImagePlugin.py[line:137] DEBUG STREAM b'IHDR' 16 13
+Tue, 03 Apr 2018 22:40:32 PngImagePlugin.py[line:137] DEBUG STREAM b'IDAT' 41 8192
+Tue, 03 Apr 2018 22:40:32 PngImagePlugin.py[line:137] DEBUG STREAM b'IHDR' 16 13
+Tue, 03 Apr 2018 22:40:32 PngImagePlugin.py[line:137] DEBUG STREAM b'IDAT' 41 8192
+Tue, 03 Apr 2018 22:40:32 PngImagePlugin.py[line:137] DEBUG STREAM b'IHDR' 16 13
+Tue, 03 Apr 2018 22:40:32 PngImagePlugin.py[line:137] DEBUG STREAM b'IDAT' 41 8192
+Tue, 03 Apr 2018 22:40:32 PngImagePlugin.py[line:137] DEBUG STREAM b'IHDR' 16 13
+Tue, 03 Apr 2018 22:40:32 PngImagePlugin.py[line:137] DEBUG STREAM b'IDAT' 41 8192
+Tue, 03 Apr 2018 22:40:32 PngImagePlugin.py[line:137] DEBUG STREAM b'IHDR' 16 13
+Tue, 03 Apr 2018 22:40:32 PngImagePlugin.py[line:137] DEBUG STREAM b'IDAT' 41 8192
+Tue, 03 Apr 2018 22:40:32 PngImagePlugin.py[line:137] DEBUG STREAM b'IHDR' 16 13
+Tue, 03 Apr 2018 22:40:32 PngImagePlugin.py[line:137] DEBUG STREAM b'IDAT' 41 8192
+Tue, 03 Apr 2018 22:40:32 PngImagePlugin.py[line:137] DEBUG STREAM b'IHDR' 16 13
+Tue, 03 Apr 2018 22:40:32 PngImagePlugin.py[line:137] DEBUG STREAM b'IDAT' 41 8192
+Tue, 03 Apr 2018 22:40:32 PngImagePlugin.py[line:137] DEBUG STREAM b'IHDR' 16 13
+Tue, 03 Apr 2018 22:40:32 PngImagePlugin.py[line:137] DEBUG STREAM b'IDAT' 41 8192
+Tue, 03 Apr 2018 22:40:32 PngImagePlugin.py[line:137] DEBUG STREAM b'IHDR' 16 13
+Tue, 03 Apr 2018 22:40:32 PngImagePlugin.py[line:137] DEBUG STREAM b'IDAT' 41 8192
+Tue, 03 Apr 2018 22:40:32 PngImagePlugin.py[line:137] DEBUG STREAM b'IHDR' 16 13
+Tue, 03 Apr 2018 22:40:32 PngImagePlugin.py[line:137] DEBUG STREAM b'IDAT' 41 8192
+Tue, 03 Apr 2018 22:40:32 PngImagePlugin.py[line:137] DEBUG STREAM b'IHDR' 16 13
+Tue, 03 Apr 2018 22:40:32 PngImagePlugin.py[line:137] DEBUG STREAM b'IDAT' 41 8192
+Tue, 03 Apr 2018 22:40:32 PngImagePlugin.py[line:137] DEBUG STREAM b'IHDR' 16 13
+Tue, 03 Apr 2018 22:40:32 PngImagePlugin.py[line:137] DEBUG STREAM b'IDAT' 41 8192
+Tue, 03 Apr 2018 22:40:32 PngImagePlugin.py[line:137] DEBUG STREAM b'IHDR' 16 13
+Tue, 03 Apr 2018 22:40:32 PngImagePlugin.py[line:137] DEBUG STREAM b'IDAT' 41 8192
+Tue, 03 Apr 2018 22:40:33 PngImagePlugin.py[line:137] DEBUG STREAM b'IHDR' 16 13
+Tue, 03 Apr 2018 22:40:33 PngImagePlugin.py[line:137] DEBUG STREAM b'IDAT' 41 8192
+Tue, 03 Apr 2018 22:40:33 PngImagePlugin.py[line:137] DEBUG STREAM b'IHDR' 16 13
+Tue, 03 Apr 2018 22:40:33 PngImagePlugin.py[line:137] DEBUG STREAM b'IDAT' 41 8192
+Tue, 03 Apr 2018 22:40:33 PngImagePlugin.py[line:137] DEBUG STREAM b'IHDR' 16 13
+Tue, 03 Apr 2018 22:40:33 PngImagePlugin.py[line:137] DEBUG STREAM b'IDAT' 41 8192
+Tue, 03 Apr 2018 22:40:33 PngImagePlugin.py[line:137] DEBUG STREAM b'IHDR' 16 13
+Tue, 03 Apr 2018 22:40:33 PngImagePlugin.py[line:137] DEBUG STREAM b'IDAT' 41 8192
+Tue, 03 Apr 2018 22:40:33 PngImagePlugin.py[line:137] DEBUG STREAM b'IHDR' 16 13
+Tue, 03 Apr 2018 22:40:33 PngImagePlugin.py[line:137] DEBUG STREAM b'IDAT' 41 8192
+Tue, 03 Apr 2018 22:40:33 PngImagePlugin.py[line:137] DEBUG STREAM b'IHDR' 16 13
+Tue, 03 Apr 2018 22:40:33 PngImagePlugin.py[line:137] DEBUG STREAM b'IDAT' 41 8192
+Tue, 03 Apr 2018 22:40:33 PngImagePlugin.py[line:137] DEBUG STREAM b'IHDR' 16 13
+Tue, 03 Apr 2018 22:40:33 PngImagePlugin.py[line:137] DEBUG STREAM b'IDAT' 41 8192
+Tue, 03 Apr 2018 22:40:33 PngImagePlugin.py[line:137] DEBUG STREAM b'IHDR' 16 13
+Tue, 03 Apr 2018 22:40:33 PngImagePlugin.py[line:137] DEBUG STREAM b'IDAT' 41 8192
+Tue, 03 Apr 2018 22:40:33 PngImagePlugin.py[line:137] DEBUG STREAM b'IHDR' 16 13
+Tue, 03 Apr 2018 22:40:33 PngImagePlugin.py[line:137] DEBUG STREAM b'IDAT' 41 8192
+Tue, 03 Apr 2018 22:40:33 PngImagePlugin.py[line:137] DEBUG STREAM b'IHDR' 16 13
+Tue, 03 Apr 2018 22:40:33 PngImagePlugin.py[line:137] DEBUG STREAM b'IDAT' 41 8192
+Tue, 03 Apr 2018 22:40:33 PngImagePlugin.py[line:137] DEBUG STREAM b'IHDR' 16 13
+Tue, 03 Apr 2018 22:40:33 PngImagePlugin.py[line:137] DEBUG STREAM b'IDAT' 41 8192
+Tue, 03 Apr 2018 22:40:33 PngImagePlugin.py[line:137] DEBUG STREAM b'IHDR' 16 13
+Tue, 03 Apr 2018 22:40:33 PngImagePlugin.py[line:137] DEBUG STREAM b'IDAT' 41 8192
+Tue, 03 Apr 2018 22:40:33 PngImagePlugin.py[line:137] DEBUG STREAM b'IHDR' 16 13
+Tue, 03 Apr 2018 22:40:33 PngImagePlugin.py[line:137] DEBUG STREAM b'IDAT' 41 8192
+Tue, 03 Apr 2018 22:40:33 PngImagePlugin.py[line:137] DEBUG STREAM b'IHDR' 16 13
+Tue, 03 Apr 2018 22:40:33 PngImagePlugin.py[line:137] DEBUG STREAM b'IDAT' 41 8192
+Tue, 03 Apr 2018 22:40:33 PngImagePlugin.py[line:137] DEBUG STREAM b'IHDR' 16 13
+Tue, 03 Apr 2018 22:40:33 PngImagePlugin.py[line:137] DEBUG STREAM b'IDAT' 41 8192
+Tue, 03 Apr 2018 22:40:33 PngImagePlugin.py[line:137] DEBUG STREAM b'IHDR' 16 13
+Tue, 03 Apr 2018 22:40:33 PngImagePlugin.py[line:137] DEBUG STREAM b'IDAT' 41 8192
+Tue, 03 Apr 2018 22:40:33 PngImagePlugin.py[line:137] DEBUG STREAM b'IHDR' 16 13
+Tue, 03 Apr 2018 22:40:33 PngImagePlugin.py[line:137] DEBUG STREAM b'IDAT' 41 8192
+Tue, 03 Apr 2018 22:40:33 PngImagePlugin.py[line:137] DEBUG STREAM b'IHDR' 16 13
+Tue, 03 Apr 2018 22:40:33 PngImagePlugin.py[line:137] DEBUG STREAM b'IDAT' 41 8192
+Tue, 03 Apr 2018 22:40:33 PngImagePlugin.py[line:137] DEBUG STREAM b'IHDR' 16 13
+Tue, 03 Apr 2018 22:40:33 PngImagePlugin.py[line:137] DEBUG STREAM b'IDAT' 41 8192
+Tue, 03 Apr 2018 22:40:33 PngImagePlugin.py[line:137] DEBUG STREAM b'IHDR' 16 13
+Tue, 03 Apr 2018 22:40:33 PngImagePlugin.py[line:137] DEBUG STREAM b'IDAT' 41 8192
+Tue, 03 Apr 2018 22:40:33 PngImagePlugin.py[line:137] DEBUG STREAM b'IHDR' 16 13
+Tue, 03 Apr 2018 22:40:33 PngImagePlugin.py[line:137] DEBUG STREAM b'IDAT' 41 8192
+Tue, 03 Apr 2018 22:40:34 PngImagePlugin.py[line:137] DEBUG STREAM b'IHDR' 16 13
+Tue, 03 Apr 2018 22:40:34 PngImagePlugin.py[line:137] DEBUG STREAM b'IDAT' 41 8192
+Tue, 03 Apr 2018 22:40:34 PngImagePlugin.py[line:137] DEBUG STREAM b'IHDR' 16 13
+Tue, 03 Apr 2018 22:40:34 PngImagePlugin.py[line:137] DEBUG STREAM b'IDAT' 41 8192
+Tue, 03 Apr 2018 22:40:34 PngImagePlugin.py[line:137] DEBUG STREAM b'IHDR' 16 13
+Tue, 03 Apr 2018 22:40:34 PngImagePlugin.py[line:137] DEBUG STREAM b'IDAT' 41 8192
+Tue, 03 Apr 2018 22:40:34 PngImagePlugin.py[line:137] DEBUG STREAM b'IHDR' 16 13
+Tue, 03 Apr 2018 22:40:34 PngImagePlugin.py[line:137] DEBUG STREAM b'IDAT' 41 8192
+Tue, 03 Apr 2018 22:40:36 PngImagePlugin.py[line:137] DEBUG STREAM b'IHDR' 16 13
+Tue, 03 Apr 2018 22:40:36 PngImagePlugin.py[line:137] DEBUG STREAM b'IDAT' 41 8192
+Tue, 03 Apr 2018 22:40:36 PngImagePlugin.py[line:137] DEBUG STREAM b'IHDR' 16 13
+Tue, 03 Apr 2018 22:40:36 PngImagePlugin.py[line:137] DEBUG STREAM b'IDAT' 41 8192
+Tue, 03 Apr 2018 22:40:36 PngImagePlugin.py[line:137] DEBUG STREAM b'IHDR' 16 13
+Tue, 03 Apr 2018 22:40:36 PngImagePlugin.py[line:137] DEBUG STREAM b'IDAT' 41 8192
+Tue, 03 Apr 2018 22:40:36 PngImagePlugin.py[line:137] DEBUG STREAM b'IHDR' 16 13
+Tue, 03 Apr 2018 22:40:36 PngImagePlugin.py[line:137] DEBUG STREAM b'IDAT' 41 8192
+Tue, 03 Apr 2018 22:40:36 PngImagePlugin.py[line:137] DEBUG STREAM b'IHDR' 16 13
+Tue, 03 Apr 2018 22:40:36 PngImagePlugin.py[line:137] DEBUG STREAM b'IDAT' 41 8192
+Tue, 03 Apr 2018 22:40:36 PngImagePlugin.py[line:137] DEBUG STREAM b'IHDR' 16 13
+Tue, 03 Apr 2018 22:40:36 PngImagePlugin.py[line:137] DEBUG STREAM b'IDAT' 41 8192
+Tue, 03 Apr 2018 22:40:36 PngImagePlugin.py[line:137] DEBUG STREAM b'IHDR' 16 13
+Tue, 03 Apr 2018 22:40:36 PngImagePlugin.py[line:137] DEBUG STREAM b'IDAT' 41 8192
+Tue, 03 Apr 2018 22:40:36 PngImagePlugin.py[line:137] DEBUG STREAM b'IHDR' 16 13
+Tue, 03 Apr 2018 22:40:36 PngImagePlugin.py[line:137] DEBUG STREAM b'IDAT' 41 8192
+Tue, 03 Apr 2018 22:40:36 PngImagePlugin.py[line:137] DEBUG STREAM b'IHDR' 16 13
+Tue, 03 Apr 2018 22:40:36 PngImagePlugin.py[line:137] DEBUG STREAM b'IDAT' 41 8192
+Tue, 03 Apr 2018 22:40:36 PngImagePlugin.py[line:137] DEBUG STREAM b'IHDR' 16 13
+Tue, 03 Apr 2018 22:40:36 PngImagePlugin.py[line:137] DEBUG STREAM b'IDAT' 41 8192
+Tue, 03 Apr 2018 22:40:36 PngImagePlugin.py[line:137] DEBUG STREAM b'IHDR' 16 13
+Tue, 03 Apr 2018 22:40:36 PngImagePlugin.py[line:137] DEBUG STREAM b'IDAT' 41 8192
+Tue, 03 Apr 2018 22:40:36 PngImagePlugin.py[line:137] DEBUG STREAM b'IHDR' 16 13
+Tue, 03 Apr 2018 22:40:36 PngImagePlugin.py[line:137] DEBUG STREAM b'IDAT' 41 8192
+Tue, 03 Apr 2018 22:40:36 PngImagePlugin.py[line:137] DEBUG STREAM b'IHDR' 16 13
+Tue, 03 Apr 2018 22:40:36 PngImagePlugin.py[line:137] DEBUG STREAM b'IDAT' 41 8192
+Tue, 03 Apr 2018 22:40:36 PngImagePlugin.py[line:137] DEBUG STREAM b'IHDR' 16 13
+Tue, 03 Apr 2018 22:40:36 PngImagePlugin.py[line:137] DEBUG STREAM b'IDAT' 41 8192
+Tue, 03 Apr 2018 22:40:36 PngImagePlugin.py[line:137] DEBUG STREAM b'IHDR' 16 13
+Tue, 03 Apr 2018 22:40:36 PngImagePlugin.py[line:137] DEBUG STREAM b'IDAT' 41 8192
+Tue, 03 Apr 2018 22:40:36 PngImagePlugin.py[line:137] DEBUG STREAM b'IHDR' 16 13
+Tue, 03 Apr 2018 22:40:36 PngImagePlugin.py[line:137] DEBUG STREAM b'IDAT' 41 8192
+Tue, 03 Apr 2018 22:40:36 PngImagePlugin.py[line:137] DEBUG STREAM b'IHDR' 16 13
+Tue, 03 Apr 2018 22:40:36 PngImagePlugin.py[line:137] DEBUG STREAM b'IDAT' 41 8192
+Tue, 03 Apr 2018 22:40:36 PngImagePlugin.py[line:137] DEBUG STREAM b'IHDR' 16 13
+Tue, 03 Apr 2018 22:40:36 PngImagePlugin.py[line:137] DEBUG STREAM b'IDAT' 41 8192
+Tue, 03 Apr 2018 22:40:36 PngImagePlugin.py[line:137] DEBUG STREAM b'IHDR' 16 13
+Tue, 03 Apr 2018 22:40:36 PngImagePlugin.py[line:137] DEBUG STREAM b'IDAT' 41 8192
+Tue, 03 Apr 2018 22:40:37 PngImagePlugin.py[line:137] DEBUG STREAM b'IHDR' 16 13
+Tue, 03 Apr 2018 22:40:37 PngImagePlugin.py[line:137] DEBUG STREAM b'IDAT' 41 8192
+Tue, 03 Apr 2018 22:40:37 PngImagePlugin.py[line:137] DEBUG STREAM b'IHDR' 16 13
+Tue, 03 Apr 2018 22:40:37 PngImagePlugin.py[line:137] DEBUG STREAM b'IDAT' 41 8192
+Tue, 03 Apr 2018 22:40:37 PngImagePlugin.py[line:137] DEBUG STREAM b'IHDR' 16 13
+Tue, 03 Apr 2018 22:40:37 PngImagePlugin.py[line:137] DEBUG STREAM b'IDAT' 41 8192
+Tue, 03 Apr 2018 22:40:37 PngImagePlugin.py[line:137] DEBUG STREAM b'IHDR' 16 13
+Tue, 03 Apr 2018 22:40:37 PngImagePlugin.py[line:137] DEBUG STREAM b'IDAT' 41 8192
+Tue, 03 Apr 2018 22:40:37 PngImagePlugin.py[line:137] DEBUG STREAM b'IHDR' 16 13
+Tue, 03 Apr 2018 22:40:37 PngImagePlugin.py[line:137] DEBUG STREAM b'IDAT' 41 8192
+Tue, 03 Apr 2018 22:40:37 PngImagePlugin.py[line:137] DEBUG STREAM b'IHDR' 16 13
+Tue, 03 Apr 2018 22:40:37 PngImagePlugin.py[line:137] DEBUG STREAM b'IDAT' 41 8192
+Tue, 03 Apr 2018 22:40:37 PngImagePlugin.py[line:137] DEBUG STREAM b'IHDR' 16 13
+Tue, 03 Apr 2018 22:40:37 PngImagePlugin.py[line:137] DEBUG STREAM b'IDAT' 41 8192
+Tue, 03 Apr 2018 22:40:37 PngImagePlugin.py[line:137] DEBUG STREAM b'IHDR' 16 13
+Tue, 03 Apr 2018 22:40:37 PngImagePlugin.py[line:137] DEBUG STREAM b'IDAT' 41 8192
+Tue, 03 Apr 2018 22:40:37 PngImagePlugin.py[line:137] DEBUG STREAM b'IHDR' 16 13
+Tue, 03 Apr 2018 22:40:37 PngImagePlugin.py[line:137] DEBUG STREAM b'IDAT' 41 8192
+Tue, 03 Apr 2018 22:40:37 PngImagePlugin.py[line:137] DEBUG STREAM b'IHDR' 16 13
+Tue, 03 Apr 2018 22:40:37 PngImagePlugin.py[line:137] DEBUG STREAM b'IDAT' 41 8192
+Tue, 03 Apr 2018 22:40:37 PngImagePlugin.py[line:137] DEBUG STREAM b'IHDR' 16 13
+Tue, 03 Apr 2018 22:40:37 PngImagePlugin.py[line:137] DEBUG STREAM b'IDAT' 41 8192
+Tue, 03 Apr 2018 22:40:37 PngImagePlugin.py[line:137] DEBUG STREAM b'IHDR' 16 13
+Tue, 03 Apr 2018 22:40:37 PngImagePlugin.py[line:137] DEBUG STREAM b'IDAT' 41 8192
+Tue, 03 Apr 2018 22:40:37 PngImagePlugin.py[line:137] DEBUG STREAM b'IHDR' 16 13
+Tue, 03 Apr 2018 22:40:37 PngImagePlugin.py[line:137] DEBUG STREAM b'IDAT' 41 8192
+Tue, 03 Apr 2018 22:40:37 PngImagePlugin.py[line:137] DEBUG STREAM b'IHDR' 16 13
+Tue, 03 Apr 2018 22:40:37 PngImagePlugin.py[line:137] DEBUG STREAM b'IDAT' 41 8192
+Tue, 03 Apr 2018 22:40:37 PngImagePlugin.py[line:137] DEBUG STREAM b'IHDR' 16 13
+Tue, 03 Apr 2018 22:40:37 PngImagePlugin.py[line:137] DEBUG STREAM b'IDAT' 41 8192
+Tue, 03 Apr 2018 22:40:37 PngImagePlugin.py[line:137] DEBUG STREAM b'IHDR' 16 13
+Tue, 03 Apr 2018 22:40:37 PngImagePlugin.py[line:137] DEBUG STREAM b'IDAT' 41 8192
+Tue, 03 Apr 2018 22:40:37 PngImagePlugin.py[line:137] DEBUG STREAM b'IHDR' 16 13
+Tue, 03 Apr 2018 22:40:37 PngImagePlugin.py[line:137] DEBUG STREAM b'IDAT' 41 8192
+Tue, 03 Apr 2018 22:40:37 PngImagePlugin.py[line:137] DEBUG STREAM b'IHDR' 16 13
+Tue, 03 Apr 2018 22:40:37 PngImagePlugin.py[line:137] DEBUG STREAM b'IDAT' 41 8192
+Tue, 03 Apr 2018 22:40:37 PngImagePlugin.py[line:137] DEBUG STREAM b'IHDR' 16 13
+Tue, 03 Apr 2018 22:40:37 PngImagePlugin.py[line:137] DEBUG STREAM b'IDAT' 41 8192
+Tue, 03 Apr 2018 22:40:37 PngImagePlugin.py[line:137] DEBUG STREAM b'IHDR' 16 13
+Tue, 03 Apr 2018 22:40:37 PngImagePlugin.py[line:137] DEBUG STREAM b'IDAT' 41 8192
+Tue, 03 Apr 2018 22:40:37 PngImagePlugin.py[line:137] DEBUG STREAM b'IHDR' 16 13
+Tue, 03 Apr 2018 22:40:37 PngImagePlugin.py[line:137] DEBUG STREAM b'IDAT' 41 8192
+Tue, 03 Apr 2018 22:40:37 PngImagePlugin.py[line:137] DEBUG STREAM b'IHDR' 16 13
+Tue, 03 Apr 2018 22:40:37 PngImagePlugin.py[line:137] DEBUG STREAM b'IDAT' 41 8192
+Tue, 03 Apr 2018 22:40:38 PngImagePlugin.py[line:137] DEBUG STREAM b'IHDR' 16 13
+Tue, 03 Apr 2018 22:40:38 PngImagePlugin.py[line:137] DEBUG STREAM b'IDAT' 41 8192
+Tue, 03 Apr 2018 22:40:38 PngImagePlugin.py[line:137] DEBUG STREAM b'IHDR' 16 13
+Tue, 03 Apr 2018 22:40:38 PngImagePlugin.py[line:137] DEBUG STREAM b'IDAT' 41 8192
+Tue, 03 Apr 2018 22:40:38 PngImagePlugin.py[line:137] DEBUG STREAM b'IHDR' 16 13
+Tue, 03 Apr 2018 22:40:38 PngImagePlugin.py[line:137] DEBUG STREAM b'IDAT' 41 8192
+Tue, 03 Apr 2018 22:40:38 PngImagePlugin.py[line:137] DEBUG STREAM b'IHDR' 16 13
+Tue, 03 Apr 2018 22:40:38 PngImagePlugin.py[line:137] DEBUG STREAM b'IDAT' 41 8192
+Tue, 03 Apr 2018 22:40:38 PngImagePlugin.py[line:137] DEBUG STREAM b'IHDR' 16 13
+Tue, 03 Apr 2018 22:40:38 PngImagePlugin.py[line:137] DEBUG STREAM b'IDAT' 41 8192
+Tue, 03 Apr 2018 22:40:38 PngImagePlugin.py[line:137] DEBUG STREAM b'IHDR' 16 13
+Tue, 03 Apr 2018 22:40:38 PngImagePlugin.py[line:137] DEBUG STREAM b'IDAT' 41 8192
+Tue, 03 Apr 2018 22:40:38 PngImagePlugin.py[line:137] DEBUG STREAM b'IHDR' 16 13
+Tue, 03 Apr 2018 22:40:38 PngImagePlugin.py[line:137] DEBUG STREAM b'IDAT' 41 8192
+Tue, 03 Apr 2018 22:40:38 PngImagePlugin.py[line:137] DEBUG STREAM b'IHDR' 16 13
+Tue, 03 Apr 2018 22:40:38 PngImagePlugin.py[line:137] DEBUG STREAM b'IDAT' 41 8192
+Tue, 03 Apr 2018 22:40:38 PngImagePlugin.py[line:137] DEBUG STREAM b'IHDR' 16 13
+Tue, 03 Apr 2018 22:40:38 PngImagePlugin.py[line:137] DEBUG STREAM b'IDAT' 41 8192
+Tue, 03 Apr 2018 22:40:38 PngImagePlugin.py[line:137] DEBUG STREAM b'IHDR' 16 13
+Tue, 03 Apr 2018 22:40:38 PngImagePlugin.py[line:137] DEBUG STREAM b'IDAT' 41 8192
+Tue, 03 Apr 2018 22:40:38 PngImagePlugin.py[line:137] DEBUG STREAM b'IHDR' 16 13
+Tue, 03 Apr 2018 22:40:38 PngImagePlugin.py[line:137] DEBUG STREAM b'IDAT' 41 8192
+Tue, 03 Apr 2018 22:40:38 PngImagePlugin.py[line:137] DEBUG STREAM b'IHDR' 16 13
+Tue, 03 Apr 2018 22:40:38 PngImagePlugin.py[line:137] DEBUG STREAM b'IDAT' 41 8192
+Tue, 03 Apr 2018 22:40:38 PngImagePlugin.py[line:137] DEBUG STREAM b'IHDR' 16 13
+Tue, 03 Apr 2018 22:40:38 PngImagePlugin.py[line:137] DEBUG STREAM b'IDAT' 41 8192
+Tue, 03 Apr 2018 22:40:38 PngImagePlugin.py[line:137] DEBUG STREAM b'IHDR' 16 13
+Tue, 03 Apr 2018 22:40:38 PngImagePlugin.py[line:137] DEBUG STREAM b'IDAT' 41 8192
+Tue, 03 Apr 2018 22:40:38 PngImagePlugin.py[line:137] DEBUG STREAM b'IHDR' 16 13
+Tue, 03 Apr 2018 22:40:38 PngImagePlugin.py[line:137] DEBUG STREAM b'IDAT' 41 8192
+Tue, 03 Apr 2018 22:40:38 PngImagePlugin.py[line:137] DEBUG STREAM b'IHDR' 16 13
+Tue, 03 Apr 2018 22:40:38 PngImagePlugin.py[line:137] DEBUG STREAM b'IDAT' 41 8192
+Tue, 03 Apr 2018 22:40:38 PngImagePlugin.py[line:137] DEBUG STREAM b'IHDR' 16 13
+Tue, 03 Apr 2018 22:40:38 PngImagePlugin.py[line:137] DEBUG STREAM b'IDAT' 41 8192
+Tue, 03 Apr 2018 22:40:38 PngImagePlugin.py[line:137] DEBUG STREAM b'IHDR' 16 13
+Tue, 03 Apr 2018 22:40:38 PngImagePlugin.py[line:137] DEBUG STREAM b'IDAT' 41 8192
+Tue, 03 Apr 2018 22:40:38 PngImagePlugin.py[line:137] DEBUG STREAM b'IHDR' 16 13
+Tue, 03 Apr 2018 22:40:38 PngImagePlugin.py[line:137] DEBUG STREAM b'IDAT' 41 8192
+Tue, 03 Apr 2018 22:40:38 PngImagePlugin.py[line:137] DEBUG STREAM b'IHDR' 16 13
+Tue, 03 Apr 2018 22:40:38 PngImagePlugin.py[line:137] DEBUG STREAM b'IDAT' 41 8192
+Tue, 03 Apr 2018 22:40:40 PngImagePlugin.py[line:137] DEBUG STREAM b'IHDR' 16 13
+Tue, 03 Apr 2018 22:40:40 PngImagePlugin.py[line:137] DEBUG STREAM b'IDAT' 41 8192
+Tue, 03 Apr 2018 22:40:40 PngImagePlugin.py[line:137] DEBUG STREAM b'IHDR' 16 13
+Tue, 03 Apr 2018 22:40:40 PngImagePlugin.py[line:137] DEBUG STREAM b'IDAT' 41 985
+Tue, 03 Apr 2018 22:40:40 PngImagePlugin.py[line:137] DEBUG STREAM b'IHDR' 16 13
+Tue, 03 Apr 2018 22:40:40 PngImagePlugin.py[line:137] DEBUG STREAM b'IDAT' 41 985
+Tue, 03 Apr 2018 22:40:40 PngImagePlugin.py[line:137] DEBUG STREAM b'IHDR' 16 13
+Tue, 03 Apr 2018 22:40:40 PngImagePlugin.py[line:137] DEBUG STREAM b'IDAT' 41 8192
+Tue, 03 Apr 2018 22:40:40 PngImagePlugin.py[line:137] DEBUG STREAM b'IHDR' 16 13
+Tue, 03 Apr 2018 22:40:40 PngImagePlugin.py[line:137] DEBUG STREAM b'IDAT' 41 8192
+Tue, 03 Apr 2018 22:40:40 PngImagePlugin.py[line:137] DEBUG STREAM b'IHDR' 16 13
+Tue, 03 Apr 2018 22:40:40 PngImagePlugin.py[line:137] DEBUG STREAM b'IDAT' 41 8192
+Tue, 03 Apr 2018 22:40:40 PngImagePlugin.py[line:137] DEBUG STREAM b'IHDR' 16 13
+Tue, 03 Apr 2018 22:40:40 PngImagePlugin.py[line:137] DEBUG STREAM b'IDAT' 41 8192
+Tue, 03 Apr 2018 22:40:40 PngImagePlugin.py[line:137] DEBUG STREAM b'IHDR' 16 13
+Tue, 03 Apr 2018 22:40:40 PngImagePlugin.py[line:137] DEBUG STREAM b'IDAT' 41 8192
+Tue, 03 Apr 2018 22:40:40 PngImagePlugin.py[line:137] DEBUG STREAM b'IHDR' 16 13
+Tue, 03 Apr 2018 22:40:40 PngImagePlugin.py[line:137] DEBUG STREAM b'IDAT' 41 8192
+Tue, 03 Apr 2018 22:40:41 PngImagePlugin.py[line:137] DEBUG STREAM b'IHDR' 16 13
+Tue, 03 Apr 2018 22:40:41 PngImagePlugin.py[line:137] DEBUG STREAM b'IDAT' 41 8192
+Tue, 03 Apr 2018 22:40:41 PngImagePlugin.py[line:137] DEBUG STREAM b'IHDR' 16 13
+Tue, 03 Apr 2018 22:40:41 PngImagePlugin.py[line:137] DEBUG STREAM b'IDAT' 41 8192
+Tue, 03 Apr 2018 22:40:41 PngImagePlugin.py[line:137] DEBUG STREAM b'IHDR' 16 13
+Tue, 03 Apr 2018 22:40:41 PngImagePlugin.py[line:137] DEBUG STREAM b'IDAT' 41 8192
+Tue, 03 Apr 2018 22:40:41 PngImagePlugin.py[line:137] DEBUG STREAM b'IHDR' 16 13
+Tue, 03 Apr 2018 22:40:41 PngImagePlugin.py[line:137] DEBUG STREAM b'IDAT' 41 8192
+Tue, 03 Apr 2018 22:40:41 PngImagePlugin.py[line:137] DEBUG STREAM b'IHDR' 16 13
+Tue, 03 Apr 2018 22:40:41 PngImagePlugin.py[line:137] DEBUG STREAM b'IDAT' 41 8192
+Tue, 03 Apr 2018 22:40:41 PngImagePlugin.py[line:137] DEBUG STREAM b'IHDR' 16 13
+Tue, 03 Apr 2018 22:40:41 PngImagePlugin.py[line:137] DEBUG STREAM b'IDAT' 41 8192
+Tue, 03 Apr 2018 22:40:41 PngImagePlugin.py[line:137] DEBUG STREAM b'IHDR' 16 13
+Tue, 03 Apr 2018 22:40:41 PngImagePlugin.py[line:137] DEBUG STREAM b'IDAT' 41 8192
+Tue, 03 Apr 2018 22:40:41 PngImagePlugin.py[line:137] DEBUG STREAM b'IHDR' 16 13
+Tue, 03 Apr 2018 22:40:41 PngImagePlugin.py[line:137] DEBUG STREAM b'IDAT' 41 8192
+Tue, 03 Apr 2018 22:40:41 PngImagePlugin.py[line:137] DEBUG STREAM b'IHDR' 16 13
+Tue, 03 Apr 2018 22:40:41 PngImagePlugin.py[line:137] DEBUG STREAM b'IDAT' 41 8192
+Tue, 03 Apr 2018 22:40:41 PngImagePlugin.py[line:137] DEBUG STREAM b'IHDR' 16 13
+Tue, 03 Apr 2018 22:40:41 PngImagePlugin.py[line:137] DEBUG STREAM b'IDAT' 41 8192
+Tue, 03 Apr 2018 22:40:41 PngImagePlugin.py[line:137] DEBUG STREAM b'IHDR' 16 13
+Tue, 03 Apr 2018 22:40:41 PngImagePlugin.py[line:137] DEBUG STREAM b'IDAT' 41 8192
+Tue, 03 Apr 2018 22:40:41 PngImagePlugin.py[line:137] DEBUG STREAM b'IHDR' 16 13
+Tue, 03 Apr 2018 22:40:41 PngImagePlugin.py[line:137] DEBUG STREAM b'IDAT' 41 8192
+Tue, 03 Apr 2018 22:40:41 PngImagePlugin.py[line:137] DEBUG STREAM b'IHDR' 16 13
+Tue, 03 Apr 2018 22:40:41 PngImagePlugin.py[line:137] DEBUG STREAM b'IDAT' 41 8192
+Tue, 03 Apr 2018 22:40:41 PngImagePlugin.py[line:137] DEBUG STREAM b'IHDR' 16 13
+Tue, 03 Apr 2018 22:40:41 PngImagePlugin.py[line:137] DEBUG STREAM b'IDAT' 41 8192
+Tue, 03 Apr 2018 22:40:41 PngImagePlugin.py[line:137] DEBUG STREAM b'IHDR' 16 13
+Tue, 03 Apr 2018 22:40:41 PngImagePlugin.py[line:137] DEBUG STREAM b'IDAT' 41 8192
+Tue, 03 Apr 2018 22:40:41 PngImagePlugin.py[line:137] DEBUG STREAM b'IHDR' 16 13
+Tue, 03 Apr 2018 22:40:41 PngImagePlugin.py[line:137] DEBUG STREAM b'IDAT' 41 8192
+Tue, 03 Apr 2018 22:40:41 PngImagePlugin.py[line:137] DEBUG STREAM b'IHDR' 16 13
+Tue, 03 Apr 2018 22:40:41 PngImagePlugin.py[line:137] DEBUG STREAM b'IDAT' 41 8192
+Tue, 03 Apr 2018 22:40:41 PngImagePlugin.py[line:137] DEBUG STREAM b'IHDR' 16 13
+Tue, 03 Apr 2018 22:40:41 PngImagePlugin.py[line:137] DEBUG STREAM b'IDAT' 41 8192
+Tue, 03 Apr 2018 22:40:41 PngImagePlugin.py[line:137] DEBUG STREAM b'IHDR' 16 13
+Tue, 03 Apr 2018 22:40:41 PngImagePlugin.py[line:137] DEBUG STREAM b'IDAT' 41 8192
+Tue, 03 Apr 2018 22:40:41 PngImagePlugin.py[line:137] DEBUG STREAM b'IHDR' 16 13
+Tue, 03 Apr 2018 22:40:41 PngImagePlugin.py[line:137] DEBUG STREAM b'IDAT' 41 8192
+Tue, 03 Apr 2018 22:40:41 PngImagePlugin.py[line:137] DEBUG STREAM b'IHDR' 16 13
+Tue, 03 Apr 2018 22:40:41 PngImagePlugin.py[line:137] DEBUG STREAM b'IDAT' 41 8192
+Tue, 03 Apr 2018 22:40:42 PngImagePlugin.py[line:137] DEBUG STREAM b'IHDR' 16 13
+Tue, 03 Apr 2018 22:40:42 PngImagePlugin.py[line:137] DEBUG STREAM b'IDAT' 41 8192
+Tue, 03 Apr 2018 22:40:42 PngImagePlugin.py[line:137] DEBUG STREAM b'IHDR' 16 13
+Tue, 03 Apr 2018 22:40:42 PngImagePlugin.py[line:137] DEBUG STREAM b'IDAT' 41 8192
+Tue, 03 Apr 2018 22:40:43 PngImagePlugin.py[line:137] DEBUG STREAM b'IHDR' 16 13
+Tue, 03 Apr 2018 22:40:43 PngImagePlugin.py[line:137] DEBUG STREAM b'IDAT' 41 8192
+Tue, 03 Apr 2018 22:40:43 PngImagePlugin.py[line:137] DEBUG STREAM b'IHDR' 16 13
+Tue, 03 Apr 2018 22:40:43 PngImagePlugin.py[line:137] DEBUG STREAM b'IDAT' 41 8192
+Tue, 03 Apr 2018 22:40:43 PngImagePlugin.py[line:137] DEBUG STREAM b'IHDR' 16 13
+Tue, 03 Apr 2018 22:40:43 PngImagePlugin.py[line:137] DEBUG STREAM b'IDAT' 41 8192
+Tue, 03 Apr 2018 22:40:43 PngImagePlugin.py[line:137] DEBUG STREAM b'IHDR' 16 13
+Tue, 03 Apr 2018 22:40:43 PngImagePlugin.py[line:137] DEBUG STREAM b'IDAT' 41 985
+Tue, 03 Apr 2018 22:40:44 PngImagePlugin.py[line:137] DEBUG STREAM b'IHDR' 16 13
+Tue, 03 Apr 2018 22:40:44 PngImagePlugin.py[line:137] DEBUG STREAM b'IDAT' 41 985
+Tue, 03 Apr 2018 22:40:44 PngImagePlugin.py[line:137] DEBUG STREAM b'IHDR' 16 13
+Tue, 03 Apr 2018 22:40:44 PngImagePlugin.py[line:137] DEBUG STREAM b'IDAT' 41 985
+Tue, 03 Apr 2018 22:40:44 PngImagePlugin.py[line:137] DEBUG STREAM b'IHDR' 16 13
+Tue, 03 Apr 2018 22:40:44 PngImagePlugin.py[line:137] DEBUG STREAM b'IDAT' 41 985
+Tue, 03 Apr 2018 22:40:44 PngImagePlugin.py[line:137] DEBUG STREAM b'IHDR' 16 13
+Tue, 03 Apr 2018 22:40:44 PngImagePlugin.py[line:137] DEBUG STREAM b'IDAT' 41 985
+Tue, 03 Apr 2018 22:40:44 PngImagePlugin.py[line:137] DEBUG STREAM b'IHDR' 16 13
+Tue, 03 Apr 2018 22:40:44 PngImagePlugin.py[line:137] DEBUG STREAM b'IDAT' 41 985
+Tue, 03 Apr 2018 22:40:44 PngImagePlugin.py[line:137] DEBUG STREAM b'IHDR' 16 13
+Tue, 03 Apr 2018 22:40:44 PngImagePlugin.py[line:137] DEBUG STREAM b'IDAT' 41 985
+Tue, 03 Apr 2018 22:40:46 PngImagePlugin.py[line:137] DEBUG STREAM b'IHDR' 16 13
+Tue, 03 Apr 2018 22:40:46 PngImagePlugin.py[line:137] DEBUG STREAM b'IDAT' 41 8192
+Tue, 03 Apr 2018 22:40:46 PngImagePlugin.py[line:137] DEBUG STREAM b'IHDR' 16 13
+Tue, 03 Apr 2018 22:40:46 PngImagePlugin.py[line:137] DEBUG STREAM b'IDAT' 41 8192
+Tue, 03 Apr 2018 22:40:46 PngImagePlugin.py[line:137] DEBUG STREAM b'IHDR' 16 13
+Tue, 03 Apr 2018 22:40:46 PngImagePlugin.py[line:137] DEBUG STREAM b'IDAT' 41 8192
+Tue, 03 Apr 2018 22:40:46 PngImagePlugin.py[line:137] DEBUG STREAM b'IHDR' 16 13
+Tue, 03 Apr 2018 22:40:46 PngImagePlugin.py[line:137] DEBUG STREAM b'IDAT' 41 8192
+Tue, 03 Apr 2018 22:40:46 PngImagePlugin.py[line:137] DEBUG STREAM b'IHDR' 16 13
+Tue, 03 Apr 2018 22:40:46 PngImagePlugin.py[line:137] DEBUG STREAM b'IDAT' 41 8192
+Tue, 03 Apr 2018 22:40:46 PngImagePlugin.py[line:137] DEBUG STREAM b'IHDR' 16 13
+Tue, 03 Apr 2018 22:40:46 PngImagePlugin.py[line:137] DEBUG STREAM b'IDAT' 41 8192
+Tue, 03 Apr 2018 22:40:46 PngImagePlugin.py[line:137] DEBUG STREAM b'IHDR' 16 13
+Tue, 03 Apr 2018 22:40:46 PngImagePlugin.py[line:137] DEBUG STREAM b'IDAT' 41 8192
+Tue, 03 Apr 2018 22:40:46 PngImagePlugin.py[line:137] DEBUG STREAM b'IHDR' 16 13
+Tue, 03 Apr 2018 22:40:46 PngImagePlugin.py[line:137] DEBUG STREAM b'IDAT' 41 8192
+Tue, 03 Apr 2018 22:40:46 PngImagePlugin.py[line:137] DEBUG STREAM b'IHDR' 16 13
+Tue, 03 Apr 2018 22:40:46 PngImagePlugin.py[line:137] DEBUG STREAM b'IDAT' 41 8192
+Tue, 03 Apr 2018 22:40:46 PngImagePlugin.py[line:137] DEBUG STREAM b'IHDR' 16 13
+Tue, 03 Apr 2018 22:40:46 PngImagePlugin.py[line:137] DEBUG STREAM b'IDAT' 41 8192
+Tue, 03 Apr 2018 22:40:46 PngImagePlugin.py[line:137] DEBUG STREAM b'IHDR' 16 13
+Tue, 03 Apr 2018 22:40:46 PngImagePlugin.py[line:137] DEBUG STREAM b'IDAT' 41 8192
+Tue, 03 Apr 2018 22:40:46 PngImagePlugin.py[line:137] DEBUG STREAM b'IHDR' 16 13
+Tue, 03 Apr 2018 22:40:46 PngImagePlugin.py[line:137] DEBUG STREAM b'IDAT' 41 8192
+Tue, 03 Apr 2018 22:40:46 PngImagePlugin.py[line:137] DEBUG STREAM b'IHDR' 16 13
+Tue, 03 Apr 2018 22:40:46 PngImagePlugin.py[line:137] DEBUG STREAM b'IDAT' 41 8192
+Tue, 03 Apr 2018 22:40:47 PngImagePlugin.py[line:137] DEBUG STREAM b'IHDR' 16 13
+Tue, 03 Apr 2018 22:40:47 PngImagePlugin.py[line:137] DEBUG STREAM b'IDAT' 41 8192
+Tue, 03 Apr 2018 22:40:47 PngImagePlugin.py[line:137] DEBUG STREAM b'IHDR' 16 13
+Tue, 03 Apr 2018 22:40:47 PngImagePlugin.py[line:137] DEBUG STREAM b'IDAT' 41 8192
+Tue, 03 Apr 2018 22:40:47 PngImagePlugin.py[line:137] DEBUG STREAM b'IHDR' 16 13
+Tue, 03 Apr 2018 22:40:47 PngImagePlugin.py[line:137] DEBUG STREAM b'IDAT' 41 8192
+Tue, 03 Apr 2018 22:40:47 PngImagePlugin.py[line:137] DEBUG STREAM b'IHDR' 16 13
+Tue, 03 Apr 2018 22:40:47 PngImagePlugin.py[line:137] DEBUG STREAM b'IDAT' 41 8192
+Tue, 03 Apr 2018 22:40:47 PngImagePlugin.py[line:137] DEBUG STREAM b'IHDR' 16 13
+Tue, 03 Apr 2018 22:40:47 PngImagePlugin.py[line:137] DEBUG STREAM b'IDAT' 41 8192
+Tue, 03 Apr 2018 22:40:47 PngImagePlugin.py[line:137] DEBUG STREAM b'IHDR' 16 13
+Tue, 03 Apr 2018 22:40:47 PngImagePlugin.py[line:137] DEBUG STREAM b'IDAT' 41 8192
+Tue, 03 Apr 2018 22:40:47 PngImagePlugin.py[line:137] DEBUG STREAM b'IHDR' 16 13
+Tue, 03 Apr 2018 22:40:47 PngImagePlugin.py[line:137] DEBUG STREAM b'IDAT' 41 8192
+Tue, 03 Apr 2018 22:40:47 PngImagePlugin.py[line:137] DEBUG STREAM b'IHDR' 16 13
+Tue, 03 Apr 2018 22:40:47 PngImagePlugin.py[line:137] DEBUG STREAM b'IDAT' 41 8192
+Tue, 03 Apr 2018 22:40:47 PngImagePlugin.py[line:137] DEBUG STREAM b'IHDR' 16 13
+Tue, 03 Apr 2018 22:40:47 PngImagePlugin.py[line:137] DEBUG STREAM b'IDAT' 41 8192
+Tue, 03 Apr 2018 22:40:47 PngImagePlugin.py[line:137] DEBUG STREAM b'IHDR' 16 13
+Tue, 03 Apr 2018 22:40:47 PngImagePlugin.py[line:137] DEBUG STREAM b'IDAT' 41 8192
+Tue, 03 Apr 2018 22:40:47 PngImagePlugin.py[line:137] DEBUG STREAM b'IHDR' 16 13
+Tue, 03 Apr 2018 22:40:47 PngImagePlugin.py[line:137] DEBUG STREAM b'IDAT' 41 8192
+Tue, 03 Apr 2018 22:40:47 PngImagePlugin.py[line:137] DEBUG STREAM b'IHDR' 16 13
+Tue, 03 Apr 2018 22:40:47 PngImagePlugin.py[line:137] DEBUG STREAM b'IDAT' 41 8192
+Tue, 03 Apr 2018 22:40:47 PngImagePlugin.py[line:137] DEBUG STREAM b'IHDR' 16 13
+Tue, 03 Apr 2018 22:40:47 PngImagePlugin.py[line:137] DEBUG STREAM b'IDAT' 41 8192
+Tue, 03 Apr 2018 22:40:47 PngImagePlugin.py[line:137] DEBUG STREAM b'IHDR' 16 13
+Tue, 03 Apr 2018 22:40:47 PngImagePlugin.py[line:137] DEBUG STREAM b'IDAT' 41 8192
+Tue, 03 Apr 2018 22:40:47 PngImagePlugin.py[line:137] DEBUG STREAM b'IHDR' 16 13
+Tue, 03 Apr 2018 22:40:47 PngImagePlugin.py[line:137] DEBUG STREAM b'IDAT' 41 8192
+Tue, 03 Apr 2018 22:40:47 PngImagePlugin.py[line:137] DEBUG STREAM b'IHDR' 16 13
+Tue, 03 Apr 2018 22:40:47 PngImagePlugin.py[line:137] DEBUG STREAM b'IDAT' 41 8192
+Tue, 03 Apr 2018 22:40:47 PngImagePlugin.py[line:137] DEBUG STREAM b'IHDR' 16 13
+Tue, 03 Apr 2018 22:40:47 PngImagePlugin.py[line:137] DEBUG STREAM b'IDAT' 41 8192
+Tue, 03 Apr 2018 22:40:47 PngImagePlugin.py[line:137] DEBUG STREAM b'IHDR' 16 13
+Tue, 03 Apr 2018 22:40:47 PngImagePlugin.py[line:137] DEBUG STREAM b'IDAT' 41 8192
+Tue, 03 Apr 2018 22:40:47 PngImagePlugin.py[line:137] DEBUG STREAM b'IHDR' 16 13
+Tue, 03 Apr 2018 22:40:47 PngImagePlugin.py[line:137] DEBUG STREAM b'IDAT' 41 8192
+Tue, 03 Apr 2018 22:40:47 PngImagePlugin.py[line:137] DEBUG STREAM b'IHDR' 16 13
+Tue, 03 Apr 2018 22:40:47 PngImagePlugin.py[line:137] DEBUG STREAM b'IDAT' 41 8192
+Tue, 03 Apr 2018 22:40:47 PngImagePlugin.py[line:137] DEBUG STREAM b'IHDR' 16 13
+Tue, 03 Apr 2018 22:40:47 PngImagePlugin.py[line:137] DEBUG STREAM b'IDAT' 41 8192
+Tue, 03 Apr 2018 22:40:48 PngImagePlugin.py[line:137] DEBUG STREAM b'IHDR' 16 13
+Tue, 03 Apr 2018 22:40:48 PngImagePlugin.py[line:137] DEBUG STREAM b'IDAT' 41 8192
