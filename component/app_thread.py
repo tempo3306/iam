@@ -383,7 +383,6 @@ class TijiaoThread(Thread):
                         if one_diff == 1000:
                             userprice2 = lowest_price + 500
                             diff = userprice2 - userprice
-                            print(diff)
                             if diff == 0 or diff == -100 or  diff == -200 or diff == -300:
                                 pass
                             elif diff<-300 or diff>300:
@@ -726,5 +725,4 @@ class LowestpfriceThread(Thread):
                 set_val('findpos_on', True)
 
             c = time.time()
-            print(c-a, 'c-a')
 

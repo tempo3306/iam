@@ -67,11 +67,19 @@ def setText(aString):
     win32clipboard.CloseClipboard()
 
 
+
+
+
 def Delete():
     a = time.clock()
     win32api.keybd_event(0x08, 0, 0, 0)
     win32api.keybd_event(0x08, 0, win32con.KEYEVENTF_KEYUP, 0)
     b = time.clock()
+    print(b-a)
+
+def many_delete():
+    for i in range(20):
+        Delete()
 
 
 def OnClick_Tijiao():
@@ -312,9 +320,9 @@ def OnH_guopai_chujia():
 
 def selfdelete():
     Position = get_val('Position')
-    Click2(Position[6][0], Position[6][1])
-    Click2(Position[6][0], Position[6][1])
-    Delete()
+    # Click2(Position[6][0], Position[6][1])
+    Click2(Position[6][0]+18, Position[6][1])
+    many_delete()
     Paste()  # 真粘贴
 
 
@@ -445,7 +453,7 @@ def Listen():
                    '9': 0x39, 'a': 0x41, 'b': 0x42, 'c': 0x43, 'd': 0x44, 'e': 0x45, 'f': 0x46, 's': 0x53,
                    'q': 0x51, 'h': 0x48}
         HOTKEY_ACTIONS = {
-            1: Cancel_chujia_test, 2: OnClick_chujia, 3: nothing,
+            1: Cancel_chujia_test, 2: OnClick_chujia, 3: many_delete,
             4: nothing, 5: nothing,
             6: nothing, 7: OnClick_Shuaxin, 8: selfTijiao,
             9: selfChujia, 10: OnClick_Backspace, 11: tijiao_ok,
