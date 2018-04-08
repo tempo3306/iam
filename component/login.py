@@ -31,6 +31,30 @@ def ConfirmUser(Username, Password, version):  # 修改为参数传递
         target_url = host_ali + r'/bid/bid_login/?' + 'username=%s' % Username + \
                      '&' + 'passwd=%s' % Password + '&' + 'version=%s' % version + '&' + "debug=%s" % debug
         # target_url = host_ali + r'/main_api/userconfirm/info?' + 'username=%s' % Username + '&' + 'passwd=%s' % Password
+        print(target_url)
+
+        result = web_request(target_url)
+        print(result)
+    except:
+        logger.error("登录出现异常")
+        logger.exception('this is an exception message')
+        return {'result': 'net error'}
+    return result
+
+def ConfirmCode(identify_code, version):  # 修改为参数传递
+    try:
+        host_ali = get_val('host_ali')
+        debug = get_val('debug')
+        # debug 模式
+
+
+        target_url = '{0}/api/bid/get_guopaiurl/?type=identify_code&debug={1}&version={2}&identify_code={3}'.format(
+            host_ali, debug, version, identify_code
+        )
+
+        # target_url = host_ali + r'/main_api/userconfirm/info?' + 'username=%s' % Username + '&' + 'passwd=%s' % Password
+        print(target_url)
+
         result = web_request(target_url)
         print(result)
     except:

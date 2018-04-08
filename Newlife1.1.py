@@ -68,7 +68,7 @@ if __name__ == '__main__':
     Create_hash()
     init_val()
     set_val('version', version)
-    ###获取路径
+    ###获取路径+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-
     path = get_val('path')
     iconpath = path + 'ico.ico'  # 图标路径
     set_val('mainicon', iconpath)
@@ -76,6 +76,7 @@ if __name__ == '__main__':
     ## 打开刷新与确认进程
     confirmthread = confirmThread()  # 确认线程
     refreshthread = refreshThread()  # 刷新线程
+
     finposthread = findposThread()  # 定位线程
     cutimgthread = cutimgThread()  # 截图线程
     tijiaoThread = TijiaoThread()  # 提交

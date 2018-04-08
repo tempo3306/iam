@@ -1476,7 +1476,7 @@ class TopFrame(wx.Frame):
             if do:
                 ad_view = True
                 guopai_on = True
-                self.fr = WebFrame(Px, Py, False, '小鲜肉代拍 国拍')  # 暂时关闭广告
+                self.fr = WebFrame(Px, Py, False, '沪牌一号 国拍')  # 暂时关闭广告
                 # self.operationframe.Show(True)  # 开启控制面板显示
                 # 查看时间框是否应该显示
                 if time_on:
@@ -1521,7 +1521,7 @@ class TopFrame(wx.Frame):
             if do:
                 ad_view = True
                 guopai_on = True
-                self.fr = WebFrame(Px, Py, False, '小鲜肉代拍 国拍')  # 暂时关闭广告
+                self.fr = WebFrame(Px, Py, False, '沪牌一号 国拍')  # 暂时关闭广告
                 # self.operationframe.Show(True)  # 开启控制面板显示
                 # 查看时间框是否应该显示
                 if time_on:
@@ -1563,7 +1563,7 @@ class TopFrame(wx.Frame):
         if do:
             ad_view = True
             guopai_on = True
-            # self.fr = WebFrame(Px, Py, False, '小鲜肉代拍 国拍')  # 暂时关闭广告
+            # self.fr = WebFrame(Px, Py, False, '沪牌一号 国拍')  # 暂时关闭广告
             # self.operationframe.Show(True)  # 开启控制面板显示
             # 查看时间框是否应该显示
             if time_on:
@@ -2807,7 +2807,7 @@ class ControlFrame(wx.Frame):  # 为webframe提供控制操作
         # self.Bind(wx.EVT_BUTTON, self.o_closeweb, self.button1)
         font1 = wx.Font(25, wx.SWISS, wx.NORMAL, wx.NORMAL)
         font2 = wx.Font(15, wx.SWISS, wx.NORMAL, wx.NORMAL)
-        self.adtext = wx.StaticText(self.panel, label=u"小鲜肉代拍", pos=(90, 20))
+        self.adtext = wx.StaticText(self.panel, label=u"沪牌一号", pos=(90, 20))
         self.adtext.SetFont(font1)
         self.pricetext = wx.StaticText(self.panel, label=u"最低成交价:", pos=(50, 90))
         self.pricetext.SetFont(font2)
@@ -2854,7 +2854,7 @@ class ControlFrame(wx.Frame):  # 为webframe提供控制操作
 # 功能窗口#
 class OperationFrame(wx.Frame):
     def __init__(self):  # name:窗口显示名称
-        wx.Frame.__init__(self, None, 2, title="小鲜肉代拍", pos=(Px + 902, Py), size=(300, 425), \
+        wx.Frame.__init__(self, None, 2, title="沪牌一号", pos=(Px + 902, Py), size=(300, 425), \
                           style=wx.FRAME_NO_TASKBAR | wx.CAPTION | wx.CLOSE_BOX)  # wx.FRAME_TOOL_WINDOW|   |wx.STAY_ON_TOP
 
         self.Bind(wx.EVT_CLOSE, self.OnClose)

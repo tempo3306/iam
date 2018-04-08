@@ -62,7 +62,8 @@ def init_val():
     set_val('usertime', -1) #当前截止时间 如果为 -1表示未出价
     set_val('strategy_name', '') #策略名称
     set_val('current_strategy_name', '') #当前策略
-    set_val('host_ali', "http://hupai.pro")
+    set_val('host_ali', "https://hupai.pro")
+    # set_val('host_ali', "http://192.168.3.20:3000")
     set_val('debug', True)
     set_val('now_ping', 0)  #实时网速
     set_val('version', '1.0')
@@ -92,7 +93,6 @@ def init_val():
     set_val('view_time', False)  # 时间框是否开启
     set_val('operation_show', False)  # 策略框是否开启
     set_val('time_on', False)  # 操作面板上是否开启时间
-    time_on = get_val('time_on')
     set_val('a_time', time.time())  # 国拍初始时间
     set_val('b_time', 0)  # 制作0.1秒
     set_val('moni_minute', 29)
@@ -100,6 +100,7 @@ def init_val():
     set_val('chujia_time', 0)  # 出价时间
     set_val('Username', 0)  # 用户名
     set_val('Password', 0)  # 密码
+    set_val('Identify_code', 0)  # 密码
     set_val('moni_on', False)  # 判断开启的是哪个窗口 ，限制同时只能开启一个
     set_val('guopai_on', False)
     set_val('strategy1', 53)  # 策略整数时间

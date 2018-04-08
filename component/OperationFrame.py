@@ -1101,7 +1101,7 @@ class StrategyPanel(wx.Panel):
 
 class OperationFrame(wx.Frame):
     def __init__(self, Px, Py, mainicon):  # name:窗口显示名称
-        wx.Frame.__init__(self, None, 2, title="小鲜肉代拍", pos=(Px + 902, Py), size=(300, 625), \
+        wx.Frame.__init__(self, None, 2, title="沪牌一号", pos=(Px + 902, Py), size=(300, 625), \
                           style=wx.FRAME_NO_TASKBAR | wx.CAPTION | wx.CLOSE_BOX)  # wx.FRAME_TOOL_WINDOW|   |wx.STAY_ON_TOP
         self.Bind(wx.EVT_CLOSE, self.OnClose)
         self.icon = wx.Icon(mainicon, wx.BITMAP_TYPE_ICO)

@@ -9,7 +9,7 @@ import threading, time
 from threading import Thread
 import sys, os
 from component.imgcut import cut_img, findconfirm, findrefresh, findpos, Price_read, cut_pic
-from component.login import ConfirmUser, Keeplogin
+from component.login import ConfirmUser, Keeplogin, ConfirmCode
 from component.staticmethod import OnClick_chujia, OnClick_Tijiao
 from component.staticmethod import SmartTijiao
 from component.staticmethod import Smart_ajust_chujia
@@ -185,6 +185,19 @@ class LoginThread(Thread):
         print(version, "version")
         set_val('login_result', ConfirmUser(Username, Password, version))
         print(login_result)
+        wx.CallAfter(pub.sendMessage, "connect")
+
+class Login_codeThread(Thread):
+    def __init__(self):
+        """Init Worker Thread Class."""
+        Thread.__init__(self)
+        self.setDaemon(True)
+        self.start()  # start the thread
+
+    def run(self):
+        identify_code = get_val('Identify_code')
+        version = get_val('version')
+        set_val('login_result', ConfirmCode(identify_code, version))
         wx.CallAfter(pub.sendMessage, "connect")
 
 
