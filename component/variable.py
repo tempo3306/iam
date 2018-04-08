@@ -196,7 +196,7 @@ def init_val():
     set_val('confirm_area', [505 - 300, 68 - 150, 505 + 300, 68 + 150])
     set_val('yan_confirm_area', [505 - 300, 68 - 150, 505 + 300, 68 + 150])
     set_val('ghostbutton_pos', [0, 0])
-    set_val('webview_pos', [-25, 0])  # WEB在 WEBVIEW里的相对位置
+    set_val('webview_pos', [-12, 0])  # WEB在 WEBVIEW里的相对位置
     set_val('Px_price', Px + px_price)
     Px_price = get_val('Px_price')
     set_val('Py_price', Py + py_price)

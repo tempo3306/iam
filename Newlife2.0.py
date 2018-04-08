@@ -6,7 +6,7 @@
 # 时间同步
 import logging, time
 
-version = '1.2s'  # 版本号
+version = '2.0'  # 版本号
 timenow = time.time()
 # 转换成localtime
 time_local = time.localtime(timenow)
@@ -55,6 +55,15 @@ class SketchApp(wx.App):
             psd = 0
         loginframe = LoginFrame('小鲜肉拍牌', user, psd)
         loginframe.Show(True)
+
+        # confirmthread = confirmThread()  # 确认线程
+        # refreshthread = refreshThread()  # 刷新线程
+        #
+        # finposthread = findposThread()  # 定位线程
+        # cutimgthread = cutimgThread()  # 截图线程
+        # tijiaoThread = TijiaoThread()  # 提交
+        # lowestThread = LowestpfriceThread()  # 价格识别
+
         return True
 
 
@@ -74,13 +83,7 @@ if __name__ == '__main__':
     set_val('mainicon', iconpath)
     app = SketchApp()
     ## 打开刷新与确认进程
-    confirmthread = confirmThread()  # 确认线程
-    refreshthread = refreshThread()  # 刷新线程
 
-    finposthread = findposThread()  # 定位线程
-    cutimgthread = cutimgThread()  # 截图线程
-    tijiaoThread = TijiaoThread()  # 提交
-    lowestThread = LowestpfriceThread()  #价格识别
     # monitijaoThread = MoniTijiaoThread() #模拟提交
     app.MainLoop()
 

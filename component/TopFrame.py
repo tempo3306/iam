@@ -6,14 +6,13 @@
 import wx
 import wx.html2
 from wx.lib.pubsub import pub
-from component.OperationFrame import OperationFrame
+from component.OperationFrame import OperationPanel
 from component.app_thread import TimeThread, OpenwebThread
 from component.staticmethod import *
 from component.imgcut import findpos, timeset, Price_read
-from component.webframe import  WebFrame
+from component.webframe import WebFrame
 from component.Pinger import pingerThread
 from component.Guopaiframe import GuopaiFrame
-
 
 
 class TopFrame(wx.Frame):
@@ -61,7 +60,7 @@ class TopFrame(wx.Frame):
 
         self.yanzhengmabutton = wx.Button(panel, label='验证码练习')
         self.Bind(wx.EVT_BUTTON, self.yanzhengma, self.yanzhengmabutton)
-        self.contactusbutton= wx.Button(panel, label='联系我们')
+        self.contactusbutton = wx.Button(panel, label='联系我们')
         self.Bind(wx.EVT_BUTTON, self.contactus, self.contactusbutton)
         self.hbox3 = wx.BoxSizer(wx.HORIZONTAL)
         self.hbox3.Add(self.yanzhengmabutton, 0, wx.ALL | wx.CENTER, 5)
@@ -73,8 +72,7 @@ class TopFrame(wx.Frame):
 
         panel.SetSizer(self.vbox)
         self.thread = TimeThread()  # 创建时间进程
-        self.operationframe = OperationFrame(Px, Py, mainicon)
-        self.operationframe.Show(False)  # 初始关闭
+
         self.timer2 = wx.Timer(self)
         self.Bind(wx.EVT_TIMER, self.MainControl, self.timer2)  # 绑定一个定时器事件，主判断
         self.timer2.Start(100)  # 设定时间间隔
@@ -87,12 +85,11 @@ class TopFrame(wx.Frame):
         pub.subscribe(self.OpenGuopai_nodianxin, "open nodianxin")  # 打开非电信
         pub.subscribe(self.Close, "close topframe")  #
         pub.subscribe(self.moni_chujia, "moni chujia")
-        #创建网速测试线程  通过这个线程控制启动或关闭
+        # 创建网速测试线程  通过这个线程控制启动或关闭
         self.pinger = pingerThread()
 
         ## browser
         self.browser = wx.html2.WebView.New()
-
 
     def moni_chujia(self):
         lowest_price = get_val('lowest_price')
@@ -109,7 +106,6 @@ class TopFrame(wx.Frame):
 
             script = "$('#selfwrite').val('{0}')".format(own_price1)
             self.browser.RunScript(script)
-
 
             Click(Position[1][0], Position[1][1])
             Click(Position[5][0], Position[5][1])
@@ -145,10 +141,6 @@ class TopFrame(wx.Frame):
 
     def webopen(self):
         self.Show(False)
-        #显示策略设置
-        setting = self.FindWindowById(2)
-        setting.Show(True)
-
 
     def Openmoni(self, event):
         websize = get_val('websize')
@@ -177,10 +169,10 @@ class TopFrame(wx.Frame):
                 set_val('ad_view', True)
                 set_val('web_on', True)
                 set_val('strategy_on', True)
-                self.fr = WebFrame(Px, Py, False, '小鲜肉模拟', (websize[0], websize[1]))
+                self.fr = WebFrame(Px, Py, False, '沪牌一号模拟')
 
-                self.browser = wx.html2.WebView.New(self.fr, size=(websize[0] + 48, websize[1] + 40), pos=webview_pos,
-                                               style=wx.BORDER_NONE)
+                self.browser = wx.html2.WebView.New(self.fr, size=(websize[0] - 10, websize[1] + 40), pos=webview_pos,
+                                                    style=wx.BORDER_NONE)
                 self.browser.LoadURL(url1)
                 self.browser.CanSetZoomType(False)
                 self.fr.Show()
@@ -222,9 +214,9 @@ class TopFrame(wx.Frame):
                 set_val('guopai_on', True)
                 set_val('web_on', True)
                 set_val('strategy_on', True)
-                self.fr = WebFrame(Px, Py, False, '沪牌一号 国拍', (websize[0], websize[1]))  # 暂时关闭广告
+                self.fr = WebFrame(Px, Py, False, '沪牌一号 国拍')  # 暂时关闭广告
 
-                browser = wx.html2.WebView.New(self.fr, size=(websize[0] + 48, websize[1] + 40), pos=webview_pos,
+                browser = wx.html2.WebView.New(self.fr, size=(websize[0] - 10, websize[1] + 40), pos=webview_pos,
                                                style=wx.BORDER_NONE)
                 browser.LoadURL(url2)
                 browser.CanSetZoomType(False)
@@ -264,9 +256,9 @@ class TopFrame(wx.Frame):
                 set_val('guopai_on', True)
                 set_val('web_on', True)
                 set_val('strategy_on', True)
-                self.fr = WebFrame(Px, Py, False, '沪牌一号 国拍', (websize[0], websize[1]))  # 暂时关闭广告
+                self.fr = WebFrame(Px, Py, False, '沪牌一号 国拍')  # 暂时关闭广告
 
-                browser = wx.html2.WebView.New(self.fr, size=(websize[0] + 48, websize[1] + 40), pos=webview_pos,
+                browser = wx.html2.WebView.New(self.fr, size=(websize[0] - 10, websize[1] + 40), pos=webview_pos,
                                                style=wx.BORDER_NONE)
                 browser.LoadURL(url3)
                 browser.CanSetZoomType(False)
@@ -278,7 +270,6 @@ class TopFrame(wx.Frame):
                 wx.MessageBox('请检查其它软件热键占用', '辅助启用失败', wx.OK | wx.ICON_ERROR)
                 Close()  # 关闭可能注册的热键
 
-
     ## 验证码练习
     def yanzhengma(self, event):
         pass
@@ -287,7 +278,7 @@ class TopFrame(wx.Frame):
     def contactus(self, event):
         pass
 
-########################
+    ########################
     def Help(self, event):
         licence = """
  谁帮我写个帮助啊
@@ -339,10 +330,10 @@ class TopFrame(wx.Frame):
             if price in pricelist:  # 字典查找
                 set_val('findpos_on', False)
                 if lowest_price == price:
-                    trans_time() #保存价格
+                    trans_time()  # 保存价格
                 else:
                     set_val('lowest_price', price)
-                    trans_time() #保存价格
+                    trans_time()  # 保存价格
                     if moni_on:
                         set_val('changetime', moni_second)
                     else:
@@ -351,7 +342,6 @@ class TopFrame(wx.Frame):
                 set_val('findpos_on', True)
         except:
             set_val('findpos_on', True)
-
 
     def Find_pos(self, event):
         findpos_on = get_val('findpos_on')
@@ -383,9 +373,6 @@ class TopFrame(wx.Frame):
             wx.GetApp().ExitMainLoop()
             event.Skip()
             sys.exit(None)
-
-
-
 
     def OnOpenAssist(self):
         Open()

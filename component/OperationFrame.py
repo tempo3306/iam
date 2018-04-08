@@ -1102,12 +1102,9 @@ class StrategyPanel(wx.Panel):
 class OperationFrame(wx.Frame):
     def __init__(self, Px, Py, mainicon):  # name:窗口显示名称
         wx.Frame.__init__(self, None, 2, title="沪牌一号", pos=(Px + 902, Py), size=(300, 625), \
-                          style=wx.FRAME_NO_TASKBAR | wx.CAPTION | wx.CLOSE_BOX)  # wx.FRAME_TOOL_WINDOW|   |wx.STAY_ON_TOP
+                          style=wx.FRAME_NO_TASKBAR | wx.CAPTION | wx.CLOSE_BOX)  #
         self.Bind(wx.EVT_CLOSE, self.OnClose)
-        self.icon = wx.Icon(mainicon, wx.BITMAP_TYPE_ICO)
-        self.SetIcon(self.icon)
-        panel = wx.Panel(self)
-        self.notebook = wx.Notebook(panel)
+        self.notebook = wx.Notebook(self)
         self.status_tab = StatusPanel(self.notebook)  # notebook作为父类
         self.notebook.AddPage(self.status_tab, "常规功能")
         self.strategy_tab = StrategyPanel(self.notebook)
@@ -1116,7 +1113,7 @@ class OperationFrame(wx.Frame):
         self.notebook.AddPage(self.account_tab, "账号设置")
         sizer = wx.BoxSizer(wx.VERTICAL)
         sizer.Add(self.notebook, 1, wx.ALL | wx.EXPAND, 5)
-        panel.SetSizer(sizer)
+        self.SetSizer(sizer)
         self.Layout()
         self.Show(False)  # 初始隐藏
 
@@ -1147,3 +1144,19 @@ class OperationFrame(wx.Frame):
         main = self.FindWindowById(1)
         main.Show(True)
         self.Show(False)
+
+class OperationPanel(wx.Panel):
+    def __init__(self,parent):  # name:窗口显示名称
+        websize = get_val('websize')
+        wx.Panel.__init__(self, parent=parent, size=(330, websize[1]), pos=(880,0))
+        self.notebook = wx.Notebook(self)
+        self.status_tab = StatusPanel(self.notebook)  # notebook作为父类
+        self.notebook.AddPage(self.status_tab, "常规功能")
+        self.strategy_tab = StrategyPanel(self.notebook)
+        self.notebook.AddPage(self.strategy_tab, "策略设置")
+        self.account_tab = AccountPanel(self.notebook)
+        self.notebook.AddPage(self.account_tab, "账号设置")
+        sizer = wx.BoxSizer(wx.VERTICAL)
+        sizer.Add(self.notebook, 1)
+        self.SetSizer(sizer)
+        self.Layout()
