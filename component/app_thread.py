@@ -66,9 +66,11 @@ class findposThread(Thread):
 
     def run(self):
         for i in range(1000000):
+            time.sleep(0.1)
             try:
                 findpos_on = get_val('findpos_on')
                 if findpos_on:
+                    print("findpos")
                     findpos()
             except:
                 logger.exception('this is an exception message')
@@ -735,6 +737,7 @@ class LowestpfriceThread(Thread):
                         else:
                             set_val('changetime', a_time)
                 else:
+                    print("fffff")
                     set_val('findpos_on', True)
             except:
                 set_val('findpos_on', True)

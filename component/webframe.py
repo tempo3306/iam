@@ -9,11 +9,17 @@ from wx.lib.pubsub import pub  # 代替了publisher
 from component.staticmethod import *
 from component.OperationFrame import OperationPanel
 
+
+## moni  51    国拍52
 class WebFrame(wx.Frame):
-    def __init__(self, px, py, ad, name):  # name:窗口显示名称
+    def __init__(self, px, py, id, name):  # name:窗口显示名称
         websize = get_val('websize')
-        wx.Frame.__init__(self, None, 3, name, size=(websize[0] + 300, websize[1]),
+        wx.Frame.__init__(self, None, id, name, size=(websize[0] + 300, websize[1]),
                           style=wx.CAPTION | wx.CLOSE_BOX)
+        ##LOGO
+        mainicon = get_val('mainicon')
+        self.icon = wx.Icon(mainicon, wx.BITMAP_TYPE_ICO)
+        self.SetIcon(self.icon)
 
         # wx.Frame.__init__(self,None, -1,title="大师拍牌 QQ 178456661 - 3.663",size=(websize[0], websize[1]),\
         #  pos=(px, py),style=wx.DEFAULT_FRAME_STYLE|wx.STAY_ON_TOP&~(wx.RESIZE_BORDER))

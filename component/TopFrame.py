@@ -169,7 +169,7 @@ class TopFrame(wx.Frame):
                 set_val('ad_view', True)
                 set_val('web_on', True)
                 set_val('strategy_on', True)
-                self.fr = WebFrame(Px, Py, False, '沪牌一号模拟')
+                self.fr = WebFrame(Px, Py, 51, '沪牌一号模拟')   ##模拟  id  51
 
                 self.browser = wx.html2.WebView.New(self.fr, size=(websize[0] - 10, websize[1] + 40), pos=webview_pos,
                                                     style=wx.BORDER_NONE)
@@ -185,7 +185,8 @@ class TopFrame(wx.Frame):
 
     def Openurlchoice(self, event):
         mainicon = get_val('mainicon')
-        guopai = GuopaiFrame("国拍", mainicon)
+        self.Show(False)
+        guopai = GuopaiFrame(self, "国拍", mainicon)
 
     def OpenGuopai_dianxin(self):
         websize = get_val('websize')
@@ -214,7 +215,8 @@ class TopFrame(wx.Frame):
                 set_val('guopai_on', True)
                 set_val('web_on', True)
                 set_val('strategy_on', True)
-                self.fr = WebFrame(Px, Py, False, '沪牌一号 国拍')  # 暂时关闭广告
+                self.fr = WebFrame(Px, Py, 52, '沪牌一号 国拍')  ## 国拍52
+                wx.CallAfter(pub.sendMessage, "close guopaiframe")
 
                 browser = wx.html2.WebView.New(self.fr, size=(websize[0] - 10, websize[1] + 40), pos=webview_pos,
                                                style=wx.BORDER_NONE)
@@ -256,8 +258,8 @@ class TopFrame(wx.Frame):
                 set_val('guopai_on', True)
                 set_val('web_on', True)
                 set_val('strategy_on', True)
-                self.fr = WebFrame(Px, Py, False, '沪牌一号 国拍')  # 暂时关闭广告
-
+                self.fr = WebFrame(Px, Py, 52, '沪牌一号 国拍')  ## id 52
+                wx.CallAfter(pub.sendMessage, "close guopaiframe")
                 browser = wx.html2.WebView.New(self.fr, size=(websize[0] - 10, websize[1] + 40), pos=webview_pos,
                                                style=wx.BORDER_NONE)
                 browser.LoadURL(url3)

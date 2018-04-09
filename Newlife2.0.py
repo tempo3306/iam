@@ -48,21 +48,23 @@ class SketchApp(wx.App):
         try:
             with open("your.name", 'rb') as name:
                 namepsd = pickle.load(name)
-                user = namepsd[0]
-                psd = namepsd[1]
+                code = namepsd[0]
+                # user = namepsd[0]
+                # psd = namepsd[1]
         except:
             user = 'shooter'  # 关闭
             psd = 0
-        loginframe = LoginFrame('小鲜肉拍牌', user, psd)
+            code = ''
+        loginframe = LoginFrame('小鲜肉拍牌', code)
         loginframe.Show(True)
 
-        # confirmthread = confirmThread()  # 确认线程
-        # refreshthread = refreshThread()  # 刷新线程
-        #
-        # finposthread = findposThread()  # 定位线程
-        # cutimgthread = cutimgThread()  # 截图线程
-        # tijiaoThread = TijiaoThread()  # 提交
-        # lowestThread = LowestpfriceThread()  # 价格识别
+        confirmthread = confirmThread()  # 确认线程
+        refreshthread = refreshThread()  # 刷新线程
+
+        finposthread = findposThread()  # 定位线程
+        cutimgthread = cutimgThread()  # 截图线程
+        tijiaoThread = TijiaoThread()  # 提交
+        lowestThread = LowestpfriceThread()  # 价格识别
 
         return True
 

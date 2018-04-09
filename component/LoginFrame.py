@@ -90,7 +90,7 @@ class AccountPanel(wx.Panel):
 
 
 class Identify_codePanel(wx.Panel):
-    def __init__(self,parent, user, psd):  ##########版本号
+    def __init__(self,parent, code):  ##########版本号
         wx.Panel.__init__(self, parent, -1)
         # 主sizer
         self.code_sizer_v1 = wx.BoxSizer(wx.VERTICAL)
@@ -119,7 +119,9 @@ class Identify_codePanel(wx.Panel):
         self.code_btnSizer.Add(self.code_loginbtn, flag=wx.ALIGN_RIGHT | wx.ALL, border=3)
         self.code_sizer_v1.Add(self.code_btnSizer, flag=wx.ALIGN_CENTER | wx.ALL, border=5)
         self.code_loginbtn.Bind(wx.EVT_BUTTON, self.OnLogin, self.code_loginbtn)
-
+        ##初始化
+        if code:
+            self.code_userText.SetValue(code)
         self.purchaselink = hyperlink.HyperLinkCtrl(self, -1, u"购买激活码", URL="https://hupai.pro/purchase_software")
         self.purchaselink.UnsetToolTip()
         self.purchaselink.Bind(hyperlink.EVT_HYPERLINK_LEFT, self.Purchase)
@@ -154,6 +156,10 @@ class Identify_codePanel(wx.Panel):
         else:
             set_val('Identify_code', Identify_code)  # 保存用户输入的账号密码
             self.loginthread = Login_codeThread()
+            namepsd = [Identify_code]
+            with open('your.name', 'wb') as userfile:
+                pickle.dump(namepsd, userfile)
+
 
             # with open('your.name', 'wb') as userfile:
             #     pickle.dump(namepsd, userfile)
@@ -165,7 +171,7 @@ class Identify_codePanel(wx.Panel):
         print("购买")
 
 class LoginFrame(wx.Frame):
-    def __init__(self, name, user, psd):  ##########版本号
+    def __init__(self, name,  code):  ##########版本号
         mainicon = get_val('mainicon')
         wx.Frame.__init__(self, None, -1, name, size=(300, 240), style=wx.CAPTION | wx.CLOSE_BOX)
         self.Bind(wx.EVT_CLOSE, self.OnClose)
@@ -180,7 +186,7 @@ class LoginFrame(wx.Frame):
         # sizer = wx.BoxSizer(wx.VERTICAL)
         # sizer.Add(self.notebook, 1, wx.ALL | wx.EXPAND, 5)
         # panel.SetSizer(sizer)
-        self.panel = Identify_codePanel(self, user, psd)
+        self.panel = Identify_codePanel(self, code)
 
 
         self.Layout()
