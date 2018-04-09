@@ -39,6 +39,7 @@ class WebFrame(wx.Frame):
                 set_val('guopai_on', False)
                 topframe = wx.FindWindowById(1)
                 topframe.Show(True)
+                Close()
                 self.Destroy()
                 dlg.Destroy()
                 event.Skip()  # 绑在同一事件上的两个函数，如果 没有这个，就只执行后绑定的。
@@ -47,6 +48,7 @@ class WebFrame(wx.Frame):
             set_val('view_time', False)
             set_val('moni_on', False)
             set_val('guopai_on', False)
+            Close()
             topframe = wx.FindWindowById(1)
             topframe.Show(True)
             self.Destroy()

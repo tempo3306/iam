@@ -362,17 +362,17 @@ class TopFrame(wx.Frame):
         time_on = get_val('time_on')
         if not web_on and time_on:  # 网页关就把时间关掉
             set_val('time_on', False)
-            self.operationframe.status_tab.Closetime()
-            self.operationframe.status_tab.timeview.SetValue(0)
+            webframe = wx.FindWindowById(3)
+            webframe.panel.status_tab.Closetime()
+            webframe.panel.status_tab.timeview.SetValue(0)
 
     def OnClose(self, event):
         ret = wx.MessageBox('真的要退出助手吗?', '确认', wx.OK | wx.CANCEL)
         if ret == wx.OK:
-            import sys
             self.Show(False)
+            self.Destroy()
             wx.GetApp().ExitMainLoop()
             event.Skip()
-            sys.exit(None)
 
     def OnOpenAssist(self):
         Open()
