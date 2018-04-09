@@ -21,25 +21,30 @@ logger = logging.getLogger()
 
 #-----------------------------------------------------------
 class StatusPanel(wx.Panel):
-    def __init__(self, parent):
+    def __init__(self, parent, tablabel):
         wx.Panel.__init__(self, parent=parent, id=20)
         self.control = wx.StaticBox(self, -1, "功能区域")
         self.controlbox = wx.StaticBoxSizer(self.control, wx.VERTICAL)
         self.controlgrid = wx.GridBagSizer(4, 2)  # 网格组件
 
         ##功能区
-        self.priceviewButton = wx.Button(self, label='导出跳价', size=(105,30))  # 未来扩展
+        self.webtabButton = wx.Button(self, label=tablabel, size=(105,30))  # 未来扩展
+        # self.priceviewButton = wx.Button(self, label='导出跳价', size=(105,30))  # 未来扩展
+
+
         self.remotetimeButton = wx.Button(self, label='同步服务器时间', size=(105,30))  # 时间
         self.posajustButton = wx.Button(self, label='刷新定位', size=(105,30))  # 位置调整
         self.localtimeButton = wx.Button(self, label='同步网页时间', size=(105,30))  # 时间同步
 
         ##绑定
-        self.priceviewButton.Bind(wx.EVT_BUTTON, self.priceview)
+        self.webtabButton.Bind(wx.EVT_BUTTON, self.webtab)
+        # self.priceviewButton.Bind(wx.EVT_BUTTON, self.priceview)
+
         self.remotetimeButton.Bind(wx.EVT_BUTTON, self.getremotetime)
         self.posajustButton.Bind(wx.EVT_BUTTON, self.posautoajust)
         self.localtimeButton.Bind(wx.EVT_BUTTON, self.timeautoajust)
 
-        self.controlgrid.Add(self.priceviewButton, pos=(0, 0))  # 布局
+        self.controlgrid.Add(self.webtabButton, pos=(0, 0))  # 布局
         self.controlgrid.Add(self.remotetimeButton, pos=(0, 1))
         self.controlgrid.Add(self.posajustButton, pos=(1, 0))
         self.controlgrid.Add(self.localtimeButton, pos=(1, 1))
@@ -69,7 +74,7 @@ class StatusPanel(wx.Panel):
         self.confirm_choice.SetSelection(0)
         self.Bind(wx.EVT_CHOICE, self.Confirmchoice, self.confirm_choice)
 
-        self.confirm_label = wx.StaticText(self, label=u"确认提交方式     ")
+        self.confirm_label = wx.StaticText(self, label=u"确认提交方式")
         hbox2 = wx.BoxSizer(wx.HORIZONTAL)
         hbox2.Add(self.confirm_label, flag=wx.TOP, border=4)
         hbox2.Add(self.confirm_choice)
@@ -213,7 +218,37 @@ class StatusPanel(wx.Panel):
             logger.exception('this is an exception message')
 
 
-    ##
+    ## 国拍与模拟切换
+    def webtab(self, event):
+        current_moni = get_val('current_moni')
+        if current_moni:
+            moni = wx.FindWindowByName('沪牌一号模拟')
+            guopai = wx.FindWindowByName('沪牌一号 国拍')
+            if guopai:
+                guopai.Show(True)
+                moni.Show(False)
+                set_val('current_moni', False)
+                set_val('guopai_on', True)
+            else:
+                moni.Show(False)
+                wx.CallAfter(pub.sendMessage, "open dianxin")
+        else:
+            guopai = wx.FindWindowByName('沪牌一号 国拍')
+            moni = wx.FindWindowByName('沪牌一号模拟')
+            if moni:
+                moni.Show(True)
+                guopai.Show(False)
+                set_val('moni_on', True)
+                set_val('current_moni', True)
+            else:
+                print("99")
+                guopai.Show(False)
+
+                wx.CallAfter(pub.sendMessage, "open moni")
+
+
+
+    ##导出跳价
     def priceview(self, event):
         price_list = get_val('price_list')
         with open('price_list.txt', 'w') as price_file:
@@ -1146,11 +1181,11 @@ class OperationFrame(wx.Frame):
         self.Show(False)
 
 class OperationPanel(wx.Panel):
-    def __init__(self,parent):  # name:窗口显示名称
+    def __init__(self,parent,tablabel):  # name:窗口显示名称
         websize = get_val('websize')
         wx.Panel.__init__(self, parent=parent, size=(330, websize[1]), pos=(880,0))
         self.notebook = wx.Notebook(self)
-        self.status_tab = StatusPanel(self.notebook)  # notebook作为父类
+        self.status_tab = StatusPanel(self.notebook, tablabel)  # notebook作为父类
         self.notebook.AddPage(self.status_tab, "常规功能")
         self.strategy_tab = StrategyPanel(self.notebook)
         self.notebook.AddPage(self.strategy_tab, "策略设置")

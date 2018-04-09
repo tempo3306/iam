@@ -233,5 +233,7 @@ class LoginFrame(wx.Frame):
 
     def OnClose(self, event):
         event.Skip()
-        sys.exit(None)
+        sys.exit(0)
+
+
 

@@ -103,6 +103,7 @@ def init_val():
     set_val('Identify_code', 0)  # 密码
     set_val('moni_on', False)  # 判断开启的是哪个窗口 ，限制同时只能开启一个
     set_val('guopai_on', False)
+    set_val('current_moni', True) ##当前哪个WEB激活状态
     set_val('strategy1', 53)  # 策略整数时间
     set_val('strategy2', 0.0)  # 策略小数时间
     set_val('strategy_on', True)  # 策略是否开启

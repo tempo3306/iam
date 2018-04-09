@@ -6,7 +6,7 @@
 # 时间同步
 import logging, time
 
-version = '2.0'  # 版本号
+version = '2.01'  # 版本号
 timenow = time.time()
 # 转换成localtime
 time_local = time.localtime(timenow)
@@ -34,12 +34,10 @@ from PIL import Image
 import os
 from PIL import ImageGrab
 # 组件
-from component.app_thread import cutimgThread, findposThread
-from component.app_thread import confirmThread, refreshThread, TijiaoThread, LowestpfriceThread
 from component.variable import set_val
 from component.LoginFrame import LoginFrame
 from component.variable import Create_hash, init_val, get_val
-
+from component.app_thread import *
 
 # --------------------------------------------------------------
 # 创建app
@@ -57,15 +55,6 @@ class SketchApp(wx.App):
             code = ''
         loginframe = LoginFrame('小鲜肉拍牌', code)
         loginframe.Show(True)
-
-        confirmthread = confirmThread()  # 确认线程
-        refreshthread = refreshThread()  # 刷新线程
-
-        finposthread = findposThread()  # 定位线程
-        cutimgthread = cutimgThread()  # 截图线程
-        tijiaoThread = TijiaoThread()  # 提交
-        lowestThread = LowestpfriceThread()  # 价格识别
-
         return True
 
 

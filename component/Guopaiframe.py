@@ -44,6 +44,7 @@ class GuopaiFrame(wx.Frame):
     def OnClose(self, event):
         topframe = wx.FindWindowById(1)
         topframe.Show(True)
+        self.Show(False)
         self.Destroy()
         event.Skip()
 
