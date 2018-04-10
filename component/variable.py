@@ -144,7 +144,12 @@ def init_val():
     set_val('twice', False)  # 开启两次出价
     set_val('tijiao_num', 1)  # 开启二次出价，设置为2，执行一次之后，减1
     set_val('tijiao_one', False)  # 第一次出价之后开闭
-    set_val('websize', [902, 700])  # 浏览器大小
+
+    ##webframe相关
+    set_val('websize', [902+300, 700])  # 浏览器大小
+    set_val('webview_pos', [-12, -6])  # WEB在 WEBVIEW里的相对位置
+    set_val('htmlsize', [902 - 10, 700 - 57])
+
     websize = get_val('websize')
     set_val('Pxy', pg.size())  # 分辨率
     Pxy = get_val('Pxy')
@@ -197,7 +202,6 @@ def init_val():
     set_val('confirm_area', [505 - 300, 68 - 150, 505 + 300, 68 + 150])
     set_val('yan_confirm_area', [505 - 300, 68 - 150, 505 + 300, 68 + 150])
     set_val('ghostbutton_pos', [0, 0])
-    set_val('webview_pos', [-12, 0])  # WEB在 WEBVIEW里的相对位置
     set_val('Px_price', Px + px_price)
     Px_price = get_val('Px_price')
     set_val('Py_price', Py + py_price)

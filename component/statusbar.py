@@ -1,48 +1,24 @@
 import wx
 import os
-import time
-from PIL import Image
-import datetime
-import threading
 import wx.lib.agw.hyperlink as wxHL
 
 
 class IcRsrc(object):
     """所有的字符串以及数据参数都集中放在这里，方便修改以及设置多语言"""
-    majorVersion = 1
-    minorVersion = 0
-    winSize = (680, 420)
-    sbFields = [-1, -3, -1, -1, -1, -3]
-    sbText = {0: u"转换进度", 2: u"已用时间", 3: "00:00:00", 4: u"作者主页"}
-    sbBlog = "http://www.programlife.net/"
+
+    sbFields = [-1, -1, -1, -1, -1, -3]
+    sbText = {0: u"未激活", 1: u"策略", 3: u"官网"}
+    sbBlog = "https://hupai.pro"
     winTitle = "Image Converter"
-    listHeader = {0: u"文件路径", 1: u"状态"}
-    listHeaderWidth = {0: 0.8 * winSize[0], 1: 0.1 * winSize[0]}
     menuItemLabel = [u"添加图片文件", u"设置输出路径", "",
                      u"清空已选文件", "", u"设置图片格式",
                      "", u"开始转换", u"停止转换", "", u"退出程序"]
     menuItemId = [wx.NewId(), wx.NewId(), None, wx.NewId(), None, wx.NewId(),
                   None, wx.NewId(), wx.NewId(), None, wx.NewId()]
-    fmtDlgTitle = u"设置目标图片格式"
-    fmtDlgText = u"请填写图片扩展名(如BMP), 所有文件将被转换为该格式"
-    openDlgTitle = u"添加要转换的图片文件"
-    openDlgFmt = "BMP (*.bmp;*.dib)|*.bmp;*.dib|" \
-                 "JPEG (*.jpg;*.jpeg)|*.jpg;*.jpeg|" \
-                 "GIF (*.gif)|*.gif|" \
-                 "PNG (*.png)|*.png|" \
-                 "All files (*.*)|*.*"
     saveDlgTitle = u"设置输出目录"
     lsWaiting = u"="
     lsSuccess = u"√"
     lsFail = u"X"
-    stopScanTitle = u"操作确认"
-    stopScanContent = u"正在添加要转换的图片文件，确定要退出吗？"
-    stopConvertTitle = u"操作确认"
-    stopConvertContent = u"正在转换已添加的图片文件，确定要退出吗？"
-
-    @classmethod
-    def getTitle(cls):
-        return "%s %d.%d" % (cls.winTitle, cls.majorVersion, cls.minorVersion)
 
 
 class IcStatusBar(wx.StatusBar):
@@ -60,7 +36,6 @@ class IcStatusBar(wx.StatusBar):
     def createFields(self):
         for k, v in IcRsrc.sbText.items():
             self.SetStatusText(v, k)
-        self.gauge = wx.Gauge(self, -1, 100)
         self.blog = wxHL.HyperLinkCtrl(self, -1, IcRsrc.sbBlog,
                                        URL=IcRsrc.sbBlog)
 
@@ -70,7 +45,7 @@ class IcStatusBar(wx.StatusBar):
 
     def Reposition(self):
         """为了防止状态栏中的控件摆放错乱，需要设置好各自的位置以及大小"""
-        for k, v in {1: self.gauge, 5: self.blog}.items():
+        for k, v in { 4: self.blog}.items():
             rect = self.GetFieldRect(k)
             rect.x += 1
             rect.y += 1

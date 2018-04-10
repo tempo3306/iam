@@ -10,7 +10,7 @@ from component.OperationFrame import OperationPanel
 from component.app_thread import TimeThread, OpenwebThread
 from component.staticmethod import *
 from component.imgcut import findpos, timeset, Price_read
-from component.webframe import WebFrame, MoniWebFrame
+from component.webframe import MoniWebFrame, MoniWebFrame
 from component.Pinger import pingerThread
 from component.Guopaiframe import GuopaiFrame
 from component.app_thread import *
@@ -116,10 +116,8 @@ class TopFrame(wx.Frame):
         if tijiao_num == 1:
             own_price1 = lowest_price + one_diff
             set_val('own_price1', own_price1)
-            moni_on = get_val('moni_on')
-
             script = "$('#selfwrite').val('{0}')".format(own_price1)
-            self.browser.RunScript(script)
+            self.browser_moni.RunScript(script)
 
             Click(Position[1][0], Position[1][1])
             Click(Position[5][0], Position[5][1])
@@ -138,7 +136,7 @@ class TopFrame(wx.Frame):
             moni_on = get_val('moni_on')
 
             script = "$('#selfwrite').val('{0}')".format(own_price2)
-            self.browser.RunScript(script)
+            self.browser_moni.RunScript(script)
 
             Click(Position[1][0], Position[1][1])
             Click(Position[5][0], Position[5][1])
@@ -157,7 +155,7 @@ class TopFrame(wx.Frame):
         self.Show(False)
 
     def Openmoni(self, event):
-        websize = get_val('websize')
+        htmlsize = get_val('htmlsize')
         webview_pos = get_val('webview_pos')
         timer0 = threading.Timer(5, findpos)
         set_val('strategy_on', True)
@@ -169,41 +167,36 @@ class TopFrame(wx.Frame):
         Px = get_val('Px')
         Py = get_val('Py')
         url1 = get_val('url1')
-        guopai_on = get_val('guopai_on')
-        moni_on = get_val('moni_on')
-        if guopai_on:
-            wx.MessageBox('请关闭国拍页面或先关闭辅助', '开启模拟失败', wx.OK | wx.ICON_ERROR)
-        elif moni_on:
-            wx.MessageBox('请关闭模拟页面', '开启模拟失败', wx.OK | wx.ICON_ERROR)
-        else:
-            Open()
-            do = get_val('do')
-            if do:
-                set_val('moni_on', True)  # 模拟打开
-                set_val('ad_view', True)
-                set_val('web_on', True)
-                set_val('strategy_on', True)
-                set_val('current_moni', True)
-                moni = wx.FindWindowByName('沪牌一号模拟')
-                if moni:
-                    moni.Show(True)
-                    self.browser_moni.Reload()
-                    self.webopen()
-                    Listen()
-                else:
-                    self.fr = MoniWebFrame(Px, Py, 51, '沪牌一号模拟', '切换国拍')  ##模拟  id  51
 
-                    self.browser_moni = wx.html2.WebView.New(self.fr, size=(websize[0] - 10, websize[1] + 40), pos=webview_pos,
-                                                        style=wx.BORDER_NONE)
-                    self.browser_moni.LoadURL(url1)
-                    self.browser_moni.CanSetZoomType(False)
-                    self.fr.Show()
-                    # 关闭主界面，打开策略设置
-                    self.webopen()
+        Open()
+        do = get_val('do')
+        if do:
+            set_val('moni_on', True)  # 模拟打开
+            set_val('ad_view', True)
+            set_val('web_on', True)
+            set_val('strategy_on', True)
+            set_val('guopai_on', False)
+            moni = wx.FindWindowByName('沪牌一号模拟')
+            if moni:
+                moni.Show(True)
+                moni.Center()
+                self.browser_moni.Reload()
+                self.webopen()
                 Listen()
             else:
-                wx.MessageBox('请检查其它软件热键占用', '辅助启用失败', wx.OK | wx.ICON_ERROR)
-                Close()
+                self.fr = MoniWebFrame(Px, Py, 51, '沪牌一号模拟', '切换国拍')  ##模拟  id  51
+
+                self.browser_moni = wx.html2.WebView.New(self.fr, size=(htmlsize[0], htmlsize[1]), pos=webview_pos,
+                                                    style=wx.BORDER_NONE)
+                self.browser_moni.LoadURL(url1)
+                self.browser_moni.CanSetZoomType(False)
+                self.fr.Show()
+                # 关闭主界面，打开策略设置
+                self.webopen()
+            Listen()
+        else:
+            wx.MessageBox('请检查其它软件热键占用', '辅助启用失败', wx.OK | wx.ICON_ERROR)
+            Close()
 
     def Open_call_moni(self):
         websize = get_val('websize')
@@ -219,12 +212,11 @@ class TopFrame(wx.Frame):
         Py = get_val('Py')
         url1 = get_val('url1')
 
-
         set_val('moni_on', True)  # 模拟打开
         set_val('ad_view', True)
         set_val('web_on', True)
         set_val('strategy_on', True)
-        set_val('current_moni', True)
+        set_val('guopai_on', False)
         moni = wx.FindWindowByName('沪牌一号模拟')
         if moni:
             moni.Show(True)
@@ -234,7 +226,7 @@ class TopFrame(wx.Frame):
         else:
             self.fr = MoniWebFrame(Px, Py, 51, '沪牌一号模拟', '切换国拍')  ##模拟  id  51
 
-            self.browser_moni = wx.html2.WebView.New(self.fr, size=(websize[0] - 10, websize[1] + 40), pos=webview_pos,
+            self.browser_moni = wx.html2.WebView.New(self.fr, size=(htmlsize[0], htmlsize[1]), pos=webview_pos,
                                                 style=wx.BORDER_NONE)
             self.browser_moni.LoadURL(url1)
             self.browser_moni.CanSetZoomType(False)
@@ -247,7 +239,7 @@ class TopFrame(wx.Frame):
 
 
     def Openurlchoice(self, event):
-        websize = get_val('websize')
+        htmlsize = get_val('htmlsize')
         timer0 = threading.Timer(5, findpos)
         webview_pos = get_val('webview_pos')
         set_val('strategy_on', True)
@@ -273,18 +265,19 @@ class TopFrame(wx.Frame):
                 set_val('guopai_on', True)
                 set_val('web_on', True)
                 set_val('strategy_on', True)
-                set_val('current_moni', False)
+                set_val('moni_on', False)
                 guopai = wx.FindWindowByName('沪牌一号 国拍')
                 if guopai:
                     guopai.Show(True)
+                    guopai.Center()
                     self.browser_guopai.Reload()
                     self.webopen()
                     Listen()
                 else:
-                    self.fr = WebFrame(Px, Py, 52, '沪牌一号 国拍', '切换模拟')  ## 国拍52
+                    self.fr = MoniWebFrame(Px, Py, 52, '沪牌一号 国拍', '切换模拟')  ## 国拍52
                     wx.CallAfter(pub.sendMessage, "close guopaiframe")
 
-                    self.browser_guopai = wx.html2.WebView.New(self.fr, size=(websize[0] - 10, websize[1] + 40), pos=webview_pos,
+                    self.browser_guopai = wx.html2.WebView.New(self.fr, size=(htmlsize[0], htmlsize[1]), pos=webview_pos,
                                                    style=wx.BORDER_NONE)
                     self.browser_guopai.LoadURL(url2)
                     self.browser_guopai.CanSetZoomType(False)
@@ -301,7 +294,7 @@ class TopFrame(wx.Frame):
         # guopai = GuopaiFrame(self, "国拍", mainicon)
 
     def Open_call_guopai(self):
-        websize = get_val('websize')
+        htmlsize = get_val('htmlsize')
         timer0 = threading.Timer(5, findpos)
         webview_pos = get_val('webview_pos')
         set_val('strategy_on', True)
@@ -317,7 +310,7 @@ class TopFrame(wx.Frame):
         set_val('guopai_on', True)
         set_val('web_on', True)
         set_val('strategy_on', True)
-        set_val('current_moni', False)
+        set_val('moni_on', False)
         guopai = wx.FindWindowByName('沪牌一号 国拍')
         if guopai:
             guopai.Show(True)
@@ -325,10 +318,10 @@ class TopFrame(wx.Frame):
             self.webopen()
             Listen()
         else:
-            self.fr = WebFrame(Px, Py, 52, '沪牌一号 国拍', '切换模拟')  ## 国拍52
+            self.fr = MoniWebFrame(Px, Py, 52, '沪牌一号 国拍', '切换模拟')  ## 国拍52
             wx.CallAfter(pub.sendMessage, "close guopaiframe")
 
-            self.browser_guopai = wx.html2.WebView.New(self.fr, size=(websize[0] - 10, websize[1] + 40), pos=webview_pos,
+            self.browser_guopai = wx.html2.WebView.New(self.fr, size=(htmlsize[0], htmlsize[1]), pos=webview_pos,
                                            style=wx.BORDER_NONE)
             self.browser_guopai.LoadURL(url2)
             self.browser_guopai.CanSetZoomType(False)
@@ -338,7 +331,7 @@ class TopFrame(wx.Frame):
 
 
     def OpenGuopai_nodianxin(self):
-        websize = get_val('websize')
+        htmlsize = get_val('htmlsize')
         timer0 = threading.Timer(5, findpos)
         set_val('strategy_on', True)
         set_val('twice', False)  # 初始化双枪不触发
@@ -365,9 +358,9 @@ class TopFrame(wx.Frame):
                 set_val('guopai_on', True)
                 set_val('web_on', True)
                 set_val('strategy_on', True)
-                self.fr = WebFrame(Px, Py, 52, '沪牌一号 国拍')  ## id 52
+                self.fr = MoniWebFrame(Px, Py, 52, '沪牌一号 国拍')  ## id 52
                 wx.CallAfter(pub.sendMessage, "close guopaiframe")
-                browser = wx.html2.WebView.New(self.fr, size=(websize[0] - 10, websize[1] + 40), pos=webview_pos,
+                browser = wx.html2.WebView.New(self.fr, size=(htmlsize[0], htmlsize[1]), pos=webview_pos,
                                                style=wx.BORDER_NONE)
                 browser.LoadURL(url3)
                 browser.CanSetZoomType(False)

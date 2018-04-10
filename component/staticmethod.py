@@ -55,7 +55,7 @@ def Paste():  # ctrl + V
 import wx
 def Paste_moni(price):
     topframe = wx.FindWindowById(1)
-    browser = topframe.browser
+    browser = topframe.browser_moni
     script = "$('#selfwrite').val('{0}')".format(price)
     browser.RunScript(script)
 
@@ -441,7 +441,6 @@ def Open():
             if not user32.RegisterHotKey(None, id, modifiers, vk):
                 print("Unable to register id", id)
                 set_val('do', False)
-            set_val('web_on', True)
 
 
 # 启动监听

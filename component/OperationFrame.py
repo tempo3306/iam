@@ -220,15 +220,15 @@ class StatusPanel(wx.Panel):
 
     ## 国拍与模拟切换
     def webtab(self, event):
-        current_moni = get_val('current_moni')
-        if current_moni:
+        moni_on = get_val('moni_on')
+        if moni_on:
             moni = wx.FindWindowByName('沪牌一号模拟')
             guopai = wx.FindWindowByName('沪牌一号 国拍')
             if guopai:
                 guopai.Show(True)
                 moni.Show(False)
-                set_val('current_moni', False)
                 set_val('guopai_on', True)
+                set_val('moni_on', False)
             else:
                 moni.Show(False)
                 wx.CallAfter(pub.sendMessage, "open dianxin")
@@ -239,11 +239,9 @@ class StatusPanel(wx.Panel):
                 moni.Show(True)
                 guopai.Show(False)
                 set_val('moni_on', True)
-                set_val('current_moni', True)
+                set_val('guopai_on', False)
             else:
-                print("99")
                 guopai.Show(False)
-
                 wx.CallAfter(pub.sendMessage, "open moni")
 
 
