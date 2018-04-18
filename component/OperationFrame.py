@@ -16,10 +16,11 @@ from wx.lib.pubsub import pub
 from component.variable import set_val, get_val
 
 import logging
+
 logger = logging.getLogger()
 
 
-#-----------------------------------------------------------
+# -----------------------------------------------------------
 class StatusPanel(wx.Panel):
     def __init__(self, parent, tablabel):
         wx.Panel.__init__(self, parent=parent, id=20)
@@ -28,13 +29,12 @@ class StatusPanel(wx.Panel):
         self.controlgrid = wx.GridBagSizer(4, 2)  # 网格组件
 
         ##功能区
-        self.webtabButton = wx.Button(self, label=tablabel, size=(105,30))  # 未来扩展
+        self.webtabButton = wx.Button(self, label=tablabel, size=(105, 30))  # 未来扩展
         # self.priceviewButton = wx.Button(self, label='导出跳价', size=(105,30))  # 未来扩展
 
-
-        self.remotetimeButton = wx.Button(self, label='同步服务器时间', size=(105,30))  # 时间
-        self.posajustButton = wx.Button(self, label='刷新定位', size=(105,30))  # 位置调整
-        self.localtimeButton = wx.Button(self, label='同步网页时间', size=(105,30))  # 时间同步
+        self.remotetimeButton = wx.Button(self, label='同步服务器时间', size=(105, 30))  # 时间
+        self.posajustButton = wx.Button(self, label='刷新定位', size=(105, 30))  # 位置调整
+        self.localtimeButton = wx.Button(self, label='同步网页时间', size=(105, 30))  # 时间同步
 
         ##绑定
         self.webtabButton.Bind(wx.EVT_BUTTON, self.webtab)
@@ -49,7 +49,7 @@ class StatusPanel(wx.Panel):
         self.controlgrid.Add(self.posajustButton, pos=(1, 0))
         self.controlgrid.Add(self.localtimeButton, pos=(1, 1))
 
-        #时间区
+        # 时间区
         self.timeview = wx.CheckBox(self, -1, label=u'显示时间')  # 开启时间显示
         self.Bind(wx.EVT_CHECKBOX, self.Timeview, self.timeview)
         hbox1 = wx.BoxSizer(wx.HORIZONTAL)
@@ -83,14 +83,13 @@ class StatusPanel(wx.Panel):
         self.controlbox.Add(hbox1)
         self.controlbox.Add(hbox2)
 
-
-    ###状态区
+        ###状态区
         self.status = wx.StaticBox(self, -1, "状态显示")
         self.statusbox = wx.StaticBoxSizer(self.status, wx.VERTICAL)
         self.statusgrid = wx.GridBagSizer(4, 2)
 
         self.net_status_text = wx.StaticText(self, -1, label="当前网速：")
-        self.net_status = wx.StaticText(self, -1, label="5ms",  size=(70,20))
+        self.net_status = wx.StaticText(self, -1, label="5ms", size=(70, 20))
         self.lowestprice_status = wx.StaticText(self, -1, label="当前最低成交价：")
         self.lowestprice = wx.StaticText(self, -1, label="90000")
         self.userprice_status = wx.StaticText(self, -1, label="当前出价：")
@@ -103,13 +102,13 @@ class StatusPanel(wx.Panel):
         self.statusgrid.Add(self.net_status_text, pos=(0, 0), flag=wx.RIGHT, border=5)
         self.statusgrid.Add(self.net_status, pos=(0, 1))
         self.statusgrid.Add(self.lowestprice_status, pos=(1, 0), flag=wx.RIGHT, border=5)
-        self.statusgrid.Add(self.lowestprice, pos=(1,1))
+        self.statusgrid.Add(self.lowestprice, pos=(1, 1))
         self.statusgrid.Add(self.userprice_status, pos=(2, 0), flag=wx.RIGHT, border=5)
-        self.statusgrid.Add(self.userprice, pos=(2,1))
+        self.statusgrid.Add(self.userprice, pos=(2, 1))
         self.statusgrid.Add(self.time_status, pos=(3, 0), flag=wx.RIGHT, border=5)
-        self.statusgrid.Add(self.timediff, pos=(3,1))
+        self.statusgrid.Add(self.timediff, pos=(3, 1))
         self.statusgrid.Add(self.price_status, pos=(4, 0), flag=wx.RIGHT, border=5)
-        self.statusgrid.Add(self.pricediff, pos=(4,1))
+        self.statusgrid.Add(self.pricediff, pos=(4, 1))
 
         self.statusbox.Add(self.statusgrid)
 
@@ -123,11 +122,11 @@ class StatusPanel(wx.Panel):
         self.current_strategy = wx.StaticText(self, -1, label="")
 
         self.hotkey_confirm_label = wx.StaticText(self, -1, label="热键状态：")
-        self.hotkey_confirm = wx.StaticText(self, -1, label="启动正常", size=(100,20))
+        self.hotkey_confirm = wx.StaticText(self, -1, label="启动正常", size=(100, 20))
 
         self.hotkey_smartprice_label = wx.StaticText(self, -1, label="智能出价：")
         self.hotkey_smartprice = wx.StaticText(self, -1, label="未开启")
-        #当前出价情况
+        # 当前出价情况
         self.current_price = wx.StaticText(self, -1, label="出价状态")
         self.first_price_label = wx.StaticText(self, -1, label="第一次出价：")
         self.first_price = wx.StaticText(self, -1, label="100")
@@ -139,49 +138,49 @@ class StatusPanel(wx.Panel):
         self.remindergrid.Add(self.current_strategy_label, pos=(0, 0), flag=wx.RIGHT, border=20)
         self.remindergrid.Add(self.current_strategy, pos=(0, 1))
         self.remindergrid.Add(self.hotkey_confirm_label, pos=(1, 0), flag=wx.RIGHT, border=20)
-        self.remindergrid.Add(self.hotkey_confirm, pos=(1,1))
+        self.remindergrid.Add(self.hotkey_confirm, pos=(1, 1))
         self.remindergrid.Add(self.hotkey_smartprice_label, pos=(2, 0), flag=wx.RIGHT, border=20)
-        self.remindergrid.Add(self.hotkey_smartprice, pos=(2,1))
+        self.remindergrid.Add(self.hotkey_smartprice, pos=(2, 1))
         self.remindergrid.Add(self.current_price, pos=(3, 0))
         self.remindergrid.Add(self.first_price_label, pos=(4, 0), flag=wx.RIGHT, border=20)
-        self.remindergrid.Add(self.first_price, pos=(4,1))
+        self.remindergrid.Add(self.first_price, pos=(4, 1))
         self.remindergrid.Add(self.second_price_label, pos=(5, 0), flag=wx.RIGHT, border=20)
-        self.remindergrid.Add(self.second_price, pos=(5,1))
+        self.remindergrid.Add(self.second_price, pos=(5, 1))
         self.remindergrid.Add(self.third_price_label, pos=(6, 0), flag=wx.RIGHT, border=20)
-        self.remindergrid.Add(self.third_price, pos=(6,1))
+        self.remindergrid.Add(self.third_price, pos=(6, 1))
 
         self.reminderbox.Add(self.remindergrid)
         self.vbox = wx.BoxSizer(wx.VERTICAL)
-        self.vbox.Add(self.controlbox, flag=wx.BOTTOM, border=10 )
+        self.vbox.Add(self.controlbox, flag=wx.BOTTOM, border=10)
         self.vbox.Add(self.statusbox, flag=wx.BOTTOM, border=10)
         self.vbox.Add(self.reminderbox, flag=wx.BOTTOM, border=10)
         self.SetSizer(self.vbox)
 
-    ## 创建一个timer事件，修改状态
+        ## 创建一个timer事件，修改状态
         self.status_timer = wx.Timer(self)
         self.Bind(wx.EVT_TIMER, self.status_Timer, self.status_timer)
         self.status_timer.Start(100)
 
-    ## 创建时间框
+        ## 创建时间框
         self.timeframe1 = TimeFrame()
         self.timeframe1.Show(False)
         self.timeframe2 = MoniTimeFrame()
         self.timeframe2.Show(False)
 
-    #############消息区域
+        #############消息区域
         pub.subscribe(self.change_strategy, 'change strategy')
-        pub.subscribe(self.change_userprice, 'change userprice') #修改当前用户出价
+        pub.subscribe(self.change_userprice, 'change userprice')  # 修改当前用户出价
 
-    def status_Timer(self,event):
+    def status_Timer(self, event):
         now_ping = get_val('now_ping')
         lowest_price = get_val('lowest_price')
         try:
             if now_ping != 'timeout':
-                self.net_status.SetLabel("%sms"%now_ping)
+                self.net_status.SetLabel("%sms" % now_ping)
             else:
-                self.net_status.SetLabel("%s"%now_ping)
+                self.net_status.SetLabel("%s" % now_ping)
             self.lowestprice.SetLabel(str(lowest_price))
-            #显示当前价格与价格相差
+            # 显示当前价格与价格相差
             userprice = get_val('userprice')
             tijiao_on = get_val('tijiao_on')
             usertime = get_val('usertime')
@@ -190,7 +189,7 @@ class StatusPanel(wx.Panel):
                 max_price = get_val('lowest_price') + 300
                 diff_price = int(userprice) - max_price
                 self.pricediff.SetLabel(str(diff_price))
-            #显示截止时间与当前时间相差
+                # 显示截止时间与当前时间相差
                 if moni_on:
                     currenttime = get_val('moni_second')
                     timediff = float(usertime) - float(currenttime)
@@ -199,24 +198,23 @@ class StatusPanel(wx.Panel):
                     currenttime = get_val('a_time')
                     timediff = float(usertime) - float(currenttime)
                     self.timediff.SetLabel('{:.1f}'.format(timediff))
-            #热键状态
+                # 热键状态
                 open = get_val('open')
                 label = self.hotkey_confirm.GetLabel()
                 if open and label == '异常状态':
                     self.hotkey_confirm.SetLabel('启动正常')
                 elif not open:
                     self.hotkey_confirm.SetLabel('未开启')
-            #如果不是处于提交状态
+            # 如果不是处于提交状态
             elif not tijiao_on:
                 label = self.price_status.GetLabel()
                 if label != '未出价':
-                    self.userprice.SetLabel('未出价')  #出价状态还原
+                    self.userprice.SetLabel('未出价')  # 出价状态还原
                     self.pricediff.SetLabel('未出价')
                     self.timediff.SetLabel('未出价')
         except:
             logger.error("status_Timer error")
             logger.exception('this is an exception message')
-
 
     ## 国拍与模拟切换
     def webtab(self, event):
@@ -226,6 +224,7 @@ class StatusPanel(wx.Panel):
             guopai = wx.FindWindowByName('沪牌一号 国拍')
             if guopai:
                 guopai.Show(True)
+                guopai.panel.init_ui()
                 moni.Show(False)
                 set_val('guopai_on', True)
                 set_val('moni_on', False)
@@ -238,6 +237,7 @@ class StatusPanel(wx.Panel):
             if moni:
                 moni.Show(True)
                 guopai.Show(False)
+                moni.panel.init_ui()
                 set_val('moni_on', True)
                 set_val('guopai_on', False)
             else:
@@ -245,17 +245,24 @@ class StatusPanel(wx.Panel):
                 wx.CallAfter(pub.sendMessage, "open moni")
 
 
+    ##初始化
+    def init_ui(self):
+        e_on = get_val('e_on')
+        enter_on = get_val('enter_on')
+        if e_on:
+            self.confirm_choice.SetSelection(0)
+        elif enter_on:
+            self.confirm_choice.SetSelection(1)
+
 
     ##导出跳价
     def priceview(self, event):
         price_list = get_val('price_list')
         with open('price_list.txt', 'w') as price_file:
-            for index,price in enumerate(price_list):
+            for index, price in enumerate(price_list):
                 text = "{0}秒： {1}".format(index, price)
                 price_file.write(text)
                 price_file.write('\n')
-
-
 
     ## 获取服务器时间
     def getremotetime(self, event):
@@ -294,7 +301,6 @@ class StatusPanel(wx.Panel):
             elif moni_on:
                 self.timeframe2.Show(False)
                 self.timeframe2.Show(False)
-
 
     ##时间调整
     def Add_time(self, event):
@@ -350,7 +356,7 @@ class StatusPanel(wx.Panel):
         else:
             set_val('a_time', a_time - 1)
 
-    #关闭时间显示
+    # 关闭时间显示
     def Closetime(self):
         try:
             self.timeframe1.Show(False)
@@ -361,7 +367,6 @@ class StatusPanel(wx.Panel):
             self.timeframe2.Show(False)
         except:
             logger.exception('this is an exception message')
-
 
     def Confirmchoice(self, event):
         con = self.confirm_choice.GetSelection()
@@ -395,11 +400,11 @@ class AccountPanel(wx.Panel):
 
         self.Bind(wx.EVT_CHECKBOX, self.Smart_ajust, self.smart_ajust)
 
-    def Smart_ajust(self,event):
+    def Smart_ajust(self, event):
         if self.smart_ajust.IsChecked():
-            set_val('smart_ajust', True) #开启自动价格调整
+            set_val('smart_ajust', True)  # 开启自动价格调整
         else:
-            set_val('smart_ajust', False) #关闭自动价格调整
+            set_val('smart_ajust', False)  # 关闭自动价格调整
 
 
 class StrategyPanel(wx.Panel):
@@ -423,8 +428,6 @@ class StrategyPanel(wx.Panel):
         # self.Bind(wx.EVT_TIMER, self.Price_count, self.timer2)  #
         # self.timer2.Start(100)  # 设定时间间隔
 
-
-
         stractagy = wx.StaticBox(self, -1, u'选择策略:')
         self.stractagySizer = wx.StaticBoxSizer(stractagy, wx.VERTICAL)
         stractagy_label = wx.StaticText(self, label=u"设定拍牌策略", size=(100, 50))
@@ -434,7 +437,6 @@ class StrategyPanel(wx.Panel):
         self.select_stractagy = wx.Choice(self, -1, choices=stractagy_choices, size=(100, 50))
         hbox1.Add(self.select_stractagy)
         self.select_stractagy.SetSelection(0)
-
 
         vb1 = wx.BoxSizer(wx.VERTICAL)
         vb1.Add(hbox1)
@@ -597,7 +599,6 @@ class StrategyPanel(wx.Panel):
             find_yan_confirm()
         yanzhengma_close = get_val("yanzhengma_close")
 
-
         if yanzhengma_close:
             try:
                 yan2 = self.FindWindowById(18)
@@ -606,7 +607,7 @@ class StrategyPanel(wx.Panel):
                 logger.exception('this is an exception message')
 
         yanzhengma_view = get_val('yanzhengma_view')
-        yanzhengma_change = get_val('yanzhengma_change')  #默认是True
+        yanzhengma_change = get_val('yanzhengma_change')  # 默认是True
         yanzhengma_view = get_val('yanzhengma_view')
         imgpos_yanzhengma = get_val('imgpos_yanzhengma')
         Yanzhengmasize = get_val('Yanzhengmasize')
@@ -630,8 +631,8 @@ class StrategyPanel(wx.Panel):
                 set_val('yanzhengma_hash', yan_hash)
                 set_val('yanzhengma_change', True)  # 发生变化了
 
-        if  yanzhengma_view:
-            if not yanzhengma_change :
+        if yanzhengma_view:
+            if not yanzhengma_change:
                 pass
             else:
                 try:
@@ -666,8 +667,6 @@ class StrategyPanel(wx.Panel):
         region = ImageGrab.grab(box)
         cut_pic(region, size, name)
 
-
-
     def opt(self, event):
         moni_on = get_val('moni_on')
         moni_second = get_val('moni_second')
@@ -688,7 +687,6 @@ class StrategyPanel(wx.Panel):
             set_val('tijiao_num', 1)  # 初始化
             set_val('tijiao_OK', False)
             set_val('tijiao_one', False)  # 单枪未开
-
 
     def Jiajia_time(self, event):
         one_time1 = get_val('one_time1')
@@ -733,27 +731,23 @@ class StrategyPanel(wx.Panel):
         one_time2 = get_val('one_time2')
         tem = self.tijiao_time.GetValue()
         templist = [400 + i * 1 for i in range(191)]
-        if int(tem*10) in templist:
+        if int(tem * 10) in templist:
             one_time2 = tem
             set_val('one_time2', float(one_time2))
             set_val('one_real_time2', self.gettime(one_time2))  # 计算得到的时间戳
         else:
             self.tijiao_time.SetValue(one_time2)
 
-
-
     def Jiajia_time2(self, event):
         second_time1 = get_val('second_time1')
         tem = self.jiajia_time2.GetValue()
         templist = [400 + i * 1 for i in range(191)]
-        if int(tem*10) in templist:
+        if int(tem * 10) in templist:
             second_time1 = tem
             set_val('second_time1', float(tem))
             set_val('second_real_time1', self.gettime(second_time1))  # 计算得到的时间戳
         else:
             self.jiajia_time2.SetValue(second_time1)
-
-
 
     def Jiajia_price2(self, event):
         second_diff = get_val('second_diff')
@@ -904,7 +898,6 @@ class StrategyPanel(wx.Panel):
         set_val('second_real_time1', self.gettime(second_time1))
         set_val('second_real_time2', self.gettime(second_time2))
 
-
     def save(self, name):
         one_time1 = get_val('one_time1')
         one_time2 = get_val('one_time2')
@@ -954,7 +947,8 @@ class StrategyPanel(wx.Panel):
             osl[12] = enter_on
         with open('%s.strategy' % name, 'wb') as spk:
             pickle.dump(osl, spk)
-    #策略保存
+
+    # 策略保存
     def Strategy_save(self, event):
         dlg = wx.TextEntryDialog(None, '设定你的策略名称:', "策略保存", "策略1",
                                  style=wx.OK)
@@ -973,7 +967,7 @@ class StrategyPanel(wx.Panel):
                     dlg_tip.Destroy()
                     dlg.Destroy()
 
-    #策略修改
+    # 策略修改
     def Strategy_load(self, event):
         import os
         path = os.getcwd()
@@ -1003,107 +997,159 @@ class StrategyPanel(wx.Panel):
             with open(path, 'rb') as loadstr:
                 set_val('osl', pickle.load(loadstr))
             osl = get_val('osl')
-            if osl[0] == 0:  # 单次
-                self.ss_Hide()
-                set_val('twice', False)
-                set_val('strategy_on', True)
-                set_val('chujia_on', True)
-                set_val('tijiao_on', False)
-                set_val('tijiao_num', 1)  # 初始化
-                set_val('tijiao_OK', False)
-                set_val('tijiao_one', False)  # 单枪未开
-                self.select_stractagy.SetSelection(0)
-                self.jiajia_time.SetValue(osl[1])
-                self.tijiao_time.SetValue(osl[2])
-                self.jiajia_price.SetValue(osl[3])
-                self.yanchi_time.SetValue(osl[4])
-                if osl[5] == 100:
-                    self.select_tijiao.SetSelection(0)
-                elif osl[5] == 200:
-                    self.select_tijiao.SetSelection(1)
-                else:
-                    self.select_tijiao.SetSelection(2)
-                set_val('one_time1', osl[1])  # 第一次出价加价
-                set_val('one_time2', osl[2])  # 第一次出价提交
-                set_val('one_diff', osl[3])  # 第一次加价幅度
-                set_val('one_delay', osl[4])  # 第一次延迟
-                set_val('one_advance', osl[5])  # 第一次提交提前量
-                set_val('e_on', osl[11])
-                set_val('enter_on', osl[12])
-                statuspad = self.FindWindowById(20)
-                e_on = get_val('e_on')
-                enter_on = get_val('enter_on')
-                if e_on:
-                    statuspad.confirm_choice.SetSelection(0)
-                elif enter_on:
-                    statuspad.confirm_choice.SetSelection(1)
-                one_time1 = get_val('one_time1')
-                one_time2 = get_val('one_time2')
-                second_time1 = get_val('second_time1')
-                second_time2 = get_val('second_time2')
-                set_val('one_real_time1', self.gettime(one_time1))
-                set_val('one_real_time2', self.gettime(one_time2))
-                set_val('second_real_time1', self.gettime(second_time1))
-                set_val('second_real_time2', self.gettime(second_time2))
-            elif osl[0] == 1:  # 双枪
-                set_val('strategy_on', True)
-                set_val('twice', True)
-                set_val('chujia_on', True)
-                set_val('tijiao_on', False)
-                set_val('tijiao_num', 1)  # 初始化
-                set_val('tijiao_OK', False)
-                set_val('tijiao_one', False)  # 单枪未开
-                self.ss_Shown()
-                self.select_stractagy.SetSelection(1)
-                self.jiajia_time.SetValue(osl[1])
-                self.tijiao_time.SetValue(osl[2])
-                self.jiajia_price.SetValue(osl[3])
-                self.yanchi_time.SetValue(osl[4])
-                if osl[5] == 100:
-                    self.select_tijiao.SetSelection(0)
-                elif osl[5] == 200:
-                    self.select_tijiao.SetSelection(1)
-                else:
-                    self.select_tijiao.SetSelection(2)
-                self.jiajia_time2.SetValue(osl[6])
-                self.tijiao_time2.SetValue(osl[7])
-                self.jiajia_price2.SetValue(osl[8])
-                self.yanchi_time2.SetValue(osl[9])
-                if osl[10] == 100:
-                    self.select_tijiao2.SetSelection(0)
-                elif osl[10] == 200:
-                    self.select_tijiao2.SetSelection(1)
-                else:
-                    self.select_tijiao2.SetSelection(2)
-                set_val('one_time1', osl[1])  # 第一次出价加价
-                set_val('one_time2', osl[2])  # 第一次出价提交
-                set_val('one_diff', osl[3])  # 第一次加价幅度
-                set_val('one_delay', osl[4])  # 第一次延迟
-                set_val('one_advance', osl[5])  # 第一次提交提前量
-                set_val('second_time1', osl[6])  # 第二次次出价加价
-                set_val('second_time2', osl[7])  # 第二次出价提交
-                set_val('second_diff', osl[8])  # 第二次加价幅度
-                set_val('second_delay', osl[9])  # 第二次出价延迟
-                set_val('second_advance', osl[10])  # 第二次出价提交提前量
-                set_val('e_on', osl[11])
-                set_val('enter_on', osl[12])
-                statuspad = self.FindWindowById(20)
-                e_on = get_val('e_on')
-                enter_on = get_val('enter_on')
-                if e_on:
-                    statuspad.confirm_choice.SetSelection(0)
-                elif enter_on:
-                    statuspad.confirm_choice.SetSelection(1)
-                one_time1 = get_val('one_time1')
-                one_time2 = get_val('one_time2')
-                second_time1 = get_val('second_time1')
-                second_time2 = get_val('second_time2')
-                set_val('one_real_time1', self.gettime(one_time1))
-                set_val('one_real_time2', self.gettime(one_time2))
-                set_val('second_real_time1', self.gettime(second_time1))
-                set_val('second_real_time2', self.gettime(second_time2))
+            self.update_ui(osl)
         except:
             logger.exception('this is an exception message')
+
+    ##保持国拍与模拟的一致性
+    def init_ui(self):
+        one_time1 = get_val('one_time1')
+        one_time2 = get_val('one_time2')
+        one_diff = get_val('one_diff')
+        one_delay = get_val('one_delay')
+        one_advance = get_val('one_advance')
+        second_time1 = get_val('second_time1')
+        second_time2 = get_val('second_time2')
+        second_diff = get_val('second_diff')
+        second_delay = get_val('second_delay')
+        second_advance = get_val('second_advance')
+        e_on = get_val('e_on')
+        enter_on = get_val('enter_on')
+        osl = [0] * 13
+        if self.select_stractagy.GetSelection() == 0:
+            osl[0] = 0
+            osl[1] = one_time1
+            osl[2] = one_time2
+            osl[3] = one_diff
+            osl[4] = one_delay
+            osl[5] = one_advance
+            osl[6] = second_time1
+            osl[7] = second_time2
+            osl[8] = second_diff
+            osl[9] = second_delay
+            osl[10] = second_advance
+            osl[11] = e_on
+            osl[12] = enter_on
+        elif self.select_stractagy.GetSelection() == 1:
+            osl[0] = 1
+            osl[1] = one_time1
+            osl[2] = one_time2
+            osl[3] = one_diff
+            osl[4] = one_delay
+            osl[5] = one_advance
+            osl[6] = second_time1
+            osl[7] = second_time2
+            osl[8] = second_diff
+            osl[9] = second_delay
+            osl[10] = second_advance
+            osl[11] = e_on
+            osl[12] = enter_on
+        elif self.select_stractagy.GetSelection() == 2:
+            osl[0] = 2
+            osl[1] = one_time1
+            osl[2] = one_time2
+            osl[3] = one_diff
+            osl[4] = one_delay
+            osl[5] = one_advance
+            osl[6] = second_time1
+            osl[7] = second_time2
+            osl[8] = second_diff
+            osl[9] = second_delay
+            osl[10] = second_advance
+            osl[11] = e_on
+            osl[12] = enter_on
+        self.update_ui(osl)
+
+
+
+    def update_ui(self, osl):
+        if osl[0] == 0:  # 单次
+            self.ss_Hide()
+            set_val('twice', False)
+            set_val('strategy_on', True)
+            set_val('chujia_on', True)
+            set_val('tijiao_on', False)
+            set_val('tijiao_num', 1)  # 初始化
+            set_val('tijiao_OK', False)
+            set_val('tijiao_one', False)  # 单枪未开
+            self.select_stractagy.SetSelection(0)
+            self.jiajia_time.SetValue(osl[1])
+            self.tijiao_time.SetValue(osl[2])
+            self.jiajia_price.SetValue(osl[3])
+            self.yanchi_time.SetValue(osl[4])
+            if osl[5] == 100:
+                self.select_tijiao.SetSelection(0)
+            elif osl[5] == 200:
+                self.select_tijiao.SetSelection(1)
+            else:
+                self.select_tijiao.SetSelection(2)
+            set_val('one_time1', osl[1])  # 第一次出价加价
+            set_val('one_time2', osl[2])  # 第一次出价提交
+            set_val('one_diff', osl[3])  # 第一次加价幅度
+            set_val('one_delay', osl[4])  # 第一次延迟
+            set_val('one_advance', osl[5])  # 第一次提交提前量
+            set_val('e_on', osl[11])
+            set_val('enter_on', osl[12])
+
+            one_time1 = get_val('one_time1')
+            one_time2 = get_val('one_time2')
+            second_time1 = get_val('second_time1')
+            second_time2 = get_val('second_time2')
+            set_val('one_real_time1', self.gettime(one_time1))
+            set_val('one_real_time2', self.gettime(one_time2))
+            set_val('second_real_time1', self.gettime(second_time1))
+            set_val('second_real_time2', self.gettime(second_time2))
+        elif osl[0] == 1:  # 双枪
+            set_val('strategy_on', True)
+            set_val('twice', True)
+            set_val('chujia_on', True)
+            set_val('tijiao_on', False)
+            set_val('tijiao_num', 1)  # 初始化
+            set_val('tijiao_OK', False)
+            set_val('tijiao_one', False)  # 单枪未开
+            self.ss_Shown()
+            self.select_stractagy.SetSelection(1)
+            self.jiajia_time.SetValue(osl[1])
+            self.tijiao_time.SetValue(osl[2])
+            self.jiajia_price.SetValue(osl[3])
+            self.yanchi_time.SetValue(osl[4])
+            if osl[5] == 100:
+                self.select_tijiao.SetSelection(0)
+            elif osl[5] == 200:
+                self.select_tijiao.SetSelection(1)
+            else:
+                self.select_tijiao.SetSelection(2)
+            self.jiajia_time2.SetValue(osl[6])
+            self.tijiao_time2.SetValue(osl[7])
+            self.jiajia_price2.SetValue(osl[8])
+            self.yanchi_time2.SetValue(osl[9])
+            if osl[10] == 100:
+                self.select_tijiao2.SetSelection(0)
+            elif osl[10] == 200:
+                self.select_tijiao2.SetSelection(1)
+            else:
+                self.select_tijiao2.SetSelection(2)
+            set_val('one_time1', osl[1])  # 第一次出价加价
+            set_val('one_time2', osl[2])  # 第一次出价提交
+            set_val('one_diff', osl[3])  # 第一次加价幅度
+            set_val('one_delay', osl[4])  # 第一次延迟
+            set_val('one_advance', osl[5])  # 第一次提交提前量
+            set_val('second_time1', osl[6])  # 第二次次出价加价
+            set_val('second_time2', osl[7])  # 第二次出价提交
+            set_val('second_diff', osl[8])  # 第二次加价幅度
+            set_val('second_delay', osl[9])  # 第二次出价延迟
+            set_val('second_advance', osl[10])  # 第二次出价提交提前量
+            set_val('e_on', osl[11])
+            set_val('enter_on', osl[12])
+
+            one_time1 = get_val('one_time1')
+            one_time2 = get_val('one_time2')
+            second_time1 = get_val('second_time1')
+            second_time2 = get_val('second_time2')
+            set_val('one_real_time1', self.gettime(one_time1))
+            set_val('one_real_time2', self.gettime(one_time2))
+            set_val('second_real_time1', self.gettime(second_time1))
+            set_val('second_real_time2', self.gettime(second_time2))
 
     def findfiles(self, path):
         L = []
@@ -1131,65 +1177,68 @@ class StrategyPanel(wx.Panel):
         c = self.changetime(b) + float(choice) - int(choice)
         return c  # 得到用户所确定的最终时间戳
 
+#
+# class OperationFrame(wx.Frame):
+#     def __init__(self, Px, Py, mainicon):  # name:窗口显示名称
+#         wx.Frame.__init__(self, None, 2, title="沪牌一号", pos=(Px + 902, Py), size=(300, 625), \
+#                           style=wx.FRAME_NO_TASKBAR | wx.CAPTION | wx.CLOSE_BOX)  #
+#         self.Bind(wx.EVT_CLOSE, self.OnClose)
+#         self.notebook = wx.Notebook(self)
+#         self.status_tab = StatusPanel(self.notebook)  # notebook作为父类
+#         self.notebook.AddPage(self.status_tab, "常规功能")
+#         self.strategy_tab = StrategyPanel(self.notebook)
+#         self.notebook.AddPage(self.strategy_tab, "策略设置")
+#         self.account_tab = AccountPanel(self.notebook)
+#         self.notebook.AddPage(self.account_tab, "账号设置")
+#         sizer = wx.BoxSizer(wx.VERTICAL)
+#         sizer.Add(self.notebook, 1, wx.ALL | wx.EXPAND, 5)
+#         self.SetSizer(sizer)
+#         self.Layout()
+#         self.Show(False)  # 初始隐藏
+#
+#         pub.subscribe(self.OnClose2, "close operation")
+#
+#     def OnClose(self, event):
+#         guopai_on = get_val('guopai_on')
+#         if guopai_on:
+#             dlg = wx.MessageDialog(None, "确认要关闭国拍吗?",
+#                                    '关闭国拍页面',
+#                                    wx.YES_NO | wx.ICON_WARNING | wx.STAY_ON_TOP)
+#             ret = dlg.ShowModal()
+#             if ret == wx.ID_YES:
+#                 main = self.FindWindowById(1)
+#                 main.Show(True)
+#                 wx.CallAfter(pub.sendMessage, "close webframe")  # 关闭热键绑定
+#                 self.Show(False)
+#             dlg.Destroy()
+#         else:
+#             main = self.FindWindowById(1)
+#             main.Show(True)
+#             wx.CallAfter(pub.sendMessage, "close webframe")  # 关闭热键绑定
+#             self.Show(False)
+#
+#     def OnClose2(self):
+#         main = self.FindWindowById(1)
+#         main.Show(True)
+#         self.Show(False)
 
-class OperationFrame(wx.Frame):
-    def __init__(self, Px, Py, mainicon):  # name:窗口显示名称
-        wx.Frame.__init__(self, None, 2, title="沪牌一号", pos=(Px + 902, Py), size=(300, 625), \
-                          style=wx.FRAME_NO_TASKBAR | wx.CAPTION | wx.CLOSE_BOX)  #
-        self.Bind(wx.EVT_CLOSE, self.OnClose)
-        self.notebook = wx.Notebook(self)
-        self.status_tab = StatusPanel(self.notebook)  # notebook作为父类
-        self.notebook.AddPage(self.status_tab, "常规功能")
-        self.strategy_tab = StrategyPanel(self.notebook)
-        self.notebook.AddPage(self.strategy_tab, "策略设置")
-        self.account_tab = AccountPanel(self.notebook)
-        self.notebook.AddPage(self.account_tab, "账号设置")
-        sizer = wx.BoxSizer(wx.VERTICAL)
-        sizer.Add(self.notebook, 1, wx.ALL | wx.EXPAND, 5)
-        self.SetSizer(sizer)
-        self.Layout()
-        self.Show(False)  # 初始隐藏
-
-        pub.subscribe(self.OnClose2, "close operation")
-
-
-    def OnClose(self, event):
-        guopai_on = get_val('guopai_on')
-        if guopai_on:
-            dlg = wx.MessageDialog(None, "确认要关闭国拍吗?",
-                                   '关闭国拍页面',
-                                   wx.YES_NO | wx.ICON_WARNING | wx.STAY_ON_TOP)
-            ret = dlg.ShowModal()
-            if ret == wx.ID_YES:
-                main = self.FindWindowById(1)
-                main.Show(True)
-                wx.CallAfter(pub.sendMessage, "close webframe")  # 关闭热键绑定
-                self.Show(False)
-            dlg.Destroy()
-        else:
-            main = self.FindWindowById(1)
-            main.Show(True)
-            wx.CallAfter(pub.sendMessage, "close webframe")  # 关闭热键绑定
-            self.Show(False)
-
-
-    def OnClose2(self):
-        main = self.FindWindowById(1)
-        main.Show(True)
-        self.Show(False)
 
 class OperationPanel(wx.Panel):
-    def __init__(self,parent,tablabel):  # name:窗口显示名称
+    def __init__(self, parent, tablabel):  # name:窗口显示名称
         websize = get_val('websize')
-        wx.Panel.__init__(self, parent=parent, size=(330, websize[1]), pos=(880,0))
+        wx.Panel.__init__(self, parent=parent, size=(330, websize[1]), pos=(880, 0))
         self.notebook = wx.Notebook(self)
         self.status_tab = StatusPanel(self.notebook, tablabel)  # notebook作为父类
         self.notebook.AddPage(self.status_tab, "常规功能")
         self.strategy_tab = StrategyPanel(self.notebook)
         self.notebook.AddPage(self.strategy_tab, "策略设置")
-        self.account_tab = AccountPanel(self.notebook)
-        self.notebook.AddPage(self.account_tab, "账号设置")
+        # self.account_tab = AccountPanel(self.notebook)
+        # self.notebook.AddPage(self.account_tab, "账号设置")
         sizer = wx.BoxSizer(wx.VERTICAL)
         sizer.Add(self.notebook, 1)
         self.SetSizer(sizer)
         self.Layout()
+
+    def init_ui(self):
+        self.strategy_tab.init_ui()
+        self.status_tab.init_ui()

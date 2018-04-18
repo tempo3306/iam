@@ -10,31 +10,27 @@ from component.OperationFrame import OperationPanel
 from component.app_thread import TimeThread, OpenwebThread
 from component.staticmethod import *
 from component.imgcut import findpos, timeset, Price_read
-from component.webframe import MoniWebFrame, MoniWebFrame
+from component.webframe import WebFrame, MoniWebFrame
 from component.Pinger import pingerThread
 from component.Guopaiframe import GuopaiFrame
 from component.app_thread import *
-
+from component.login import Keeplogin
 
 class TopFrame(wx.Frame):
     def __init__(self, name, rev):  ##########版本号
         Px = get_val('Px')
         Py = get_val('Py')
-        mainicon = get_val('mainicon')
-        wx.Frame.__init__(self, None, 1, name,
+        wx.Frame.__init__(self, None, -1, name,
                           size=(300, 240), style=wx.CAPTION | wx.CLOSE_BOX | wx.MINIMIZE_BOX)
 
-        # 初始化居中
+        id = self.GetId()
+        print('id', id)
+        set_val('topframe', id)
+        ## 初始化居中
         self.Center()
         self.Bind(wx.EVT_CLOSE, self.OnClose)
-        self.statusbar = self.CreateStatusBar()
-        self.statusbar.SetFieldsCount(3)
-        self.statusbar.SetStatusWidths([-1, -2, -3])
-        self.icon = wx.Icon(mainicon, wx.BITMAP_TYPE_ICO)
-        self.SetIcon(self.icon)
-        self.statusbar.SetStatusText(u"版本号", 0)
-        self.statusbar.SetStatusText(u"%s" % rev, 1)
-        self.statusbar.SetStatusText(u"软件作者：ZS ", 2)
+        ##状态栏
+        self.create_statusbar(rev)
         # self.statusbar.SetBackgroundColour((240, 255, 255))
         panel = wx.Panel(self, -1)
         # panel.SetBackgroundColour((240, 255, 255))
@@ -97,9 +93,28 @@ class TopFrame(wx.Frame):
         self.browser_moni = wx.html2.WebView.New()
 
         ###多线程
+        self.create_thread()
+
+        ###keep login timer事件
+        self.keeptimer = wx.Timer(self)
+        self.Bind(wx.EVT_TIMER, self.keeplogin, self.keeptimer)
+        self.keeptimer.Start(300000)
+
+
+    def create_statusbar(self, rev):
+        mainicon = get_val('mainicon')
+        self.statusbar = self.CreateStatusBar()
+        self.statusbar.SetFieldsCount(3)
+        self.statusbar.SetStatusWidths([-1, -2, -3])
+        self.icon = wx.Icon(mainicon, wx.BITMAP_TYPE_ICO)
+        self.SetIcon(self.icon)
+        self.statusbar.SetStatusText(u"版本号", 0)
+        self.statusbar.SetStatusText(u"%s" % rev, 1)
+        self.statusbar.SetStatusText(u"软件作者：ZS ", 2)
+
+    def create_thread(self):
         self.confirmthread = confirmThread()  # 确认线程
         self.refreshthread = refreshThread()  # 刷新线程
-
         self.finposthread = findposThread()  # 定位线程
         self.cutimgthread = cutimgThread()  # 截图线程
         self.tijiaoThread = TijiaoThread()  # 提交
@@ -191,6 +206,7 @@ class TopFrame(wx.Frame):
                 self.browser_moni.LoadURL(url1)
                 self.browser_moni.CanSetZoomType(False)
                 self.fr.Show()
+                self.fr.panel.init_ui()
                 # 关闭主界面，打开策略设置
                 self.webopen()
             Listen()
@@ -199,7 +215,7 @@ class TopFrame(wx.Frame):
             Close()
 
     def Open_call_moni(self):
-        websize = get_val('websize')
+        htmlsize = get_val('htmlsize')
         webview_pos = get_val('webview_pos')
         timer0 = threading.Timer(5, findpos)
         set_val('strategy_on', True)
@@ -231,12 +247,9 @@ class TopFrame(wx.Frame):
             self.browser_moni.LoadURL(url1)
             self.browser_moni.CanSetZoomType(False)
             self.fr.Show()
+            self.fr.panel.init_ui()
             # 关闭主界面，打开策略设置
             self.webopen()
-
-
-
-
 
     def Openurlchoice(self, event):
         htmlsize = get_val('htmlsize')
@@ -274,7 +287,7 @@ class TopFrame(wx.Frame):
                     self.webopen()
                     Listen()
                 else:
-                    self.fr = MoniWebFrame(Px, Py, 52, '沪牌一号 国拍', '切换模拟')  ## 国拍52
+                    self.fr = WebFrame(Px, Py, 52, '沪牌一号 国拍', '切换模拟')  ## 国拍52
                     wx.CallAfter(pub.sendMessage, "close guopaiframe")
 
                     self.browser_guopai = wx.html2.WebView.New(self.fr, size=(htmlsize[0], htmlsize[1]), pos=webview_pos,
@@ -282,6 +295,7 @@ class TopFrame(wx.Frame):
                     self.browser_guopai.LoadURL(url2)
                     self.browser_guopai.CanSetZoomType(False)
                     self.fr.Show()
+                    self.fr.panel.init_ui()
                     # 关闭主界面，打开策略设置
                     self.webopen()
                     Listen()
@@ -318,7 +332,7 @@ class TopFrame(wx.Frame):
             self.webopen()
             Listen()
         else:
-            self.fr = MoniWebFrame(Px, Py, 52, '沪牌一号 国拍', '切换模拟')  ## 国拍52
+            self.fr = WebFrame(Px, Py, 52, '沪牌一号 国拍', '切换模拟')  ## 国拍52
             wx.CallAfter(pub.sendMessage, "close guopaiframe")
 
             self.browser_guopai = wx.html2.WebView.New(self.fr, size=(htmlsize[0], htmlsize[1]), pos=webview_pos,
@@ -326,6 +340,7 @@ class TopFrame(wx.Frame):
             self.browser_guopai.LoadURL(url2)
             self.browser_guopai.CanSetZoomType(False)
             self.fr.Show()
+            self.fr.panel.init_ui()
             # 关闭主界面，打开策略设置
             self.webopen()
 
@@ -468,6 +483,21 @@ class TopFrame(wx.Frame):
             webframe.panel.status_tab.Closetime()
             webframe.panel.status_tab.timeview.SetValue(0)
 
+    def keeplogin(self, event):
+        result = Keeplogin()
+        try:
+            res = result['result']
+            if res == 'keep failure':  ##在其它电脑上登录过，并且未注销
+                self.Destroy()
+                from component.LoginFrame import LoginFrame
+                login = LoginFrame()
+            else:
+                pass
+        except:
+            pass
+
+
+
     def OnClose(self, event):
         ret = wx.MessageBox('真的要退出助手吗?', '确认', wx.OK | wx.CANCEL)
         if ret == wx.OK:
@@ -477,8 +507,11 @@ class TopFrame(wx.Frame):
             self.cutimgthread.stop()
             self.tijiaoThread.stop()
             self.lowestThread.stop()
+            self.Show(False)
             event.Skip()
             import sys
+            from component.login import Logout
+            Logout()
             sys.exit()
 
         ##关闭线程

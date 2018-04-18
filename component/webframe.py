@@ -42,7 +42,8 @@ class MoniWebFrame(wx.Frame):
         set_val('guopai_on', False)
         self.Destroy()
         event.Skip()
-        topframe = wx.FindWindowById(1)
+        id = get_val('topframe')
+        topframe = wx.FindWindowById(id)
         topframe.Show(True)
 
     def Close2(self):
@@ -63,13 +64,15 @@ class WebFrame(wx.Frame):
         self.icon = wx.Icon(mainicon, wx.BITMAP_TYPE_ICO)
         self.SetIcon(self.icon)
 
+        ##状态栏
+        self.createStatusBar()
+
         self.Bind(wx.EVT_CLOSE, self.OnClose)
         self.panel = OperationPanel(self, tablabel)
         self.Center()
         # pub.subscribe(self.Close2, "close guopai")  # 打开非电信
 
-        ##状态栏
-        self.createStatusBar()
+
 
     def createStatusBar(self):
         self.statusbar = IcStatusBar(self)
@@ -83,7 +86,8 @@ class WebFrame(wx.Frame):
         set_val('guopai_on', False)
         self.Destroy()
         event.Skip()
-        topframe = wx.FindWindowById(1)
+        id = get_val('topframe')
+        topframe = wx.FindWindowById(id)
         topframe.Show(True)
         # print("关闭web")
         # guopai_on = get_val('guopai_on')

@@ -1,1289 +1,1405 @@
-Tue, 10 Apr 2018 15:40:03 PngImagePlugin.py[line:137] DEBUG STREAM b'IHDR' 16 13
-Tue, 10 Apr 2018 15:40:03 PngImagePlugin.py[line:137] DEBUG STREAM b'IDAT' 41 65536
-Tue, 10 Apr 2018 15:40:03 PngImagePlugin.py[line:137] DEBUG STREAM b'IHDR' 16 13
-Tue, 10 Apr 2018 15:40:03 PngImagePlugin.py[line:137] DEBUG STREAM b'IDAT' 41 65536
-Tue, 10 Apr 2018 15:40:05 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:06 app_thread.py[line:145] ERROR 刷新失败
-Tue, 10 Apr 2018 15:40:06 app_thread.py[line:146] ERROR this is an exception message
+Wed, 18 Apr 2018 23:37:28 PngImagePlugin.py[line:137] DEBUG STREAM b'IHDR' 16 13
+Wed, 18 Apr 2018 23:37:28 PngImagePlugin.py[line:137] DEBUG STREAM b'IDAT' 41 65536
+Wed, 18 Apr 2018 23:37:29 PngImagePlugin.py[line:137] DEBUG STREAM b'IHDR' 16 13
+Wed, 18 Apr 2018 23:37:29 PngImagePlugin.py[line:137] DEBUG STREAM b'IDAT' 41 65536
+Wed, 18 Apr 2018 23:37:32 app_thread.py[line:145] ERROR 刷新失败
+Wed, 18 Apr 2018 23:37:32 app_thread.py[line:146] ERROR this is an exception message
 Traceback (most recent call last):
   File "E:\hupai\component\app_thread.py", line 143, in run
     findrefresh()
-  File "E:\hupai\component\imgcut.py", line 383, in findrefresh
+  File "E:\hupai\component\imgcut.py", line 387, in findrefresh
     img = cv2.cvtColor(sc, cv2.COLOR_BGR2GRAY)  # 转灰度图
 cv2.error: C:\projects\opencv-python\opencv\modules\imgproc\src\color.cpp:11073: error: (-215) depth == 0 || depth == 2 || depth == 5 in function cv::cvtColor
 
-Tue, 10 Apr 2018 15:40:06 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:06 imgcut.py[line:368] ERROR cut_img 这里出错
-Tue, 10 Apr 2018 15:40:06 imgcut.py[line:369] ERROR this is an exception message
+Wed, 18 Apr 2018 23:37:32 imgcut.py[line:372] ERROR cut_img 这里出错
+Wed, 18 Apr 2018 23:37:32 imgcut.py[line:373] ERROR this is an exception message
 Traceback (most recent call last):
-  File "E:\hupai\component\imgcut.py", line 361, in cut_img
+  File "E:\hupai\component\imgcut.py", line 365, in cut_img
     set_val('imgpos_lowestprice', img[use_area[0][1]:use_area[0][3], use_area[0][0]:use_area[0][2]])  # ok
 IndexError: list index out of range
-Tue, 10 Apr 2018 15:40:06 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:06 app_thread.py[line:145] ERROR 刷新失败
-Tue, 10 Apr 2018 15:40:06 app_thread.py[line:146] ERROR this is an exception message
+Wed, 18 Apr 2018 23:37:32 app_thread.py[line:145] ERROR 刷新失败
+Wed, 18 Apr 2018 23:37:32 app_thread.py[line:146] ERROR this is an exception message
 Traceback (most recent call last):
   File "E:\hupai\component\app_thread.py", line 143, in run
     findrefresh()
-  File "E:\hupai\component\imgcut.py", line 383, in findrefresh
+  File "E:\hupai\component\imgcut.py", line 387, in findrefresh
     img = cv2.cvtColor(sc, cv2.COLOR_BGR2GRAY)  # 转灰度图
 cv2.error: C:\projects\opencv-python\opencv\modules\imgproc\src\color.cpp:11073: error: (-215) depth == 0 || depth == 2 || depth == 5 in function cv::cvtColor
 
-Tue, 10 Apr 2018 15:40:06 imgcut.py[line:368] ERROR cut_img 这里出错
-Tue, 10 Apr 2018 15:40:06 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:06 imgcut.py[line:369] ERROR this is an exception message
+Wed, 18 Apr 2018 23:37:32 imgcut.py[line:372] ERROR cut_img 这里出错
+Wed, 18 Apr 2018 23:37:32 imgcut.py[line:373] ERROR this is an exception message
 Traceback (most recent call last):
-  File "E:\hupai\component\imgcut.py", line 361, in cut_img
+  File "E:\hupai\component\imgcut.py", line 365, in cut_img
     set_val('imgpos_lowestprice', img[use_area[0][1]:use_area[0][3], use_area[0][0]:use_area[0][2]])  # ok
 IndexError: list index out of range
-Tue, 10 Apr 2018 15:40:06 app_thread.py[line:145] ERROR 刷新失败
-Tue, 10 Apr 2018 15:40:06 app_thread.py[line:146] ERROR this is an exception message
+Wed, 18 Apr 2018 23:37:32 app_thread.py[line:145] ERROR 刷新失败
+Wed, 18 Apr 2018 23:37:32 app_thread.py[line:146] ERROR this is an exception message
 Traceback (most recent call last):
   File "E:\hupai\component\app_thread.py", line 143, in run
     findrefresh()
-  File "E:\hupai\component\imgcut.py", line 383, in findrefresh
+  File "E:\hupai\component\imgcut.py", line 387, in findrefresh
     img = cv2.cvtColor(sc, cv2.COLOR_BGR2GRAY)  # 转灰度图
 cv2.error: C:\projects\opencv-python\opencv\modules\imgproc\src\color.cpp:11073: error: (-215) depth == 0 || depth == 2 || depth == 5 in function cv::cvtColor
 
-Tue, 10 Apr 2018 15:40:06 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:06 app_thread.py[line:145] ERROR 刷新失败
-Tue, 10 Apr 2018 15:40:06 app_thread.py[line:146] ERROR this is an exception message
+Wed, 18 Apr 2018 23:37:32 app_thread.py[line:145] ERROR 刷新失败
+Wed, 18 Apr 2018 23:37:32 app_thread.py[line:146] ERROR this is an exception message
 Traceback (most recent call last):
   File "E:\hupai\component\app_thread.py", line 143, in run
     findrefresh()
-  File "E:\hupai\component\imgcut.py", line 383, in findrefresh
+  File "E:\hupai\component\imgcut.py", line 387, in findrefresh
     img = cv2.cvtColor(sc, cv2.COLOR_BGR2GRAY)  # 转灰度图
 cv2.error: C:\projects\opencv-python\opencv\modules\imgproc\src\color.cpp:11073: error: (-215) depth == 0 || depth == 2 || depth == 5 in function cv::cvtColor
 
-Tue, 10 Apr 2018 15:40:06 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:06 imgcut.py[line:368] ERROR cut_img 这里出错
-Tue, 10 Apr 2018 15:40:06 imgcut.py[line:369] ERROR this is an exception message
+Wed, 18 Apr 2018 23:37:32 imgcut.py[line:372] ERROR cut_img 这里出错
+Wed, 18 Apr 2018 23:37:32 imgcut.py[line:373] ERROR this is an exception message
 Traceback (most recent call last):
-  File "E:\hupai\component\imgcut.py", line 361, in cut_img
+  File "E:\hupai\component\imgcut.py", line 365, in cut_img
     set_val('imgpos_lowestprice', img[use_area[0][1]:use_area[0][3], use_area[0][0]:use_area[0][2]])  # ok
 IndexError: list index out of range
-Tue, 10 Apr 2018 15:40:06 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:06 app_thread.py[line:145] ERROR 刷新失败
-Tue, 10 Apr 2018 15:40:06 app_thread.py[line:146] ERROR this is an exception message
+Wed, 18 Apr 2018 23:37:32 app_thread.py[line:145] ERROR 刷新失败
+Wed, 18 Apr 2018 23:37:32 app_thread.py[line:146] ERROR this is an exception message
 Traceback (most recent call last):
   File "E:\hupai\component\app_thread.py", line 143, in run
     findrefresh()
-  File "E:\hupai\component\imgcut.py", line 383, in findrefresh
+  File "E:\hupai\component\imgcut.py", line 387, in findrefresh
     img = cv2.cvtColor(sc, cv2.COLOR_BGR2GRAY)  # 转灰度图
 cv2.error: C:\projects\opencv-python\opencv\modules\imgproc\src\color.cpp:11073: error: (-215) depth == 0 || depth == 2 || depth == 5 in function cv::cvtColor
 
-Tue, 10 Apr 2018 15:40:06 imgcut.py[line:368] ERROR cut_img 这里出错
-Tue, 10 Apr 2018 15:40:06 imgcut.py[line:369] ERROR this is an exception message
+Wed, 18 Apr 2018 23:37:32 imgcut.py[line:372] ERROR cut_img 这里出错
+Wed, 18 Apr 2018 23:37:32 imgcut.py[line:373] ERROR this is an exception message
 Traceback (most recent call last):
-  File "E:\hupai\component\imgcut.py", line 361, in cut_img
+  File "E:\hupai\component\imgcut.py", line 365, in cut_img
     set_val('imgpos_lowestprice', img[use_area[0][1]:use_area[0][3], use_area[0][0]:use_area[0][2]])  # ok
 IndexError: list index out of range
-Tue, 10 Apr 2018 15:40:06 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:06 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:06 app_thread.py[line:145] ERROR 刷新失败
-Tue, 10 Apr 2018 15:40:06 app_thread.py[line:146] ERROR this is an exception message
+Wed, 18 Apr 2018 23:37:32 app_thread.py[line:145] ERROR 刷新失败
+Wed, 18 Apr 2018 23:37:32 app_thread.py[line:146] ERROR this is an exception message
 Traceback (most recent call last):
   File "E:\hupai\component\app_thread.py", line 143, in run
     findrefresh()
-  File "E:\hupai\component\imgcut.py", line 383, in findrefresh
+  File "E:\hupai\component\imgcut.py", line 387, in findrefresh
     img = cv2.cvtColor(sc, cv2.COLOR_BGR2GRAY)  # 转灰度图
 cv2.error: C:\projects\opencv-python\opencv\modules\imgproc\src\color.cpp:11073: error: (-215) depth == 0 || depth == 2 || depth == 5 in function cv::cvtColor
 
-Tue, 10 Apr 2018 15:40:06 imgcut.py[line:368] ERROR cut_img 这里出错
-Tue, 10 Apr 2018 15:40:06 imgcut.py[line:369] ERROR this is an exception message
+Wed, 18 Apr 2018 23:37:32 imgcut.py[line:372] ERROR cut_img 这里出错
+Wed, 18 Apr 2018 23:37:32 imgcut.py[line:373] ERROR this is an exception message
 Traceback (most recent call last):
-  File "E:\hupai\component\imgcut.py", line 361, in cut_img
+  File "E:\hupai\component\imgcut.py", line 365, in cut_img
     set_val('imgpos_lowestprice', img[use_area[0][1]:use_area[0][3], use_area[0][0]:use_area[0][2]])  # ok
 IndexError: list index out of range
-Tue, 10 Apr 2018 15:40:06 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:06 app_thread.py[line:145] ERROR 刷新失败
-Tue, 10 Apr 2018 15:40:06 app_thread.py[line:146] ERROR this is an exception message
+Wed, 18 Apr 2018 23:37:32 app_thread.py[line:145] ERROR 刷新失败
+Wed, 18 Apr 2018 23:37:32 app_thread.py[line:146] ERROR this is an exception message
 Traceback (most recent call last):
   File "E:\hupai\component\app_thread.py", line 143, in run
     findrefresh()
-  File "E:\hupai\component\imgcut.py", line 383, in findrefresh
+  File "E:\hupai\component\imgcut.py", line 387, in findrefresh
     img = cv2.cvtColor(sc, cv2.COLOR_BGR2GRAY)  # 转灰度图
 cv2.error: C:\projects\opencv-python\opencv\modules\imgproc\src\color.cpp:11073: error: (-215) depth == 0 || depth == 2 || depth == 5 in function cv::cvtColor
 
-Tue, 10 Apr 2018 15:40:06 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:06 imgcut.py[line:368] ERROR cut_img 这里出错
-Tue, 10 Apr 2018 15:40:06 imgcut.py[line:369] ERROR this is an exception message
+Wed, 18 Apr 2018 23:37:32 app_thread.py[line:145] ERROR 刷新失败
+Wed, 18 Apr 2018 23:37:32 app_thread.py[line:146] ERROR this is an exception message
 Traceback (most recent call last):
-  File "E:\hupai\component\imgcut.py", line 361, in cut_img
+  File "E:\hupai\component\app_thread.py", line 143, in run
+    findrefresh()
+  File "E:\hupai\component\imgcut.py", line 387, in findrefresh
+    img = cv2.cvtColor(sc, cv2.COLOR_BGR2GRAY)  # 转灰度图
+cv2.error: C:\projects\opencv-python\opencv\modules\imgproc\src\color.cpp:11073: error: (-215) depth == 0 || depth == 2 || depth == 5 in function cv::cvtColor
+
+Wed, 18 Apr 2018 23:37:32 imgcut.py[line:372] ERROR cut_img 这里出错
+Wed, 18 Apr 2018 23:37:32 imgcut.py[line:373] ERROR this is an exception message
+Traceback (most recent call last):
+  File "E:\hupai\component\imgcut.py", line 365, in cut_img
     set_val('imgpos_lowestprice', img[use_area[0][1]:use_area[0][3], use_area[0][0]:use_area[0][2]])  # ok
 IndexError: list index out of range
-Tue, 10 Apr 2018 15:40:06 app_thread.py[line:145] ERROR 刷新失败
-Tue, 10 Apr 2018 15:40:06 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:06 app_thread.py[line:146] ERROR this is an exception message
+Wed, 18 Apr 2018 23:37:32 app_thread.py[line:145] ERROR 刷新失败
+Wed, 18 Apr 2018 23:37:32 app_thread.py[line:146] ERROR this is an exception message
 Traceback (most recent call last):
   File "E:\hupai\component\app_thread.py", line 143, in run
     findrefresh()
-  File "E:\hupai\component\imgcut.py", line 383, in findrefresh
+  File "E:\hupai\component\imgcut.py", line 387, in findrefresh
     img = cv2.cvtColor(sc, cv2.COLOR_BGR2GRAY)  # 转灰度图
 cv2.error: C:\projects\opencv-python\opencv\modules\imgproc\src\color.cpp:11073: error: (-215) depth == 0 || depth == 2 || depth == 5 in function cv::cvtColor
 
-Tue, 10 Apr 2018 15:40:06 imgcut.py[line:368] ERROR cut_img 这里出错
-Tue, 10 Apr 2018 15:40:06 imgcut.py[line:369] ERROR this is an exception message
+Wed, 18 Apr 2018 23:37:32 imgcut.py[line:372] ERROR cut_img 这里出错
+Wed, 18 Apr 2018 23:37:32 imgcut.py[line:373] ERROR this is an exception message
 Traceback (most recent call last):
-  File "E:\hupai\component\imgcut.py", line 361, in cut_img
+  File "E:\hupai\component\imgcut.py", line 365, in cut_img
     set_val('imgpos_lowestprice', img[use_area[0][1]:use_area[0][3], use_area[0][0]:use_area[0][2]])  # ok
 IndexError: list index out of range
-Tue, 10 Apr 2018 15:40:06 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:06 app_thread.py[line:145] ERROR 刷新失败
-Tue, 10 Apr 2018 15:40:06 app_thread.py[line:146] ERROR this is an exception message
+Wed, 18 Apr 2018 23:37:32 app_thread.py[line:145] ERROR 刷新失败
+Wed, 18 Apr 2018 23:37:32 app_thread.py[line:146] ERROR this is an exception message
 Traceback (most recent call last):
   File "E:\hupai\component\app_thread.py", line 143, in run
     findrefresh()
-  File "E:\hupai\component\imgcut.py", line 383, in findrefresh
+  File "E:\hupai\component\imgcut.py", line 387, in findrefresh
     img = cv2.cvtColor(sc, cv2.COLOR_BGR2GRAY)  # 转灰度图
 cv2.error: C:\projects\opencv-python\opencv\modules\imgproc\src\color.cpp:11073: error: (-215) depth == 0 || depth == 2 || depth == 5 in function cv::cvtColor
 
-Tue, 10 Apr 2018 15:40:06 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:06 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:06 app_thread.py[line:145] ERROR 刷新失败
-Tue, 10 Apr 2018 15:40:06 app_thread.py[line:146] ERROR this is an exception message
+Wed, 18 Apr 2018 23:37:33 app_thread.py[line:145] ERROR 刷新失败
+Wed, 18 Apr 2018 23:37:33 app_thread.py[line:146] ERROR this is an exception message
 Traceback (most recent call last):
   File "E:\hupai\component\app_thread.py", line 143, in run
     findrefresh()
-  File "E:\hupai\component\imgcut.py", line 383, in findrefresh
+  File "E:\hupai\component\imgcut.py", line 387, in findrefresh
     img = cv2.cvtColor(sc, cv2.COLOR_BGR2GRAY)  # 转灰度图
 cv2.error: C:\projects\opencv-python\opencv\modules\imgproc\src\color.cpp:11073: error: (-215) depth == 0 || depth == 2 || depth == 5 in function cv::cvtColor
 
-Tue, 10 Apr 2018 15:40:06 imgcut.py[line:368] ERROR cut_img 这里出错
-Tue, 10 Apr 2018 15:40:06 imgcut.py[line:369] ERROR this is an exception message
+Wed, 18 Apr 2018 23:37:33 imgcut.py[line:372] ERROR cut_img 这里出错
+Wed, 18 Apr 2018 23:37:33 imgcut.py[line:373] ERROR this is an exception message
 Traceback (most recent call last):
-  File "E:\hupai\component\imgcut.py", line 361, in cut_img
+  File "E:\hupai\component\imgcut.py", line 365, in cut_img
     set_val('imgpos_lowestprice', img[use_area[0][1]:use_area[0][3], use_area[0][0]:use_area[0][2]])  # ok
 IndexError: list index out of range
-Tue, 10 Apr 2018 15:40:06 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:06 app_thread.py[line:145] ERROR 刷新失败
-Tue, 10 Apr 2018 15:40:06 app_thread.py[line:146] ERROR this is an exception message
+Wed, 18 Apr 2018 23:37:33 app_thread.py[line:145] ERROR 刷新失败
+Wed, 18 Apr 2018 23:37:33 app_thread.py[line:146] ERROR this is an exception message
 Traceback (most recent call last):
   File "E:\hupai\component\app_thread.py", line 143, in run
     findrefresh()
-  File "E:\hupai\component\imgcut.py", line 383, in findrefresh
+  File "E:\hupai\component\imgcut.py", line 387, in findrefresh
     img = cv2.cvtColor(sc, cv2.COLOR_BGR2GRAY)  # 转灰度图
 cv2.error: C:\projects\opencv-python\opencv\modules\imgproc\src\color.cpp:11073: error: (-215) depth == 0 || depth == 2 || depth == 5 in function cv::cvtColor
 
-Tue, 10 Apr 2018 15:40:06 imgcut.py[line:368] ERROR cut_img 这里出错
-Tue, 10 Apr 2018 15:40:06 imgcut.py[line:369] ERROR this is an exception message
+Wed, 18 Apr 2018 23:37:33 app_thread.py[line:145] ERROR 刷新失败
+Wed, 18 Apr 2018 23:37:33 app_thread.py[line:146] ERROR this is an exception message
 Traceback (most recent call last):
-  File "E:\hupai\component\imgcut.py", line 361, in cut_img
+  File "E:\hupai\component\app_thread.py", line 143, in run
+    findrefresh()
+  File "E:\hupai\component\imgcut.py", line 387, in findrefresh
+    img = cv2.cvtColor(sc, cv2.COLOR_BGR2GRAY)  # 转灰度图
+cv2.error: C:\projects\opencv-python\opencv\modules\imgproc\src\color.cpp:11073: error: (-215) depth == 0 || depth == 2 || depth == 5 in function cv::cvtColor
+
+Wed, 18 Apr 2018 23:37:33 imgcut.py[line:372] ERROR cut_img 这里出错
+Wed, 18 Apr 2018 23:37:33 imgcut.py[line:373] ERROR this is an exception message
+Traceback (most recent call last):
+  File "E:\hupai\component\imgcut.py", line 365, in cut_img
     set_val('imgpos_lowestprice', img[use_area[0][1]:use_area[0][3], use_area[0][0]:use_area[0][2]])  # ok
 IndexError: list index out of range
-Tue, 10 Apr 2018 15:40:06 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:06 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:06 app_thread.py[line:145] ERROR 刷新失败
-Tue, 10 Apr 2018 15:40:06 app_thread.py[line:146] ERROR this is an exception message
+Wed, 18 Apr 2018 23:37:33 app_thread.py[line:145] ERROR 刷新失败
+Wed, 18 Apr 2018 23:37:33 app_thread.py[line:146] ERROR this is an exception message
 Traceback (most recent call last):
   File "E:\hupai\component\app_thread.py", line 143, in run
     findrefresh()
-  File "E:\hupai\component\imgcut.py", line 383, in findrefresh
+  File "E:\hupai\component\imgcut.py", line 387, in findrefresh
     img = cv2.cvtColor(sc, cv2.COLOR_BGR2GRAY)  # 转灰度图
 cv2.error: C:\projects\opencv-python\opencv\modules\imgproc\src\color.cpp:11073: error: (-215) depth == 0 || depth == 2 || depth == 5 in function cv::cvtColor
 
-Tue, 10 Apr 2018 15:40:06 imgcut.py[line:368] ERROR cut_img 这里出错
-Tue, 10 Apr 2018 15:40:06 imgcut.py[line:369] ERROR this is an exception message
+Wed, 18 Apr 2018 23:37:33 imgcut.py[line:372] ERROR cut_img 这里出错
+Wed, 18 Apr 2018 23:37:33 imgcut.py[line:373] ERROR this is an exception message
 Traceback (most recent call last):
-  File "E:\hupai\component\imgcut.py", line 361, in cut_img
+  File "E:\hupai\component\imgcut.py", line 365, in cut_img
     set_val('imgpos_lowestprice', img[use_area[0][1]:use_area[0][3], use_area[0][0]:use_area[0][2]])  # ok
 IndexError: list index out of range
-Tue, 10 Apr 2018 15:40:06 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:06 app_thread.py[line:145] ERROR 刷新失败
-Tue, 10 Apr 2018 15:40:06 app_thread.py[line:146] ERROR this is an exception message
+Wed, 18 Apr 2018 23:37:33 app_thread.py[line:145] ERROR 刷新失败
+Wed, 18 Apr 2018 23:37:33 app_thread.py[line:146] ERROR this is an exception message
 Traceback (most recent call last):
   File "E:\hupai\component\app_thread.py", line 143, in run
     findrefresh()
-  File "E:\hupai\component\imgcut.py", line 383, in findrefresh
+  File "E:\hupai\component\imgcut.py", line 387, in findrefresh
     img = cv2.cvtColor(sc, cv2.COLOR_BGR2GRAY)  # 转灰度图
 cv2.error: C:\projects\opencv-python\opencv\modules\imgproc\src\color.cpp:11073: error: (-215) depth == 0 || depth == 2 || depth == 5 in function cv::cvtColor
 
-Tue, 10 Apr 2018 15:40:06 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:06 imgcut.py[line:368] ERROR cut_img 这里出错
-Tue, 10 Apr 2018 15:40:06 imgcut.py[line:369] ERROR this is an exception message
+Wed, 18 Apr 2018 23:37:33 imgcut.py[line:372] ERROR cut_img 这里出错
+Wed, 18 Apr 2018 23:37:33 imgcut.py[line:373] ERROR this is an exception message
 Traceback (most recent call last):
-  File "E:\hupai\component\imgcut.py", line 361, in cut_img
+  File "E:\hupai\component\imgcut.py", line 365, in cut_img
     set_val('imgpos_lowestprice', img[use_area[0][1]:use_area[0][3], use_area[0][0]:use_area[0][2]])  # ok
 IndexError: list index out of range
-Tue, 10 Apr 2018 15:40:06 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:06 app_thread.py[line:145] ERROR 刷新失败
-Tue, 10 Apr 2018 15:40:06 app_thread.py[line:146] ERROR this is an exception message
+Wed, 18 Apr 2018 23:37:33 app_thread.py[line:145] ERROR 刷新失败
+Wed, 18 Apr 2018 23:37:33 app_thread.py[line:146] ERROR this is an exception message
 Traceback (most recent call last):
   File "E:\hupai\component\app_thread.py", line 143, in run
     findrefresh()
-  File "E:\hupai\component\imgcut.py", line 383, in findrefresh
+  File "E:\hupai\component\imgcut.py", line 387, in findrefresh
     img = cv2.cvtColor(sc, cv2.COLOR_BGR2GRAY)  # 转灰度图
 cv2.error: C:\projects\opencv-python\opencv\modules\imgproc\src\color.cpp:11073: error: (-215) depth == 0 || depth == 2 || depth == 5 in function cv::cvtColor
 
-Tue, 10 Apr 2018 15:40:06 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:06 app_thread.py[line:145] ERROR 刷新失败
-Tue, 10 Apr 2018 15:40:06 app_thread.py[line:146] ERROR this is an exception message
+Wed, 18 Apr 2018 23:37:33 app_thread.py[line:145] ERROR 刷新失败
+Wed, 18 Apr 2018 23:37:33 app_thread.py[line:146] ERROR this is an exception message
 Traceback (most recent call last):
   File "E:\hupai\component\app_thread.py", line 143, in run
     findrefresh()
-  File "E:\hupai\component\imgcut.py", line 383, in findrefresh
+  File "E:\hupai\component\imgcut.py", line 387, in findrefresh
     img = cv2.cvtColor(sc, cv2.COLOR_BGR2GRAY)  # 转灰度图
 cv2.error: C:\projects\opencv-python\opencv\modules\imgproc\src\color.cpp:11073: error: (-215) depth == 0 || depth == 2 || depth == 5 in function cv::cvtColor
 
-Tue, 10 Apr 2018 15:40:06 imgcut.py[line:368] ERROR cut_img 这里出错
-Tue, 10 Apr 2018 15:40:06 imgcut.py[line:369] ERROR this is an exception message
+Wed, 18 Apr 2018 23:37:33 imgcut.py[line:372] ERROR cut_img 这里出错
+Wed, 18 Apr 2018 23:37:33 imgcut.py[line:373] ERROR this is an exception message
 Traceback (most recent call last):
-  File "E:\hupai\component\imgcut.py", line 361, in cut_img
+  File "E:\hupai\component\imgcut.py", line 365, in cut_img
     set_val('imgpos_lowestprice', img[use_area[0][1]:use_area[0][3], use_area[0][0]:use_area[0][2]])  # ok
 IndexError: list index out of range
-Tue, 10 Apr 2018 15:40:06 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:06 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:06 app_thread.py[line:145] ERROR 刷新失败
-Tue, 10 Apr 2018 15:40:06 app_thread.py[line:146] ERROR this is an exception message
+Wed, 18 Apr 2018 23:37:33 app_thread.py[line:145] ERROR 刷新失败
+Wed, 18 Apr 2018 23:37:33 app_thread.py[line:146] ERROR this is an exception message
 Traceback (most recent call last):
   File "E:\hupai\component\app_thread.py", line 143, in run
     findrefresh()
-  File "E:\hupai\component\imgcut.py", line 383, in findrefresh
+  File "E:\hupai\component\imgcut.py", line 387, in findrefresh
     img = cv2.cvtColor(sc, cv2.COLOR_BGR2GRAY)  # 转灰度图
 cv2.error: C:\projects\opencv-python\opencv\modules\imgproc\src\color.cpp:11073: error: (-215) depth == 0 || depth == 2 || depth == 5 in function cv::cvtColor
 
-Tue, 10 Apr 2018 15:40:06 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:06 imgcut.py[line:368] ERROR cut_img 这里出错
-Tue, 10 Apr 2018 15:40:06 imgcut.py[line:369] ERROR this is an exception message
+Wed, 18 Apr 2018 23:37:33 imgcut.py[line:372] ERROR cut_img 这里出错
+Wed, 18 Apr 2018 23:37:33 imgcut.py[line:373] ERROR this is an exception message
 Traceback (most recent call last):
-  File "E:\hupai\component\imgcut.py", line 361, in cut_img
+  File "E:\hupai\component\imgcut.py", line 365, in cut_img
     set_val('imgpos_lowestprice', img[use_area[0][1]:use_area[0][3], use_area[0][0]:use_area[0][2]])  # ok
 IndexError: list index out of range
-Tue, 10 Apr 2018 15:40:06 app_thread.py[line:145] ERROR 刷新失败
-Tue, 10 Apr 2018 15:40:06 app_thread.py[line:146] ERROR this is an exception message
+Wed, 18 Apr 2018 23:37:33 app_thread.py[line:145] ERROR 刷新失败
+Wed, 18 Apr 2018 23:37:33 app_thread.py[line:146] ERROR this is an exception message
 Traceback (most recent call last):
   File "E:\hupai\component\app_thread.py", line 143, in run
     findrefresh()
-  File "E:\hupai\component\imgcut.py", line 383, in findrefresh
+  File "E:\hupai\component\imgcut.py", line 387, in findrefresh
     img = cv2.cvtColor(sc, cv2.COLOR_BGR2GRAY)  # 转灰度图
 cv2.error: C:\projects\opencv-python\opencv\modules\imgproc\src\color.cpp:11073: error: (-215) depth == 0 || depth == 2 || depth == 5 in function cv::cvtColor
 
-Tue, 10 Apr 2018 15:40:06 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:07 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:07 app_thread.py[line:145] ERROR 刷新失败
-Tue, 10 Apr 2018 15:40:07 app_thread.py[line:146] ERROR this is an exception message
+Wed, 18 Apr 2018 23:37:33 imgcut.py[line:372] ERROR cut_img 这里出错
+Wed, 18 Apr 2018 23:37:33 imgcut.py[line:373] ERROR this is an exception message
 Traceback (most recent call last):
-  File "E:\hupai\component\app_thread.py", line 143, in run
-    findrefresh()
-  File "E:\hupai\component\imgcut.py", line 383, in findrefresh
-    img = cv2.cvtColor(sc, cv2.COLOR_BGR2GRAY)  # 转灰度图
-cv2.error: C:\projects\opencv-python\opencv\modules\imgproc\src\color.cpp:11073: error: (-215) depth == 0 || depth == 2 || depth == 5 in function cv::cvtColor
-
-Tue, 10 Apr 2018 15:40:07 imgcut.py[line:368] ERROR cut_img 这里出错
-Tue, 10 Apr 2018 15:40:07 imgcut.py[line:369] ERROR this is an exception message
-Traceback (most recent call last):
-  File "E:\hupai\component\imgcut.py", line 361, in cut_img
+  File "E:\hupai\component\imgcut.py", line 365, in cut_img
     set_val('imgpos_lowestprice', img[use_area[0][1]:use_area[0][3], use_area[0][0]:use_area[0][2]])  # ok
 IndexError: list index out of range
-Tue, 10 Apr 2018 15:40:07 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:07 app_thread.py[line:145] ERROR 刷新失败
-Tue, 10 Apr 2018 15:40:07 app_thread.py[line:146] ERROR this is an exception message
+Wed, 18 Apr 2018 23:37:33 app_thread.py[line:145] ERROR 刷新失败
+Wed, 18 Apr 2018 23:37:33 app_thread.py[line:146] ERROR this is an exception message
 Traceback (most recent call last):
   File "E:\hupai\component\app_thread.py", line 143, in run
     findrefresh()
-  File "E:\hupai\component\imgcut.py", line 383, in findrefresh
+  File "E:\hupai\component\imgcut.py", line 387, in findrefresh
     img = cv2.cvtColor(sc, cv2.COLOR_BGR2GRAY)  # 转灰度图
 cv2.error: C:\projects\opencv-python\opencv\modules\imgproc\src\color.cpp:11073: error: (-215) depth == 0 || depth == 2 || depth == 5 in function cv::cvtColor
 
-Tue, 10 Apr 2018 15:40:07 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:07 imgcut.py[line:368] ERROR cut_img 这里出错
-Tue, 10 Apr 2018 15:40:07 imgcut.py[line:369] ERROR this is an exception message
+Wed, 18 Apr 2018 23:37:33 imgcut.py[line:372] ERROR cut_img 这里出错
+Wed, 18 Apr 2018 23:37:33 imgcut.py[line:373] ERROR this is an exception message
 Traceback (most recent call last):
-  File "E:\hupai\component\imgcut.py", line 361, in cut_img
+  File "E:\hupai\component\imgcut.py", line 365, in cut_img
     set_val('imgpos_lowestprice', img[use_area[0][1]:use_area[0][3], use_area[0][0]:use_area[0][2]])  # ok
 IndexError: list index out of range
-Tue, 10 Apr 2018 15:40:07 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:07 app_thread.py[line:145] ERROR 刷新失败
-Tue, 10 Apr 2018 15:40:07 app_thread.py[line:146] ERROR this is an exception message
+Wed, 18 Apr 2018 23:37:33 app_thread.py[line:145] ERROR 刷新失败
+Wed, 18 Apr 2018 23:37:33 app_thread.py[line:146] ERROR this is an exception message
 Traceback (most recent call last):
   File "E:\hupai\component\app_thread.py", line 143, in run
     findrefresh()
-  File "E:\hupai\component\imgcut.py", line 383, in findrefresh
+  File "E:\hupai\component\imgcut.py", line 387, in findrefresh
     img = cv2.cvtColor(sc, cv2.COLOR_BGR2GRAY)  # 转灰度图
 cv2.error: C:\projects\opencv-python\opencv\modules\imgproc\src\color.cpp:11073: error: (-215) depth == 0 || depth == 2 || depth == 5 in function cv::cvtColor
 
-Tue, 10 Apr 2018 15:40:07 imgcut.py[line:368] ERROR cut_img 这里出错
-Tue, 10 Apr 2018 15:40:07 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:07 imgcut.py[line:369] ERROR this is an exception message
+Wed, 18 Apr 2018 23:37:33 imgcut.py[line:372] ERROR cut_img 这里出错
+Wed, 18 Apr 2018 23:37:33 imgcut.py[line:373] ERROR this is an exception message
 Traceback (most recent call last):
-  File "E:\hupai\component\imgcut.py", line 361, in cut_img
+  File "E:\hupai\component\imgcut.py", line 365, in cut_img
     set_val('imgpos_lowestprice', img[use_area[0][1]:use_area[0][3], use_area[0][0]:use_area[0][2]])  # ok
 IndexError: list index out of range
-Tue, 10 Apr 2018 15:40:07 app_thread.py[line:145] ERROR 刷新失败
-Tue, 10 Apr 2018 15:40:07 app_thread.py[line:146] ERROR this is an exception message
+Wed, 18 Apr 2018 23:37:33 app_thread.py[line:145] ERROR 刷新失败
+Wed, 18 Apr 2018 23:37:33 app_thread.py[line:146] ERROR this is an exception message
 Traceback (most recent call last):
   File "E:\hupai\component\app_thread.py", line 143, in run
     findrefresh()
-  File "E:\hupai\component\imgcut.py", line 383, in findrefresh
+  File "E:\hupai\component\imgcut.py", line 387, in findrefresh
     img = cv2.cvtColor(sc, cv2.COLOR_BGR2GRAY)  # 转灰度图
 cv2.error: C:\projects\opencv-python\opencv\modules\imgproc\src\color.cpp:11073: error: (-215) depth == 0 || depth == 2 || depth == 5 in function cv::cvtColor
 
-Tue, 10 Apr 2018 15:40:07 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:07 imgcut.py[line:368] ERROR cut_img 这里出错
-Tue, 10 Apr 2018 15:40:07 imgcut.py[line:369] ERROR this is an exception message
+Wed, 18 Apr 2018 23:37:33 imgcut.py[line:372] ERROR cut_img 这里出错
+Wed, 18 Apr 2018 23:37:33 imgcut.py[line:373] ERROR this is an exception message
 Traceback (most recent call last):
-  File "E:\hupai\component\imgcut.py", line 361, in cut_img
+  File "E:\hupai\component\imgcut.py", line 365, in cut_img
     set_val('imgpos_lowestprice', img[use_area[0][1]:use_area[0][3], use_area[0][0]:use_area[0][2]])  # ok
 IndexError: list index out of range
-Tue, 10 Apr 2018 15:40:07 app_thread.py[line:145] ERROR 刷新失败
-Tue, 10 Apr 2018 15:40:07 app_thread.py[line:146] ERROR this is an exception message
+Wed, 18 Apr 2018 23:37:33 app_thread.py[line:145] ERROR 刷新失败
+Wed, 18 Apr 2018 23:37:33 app_thread.py[line:146] ERROR this is an exception message
 Traceback (most recent call last):
   File "E:\hupai\component\app_thread.py", line 143, in run
     findrefresh()
-  File "E:\hupai\component\imgcut.py", line 383, in findrefresh
+  File "E:\hupai\component\imgcut.py", line 387, in findrefresh
     img = cv2.cvtColor(sc, cv2.COLOR_BGR2GRAY)  # 转灰度图
 cv2.error: C:\projects\opencv-python\opencv\modules\imgproc\src\color.cpp:11073: error: (-215) depth == 0 || depth == 2 || depth == 5 in function cv::cvtColor
 
-Tue, 10 Apr 2018 15:40:07 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:07 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:07 imgcut.py[line:368] ERROR cut_img 这里出错
-Tue, 10 Apr 2018 15:40:07 imgcut.py[line:369] ERROR this is an exception message
+Wed, 18 Apr 2018 23:37:33 imgcut.py[line:372] ERROR cut_img 这里出错
+Wed, 18 Apr 2018 23:37:33 imgcut.py[line:373] ERROR this is an exception message
 Traceback (most recent call last):
-  File "E:\hupai\component\imgcut.py", line 361, in cut_img
+  File "E:\hupai\component\imgcut.py", line 365, in cut_img
     set_val('imgpos_lowestprice', img[use_area[0][1]:use_area[0][3], use_area[0][0]:use_area[0][2]])  # ok
 IndexError: list index out of range
-Tue, 10 Apr 2018 15:40:07 app_thread.py[line:145] ERROR 刷新失败
-Tue, 10 Apr 2018 15:40:07 app_thread.py[line:146] ERROR this is an exception message
+Wed, 18 Apr 2018 23:37:33 app_thread.py[line:145] ERROR 刷新失败
+Wed, 18 Apr 2018 23:37:33 app_thread.py[line:146] ERROR this is an exception message
 Traceback (most recent call last):
   File "E:\hupai\component\app_thread.py", line 143, in run
     findrefresh()
-  File "E:\hupai\component\imgcut.py", line 383, in findrefresh
+  File "E:\hupai\component\imgcut.py", line 387, in findrefresh
     img = cv2.cvtColor(sc, cv2.COLOR_BGR2GRAY)  # 转灰度图
 cv2.error: C:\projects\opencv-python\opencv\modules\imgproc\src\color.cpp:11073: error: (-215) depth == 0 || depth == 2 || depth == 5 in function cv::cvtColor
 
-Tue, 10 Apr 2018 15:40:07 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:07 app_thread.py[line:145] ERROR 刷新失败
-Tue, 10 Apr 2018 15:40:07 app_thread.py[line:146] ERROR this is an exception message
+Wed, 18 Apr 2018 23:37:33 imgcut.py[line:372] ERROR cut_img 这里出错
+Wed, 18 Apr 2018 23:37:33 imgcut.py[line:373] ERROR this is an exception message
 Traceback (most recent call last):
-  File "E:\hupai\component\app_thread.py", line 143, in run
-    findrefresh()
-  File "E:\hupai\component\imgcut.py", line 383, in findrefresh
-    img = cv2.cvtColor(sc, cv2.COLOR_BGR2GRAY)  # 转灰度图
-cv2.error: C:\projects\opencv-python\opencv\modules\imgproc\src\color.cpp:11073: error: (-215) depth == 0 || depth == 2 || depth == 5 in function cv::cvtColor
-
-Tue, 10 Apr 2018 15:40:07 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:07 imgcut.py[line:368] ERROR cut_img 这里出错
-Tue, 10 Apr 2018 15:40:07 imgcut.py[line:369] ERROR this is an exception message
-Traceback (most recent call last):
-  File "E:\hupai\component\imgcut.py", line 361, in cut_img
+  File "E:\hupai\component\imgcut.py", line 365, in cut_img
     set_val('imgpos_lowestprice', img[use_area[0][1]:use_area[0][3], use_area[0][0]:use_area[0][2]])  # ok
 IndexError: list index out of range
-Tue, 10 Apr 2018 15:40:07 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:07 app_thread.py[line:145] ERROR 刷新失败
-Tue, 10 Apr 2018 15:40:07 app_thread.py[line:146] ERROR this is an exception message
+Wed, 18 Apr 2018 23:37:33 app_thread.py[line:145] ERROR 刷新失败
+Wed, 18 Apr 2018 23:37:33 app_thread.py[line:146] ERROR this is an exception message
 Traceback (most recent call last):
   File "E:\hupai\component\app_thread.py", line 143, in run
     findrefresh()
-  File "E:\hupai\component\imgcut.py", line 383, in findrefresh
+  File "E:\hupai\component\imgcut.py", line 387, in findrefresh
     img = cv2.cvtColor(sc, cv2.COLOR_BGR2GRAY)  # 转灰度图
 cv2.error: C:\projects\opencv-python\opencv\modules\imgproc\src\color.cpp:11073: error: (-215) depth == 0 || depth == 2 || depth == 5 in function cv::cvtColor
 
-Tue, 10 Apr 2018 15:40:07 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:07 imgcut.py[line:368] ERROR cut_img 这里出错
-Tue, 10 Apr 2018 15:40:07 imgcut.py[line:369] ERROR this is an exception message
+Wed, 18 Apr 2018 23:37:34 app_thread.py[line:145] ERROR 刷新失败
+Wed, 18 Apr 2018 23:37:34 app_thread.py[line:146] ERROR this is an exception message
 Traceback (most recent call last):
-  File "E:\hupai\component\imgcut.py", line 361, in cut_img
+  File "E:\hupai\component\app_thread.py", line 143, in run
+    findrefresh()
+  File "E:\hupai\component\imgcut.py", line 387, in findrefresh
+    img = cv2.cvtColor(sc, cv2.COLOR_BGR2GRAY)  # 转灰度图
+cv2.error: C:\projects\opencv-python\opencv\modules\imgproc\src\color.cpp:11073: error: (-215) depth == 0 || depth == 2 || depth == 5 in function cv::cvtColor
+
+Wed, 18 Apr 2018 23:37:34 imgcut.py[line:372] ERROR cut_img 这里出错
+Wed, 18 Apr 2018 23:37:34 imgcut.py[line:373] ERROR this is an exception message
+Traceback (most recent call last):
+  File "E:\hupai\component\imgcut.py", line 365, in cut_img
     set_val('imgpos_lowestprice', img[use_area[0][1]:use_area[0][3], use_area[0][0]:use_area[0][2]])  # ok
 IndexError: list index out of range
-Tue, 10 Apr 2018 15:40:07 app_thread.py[line:145] ERROR 刷新失败
-Tue, 10 Apr 2018 15:40:07 app_thread.py[line:146] ERROR this is an exception message
+Wed, 18 Apr 2018 23:37:34 app_thread.py[line:145] ERROR 刷新失败
+Wed, 18 Apr 2018 23:37:34 app_thread.py[line:146] ERROR this is an exception message
 Traceback (most recent call last):
   File "E:\hupai\component\app_thread.py", line 143, in run
     findrefresh()
-  File "E:\hupai\component\imgcut.py", line 383, in findrefresh
+  File "E:\hupai\component\imgcut.py", line 387, in findrefresh
     img = cv2.cvtColor(sc, cv2.COLOR_BGR2GRAY)  # 转灰度图
 cv2.error: C:\projects\opencv-python\opencv\modules\imgproc\src\color.cpp:11073: error: (-215) depth == 0 || depth == 2 || depth == 5 in function cv::cvtColor
 
-Tue, 10 Apr 2018 15:40:07 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:07 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:07 app_thread.py[line:145] ERROR 刷新失败
-Tue, 10 Apr 2018 15:40:07 app_thread.py[line:146] ERROR this is an exception message
+Wed, 18 Apr 2018 23:37:34 imgcut.py[line:372] ERROR cut_img 这里出错
+Wed, 18 Apr 2018 23:37:34 imgcut.py[line:373] ERROR this is an exception message
 Traceback (most recent call last):
-  File "E:\hupai\component\app_thread.py", line 143, in run
-    findrefresh()
-  File "E:\hupai\component\imgcut.py", line 383, in findrefresh
-    img = cv2.cvtColor(sc, cv2.COLOR_BGR2GRAY)  # 转灰度图
-cv2.error: C:\projects\opencv-python\opencv\modules\imgproc\src\color.cpp:11073: error: (-215) depth == 0 || depth == 2 || depth == 5 in function cv::cvtColor
-
-Tue, 10 Apr 2018 15:40:07 imgcut.py[line:368] ERROR cut_img 这里出错
-Tue, 10 Apr 2018 15:40:07 imgcut.py[line:369] ERROR this is an exception message
-Traceback (most recent call last):
-  File "E:\hupai\component\imgcut.py", line 361, in cut_img
+  File "E:\hupai\component\imgcut.py", line 365, in cut_img
     set_val('imgpos_lowestprice', img[use_area[0][1]:use_area[0][3], use_area[0][0]:use_area[0][2]])  # ok
 IndexError: list index out of range
-Tue, 10 Apr 2018 15:40:07 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:07 app_thread.py[line:145] ERROR 刷新失败
-Tue, 10 Apr 2018 15:40:07 app_thread.py[line:146] ERROR this is an exception message
+Wed, 18 Apr 2018 23:37:34 app_thread.py[line:145] ERROR 刷新失败
+Wed, 18 Apr 2018 23:37:34 app_thread.py[line:146] ERROR this is an exception message
 Traceback (most recent call last):
   File "E:\hupai\component\app_thread.py", line 143, in run
     findrefresh()
-  File "E:\hupai\component\imgcut.py", line 383, in findrefresh
+  File "E:\hupai\component\imgcut.py", line 387, in findrefresh
     img = cv2.cvtColor(sc, cv2.COLOR_BGR2GRAY)  # 转灰度图
 cv2.error: C:\projects\opencv-python\opencv\modules\imgproc\src\color.cpp:11073: error: (-215) depth == 0 || depth == 2 || depth == 5 in function cv::cvtColor
 
-Tue, 10 Apr 2018 15:40:07 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:07 imgcut.py[line:368] ERROR cut_img 这里出错
-Tue, 10 Apr 2018 15:40:07 imgcut.py[line:369] ERROR this is an exception message
+Wed, 18 Apr 2018 23:37:34 imgcut.py[line:372] ERROR cut_img 这里出错
+Wed, 18 Apr 2018 23:37:34 imgcut.py[line:373] ERROR this is an exception message
 Traceback (most recent call last):
-  File "E:\hupai\component\imgcut.py", line 361, in cut_img
+  File "E:\hupai\component\imgcut.py", line 365, in cut_img
     set_val('imgpos_lowestprice', img[use_area[0][1]:use_area[0][3], use_area[0][0]:use_area[0][2]])  # ok
 IndexError: list index out of range
-Tue, 10 Apr 2018 15:40:07 app_thread.py[line:145] ERROR 刷新失败
-Tue, 10 Apr 2018 15:40:07 app_thread.py[line:146] ERROR this is an exception message
+Wed, 18 Apr 2018 23:37:34 app_thread.py[line:145] ERROR 刷新失败
+Wed, 18 Apr 2018 23:37:34 app_thread.py[line:146] ERROR this is an exception message
 Traceback (most recent call last):
   File "E:\hupai\component\app_thread.py", line 143, in run
     findrefresh()
-  File "E:\hupai\component\imgcut.py", line 383, in findrefresh
+  File "E:\hupai\component\imgcut.py", line 387, in findrefresh
     img = cv2.cvtColor(sc, cv2.COLOR_BGR2GRAY)  # 转灰度图
 cv2.error: C:\projects\opencv-python\opencv\modules\imgproc\src\color.cpp:11073: error: (-215) depth == 0 || depth == 2 || depth == 5 in function cv::cvtColor
 
-Tue, 10 Apr 2018 15:40:07 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:07 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:07 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:07 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:07 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:07 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:07 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:07 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:07 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:08 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:08 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:08 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:08 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:08 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:08 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:08 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:08 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:08 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:08 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:08 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:08 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:08 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:08 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:08 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:08 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:08 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:08 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:08 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:08 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:08 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:08 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:08 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:08 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:08 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:09 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:09 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:09 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:09 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:09 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:09 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:09 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:09 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:09 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:09 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:09 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:09 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:09 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:09 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:09 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:09 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:09 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:09 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:09 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:09 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:09 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:09 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:09 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:09 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:09 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:10 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:10 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:10 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:10 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:10 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:10 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:10 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:10 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:10 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:10 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:10 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:10 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:10 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:10 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:10 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:10 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:10 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:10 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:10 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:10 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:10 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:10 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:10 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:10 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:10 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:11 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:11 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:11 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:11 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:11 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:11 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:11 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:11 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:11 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:11 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:11 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:11 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:11 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:11 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:11 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:11 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:11 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:11 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:11 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:11 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:11 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:11 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:11 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:11 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:12 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:12 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:12 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:12 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:12 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:12 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:12 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:12 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:12 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:12 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:12 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:12 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:12 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:12 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:12 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:12 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:12 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:12 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:12 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:12 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:12 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:12 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:12 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:12 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:12 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:13 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:13 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:13 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:13 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:13 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:13 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:13 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:13 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:13 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:13 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:13 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:13 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:13 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:13 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:13 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:13 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:13 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:13 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:13 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:13 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:13 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:13 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:13 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:13 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:14 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:14 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:14 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:14 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:14 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:14 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:14 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:14 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:14 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:14 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:14 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:14 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:14 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:14 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:14 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:14 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:14 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:15 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:15 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:15 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:15 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:15 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:15 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:15 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:15 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:15 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:15 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:15 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:15 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:15 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:15 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:15 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:15 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:15 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:15 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:15 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:15 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:16 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:16 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:16 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:16 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:16 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:16 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:16 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:16 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:16 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:16 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:16 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:16 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:16 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:16 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:16 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:16 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:16 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:16 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:16 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:16 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:16 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:16 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:16 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:16 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:16 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:17 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:17 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:17 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:17 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:17 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:17 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:17 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:17 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:17 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:17 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:17 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:17 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:17 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:17 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:17 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:17 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:17 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:17 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:17 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:17 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:17 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:17 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:17 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:17 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:17 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:17 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:17 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:17 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:18 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:18 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:18 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:18 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:18 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:18 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:18 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:18 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:18 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:18 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:18 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:18 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:18 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:18 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:18 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:18 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:18 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:18 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:18 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:18 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:18 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:18 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:18 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:18 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:18 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:18 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:18 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:19 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:19 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:19 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:19 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:19 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:19 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:19 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:19 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:19 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:19 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:19 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:19 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:19 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:19 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:19 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:19 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:19 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:19 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:19 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:19 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:19 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:19 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:19 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:19 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:19 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:19 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:20 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:20 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:20 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:20 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:20 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:20 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:20 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:20 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:20 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:20 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:20 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:20 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:20 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:20 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:20 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:20 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:20 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:20 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:20 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:20 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:20 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:20 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:20 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:20 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:20 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:21 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:21 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:21 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:21 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:21 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:21 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:21 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:21 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:21 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:21 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:21 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:21 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:21 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:21 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:21 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:21 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:21 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:21 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:21 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:21 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:21 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:21 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:21 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:21 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:21 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:21 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:22 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:22 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:22 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:22 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:22 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:22 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:22 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:22 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:22 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:22 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:22 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:22 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:22 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:22 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:22 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:22 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:22 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:22 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:22 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:22 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:22 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:22 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:22 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:22 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:22 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:22 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:23 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:23 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:23 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:23 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:23 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:23 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:23 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:23 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:23 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:23 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:23 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:23 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:23 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:23 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:23 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:23 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:23 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:23 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:23 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:23 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:23 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:23 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:23 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:23 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:23 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:23 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:24 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:24 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:24 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:24 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:24 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:24 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:24 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:24 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:24 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:24 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:24 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:24 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:24 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:24 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:24 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:24 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:24 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:24 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:24 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:24 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:24 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:24 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:24 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:24 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:24 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:25 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:25 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:25 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:25 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:25 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:25 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:25 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:25 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:25 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:25 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:25 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:25 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:25 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:25 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:25 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:25 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:25 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:25 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:25 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:25 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:25 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:25 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:25 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:25 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:25 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:25 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:25 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:26 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:26 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:26 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:26 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:26 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:26 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:26 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:26 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:26 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:26 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:26 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:26 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:26 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:26 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:26 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:26 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:26 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:26 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:26 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:26 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:26 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:26 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:26 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:26 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:26 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:26 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:27 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:27 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:27 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:27 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:27 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:27 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:27 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:27 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:27 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:27 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:27 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:27 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:27 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:27 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:27 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:27 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:27 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:27 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:27 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:27 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:27 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:27 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:27 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:27 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:27 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:28 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:28 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:28 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:28 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:28 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:28 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:28 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:28 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:28 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:28 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:28 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:28 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:28 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:28 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:28 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:28 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:28 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:28 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:28 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:28 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:28 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:28 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:28 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:28 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:28 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:28 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:29 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:29 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:29 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:29 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:29 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:29 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:29 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:29 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:29 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:29 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:29 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:29 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:29 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:29 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:29 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:29 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:29 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:29 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:29 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:29 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:29 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:29 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:29 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:29 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:30 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:30 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:30 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:30 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:30 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:30 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:30 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:30 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:30 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:30 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:30 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:30 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:30 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:30 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:30 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:30 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:30 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:30 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:30 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:30 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:30 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:30 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:30 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:31 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:31 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:31 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:31 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:31 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:31 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:31 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:31 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:31 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:31 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:31 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:31 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:31 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:31 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:31 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:31 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:31 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:31 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:31 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:31 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:31 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:31 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:31 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:31 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:31 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:31 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:32 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:32 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:32 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:32 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:32 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:32 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:32 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:32 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:32 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:32 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:32 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:32 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:32 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:32 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:32 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:32 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:32 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:32 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:32 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:32 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:32 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:32 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:32 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:32 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:33 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:33 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:33 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:33 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:33 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:33 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:33 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:33 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:33 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:33 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:33 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:33 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:33 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:33 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:33 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:33 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:33 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:33 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:33 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:33 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:33 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:33 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:33 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:33 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:33 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:33 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:33 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:34 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:34 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:34 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:34 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:34 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:34 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:34 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:34 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:34 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:34 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:34 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:34 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:34 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:34 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:34 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:34 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:34 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:34 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:34 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:34 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:34 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:34 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:34 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:34 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:34 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:34 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:34 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:35 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:35 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:35 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:35 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:35 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:35 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:35 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:35 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:35 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:35 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:35 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:35 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:35 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:35 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:35 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:35 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:35 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:35 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:35 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:35 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:35 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:35 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:35 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:35 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:35 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:36 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:36 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:36 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:36 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:36 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:36 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:36 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:36 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:36 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:36 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:36 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:36 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:36 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:36 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:36 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:36 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:36 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:36 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:36 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:36 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:36 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:36 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:36 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:36 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:36 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:37 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:37 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:37 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:37 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:37 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:37 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:37 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:37 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:37 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:37 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:37 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:37 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:37 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:37 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:37 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:37 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:37 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:37 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:37 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:37 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:37 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:37 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:37 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:37 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:37 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:37 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:37 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:37 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:38 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:38 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:38 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:38 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:38 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:38 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:38 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:38 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:38 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:38 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:38 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:38 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:38 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:38 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:38 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:38 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:38 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:38 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:38 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:38 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:38 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:38 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:38 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:38 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:38 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:38 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:38 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:39 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:39 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:39 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:39 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:39 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:39 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:39 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:39 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:39 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:39 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:39 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:39 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:39 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:39 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:39 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:39 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:39 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:39 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:39 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:39 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:39 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:39 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:39 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:39 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:40 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:40 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:40 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:40 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:40 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:40 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:40 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:40 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:40 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:40 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:40 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:40 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:40 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:40 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:40 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:40 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:40 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:40 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:40 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:40 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:40 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:40 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:40 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:40 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:40 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:41 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:41 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:41 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:41 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:41 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:41 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:41 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:41 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:41 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:41 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:41 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:41 app_thread.py[line:109] ERROR 查找确认出错
-Tue, 10 Apr 2018 15:40:41 app_thread.py[line:109] ERROR 查找确认出错
+Wed, 18 Apr 2018 23:37:34 imgcut.py[line:372] ERROR cut_img 这里出错
+Wed, 18 Apr 2018 23:37:34 imgcut.py[line:373] ERROR this is an exception message
+Traceback (most recent call last):
+  File "E:\hupai\component\imgcut.py", line 365, in cut_img
+    set_val('imgpos_lowestprice', img[use_area[0][1]:use_area[0][3], use_area[0][0]:use_area[0][2]])  # ok
+IndexError: list index out of range
+Wed, 18 Apr 2018 23:37:34 app_thread.py[line:145] ERROR 刷新失败
+Wed, 18 Apr 2018 23:37:34 app_thread.py[line:146] ERROR this is an exception message
+Traceback (most recent call last):
+  File "E:\hupai\component\app_thread.py", line 143, in run
+    findrefresh()
+  File "E:\hupai\component\imgcut.py", line 387, in findrefresh
+    img = cv2.cvtColor(sc, cv2.COLOR_BGR2GRAY)  # 转灰度图
+cv2.error: C:\projects\opencv-python\opencv\modules\imgproc\src\color.cpp:11073: error: (-215) depth == 0 || depth == 2 || depth == 5 in function cv::cvtColor
+
+Wed, 18 Apr 2018 23:37:34 imgcut.py[line:372] ERROR cut_img 这里出错
+Wed, 18 Apr 2018 23:37:34 imgcut.py[line:373] ERROR this is an exception message
+Traceback (most recent call last):
+  File "E:\hupai\component\imgcut.py", line 365, in cut_img
+    set_val('imgpos_lowestprice', img[use_area[0][1]:use_area[0][3], use_area[0][0]:use_area[0][2]])  # ok
+IndexError: list index out of range
+Wed, 18 Apr 2018 23:37:34 app_thread.py[line:145] ERROR 刷新失败
+Wed, 18 Apr 2018 23:37:34 app_thread.py[line:146] ERROR this is an exception message
+Traceback (most recent call last):
+  File "E:\hupai\component\app_thread.py", line 143, in run
+    findrefresh()
+  File "E:\hupai\component\imgcut.py", line 387, in findrefresh
+    img = cv2.cvtColor(sc, cv2.COLOR_BGR2GRAY)  # 转灰度图
+cv2.error: C:\projects\opencv-python\opencv\modules\imgproc\src\color.cpp:11073: error: (-215) depth == 0 || depth == 2 || depth == 5 in function cv::cvtColor
+
+Wed, 18 Apr 2018 23:37:34 app_thread.py[line:145] ERROR 刷新失败
+Wed, 18 Apr 2018 23:37:34 app_thread.py[line:146] ERROR this is an exception message
+Traceback (most recent call last):
+  File "E:\hupai\component\app_thread.py", line 143, in run
+    findrefresh()
+  File "E:\hupai\component\imgcut.py", line 387, in findrefresh
+    img = cv2.cvtColor(sc, cv2.COLOR_BGR2GRAY)  # 转灰度图
+cv2.error: C:\projects\opencv-python\opencv\modules\imgproc\src\color.cpp:11073: error: (-215) depth == 0 || depth == 2 || depth == 5 in function cv::cvtColor
+
+Wed, 18 Apr 2018 23:37:34 imgcut.py[line:372] ERROR cut_img 这里出错
+Wed, 18 Apr 2018 23:37:34 imgcut.py[line:373] ERROR this is an exception message
+Traceback (most recent call last):
+  File "E:\hupai\component\imgcut.py", line 365, in cut_img
+    set_val('imgpos_lowestprice', img[use_area[0][1]:use_area[0][3], use_area[0][0]:use_area[0][2]])  # ok
+IndexError: list index out of range
+Wed, 18 Apr 2018 23:37:34 app_thread.py[line:145] ERROR 刷新失败
+Wed, 18 Apr 2018 23:37:34 app_thread.py[line:146] ERROR this is an exception message
+Traceback (most recent call last):
+  File "E:\hupai\component\app_thread.py", line 143, in run
+    findrefresh()
+  File "E:\hupai\component\imgcut.py", line 387, in findrefresh
+    img = cv2.cvtColor(sc, cv2.COLOR_BGR2GRAY)  # 转灰度图
+cv2.error: C:\projects\opencv-python\opencv\modules\imgproc\src\color.cpp:11073: error: (-215) depth == 0 || depth == 2 || depth == 5 in function cv::cvtColor
+
+Wed, 18 Apr 2018 23:37:34 imgcut.py[line:372] ERROR cut_img 这里出错
+Wed, 18 Apr 2018 23:37:34 imgcut.py[line:373] ERROR this is an exception message
+Traceback (most recent call last):
+  File "E:\hupai\component\imgcut.py", line 365, in cut_img
+    set_val('imgpos_lowestprice', img[use_area[0][1]:use_area[0][3], use_area[0][0]:use_area[0][2]])  # ok
+IndexError: list index out of range
+Wed, 18 Apr 2018 23:37:34 app_thread.py[line:145] ERROR 刷新失败
+Wed, 18 Apr 2018 23:37:34 app_thread.py[line:146] ERROR this is an exception message
+Traceback (most recent call last):
+  File "E:\hupai\component\app_thread.py", line 143, in run
+    findrefresh()
+  File "E:\hupai\component\imgcut.py", line 387, in findrefresh
+    img = cv2.cvtColor(sc, cv2.COLOR_BGR2GRAY)  # 转灰度图
+cv2.error: C:\projects\opencv-python\opencv\modules\imgproc\src\color.cpp:11073: error: (-215) depth == 0 || depth == 2 || depth == 5 in function cv::cvtColor
+
+Wed, 18 Apr 2018 23:37:34 imgcut.py[line:372] ERROR cut_img 这里出错
+Wed, 18 Apr 2018 23:37:34 imgcut.py[line:373] ERROR this is an exception message
+Traceback (most recent call last):
+  File "E:\hupai\component\imgcut.py", line 365, in cut_img
+    set_val('imgpos_lowestprice', img[use_area[0][1]:use_area[0][3], use_area[0][0]:use_area[0][2]])  # ok
+IndexError: list index out of range
+Wed, 18 Apr 2018 23:37:34 app_thread.py[line:145] ERROR 刷新失败
+Wed, 18 Apr 2018 23:37:34 app_thread.py[line:146] ERROR this is an exception message
+Traceback (most recent call last):
+  File "E:\hupai\component\app_thread.py", line 143, in run
+    findrefresh()
+  File "E:\hupai\component\imgcut.py", line 387, in findrefresh
+    img = cv2.cvtColor(sc, cv2.COLOR_BGR2GRAY)  # 转灰度图
+cv2.error: C:\projects\opencv-python\opencv\modules\imgproc\src\color.cpp:11073: error: (-215) depth == 0 || depth == 2 || depth == 5 in function cv::cvtColor
+
+Wed, 18 Apr 2018 23:37:34 imgcut.py[line:372] ERROR cut_img 这里出错
+Wed, 18 Apr 2018 23:37:34 imgcut.py[line:373] ERROR this is an exception message
+Traceback (most recent call last):
+  File "E:\hupai\component\imgcut.py", line 365, in cut_img
+    set_val('imgpos_lowestprice', img[use_area[0][1]:use_area[0][3], use_area[0][0]:use_area[0][2]])  # ok
+IndexError: list index out of range
+Wed, 18 Apr 2018 23:37:34 app_thread.py[line:145] ERROR 刷新失败
+Wed, 18 Apr 2018 23:37:34 app_thread.py[line:146] ERROR this is an exception message
+Traceback (most recent call last):
+  File "E:\hupai\component\app_thread.py", line 143, in run
+    findrefresh()
+  File "E:\hupai\component\imgcut.py", line 387, in findrefresh
+    img = cv2.cvtColor(sc, cv2.COLOR_BGR2GRAY)  # 转灰度图
+cv2.error: C:\projects\opencv-python\opencv\modules\imgproc\src\color.cpp:11073: error: (-215) depth == 0 || depth == 2 || depth == 5 in function cv::cvtColor
+
+Wed, 18 Apr 2018 23:37:34 imgcut.py[line:372] ERROR cut_img 这里出错
+Wed, 18 Apr 2018 23:37:34 imgcut.py[line:373] ERROR this is an exception message
+Traceback (most recent call last):
+  File "E:\hupai\component\imgcut.py", line 365, in cut_img
+    set_val('imgpos_lowestprice', img[use_area[0][1]:use_area[0][3], use_area[0][0]:use_area[0][2]])  # ok
+IndexError: list index out of range
+Wed, 18 Apr 2018 23:37:34 app_thread.py[line:145] ERROR 刷新失败
+Wed, 18 Apr 2018 23:37:34 app_thread.py[line:146] ERROR this is an exception message
+Traceback (most recent call last):
+  File "E:\hupai\component\app_thread.py", line 143, in run
+    findrefresh()
+  File "E:\hupai\component\imgcut.py", line 387, in findrefresh
+    img = cv2.cvtColor(sc, cv2.COLOR_BGR2GRAY)  # 转灰度图
+cv2.error: C:\projects\opencv-python\opencv\modules\imgproc\src\color.cpp:11073: error: (-215) depth == 0 || depth == 2 || depth == 5 in function cv::cvtColor
+
+Wed, 18 Apr 2018 23:37:34 app_thread.py[line:145] ERROR 刷新失败
+Wed, 18 Apr 2018 23:37:34 app_thread.py[line:146] ERROR this is an exception message
+Traceback (most recent call last):
+  File "E:\hupai\component\app_thread.py", line 143, in run
+    findrefresh()
+  File "E:\hupai\component\imgcut.py", line 387, in findrefresh
+    img = cv2.cvtColor(sc, cv2.COLOR_BGR2GRAY)  # 转灰度图
+cv2.error: C:\projects\opencv-python\opencv\modules\imgproc\src\color.cpp:11073: error: (-215) depth == 0 || depth == 2 || depth == 5 in function cv::cvtColor
+
+Wed, 18 Apr 2018 23:37:34 imgcut.py[line:372] ERROR cut_img 这里出错
+Wed, 18 Apr 2018 23:37:34 imgcut.py[line:373] ERROR this is an exception message
+Traceback (most recent call last):
+  File "E:\hupai\component\imgcut.py", line 365, in cut_img
+    set_val('imgpos_lowestprice', img[use_area[0][1]:use_area[0][3], use_area[0][0]:use_area[0][2]])  # ok
+IndexError: list index out of range
+Wed, 18 Apr 2018 23:37:34 app_thread.py[line:145] ERROR 刷新失败
+Wed, 18 Apr 2018 23:37:34 app_thread.py[line:146] ERROR this is an exception message
+Traceback (most recent call last):
+  File "E:\hupai\component\app_thread.py", line 143, in run
+    findrefresh()
+  File "E:\hupai\component\imgcut.py", line 387, in findrefresh
+    img = cv2.cvtColor(sc, cv2.COLOR_BGR2GRAY)  # 转灰度图
+cv2.error: C:\projects\opencv-python\opencv\modules\imgproc\src\color.cpp:11073: error: (-215) depth == 0 || depth == 2 || depth == 5 in function cv::cvtColor
+
+Wed, 18 Apr 2018 23:37:34 imgcut.py[line:372] ERROR cut_img 这里出错
+Wed, 18 Apr 2018 23:37:34 imgcut.py[line:373] ERROR this is an exception message
+Traceback (most recent call last):
+  File "E:\hupai\component\imgcut.py", line 365, in cut_img
+    set_val('imgpos_lowestprice', img[use_area[0][1]:use_area[0][3], use_area[0][0]:use_area[0][2]])  # ok
+IndexError: list index out of range
+Wed, 18 Apr 2018 23:37:34 app_thread.py[line:145] ERROR 刷新失败
+Wed, 18 Apr 2018 23:37:34 app_thread.py[line:146] ERROR this is an exception message
+Traceback (most recent call last):
+  File "E:\hupai\component\app_thread.py", line 143, in run
+    findrefresh()
+  File "E:\hupai\component\imgcut.py", line 387, in findrefresh
+    img = cv2.cvtColor(sc, cv2.COLOR_BGR2GRAY)  # 转灰度图
+cv2.error: C:\projects\opencv-python\opencv\modules\imgproc\src\color.cpp:11073: error: (-215) depth == 0 || depth == 2 || depth == 5 in function cv::cvtColor
+
+Wed, 18 Apr 2018 23:37:34 imgcut.py[line:372] ERROR cut_img 这里出错
+Wed, 18 Apr 2018 23:37:34 imgcut.py[line:373] ERROR this is an exception message
+Traceback (most recent call last):
+  File "E:\hupai\component\imgcut.py", line 365, in cut_img
+    set_val('imgpos_lowestprice', img[use_area[0][1]:use_area[0][3], use_area[0][0]:use_area[0][2]])  # ok
+IndexError: list index out of range
+Wed, 18 Apr 2018 23:37:34 app_thread.py[line:145] ERROR 刷新失败
+Wed, 18 Apr 2018 23:37:34 app_thread.py[line:146] ERROR this is an exception message
+Traceback (most recent call last):
+  File "E:\hupai\component\app_thread.py", line 143, in run
+    findrefresh()
+  File "E:\hupai\component\imgcut.py", line 387, in findrefresh
+    img = cv2.cvtColor(sc, cv2.COLOR_BGR2GRAY)  # 转灰度图
+cv2.error: C:\projects\opencv-python\opencv\modules\imgproc\src\color.cpp:11073: error: (-215) depth == 0 || depth == 2 || depth == 5 in function cv::cvtColor
+
+Wed, 18 Apr 2018 23:37:34 imgcut.py[line:372] ERROR cut_img 这里出错
+Wed, 18 Apr 2018 23:37:34 imgcut.py[line:373] ERROR this is an exception message
+Traceback (most recent call last):
+  File "E:\hupai\component\imgcut.py", line 365, in cut_img
+    set_val('imgpos_lowestprice', img[use_area[0][1]:use_area[0][3], use_area[0][0]:use_area[0][2]])  # ok
+IndexError: list index out of range
+Wed, 18 Apr 2018 23:37:35 app_thread.py[line:145] ERROR 刷新失败
+Wed, 18 Apr 2018 23:37:35 app_thread.py[line:146] ERROR this is an exception message
+Traceback (most recent call last):
+  File "E:\hupai\component\app_thread.py", line 143, in run
+    findrefresh()
+  File "E:\hupai\component\imgcut.py", line 387, in findrefresh
+    img = cv2.cvtColor(sc, cv2.COLOR_BGR2GRAY)  # 转灰度图
+cv2.error: C:\projects\opencv-python\opencv\modules\imgproc\src\color.cpp:11073: error: (-215) depth == 0 || depth == 2 || depth == 5 in function cv::cvtColor
+
+Wed, 18 Apr 2018 23:37:35 imgcut.py[line:372] ERROR cut_img 这里出错
+Wed, 18 Apr 2018 23:37:35 imgcut.py[line:373] ERROR this is an exception message
+Traceback (most recent call last):
+  File "E:\hupai\component\imgcut.py", line 365, in cut_img
+    set_val('imgpos_lowestprice', img[use_area[0][1]:use_area[0][3], use_area[0][0]:use_area[0][2]])  # ok
+IndexError: list index out of range
+Wed, 18 Apr 2018 23:37:35 app_thread.py[line:145] ERROR 刷新失败
+Wed, 18 Apr 2018 23:37:35 app_thread.py[line:146] ERROR this is an exception message
+Traceback (most recent call last):
+  File "E:\hupai\component\app_thread.py", line 143, in run
+    findrefresh()
+  File "E:\hupai\component\imgcut.py", line 387, in findrefresh
+    img = cv2.cvtColor(sc, cv2.COLOR_BGR2GRAY)  # 转灰度图
+cv2.error: C:\projects\opencv-python\opencv\modules\imgproc\src\color.cpp:11073: error: (-215) depth == 0 || depth == 2 || depth == 5 in function cv::cvtColor
+
+Wed, 18 Apr 2018 23:37:35 imgcut.py[line:372] ERROR cut_img 这里出错
+Wed, 18 Apr 2018 23:37:35 imgcut.py[line:373] ERROR this is an exception message
+Traceback (most recent call last):
+  File "E:\hupai\component\imgcut.py", line 365, in cut_img
+    set_val('imgpos_lowestprice', img[use_area[0][1]:use_area[0][3], use_area[0][0]:use_area[0][2]])  # ok
+IndexError: list index out of range
+Wed, 18 Apr 2018 23:37:35 app_thread.py[line:145] ERROR 刷新失败
+Wed, 18 Apr 2018 23:37:35 app_thread.py[line:146] ERROR this is an exception message
+Traceback (most recent call last):
+  File "E:\hupai\component\app_thread.py", line 143, in run
+    findrefresh()
+  File "E:\hupai\component\imgcut.py", line 387, in findrefresh
+    img = cv2.cvtColor(sc, cv2.COLOR_BGR2GRAY)  # 转灰度图
+cv2.error: C:\projects\opencv-python\opencv\modules\imgproc\src\color.cpp:11073: error: (-215) depth == 0 || depth == 2 || depth == 5 in function cv::cvtColor
+
+Wed, 18 Apr 2018 23:37:35 imgcut.py[line:372] ERROR cut_img 这里出错
+Wed, 18 Apr 2018 23:37:35 imgcut.py[line:373] ERROR this is an exception message
+Traceback (most recent call last):
+  File "E:\hupai\component\imgcut.py", line 365, in cut_img
+    set_val('imgpos_lowestprice', img[use_area[0][1]:use_area[0][3], use_area[0][0]:use_area[0][2]])  # ok
+IndexError: list index out of range
+Wed, 18 Apr 2018 23:37:35 app_thread.py[line:145] ERROR 刷新失败
+Wed, 18 Apr 2018 23:37:35 app_thread.py[line:146] ERROR this is an exception message
+Traceback (most recent call last):
+  File "E:\hupai\component\app_thread.py", line 143, in run
+    findrefresh()
+  File "E:\hupai\component\imgcut.py", line 387, in findrefresh
+    img = cv2.cvtColor(sc, cv2.COLOR_BGR2GRAY)  # 转灰度图
+cv2.error: C:\projects\opencv-python\opencv\modules\imgproc\src\color.cpp:11073: error: (-215) depth == 0 || depth == 2 || depth == 5 in function cv::cvtColor
+
+Wed, 18 Apr 2018 23:37:35 app_thread.py[line:145] ERROR 刷新失败
+Wed, 18 Apr 2018 23:37:35 app_thread.py[line:146] ERROR this is an exception message
+Traceback (most recent call last):
+  File "E:\hupai\component\app_thread.py", line 143, in run
+    findrefresh()
+  File "E:\hupai\component\imgcut.py", line 387, in findrefresh
+    img = cv2.cvtColor(sc, cv2.COLOR_BGR2GRAY)  # 转灰度图
+cv2.error: C:\projects\opencv-python\opencv\modules\imgproc\src\color.cpp:11073: error: (-215) depth == 0 || depth == 2 || depth == 5 in function cv::cvtColor
+
+Wed, 18 Apr 2018 23:37:35 imgcut.py[line:372] ERROR cut_img 这里出错
+Wed, 18 Apr 2018 23:37:35 imgcut.py[line:373] ERROR this is an exception message
+Traceback (most recent call last):
+  File "E:\hupai\component\imgcut.py", line 365, in cut_img
+    set_val('imgpos_lowestprice', img[use_area[0][1]:use_area[0][3], use_area[0][0]:use_area[0][2]])  # ok
+IndexError: list index out of range
+Wed, 18 Apr 2018 23:37:35 imgcut.py[line:372] ERROR cut_img 这里出错
+Wed, 18 Apr 2018 23:37:35 app_thread.py[line:145] ERROR 刷新失败
+Wed, 18 Apr 2018 23:37:35 imgcut.py[line:373] ERROR this is an exception message
+Traceback (most recent call last):
+  File "E:\hupai\component\imgcut.py", line 365, in cut_img
+    set_val('imgpos_lowestprice', img[use_area[0][1]:use_area[0][3], use_area[0][0]:use_area[0][2]])  # ok
+IndexError: list index out of range
+Wed, 18 Apr 2018 23:37:35 app_thread.py[line:146] ERROR this is an exception message
+Traceback (most recent call last):
+  File "E:\hupai\component\app_thread.py", line 143, in run
+    findrefresh()
+  File "E:\hupai\component\imgcut.py", line 387, in findrefresh
+    img = cv2.cvtColor(sc, cv2.COLOR_BGR2GRAY)  # 转灰度图
+cv2.error: C:\projects\opencv-python\opencv\modules\imgproc\src\color.cpp:11073: error: (-215) depth == 0 || depth == 2 || depth == 5 in function cv::cvtColor
+
+Wed, 18 Apr 2018 23:37:35 app_thread.py[line:145] ERROR 刷新失败
+Wed, 18 Apr 2018 23:37:35 app_thread.py[line:146] ERROR this is an exception message
+Traceback (most recent call last):
+  File "E:\hupai\component\app_thread.py", line 143, in run
+    findrefresh()
+  File "E:\hupai\component\imgcut.py", line 387, in findrefresh
+    img = cv2.cvtColor(sc, cv2.COLOR_BGR2GRAY)  # 转灰度图
+cv2.error: C:\projects\opencv-python\opencv\modules\imgproc\src\color.cpp:11073: error: (-215) depth == 0 || depth == 2 || depth == 5 in function cv::cvtColor
+
+Wed, 18 Apr 2018 23:37:35 imgcut.py[line:372] ERROR cut_img 这里出错
+Wed, 18 Apr 2018 23:37:35 imgcut.py[line:373] ERROR this is an exception message
+Traceback (most recent call last):
+  File "E:\hupai\component\imgcut.py", line 365, in cut_img
+    set_val('imgpos_lowestprice', img[use_area[0][1]:use_area[0][3], use_area[0][0]:use_area[0][2]])  # ok
+IndexError: list index out of range
+Wed, 18 Apr 2018 23:37:35 app_thread.py[line:145] ERROR 刷新失败
+Wed, 18 Apr 2018 23:37:35 app_thread.py[line:146] ERROR this is an exception message
+Traceback (most recent call last):
+  File "E:\hupai\component\app_thread.py", line 143, in run
+    findrefresh()
+  File "E:\hupai\component\imgcut.py", line 387, in findrefresh
+    img = cv2.cvtColor(sc, cv2.COLOR_BGR2GRAY)  # 转灰度图
+cv2.error: C:\projects\opencv-python\opencv\modules\imgproc\src\color.cpp:11073: error: (-215) depth == 0 || depth == 2 || depth == 5 in function cv::cvtColor
+
+Wed, 18 Apr 2018 23:37:35 imgcut.py[line:372] ERROR cut_img 这里出错
+Wed, 18 Apr 2018 23:37:35 imgcut.py[line:373] ERROR this is an exception message
+Traceback (most recent call last):
+  File "E:\hupai\component\imgcut.py", line 365, in cut_img
+    set_val('imgpos_lowestprice', img[use_area[0][1]:use_area[0][3], use_area[0][0]:use_area[0][2]])  # ok
+IndexError: list index out of range
+Wed, 18 Apr 2018 23:37:35 app_thread.py[line:145] ERROR 刷新失败
+Wed, 18 Apr 2018 23:37:35 app_thread.py[line:146] ERROR this is an exception message
+Traceback (most recent call last):
+  File "E:\hupai\component\app_thread.py", line 143, in run
+    findrefresh()
+  File "E:\hupai\component\imgcut.py", line 387, in findrefresh
+    img = cv2.cvtColor(sc, cv2.COLOR_BGR2GRAY)  # 转灰度图
+cv2.error: C:\projects\opencv-python\opencv\modules\imgproc\src\color.cpp:11073: error: (-215) depth == 0 || depth == 2 || depth == 5 in function cv::cvtColor
+
+Wed, 18 Apr 2018 23:37:35 imgcut.py[line:372] ERROR cut_img 这里出错
+Wed, 18 Apr 2018 23:37:35 imgcut.py[line:373] ERROR this is an exception message
+Traceback (most recent call last):
+  File "E:\hupai\component\imgcut.py", line 365, in cut_img
+    set_val('imgpos_lowestprice', img[use_area[0][1]:use_area[0][3], use_area[0][0]:use_area[0][2]])  # ok
+IndexError: list index out of range
+Wed, 18 Apr 2018 23:37:35 app_thread.py[line:145] ERROR 刷新失败
+Wed, 18 Apr 2018 23:37:35 app_thread.py[line:146] ERROR this is an exception message
+Traceback (most recent call last):
+  File "E:\hupai\component\app_thread.py", line 143, in run
+    findrefresh()
+  File "E:\hupai\component\imgcut.py", line 387, in findrefresh
+    img = cv2.cvtColor(sc, cv2.COLOR_BGR2GRAY)  # 转灰度图
+cv2.error: C:\projects\opencv-python\opencv\modules\imgproc\src\color.cpp:11073: error: (-215) depth == 0 || depth == 2 || depth == 5 in function cv::cvtColor
+
+Wed, 18 Apr 2018 23:37:35 imgcut.py[line:372] ERROR cut_img 这里出错
+Wed, 18 Apr 2018 23:37:35 imgcut.py[line:373] ERROR this is an exception message
+Traceback (most recent call last):
+  File "E:\hupai\component\imgcut.py", line 365, in cut_img
+    set_val('imgpos_lowestprice', img[use_area[0][1]:use_area[0][3], use_area[0][0]:use_area[0][2]])  # ok
+IndexError: list index out of range
+Wed, 18 Apr 2018 23:37:35 app_thread.py[line:145] ERROR 刷新失败
+Wed, 18 Apr 2018 23:37:35 app_thread.py[line:146] ERROR this is an exception message
+Traceback (most recent call last):
+  File "E:\hupai\component\app_thread.py", line 143, in run
+    findrefresh()
+  File "E:\hupai\component\imgcut.py", line 387, in findrefresh
+    img = cv2.cvtColor(sc, cv2.COLOR_BGR2GRAY)  # 转灰度图
+cv2.error: C:\projects\opencv-python\opencv\modules\imgproc\src\color.cpp:11073: error: (-215) depth == 0 || depth == 2 || depth == 5 in function cv::cvtColor
+
+Wed, 18 Apr 2018 23:37:35 imgcut.py[line:372] ERROR cut_img 这里出错
+Wed, 18 Apr 2018 23:37:35 imgcut.py[line:373] ERROR this is an exception message
+Traceback (most recent call last):
+  File "E:\hupai\component\imgcut.py", line 365, in cut_img
+    set_val('imgpos_lowestprice', img[use_area[0][1]:use_area[0][3], use_area[0][0]:use_area[0][2]])  # ok
+IndexError: list index out of range
+Wed, 18 Apr 2018 23:37:35 app_thread.py[line:145] ERROR 刷新失败
+Wed, 18 Apr 2018 23:37:35 app_thread.py[line:146] ERROR this is an exception message
+Traceback (most recent call last):
+  File "E:\hupai\component\app_thread.py", line 143, in run
+    findrefresh()
+  File "E:\hupai\component\imgcut.py", line 387, in findrefresh
+    img = cv2.cvtColor(sc, cv2.COLOR_BGR2GRAY)  # 转灰度图
+cv2.error: C:\projects\opencv-python\opencv\modules\imgproc\src\color.cpp:11073: error: (-215) depth == 0 || depth == 2 || depth == 5 in function cv::cvtColor
+
+Wed, 18 Apr 2018 23:37:35 imgcut.py[line:372] ERROR cut_img 这里出错
+Wed, 18 Apr 2018 23:37:35 imgcut.py[line:373] ERROR this is an exception message
+Traceback (most recent call last):
+  File "E:\hupai\component\imgcut.py", line 365, in cut_img
+    set_val('imgpos_lowestprice', img[use_area[0][1]:use_area[0][3], use_area[0][0]:use_area[0][2]])  # ok
+IndexError: list index out of range
+Wed, 18 Apr 2018 23:37:35 app_thread.py[line:145] ERROR 刷新失败
+Wed, 18 Apr 2018 23:37:35 app_thread.py[line:146] ERROR this is an exception message
+Traceback (most recent call last):
+  File "E:\hupai\component\app_thread.py", line 143, in run
+    findrefresh()
+  File "E:\hupai\component\imgcut.py", line 387, in findrefresh
+    img = cv2.cvtColor(sc, cv2.COLOR_BGR2GRAY)  # 转灰度图
+cv2.error: C:\projects\opencv-python\opencv\modules\imgproc\src\color.cpp:11073: error: (-215) depth == 0 || depth == 2 || depth == 5 in function cv::cvtColor
+
+Wed, 18 Apr 2018 23:37:35 imgcut.py[line:372] ERROR cut_img 这里出错
+Wed, 18 Apr 2018 23:37:35 imgcut.py[line:373] ERROR this is an exception message
+Traceback (most recent call last):
+  File "E:\hupai\component\imgcut.py", line 365, in cut_img
+    set_val('imgpos_lowestprice', img[use_area[0][1]:use_area[0][3], use_area[0][0]:use_area[0][2]])  # ok
+IndexError: list index out of range
+Wed, 18 Apr 2018 23:37:35 app_thread.py[line:145] ERROR 刷新失败
+Wed, 18 Apr 2018 23:37:35 app_thread.py[line:146] ERROR this is an exception message
+Traceback (most recent call last):
+  File "E:\hupai\component\app_thread.py", line 143, in run
+    findrefresh()
+  File "E:\hupai\component\imgcut.py", line 387, in findrefresh
+    img = cv2.cvtColor(sc, cv2.COLOR_BGR2GRAY)  # 转灰度图
+cv2.error: C:\projects\opencv-python\opencv\modules\imgproc\src\color.cpp:11073: error: (-215) depth == 0 || depth == 2 || depth == 5 in function cv::cvtColor
+
+Wed, 18 Apr 2018 23:37:35 app_thread.py[line:145] ERROR 刷新失败
+Wed, 18 Apr 2018 23:37:35 app_thread.py[line:146] ERROR this is an exception message
+Traceback (most recent call last):
+  File "E:\hupai\component\app_thread.py", line 143, in run
+    findrefresh()
+  File "E:\hupai\component\imgcut.py", line 387, in findrefresh
+    img = cv2.cvtColor(sc, cv2.COLOR_BGR2GRAY)  # 转灰度图
+cv2.error: C:\projects\opencv-python\opencv\modules\imgproc\src\color.cpp:11073: error: (-215) depth == 0 || depth == 2 || depth == 5 in function cv::cvtColor
+
+Wed, 18 Apr 2018 23:37:35 imgcut.py[line:372] ERROR cut_img 这里出错
+Wed, 18 Apr 2018 23:37:35 imgcut.py[line:373] ERROR this is an exception message
+Traceback (most recent call last):
+  File "E:\hupai\component\imgcut.py", line 365, in cut_img
+    set_val('imgpos_lowestprice', img[use_area[0][1]:use_area[0][3], use_area[0][0]:use_area[0][2]])  # ok
+IndexError: list index out of range
+Wed, 18 Apr 2018 23:37:35 app_thread.py[line:145] ERROR 刷新失败
+Wed, 18 Apr 2018 23:37:35 app_thread.py[line:146] ERROR this is an exception message
+Traceback (most recent call last):
+  File "E:\hupai\component\app_thread.py", line 143, in run
+    findrefresh()
+  File "E:\hupai\component\imgcut.py", line 387, in findrefresh
+    img = cv2.cvtColor(sc, cv2.COLOR_BGR2GRAY)  # 转灰度图
+cv2.error: C:\projects\opencv-python\opencv\modules\imgproc\src\color.cpp:11073: error: (-215) depth == 0 || depth == 2 || depth == 5 in function cv::cvtColor
+
+Wed, 18 Apr 2018 23:37:35 imgcut.py[line:372] ERROR cut_img 这里出错
+Wed, 18 Apr 2018 23:37:35 imgcut.py[line:373] ERROR this is an exception message
+Traceback (most recent call last):
+  File "E:\hupai\component\imgcut.py", line 365, in cut_img
+    set_val('imgpos_lowestprice', img[use_area[0][1]:use_area[0][3], use_area[0][0]:use_area[0][2]])  # ok
+IndexError: list index out of range
+Wed, 18 Apr 2018 23:37:36 app_thread.py[line:145] ERROR 刷新失败
+Wed, 18 Apr 2018 23:37:36 app_thread.py[line:146] ERROR this is an exception message
+Traceback (most recent call last):
+  File "E:\hupai\component\app_thread.py", line 143, in run
+    findrefresh()
+  File "E:\hupai\component\imgcut.py", line 387, in findrefresh
+    img = cv2.cvtColor(sc, cv2.COLOR_BGR2GRAY)  # 转灰度图
+cv2.error: C:\projects\opencv-python\opencv\modules\imgproc\src\color.cpp:11073: error: (-215) depth == 0 || depth == 2 || depth == 5 in function cv::cvtColor
+
+Wed, 18 Apr 2018 23:37:36 imgcut.py[line:372] ERROR cut_img 这里出错
+Wed, 18 Apr 2018 23:37:36 imgcut.py[line:373] ERROR this is an exception message
+Traceback (most recent call last):
+  File "E:\hupai\component\imgcut.py", line 365, in cut_img
+    set_val('imgpos_lowestprice', img[use_area[0][1]:use_area[0][3], use_area[0][0]:use_area[0][2]])  # ok
+IndexError: list index out of range
+Wed, 18 Apr 2018 23:37:36 app_thread.py[line:145] ERROR 刷新失败
+Wed, 18 Apr 2018 23:37:36 app_thread.py[line:146] ERROR this is an exception message
+Traceback (most recent call last):
+  File "E:\hupai\component\app_thread.py", line 143, in run
+    findrefresh()
+  File "E:\hupai\component\imgcut.py", line 387, in findrefresh
+    img = cv2.cvtColor(sc, cv2.COLOR_BGR2GRAY)  # 转灰度图
+cv2.error: C:\projects\opencv-python\opencv\modules\imgproc\src\color.cpp:11073: error: (-215) depth == 0 || depth == 2 || depth == 5 in function cv::cvtColor
+
+Wed, 18 Apr 2018 23:37:36 imgcut.py[line:372] ERROR cut_img 这里出错
+Wed, 18 Apr 2018 23:37:36 imgcut.py[line:373] ERROR this is an exception message
+Traceback (most recent call last):
+  File "E:\hupai\component\imgcut.py", line 365, in cut_img
+    set_val('imgpos_lowestprice', img[use_area[0][1]:use_area[0][3], use_area[0][0]:use_area[0][2]])  # ok
+IndexError: list index out of range
+Wed, 18 Apr 2018 23:37:36 app_thread.py[line:145] ERROR 刷新失败
+Wed, 18 Apr 2018 23:37:36 app_thread.py[line:146] ERROR this is an exception message
+Traceback (most recent call last):
+  File "E:\hupai\component\app_thread.py", line 143, in run
+    findrefresh()
+  File "E:\hupai\component\imgcut.py", line 387, in findrefresh
+    img = cv2.cvtColor(sc, cv2.COLOR_BGR2GRAY)  # 转灰度图
+cv2.error: C:\projects\opencv-python\opencv\modules\imgproc\src\color.cpp:11073: error: (-215) depth == 0 || depth == 2 || depth == 5 in function cv::cvtColor
+
+Wed, 18 Apr 2018 23:37:36 imgcut.py[line:372] ERROR cut_img 这里出错
+Wed, 18 Apr 2018 23:37:36 imgcut.py[line:373] ERROR this is an exception message
+Traceback (most recent call last):
+  File "E:\hupai\component\imgcut.py", line 365, in cut_img
+    set_val('imgpos_lowestprice', img[use_area[0][1]:use_area[0][3], use_area[0][0]:use_area[0][2]])  # ok
+IndexError: list index out of range
+Wed, 18 Apr 2018 23:37:36 app_thread.py[line:145] ERROR 刷新失败
+Wed, 18 Apr 2018 23:37:36 app_thread.py[line:146] ERROR this is an exception message
+Traceback (most recent call last):
+  File "E:\hupai\component\app_thread.py", line 143, in run
+    findrefresh()
+  File "E:\hupai\component\imgcut.py", line 387, in findrefresh
+    img = cv2.cvtColor(sc, cv2.COLOR_BGR2GRAY)  # 转灰度图
+cv2.error: C:\projects\opencv-python\opencv\modules\imgproc\src\color.cpp:11073: error: (-215) depth == 0 || depth == 2 || depth == 5 in function cv::cvtColor
+
+Wed, 18 Apr 2018 23:37:36 app_thread.py[line:145] ERROR 刷新失败
+Wed, 18 Apr 2018 23:37:36 app_thread.py[line:146] ERROR this is an exception message
+Traceback (most recent call last):
+  File "E:\hupai\component\app_thread.py", line 143, in run
+    findrefresh()
+  File "E:\hupai\component\imgcut.py", line 387, in findrefresh
+    img = cv2.cvtColor(sc, cv2.COLOR_BGR2GRAY)  # 转灰度图
+cv2.error: C:\projects\opencv-python\opencv\modules\imgproc\src\color.cpp:11073: error: (-215) depth == 0 || depth == 2 || depth == 5 in function cv::cvtColor
+
+Wed, 18 Apr 2018 23:37:36 imgcut.py[line:372] ERROR cut_img 这里出错
+Wed, 18 Apr 2018 23:37:36 imgcut.py[line:373] ERROR this is an exception message
+Traceback (most recent call last):
+  File "E:\hupai\component\imgcut.py", line 365, in cut_img
+    set_val('imgpos_lowestprice', img[use_area[0][1]:use_area[0][3], use_area[0][0]:use_area[0][2]])  # ok
+IndexError: list index out of range
+Wed, 18 Apr 2018 23:37:36 app_thread.py[line:145] ERROR 刷新失败
+Wed, 18 Apr 2018 23:37:36 app_thread.py[line:146] ERROR this is an exception message
+Traceback (most recent call last):
+  File "E:\hupai\component\app_thread.py", line 143, in run
+    findrefresh()
+  File "E:\hupai\component\imgcut.py", line 387, in findrefresh
+    img = cv2.cvtColor(sc, cv2.COLOR_BGR2GRAY)  # 转灰度图
+cv2.error: C:\projects\opencv-python\opencv\modules\imgproc\src\color.cpp:11073: error: (-215) depth == 0 || depth == 2 || depth == 5 in function cv::cvtColor
+
+Wed, 18 Apr 2018 23:37:36 imgcut.py[line:372] ERROR cut_img 这里出错
+Wed, 18 Apr 2018 23:37:36 imgcut.py[line:373] ERROR this is an exception message
+Traceback (most recent call last):
+  File "E:\hupai\component\imgcut.py", line 365, in cut_img
+    set_val('imgpos_lowestprice', img[use_area[0][1]:use_area[0][3], use_area[0][0]:use_area[0][2]])  # ok
+IndexError: list index out of range
+Wed, 18 Apr 2018 23:37:36 app_thread.py[line:145] ERROR 刷新失败
+Wed, 18 Apr 2018 23:37:36 app_thread.py[line:146] ERROR this is an exception message
+Traceback (most recent call last):
+  File "E:\hupai\component\app_thread.py", line 143, in run
+    findrefresh()
+  File "E:\hupai\component\imgcut.py", line 387, in findrefresh
+    img = cv2.cvtColor(sc, cv2.COLOR_BGR2GRAY)  # 转灰度图
+cv2.error: C:\projects\opencv-python\opencv\modules\imgproc\src\color.cpp:11073: error: (-215) depth == 0 || depth == 2 || depth == 5 in function cv::cvtColor
+
+Wed, 18 Apr 2018 23:37:36 imgcut.py[line:372] ERROR cut_img 这里出错
+Wed, 18 Apr 2018 23:37:36 imgcut.py[line:373] ERROR this is an exception message
+Traceback (most recent call last):
+  File "E:\hupai\component\imgcut.py", line 365, in cut_img
+    set_val('imgpos_lowestprice', img[use_area[0][1]:use_area[0][3], use_area[0][0]:use_area[0][2]])  # ok
+IndexError: list index out of range
+Wed, 18 Apr 2018 23:37:36 app_thread.py[line:145] ERROR 刷新失败
+Wed, 18 Apr 2018 23:37:36 app_thread.py[line:146] ERROR this is an exception message
+Traceback (most recent call last):
+  File "E:\hupai\component\app_thread.py", line 143, in run
+    findrefresh()
+  File "E:\hupai\component\imgcut.py", line 387, in findrefresh
+    img = cv2.cvtColor(sc, cv2.COLOR_BGR2GRAY)  # 转灰度图
+cv2.error: C:\projects\opencv-python\opencv\modules\imgproc\src\color.cpp:11073: error: (-215) depth == 0 || depth == 2 || depth == 5 in function cv::cvtColor
+
+Wed, 18 Apr 2018 23:37:36 app_thread.py[line:145] ERROR 刷新失败
+Wed, 18 Apr 2018 23:37:36 app_thread.py[line:146] ERROR this is an exception message
+Traceback (most recent call last):
+  File "E:\hupai\component\app_thread.py", line 143, in run
+    findrefresh()
+  File "E:\hupai\component\imgcut.py", line 387, in findrefresh
+    img = cv2.cvtColor(sc, cv2.COLOR_BGR2GRAY)  # 转灰度图
+cv2.error: C:\projects\opencv-python\opencv\modules\imgproc\src\color.cpp:11073: error: (-215) depth == 0 || depth == 2 || depth == 5 in function cv::cvtColor
+
+Wed, 18 Apr 2018 23:37:36 imgcut.py[line:372] ERROR cut_img 这里出错
+Wed, 18 Apr 2018 23:37:36 imgcut.py[line:373] ERROR this is an exception message
+Traceback (most recent call last):
+  File "E:\hupai\component\imgcut.py", line 365, in cut_img
+    set_val('imgpos_lowestprice', img[use_area[0][1]:use_area[0][3], use_area[0][0]:use_area[0][2]])  # ok
+IndexError: list index out of range
+Wed, 18 Apr 2018 23:37:36 app_thread.py[line:145] ERROR 刷新失败
+Wed, 18 Apr 2018 23:37:36 app_thread.py[line:146] ERROR this is an exception message
+Traceback (most recent call last):
+  File "E:\hupai\component\app_thread.py", line 143, in run
+    findrefresh()
+  File "E:\hupai\component\imgcut.py", line 387, in findrefresh
+    img = cv2.cvtColor(sc, cv2.COLOR_BGR2GRAY)  # 转灰度图
+cv2.error: C:\projects\opencv-python\opencv\modules\imgproc\src\color.cpp:11073: error: (-215) depth == 0 || depth == 2 || depth == 5 in function cv::cvtColor
+
+Wed, 18 Apr 2018 23:37:36 imgcut.py[line:372] ERROR cut_img 这里出错
+Wed, 18 Apr 2018 23:37:36 imgcut.py[line:373] ERROR this is an exception message
+Traceback (most recent call last):
+  File "E:\hupai\component\imgcut.py", line 365, in cut_img
+    set_val('imgpos_lowestprice', img[use_area[0][1]:use_area[0][3], use_area[0][0]:use_area[0][2]])  # ok
+IndexError: list index out of range
+Wed, 18 Apr 2018 23:37:36 app_thread.py[line:145] ERROR 刷新失败
+Wed, 18 Apr 2018 23:37:36 app_thread.py[line:146] ERROR this is an exception message
+Traceback (most recent call last):
+  File "E:\hupai\component\app_thread.py", line 143, in run
+    findrefresh()
+  File "E:\hupai\component\imgcut.py", line 387, in findrefresh
+    img = cv2.cvtColor(sc, cv2.COLOR_BGR2GRAY)  # 转灰度图
+cv2.error: C:\projects\opencv-python\opencv\modules\imgproc\src\color.cpp:11073: error: (-215) depth == 0 || depth == 2 || depth == 5 in function cv::cvtColor
+
+Wed, 18 Apr 2018 23:37:36 app_thread.py[line:145] ERROR 刷新失败
+Wed, 18 Apr 2018 23:37:36 app_thread.py[line:146] ERROR this is an exception message
+Traceback (most recent call last):
+  File "E:\hupai\component\app_thread.py", line 143, in run
+    findrefresh()
+  File "E:\hupai\component\imgcut.py", line 387, in findrefresh
+    img = cv2.cvtColor(sc, cv2.COLOR_BGR2GRAY)  # 转灰度图
+cv2.error: C:\projects\opencv-python\opencv\modules\imgproc\src\color.cpp:11073: error: (-215) depth == 0 || depth == 2 || depth == 5 in function cv::cvtColor
+
+Wed, 18 Apr 2018 23:37:36 imgcut.py[line:372] ERROR cut_img 这里出错
+Wed, 18 Apr 2018 23:37:36 imgcut.py[line:373] ERROR this is an exception message
+Traceback (most recent call last):
+  File "E:\hupai\component\imgcut.py", line 365, in cut_img
+    set_val('imgpos_lowestprice', img[use_area[0][1]:use_area[0][3], use_area[0][0]:use_area[0][2]])  # ok
+IndexError: list index out of range
+Wed, 18 Apr 2018 23:37:36 app_thread.py[line:145] ERROR 刷新失败
+Wed, 18 Apr 2018 23:37:36 app_thread.py[line:146] ERROR this is an exception message
+Traceback (most recent call last):
+  File "E:\hupai\component\app_thread.py", line 143, in run
+    findrefresh()
+  File "E:\hupai\component\imgcut.py", line 387, in findrefresh
+    img = cv2.cvtColor(sc, cv2.COLOR_BGR2GRAY)  # 转灰度图
+cv2.error: C:\projects\opencv-python\opencv\modules\imgproc\src\color.cpp:11073: error: (-215) depth == 0 || depth == 2 || depth == 5 in function cv::cvtColor
+
+Wed, 18 Apr 2018 23:37:36 app_thread.py[line:145] ERROR 刷新失败
+Wed, 18 Apr 2018 23:37:36 app_thread.py[line:146] ERROR this is an exception message
+Traceback (most recent call last):
+  File "E:\hupai\component\app_thread.py", line 143, in run
+    findrefresh()
+  File "E:\hupai\component\imgcut.py", line 387, in findrefresh
+    img = cv2.cvtColor(sc, cv2.COLOR_BGR2GRAY)  # 转灰度图
+cv2.error: C:\projects\opencv-python\opencv\modules\imgproc\src\color.cpp:11073: error: (-215) depth == 0 || depth == 2 || depth == 5 in function cv::cvtColor
+
+Wed, 18 Apr 2018 23:37:36 imgcut.py[line:372] ERROR cut_img 这里出错
+Wed, 18 Apr 2018 23:37:36 imgcut.py[line:373] ERROR this is an exception message
+Traceback (most recent call last):
+  File "E:\hupai\component\imgcut.py", line 365, in cut_img
+    set_val('imgpos_lowestprice', img[use_area[0][1]:use_area[0][3], use_area[0][0]:use_area[0][2]])  # ok
+IndexError: list index out of range
+Wed, 18 Apr 2018 23:37:36 app_thread.py[line:145] ERROR 刷新失败
+Wed, 18 Apr 2018 23:37:36 app_thread.py[line:146] ERROR this is an exception message
+Traceback (most recent call last):
+  File "E:\hupai\component\app_thread.py", line 143, in run
+    findrefresh()
+  File "E:\hupai\component\imgcut.py", line 387, in findrefresh
+    img = cv2.cvtColor(sc, cv2.COLOR_BGR2GRAY)  # 转灰度图
+cv2.error: C:\projects\opencv-python\opencv\modules\imgproc\src\color.cpp:11073: error: (-215) depth == 0 || depth == 2 || depth == 5 in function cv::cvtColor
+
+Wed, 18 Apr 2018 23:37:36 app_thread.py[line:145] ERROR 刷新失败
+Wed, 18 Apr 2018 23:37:36 app_thread.py[line:146] ERROR this is an exception message
+Traceback (most recent call last):
+  File "E:\hupai\component\app_thread.py", line 143, in run
+    findrefresh()
+  File "E:\hupai\component\imgcut.py", line 387, in findrefresh
+    img = cv2.cvtColor(sc, cv2.COLOR_BGR2GRAY)  # 转灰度图
+cv2.error: C:\projects\opencv-python\opencv\modules\imgproc\src\color.cpp:11073: error: (-215) depth == 0 || depth == 2 || depth == 5 in function cv::cvtColor
+
+Wed, 18 Apr 2018 23:37:37 imgcut.py[line:372] ERROR cut_img 这里出错
+Wed, 18 Apr 2018 23:37:37 imgcut.py[line:373] ERROR this is an exception message
+Traceback (most recent call last):
+  File "E:\hupai\component\imgcut.py", line 365, in cut_img
+    set_val('imgpos_lowestprice', img[use_area[0][1]:use_area[0][3], use_area[0][0]:use_area[0][2]])  # ok
+IndexError: list index out of range
+Wed, 18 Apr 2018 23:37:37 app_thread.py[line:145] ERROR 刷新失败
+Wed, 18 Apr 2018 23:37:37 app_thread.py[line:146] ERROR this is an exception message
+Traceback (most recent call last):
+  File "E:\hupai\component\app_thread.py", line 143, in run
+    findrefresh()
+  File "E:\hupai\component\imgcut.py", line 387, in findrefresh
+    img = cv2.cvtColor(sc, cv2.COLOR_BGR2GRAY)  # 转灰度图
+cv2.error: C:\projects\opencv-python\opencv\modules\imgproc\src\color.cpp:11073: error: (-215) depth == 0 || depth == 2 || depth == 5 in function cv::cvtColor
+
+Wed, 18 Apr 2018 23:37:37 imgcut.py[line:372] ERROR cut_img 这里出错
+Wed, 18 Apr 2018 23:37:37 imgcut.py[line:373] ERROR this is an exception message
+Traceback (most recent call last):
+  File "E:\hupai\component\imgcut.py", line 365, in cut_img
+    set_val('imgpos_lowestprice', img[use_area[0][1]:use_area[0][3], use_area[0][0]:use_area[0][2]])  # ok
+IndexError: list index out of range
+Wed, 18 Apr 2018 23:37:37 app_thread.py[line:145] ERROR 刷新失败
+Wed, 18 Apr 2018 23:37:37 app_thread.py[line:146] ERROR this is an exception message
+Traceback (most recent call last):
+  File "E:\hupai\component\app_thread.py", line 143, in run
+    findrefresh()
+  File "E:\hupai\component\imgcut.py", line 387, in findrefresh
+    img = cv2.cvtColor(sc, cv2.COLOR_BGR2GRAY)  # 转灰度图
+cv2.error: C:\projects\opencv-python\opencv\modules\imgproc\src\color.cpp:11073: error: (-215) depth == 0 || depth == 2 || depth == 5 in function cv::cvtColor
+
+Wed, 18 Apr 2018 23:37:37 imgcut.py[line:372] ERROR cut_img 这里出错
+Wed, 18 Apr 2018 23:37:37 imgcut.py[line:373] ERROR this is an exception message
+Traceback (most recent call last):
+  File "E:\hupai\component\imgcut.py", line 365, in cut_img
+    set_val('imgpos_lowestprice', img[use_area[0][1]:use_area[0][3], use_area[0][0]:use_area[0][2]])  # ok
+IndexError: list index out of range
+Wed, 18 Apr 2018 23:37:37 app_thread.py[line:145] ERROR 刷新失败
+Wed, 18 Apr 2018 23:37:37 app_thread.py[line:146] ERROR this is an exception message
+Traceback (most recent call last):
+  File "E:\hupai\component\app_thread.py", line 143, in run
+    findrefresh()
+  File "E:\hupai\component\imgcut.py", line 387, in findrefresh
+    img = cv2.cvtColor(sc, cv2.COLOR_BGR2GRAY)  # 转灰度图
+cv2.error: C:\projects\opencv-python\opencv\modules\imgproc\src\color.cpp:11073: error: (-215) depth == 0 || depth == 2 || depth == 5 in function cv::cvtColor
+
+Wed, 18 Apr 2018 23:37:37 app_thread.py[line:145] ERROR 刷新失败
+Wed, 18 Apr 2018 23:37:37 app_thread.py[line:146] ERROR this is an exception message
+Traceback (most recent call last):
+  File "E:\hupai\component\app_thread.py", line 143, in run
+    findrefresh()
+  File "E:\hupai\component\imgcut.py", line 387, in findrefresh
+    img = cv2.cvtColor(sc, cv2.COLOR_BGR2GRAY)  # 转灰度图
+cv2.error: C:\projects\opencv-python\opencv\modules\imgproc\src\color.cpp:11073: error: (-215) depth == 0 || depth == 2 || depth == 5 in function cv::cvtColor
+
+Wed, 18 Apr 2018 23:37:37 imgcut.py[line:372] ERROR cut_img 这里出错
+Wed, 18 Apr 2018 23:37:37 imgcut.py[line:373] ERROR this is an exception message
+Traceback (most recent call last):
+  File "E:\hupai\component\imgcut.py", line 365, in cut_img
+    set_val('imgpos_lowestprice', img[use_area[0][1]:use_area[0][3], use_area[0][0]:use_area[0][2]])  # ok
+IndexError: list index out of range
+Wed, 18 Apr 2018 23:37:37 app_thread.py[line:145] ERROR 刷新失败
+Wed, 18 Apr 2018 23:37:37 app_thread.py[line:146] ERROR this is an exception message
+Traceback (most recent call last):
+  File "E:\hupai\component\app_thread.py", line 143, in run
+    findrefresh()
+  File "E:\hupai\component\imgcut.py", line 387, in findrefresh
+    img = cv2.cvtColor(sc, cv2.COLOR_BGR2GRAY)  # 转灰度图
+cv2.error: C:\projects\opencv-python\opencv\modules\imgproc\src\color.cpp:11073: error: (-215) depth == 0 || depth == 2 || depth == 5 in function cv::cvtColor
+
+Wed, 18 Apr 2018 23:37:37 imgcut.py[line:372] ERROR cut_img 这里出错
+Wed, 18 Apr 2018 23:37:37 imgcut.py[line:373] ERROR this is an exception message
+Traceback (most recent call last):
+  File "E:\hupai\component\imgcut.py", line 365, in cut_img
+    set_val('imgpos_lowestprice', img[use_area[0][1]:use_area[0][3], use_area[0][0]:use_area[0][2]])  # ok
+IndexError: list index out of range
+Wed, 18 Apr 2018 23:37:37 app_thread.py[line:145] ERROR 刷新失败
+Wed, 18 Apr 2018 23:37:37 app_thread.py[line:146] ERROR this is an exception message
+Traceback (most recent call last):
+  File "E:\hupai\component\app_thread.py", line 143, in run
+    findrefresh()
+  File "E:\hupai\component\imgcut.py", line 387, in findrefresh
+    img = cv2.cvtColor(sc, cv2.COLOR_BGR2GRAY)  # 转灰度图
+cv2.error: C:\projects\opencv-python\opencv\modules\imgproc\src\color.cpp:11073: error: (-215) depth == 0 || depth == 2 || depth == 5 in function cv::cvtColor
+
+Wed, 18 Apr 2018 23:37:37 imgcut.py[line:372] ERROR cut_img 这里出错
+Wed, 18 Apr 2018 23:37:37 imgcut.py[line:373] ERROR this is an exception message
+Traceback (most recent call last):
+  File "E:\hupai\component\imgcut.py", line 365, in cut_img
+    set_val('imgpos_lowestprice', img[use_area[0][1]:use_area[0][3], use_area[0][0]:use_area[0][2]])  # ok
+IndexError: list index out of range
+Wed, 18 Apr 2018 23:37:37 app_thread.py[line:145] ERROR 刷新失败
+Wed, 18 Apr 2018 23:37:37 app_thread.py[line:146] ERROR this is an exception message
+Traceback (most recent call last):
+  File "E:\hupai\component\app_thread.py", line 143, in run
+    findrefresh()
+  File "E:\hupai\component\imgcut.py", line 387, in findrefresh
+    img = cv2.cvtColor(sc, cv2.COLOR_BGR2GRAY)  # 转灰度图
+cv2.error: C:\projects\opencv-python\opencv\modules\imgproc\src\color.cpp:11073: error: (-215) depth == 0 || depth == 2 || depth == 5 in function cv::cvtColor
+
+Wed, 18 Apr 2018 23:37:37 imgcut.py[line:372] ERROR cut_img 这里出错
+Wed, 18 Apr 2018 23:37:37 imgcut.py[line:373] ERROR this is an exception message
+Traceback (most recent call last):
+  File "E:\hupai\component\imgcut.py", line 365, in cut_img
+    set_val('imgpos_lowestprice', img[use_area[0][1]:use_area[0][3], use_area[0][0]:use_area[0][2]])  # ok
+IndexError: list index out of range
+Wed, 18 Apr 2018 23:37:37 app_thread.py[line:145] ERROR 刷新失败
+Wed, 18 Apr 2018 23:37:37 app_thread.py[line:146] ERROR this is an exception message
+Traceback (most recent call last):
+  File "E:\hupai\component\app_thread.py", line 143, in run
+    findrefresh()
+  File "E:\hupai\component\imgcut.py", line 387, in findrefresh
+    img = cv2.cvtColor(sc, cv2.COLOR_BGR2GRAY)  # 转灰度图
+cv2.error: C:\projects\opencv-python\opencv\modules\imgproc\src\color.cpp:11073: error: (-215) depth == 0 || depth == 2 || depth == 5 in function cv::cvtColor
+
+Wed, 18 Apr 2018 23:37:37 imgcut.py[line:372] ERROR cut_img 这里出错
+Wed, 18 Apr 2018 23:37:37 imgcut.py[line:373] ERROR this is an exception message
+Traceback (most recent call last):
+  File "E:\hupai\component\imgcut.py", line 365, in cut_img
+    set_val('imgpos_lowestprice', img[use_area[0][1]:use_area[0][3], use_area[0][0]:use_area[0][2]])  # ok
+IndexError: list index out of range
+Wed, 18 Apr 2018 23:37:37 app_thread.py[line:145] ERROR 刷新失败
+Wed, 18 Apr 2018 23:37:37 app_thread.py[line:146] ERROR this is an exception message
+Traceback (most recent call last):
+  File "E:\hupai\component\app_thread.py", line 143, in run
+    findrefresh()
+  File "E:\hupai\component\imgcut.py", line 387, in findrefresh
+    img = cv2.cvtColor(sc, cv2.COLOR_BGR2GRAY)  # 转灰度图
+cv2.error: C:\projects\opencv-python\opencv\modules\imgproc\src\color.cpp:11073: error: (-215) depth == 0 || depth == 2 || depth == 5 in function cv::cvtColor
+
+Wed, 18 Apr 2018 23:37:37 imgcut.py[line:372] ERROR cut_img 这里出错
+Wed, 18 Apr 2018 23:37:37 imgcut.py[line:373] ERROR this is an exception message
+Traceback (most recent call last):
+  File "E:\hupai\component\imgcut.py", line 365, in cut_img
+    set_val('imgpos_lowestprice', img[use_area[0][1]:use_area[0][3], use_area[0][0]:use_area[0][2]])  # ok
+IndexError: list index out of range
+Wed, 18 Apr 2018 23:37:37 app_thread.py[line:145] ERROR 刷新失败
+Wed, 18 Apr 2018 23:37:37 app_thread.py[line:146] ERROR this is an exception message
+Traceback (most recent call last):
+  File "E:\hupai\component\app_thread.py", line 143, in run
+    findrefresh()
+  File "E:\hupai\component\imgcut.py", line 387, in findrefresh
+    img = cv2.cvtColor(sc, cv2.COLOR_BGR2GRAY)  # 转灰度图
+cv2.error: C:\projects\opencv-python\opencv\modules\imgproc\src\color.cpp:11073: error: (-215) depth == 0 || depth == 2 || depth == 5 in function cv::cvtColor
+
+Wed, 18 Apr 2018 23:37:37 imgcut.py[line:372] ERROR cut_img 这里出错
+Wed, 18 Apr 2018 23:37:37 imgcut.py[line:373] ERROR this is an exception message
+Traceback (most recent call last):
+  File "E:\hupai\component\imgcut.py", line 365, in cut_img
+    set_val('imgpos_lowestprice', img[use_area[0][1]:use_area[0][3], use_area[0][0]:use_area[0][2]])  # ok
+IndexError: list index out of range
+Wed, 18 Apr 2018 23:37:37 app_thread.py[line:145] ERROR 刷新失败
+Wed, 18 Apr 2018 23:37:37 app_thread.py[line:146] ERROR this is an exception message
+Traceback (most recent call last):
+  File "E:\hupai\component\app_thread.py", line 143, in run
+    findrefresh()
+  File "E:\hupai\component\imgcut.py", line 387, in findrefresh
+    img = cv2.cvtColor(sc, cv2.COLOR_BGR2GRAY)  # 转灰度图
+cv2.error: C:\projects\opencv-python\opencv\modules\imgproc\src\color.cpp:11073: error: (-215) depth == 0 || depth == 2 || depth == 5 in function cv::cvtColor
+
+Wed, 18 Apr 2018 23:37:37 imgcut.py[line:372] ERROR cut_img 这里出错
+Wed, 18 Apr 2018 23:37:37 imgcut.py[line:373] ERROR this is an exception message
+Traceback (most recent call last):
+  File "E:\hupai\component\imgcut.py", line 365, in cut_img
+    set_val('imgpos_lowestprice', img[use_area[0][1]:use_area[0][3], use_area[0][0]:use_area[0][2]])  # ok
+IndexError: list index out of range
+Wed, 18 Apr 2018 23:37:37 app_thread.py[line:145] ERROR 刷新失败
+Wed, 18 Apr 2018 23:37:37 app_thread.py[line:146] ERROR this is an exception message
+Traceback (most recent call last):
+  File "E:\hupai\component\app_thread.py", line 143, in run
+    findrefresh()
+  File "E:\hupai\component\imgcut.py", line 387, in findrefresh
+    img = cv2.cvtColor(sc, cv2.COLOR_BGR2GRAY)  # 转灰度图
+cv2.error: C:\projects\opencv-python\opencv\modules\imgproc\src\color.cpp:11073: error: (-215) depth == 0 || depth == 2 || depth == 5 in function cv::cvtColor
+
+Wed, 18 Apr 2018 23:37:37 app_thread.py[line:145] ERROR 刷新失败
+Wed, 18 Apr 2018 23:37:37 app_thread.py[line:146] ERROR this is an exception message
+Traceback (most recent call last):
+  File "E:\hupai\component\app_thread.py", line 143, in run
+    findrefresh()
+  File "E:\hupai\component\imgcut.py", line 387, in findrefresh
+    img = cv2.cvtColor(sc, cv2.COLOR_BGR2GRAY)  # 转灰度图
+cv2.error: C:\projects\opencv-python\opencv\modules\imgproc\src\color.cpp:11073: error: (-215) depth == 0 || depth == 2 || depth == 5 in function cv::cvtColor
+
+Wed, 18 Apr 2018 23:37:37 imgcut.py[line:372] ERROR cut_img 这里出错
+Wed, 18 Apr 2018 23:37:37 imgcut.py[line:373] ERROR this is an exception message
+Traceback (most recent call last):
+  File "E:\hupai\component\imgcut.py", line 365, in cut_img
+    set_val('imgpos_lowestprice', img[use_area[0][1]:use_area[0][3], use_area[0][0]:use_area[0][2]])  # ok
+IndexError: list index out of range
+Wed, 18 Apr 2018 23:37:37 app_thread.py[line:145] ERROR 刷新失败
+Wed, 18 Apr 2018 23:37:37 app_thread.py[line:146] ERROR this is an exception message
+Traceback (most recent call last):
+  File "E:\hupai\component\app_thread.py", line 143, in run
+    findrefresh()
+  File "E:\hupai\component\imgcut.py", line 387, in findrefresh
+    img = cv2.cvtColor(sc, cv2.COLOR_BGR2GRAY)  # 转灰度图
+cv2.error: C:\projects\opencv-python\opencv\modules\imgproc\src\color.cpp:11073: error: (-215) depth == 0 || depth == 2 || depth == 5 in function cv::cvtColor
+
+Wed, 18 Apr 2018 23:37:37 app_thread.py[line:145] ERROR 刷新失败
+Wed, 18 Apr 2018 23:37:37 app_thread.py[line:146] ERROR this is an exception message
+Traceback (most recent call last):
+  File "E:\hupai\component\app_thread.py", line 143, in run
+    findrefresh()
+  File "E:\hupai\component\imgcut.py", line 387, in findrefresh
+    img = cv2.cvtColor(sc, cv2.COLOR_BGR2GRAY)  # 转灰度图
+cv2.error: C:\projects\opencv-python\opencv\modules\imgproc\src\color.cpp:11073: error: (-215) depth == 0 || depth == 2 || depth == 5 in function cv::cvtColor
+
+Wed, 18 Apr 2018 23:37:37 imgcut.py[line:372] ERROR cut_img 这里出错
+Wed, 18 Apr 2018 23:37:37 imgcut.py[line:373] ERROR this is an exception message
+Traceback (most recent call last):
+  File "E:\hupai\component\imgcut.py", line 365, in cut_img
+    set_val('imgpos_lowestprice', img[use_area[0][1]:use_area[0][3], use_area[0][0]:use_area[0][2]])  # ok
+IndexError: list index out of range
+Wed, 18 Apr 2018 23:37:38 app_thread.py[line:145] ERROR 刷新失败
+Wed, 18 Apr 2018 23:37:38 app_thread.py[line:146] ERROR this is an exception message
+Traceback (most recent call last):
+  File "E:\hupai\component\app_thread.py", line 143, in run
+    findrefresh()
+  File "E:\hupai\component\imgcut.py", line 387, in findrefresh
+    img = cv2.cvtColor(sc, cv2.COLOR_BGR2GRAY)  # 转灰度图
+cv2.error: C:\projects\opencv-python\opencv\modules\imgproc\src\color.cpp:11073: error: (-215) depth == 0 || depth == 2 || depth == 5 in function cv::cvtColor
+
+Wed, 18 Apr 2018 23:37:38 imgcut.py[line:372] ERROR cut_img 这里出错
+Wed, 18 Apr 2018 23:37:38 app_thread.py[line:145] ERROR 刷新失败
+Wed, 18 Apr 2018 23:37:38 imgcut.py[line:373] ERROR this is an exception message
+Traceback (most recent call last):
+  File "E:\hupai\component\imgcut.py", line 365, in cut_img
+    set_val('imgpos_lowestprice', img[use_area[0][1]:use_area[0][3], use_area[0][0]:use_area[0][2]])  # ok
+IndexError: list index out of range
+Wed, 18 Apr 2018 23:37:38 app_thread.py[line:146] ERROR this is an exception message
+Traceback (most recent call last):
+  File "E:\hupai\component\app_thread.py", line 143, in run
+    findrefresh()
+  File "E:\hupai\component\imgcut.py", line 387, in findrefresh
+    img = cv2.cvtColor(sc, cv2.COLOR_BGR2GRAY)  # 转灰度图
+cv2.error: C:\projects\opencv-python\opencv\modules\imgproc\src\color.cpp:11073: error: (-215) depth == 0 || depth == 2 || depth == 5 in function cv::cvtColor
+
+Wed, 18 Apr 2018 23:37:38 app_thread.py[line:145] ERROR 刷新失败
+Wed, 18 Apr 2018 23:37:38 app_thread.py[line:146] ERROR this is an exception message
+Traceback (most recent call last):
+  File "E:\hupai\component\app_thread.py", line 143, in run
+    findrefresh()
+  File "E:\hupai\component\imgcut.py", line 387, in findrefresh
+    img = cv2.cvtColor(sc, cv2.COLOR_BGR2GRAY)  # 转灰度图
+cv2.error: C:\projects\opencv-python\opencv\modules\imgproc\src\color.cpp:11073: error: (-215) depth == 0 || depth == 2 || depth == 5 in function cv::cvtColor
+
+Wed, 18 Apr 2018 23:37:38 imgcut.py[line:372] ERROR cut_img 这里出错
+Wed, 18 Apr 2018 23:37:38 imgcut.py[line:373] ERROR this is an exception message
+Traceback (most recent call last):
+  File "E:\hupai\component\imgcut.py", line 365, in cut_img
+    set_val('imgpos_lowestprice', img[use_area[0][1]:use_area[0][3], use_area[0][0]:use_area[0][2]])  # ok
+IndexError: list index out of range
+Wed, 18 Apr 2018 23:37:38 app_thread.py[line:145] ERROR 刷新失败
+Wed, 18 Apr 2018 23:37:38 app_thread.py[line:146] ERROR this is an exception message
+Traceback (most recent call last):
+  File "E:\hupai\component\app_thread.py", line 143, in run
+    findrefresh()
+  File "E:\hupai\component\imgcut.py", line 387, in findrefresh
+    img = cv2.cvtColor(sc, cv2.COLOR_BGR2GRAY)  # 转灰度图
+cv2.error: C:\projects\opencv-python\opencv\modules\imgproc\src\color.cpp:11073: error: (-215) depth == 0 || depth == 2 || depth == 5 in function cv::cvtColor
+
+Wed, 18 Apr 2018 23:37:38 app_thread.py[line:145] ERROR 刷新失败
+Wed, 18 Apr 2018 23:37:38 app_thread.py[line:146] ERROR this is an exception message
+Traceback (most recent call last):
+  File "E:\hupai\component\app_thread.py", line 143, in run
+    findrefresh()
+  File "E:\hupai\component\imgcut.py", line 387, in findrefresh
+    img = cv2.cvtColor(sc, cv2.COLOR_BGR2GRAY)  # 转灰度图
+cv2.error: C:\projects\opencv-python\opencv\modules\imgproc\src\color.cpp:11073: error: (-215) depth == 0 || depth == 2 || depth == 5 in function cv::cvtColor
+
+Wed, 18 Apr 2018 23:37:38 imgcut.py[line:372] ERROR cut_img 这里出错
+Wed, 18 Apr 2018 23:37:38 imgcut.py[line:373] ERROR this is an exception message
+Traceback (most recent call last):
+  File "E:\hupai\component\imgcut.py", line 365, in cut_img
+    set_val('imgpos_lowestprice', img[use_area[0][1]:use_area[0][3], use_area[0][0]:use_area[0][2]])  # ok
+IndexError: list index out of range
+Wed, 18 Apr 2018 23:37:38 app_thread.py[line:145] ERROR 刷新失败
+Wed, 18 Apr 2018 23:37:38 app_thread.py[line:146] ERROR this is an exception message
+Traceback (most recent call last):
+  File "E:\hupai\component\app_thread.py", line 143, in run
+    findrefresh()
+  File "E:\hupai\component\imgcut.py", line 387, in findrefresh
+    img = cv2.cvtColor(sc, cv2.COLOR_BGR2GRAY)  # 转灰度图
+cv2.error: C:\projects\opencv-python\opencv\modules\imgproc\src\color.cpp:11073: error: (-215) depth == 0 || depth == 2 || depth == 5 in function cv::cvtColor
+
+Wed, 18 Apr 2018 23:37:38 imgcut.py[line:372] ERROR cut_img 这里出错
+Wed, 18 Apr 2018 23:37:38 imgcut.py[line:373] ERROR this is an exception message
+Traceback (most recent call last):
+  File "E:\hupai\component\imgcut.py", line 365, in cut_img
+    set_val('imgpos_lowestprice', img[use_area[0][1]:use_area[0][3], use_area[0][0]:use_area[0][2]])  # ok
+IndexError: list index out of range
+Wed, 18 Apr 2018 23:37:38 app_thread.py[line:145] ERROR 刷新失败
+Wed, 18 Apr 2018 23:37:38 app_thread.py[line:146] ERROR this is an exception message
+Traceback (most recent call last):
+  File "E:\hupai\component\app_thread.py", line 143, in run
+    findrefresh()
+  File "E:\hupai\component\imgcut.py", line 387, in findrefresh
+    img = cv2.cvtColor(sc, cv2.COLOR_BGR2GRAY)  # 转灰度图
+cv2.error: C:\projects\opencv-python\opencv\modules\imgproc\src\color.cpp:11073: error: (-215) depth == 0 || depth == 2 || depth == 5 in function cv::cvtColor
+
+Wed, 18 Apr 2018 23:37:38 app_thread.py[line:145] ERROR 刷新失败
+Wed, 18 Apr 2018 23:37:38 app_thread.py[line:146] ERROR this is an exception message
+Traceback (most recent call last):
+  File "E:\hupai\component\app_thread.py", line 143, in run
+    findrefresh()
+  File "E:\hupai\component\imgcut.py", line 387, in findrefresh
+    img = cv2.cvtColor(sc, cv2.COLOR_BGR2GRAY)  # 转灰度图
+cv2.error: C:\projects\opencv-python\opencv\modules\imgproc\src\color.cpp:11073: error: (-215) depth == 0 || depth == 2 || depth == 5 in function cv::cvtColor
+
+Wed, 18 Apr 2018 23:37:38 imgcut.py[line:372] ERROR cut_img 这里出错
+Wed, 18 Apr 2018 23:37:38 imgcut.py[line:373] ERROR this is an exception message
+Traceback (most recent call last):
+  File "E:\hupai\component\imgcut.py", line 365, in cut_img
+    set_val('imgpos_lowestprice', img[use_area[0][1]:use_area[0][3], use_area[0][0]:use_area[0][2]])  # ok
+IndexError: list index out of range
+Wed, 18 Apr 2018 23:37:38 app_thread.py[line:145] ERROR 刷新失败
+Wed, 18 Apr 2018 23:37:38 app_thread.py[line:146] ERROR this is an exception message
+Traceback (most recent call last):
+  File "E:\hupai\component\app_thread.py", line 143, in run
+    findrefresh()
+  File "E:\hupai\component\imgcut.py", line 387, in findrefresh
+    img = cv2.cvtColor(sc, cv2.COLOR_BGR2GRAY)  # 转灰度图
+cv2.error: C:\projects\opencv-python\opencv\modules\imgproc\src\color.cpp:11073: error: (-215) depth == 0 || depth == 2 || depth == 5 in function cv::cvtColor
+
+Wed, 18 Apr 2018 23:37:38 app_thread.py[line:145] ERROR 刷新失败
+Wed, 18 Apr 2018 23:37:38 app_thread.py[line:146] ERROR this is an exception message
+Traceback (most recent call last):
+  File "E:\hupai\component\app_thread.py", line 143, in run
+    findrefresh()
+  File "E:\hupai\component\imgcut.py", line 387, in findrefresh
+    img = cv2.cvtColor(sc, cv2.COLOR_BGR2GRAY)  # 转灰度图
+cv2.error: C:\projects\opencv-python\opencv\modules\imgproc\src\color.cpp:11073: error: (-215) depth == 0 || depth == 2 || depth == 5 in function cv::cvtColor
+
+Wed, 18 Apr 2018 23:37:38 imgcut.py[line:372] ERROR cut_img 这里出错
+Wed, 18 Apr 2018 23:37:38 imgcut.py[line:373] ERROR this is an exception message
+Traceback (most recent call last):
+  File "E:\hupai\component\imgcut.py", line 365, in cut_img
+    set_val('imgpos_lowestprice', img[use_area[0][1]:use_area[0][3], use_area[0][0]:use_area[0][2]])  # ok
+IndexError: list index out of range
+Wed, 18 Apr 2018 23:37:38 app_thread.py[line:145] ERROR 刷新失败
+Wed, 18 Apr 2018 23:37:38 app_thread.py[line:146] ERROR this is an exception message
+Traceback (most recent call last):
+  File "E:\hupai\component\app_thread.py", line 143, in run
+    findrefresh()
+  File "E:\hupai\component\imgcut.py", line 387, in findrefresh
+    img = cv2.cvtColor(sc, cv2.COLOR_BGR2GRAY)  # 转灰度图
+cv2.error: C:\projects\opencv-python\opencv\modules\imgproc\src\color.cpp:11073: error: (-215) depth == 0 || depth == 2 || depth == 5 in function cv::cvtColor
+
+Wed, 18 Apr 2018 23:37:38 imgcut.py[line:372] ERROR cut_img 这里出错
+Wed, 18 Apr 2018 23:37:38 imgcut.py[line:373] ERROR this is an exception message
+Traceback (most recent call last):
+  File "E:\hupai\component\imgcut.py", line 365, in cut_img
+    set_val('imgpos_lowestprice', img[use_area[0][1]:use_area[0][3], use_area[0][0]:use_area[0][2]])  # ok
+IndexError: list index out of range
+Wed, 18 Apr 2018 23:37:38 app_thread.py[line:145] ERROR 刷新失败
+Wed, 18 Apr 2018 23:37:38 app_thread.py[line:146] ERROR this is an exception message
+Traceback (most recent call last):
+  File "E:\hupai\component\app_thread.py", line 143, in run
+    findrefresh()
+  File "E:\hupai\component\imgcut.py", line 387, in findrefresh
+    img = cv2.cvtColor(sc, cv2.COLOR_BGR2GRAY)  # 转灰度图
+cv2.error: C:\projects\opencv-python\opencv\modules\imgproc\src\color.cpp:11073: error: (-215) depth == 0 || depth == 2 || depth == 5 in function cv::cvtColor
+
+Wed, 18 Apr 2018 23:37:38 imgcut.py[line:372] ERROR cut_img 这里出错
+Wed, 18 Apr 2018 23:37:38 imgcut.py[line:373] ERROR this is an exception message
+Traceback (most recent call last):
+  File "E:\hupai\component\imgcut.py", line 365, in cut_img
+    set_val('imgpos_lowestprice', img[use_area[0][1]:use_area[0][3], use_area[0][0]:use_area[0][2]])  # ok
+IndexError: list index out of range
+Wed, 18 Apr 2018 23:37:38 app_thread.py[line:145] ERROR 刷新失败
+Wed, 18 Apr 2018 23:37:38 app_thread.py[line:146] ERROR this is an exception message
+Traceback (most recent call last):
+  File "E:\hupai\component\app_thread.py", line 143, in run
+    findrefresh()
+  File "E:\hupai\component\imgcut.py", line 387, in findrefresh
+    img = cv2.cvtColor(sc, cv2.COLOR_BGR2GRAY)  # 转灰度图
+cv2.error: C:\projects\opencv-python\opencv\modules\imgproc\src\color.cpp:11073: error: (-215) depth == 0 || depth == 2 || depth == 5 in function cv::cvtColor
+
+Wed, 18 Apr 2018 23:37:38 imgcut.py[line:372] ERROR cut_img 这里出错
+Wed, 18 Apr 2018 23:37:38 imgcut.py[line:373] ERROR this is an exception message
+Traceback (most recent call last):
+  File "E:\hupai\component\imgcut.py", line 365, in cut_img
+    set_val('imgpos_lowestprice', img[use_area[0][1]:use_area[0][3], use_area[0][0]:use_area[0][2]])  # ok
+IndexError: list index out of range
+Wed, 18 Apr 2018 23:37:38 app_thread.py[line:145] ERROR 刷新失败
+Wed, 18 Apr 2018 23:37:38 app_thread.py[line:146] ERROR this is an exception message
+Traceback (most recent call last):
+  File "E:\hupai\component\app_thread.py", line 143, in run
+    findrefresh()
+  File "E:\hupai\component\imgcut.py", line 387, in findrefresh
+    img = cv2.cvtColor(sc, cv2.COLOR_BGR2GRAY)  # 转灰度图
+cv2.error: C:\projects\opencv-python\opencv\modules\imgproc\src\color.cpp:11073: error: (-215) depth == 0 || depth == 2 || depth == 5 in function cv::cvtColor
+
+Wed, 18 Apr 2018 23:37:38 app_thread.py[line:145] ERROR 刷新失败
+Wed, 18 Apr 2018 23:37:38 app_thread.py[line:146] ERROR this is an exception message
+Traceback (most recent call last):
+  File "E:\hupai\component\app_thread.py", line 143, in run
+    findrefresh()
+  File "E:\hupai\component\imgcut.py", line 387, in findrefresh
+    img = cv2.cvtColor(sc, cv2.COLOR_BGR2GRAY)  # 转灰度图
+cv2.error: C:\projects\opencv-python\opencv\modules\imgproc\src\color.cpp:11073: error: (-215) depth == 0 || depth == 2 || depth == 5 in function cv::cvtColor
+

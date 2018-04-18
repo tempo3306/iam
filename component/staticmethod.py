@@ -15,16 +15,7 @@ import ctypes
 from ctypes import wintypes
 
 
-# 网络请求
-def web_request(url):
-    import ssl, json
-    from urllib import request
-    ssl._create_default_https_context = ssl._create_unverified_context  # 关闭证书验证
-    response = request.urlopen(url)
-    result = response.read()
-    result = str(result, encoding='utf-8')
-    result = json.loads(result)
-    return result
+
 
 
 def Click(x, y):  # 鼠标点击
@@ -54,7 +45,8 @@ def Paste():  # ctrl + V
 
 import wx
 def Paste_moni(price):
-    topframe = wx.FindWindowById(1)
+    id = get_val('topframe')
+    topframe = wx.FindWindowById(id)
     browser = topframe.browser_moni
     script = "$('#selfwrite').val('{0}')".format(price)
     browser.RunScript(script)

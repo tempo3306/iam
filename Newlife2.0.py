@@ -6,7 +6,7 @@
 # 时间同步
 import logging, time
 
-version = '2.01'  # 版本号
+version = '2.2'  # 版本号
 timenow = time.time()
 # 转换成localtime
 time_local = time.localtime(timenow)
@@ -74,8 +74,7 @@ if __name__ == '__main__':
     set_val('mainicon', iconpath)
     app = SketchApp()
     ## 打开刷新与确认进程
-
     # monitijaoThread = MoniTijiaoThread() #模拟提交
     app.MainLoop()
 
-# self.Bind(wx.EVT_KEY_DOWN, self.OnKeyDown)
+##  self.Bind(wx.EVT_KEY_DOWN, self.OnKeyDown)

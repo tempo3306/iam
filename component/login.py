@@ -9,11 +9,11 @@ import os, logging
 import mimetypes
 import email
 from email.mime.multipart import MIMEMultipart
-from component.staticmethod import web_request
+from component.remote_control import web_request
 # --------------------------------------------------------------------------------
 
 import socket
-from component.variable import get_val
+from component.variable import get_val, set_val
 
 timeout = 10
 socket.setdefaulttimeout(timeout)  # 设定截止时间
@@ -43,19 +43,20 @@ def ConfirmUser(Username, Password, version):  # 修改为参数传递
 
 def ConfirmCode(identify_code, version):  # 修改为参数传递
     try:
+        from component.remote_control import get_unique_id  ##获取硬盘ID
         host_ali = get_val('host_ali')
         debug = get_val('debug')
         # debug 模式
 
-
-        target_url = '{0}/api/bid/get_guopaiurl/?type=identify_code&debug={1}&version={2}&identify_code={3}'.format(
-            host_ali, debug, version, identify_code
+        diskid = get_val('diskid')
+        target_url = '{0}/api/bid/get_guopaiurl/?type=identify_code&debug={1}&version={2}&identify_code={3}&diskid={4}'.format(
+            host_ali, debug, version, identify_code, diskid
         )
-
         # target_url = host_ali + r'/main_api/userconfirm/info?' + 'username=%s' % Username + '&' + 'passwd=%s' % Password
         print(target_url)
 
         result = web_request(target_url)
+        set_val('type', 'identify_code')
         print(result)
     except:
         logger.error("登录出现异常")
@@ -65,21 +66,40 @@ def ConfirmCode(identify_code, version):  # 修改为参数传递
 
 
 # 登出
-def Logout(Username):
+def Logout():  # 修改为参数传递
+    from component.remote_control import get_unique_id  ##获取硬盘ID
+    # debug 模式
     host_ali = get_val('host_ali')
-    host = host_ali
-    # host = raw_input("Plz imput destination IP:")
-    # data = raw_input("Plz imput what you want to submit:")
-    port = 8080
-    s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+    Identify_code = get_val('Identify_code')
+    diskid = get_val('diskid')
+    type = get_val('type')
+    target_url = '{0}/api/bid/bid_logout/?type={1}&identify_code={2}&diskid={3}'.format(
+        host_ali, type, Identify_code, diskid
+    )
+    # target_url = host_ali + r'/main_api/userconfirm/info?' + 'username=%s' % Username + '&' + 'passwd=%s' % Password
+    print(target_url)
+    result = web_request(target_url)
+    print(result)
+
     try:
-        s.connect((host, port))
-    except socket.gaierror as e:
-        print("Address-related error connecting to server: %s" % e)
-        # sys.exit(1)
-    except socket.error as e:
-        print("Connection error: %s" % e)
-        # sys.exit(1)
+        from component.remote_control import get_unique_id  ##获取硬盘ID
+        # debug 模式
+        host_ali = get_val('host_ali')
+        Identify_code = get_val('Identify_code')
+        diskid = get_val('diskid')
+        type = get_val('type')
+        target_url = '{0}/api/bid/bid_logout/?type={1}&identify_code={2}&diskid={3}'.format(
+            host_ali, type, Identify_code, diskid
+        )
+        # target_url = host_ali + r'/main_api/userconfirm/info?' + 'username=%s' % Username + '&' + 'passwd=%s' % Password
+        print(target_url)
+        result = web_request(target_url)
+        print(result)
+    except:
+        logger.error("登录出现异常")
+        logger.exception('this is an exception message')
+        return {'result': 'net error'}
+    return result
 
     # 发送登出信息
     # data = ['logout',Username,Password]
@@ -92,31 +112,23 @@ def Logout(Username):
     # logging.info("Submit Log Out Complete")
 
 
-def Keeplogin(Username, Password):
-    host_ali = get_val('host_ali')
-    host = host_ali
-    # host = raw_input("Plz imput destination IP:")
-    # data = raw_input("Plz imput what you want to submit:")
-    port = 8080
-    s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+def Keeplogin():
     try:
-        s.connect((host, port))
-    except socket.gaierror as e:
-        print("Address-related error connecting to server: %s" % e)
-        # sys.exit(1)
-    except socket.error as e:
-        print("Connection error: %s" % e)
-        # sys.exit(1)
-
-    # 发送确认信息
-    data = ['keep', Username, Password]
-    data = json.dumps(data)
-    data = bytes(data, encoding="utf-8")  # 转化为BYTE
-    s.send(data)
-
-    s.shutdown(1)
-    print("Submit keep Complete")
-
+        from component.remote_control import get_unique_id  ##获取硬盘ID
+        # debug 模式
+        host_ali = get_val('host_ali')
+        Identify_code = get_val('Identify_code')
+        diskid = get_val('diskid')
+        target_url = '{0}/api/bid/bid_keeplogin/?identify_code={1}&diskid={2}'.format(
+            host_ali, Identify_code, diskid
+        )
+        # target_url = host_ali + r'/main_api/userconfirm/info?' + 'username=%s' % Username + '&' + 'passwd=%s' % Password
+        result = web_request(target_url)
+    except:
+        logger.error("keeplogin出现异常")
+        logger.exception('this is an exception message')
+        return {'result': 'net error'}
+    return result
 
 # --------------------------------------------------------------------------------
 def send_mail(subject, to_list, file_name):

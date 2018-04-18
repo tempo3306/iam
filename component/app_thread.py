@@ -75,7 +75,6 @@ class findposThread(Thread):
             try:
                 findpos_on = get_val('findpos_on')
                 if findpos_on:
-                    print("findpos")
                     findpos()
             except:
                 logger.exception('this is an exception message')
@@ -106,7 +105,8 @@ class confirmThread(threading.Thread):
             self.__flag.wait()  # 为True时立即返回, 为False时阻塞直到内部的标识位为True后返回
             time.sleep(0.035)
             tijiao_num = get_val('tijiao_num')
-            logger.error("查找确认出错")
+            # print('tijiao_num', tijiao_num)
+
             if tijiao_num == 2:
                 try:
                     findconfirm()
@@ -783,13 +783,12 @@ class OpenwebThread(Thread):
 
 
 class GetremotetimeThread(Thread):
-    def __init__(self, url, *args, **kwargs):
+    def __init__(self, *args, **kwargs):
         super(GetremotetimeThread, self).__init__(*args, **kwargs)
         self.__flag = threading.Event()  # 用于暂停线程的标识
         self.__flag.set()  # 设置为True
         self.__running = threading.Event()  # 用于停止线程的标识
         self.__running.set()  # 将running设置为True
-        self.url = url
         self.setDaemon(True)  # 启动进程之前选择，主进程关闭，子进程跟着关闭
         self.start()  # start the thread
 
@@ -797,13 +796,15 @@ class GetremotetimeThread(Thread):
     def run(self):
         """Run Worker Thread."""
         # This is the code executing in the new thread.
-        from component.staticmethod import web_request
+        from component.remote_control import web_request
         try:
             remotetime_url = get_val('remotetime_url')
             result = web_request(remotetime_url)
-            remotetime = result['remotetime']
-            set_val('a_time', remotetime + 0.3)  # 补网络延迟
+            remotetime = result['currenttime']
+            print("获取成功")
+            set_val('a_time', remotetime + 0.1)  # 补网络延迟
         except:
+            print("获取成功")
             logger.exception('this is an exception message')
 
 
@@ -842,7 +843,6 @@ class LowestpfriceThread(Thread):
                         else:
                             set_val('changetime', a_time)
                 else:
-                    print("fffff")
                     set_val('findpos_on', True)
             except:
                 set_val('findpos_on', True)

@@ -12,6 +12,8 @@ import pickle, time
 import pyautogui as pg
 import numpy as np
 import logging
+from component.remote_control import get_unique_id
+
 logger = logging.getLogger()
 
 vars = {}
@@ -54,10 +56,20 @@ def Create_hash():
 ##price_list 价格对应时间的表
 price_list = [80000 for i in range(60)]  #0-59
 
+def get_id_hash(id):
+    import hashlib
+    sha1 = hashlib.sha1()
+    sha1.update(id.encode('utf-8'))
+    return sha1.hexdigest()
+
+
 
 def init_val():
+    diskid = get_unique_id()
+    set_val('diskid', get_id_hash(diskid))   ##sha1 hash化
+
     set_val('price_list', price_list)
-    set_val('remotetime_url', "https://hupai.pro/bid/remotetime")
+    set_val('remotetime_url', "https://hupai.pro/api/bid/get_remotetime")
     set_val('userprice', 0) #当前出价 如果为0则表示未出价
     set_val('usertime', -1) #当前截止时间 如果为 -1表示未出价
     set_val('strategy_name', '') #策略名称
@@ -144,6 +156,34 @@ def init_val():
     set_val('twice', False)  # 开启两次出价
     set_val('tijiao_num', 1)  # 开启二次出价，设置为2，执行一次之后，减1
     set_val('tijiao_one', False)  # 第一次出价之后开闭
+
+    # self.jiajia_time.SetValue(40.0)
+    # self.tijiao_time.SetValue(48.0)
+    # self.jiajia_price.SetValue(500)
+    # self.select_tijiao.SetSelection(2)
+    # self.yanchi_time.SetValue(0.0)
+    # self.jiajia_time2.SetValue(50.0)
+    # self.tijiao_time2.SetValue(55.5)
+    # self.jiajia_price2.SetValue(700)
+    # self.select_tijiao2.SetSelection(0)
+    # self.yanchi_time2.SetValue(0.5)
+    ## 保存当前的设置
+    current_setting = {
+        'jiajia_time': 40.0,
+        'tijiao_time': 48.0,
+        'jiajia_price': 500,
+        'select_tijiao': 2,
+        'yanchi_time': 0.0,
+        'jiajia_time2': 50.0,
+        'tijiao_time2': 55.5,
+        'jiajia_price2': 700,
+        'select_tijiao2': 0,
+        'yanchi_time2': 0.5,
+
+    }
+
+    set_val('current_setting', current_setting)
+
 
     ##webframe相关
     set_val('websize', [902+300, 700])  # 浏览器大小
@@ -278,6 +318,9 @@ def init_val():
     set_val('imgpos_yanzhengmaconfirm', np.array(nptemp))  # 验证码确认键
     set_val('imgpos_currenttime', np.array(nptemp))  # 当前时间
 
+
+
+
     ##智能出价服务
     set_val('smart_ajust', False) #智能调整出价，默认关闭
 
@@ -286,3 +329,13 @@ def init_val():
     a_time = time.mktime(time.strptime(b, '%Y-%m-%d %H:%M:%S')) # 转时间戳   补个平均时差
     set_val('smart_ajust_time_guopai', a_time) #智能调整触发时间
     set_val('smart_ajust_time_moni', 50) #智能调整触发时间
+
+
+    ##封装
+    init_id()
+
+def init_id():
+    set_val('topframe', -1)
+    set_val('loginframe', -1)
+    set_val('moni_webframe', -1)
+    set_val('guopai_webframe', -1)

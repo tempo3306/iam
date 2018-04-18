@@ -174,9 +174,13 @@ class LoginFrame(wx.Frame):
     def __init__(self, name,  code):  ##########版本号
         mainicon = get_val('mainicon')
         wx.Frame.__init__(self, None, -1, name, size=(300, 240), style=wx.CAPTION | wx.CLOSE_BOX)
+        id = self.GetId()
+        set_val('loginframe', id)
+
         self.Bind(wx.EVT_CLOSE, self.OnClose)
         self.icon = wx.Icon(mainicon, wx.BITMAP_TYPE_ICO)
         self.SetIcon(self.icon)
+
         # panel = wx.Panel(self)
         # self.notebook = wx.Notebook(panel)
         # self.code_tab = Identify_codePanel(self.notebook, user, psd)
@@ -216,7 +220,7 @@ class LoginFrame(wx.Frame):
             else:
                 set_val('url2', login_result['url_dianxin'])
             set_val('url3', login_result['url_nodianxin'])
-        elif login_result['result'] == 'net error':
+        elif login_result['result'] == 'net error' or login_result['result'] == 'timeout':
             wx.MessageBox('连接服务器失败', '用户登录', wx.OK | wx.ICON_ERROR)
         elif login_result['result'] == 'repeat':
             wx.MessageBox('重复登录，稍后再试', '用户登录', wx.OK | wx.ICON_ERROR)

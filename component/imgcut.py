@@ -237,7 +237,11 @@ def readpic(img, maindata):
 def timeset(guopai_on, moni_on, imgpos_currenttime, maindata):
     try:
         currenttime = cv2.cvtColor(imgpos_currenttime, cv2.COLOR_BGR2GRAY)
+        # cv2.imwrite('time.png', currenttime)
         currenttime = readpic(currenttime, maindata)  # 识别出来的时间
+
+        print('currenttime', currenttime)
+
         tem1 = time.time()
         a = time.strftime('%Y-%m-%d', time.localtime(tem1))
         b = a + ' ' + currenttime
@@ -406,6 +410,7 @@ def findconfirm():
     res = cv2.matchTemplate(img, template, cv2.TM_CCOEFF_NORMED)
     min_val, max_val, min_loc, max_loc = cv2.minMaxLoc(res)
     if max_val >= 0.9:
+        print(max_val, 'max_val')
         OnClick_confirm()
     if confirm_on and max_val < 0.9:
         print("暂停确认")
@@ -439,5 +444,5 @@ def Price_read():
 
     lowest_price_img = cv2.cvtColor(imgpos_lowestprice, cv2.COLOR_BGR2GRAY)
     price = readpic(lowest_price_img, 'maindata.xml')
-    print(price, 'price=')
+    # print(price, 'price=')
     return price
