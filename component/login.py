@@ -119,8 +119,9 @@ def Keeplogin():
         host_ali = get_val('host_ali')
         Identify_code = get_val('Identify_code')
         diskid = get_val('diskid')
-        target_url = '{0}/api/bid/bid_keeplogin/?identify_code={1}&diskid={2}'.format(
-            host_ali, Identify_code, diskid
+        type = get_val('type')
+        target_url = '{0}/api/bid/bid_keeplogin/?type={1}&identify_code={2}&diskid={3}'.format(
+            host_ali, type, Identify_code, diskid
         )
         # target_url = host_ali + r'/main_api/userconfirm/info?' + 'username=%s' % Username + '&' + 'passwd=%s' % Password
         result = web_request(target_url)

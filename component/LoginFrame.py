@@ -32,7 +32,6 @@ class AccountPanel(wx.Panel):
         self.userbox.Add(self.userlabel, flag=wx.ALIGN_CENTER | wx.ALL, border=5)
         self.userbox.Add(self.userText, flag=wx.ALIGN_CENTER_HORIZONTAL | wx.ALL, border=5)
 
-
         self.passbox = wx.BoxSizer(wx.HORIZONTAL)
         self.bmp_password = wx.StaticBitmap(self, -1)
         # self.bmp_password.SetBitmap(wx.Bitmap('password.png'))
@@ -60,11 +59,7 @@ class AccountPanel(wx.Panel):
         self.sizer_v1.Add(self.btnSizer, flag=wx.ALIGN_CENTER | wx.ALL, border=5)
         self.loginbtn.Bind(wx.EVT_BUTTON, self.OnLogin, self.loginbtn)
 
-
-
         self.SetSizer(self.sizer_v1)
-
-
 
     def OnLogin(self, event):
         username = self.userText.GetValue()
@@ -87,15 +82,13 @@ class AccountPanel(wx.Panel):
             event.GetEventObject().Disable()
 
 
-
-
 class Identify_codePanel(wx.Panel):
-    def __init__(self,parent, code):  ##########版本号
+    def __init__(self, parent, code):  ##########版本号
         wx.Panel.__init__(self, parent, -1)
         # 主sizer
         self.code_sizer_v1 = wx.BoxSizer(wx.VERTICAL)
         self.code_welcomelabel = wx.StaticText(self, -1, label="沪牌一号", style=wx.ALIGN_CENTER)
-        self.code_sizer_v1.Add(self.code_welcomelabel, flag=wx.ALIGN_LEFT | wx.LEFT  | wx.TOP, border=15)
+        self.code_sizer_v1.Add(self.code_welcomelabel, flag=wx.ALIGN_LEFT | wx.LEFT | wx.TOP, border=15)
 
         self.code_userbox = wx.BoxSizer(wx.HORIZONTAL)
         ##登录图标
@@ -103,7 +96,7 @@ class Identify_codePanel(wx.Panel):
         # self.bmp_account.SetBitmap(wx.Bitmap('login.png'))
         self.code_userlabel = wx.StaticText(self, -1, label="激活码")
         self.code_userText = wx.TextCtrl(self, -1, size=(139, -1),
-                                    style=wx.TE_CENTER | wx.TE_PROCESS_ENTER)
+                                         style=wx.TE_CENTER | wx.TE_PROCESS_ENTER)
         # self.userbox.Add(self.bmp_account)
         self.code_userbox.Add(self.code_userlabel, flag=wx.ALIGN_CENTER | wx.ALL, border=5)
         self.code_userbox.Add(self.code_userText, flag=wx.ALIGN_CENTER_HORIZONTAL | wx.ALL, border=5)
@@ -146,8 +139,6 @@ class Identify_codePanel(wx.Panel):
         self.code_sizer_v1.Add(self.linkbox, flag=wx.ALIGN_CENTER | wx.ALL, border=5)
         self.SetSizer(self.code_sizer_v1)
 
-
-
     def OnLogin(self, event):
         Identify_code = self.code_userText.GetValue()
         if Identify_code == "":
@@ -160,7 +151,6 @@ class Identify_codePanel(wx.Panel):
             with open('your.name', 'wb') as userfile:
                 pickle.dump(namepsd, userfile)
 
-
             # with open('your.name', 'wb') as userfile:
             #     pickle.dump(namepsd, userfile)
 
@@ -170,8 +160,9 @@ class Identify_codePanel(wx.Panel):
     def Purchase(self, event):
         print("购买")
 
+
 class LoginFrame(wx.Frame):
-    def __init__(self, name,  code):  ##########版本号
+    def __init__(self, name, code):  ##########版本号
         mainicon = get_val('mainicon')
         wx.Frame.__init__(self, None, -1, name, size=(300, 240), style=wx.CAPTION | wx.CLOSE_BOX)
         id = self.GetId()
@@ -191,7 +182,6 @@ class LoginFrame(wx.Frame):
         # sizer.Add(self.notebook, 1, wx.ALL | wx.EXPAND, 5)
         # panel.SetSizer(sizer)
         self.panel = Identify_codePanel(self, code)
-
 
         self.Layout()
         # 初始化居中
@@ -224,20 +214,16 @@ class LoginFrame(wx.Frame):
             wx.MessageBox('连接服务器失败', '用户登录', wx.OK | wx.ICON_ERROR)
         elif login_result['result'] == 'repeat':
             wx.MessageBox('重复登录，稍后再试', '用户登录', wx.OK | wx.ICON_ERROR)
-        elif login_result['result'] == 'wrong account':
-            wx.MessageBox('激活码错误', '用户登录', wx.OK | wx.ICON_ERROR)
+        elif login_result['result'] == 'wrong version':
+            wx.MessageBox('软件版本过低', '用户登录', wx.OK | wx.ICON_ERROR)
         elif login_result['result'] == 'expired date':
             wx.MessageBox('激活码过期', '用户登录', wx.OK | wx.ICON_ERROR)
         else:
-            wx.MessageBox('登录失败', '用户登录', wx.OK | wx.ICON_ERROR)
+            wx.MessageBox('激活码错误', '用户登录', wx.OK | wx.ICON_ERROR)
 
     def Purchase(self, event):
         print("购买")
 
-
     def OnClose(self, event):
         event.Skip()
         sys.exit(0)
-
-
-

@@ -335,6 +335,8 @@ def init_val():
     init_id()
 
 def init_id():
+    set_val('userconfirm_on', False)
+
     set_val('topframe', -1)
     set_val('loginframe', -1)
     set_val('moni_webframe', -1)

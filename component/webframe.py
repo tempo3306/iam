@@ -40,7 +40,6 @@ class MoniWebFrame(wx.Frame):
         set_val('view_time', False)
         set_val('moni_on', False)
         set_val('guopai_on', False)
-        self.Destroy()
         event.Skip()
         id = get_val('topframe')
         topframe = wx.FindWindowById(id)
@@ -79,12 +78,10 @@ class WebFrame(wx.Frame):
         self.SetStatusBar(self.statusbar)
 
     def OnClose(self, event):
-        self.Destroy()
         set_val('web_on', False)
         set_val('view_time', False)
         set_val('moni_on', False)
         set_val('guopai_on', False)
-        self.Destroy()
         event.Skip()
         id = get_val('topframe')
         topframe = wx.FindWindowById(id)

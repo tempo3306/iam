@@ -8,7 +8,7 @@ class IcRsrc(object):
 
     sbFields = [-1, -1, -1, -1, -1, -3]
     sbText = {0: u"未激活", 1: u"策略", 3: u"官网"}
-    sbBlog = "https://hupai.pro"
+    sbBlog = "https://baidu.com"
     winTitle = "Image Converter"
     menuItemLabel = [u"添加图片文件", u"设置输出路径", "",
                      u"清空已选文件", "", u"设置图片格式",

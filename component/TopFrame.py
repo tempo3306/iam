@@ -93,12 +93,13 @@ class TopFrame(wx.Frame):
         self.browser_moni = wx.html2.WebView.New()
 
         ###多线程
-        self.create_thread()
+        # self.create_thread()
 
         ###keep login timer事件
         self.keeptimer = wx.Timer(self)
         self.Bind(wx.EVT_TIMER, self.keeplogin, self.keeptimer)
         self.keeptimer.Start(300000)
+        # self.keeptimer.Start(3000)
 
 
     def create_statusbar(self, rev):
@@ -435,6 +436,7 @@ class TopFrame(wx.Frame):
     def Timeautoset(self, event):
         pass
 
+
     def Lowest_price(self, event):  #
         lowest_price = get_val('lowest_price')
         pricelist = get_val('pricelist')
@@ -484,7 +486,42 @@ class TopFrame(wx.Frame):
             webframe.panel.status_tab.timeview.SetValue(0)
 
     def keeplogin(self, event):
+        print("ffff")
         result = Keeplogin()
+        print(result)
+
+        res = result['result']
+        if res == 'keep failure':  ##在其它电脑上登录过，并且未注销
+            set_val('userconfirm_on', True)
+            self.Close()
+            from component.LoginFrame import LoginFrame
+            import pickle
+            try:
+                with open("your.name", 'rb') as name:
+                    namepsd = pickle.load(name)
+                    code = namepsd[0]
+                    # user = namepsd[0]
+                    # psd = namepsd[1]
+            except:
+                user = 'shooter'  # 关闭
+                psd = 0
+                code = ''
+            loginframe = LoginFrame('小鲜肉拍牌', code)
+            loginframe.Show(True)
+
+            moni = wx.FindWindowByName('沪牌一号模拟')
+            guopai = wx.FindWindowByName('沪牌一号 国拍')
+            try:
+                moni.Show(False)
+            except:
+                pass
+            try:
+                guopai.Show(False)
+            except:
+                pass
+        else:
+            pass
+
         try:
             res = result['result']
             if res == 'keep failure':  ##在其它电脑上登录过，并且未注销
@@ -497,22 +534,29 @@ class TopFrame(wx.Frame):
             pass
 
 
-
     def OnClose(self, event):
-        ret = wx.MessageBox('真的要退出助手吗?', '确认', wx.OK | wx.CANCEL)
-        if ret == wx.OK:
-            self.confirmthread.stop()
-            self.refreshthread.stop()
-            self.finposthread.stop()
-            self.cutimgthread.stop()
-            self.tijiaoThread.stop()
-            self.lowestThread.stop()
-            self.Show(False)
+        confirm_on = get_val('userconfirm_on')
+        if confirm_on:
             event.Skip()
-            import sys
-            from component.login import Logout
-            Logout()
-            sys.exit()
+        else:
+            ret = wx.MessageBox('真的要退出助手吗?', '确认', wx.OK | wx.CANCEL)
+            if ret == wx.OK:
+                try:
+                    self.confirmthread.stop()
+                    self.refreshthread.stop()
+                    self.finposthread.stop()
+                    self.cutimgthread.stop()
+                    self.tijiaoThread.stop()
+                    self.lowestThread.stop()
+                except:
+                    pass
+
+                self.Show(False)
+                event.Skip()
+                import sys
+                from component.login import Logout
+                Logout()
+                sys.exit()
 
         ##关闭线程
         # self.confirmthread.stop()
