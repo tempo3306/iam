@@ -65,16 +65,22 @@ def get_id_hash(id):
 
 
 def init_val():
+    ##封装
+    init_id()
+    init_size()
+    init_url()
+    init_label()
+
     diskid = get_unique_id()
     set_val('diskid', get_id_hash(diskid))   ##sha1 hash化
 
     set_val('price_list', price_list)
-    set_val('remotetime_url', "https://hupai.pro/api/bid/get_remotetime")
+
+
     set_val('userprice', 0) #当前出价 如果为0则表示未出价
     set_val('usertime', -1) #当前截止时间 如果为 -1表示未出价
     set_val('strategy_name', '') #策略名称
     set_val('current_strategy_name', '') #当前策略
-    set_val('host_ali', "https://hupai.pro")
     # set_val('host_ali', "http://192.168.3.20:3000")
     set_val('debug', True)
     set_val('now_ping', 0)  #实时网速
@@ -82,10 +88,7 @@ def init_val():
     set_val('num', 0)
     set_val('avt', 0)
     set_val('test', False)
-    set_val('url1', "http://moni.51hupai.org/")
-    set_val('url2', "www.baidu.com")  # 电信
-    set_val('url3', "www.baidu.com")  # 非电信
-    set_val('url4', "http://127.0.0.1:5000/Moni")
+
     set_val('mainicon', 'ico.ico')
     set_val('view', False)  # 定位显示
     set_val('do', False)  # 开启辅助
@@ -185,17 +188,69 @@ def init_val():
     set_val('current_setting', current_setting)
 
 
-    ##webframe相关
-    set_val('websize', [902+300, 700])  # 浏览器大小
-    set_val('webview_pos', [-12, -6])  # WEB在 WEBVIEW里的相对位置
-    set_val('htmlsize', [902 - 10, 700 - 57])
 
+
+    set_val('confirm_on', False)  # 是否需要确认
+    set_val('confirm_need', False)  # 启动确认识别
+    set_val('confirm_one', False)  # 限制只产生一次进程
+    set_val('refresh_on', False)  # 是否需要刷新
+    set_val('refresh_need', False)  # 启动刷新识别
+    set_val('refresh_one', False)  # 限制只产生一次进程
+    set_val('chujia_interval', False)  # 出价间隔
+    set_val('tijiao_interval', False)  # 提交间隔
+    set_val('query_interval', False)  # 间隔
+    set_val('query_on', False)  # 是否处于查询状态
+
+
+
+
+
+
+    ##智能出价服务
+    set_val('smart_ajust', False) #智能调整出价，默认关闭
+
+    a = time.strftime('%Y-%m-%d', time.localtime(time.time()))
+    b = a + ' ' + '11:29:50'
+    a_time = time.mktime(time.strptime(b, '%Y-%m-%d %H:%M:%S')) # 转时间戳   补个平均时差
+    set_val('smart_ajust_time_guopai', a_time) #智能调整触发时间
+    set_val('smart_ajust_time_moni', 50) #智能调整触发时间
+
+
+def init_url():
+    set_val('remotetime_url', "https://hupai.pro/api/bid/get_remotetime")
+    set_val('host_ali', "https://hupai.pro")
+    set_val('url_51', "http://moni.51hupai.org/")
+    set_val('url_dianxin)', "www.baidu.com")  # 电信
+    set_val('url_nodianxin', "www.baidu.com")  # 非电信
+    set_val('url_moni', "https://hupai.pro/Moni")
+    set_val('guopai_dianxin', True)  ##当前是否处于国拍电信
+
+
+def init_label():
+    set_val('moni_webstatus_label', '模拟中')
+    set_val('dianxin_webstatus_label', '国拍电信')
+    set_val('nodianxin_webstatus_label', '国拍非电信')
+
+
+def init_id():
+    set_val('userconfirm_on', False)
+
+    set_val('topframe', -1)
+    set_val('loginframe', -1)
+    set_val('moni_webframe', -1)
+    set_val('guopai_webframe', -1)
+
+def init_size():
+    ##webframe相关
+    set_val('websize', [1200, 726])  # 浏览器大小
+    set_val('webview_pos', [-8, -16])  # WEB在 WEBVIEW里的相对位置
+    set_val('htmlsize', [902 - 5, 768])
     websize = get_val('websize')
     set_val('Pxy', pg.size())  # 分辨率
     Pxy = get_val('Pxy')
     set_val('Px1', Pxy[0] / 2)  # 屏幕中心位置
     set_val('Py2', Pxy[1] / 2)
-    set_val('Px', int((Pxy[0] - websize[0]) / 2 - 80))
+    set_val('Px', int((Pxy[0] - websize[0]) / 2))
     Px = get_val('Px')
     set_val('Py', int((Pxy[1] - websize[1]) / 2))
     Py = get_val('Py')
@@ -204,7 +259,7 @@ def init_val():
     P_relative = get_val('P_relative')
 
     ## 相对于最低成交价位置
-#   ## 0:加价  1：出价 2：提交  3：刷新   4 ：确认   5：验证码    6:验证码输入框     7：取消
+    #   ## 0:加价  1：出价 2：提交  3：刷新   4 ：确认   5：验证码    6:验证码输入框     7：取消
     set_val('P_relative2', [[647, -98], [650, 8], [400, 89], [396, 14], [505, 68], [585, 8], [565, 5], [586, 86]])
     set_val('Position', [[0, 0] for i in range(len(P_relative))])
     set_val('px_ajust', 0)
@@ -288,9 +343,6 @@ def init_val():
     set_val('Py_confirm', Py + py_confirm)
     set_val('confirm_sizex', 113)
     set_val('confirm_sizey', 28)
-    set_val('confirm_on', False)  # 是否需要确认
-    set_val('confirm_need', False)  # 启动确认识别
-    set_val('confirm_one', False)  # 限制只产生一次进程
     set_val('px_refresh', 550)
     px_refresh = get_val('px_refresh')
     set_val('py_refresh', 413)
@@ -299,16 +351,8 @@ def init_val():
     set_val('Py_refresh', Py + py_refresh)
     set_val('refresh_sizex', 108)
     set_val('refresh_sizey', 21)
-    set_val('refresh_on', False)  # 是否需要刷新
-    set_val('refresh_need', False)  # 启动刷新识别
-    set_val('refresh_one', False)  # 限制只产生一次进程
-    set_val('chujia_interval', False)  # 出价间隔
-    set_val('tijiao_interval', False)  # 提交间隔
-    set_val('query_interval', False)  # 间隔
-    set_val('query_on', False)  # 是否处于查询状态
     set_val('sc_area', [Px_lowestprice - 10, Py_lowestprice - 100, Px_lowestprice + 600, Py_lowestprice + 120])
     set_val('use_area', [])
-
     set_val('nptemp', [])
     nptemp = get_val('nptemp')
     set_val('imgpos_lowestprice', np.array(nptemp))  # 最低成交价
@@ -317,27 +361,3 @@ def init_val():
     set_val('impos_yanzhengma', np.array(nptemp))  # 验证码
     set_val('imgpos_yanzhengmaconfirm', np.array(nptemp))  # 验证码确认键
     set_val('imgpos_currenttime', np.array(nptemp))  # 当前时间
-
-
-
-
-    ##智能出价服务
-    set_val('smart_ajust', False) #智能调整出价，默认关闭
-
-    a = time.strftime('%Y-%m-%d', time.localtime(time.time()))
-    b = a + ' ' + '11:29:50'
-    a_time = time.mktime(time.strptime(b, '%Y-%m-%d %H:%M:%S')) # 转时间戳   补个平均时差
-    set_val('smart_ajust_time_guopai', a_time) #智能调整触发时间
-    set_val('smart_ajust_time_moni', 50) #智能调整触发时间
-
-
-    ##封装
-    init_id()
-
-def init_id():
-    set_val('userconfirm_on', False)
-
-    set_val('topframe', -1)
-    set_val('loginframe', -1)
-    set_val('moni_webframe', -1)
-    set_val('guopai_webframe', -1)

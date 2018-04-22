@@ -138,7 +138,7 @@ class Pinger(object):
                 # print("Get ping in %0.4fms" % delay)
                 return int(delay)
 # #定义网速查询的类
-url2 = get_val('url2')
+url_dianxin = get_val('url_dianxin')
 pinger=Pinger("www.baidu.com")
 # pinger=Pinger(url2)
 

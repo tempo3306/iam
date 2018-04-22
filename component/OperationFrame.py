@@ -51,7 +51,7 @@ class StatusPanel(wx.Panel):
 
         # 时间区
         self.timeview = wx.CheckBox(self, -1, label=u'显示时间')  # 开启时间显示
-        self.Bind(wx.EVT_CHECKBOX, self.Timeview, self.timeview)
+        # self.Bind(wx.EVT_CHECKBOX, self.Timeview, self.timeview)
         hbox1 = wx.BoxSizer(wx.HORIZONTAL)
         hbox1.Add(self.timeview)
         self.button1 = wx.Button(self, label='+1s', size=(35, 25))
@@ -162,10 +162,10 @@ class StatusPanel(wx.Panel):
         self.status_timer.Start(100)
 
         ## 创建时间框
-        self.timeframe1 = TimeFrame()
-        self.timeframe1.Show(False)
-        self.timeframe2 = MoniTimeFrame()
-        self.timeframe2.Show(False)
+        # self.timeframe1 = TimeFrame()
+        # self.timeframe1.Show(False)
+        # self.timeframe2 = MoniTimeFrame()
+        # self.timeframe2.Show(False)
 
         #############消息区域
         pub.subscribe(self.change_strategy, 'change strategy')
@@ -224,7 +224,7 @@ class StatusPanel(wx.Panel):
             guopai = wx.FindWindowByName('沪牌一号 国拍')
             if guopai:
                 guopai.Show(True)
-                guopai.panel.init_ui()
+                guopai.operationpanel.init_ui()
                 moni.Show(False)
                 set_val('guopai_on', True)
                 set_val('moni_on', False)
@@ -237,7 +237,7 @@ class StatusPanel(wx.Panel):
             if moni:
                 moni.Show(True)
                 guopai.Show(False)
-                moni.panel.init_ui()
+                moni.operationpanel.init_ui()
                 set_val('moni_on', True)
                 set_val('guopai_on', False)
             else:
@@ -281,26 +281,26 @@ class StatusPanel(wx.Panel):
         findpos()
 
     ##时间显示
-    def Timeview(self, event):
-        timeSelected = event.GetEventObject()
-        moni_on = get_val('moni_on')
-        guopai_on = get_val('guopai_on')
-        if timeSelected.IsChecked():
-            set_val('view_time', True)
-            set_val('time_on', True)
-            if guopai_on:
-                self.timeframe1.Show(True)
-            elif moni_on:
-                self.timeframe2.Show(True)
-        else:
-            set_val('view_time', False)
-            set_val('time_on', False)
-            if guopai_on:
-                self.timeframe1.Show(False)
-                self.timeframe2.Show(False)
-            elif moni_on:
-                self.timeframe2.Show(False)
-                self.timeframe2.Show(False)
+    # def Timeview(self, event):
+    #     timeSelected = event.GetEventObject()
+    #     moni_on = get_val('moni_on')
+    #     guopai_on = get_val('guopai_on')
+    #     if timeSelected.IsChecked():
+    #         set_val('view_time', True)
+    #         set_val('time_on', True)
+    #         if guopai_on:
+    #             self.timeframe1.Show(True)
+    #         elif moni_on:
+    #             self.timeframe2.Show(True)
+    #     else:
+    #         set_val('view_time', False)
+    #         set_val('time_on', False)
+    #         if guopai_on:
+    #             self.timeframe1.Show(False)
+    #             self.timeframe2.Show(False)
+    #         elif moni_on:
+    #             self.timeframe2.Show(False)
+    #             self.timeframe2.Show(False)
 
     ##时间调整
     def Add_time(self, event):
@@ -1226,7 +1226,7 @@ class StrategyPanel(wx.Panel):
 class OperationPanel(wx.Panel):
     def __init__(self, parent, tablabel):  # name:窗口显示名称
         websize = get_val('websize')
-        wx.Panel.__init__(self, parent=parent, size=(330, websize[1]), pos=(880, 0))
+        wx.Panel.__init__(self, parent=parent, size=(330, websize[1]), pos=(892, 0))
         self.notebook = wx.Notebook(self)
         self.status_tab = StatusPanel(self.notebook, tablabel)  # notebook作为父类
         self.notebook.AddPage(self.status_tab, "常规功能")
