@@ -204,11 +204,11 @@ class LoginFrame(wx.Frame):
             print(login_result)
 
             if Identify_code == '123456':  ##这里作为测试用
-                set_val('url_moni', 'https://hupai.pro/bid/moni/')
-                set_val('url_dianxin', 'http://moni.51hupai.org/')
+                pass
             else:
                 set_val('url_dianxin', login_result['url_dianxin'])
-            set_val('url_nodianxin', login_result['url_nodianxin'])
+                set_val('url_nodianxin', login_result['url_nodianxin'])
+
         elif login_result['result'] == 'net error' or login_result['result'] == 'timeout':
             wx.MessageBox('连接服务器失败', '用户登录', wx.OK | wx.ICON_ERROR)
         elif login_result['result'] == 'repeat':

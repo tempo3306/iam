@@ -4,26 +4,28 @@
 @contact: 810909753@q.com
 @time: 2017/7/28 15:52
 '''
-import cv2,copy
+import cv2, copy
 import numpy as np
 from functools import reduce
-SZ=20
-bin_n = 64 # Number of bins
 
+SZ = 20
+bin_n = 16  # Number of bins
 
 ##获取文件列表
 import os
+
+
 def getlist():
-    files =os.listdir('./moni')
+    files = os.listdir('./moni')
     nfiles = []
     for file in files:
-        temp1=os.path.splitext(file)[0]
-        temp2=list(temp1)
-        temp3=list(map(int,temp2))
+        temp1 = os.path.splitext(file)[0]
+        temp2 = list(temp1)
+        temp3 = list(map(int, temp2))
         for tem in temp3:
             nfiles.append([tem])
     print(nfiles)
-    return (files,nfiles)
+    return (files, nfiles)
 
 
 ####可以将斜着的数字摆正
@@ -31,11 +33,13 @@ def deskew(img):
     m = cv2.moments(img)
     if abs(m['mu02']) < 1e-2:
         return img.copy()
-    skew = m['mu11']/m['mu02']
-    M = np.float32([[1, skew, -0.5*SZ*skew], [0, 1, 0]])
-    img = cv2.warpAffine(img,M,(SZ, SZ),flags=affine_flags)
+    skew = m['mu11'] / m['mu02']
+    M = np.float32([[1, skew, -0.5 * SZ * skew], [0, 1, 0]])
+    img = cv2.warpAffine(img, M, (SZ, SZ), flags=affine_flags)
     return img
-#hog特征
+
+
+# hog特征
 def hog(img):
     gx = cv2.Sobel(img, cv2.CV_32F, 1, 0)
     gy = cv2.Sobel(img, cv2.CV_32F, 0, 1)
@@ -48,9 +52,10 @@ def hog(img):
     # print(hist)
     return hist
 
+
 def fushi(img):
     kernel = np.ones((1, 1), np.uint8)
-        # 读入图片
+    # 读入图片
     dilated = cv2.dilate(img, kernel)
     # 腐蚀图像
     eroded = cv2.erode(dilated, kernel)
@@ -59,138 +64,229 @@ def fushi(img):
     return eroded
 
 
-#二值化，切割
+# 二值化，切割
 def cut(img):
     # ret, thresh1 = cv2.threshold(img, 100, 255, cv2.THRESH_BINARY)
     ret, thresh1 = cv2.threshold(img, 155, 255, cv2.THRESH_BINARY_INV)
     # thresh1=fushi(thresh1)
     # image,contours,hierarchy = cv2.findContours(thresh1,cv2.RETR_EXTERNAL,cv2.CHAIN_APPROX_NONE)
-    image,contours,hierarchy = cv2.findContours(thresh1,cv2.RETR_EXTERNAL,cv2.CHAIN_APPROX_NONE)
-    imgn=[]
-    xy=[]
-    cv2.imwrite("thresh1.png",thresh1)
+    image, contours, hierarchy = cv2.findContours(thresh1, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_NONE)
+    cv2.imwrite('image.png', image)
+    imgn = []
+    xy = []
+    cv2.imwrite("thresh1.png", thresh1)
     for i in range(len(contours)):
         cnt = contours[i]
         x, y, w, h = cv2.boundingRect(cnt)
         xy.append([x, y, w, h])
 
     xy = sorted(xy)
-    xy0=[]
-    for i in range(len(xy)-1):
-        diff=xy[i+1][0]-xy[i][0]
-        if diff <6:
-            t0=min(xy[i][0],xy[i+1][0])
-            t1=min(xy[i][1],xy[i+1][1])
-            t2=max(xy[i][2]+xy[i][0],xy[i+1][2]+xy[i+1][0])-t0
-            t3=max(xy[i][3]+xy[i][1],xy[i+1][3]+xy[i+1][1])-t1
-            xy[i+1]=[t0,t1,t2,t3]
-        elif 6<=diff<12:
+
+    print(xy)
+
+    xy0 = []  ##存放切块
+    ##前n-1个块
+    for i in range(len(xy) - 1):
+        diff = xy[i + 1][0] - xy[i][0]
+        print(diff)
+        if diff < 6:
+            t0 = min(xy[i][0], xy[i + 1][0])
+            t1 = min(xy[i][1], xy[i + 1][1])
+            t2 = max(xy[i][2] + xy[i][0], xy[i + 1][2] + xy[i + 1][0]) - t0
+            t3 = max(xy[i][3] + xy[i][1], xy[i + 1][3] + xy[i + 1][1]) - t1
+            xy[i + 1] = [t0, t1, t2, t3]
+        elif 6 <= diff < 12:
             xy0.append(xy[i])
         else:
-            if 12<=diff<=16:
-                temp1=[xy[i][0],xy[i][1],xy[i][2]-int(diff/2),xy[i][3]]
-                temp2=[int(diff/2)+xy[i][0],xy[i+1][1],xy[i+1][2],xy[i+1][3]]
+            if 12 <= diff <= 16:
+                temp1 = [xy[i][0], xy[i][1], xy[i][2] - int(diff / 2), xy[i][3]]
+                temp2 = [int(diff / 2) + xy[i][0], xy[i + 1][1], xy[i + 1][2], xy[i + 1][3]]
                 xy0.append(temp1)
                 xy0.append(temp2)
-            elif 19<=diff<=23:
-                t1=int(diff/3)
-                t2=int(diff/3)*2
-                temp1=[xy[i][0],xy[i][1],t1,xy[i][3]]
-                temp2=[xy[i][0]+t1,xy[i][1],t2,xy[i][3]]
-                temp3=[xy[i][0]+t2,xy[i][1],diff-t2,xy[i][3]]
+            elif 17 <= diff <= 23:
+                t1 = int(diff / 3)
+                t2 = int(diff / 3) * 2
+                temp1 = [xy[i][0], xy[i][1], t1, xy[i][3]]
+                temp2 = [xy[i][0] + t1, xy[i][1], t2 - t1, xy[i][3]]
+                temp3 = [xy[i][0] + t2, xy[i][1], diff - t2, xy[i][3]]
                 xy0.append(temp1)
                 xy0.append(temp2)
                 xy0.append(temp3)
-            elif  26<=diff<=30:
-                t1=int(diff/4)
-                t2=int(diff/4)*2
-                t3=int(diff/4)*3
-                temp1=[xy[i][0],xy[i][1],t1,xy[i][3]]
-                temp2=[xy[i][0]+t1,xy[i][1],t2,xy[i][3]]
-                temp3=[xy[i][0]+t2,xy[i][1],t3,xy[i][3]]
-                temp4=[xy[i][0]+t3,xy[i][1],diff-t3,xy[i][3]]
+            elif 24 <= diff <= 30:
+                t1 = int(diff / 4)
+                t2 = int(diff / 4) * 2
+                t3 = int(diff / 4) * 3
+                temp1 = [xy[i][0], xy[i][1], t1, xy[i][3]]
+                temp2 = [xy[i][0] + t1, xy[i][1], t2 - t1, xy[i][3]]
+                temp3 = [xy[i][0] + t2, xy[i][1], t3 - t2, xy[i][3]]
+                temp4 = [xy[i][0] + t3, xy[i][1], diff - t3, xy[i][3]]
                 xy0.append(temp1)
                 xy0.append(temp2)
                 xy0.append(temp3)
                 xy0.append(temp4)
-            elif  33<=diff:
-                t1=int(diff/5)
-                t2=int(diff/5)*2
-                t3=int(diff/5)*3
-                t4=int(diff/5)*4
-                temp1=[xy[i][0],xy[i][1],t1,xy[i][3]]
-                temp2=[xy[i][0]+t1,xy[i][1],t2,xy[i][3]]
-                temp3=[xy[i][0]+t2,xy[i][1],t3,xy[i][3]]
-                temp4=[xy[i][0]+t3,xy[i][1],t4,xy[i][3]]
-                temp5=[xy[i][0]+t4,xy[i][1],diff-t4,xy[i][3]]
+            elif 31 <= diff:
+                t1 = int(diff / 5)
+                t2 = int(diff / 5) * 2
+                t3 = int(diff / 5) * 3
+                t4 = int(diff / 5) * 4
+                temp1 = [xy[i][0], xy[i][1], t1, xy[i][3]]
+                temp2 = [xy[i][0] + t1, xy[i][1], t2 - t1, xy[i][3]]
+                temp3 = [xy[i][0] + t2, xy[i][1], t3 - t2, xy[i][3]]
+                temp4 = [xy[i][0] + t3, xy[i][1], t4 - t3, xy[i][3]]
+                temp5 = [xy[i][0] + t4, xy[i][1], diff - t4, xy[i][3]]
                 xy0.append(temp1)
                 xy0.append(temp2)
                 xy0.append(temp3)
                 xy0.append(temp4)
                 xy0.append(temp5)
 
-    xy0.append(xy[-1])
+    # 最后一个 图像块
+    diff = xy[-1][2]  # 最后一个 图像块
+    if diff < 3:
+        pass
+    elif 3 <= diff < 12:
+        xy0.append(xy[-1])
+    else:
+        if 12 <= diff <= 16:
+            temp1 = [xy[-1][0], xy[-1][1], int(diff / 2), xy[-1][3]]
+            temp2 = [int(diff / 2) + xy[-1][0], xy[-1][1], xy[-1][2] - int(diff / 2), xy[-1][3]]
+            xy0.append(temp1)
+            xy0.append(temp2)
+        elif 17 <= diff <= 23:
+            t1 = int(diff / 3)
+            t2 = int(diff / 3) * 2
+            temp1 = [xy[-1][0], xy[-1][1], t1, xy[-1][3]]
+            temp2 = [xy[-1][0] + t1, xy[-1][1], t2 - t1, xy[-1][3]]
+            temp3 = [xy[-1][0] + t2, xy[-1][1], diff - t2, xy[-1][3]]
+            xy0.append(temp1)
+            xy0.append(temp2)
+            xy0.append(temp3)
+        elif 24 <= diff <= 30:
+            t1 = int(diff / 4)
+            t2 = int(diff / 4) * 2
+            t3 = int(diff / 4) * 3
+            temp1 = [xy[-1][0], xy[-1][1], t1, xy[-1][3]]
+            temp2 = [xy[-1][0] + t1, xy[-1][1], t2 - t1, xy[-1][3]]
+            temp3 = [xy[-1][0] + t2, xy[-1][1], t3 - t2, xy[-1][3]]
+            temp4 = [xy[-1][0] + t3, xy[-1][1], diff - t3, xy[-1][3]]
+            xy0.append(temp1)
+            xy0.append(temp2)
+            xy0.append(temp3)
+            xy0.append(temp4)
+        elif 31 <= diff:
+            t1 = int(diff / 5)
+            t2 = int(diff / 5) * 2
+            t3 = int(diff / 5) * 3
+            t4 = int(diff / 5) * 4
+            temp1 = [xy[-1][0], xy[-1][1], t1, xy[-1][3]]
+            temp2 = [xy[-1][0] + t1, xy[-1][1], t2 - t1, xy[-1][3]]
+            temp3 = [xy[-1][0] + t2, xy[-1][1], t3 - t2, xy[-1][3]]
+            temp4 = [xy[-1][0] + t3, xy[-1][1], t4 - t3, xy[-1][3]]
+            temp5 = [xy[-1][0] + t4, xy[-1][1], diff - t4, xy[-1][3]]
+            xy0.append(temp1)
+            xy0.append(temp2)
+            xy0.append(temp3)
+            xy0.append(temp4)
+            xy0.append(temp5)
+
     for i in range(len(xy0)):
         x, y, w, h = xy0[i]
         imgn.append(image[y:y + h, x:x + w])
     for i in range(len(imgn)):
-        imgn[i]=cv2.resize(imgn[i],(8,8))
+        imgn[i] = cv2.resize(imgn[i], (8, 8))
     for i in range(len(xy0)):
-        cv2.imwrite("ST%d.png"%i,imgn[i])
+        cv2.imwrite("ST%d.png" % i, imgn[i])
 
     return imgn
 
-#SVM训练
-#创建训练素材
+
+# SVM训练
+# 创建训练素材
 # 合并随机点，得到训练数据
 def traindata(imglist):
-    TrainData=[]
+    TrainData = []
     for img in imglist:
-        img=cv2.imread(img,0)
+        img = cv2.imread(img, 0)
         trainData = cut(img)
         trainData = list(map(hog, trainData))
         trainData = np.float32(trainData).reshape(-1, bin_n * 4)
         TrainData.append(trainData)
     return TrainData
 
+
 def getlabel(imglist):
-    result=[]
+    result = []
     for img in imglist:
-        img=img.split(".")
-        num=img[0]
+        img = img.split(".")
+        num = img[0]
         for n in num:
             result.append([int(n)])
     return result
 
 
+imglist = ["10.png", "11.png", '8.png', 'time.png', 'moni.png', '88700.png', '88800.png', '92100.png',
+           '88600.png', '88900.png', '91300.png', '89800.png', '90500.png', '89400.png',
+           '91800.png', '91900.png', '91900_win7.png', '90400_win7.png',
+           '86600_win10.png', '86800_win10.png', '83000_win10.png',
+           '85000_win7.png', '85300_win7.png', '89000_win7.png', '89800_win7.png',
+           '93100_win10_guopai.png', '86200_win7_moni.png', 'time_moni.png',
+           'time_win10_112930.png', 'time_win10_112903.png', 'time_win10_112906.png', 'time_win10_112909.png', 'time_win10_112941.png',
+           ]
 
-imglist=["10.png","11.png",'8.png','time.png','moni.png']
+
 
 ##标号11为：
-labellist=[[1],[2],[3],[4],[5],[6],[7],[8],[9],[0],[1],[2],[3],[4],[5],[6],[7],[8],[9],[0],
-           [8],[6],[6],[0],[0],[1],[1],[11],[2],[9],[11],[0],[1],
-           [1], [2], [3], [4], [5], [6], [7], [8], [9], [0]]
+labellist = [[1], [2], [3], [4], [5], [6], [7], [8], [9], [0], [1], [2], [3], [4], [5], [6], [7], [8], [9], [0],
+             [8], [6], [6], [0], [0], [1], [1], [11], [2], [9], [11], [0], [1],
+             [1], [2], [3], [4], [5], [6], [7], [8], [9], [0],
+             [8], [8], [7], [0], [0], [8], [8], [8], [0], [0],
+             [9], [2], [1], [0], [0],
+             [8], [8], [6], [0], [0],
+             [8], [8], [9], [0], [0],
+             [9], [1], [3], [0], [0],
+             [8], [9], [8], [0], [0],
+             [9], [0], [5], [0], [0],
+             [8], [9], [4], [0], [0],
+             [9], [1], [8], [0], [0],
+             [9], [1], [9], [0], [0],
+             [9], [1], [9], [0], [0],
+             [9], [0], [4], [0], [0],
+             [8], [6], [6], [0], [0],
+             [8], [6], [8], [0], [0],
+             [8], [3], [0], [0], [0],
 
+             [8], [5], [0], [0], [0],
+             [8], [5], [3], [0], [0],
+             [8], [9], [0], [0], [0],
+             [8], [9], [8], [0], [0],
 
-imglist2,labellist2 =getlist()
+             [9], [3], [1], [0], [0],
+             [8], [6], [2], [0], [0],
+             [1], [1], [11], [2], [9], [11], [2],
 
+             [1], [1], [11], [2], [9], [11], [3], [0],
+             [1], [1], [11], [2], [9], [11], [3],
+             [1], [1], [11], [2], [9], [11], [6],
+             [1], [1], [11], [2], [9], [11], [9],
+             [1], [1], [11], [2], [9], [11], [4], [1],
+             ]
+
+imglist2, labellist2 = getlist()
 
 imglist.extend(imglist2)
 labellist.extend(labellist2)
 
-TrainData=traindata(imglist)
+TrainData = traindata(imglist)
 
-trainData=reduce(lambda x,y:np.vstack((x,y)),TrainData)
+trainData = reduce(lambda x, y: np.vstack((x, y)), TrainData)
 
-
-responses=np.array(labellist,dtype='int32')
+responses = np.array(labellist, dtype='int32')
 svm = cv2.ml.SVM_create()
 svm.setType(cv2.ml.SVM_C_SVC)  # SVM类型
 # svm.setKernel(cv2.ml.SVM_RBF)
-svm.setKernel(cv2.ml.SVM_LINEAR) # 使用线性核
+svm.setKernel(cv2.ml.SVM_LINEAR)  # 使用线性核
 svm.setC(2.67)
 svm.setGamma(5.383)
-
 
 # 训练
 ret = svm.train(trainData, cv2.ml.ROW_SAMPLE, responses)
@@ -201,10 +297,12 @@ ret = svm.train(trainData, cv2.ml.ROW_SAMPLE, responses)
 # # trainData=np.array(trainData,dtype='float32')
 # testData = np.float32(testData).reshape(-1,bin_n*4)
 # result = svm.predict(testData)
-svm.save('maindata_new.xml')
+svm.save('maindata_11.xml')
 # svm.save('svm_cat_data.dat')
 # SVM_load('svm_cat_data.dat')
 # print(result)
+svm = cv2.ml.SVM_load('maindata_11.xml')
+
 
 def read(img):
     img2 = cv2.imread(img, 0)
@@ -220,15 +318,23 @@ def read(img):
     print(price)
     return price
 
+
 # for i in range(89900,94800,100):
 #     img="new_pic\\%s.png"%i
 #     read(img)
-p=read('moni.png')
+p = read('moni.png')
 read('z50.png')
-
+read('n_92100.png')
 
 read('z132.png')
 
+read('./moni2/87600.png')
+read('./moni2/87500.png')
+read('./moni2/92100.png')
+
+read('88700.png')
+
+read('90700.png')
 
 # for num in range(90600,95500,100):
 #     path = ".\\t2\\%d.png"%num
@@ -236,9 +342,6 @@ read('z132.png')
 #     if nn != str(num):
 #         print("num=",num,end=" ")
 #         print("nn=",nn)
-
-
-
 
 
 #
@@ -290,4 +393,3 @@ read('z132.png')
 # print(len(trainData))
 # svm = cv2.ml.SVM_create()
 # ret=svm.train(trainData,responses, params=svm_params)    #responses标签，trainData输入的训练集
-

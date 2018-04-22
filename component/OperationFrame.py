@@ -40,9 +40,9 @@ class StatusPanel(wx.Panel):
         self.webtabButton.Bind(wx.EVT_BUTTON, self.webtab)
         # self.priceviewButton.Bind(wx.EVT_BUTTON, self.priceview)
 
-        self.remotetimeButton.Bind(wx.EVT_BUTTON, self.getremotetime)
+        # self.remotetimeButton.Bind(wx.EVT_BUTTON, self.getremotetime)
         self.posajustButton.Bind(wx.EVT_BUTTON, self.posautoajust)
-        self.localtimeButton.Bind(wx.EVT_BUTTON, self.timeautoajust)
+        # self.localtimeButton.Bind(wx.EVT_BUTTON, self.timeautoajust)
 
         self.controlgrid.Add(self.webtabButton, pos=(0, 0))  # 布局
         self.controlgrid.Add(self.remotetimeButton, pos=(0, 1))
@@ -50,10 +50,10 @@ class StatusPanel(wx.Panel):
         self.controlgrid.Add(self.localtimeButton, pos=(1, 1))
 
         # 时间区
-        self.timeview = wx.CheckBox(self, -1, label=u'显示时间')  # 开启时间显示
-        # self.Bind(wx.EVT_CHECKBOX, self.Timeview, self.timeview)
+        self.autotime = wx.CheckBox(self, -1, label=u'自动时间同步')  # 开启时间显示
+        self.Bind(wx.EVT_CHECKBOX, self.autotime_set, self.autotime)
         hbox1 = wx.BoxSizer(wx.HORIZONTAL)
-        hbox1.Add(self.timeview)
+        hbox1.Add(self.autotime)
         self.button1 = wx.Button(self, label='+1s', size=(35, 25))
         self.Bind(wx.EVT_BUTTON, self.Add_second, self.button1)
         self.button2 = wx.Button(self, label='-1s', size=(35, 25))
@@ -249,10 +249,15 @@ class StatusPanel(wx.Panel):
     def init_ui(self):
         e_on = get_val('e_on')
         enter_on = get_val('enter_on')
+        autotime_on = get_val('autotime_on')
         if e_on:
             self.confirm_choice.SetSelection(0)
         elif enter_on:
             self.confirm_choice.SetSelection(1)
+        if autotime_on:
+            self.autotime.SetValue(True)
+        else:
+            self.autotime.SetValue(False)
 
 
     ##导出跳价
@@ -264,17 +269,12 @@ class StatusPanel(wx.Panel):
                 price_file.write(text)
                 price_file.write('\n')
 
-    ## 获取服务器时间
-    def getremotetime(self, event):
-        from component.app_thread import GetremotetimeThread
-        getremotetimethread = GetremotetimeThread()
-
-    ## 同步本地时间
-    def timeautoajust(self, event):
-        guopai_on = get_val('guopai_on')
-        moni_on = get_val('moni_on')
-        imgpos_currenttime = get_val('imgpos_currenttime')
-        timeset(guopai_on, moni_on, imgpos_currenttime, 'maindata.xml')  # 调用时间同步
+    def autotime_set(self, event):
+        timeSelected = event.GetEventObject()
+        if timeSelected.IsChecked():
+            set_val('autotime_on', True)
+        else:
+            set_val('autotime_on', False)
 
     ##刷新定位
     def posautoajust(self, event):

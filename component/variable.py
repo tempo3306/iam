@@ -201,7 +201,7 @@ def init_val():
     set_val('query_interval', False)  # 间隔
     set_val('query_on', False)  # 是否处于查询状态
 
-
+    set_val('autotime_on', True)  #是否处理自动时间同步状态
 
 
 
@@ -220,9 +220,9 @@ def init_url():
     set_val('remotetime_url', "https://hupai.pro/api/bid/get_remotetime")
     set_val('host_ali', "https://hupai.pro")
     set_val('url_51', "http://moni.51hupai.org/")
-    set_val('url_dianxin)', "www.baidu.com")  # 电信
-    set_val('url_nodianxin', "www.baidu.com")  # 非电信
-    set_val('url_moni', "https://hupai.pro/Moni")
+    set_val('url_dianxin', "https://www.baidu.com")  # 电信
+    set_val('url_nodianxin', "http://moni.51hupai.org/")  # 非电信
+    set_val('url_moni', "https://hupai.pro/static/main/moni.html")
     set_val('guopai_dianxin', True)  ##当前是否处于国拍电信
 
 
@@ -230,11 +230,11 @@ def init_label():
     set_val('moni_webstatus_label', '模拟中')
     set_val('dianxin_webstatus_label', '国拍电信')
     set_val('nodianxin_webstatus_label', '国拍非电信')
-
+    set_val('urlchange_dianxin_label', '切换电信')
+    set_val('urlchange_nodianxin_label', '切换非电信')
 
 def init_id():
     set_val('userconfirm_on', False)
-
     set_val('topframe', -1)
     set_val('loginframe', -1)
     set_val('moni_webframe', -1)

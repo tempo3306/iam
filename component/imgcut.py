@@ -237,8 +237,11 @@ def readpic(img, maindata):
 def timeset(guopai_on, moni_on, imgpos_currenttime, maindata):
     try:
         currenttime = cv2.cvtColor(imgpos_currenttime, cv2.COLOR_BGR2GRAY)
-        # cv2.imwrite('time.png', currenttime)
+        cv2.imwrite('time.png', currenttime)
         currenttime = readpic(currenttime, maindata)  # 识别出来的时间
+
+        moni_second = get_val('moni_second')
+        a_time = get_val('a_time')
 
         print('currenttime', currenttime)
 
@@ -247,12 +250,18 @@ def timeset(guopai_on, moni_on, imgpos_currenttime, maindata):
         b = a + ' ' + currenttime
         if guopai_on:
             print(time.strptime(b, '%Y-%m-%d %H:%M:%S'))
-            a_time = time.mktime(time.strptime(b, '%Y-%m-%d %H:%M:%S')) + 0.5  # 转时间戳   补个平均时差
-            set_val('a_time', a_time)
+            a_time_temp = time.mktime(time.strptime(b, '%Y-%m-%d %H:%M:%S')) + 0.5  # 转时间戳   补个平均时差
+            if a_time_temp -0.8 <=a_time <= a_time_temp + 0.8:
+                pass
+            else:
+                set_val('a_time', a_time_temp)
         if moni_on:
             try:
-                moni_second = int(currenttime.split(':')[2]) + 0.5
-                set_val('moni_second', moni_second)
+                moni_second_temp = int(currenttime.split(':')[2]) + 0.5
+                if moni_second_temp - 0.8 <= a_time <= moni_second_temp + 0.8:
+                    pass
+                else:
+                    set_val('moni_second', moni_second_temp)
             except:
                 logger.exception('this is an exception message')
 
