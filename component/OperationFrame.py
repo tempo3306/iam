@@ -225,6 +225,7 @@ class StatusPanel(wx.Panel):
             guopai = wx.FindWindowByName('沪牌一号 国拍')
             if guopai:
                 guopai.Show(True)
+                guopai.currentstatusframe.Show(True)
                 guopai.operationpanel.init_ui()
                 moni.Show(False)
                 set_val('guopai_on', True)
@@ -237,6 +238,7 @@ class StatusPanel(wx.Panel):
             moni = wx.FindWindowByName('沪牌一号模拟')
             if moni:
                 moni.Show(True)
+                moni.currentstatusframe.Show(True)
                 guopai.Show(False)
                 moni.operationpanel.init_ui()
                 set_val('moni_on', True)

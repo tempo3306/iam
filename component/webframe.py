@@ -182,18 +182,6 @@ class HtmlPanel(wx.Panel):
         else:
             self.webview.LoadURL(url_nodianxin)
 
-        self.timer = wx.Timer(self)  # 创建定时器
-        self.Bind(wx.EVT_TIMER, self.OnTimer, self.timer)  # 绑定一个定时器事件
-        self.timer.Start(100)  # 设定时间间隔
-
-        self.registered_bitmap = wx.Bitmap('icons/registered.png')
-
-    def OnTimer(self, event):  # 显示时间事件处理函数
-        self.Modify(event)
-
-    def Modify(self, event):  # 更新
-        dc = wx.BufferedDC(wx.ClientDC(self))  # ClientDC客户区  ，BufferedDC双缓冲绘图设备
-        dc.DrawBitmap(self.registered_bitmap, 300, 300, True)
 
 
 
@@ -213,10 +201,10 @@ class BottomeStatusbarPanel(wx.Panel):
 
         self.registered_bitmap = wx.Bitmap('icons/registered.png')
         self.unregistered_bitmap = wx.Bitmap('icons/unregistered.png')
-        self.slow_bitmap = wx.Bitmap('icons/slow.png')
+        # self.slow_bitmap = wx.Bitmap('icons/slow.png')
         self.medium_bitmap = wx.Bitmap('icons/medium.png')
-        self.quick_bitmap = wx.Bitmap('icons/quick.png')
-        self.veryquick_bitmap = wx.Bitmap('icons/veryquick.png')
+        # self.quick_bitmap = wx.Bitmap('icons/quick.png')
+        # self.veryquick_bitmap = wx.Bitmap('icons/veryquick.png')
 
 
 
@@ -254,7 +242,8 @@ class BottomeStatusbarPanel(wx.Panel):
 
 class CurrentStatusFrame(wx.Frame):
     def __init__(self, parent):
-        super(CurrentStatusFrame, self).__init__(parent,  size=(235,150), pos=(315, 346),
+        x, y = parent.Position
+        super(CurrentStatusFrame, self).__init__(parent,  size=(225,125), pos=(x+180, 297+y),
                                                  style=wx.FRAME_TOOL_WINDOW  | wx.FRAME_FLOAT_ON_PARENT)
         self.currentstatuspanel = CurrentStatusPanel(self)
 
@@ -276,11 +265,10 @@ class CurrentStatusPanel(wx.Panel):
         dc = wx.BufferedDC(wx.ClientDC(self))  # ClientDC客户区  ，BufferedDC双缓冲绘图设备
         if moni_on:
             moni_second = get_val('moni_second')  # 取得全局变量的值
-            moni_s = int(moni_second)  # 整数化
             if moni_second < 10:
-                st = "{0} {1}:{2}:0{3}".format(currenttime_label, 11, 29, moni_s)
+                st = "{0} {1}:{2}:0{3:.1f}".format(currenttime_label, 11, 29, moni_second)
             else:
-                st = "{0} {1}:{2}:{3}".format(currenttime_label, 11, 29, moni_s)
+                st = "{0} {1}:{2}:{3:.1f}".format(currenttime_label, 11, 29, moni_second)
             w, h = self.GetClientSize()
             dc.SetBackground(wx.Brush(self.GetBackgroundColour()))
             dc.Clear()
@@ -289,10 +277,11 @@ class CurrentStatusPanel(wx.Panel):
             dc.DrawText(st, 10, 10)
         else:
             a_time = get_val('a_time')
+            temp = int((a_time - int(a_time)) * 10)
             time_local = time.localtime(a_time)
             st = time.strftime("%H:%M:%S", time_local)  # + '.' + str(b_time)
             # st="%s:%s:%s"%(b_time[0],b_time[1],b_time[2])
-            st = '{0}{1}'.format(currenttime_label, st)
+            st = '{0}{1}.{2}'.format(currenttime_label, st, temp)
             w, h = self.GetClientSize()
             dc.SetBackground(wx.Brush(self.GetBackgroundColour()))
             dc.Clear()
@@ -325,7 +314,7 @@ class CurrentStatusPanel(wx.Panel):
             else:
                 currenttime = get_val('a_time')
                 timediff = float(usertime) - float(currenttime)
-            statustext = "剩余{0}秒  差价{1}".format(timediff, diff_price)
+            statustext = "提交倒计时{0:.1f}秒  差价{1}".format(timediff, diff_price)
 
             dc.DrawText(pricetext, 10, 50)
             dc.DrawText(statustext, 10, 90)
@@ -333,15 +322,25 @@ class CurrentStatusPanel(wx.Panel):
             current_pricestatus_label = get_val('current_pricestatus_label')
             current_pricestatus = get_val('current_pricestatus')
             pricetext = "{0}  {1}".format(current_pricestatus_label, current_pricestatus)
-
+            tijiao_num = get_val('tijiao_num')
             # 显示截止时间与当前时间相差
             if moni_on:
                 currenttime = get_val('moni_second')
-                timediff = float(usertime) - float(currenttime)
+                if tijiao_num == 1:
+                    one_time1 = get_val('one_time1')
+                    timediff = float(one_time1) - float(currenttime)
+                elif tijiao_num == 2:
+                    one_time2 = get_val('second_time1')
+                    timediff = float(one_time2) - float(currenttime)
             else:
                 currenttime = get_val('a_time')
-                timediff = float(usertime) - float(currenttime)
-            statustext = "剩余{0:.1f}秒  差价{1}".format(timediff, '-')
+                if tijiao_num == 1:
+                    one_time1 = get_val('one_real_time1')
+                    timediff = float(one_time1) - float(currenttime)
+                elif tijiao_num == 2:
+                    one_time2 = get_val('second_real_time1')
+                    timediff = float(one_time2) - float(currenttime)
+            statustext = "出价倒计时{0:.1f}秒  差价{1}".format(timediff, '-')
             dc.DrawText(pricetext, 10, 50)
             dc.DrawText(statustext, 10, 90)
 
@@ -371,12 +370,15 @@ class MoniWebFrame(wx.Frame):
 
         self.currentstatusframe = CurrentStatusFrame(self)
         self.currentstatusframe.Show(True)
-        # self.currentstatuspanel = CurrentStatusPanel(self)
         Yanzhengmasize = get_val('Yanzhengmasize')
-        self.yanzhengmaframe = YanzhengmaFrame(Yanzhengmasize)
+        self.yanzhengmaframe = YanzhengmaFrame(self, Yanzhengmasize)
 
         self.Bind(wx.EVT_MOVE, self.childmove)
         self.Bind(wx.EVT_ICONIZE, self.iconize)
+
+        self.timer1 = wx.Timer(self)
+        self.Bind(wx.EVT_TIMER, self.Price_view, self.timer1)  # 绑定一个定时器事件，主判断
+        self.timer1.Start(35)  # 设定时间间隔
 
     #     self.statustimer = wx.Timer(self)
     #     self.Bind(wx.EVT_TIMER, self.OnTimer, self.statustimer)  # 绑定一个定时器事件
@@ -395,92 +397,94 @@ class MoniWebFrame(wx.Frame):
 
     def childmove(self, event):
         x, y = self.Position
-        self.currentstatusframe.MoveXY(x+150, 300+y)
+        self.currentstatusframe.MoveXY(x+180, 300+y)
         Pos_yanzhengmaframe = get_val('Pos_yanzhengmaframe')
         try:
-            self.yanzhengmaframe.Move(Pos_yanzhengmaframe)  # 移动到新位置
+            self.yanzhengmaframe.MoveXY(x+450, 175+y)  # 移动到新位置
             set_val('yanzhengma_move', False)  # 无需动作
         except:
             logger.exception('this is an exception message')
 
-
     def Price_view(self, event):
-        Pricesize = get_val('Pricesize')
-        yanzhengma_move = get_val('yanzhengma_move')
-        Pos_price = get_val('Pos_price')
-        Pos_yanzhengmaframe = get_val('Pos_yanzhengmaframe')
-        if yanzhengma_move:
-            yan = self.yanzhengmaframe
-            if yan:
+        if self.IsShown():
+            Pos_yanzhengmaframe = get_val('Pos_yanzhengmaframe')
+            x, y = self.Position
+            Pricesize = get_val('Pricesize')
+            yanzhengma_move = get_val('yanzhengma_move')
+            Pos_price = get_val('Pos_price')
+            Pos_yanzhengmaframe = get_val('Pos_yanzhengmaframe')
+            if yanzhengma_move:
+                yan = self.yanzhengmaframe
+                if yan:
+                    try:
+                        yan.Move(Pos_yanzhengmaframe)  # 移动到新位置
+                        set_val('yanzhengma_move', False)  # 无需动作
+                    except:
+                        logger.exception('this is an exception message')
+
+            yanzhengma_count = get_val("yanzhengma_count")
+            yanzhengma_close = get_val("yanzhengma_close")
+
+            if yanzhengma_count >= 5 and not yanzhengma_close:  # 0.5秒之后没有确认触发关闭验证码
+                find_yan_confirm()
+            yanzhengma_close = get_val("yanzhengma_close")
+
+            if yanzhengma_close:
                 try:
-                    yan.Move(Pos_yanzhengmaframe)  # 移动到新位置
-                    set_val('yanzhengma_move', False)  # 无需动作
+                    self.yanzhengmaframe.Show(False)
                 except:
                     logger.exception('this is an exception message')
 
-        self.timer1 = wx.Timer(self)
-        self.Bind(wx.EVT_TIMER, self.Price_view, self.timer1)  # 绑定一个定时器事件，主判断
-        self.timer1.Start(35)  # 设定时间间隔
+            yanzhengma_view = get_val('yanzhengma_view')
+            yanzhengma_change = get_val('yanzhengma_change')  # 默认是True
+            yanzhengma_view = get_val('yanzhengma_view')
+            imgpos_yanzhengma = get_val('imgpos_yanzhengma')
+            Yanzhengmasize = get_val('Yanzhengmasize')
+            yanzhengma_hash = get_val('yanzhengma_hash')
 
-        yanzhengma_count = get_val("yanzhengma_count")
-        yanzhengma_close = get_val("yanzhengma_close")
+            ##验证码放大是否需要刷新
+            if yanzhengma_view:
+                set_val('yanzhengma_close', False)
+                path = get_val('path')
+                yanpath = path + "\\yanzhengma.png"
+                cut_pic(imgpos_yanzhengma, Yanzhengmasize, yanpath)  # 直接调用得到 png 保存图片
+                yanzhengma_img = Image.open(yanpath)
+                set_val('yanzhengma_img', yanzhengma_img)
+                yanzhengma_img = get_val('yanzhengma_img')
+                yan_hash = imagehash.dhash(yanzhengma_img)
+                if not yanzhengma_hash:  # 第一次
+                    set_val('yanzhengma_hash', yan_hash)
+                elif yan_hash == yanzhengma_hash:  # 验证码没变化
+                    set_val('yanzhengma_change', False)
+                else:
+                    set_val('yanzhengma_hash', yan_hash)
+                    set_val('yanzhengma_change', True)  # 发生变化了
 
-        if yanzhengma_count >= 5 and not yanzhengma_close:  # 0.5秒之后没有确认触发关闭验证码
-            find_yan_confirm()
-        yanzhengma_close = get_val("yanzhengma_close")
-
-        if yanzhengma_close:
-            try:
-                self.yanzhengmaframe.Show(False)
-            except:
-                logger.exception('this is an exception message')
-
-        yanzhengma_view = get_val('yanzhengma_view')
-        yanzhengma_change = get_val('yanzhengma_change')  # 默认是True
-        yanzhengma_view = get_val('yanzhengma_view')
-        imgpos_yanzhengma = get_val('imgpos_yanzhengma')
-        Yanzhengmasize = get_val('Yanzhengmasize')
-        yanzhengma_hash = get_val('yanzhengma_hash')
-
-        ##验证码放大是否需要刷新
-        if yanzhengma_view:
-            set_val('yanzhengma_close', False)
-            path = get_val('path')
-            yanpath = path + "\\yanzhengma.png"
-            cut_pic(imgpos_yanzhengma, Yanzhengmasize, yanpath)  # 直接调用得到 png 保存图片
-            yanzhengma_img = Image.open(yanpath)
-            set_val('yanzhengma_img', yanzhengma_img)
-            yanzhengma_img = get_val('yanzhengma_img')
-            yan_hash = imagehash.dhash(yanzhengma_img)
-            if not yanzhengma_hash:  # 第一次
-                set_val('yanzhengma_hash', yan_hash)
-            elif yan_hash == yanzhengma_hash:  # 验证码没变化
-                set_val('yanzhengma_change', False)
-            else:
-                set_val('yanzhengma_hash', yan_hash)
-                set_val('yanzhengma_change', True)  # 发生变化了
-
-        if yanzhengma_view:
-            if not yanzhengma_change:
-                pass
-            else:
-                try:
-                    yanpath = get_val('yanpath')
-                    yan = self.yanzhengmaframe
-                    yan.ShowImage(yanpath)
-                    yan.Show()
-                except:  # 找不到的情况下也要重新创建
-                    logger.exception('this is an exception message')
-
-                finally:
+            if yanzhengma_view:
+                if not yanzhengma_change:
                     pass
+                else:
+                    try:
+                        yanpath = get_val('yanpath')
+                        yan = self.yanzhengmaframe
+                        yan.Show()
+                        yan.ShowImage(yanpath, event)
+                    except:  # 找不到的情况下也要重新创建
+                        logger.exception('this is an exception message')
 
+                    finally:
+                        pass
+        else:
+            self.currentstatusframe.Show(False)
+            self.yanzhengmaframe.Show(False)
 
     def OnClose(self, event):
         set_val('web_on', False)
         set_val('view_time', False)
         set_val('moni_on', False)
         set_val('guopai_on', False)
+        self.yanzhengmaframe.Show(False)
+        self.currentstatusframe.Show(False)
         event.Skip()
         id = get_val('topframe')
         topframe = wx.FindWindowById(id)
@@ -510,9 +514,109 @@ class WebFrame(wx.Frame):
         self.Bind(wx.EVT_CLOSE, self.OnClose)
         self.htmlpanel = HtmlPanel(self, False)
         self.buttonpanel = ButtonPanel(self, webstatus_label, False)
+        self.buttonpanel = ButtonPanel(self, webstatus_label, False)
         self.operationpanel = OperationPanel(self, tablabel)
         # pub.subscribe(self.Close2, "close guopai")  # 打开非电信
         self.bottomstatusbarpanel = BottomeStatusbarPanel(self, False)
+        self.currentstatusframe = CurrentStatusFrame(self)
+        self.currentstatusframe.Show(True)
+        # self.currentstatuspanel = CurrentStatusPanel(self)
+        Yanzhengmasize = get_val('Yanzhengmasize')
+        self.yanzhengmaframe = YanzhengmaFrame(self, Yanzhengmasize)
+
+        self.Bind(wx.EVT_MOVE, self.childmove)
+        self.Bind(wx.EVT_ICONIZE, self.iconize)
+
+        self.timer1 = wx.Timer(self)
+        self.Bind(wx.EVT_TIMER, self.Price_view, self.timer1)  # 绑定一个定时器事件，主判断
+        self.timer1.Start(35)  # 设定时间间隔
+
+    def iconize(self,event):
+        self.currentstatusframe.Show(False)
+        event.Skip()
+
+
+    def childmove(self, event):
+        x, y = self.Position
+        self.currentstatusframe.Move(x+180, 300+y)
+        try:
+            self.yanzhengmaframe.Move(x+450, 175+y)  # 移动到新位置
+            set_val('yanzhengma_move', False)  # 无需动作
+        except:
+            logger.exception('this is an exception message')
+
+    def Price_view(self, event):
+        if self.IsShown():
+            Pos_yanzhengmaframe = get_val('Pos_yanzhengmaframe')
+            x, y = self.Position
+            Pricesize = get_val('Pricesize')
+            yanzhengma_move = get_val('yanzhengma_move')
+            Pos_price = get_val('Pos_price')
+            Pos_yanzhengmaframe = get_val('Pos_yanzhengmaframe')
+            if yanzhengma_move:
+                yan = self.yanzhengmaframe
+                if yan:
+                    try:
+                        yan.Move(Pos_yanzhengmaframe)  # 移动到新位置
+                        set_val('yanzhengma_move', False)  # 无需动作
+                    except:
+                        logger.exception('this is an exception message')
+
+            yanzhengma_count = get_val("yanzhengma_count")
+            yanzhengma_close = get_val("yanzhengma_close")
+
+            if yanzhengma_count >= 5 and not yanzhengma_close:  # 0.5秒之后没有确认触发关闭验证码
+                find_yan_confirm()
+            yanzhengma_close = get_val("yanzhengma_close")
+
+            if yanzhengma_close:
+                try:
+                    self.yanzhengmaframe.Show(False)
+                except:
+                    logger.exception('this is an exception message')
+
+            yanzhengma_view = get_val('yanzhengma_view')
+            yanzhengma_change = get_val('yanzhengma_change')  # 默认是True
+            yanzhengma_view = get_val('yanzhengma_view')
+            imgpos_yanzhengma = get_val('imgpos_yanzhengma')
+            Yanzhengmasize = get_val('Yanzhengmasize')
+            yanzhengma_hash = get_val('yanzhengma_hash')
+
+            ##验证码放大是否需要刷新
+            if yanzhengma_view:
+                set_val('yanzhengma_close', False)
+                path = get_val('path')
+                yanpath = path + "\\yanzhengma.png"
+                cut_pic(imgpos_yanzhengma, Yanzhengmasize, yanpath)  # 直接调用得到 png 保存图片
+                yanzhengma_img = Image.open(yanpath)
+                set_val('yanzhengma_img', yanzhengma_img)
+                yanzhengma_img = get_val('yanzhengma_img')
+                yan_hash = imagehash.dhash(yanzhengma_img)
+                if not yanzhengma_hash:  # 第一次
+                    set_val('yanzhengma_hash', yan_hash)
+                elif yan_hash == yanzhengma_hash:  # 验证码没变化
+                    set_val('yanzhengma_change', False)
+                else:
+                    set_val('yanzhengma_hash', yan_hash)
+                    set_val('yanzhengma_change', True)  # 发生变化了
+
+            if yanzhengma_view:
+                if not yanzhengma_change:
+                    pass
+                else:
+                    try:
+                        yanpath = get_val('yanpath')
+                        yan = self.yanzhengmaframe
+                        yan.Show()
+                        yan.ShowImage(yanpath, event)
+                    except:  # 找不到的情况下也要重新创建
+                        logger.exception('this is an exception message')
+
+                    finally:
+                        pass
+        else:
+            self.currentstatusframe.Show(False)
+            self.yanzhengmaframe.Show(False)
 
     def createStatusBar(self):
         self.statusbar = IcStatusBar(self)
@@ -523,6 +627,8 @@ class WebFrame(wx.Frame):
         set_val('view_time', False)
         set_val('moni_on', False)
         set_val('guopai_on', False)
+        self.yanzhengmaframe.Show(False)
+        self.currentstatusframe.Show(False)
         event.Skip()
         id = get_val('topframe')
         topframe = wx.FindWindowById(id)

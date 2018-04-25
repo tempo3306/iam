@@ -110,14 +110,14 @@ def Tijiao():
         set_val('current_pricestatus_label', '等待第三次出价')
         second_time1 = get_val('second_time1')
         second_diff = get_val('second_diff')
-        current_pricestatus = '{0}秒加{1}'.format(second_time1, second_diff)
+        current_pricestatus = '{0:.1f}秒加{1}'.format(second_time1, second_diff)
         set_val('current_pricestatus', current_pricestatus)
 
     elif tijiao_num == 0:
         set_val('current_pricestatus_label', '等待第二次出价')
         one_time1 = get_val('one_time1')
         one_diff = get_val('one_diff')
-        current_pricestatus = '{0}秒加{1}'.format(one_time1, one_diff)
+        current_pricestatus = '{0:.1f}秒加{1}'.format(one_time1, one_diff)
         set_val('current_pricestatus', current_pricestatus)
 
     if not confirm_one:  # 激活确认
@@ -221,7 +221,7 @@ def OnClick_chujia():
         one_time2 = get_val('one_time2')
         one_advance = get_val('one_advance')
         print(one_advance)
-        current_pricestatus = '{0}秒提前{1}'.format(one_time2, one_advance)
+        current_pricestatus = '{0:.1f}秒提前{1}'.format(one_time2, one_advance)
         set_val('current_pricestatus', current_pricestatus)
 
         ##5.1秒后调用取消出价
@@ -238,7 +238,7 @@ def OnClick_chujia():
         set_val('current_pricestatus_label', '等待第三次提交')
         second_time2 = get_val('second_time2')
         second_advance = get_val('second_advance')
-        current_pricestatus = '{0}秒提前{1}'.format(second_time2, second_advance)
+        current_pricestatus = '{0:.1f}秒提前{1}'.format(second_time2, second_advance)
         set_val('current_pricestatus', current_pricestatus)
 
         Click(Position[1][0], Position[1][1])

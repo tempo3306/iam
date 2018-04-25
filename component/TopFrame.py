@@ -85,7 +85,7 @@ class TopFrame(wx.Frame):
         pub.subscribe(self.moni_chujia, "moni chujia")
 
         ##多线程
-        # self.create_thread()
+        self.create_thread()
 
         ##keep login timer事件
         self.keeptimer = wx.Timer(self)
@@ -206,13 +206,15 @@ class TopFrame(wx.Frame):
             moni = wx.FindWindowByName('沪牌一号模拟')
             if moni:
                 moni.Show(True)
+                moni.currentstatusframe.Show(True)
                 moni.htmlpanel.webview.Reload()
                 moni.Move((Px, Py))
                 self.webopen()
                 Listen()
             else:
                 self.fr = MoniWebFrame( Px, Py, 51, '沪牌一号模拟', '切换国拍')  ##模拟  id  51
-                self.fr.Show()
+                self.fr.Show(True)
+                self.fr.currentstatusframe.Show(True)
                 self.fr.operationpanel.init_ui()
                 # 关闭主界面，打开策略设置
                 self.webopen()
@@ -242,14 +244,15 @@ class TopFrame(wx.Frame):
         moni = wx.FindWindowByName('沪牌一号模拟')
         if moni:
             moni.Show(True)
+            moni.currentstatusframe.Show(True)
             moni.htmlpanel.webview.Reload()
             self.webopen()
             moni.Move((Px, Py))
             Listen()
         else:
             self.fr = MoniWebFrame(Px, Py, 51, '沪牌一号模拟', '切换国拍')  ##模拟  id  51
-
-            self.fr.Show()
+            self.fr.Show(True)
+            self.fr.currentstatusframe.Show(True)
             self.fr.operationpanel.init_ui()
             # 关闭主界面，打开策略设置
             self.webopen()
@@ -284,13 +287,15 @@ class TopFrame(wx.Frame):
                 guopai = wx.FindWindowByName('沪牌一号 国拍')
                 if guopai:
                     guopai.Show(True)
+                    guopai.currentstatusframe.Show(True)
                     guopai.Center()
                     guopai.htmlpanel.webview.Reload()
                     self.webopen()
                     Listen()
                 else:
                     self.fr = WebFrame(Px, Py, 52, '沪牌一号 国拍', '切换模拟')  ## 国拍52
-                    self.fr.Show()
+                    self.fr.Show(True)
+                    self.fr.currentstatusframe.Show(True)
                     self.fr.operationpanel.init_ui()
                     # 关闭主界面，打开策略设置
                     self.webopen()
@@ -323,12 +328,14 @@ class TopFrame(wx.Frame):
         guopai = wx.FindWindowByName('沪牌一号 国拍')
         if guopai:
             guopai.Show(True)
+            guopai.currentstatusframe.Show(True)
             guopai.htmlpanel.webview.Reload()
             self.webopen()
             Listen()
         else:
             self.fr = WebFrame(Px, Py, 52, '沪牌一号 国拍', '切换模拟')  ## 国拍52
-            self.fr.Show()
+            self.fr.Show(True)
+            self.fr.currentstatusframe.Show(True)
             self.fr.operationpanel.init_ui()
             # 关闭主界面，打开策略设置
             self.webopen()
