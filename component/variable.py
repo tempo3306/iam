@@ -70,7 +70,9 @@ def init_val():
     init_size()
     init_url()
     init_label()
-
+    init_strategy()
+    init_account()
+    init_status()
     diskid = get_unique_id()
     set_val('diskid', get_id_hash(diskid))   ##sha1 hash化
 
@@ -79,8 +81,7 @@ def init_val():
 
     set_val('userprice', 0) #当前出价 如果为0则表示未出价
     set_val('usertime', -1) #当前截止时间 如果为 -1表示未出价
-    set_val('strategy_name', '') #策略名称
-    set_val('current_strategy_name', '') #当前策略
+
     # set_val('host_ali', "http://192.168.3.20:3000")
     set_val('debug', True)
     set_val('now_ping', 0)  #实时网速
@@ -89,119 +90,6 @@ def init_val():
     set_val('avt', 0)
     set_val('test', False)
 
-    set_val('mainicon', 'ico.ico')
-    set_val('view', False)  # 定位显示
-    set_val('do', False)  # 开启辅助
-    set_val('ad_view', False)  # 显示广告
-    set_val('price_view', False)  # 显示价格,控制截图
-    set_val('yanzhengma_view', False)  # 验证码放大,控制截图
-    set_val('yanzhengma_close', True)  # 关闭验证码放大窗
-    set_val('yanzhengma_find', True)  # 验证码是否找到 默认True 发现需要查找 之后变为False
-    set_val('yanzhengma_move', True)  # 是否需要移动
-    set_val('yanzhengma_hash', 0)  # 前一个验证码截图  如果变化就刷新 ，不变化就不动作
-    set_val('yanzhengma_change', True) #判定是否变化
-
-    set_val('price_on', False)  # 价格是否显示
-    set_val('price_count', 0)  # 辅助计时，正确显示价格
-    set_val('yanzhengma_count', 0)  # 辅助计时，正确显示价格
-    set_val('web_on', False)  # 监测web是否开启
-    set_val('view_time', False)  # 时间框是否开启
-    set_val('operation_show', False)  # 策略框是否开启
-    set_val('time_on', False)  # 操作面板上是否开启时间
-    set_val('a_time', time.time())  # 国拍初始时间
-    set_val('b_time', 0)  # 制作0.1秒
-    set_val('moni_minute', 29)
-    set_val('moni_second', 0)
-    set_val('chujia_time', 0)  # 出价时间
-    set_val('Username', 0)  # 用户名
-    set_val('Password', 0)  # 密码
-    set_val('Identify_code', 0)  # 密码
-    set_val('moni_on', False)  # 判断开启的是哪个窗口 ，限制同时只能开启一个
-    set_val('guopai_on', False)
-    set_val('current_moni', True) ##当前哪个WEB激活状态
-    set_val('strategy1', 53)  # 策略整数时间
-    set_val('strategy2', 0.0)  # 策略小数时间
-    set_val('strategy_on', True)  # 策略是否开启
-    set_val('strategy_repeat', False)  # 判断是否重复，避免重复进程
-    set_val('delay', False)  # 是否延迟
-    set_val('delay_time', 0.5)  # 延迟大小设置
-    set_val('login_result', False)  # 登录成功与否
-    set_val('findpos_on', True)  # 控制是否找位置
-    set_val('pricelist', [80000 + i * 100 for i in range(400)])  # 用于验证识别
-    set_val('IDnumber', 0)  # 身份证号
-    set_val('account', 0)  # 标书号
-    set_val('passwd', 0)  # 密码
-    set_val('changetime', 0)
-    set_val('one_time1', 48)  # 第一次出价加价
-    set_val('one_time2', 55)  # 第一次出价提交
-    set_val('one_real_time1', 1000000000000)  # 换算之后的出价时间
-    set_val('one_real_time2', 1000000000000)  # 换算之后的提交时间
-    set_val('one_diff', 700)  # 第一次加价幅度
-    set_val('one_delay', 0.5)  # 第一次延迟
-    set_val('one_advance', 100)  # 第一次提交提前量
-    set_val('second_time1', 48)  # 第二次次出价加价
-    set_val('second_time2', 55)  # 第二次出价提交
-    set_val('second_real_time1', 1000000000000)  # 换算之后的出价时间
-    set_val('second_real_time2', 1000000000000)  # 换算之后的提交时间
-    set_val('second_diff', 600)  # 第二次加价幅度
-    set_val('second_delay', 0.5)  # 第二次出价延迟
-    set_val('second_advance', 100)  # 第二次出价提交提前量
-    set_val('osl', [0] * 15)  # 策略容器初始化   判定+10参数+确认选项
-    set_val('chujia_on', True)  # 完成一次出价之后关闭，完成出价后关闭
-    set_val('tijiao_on', False)  # 是否需要提交,完成提交后打开
-    set_val('lowest_price', 93400)  # 最低成交价
-    set_val('own_price1', 0)  # 第一次出价
-    set_val('own_price2', 0)  # 第二次出价
-    set_val('own_price', 0)  # 当前出价
-    set_val('tijiao_OK', False)  # 表示输完验证码
-    set_val('e_on', True)  # 表示s激活tijiao_OK
-    set_val('enter_on', False)  # 表示回车激活tijiao_Ok
-    set_val('twice', False)  # 开启两次出价
-    set_val('tijiao_num', 1)  # 开启二次出价，设置为2，执行一次之后，减1
-    set_val('tijiao_one', False)  # 第一次出价之后开闭
-
-    # self.jiajia_time.SetValue(40.0)
-    # self.tijiao_time.SetValue(48.0)
-    # self.jiajia_price.SetValue(500)
-    # self.select_tijiao.SetSelection(2)
-    # self.yanchi_time.SetValue(0.0)
-    # self.jiajia_time2.SetValue(50.0)
-    # self.tijiao_time2.SetValue(55.5)
-    # self.jiajia_price2.SetValue(700)
-    # self.select_tijiao2.SetSelection(0)
-    # self.yanchi_time2.SetValue(0.5)
-    ## 保存当前的设置
-    current_setting = {
-        'jiajia_time': 40.0,
-        'tijiao_time': 48.0,
-        'jiajia_price': 500,
-        'select_tijiao': 2,
-        'yanchi_time': 0.0,
-        'jiajia_time2': 50.0,
-        'tijiao_time2': 55.5,
-        'jiajia_price2': 700,
-        'select_tijiao2': 0,
-        'yanchi_time2': 0.5,
-
-    }
-
-    set_val('current_setting', current_setting)
-
-
-
-
-    set_val('confirm_on', False)  # 是否需要确认
-    set_val('confirm_need', False)  # 启动确认识别
-    set_val('confirm_one', False)  # 限制只产生一次进程
-    set_val('refresh_on', False)  # 是否需要刷新
-    set_val('refresh_need', False)  # 启动刷新识别
-    set_val('refresh_one', False)  # 限制只产生一次进程
-    set_val('chujia_interval', False)  # 出价间隔
-    set_val('tijiao_interval', False)  # 提交间隔
-    set_val('query_interval', False)  # 间隔
-    set_val('query_on', False)  # 是否处于查询状态
-
-    set_val('autotime_on', True)  #是否处理自动时间同步状态
 
 
 
@@ -219,6 +107,7 @@ def init_val():
 def init_url():
     set_val('remotetime_url', "https://hupai.pro/api/bid/get_remotetime")
     set_val('host_ali', "https://hupai.pro")
+    # set_val('host_ali', "http://192.168.3.20:3000")
     set_val('url_51', "http://moni.51hupai.org/")
     set_val('url_dianxin', "https://www.baidu.com")  # 电信
     set_val('url_nodianxin', "http://moni.51hupai.org/")  # 非电信
@@ -242,9 +131,15 @@ def init_id():
 
 def init_size():
     ##webframe相关
-    set_val('websize', [1200, 726])  # 浏览器大小
+    set_val('websize', [1200, 700])  # webframe大小
     set_val('webview_pos', [-8, -16])  # WEB在 WEBVIEW里的相对位置
     set_val('htmlsize', [902 - 5, 768])
+    set_val('htmlpanel_size', (892, 600))
+    set_val('htmlpanel_pos', (0, 30))
+    set_val('bottomestatusbarsanel_size', (892, 30))
+    set_val('bottomestatusbarsanel_pos', (0, 630))
+
+
     websize = get_val('websize')
     set_val('Pxy', pg.size())  # 分辨率
     Pxy = get_val('Pxy')
@@ -361,3 +256,152 @@ def init_size():
     set_val('impos_yanzhengma', np.array(nptemp))  # 验证码
     set_val('imgpos_yanzhengmaconfirm', np.array(nptemp))  # 验证码确认键
     set_val('imgpos_currenttime', np.array(nptemp))  # 当前时间
+
+def init_strategy():
+    set_val('mainicon', 'ico.ico')
+    set_val('view', False)  # 定位显示
+    set_val('do', False)  # 开启辅助
+    set_val('ad_view', False)  # 显示广告
+    set_val('price_view', False)  # 显示价格,控制截图
+    set_val('yanzhengma_view', False)  # 验证码放大,控制截图
+    set_val('yanzhengma_close', True)  # 关闭验证码放大窗
+    set_val('yanzhengma_find', True)  # 验证码是否找到 默认True 发现需要查找 之后变为False
+    set_val('yanzhengma_move', True)  # 是否需要移动
+    set_val('yanzhengma_hash', 0)  # 前一个验证码截图  如果变化就刷新 ，不变化就不动作
+    set_val('yanzhengma_change', True) #判定是否变化
+
+    set_val('price_on', False)  # 价格是否显示
+    set_val('price_count', 0)  # 辅助计时，正确显示价格
+    set_val('yanzhengma_count', 0)  # 辅助计时，正确显示价格
+    set_val('web_on', False)  # 监测web是否开启
+    set_val('view_time', False)  # 时间框是否开启
+    set_val('operation_show', False)  # 策略框是否开启
+    set_val('time_on', False)  # 操作面板上是否开启时间
+    set_val('a_time', time.time())  # 国拍初始时间
+    set_val('b_time', 0)  # 制作0.1秒
+    set_val('moni_minute', 29)
+    set_val('moni_second', 0)
+    set_val('chujia_time', 0)  # 出价时间
+
+    set_val('moni_on', False)  # 判断开启的是哪个窗口 ，限制同时只能开启一个
+    set_val('guopai_on', False)
+    set_val('current_moni', True) ##当前哪个WEB激活状态
+    set_val('strategy1', 53)  # 策略整数时间
+    set_val('strategy2', 0.0)  # 策略小数时间
+    set_val('strategy_on', True)  # 策略是否开启
+    set_val('strategy_repeat', False)  # 判断是否重复，避免重复进程
+    set_val('delay', False)  # 是否延迟
+    set_val('delay_time', 0.5)  # 延迟大小设置
+    set_val('login_result', False)  # 登录成功与否
+    set_val('findpos_on', True)  # 控制是否找位置
+    set_val('pricelist', [80000 + i * 100 for i in range(400)])  # 用于验证识别
+    set_val('IDnumber', 0)  # 身份证号
+    set_val('account', 0)  # 标书号
+    set_val('passwd', 0)  # 密码
+    set_val('changetime', 0)
+    set_val('one_time1', 48)  # 第一次出价加价
+    set_val('one_time2', 55)  # 第一次出价提交
+    set_val('one_real_time1', 1000000000000)  # 换算之后的出价时间
+    set_val('one_real_time2', 1000000000000)  # 换算之后的提交时间
+    set_val('one_diff', 700)  # 第一次加价幅度
+    set_val('one_delay', 0.5)  # 第一次延迟
+    set_val('one_advance', 100)  # 第一次提交提前量
+    set_val('second_time1', 48)  # 第二次次出价加价
+    set_val('second_time2', 55)  # 第二次出价提交
+    set_val('second_real_time1', 1000000000000)  # 换算之后的出价时间
+    set_val('second_real_time2', 1000000000000)  # 换算之后的提交时间
+    set_val('second_diff', 600)  # 第二次加价幅度
+    set_val('second_delay', 0.5)  # 第二次出价延迟
+    set_val('second_advance', 100)  # 第二次出价提交提前量
+    set_val('osl', [0] * 15)  # 策略容器初始化   判定+10参数+确认选项
+    set_val('chujia_on', True)  # 完成一次出价之后关闭，完成出价后关闭
+    set_val('tijiao_on', False)  # 是否需要提交,完成提交后打开
+    set_val('lowest_price', 93400)  # 最低成交价
+    set_val('own_price1', 0)  # 第一次出价
+    set_val('own_price2', 0)  # 第二次出价
+    set_val('own_price', 0)  # 当前出价
+    set_val('tijiao_OK', False)  # 表示输完验证码
+    set_val('e_on', True)  # 表示s激活tijiao_OK
+    set_val('enter_on', False)  # 表示回车激活tijiao_Ok
+    set_val('twice', False)  # 开启两次出价
+    set_val('tijiao_num', 1)  # 开启二次出价，设置为2，执行一次之后，减1
+    set_val('tijiao_one', False)  # 第一次出价之后开闭
+
+    # self.jiajia_time.SetValue(40.0)
+    # self.tijiao_time.SetValue(48.0)
+    # self.jiajia_price.SetValue(500)
+    # self.select_tijiao.SetSelection(2)
+    # self.yanchi_time.SetValue(0.0)
+    # self.jiajia_time2.SetValue(50.0)
+    # self.tijiao_time2.SetValue(55.5)
+    # self.jiajia_price2.SetValue(700)
+    # self.select_tijiao2.SetSelection(0)
+    # self.yanchi_time2.SetValue(0.5)
+    ## 保存当前的设置
+    current_setting = {
+        'jiajia_time': 40.0,
+        'tijiao_time': 48.0,
+        'jiajia_price': 500,
+        'select_tijiao': 2,
+        'yanchi_time': 0.0,
+        'jiajia_time2': 50.0,
+        'tijiao_time2': 55.5,
+        'jiajia_price2': 700,
+        'select_tijiao2': 0,
+        'yanchi_time2': 0.5,
+
+    }
+
+    set_val('current_setting', current_setting)
+
+    set_val('confirm_on', False)  # 是否需要确认
+    set_val('confirm_need', False)  # 启动确认识别
+    set_val('confirm_one', False)  # 限制只产生一次进程
+    set_val('refresh_on', False)  # 是否需要刷新
+    set_val('refresh_need', False)  # 启动刷新识别
+    set_val('refresh_one', False)  # 限制只产生一次进程
+    set_val('chujia_interval', False)  # 出价间隔
+    set_val('tijiao_interval', False)  # 提交间隔
+    set_val('query_interval', False)  # 间隔
+    set_val('query_on', False)  # 是否处于查询状态
+
+    set_val('autotime_on', True)  #是否处理自动时间同步状态
+
+
+
+
+def init_account():
+    set_val('activate_status', 0)   ##0: 未激活
+    set_val('strategy_name', '默认策略') #策略名称
+    set_val('strategy_description', '单枪   48秒加700截止56秒提前100') #策略名称
+
+    set_val('current_strategy_name', '') #当前策略
+    set_val('current_strategy_status', 0)    ##当前所处状态
+
+    set_val('Username', 0)  # 用户名
+    set_val('Password', 0)  # 密码
+    set_val('Identify_code', 0)  # 密码
+
+
+def init_status():
+    set_val('register_label', '未激活')
+    set_val('netspeed_label', '网速: ')
+    set_val('strategy_label', '策略: ')
+    set_val('currenttime_label', '当前时间： ')
+
+    set_val('current_pricestatus_label', '等待第二次出价')
+    one_time1 = get_val('one_time1')
+    one_diff = get_val('one_diff')
+    current_pricestatus = '{0}秒提前{1}'.format(one_time1, one_diff)
+    set_val('current_pricestatus', current_pricestatus)
+
+
+
+
+
+
+
+
+
+
+

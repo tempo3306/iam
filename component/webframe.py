@@ -13,7 +13,14 @@ import wx.html2 as webview
 from component.OperationFrame import StatusPanel, StrategyPanel
 from wx.lib.buttons import GenButton as wxButton
 from component.imgcut import findpos, timeset
+from component.YanzhengmaFrame import YanzhengmaFrame
+from component.imgcut import cut_pic, find_yan_confirm
+import imagehash
+from PIL import Image, ImageGrab
 
+
+import logging
+logger = logging.getLogger()
 
 class ButtonPanel(wx.Panel):
     def __init__(self, parent, webstatus_label, moni):
@@ -23,7 +30,7 @@ class ButtonPanel(wx.Panel):
         self.statusfont = wx.Font(18, wx.ROMAN, wx.NORMAL, wx.FONTWEIGHT_BOLD, False)
         ##时间同步功能
         if not moni:
-            self.remotetime_button = wxButton(self, label='同步服务器时间', size=(90, 25), pos=(698,2))
+            self.remotetime_button = wxButton(self, label='同步服务器时间', size=(90, 25), pos=(698, 2))
             self.remotetime_button.SetBackgroundColour("#ACD6ff")
             self.remotetime_button.Bind(wx.EVT_BUTTON, self.getremotetime)
 
@@ -56,11 +63,11 @@ class ButtonPanel(wx.Panel):
 
         self.timer = wx.Timer(self)  # 创建定时器
         self.Bind(wx.EVT_TIMER, self.OnTimer, self.timer)  # 绑定一个定时器事件
-        self.timer.Start(1000)  # 设定时间间隔
+        self.timer.Start(100)  # 设定时间间隔
 
         self.autotime_timer = wx.Timer(self)  # 创建定时器
         self.Bind(wx.EVT_TIMER, self.autotime_set_timer, self.autotime_timer)  # 绑定一个定时器事件
-        self.autotime_timer.Start(1500)  # 设定时间间隔
+        self.autotime_timer.Start(1000)  # 设定时间间隔
 
         # 没边框按钮
         # from wx.lib.buttons import GenButton as wxButton
@@ -83,10 +90,10 @@ class ButtonPanel(wx.Panel):
         if moni_on:
             moni_second = get_val('moni_second')  # 取得全局变量的值
             moni_s = int(moni_second)  # 整数化
-            if moni_second <10:
-                st = "当前时间：%s:%s:0%s" % (11, 29, moni_s)
+            if moni_second < 10:
+                st = "国拍时间：%s:%s:0%s" % (11, 29, moni_s)
             else:
-                st = "当前时间：%s:%s:%s" % (11, 29, moni_s)
+                st = "国拍时间：%s:%s:%s" % (11, 29, moni_s)
             w, h = self.GetClientSize()
             dc.SetBackground(wx.Brush(self.GetBackgroundColour()))
             dc.Clear()
@@ -98,7 +105,7 @@ class ButtonPanel(wx.Panel):
             time_local = time.localtime(a_time)
             st = time.strftime("%H:%M:%S", time_local)  # + '.' + str(b_time)
             # st="%s:%s:%s"%(b_time[0],b_time[1],b_time[2])
-            st = '当前时间：%s' %st
+            st = '国拍时间：%s' % st
             w, h = self.GetClientSize()
             dc.SetBackground(wx.Brush(self.GetBackgroundColour()))
             dc.Clear()
@@ -106,17 +113,14 @@ class ButtonPanel(wx.Panel):
             tw, th = dc.GetTextExtent(st)
             dc.DrawText(st, (w - tw) / 2, (h) / 2 - th / 2)
 
-
     def OnTimer(self, event):  # 显示时间事件处理函数
         dc = wx.BufferedDC(wx.ClientDC(self))  # ClientDC客户区  ，BufferedDC双缓冲绘图设备
         self.Modify(dc)
-
 
     def autotime_set_timer(self, event):
         autotime_on = get_val('autotime_on')
         if autotime_on:
             self.timeautoajust(event)
-
 
     def OnPaint(self, evt):
         dc = wx.BufferedPaintDC(self)  # 用于重绘事件
@@ -156,16 +160,17 @@ class ButtonPanel(wx.Panel):
             self.webstatus.SetLabel(dianxin_webstatus_label)
 
 
-
 class HtmlPanel(wx.Panel):
     def __init__(self, parent, moni):
-        wx.Panel.__init__(self, parent, size=(892, 700), pos=(0, 30), style=wx.BORDER_NONE)
+        htmlpanel_size = get_val('htmlpanel_size')
+        htmlpanel_pos = get_val('htmlpanel_pos')
+        wx.Panel.__init__(self, parent, size=htmlpanel_size, pos=htmlpanel_pos, style=wx.BORDER_NONE)
         self.frame = self.GetTopLevelParent()
         self.titleBase = self.frame.GetTitle()
         htmlsize = get_val('htmlsize')
         webview_pos = get_val('webview_pos')
         self.webview = webview.WebView.New(self, size=(htmlsize[0], htmlsize[1]), pos=webview_pos,
-                                                     style=wx.BORDER_NONE)
+                                           style=wx.BORDER_NONE)
         url_moni = get_val('url_moni')
         url_dianxin = get_val('url_dianxin')
         url_nodianxin = get_val('url_nodianxin')
@@ -177,24 +182,299 @@ class HtmlPanel(wx.Panel):
         else:
             self.webview.LoadURL(url_nodianxin)
 
+        self.timer = wx.Timer(self)  # 创建定时器
+        self.Bind(wx.EVT_TIMER, self.OnTimer, self.timer)  # 绑定一个定时器事件
+        self.timer.Start(100)  # 设定时间间隔
+
+        self.registered_bitmap = wx.Bitmap('icons/registered.png')
+
+    def OnTimer(self, event):  # 显示时间事件处理函数
+        self.Modify(event)
+
+    def Modify(self, event):  # 更新
+        dc = wx.BufferedDC(wx.ClientDC(self))  # ClientDC客户区  ，BufferedDC双缓冲绘图设备
+        dc.DrawBitmap(self.registered_bitmap, 300, 300, True)
+
+
+
+class BottomeStatusbarPanel(wx.Panel):
+    def __init__(self, parent, moni):
+        bottomestatusbarsanel_size = get_val('bottomestatusbarsanel_size')
+        bottomestatusbarsanel_pos = get_val('bottomestatusbarsanel_pos')
+        wx.Panel.__init__(self, parent, size=bottomestatusbarsanel_size, pos=bottomestatusbarsanel_pos,
+                          style=wx.BORDER_NONE)
+
+        self.textfont = wx.Font(12, wx.ROMAN, wx.NORMAL, wx.NORMAL, False)
+
+
+        self.timer = wx.Timer(self)  # 创建定时器
+        self.Bind(wx.EVT_TIMER, self.OnTimer, self.timer)  # 绑定一个定时器事件
+        self.timer.Start(100)  # 设定时间间隔
+
+        self.registered_bitmap = wx.Bitmap('icons/registered.png')
+        self.unregistered_bitmap = wx.Bitmap('icons/unregistered.png')
+        self.slow_bitmap = wx.Bitmap('icons/slow.png')
+        self.medium_bitmap = wx.Bitmap('icons/medium.png')
+        self.quick_bitmap = wx.Bitmap('icons/quick.png')
+        self.veryquick_bitmap = wx.Bitmap('icons/veryquick.png')
+
+
+
+    def Modify(self, event):  # 更新
+        activate_status = get_val('activate_status')
+        now_ping = get_val('now_ping')
+        current_strategy_name = get_val('current_strategy_name')
+        dc = wx.BufferedDC(wx.ClientDC(self))  # ClientDC客户区  ，BufferedDC双缓冲绘图设备
+        w, h = self.GetClientSize()
+        dc.SetBackground(wx.Brush(self.GetBackgroundColour()))  ##保存刷新不闪烁
+        dc.Clear()
+        register_label = get_val("register_label")
+        dc.SetFont(self.textfont)
+        tw, th = dc.GetTextExtent(register_label)
+        dc.DrawText(register_label, 35, (h) / 2 - th / 2)
+        dc.DrawBitmap(self.registered_bitmap, 2, 0, True)
+
+        netspeed_label = get_val("netspeed_label")
+        dc.SetFont(self.textfont)
+        tw, th = dc.GetTextExtent(netspeed_label)
+        dc.DrawText(netspeed_label, 806, (h) / 2 - th / 2)
+        dc.DrawBitmap(self.medium_bitmap, 850, -3, True)
+
+        strategy_label = get_val('strategy_label')
+        strategy_name = get_val('strategy_name')
+        strategy_description = get_val('strategy_description')
+        text = "{0}  {1}         {2}".format(strategy_label, strategy_name, strategy_description)
+        dc.SetFont(self.textfont)
+        tw, th = dc.GetTextExtent(text)
+        dc.DrawText(text, 270, (h) / 2 - th / 2)
+
+    def OnTimer(self, event):  # 显示时间事件处理函数
+        self.Modify(event)
+
+
+class CurrentStatusFrame(wx.Frame):
+    def __init__(self, parent):
+        super(CurrentStatusFrame, self).__init__(parent,  size=(235,150), pos=(315, 346),
+                                                 style=wx.FRAME_TOOL_WINDOW  | wx.FRAME_FLOAT_ON_PARENT)
+        self.currentstatuspanel = CurrentStatusPanel(self)
+
+class CurrentStatusPanel(wx.Panel):
+    def __init__(self, parent):
+        super(CurrentStatusPanel, self).__init__(parent, size=(235,150)
+                                                 )
+        self.SetBackgroundColour("#ACD6ff")
+        self.timefont = wx.Font(12, wx.ROMAN, wx.NORMAL, wx.NORMAL, False)
+
+        self.statustimer = wx.Timer(self)
+        self.Bind(wx.EVT_TIMER, self.OnTimer, self.statustimer)  # 绑定一个定时器事件
+        self.statustimer.Start(100)  # 设定时间间隔
+
+    def Modify(self, event):  # 更新
+        ##当前时间label
+        currenttime_label = get_val("currenttime_label")
+        moni_on = get_val("moni_on")
+        dc = wx.BufferedDC(wx.ClientDC(self))  # ClientDC客户区  ，BufferedDC双缓冲绘图设备
+        if moni_on:
+            moni_second = get_val('moni_second')  # 取得全局变量的值
+            moni_s = int(moni_second)  # 整数化
+            if moni_second < 10:
+                st = "{0} {1}:{2}:0{3}".format(currenttime_label, 11, 29, moni_s)
+            else:
+                st = "{0} {1}:{2}:{3}".format(currenttime_label, 11, 29, moni_s)
+            w, h = self.GetClientSize()
+            dc.SetBackground(wx.Brush(self.GetBackgroundColour()))
+            dc.Clear()
+            dc.SetFont(self.timefont)
+            tw, th = dc.GetTextExtent(st)
+            dc.DrawText(st, 10, 10)
+        else:
+            a_time = get_val('a_time')
+            time_local = time.localtime(a_time)
+            st = time.strftime("%H:%M:%S", time_local)  # + '.' + str(b_time)
+            # st="%s:%s:%s"%(b_time[0],b_time[1],b_time[2])
+            st = '{0}{1}'.format(currenttime_label, st)
+            w, h = self.GetClientSize()
+            dc.SetBackground(wx.Brush(self.GetBackgroundColour()))
+            dc.Clear()
+            dc.SetFont(self.timefont)
+            tw, th = dc.GetTextExtent(st)
+            dc.DrawText(st, 10, 10)
+
+        ##第二行  出价情况
+        userprice = get_val('userprice')
+        tijiao_on = get_val('tijiao_on')
+        usertime = get_val('usertime')
+        moni_on = get_val('moni_on')
+
+        current_pricestatus_label = get_val('current_pricestatus_label')
+        current_pricestatus = get_val('current_pricestatus')
+        # print('current_pricestatus', current_pricestatus)
+
+        if userprice and tijiao_on:  ##提交状态
+            current_pricestatus_label = get_val('current_pricestatus_label')
+            current_pricestatus = get_val('current_pricestatus')
+            pricetext = "{0}  {1}".format(current_pricestatus_label, current_pricestatus)
+            ##第三行  剩余状态
+            # 显示截止时间与当前时间相差
+            max_price = get_val('lowest_price') + 300
+            diff_price = int(userprice) - max_price
+            # 显示截止时间与当前时间相差
+            if moni_on:
+                currenttime = get_val('moni_second')
+                timediff = float(usertime) - float(currenttime)
+            else:
+                currenttime = get_val('a_time')
+                timediff = float(usertime) - float(currenttime)
+            statustext = "剩余{0}秒  差价{1}".format(timediff, diff_price)
+
+            dc.DrawText(pricetext, 10, 50)
+            dc.DrawText(statustext, 10, 90)
+        else:
+            current_pricestatus_label = get_val('current_pricestatus_label')
+            current_pricestatus = get_val('current_pricestatus')
+            pricetext = "{0}  {1}".format(current_pricestatus_label, current_pricestatus)
+
+            # 显示截止时间与当前时间相差
+            if moni_on:
+                currenttime = get_val('moni_second')
+                timediff = float(usertime) - float(currenttime)
+            else:
+                currenttime = get_val('a_time')
+                timediff = float(usertime) - float(currenttime)
+            statustext = "剩余{0:.1f}秒  差价{1}".format(timediff, '-')
+            dc.DrawText(pricetext, 10, 50)
+            dc.DrawText(statustext, 10, 90)
+
+
+
+    def OnTimer(self, event):  # 显示时间事件处理函数
+        self.Modify(event)
 
 
 class MoniWebFrame(wx.Frame):
-    def __init__(self,px,py,  id, name, tablabel):  # name:窗口显示名称
+    def __init__(self, px, py, id, name, tablabel):  # name:窗口显示名称
         websize = get_val('websize')
-        wx.Frame.__init__(self, None, id, name, size=(websize[0], websize[1]), pos=[px, py-10],
-                          style=wx.CAPTION | wx.CLOSE_BOX)
+        wx.Frame.__init__(self, None, id, name, size=(websize[0], websize[1]), pos=[px, py - 10],
+                        )
+                          # style=wx.CAPTION | wx.CLOSE_BOX)
         ##LOGO
         mainicon = get_val('mainicon')
         self.icon = wx.Icon(mainicon, wx.BITMAP_TYPE_ICO)
         self.SetIcon(self.icon)
 
         self.Bind(wx.EVT_CLOSE, self.OnClose)
-        self.htmlpanel = HtmlPanel(self, True) ## moni: True
-
+        self.htmlpanel = HtmlPanel(self, True)  ## moni: True
         webstatus_label = get_val('moni_webstatus_label')
         self.buttonpanel = ButtonPanel(self, webstatus_label, True)  ##moni: True
         self.operationpanel = OperationPanel(self, tablabel)
+        self.bottomstatusbarpanel = BottomeStatusbarPanel(self, True)
+
+        self.currentstatusframe = CurrentStatusFrame(self)
+        self.currentstatusframe.Show(True)
+        # self.currentstatuspanel = CurrentStatusPanel(self)
+        Yanzhengmasize = get_val('Yanzhengmasize')
+        self.yanzhengmaframe = YanzhengmaFrame(Yanzhengmasize)
+
+        self.Bind(wx.EVT_MOVE, self.childmove)
+        self.Bind(wx.EVT_ICONIZE, self.iconize)
+
+    #     self.statustimer = wx.Timer(self)
+    #     self.Bind(wx.EVT_TIMER, self.OnTimer, self.statustimer)  # 绑定一个定时器事件
+    #     self.statustimer.Start(100)  # 设定时间间隔
+    #
+    # def OnTimer(self, event):  # 显示时间事件处理函数
+    #     if self.IsIconized():
+    #         self.currentstatusframe.Show(False)
+    #     else:
+    #         self.currentstatusframe.Show(True)
+
+    def iconize(self,event):
+        self.currentstatusframe.Show(False)
+        event.Skip()
+
+
+    def childmove(self, event):
+        x, y = self.Position
+        self.currentstatusframe.MoveXY(x+150, 300+y)
+        Pos_yanzhengmaframe = get_val('Pos_yanzhengmaframe')
+        try:
+            self.yanzhengmaframe.Move(Pos_yanzhengmaframe)  # 移动到新位置
+            set_val('yanzhengma_move', False)  # 无需动作
+        except:
+            logger.exception('this is an exception message')
+
+
+    def Price_view(self, event):
+        Pricesize = get_val('Pricesize')
+        yanzhengma_move = get_val('yanzhengma_move')
+        Pos_price = get_val('Pos_price')
+        Pos_yanzhengmaframe = get_val('Pos_yanzhengmaframe')
+        if yanzhengma_move:
+            yan = self.yanzhengmaframe
+            if yan:
+                try:
+                    yan.Move(Pos_yanzhengmaframe)  # 移动到新位置
+                    set_val('yanzhengma_move', False)  # 无需动作
+                except:
+                    logger.exception('this is an exception message')
+
+        self.timer1 = wx.Timer(self)
+        self.Bind(wx.EVT_TIMER, self.Price_view, self.timer1)  # 绑定一个定时器事件，主判断
+        self.timer1.Start(35)  # 设定时间间隔
+
+        yanzhengma_count = get_val("yanzhengma_count")
+        yanzhengma_close = get_val("yanzhengma_close")
+
+        if yanzhengma_count >= 5 and not yanzhengma_close:  # 0.5秒之后没有确认触发关闭验证码
+            find_yan_confirm()
+        yanzhengma_close = get_val("yanzhengma_close")
+
+        if yanzhengma_close:
+            try:
+                self.yanzhengmaframe.Show(False)
+            except:
+                logger.exception('this is an exception message')
+
+        yanzhengma_view = get_val('yanzhengma_view')
+        yanzhengma_change = get_val('yanzhengma_change')  # 默认是True
+        yanzhengma_view = get_val('yanzhengma_view')
+        imgpos_yanzhengma = get_val('imgpos_yanzhengma')
+        Yanzhengmasize = get_val('Yanzhengmasize')
+        yanzhengma_hash = get_val('yanzhengma_hash')
+
+        ##验证码放大是否需要刷新
+        if yanzhengma_view:
+            set_val('yanzhengma_close', False)
+            path = get_val('path')
+            yanpath = path + "\\yanzhengma.png"
+            cut_pic(imgpos_yanzhengma, Yanzhengmasize, yanpath)  # 直接调用得到 png 保存图片
+            yanzhengma_img = Image.open(yanpath)
+            set_val('yanzhengma_img', yanzhengma_img)
+            yanzhengma_img = get_val('yanzhengma_img')
+            yan_hash = imagehash.dhash(yanzhengma_img)
+            if not yanzhengma_hash:  # 第一次
+                set_val('yanzhengma_hash', yan_hash)
+            elif yan_hash == yanzhengma_hash:  # 验证码没变化
+                set_val('yanzhengma_change', False)
+            else:
+                set_val('yanzhengma_hash', yan_hash)
+                set_val('yanzhengma_change', True)  # 发生变化了
+
+        if yanzhengma_view:
+            if not yanzhengma_change:
+                pass
+            else:
+                try:
+                    yanpath = get_val('yanpath')
+                    yan = self.yanzhengmaframe
+                    yan.ShowImage(yanpath)
+                    yan.Show()
+                except:  # 找不到的情况下也要重新创建
+                    logger.exception('this is an exception message')
+
+                finally:
+                    pass
+
 
     def OnClose(self, event):
         set_val('web_on', False)
@@ -207,13 +487,12 @@ class MoniWebFrame(wx.Frame):
         topframe.Show(True)
 
 
-
 ## moni  51    国拍52
 class WebFrame(wx.Frame):
     def __init__(self, px, py, id, name, tablabel):  # name:窗口显示名称
         websize = get_val('websize')
 
-        wx.Frame.__init__(self, None, id, name, size=(websize[0], websize[1]), pos=[px, py-10],
+        wx.Frame.__init__(self, None, id, name, size=(websize[0], websize[1]), pos=[px, py - 10],
                           style=wx.CAPTION | wx.CLOSE_BOX)
         ##LOGO
         mainicon = get_val('mainicon')
@@ -233,8 +512,7 @@ class WebFrame(wx.Frame):
         self.buttonpanel = ButtonPanel(self, webstatus_label, False)
         self.operationpanel = OperationPanel(self, tablabel)
         # pub.subscribe(self.Close2, "close guopai")  # 打开非电信
-
-
+        self.bottomstatusbarpanel = BottomeStatusbarPanel(self, False)
 
     def createStatusBar(self):
         self.statusbar = IcStatusBar(self)

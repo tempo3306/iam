@@ -69,7 +69,7 @@ def Delete():
     print(b-a)
 
 def many_delete():
-    for i in range(20):
+    for i in range(8):
         Delete()
 
 
@@ -80,11 +80,11 @@ def OnClick_Tijiao():
     twice = get_val('twice')
     set_val('confirm_need', True)
     if tijiao_num == 1:
+        if twice:
+            set_val('tijiao_num', 2)
         timer = threading.Timer(one_delay, Tijiao)
         timer.start()
         set_val('tijiao_on', False)
-        if twice:
-            set_val('tijiao_num', 2)
     elif tijiao_num == 2:
         set_val('tijiao_num', 0)
         timer = threading.Timer(second_delay, Tijiao)
@@ -104,6 +104,22 @@ def Tijiao():
     set_val('tijiao_OK', False)  # 需要按E解锁，自动提交
     set_val('chujia_on', True)  # 激活自动
     confirm_one = get_val('confirm_one')
+
+    tijiao_num = get_val('tijiao_num')
+    if tijiao_num == 2:
+        set_val('current_pricestatus_label', '等待第三次出价')
+        second_time1 = get_val('second_time1')
+        second_diff = get_val('second_diff')
+        current_pricestatus = '{0}秒加{1}'.format(second_time1, second_diff)
+        set_val('current_pricestatus', current_pricestatus)
+
+    elif tijiao_num == 0:
+        set_val('current_pricestatus_label', '等待第二次出价')
+        one_time1 = get_val('one_time1')
+        one_diff = get_val('one_diff')
+        current_pricestatus = '{0}秒加{1}'.format(one_time1, one_diff)
+        set_val('current_pricestatus', current_pricestatus)
+
     if not confirm_one:  # 激活确认
         pass
 
@@ -188,7 +204,6 @@ def OnClick_chujia():
     second_diff = get_val('second_diff')
     twice = get_val('twice')
 
-
     if tijiao_num == 1:
         own_price1 = lowest_price + one_diff
         set_val('own_price1', own_price1)
@@ -201,8 +216,16 @@ def OnClick_chujia():
         set_val('chujia_interval', False)  # 间隔结束
         ##提交关闭
         set_val('tijiao_OK', False)
-        ##5秒后调用取消出价
-        timer = threading.Timer(6, Cancel_chujia)
+
+        set_val('current_pricestatus_label', '等待第二次提交')
+        one_time2 = get_val('one_time2')
+        one_advance = get_val('one_advance')
+        print(one_advance)
+        current_pricestatus = '{0}秒提前{1}'.format(one_time2, one_advance)
+        set_val('current_pricestatus', current_pricestatus)
+
+        ##5.1秒后调用取消出价
+        timer = threading.Timer(5.1, Cancel_chujia)
         timer.start()
 
     elif tijiao_num == 2 and twice:
@@ -211,6 +234,12 @@ def OnClick_chujia():
         moni_on =  get_val('moni_on')
         setText(str(own_price2))
         selfdelete()
+
+        set_val('current_pricestatus_label', '等待第三次提交')
+        second_time2 = get_val('second_time2')
+        second_advance = get_val('second_advance')
+        current_pricestatus = '{0}秒提前{1}'.format(second_time2, second_advance)
+        set_val('current_pricestatus', current_pricestatus)
 
         Click(Position[1][0], Position[1][1])
         Click(Position[5][0], Position[5][1])
@@ -230,8 +259,8 @@ def OnClick_chujia():
 def Cancel_chujia():
     tijiao_on = get_val('tijiao_on')
     yanzhengma_find = get_val('yanzhengma_find')
-    print("cancel+触发")
-    if tijiao_on and not yanzhengma_find:
+    tijiao_ok = get_val('tijiao_ok')
+    if tijiao_on and not yanzhengma_find and not tijiao_ok:
         print("触发2")
         Position = get_val('Position')
         Click(Position[7][0], Position[7][1])  # 取消
@@ -262,18 +291,24 @@ def Smart_ajust_chujia(price):
 
 ##测试用
 def Cancel_chujia_test():
+    px, py = pg.position()
+    print(px, py)
     Position = get_val('Position')
-    Click(Position[7][0], Position[7][1])  # 取消
-    own_price = get_val('own_price1')
-    setText(str(own_price))
-    selfdelete()
-    Click(Position[1][0], Position[1][1])
-    Click(Position[5][0], Position[5][1])
-    # 验证码放大打开
-    set_val('yanzhengma_count', 0)  # 计数器，制造延迟
-    set_val('yanzhengma_view', True)  # 打开验证码放大器
-    ##提交关闭
-    set_val('tijiao_OK', False)
+
+    print (Position[6][0], Position[6][1])
+
+    # Position = get_val('Position')
+    # Click(Position[7][0], Position[7][1])  # 取消
+    # own_price = get_val('own_price1')
+    # setText(str(own_price))
+    # selfdelete()
+    # Click(Position[1][0], Position[1][1])
+    # Click(Position[5][0], Position[5][1])
+    # # 验证码放大打开
+    # set_val('yanzhengma_count', 0)  # 计数器，制造延迟
+    # set_val('yanzhengma_view', True)  # 打开验证码放大器
+    # ##提交关闭
+    # set_val('tijiao_OK', False)
 
 def OnH_chujia():
     moni_on = get_val('moni_on')
@@ -312,7 +347,7 @@ def OnH_guopai_chujia():
 def selfdelete():
     Position = get_val('Position')
     # Click2(Position[6][0], Position[6][1])
-    Click2(Position[6][0]+18, Position[6][1])
+    Click2(Position[6][0], Position[6][1])
     many_delete()
     Paste()  # 真粘贴
 
@@ -339,11 +374,7 @@ def OnClick_Backspace():
 
 
 def tijiao_ok():
-    tijiao_OK = get_val('tijiao_OK')
-    refresh_need = get_val('refresh_need')
     tijiao_on = get_val('tijiao_on')
-    yanzhengma_close = get_val('yanzhengma_close')
-    yanzhengma_view = get_val('yanzhengma_view')
     e_on = get_val('e_on')
     if e_on and tijiao_on:
         print("tijiao_ok")
@@ -353,10 +384,6 @@ def tijiao_ok():
 
 
 def tijiao_ok2():
-    tijiao_OK = get_val('tijiao_OK')
-    refresh_need = get_val('refresh_need')
-    yanzhengma_close = get_val('yanzhengma_close')
-    yanzhengma_view = get_val('yanzhengma_view')
     enter_on = get_val('enter_on')
     tijiao_on = get_val('tijiao_on')
     if enter_on and tijiao_on:

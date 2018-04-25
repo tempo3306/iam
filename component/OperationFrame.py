@@ -9,7 +9,8 @@ import time
 from component.timeFrame import TimeFrame, MoniTimeFrame  # 时间窗口
 from component.YanzhengmaFrame import YanzhengmaFrame  # 验证码放大窗口
 from component.imgcut import cut_pic, find_yan_confirm
-import pickle, os, imagehash
+import pickle
+import  os
 from component.variable import set_val, get_val
 from component.imgcut import findpos, timeset
 from wx.lib.pubsub import pub
@@ -410,6 +411,7 @@ class AccountPanel(wx.Panel):
 class StrategyPanel(wx.Panel):
     def __init__(self, parent):
         wx.Panel.__init__(self, parent=parent)
+        self.parent = parent
         one_time1 = get_val('one_time1')
         one_time2 = get_val('one_time2')
         second_time1 = get_val('second_time1')
@@ -419,9 +421,7 @@ class StrategyPanel(wx.Panel):
         set_val('one_real_time2', self.gettime(one_time2))
         set_val('second_real_time1', self.gettime(second_time1))
         set_val('second_real_time2', self.gettime(second_time2))
-        self.timer1 = wx.Timer(self)
-        self.Bind(wx.EVT_TIMER, self.Price_view, self.timer1)  # 绑定一个定时器事件，主判断
-        self.timer1.Start(35)  # 设定时间间隔
+
 
         ## 换成线程处理
         # self.timer2 = wx.Timer(self)
@@ -569,82 +569,8 @@ class StrategyPanel(wx.Panel):
         self.operationtimer = wx.Timer(self)
         self.Bind(wx.EVT_TIMER, self.opt, self.operationtimer)
         self.operationtimer.Start(1000)
-        self.yanzhengmaframe = YanzhengmaFrame(Yanzhengmasize)
 
-    def Price_view(self, event):
-        Pricesize = get_val('Pricesize')
-        yanzhengma_move = get_val('yanzhengma_move')
-        Pos_price = get_val('Pos_price')
-        Pos_yanzhengmaframe = get_val('Pos_yanzhengmaframe')
-        if yanzhengma_move:
-            yan = self.FindWindowById(18)
-            if yan:
-                try:
-                    yan.Move(Pos_yanzhengmaframe)  # 移动到新位置
-                    set_val('yanzhengma_move', False)  # 无需动作
-                except:
-                    logger.exception('this is an exception message')
 
-        price_view = get_val('price_view')
-        price_count = get_val('price_count')
-        if price_view and price_count >= 4:
-            self.Screen_shot(Pos_price, Pricesize, "userprice.png")
-            set_val('price_view', False)
-            set_val('price_on', True)
-
-        yanzhengma_count = get_val("yanzhengma_count")
-        yanzhengma_close = get_val("yanzhengma_close")
-
-        if yanzhengma_count >= 5 and not yanzhengma_close:  # 0.5秒之后没有确认触发关闭验证码
-            find_yan_confirm()
-        yanzhengma_close = get_val("yanzhengma_close")
-
-        if yanzhengma_close:
-            try:
-                yan2 = self.FindWindowById(18)
-                yan2.Show(False)
-            except:
-                logger.exception('this is an exception message')
-
-        yanzhengma_view = get_val('yanzhengma_view')
-        yanzhengma_change = get_val('yanzhengma_change')  # 默认是True
-        yanzhengma_view = get_val('yanzhengma_view')
-        imgpos_yanzhengma = get_val('imgpos_yanzhengma')
-        Yanzhengmasize = get_val('Yanzhengmasize')
-        yanzhengma_hash = get_val('yanzhengma_hash')
-
-        ##验证码放大是否需要刷新
-        if yanzhengma_view:
-            set_val('yanzhengma_close', False)
-            path = get_val('path')
-            yanpath = path + "\\yanzhengma.png"
-            cut_pic(imgpos_yanzhengma, Yanzhengmasize, yanpath)  # 直接调用得到 png 保存图片
-            yanzhengma_img = Image.open(yanpath)
-            set_val('yanzhengma_img', yanzhengma_img)
-            yanzhengma_img = get_val('yanzhengma_img')
-            yan_hash = imagehash.dhash(yanzhengma_img)
-            if not yanzhengma_hash:  # 第一次
-                set_val('yanzhengma_hash', yan_hash)
-            elif yan_hash == yanzhengma_hash:  # 验证码没变化
-                set_val('yanzhengma_change', False)
-            else:
-                set_val('yanzhengma_hash', yan_hash)
-                set_val('yanzhengma_change', True)  # 发生变化了
-
-        if yanzhengma_view:
-            if not yanzhengma_change:
-                pass
-            else:
-                try:
-                    yanpath = get_val('yanpath')
-                    yan = self.FindWindowById(18)
-                    yan.ShowImage(yanpath)
-                    yan.Show()
-                except:  # 找不到的情况下也要重新创建
-                    logger.exception('this is an exception message')
-
-                finally:
-                    pass
 
     def Yan_close(self, event):
         find_yan_confirm()
@@ -1016,6 +942,14 @@ class StrategyPanel(wx.Panel):
         e_on = get_val('e_on')
         enter_on = get_val('enter_on')
         osl = [0] * 13
+
+        ##初始化为第二次出价
+        set_val('current_pricestatus_label', '等待第二次出价')
+        one_time1 = get_val('one_time1')
+        one_diff = get_val('one_diff')
+        current_pricestatus = '{0}秒加{1}'.format(one_time1, one_diff)
+        set_val('current_pricestatus', current_pricestatus)
+
         if self.select_stractagy.GetSelection() == 0:
             osl[0] = 0
             osl[1] = one_time1

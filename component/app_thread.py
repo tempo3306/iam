@@ -105,9 +105,11 @@ class confirmThread(threading.Thread):
             self.__flag.wait()  # 为True时立即返回, 为False时阻塞直到内部的标识位为True后返回
             time.sleep(0.035)
             tijiao_num = get_val('tijiao_num')
+            twice = get_val('twice')
             # print('tijiao_num', tijiao_num)
 
-            if tijiao_num == 2:
+            if tijiao_num == 2 and twice:
+            # if tijiao_num == 2 and twice:
                 try:
                     findconfirm()
                 except:
@@ -600,6 +602,8 @@ class TijiaoThread(Thread):
                         wx.CallAfter(pub.sendMessage, 'change userprice')
                         set_val('tijiao_on', True)
                     elif tijiao_num == 2 and twice and second_time1 <= moni_second:
+                        print('tijiao_num', tijiao_num)
+                        print('twice', twice)
                         wx.CallAfter(pub.sendMessage, 'moni chujia')  # 调用方法
                         set_val('own_price2', lowest_price + second_diff)
                         set_val('userprice', lowest_price + second_diff)  # 当前的出价

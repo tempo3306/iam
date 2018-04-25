@@ -15,8 +15,7 @@ class YanzhengmaFrame(wx.Frame):
         Yanzhengmasize = get_val('Yanzhengmasize')
         Pos_yanzhengmaframe = get_val('Pos_yanzhengmaframe')
         wx.Frame.__init__(self, None, 18, 'Price', size=Yanzhengmasize, pos=Pos_yanzhengmaframe,
-                          style=wx.FRAME_TOOL_WINDOW | wx.STAY_ON_TOP
-                          )
+                          style=wx.FRAME_TOOL_WINDOW | wx.FRAME_FLOAT_ON_PARENT)
         self.panel = wx.Panel(self, size=size)
         # image=wx.Image(path,wx.BITMAP_TYPE_PNG)
         self.bmp = wx.StaticBitmap(self.panel, -1)

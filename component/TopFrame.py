@@ -85,12 +85,13 @@ class TopFrame(wx.Frame):
         pub.subscribe(self.moni_chujia, "moni chujia")
 
         ##多线程
-        self.create_thread()
+        # self.create_thread()
 
-        ###keep login timer事件
-        # self.keeptimer = wx.Timer(self)
-        # self.Bind(wx.EVT_TIMER, self.keeplogin, self.keeptimer)
-        # self.keeptimer.Start(300000)
+        ##keep login timer事件
+        self.keeptimer = wx.Timer(self)
+        self.Bind(wx.EVT_TIMER, self.keeplogin, self.keeptimer)
+        self.keeptimer.Start(300000)
+
         # self.keeptimer.Start(3000)
 
 
@@ -124,14 +125,15 @@ class TopFrame(wx.Frame):
         second_diff = get_val('second_diff')
         twice = get_val('twice')
 
+
         if tijiao_num == 1:
+            print("moni_chujia")
+
             own_price1 = lowest_price + one_diff
             topframe = wx.FindWindowById(51)
             browser = topframe.htmlpanel.webview
             script = "$('#selfwrite').val('{0}')".format(own_price1)
             browser.RunScript(script)
-
-
             Click(Position[1][0], Position[1][1])
             Click(Position[5][0], Position[5][1])
             set_val('tijiao_on', True)
@@ -139,6 +141,12 @@ class TopFrame(wx.Frame):
             set_val('chujia_interval', False)  # 间隔结束
             ##提交关闭
             set_val('tijiao_OK', False)
+
+            set_val('current_pricestatus_label', '等待第二次提交')
+            one_time2 = get_val('one_time2')
+            one_advance = get_val('one_advance')
+            current_pricestatus = '{0}秒提前{1}'.format(one_time2, one_advance)
+            set_val('current_pricestatus', current_pricestatus)
             ##5秒后调用取消出价
             timer = threading.Timer(6, Cancel_chujia)
             timer.start()
@@ -147,9 +155,10 @@ class TopFrame(wx.Frame):
             own_price2 = lowest_price + second_diff
             set_val('own_price2', own_price2)
             moni_on = get_val('moni_on')
-
+            topframe = wx.FindWindowById(51)
+            browser = topframe.htmlpanel.webview
             script = "$('#selfwrite').val('{0}')".format(own_price2)
-            self.browser_moni.RunScript(script)
+            browser.RunScript(script)
 
             Click(Position[1][0], Position[1][1])
             Click(Position[5][0], Position[5][1])
@@ -158,6 +167,12 @@ class TopFrame(wx.Frame):
             set_val('chujia_interval', False)  # 间隔结束
             ##提交关闭
             set_val('tijiao_OK', False)
+
+            set_val('current_pricestatus_label', '等待第三次提交')
+            second_time2 = get_val('second_time2')
+            second_advance = get_val('second_advance')
+            current_pricestatus = '{0}秒提前{1}'.format(second_time2, second_advance)
+            set_val('current_pricestatus', current_pricestatus)
 
         set_val('yanzhengma_count', 0)  # 计数器，制造延迟
         set_val('yanzhengma_view', True)  # 打开验证码放大器
