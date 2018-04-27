@@ -568,6 +568,22 @@ def trans_time():
             pricelist[int(second)] = lowest_price
 
 
+def changetime(a):  # 换算成时间戳
+    final_time = time.mktime(time.strptime(a, '%Y-%m-%d %H:%M:%S'))
+    return final_time  # 以时间戳输出
+
+def get_nowtime():
+    tem1 = time.time()
+    a = time.strftime('%Y-%m-%d', time.localtime(tem1))
+    return a  # 输出时间格式字符串
+
+def gettime(choice):  # choice1:55, choice2:0.5
+    tem = get_nowtime()
+    print(tem)
+    b = tem + ' 11:29:' + str(int(choice))
+    print(b)
+    c = changetime(b) + float(choice) - int(choice)
+    return c  # 得到用户所确定的最终时间戳
 
 
 ##智能出价

@@ -131,9 +131,11 @@ def init_id():
 
 def init_size():
     ##webframe相关
-    set_val('websize', [1186, 728])  # webframe大小
-    set_val('webview_pos', [-8, -16])  # WEB在 WEBVIEW里的相对位置
-    set_val('htmlsize', [892, 768])
+    set_val('websize', [1148, 728])  # webframe大小
+    set_val('webview_pos', [-5, -16])  # WEB在 WEBVIEW里的相对位置
+    set_val('buttonpanel_size', (892, 30))
+    set_val('buttonpanel_pos', (0, 0))
+    set_val('htmlsize', [898, 768])
     set_val('htmlpanel_size', (892, 628))
     set_val('htmlpanel_pos', (0, 30))
     set_val('bottomestatusbarsanel_size', (892, 30))
@@ -156,7 +158,7 @@ def init_size():
     ## 相对于最低成交价位置
     #   ## 0:加价  1：出价 2：提交  3：刷新   4 ：确认   5：验证码    6:验证码输入框     7：取消
     set_val('P_relative2', [[647, -98], [650, 8], [400, 89], [396, 14], [505, 68], [585, 8], [565, 5], [586, 86]])
-    set_val('Position', [[0, 0] for i in range(len(P_relative))])
+    set_val('Position_frame', [[0, 0] for i in range(len(P_relative))])
     set_val('px_ajust', 0)
     set_val('py_ajust', 0)
     set_val('px_price', 770 - 171)
@@ -258,19 +260,31 @@ def init_size():
 
 
     ##状态框与验证码放大框
-    set_val('CurrentStatusFramePos', (654, 584))
-    set_val('CurrentStatusFrameSize', (225,106))
-    ##状态框三行
-    set_val('status_time', (35, 5))
-    set_val('pricetext', (5, 35))
-    set_val('statustext', (5, 65))
+    set_val('CurrentStatusFramePos', (430, 610))
+    set_val('CurrentStatusFrameSize', (451,79))
+
 
     set_val('YanzhengmaFramePos', (450, 175))
     set_val('Yanzhengmasize', [400, 220])
 
 
 def init_strategy():
-    strategy_choices = ['单枪策略', '双枪策略']
+    strategy_choices = ['单枪策略(专注一次出价）', '双枪策略（一伏二补）']
+    strategy_dick = {
+        0: [0, 48.0, 700, 100, 0.5, 55],
+        1: [1, 40.0, 500, 0, 0.5, 48, 50, 700, 100, 0.5, 56]
+    }
+    for strategy_type, strategy_list in strategy_dick.items():
+        set_val(strategy_type, strategy_list)
+    set_val('strategy_type', 0) ##当前状态
+    '''
+    (1)单枪  依次为 0: strategy_type 1: one_time1 2: one_diff  3: one_advance 4: one_delay 5: one_time2
+    (2)双枪  依次为 0: strategy_type 1: one_time1 2: one_diff  3: one_advance 4: one_delay 5: one_time2
+                                    6: second_time1 7: second_diff  8: second_advance 9: second_delay 10: second_time2 
+    (3)
+    '''
+
+
     set_val('strategy_choices', strategy_choices)
     tijiao_choices = [u"提前100", u"提前200", u"提前300", u"踩点"]
     set_val('tijiao_choices', tijiao_choices)
@@ -387,6 +401,8 @@ def init_strategy():
 
 
 
+
+
 def init_account():
     set_val('activate_status', 0)   ##0: 未激活
     set_val('strategy_name', '默认策略') #策略名称
@@ -404,7 +420,8 @@ def init_status():
     set_val('register_label', '未激活')
     set_val('netspeed_label', '网速: ')
     set_val('strategy_label', '策略: ')
-    set_val('currenttime_label', '当前时间： ')
+    set_val('currenttime_label', '当前时间:')
+    set_val('lowestpricelabel', '最低成交价')
 
     set_val('current_pricestatus_label', '等待第二次出价')
     one_time1 = get_val('one_time1')
@@ -412,7 +429,11 @@ def init_status():
     current_pricestatus = '{0}秒提前{1}'.format(one_time1, one_diff)
     set_val('current_pricestatus', current_pricestatus)
 
-
+    ##状态框三行
+    set_val('status_time', (5, 15))
+    set_val('lowestprice_text', (5, 45))
+    set_val('pricetext', (210, 15))
+    set_val('statustext', (210, 45))
 
 
 
