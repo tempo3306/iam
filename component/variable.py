@@ -131,13 +131,13 @@ def init_id():
 
 def init_size():
     ##webframe相关
-    set_val('websize', [1200, 700])  # webframe大小
+    set_val('websize', [1186, 728])  # webframe大小
     set_val('webview_pos', [-8, -16])  # WEB在 WEBVIEW里的相对位置
-    set_val('htmlsize', [902 - 5, 768])
-    set_val('htmlpanel_size', (892, 600))
+    set_val('htmlsize', [892, 768])
+    set_val('htmlpanel_size', (892, 628))
     set_val('htmlpanel_pos', (0, 30))
     set_val('bottomestatusbarsanel_size', (892, 30))
-    set_val('bottomestatusbarsanel_pos', (0, 630))
+    set_val('bottomestatusbarsanel_pos', (0, 658))
 
 
     websize = get_val('websize')
@@ -185,7 +185,6 @@ def init_size():
     set_val('py_mini', 40)
     py_mini = get_val('py_mini')
     set_val('Pricesize', [400, 80])
-    set_val('Yanzhengmasize', [400, 220])
     set_val('Timesize', [200, 50])
     set_val('lowestprice_area', [179 - 80 + Px, 424 - 50 + Py, 179 + 80 + Px, 424 + 50 + Py])
     set_val('refresh_area', [396 - 150, 11 - 100, 396 + 150, 11 + 100])
@@ -257,13 +256,31 @@ def init_size():
     set_val('imgpos_yanzhengmaconfirm', np.array(nptemp))  # 验证码确认键
     set_val('imgpos_currenttime', np.array(nptemp))  # 当前时间
 
+
+    ##状态框与验证码放大框
+    set_val('CurrentStatusFramePos', (654, 584))
+    set_val('CurrentStatusFrameSize', (225,106))
+    ##状态框三行
+    set_val('status_time', (35, 5))
+    set_val('pricetext', (5, 35))
+    set_val('statustext', (5, 65))
+
+    set_val('YanzhengmaFramePos', (450, 175))
+    set_val('Yanzhengmasize', [400, 220])
+
+
 def init_strategy():
+    strategy_choices = ['单枪策略', '双枪策略']
+    set_val('strategy_choices', strategy_choices)
+    tijiao_choices = [u"提前100", u"提前200", u"提前300", u"踩点"]
+    set_val('tijiao_choices', tijiao_choices)
+
     set_val('mainicon', 'ico.ico')
     set_val('view', False)  # 定位显示
     set_val('do', False)  # 开启辅助
     set_val('ad_view', False)  # 显示广告
     set_val('price_view', False)  # 显示价格,控制截图
-    set_val('yanzhengma_view', False)  # 验证码放大,控制截图
+    set_val('yanzhengma_view', False)  # 验证码放大,控制截图+-
     set_val('yanzhengma_close', True)  # 关闭验证码放大窗
     set_val('yanzhengma_find', True)  # 验证码是否找到 默认True 发现需要查找 之后变为False
     set_val('yanzhengma_move', True)  # 是否需要移动

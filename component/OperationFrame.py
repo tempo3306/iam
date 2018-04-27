@@ -30,12 +30,12 @@ class StatusPanel(wx.Panel):
         self.controlgrid = wx.GridBagSizer(4, 2)  # 网格组件
 
         ##功能区
-        self.webtabButton = wx.Button(self, label=tablabel, size=(105, 30))  # 未来扩展
+        self.webtabButton = wx.Button(self, label=tablabel, size=(95, 30))  # 未来扩展
         # self.priceviewButton = wx.Button(self, label='导出跳价', size=(105,30))  # 未来扩展
 
-        self.remotetimeButton = wx.Button(self, label='同步服务器时间', size=(105, 30))  # 时间
-        self.posajustButton = wx.Button(self, label='刷新定位', size=(105, 30))  # 位置调整
-        self.localtimeButton = wx.Button(self, label='同步网页时间', size=(105, 30))  # 时间同步
+        self.remotetimeButton = wx.Button(self, label='同步服务器时间', size=(95, 30))  # 时间
+        self.posajustButton = wx.Button(self, label='刷新定位', size=(95, 30))  # 位置调整
+        self.localtimeButton = wx.Button(self, label='同步网页时间', size=(95, 30))  # 时间同步
 
         ##绑定
         self.webtabButton.Bind(wx.EVT_BUTTON, self.webtab)
@@ -83,35 +83,185 @@ class StatusPanel(wx.Panel):
         self.controlbox.Add(self.controlgrid)  # 把网格组加到 功能框内
         self.controlbox.Add(hbox1)
         self.controlbox.Add(hbox2)
+##----------------------------------------------------------------------
+        ###策略设置区域
+        self.strategy_area_label = wx.StaticBox(self, -1, "策略设置")
+        self.strategy_area_sizer = wx.StaticBoxSizer(self.strategy_area_label, wx.VERTICAL)
+        self.strategy_area_vbox = wx.BoxSizer(wx.VERTICAL)
+        strategy_choices = get_val('strategy_choices')
+        self.choice_strategy = wx.ComboBox(self, choices=strategy_choices, size=(250, 25),
+                         style=wx.CB_READONLY)
+        self.choice_strategy.SetSelection(0)
+        self.choice_strategy.Bind(wx.EVT_COMBOBOX, self.Choice_strategy)
 
-        ###状态区
-        self.status = wx.StaticBox(self, -1, "状态显示")
-        self.statusbox = wx.StaticBoxSizer(self.status, wx.VERTICAL)
-        self.statusgrid = wx.GridBagSizer(4, 2)
 
-        self.net_status_text = wx.StaticText(self, -1, label="当前网速：")
-        self.net_status = wx.StaticText(self, -1, label="5ms", size=(70, 20))
-        self.lowestprice_status = wx.StaticText(self, -1, label="当前最低成交价：")
-        self.lowestprice = wx.StaticText(self, -1, label="90000")
-        self.userprice_status = wx.StaticText(self, -1, label="当前出价：")
-        self.userprice = wx.StaticText(self, -1, label="未出价")
-        self.time_status = wx.StaticText(self, -1, label="与出价时间相差：")
-        self.timediff = wx.StaticText(self, -1, label="1秒")
-        self.price_status = wx.StaticText(self, -1, label="价格相差：")
-        self.pricediff = wx.StaticText(self, -1, label="100")
+        self.titlefont =  wx.Font(12, wx.FONTFAMILY_MODERN, wx.NORMAL, wx.NORMAL, False)
+        self.numberfont = wx.Font(12, wx.FONTFAMILY_ROMAN, wx.NORMAL, wx.NORMAL, False)
+        self.wordfont = wx.Font(12, wx.FONTFAMILY_ROMAN, wx.NORMAL, wx.NORMAL, False)
+        self.strategy_oneshot_sizer = wx.BoxSizer(wx.VERTICAL)
+        self.strategy_secondshot_sizer = wx.BoxSizer(wx.VERTICAL)
 
-        self.statusgrid.Add(self.net_status_text, pos=(0, 0), flag=wx.RIGHT, border=5)
-        self.statusgrid.Add(self.net_status, pos=(0, 1))
-        self.statusgrid.Add(self.lowestprice_status, pos=(1, 0), flag=wx.RIGHT, border=5)
-        self.statusgrid.Add(self.lowestprice, pos=(1, 1))
-        self.statusgrid.Add(self.userprice_status, pos=(2, 0), flag=wx.RIGHT, border=5)
-        self.statusgrid.Add(self.userprice, pos=(2, 1))
-        self.statusgrid.Add(self.time_status, pos=(3, 0), flag=wx.RIGHT, border=5)
-        self.statusgrid.Add(self.timediff, pos=(3, 1))
-        self.statusgrid.Add(self.price_status, pos=(4, 0), flag=wx.RIGHT, border=5)
-        self.statusgrid.Add(self.pricediff, pos=(4, 1))
 
-        self.statusbox.Add(self.statusgrid)
+        ########第二次出价
+        ##label行
+        self.second_chujia_label = wx.StaticBox(self, -1, "第二次出价")
+        self.second_chujia_label_sizer = wx.StaticBoxSizer(self.second_chujia_label, wx.VERTICAL)
+        self.second_chujia_vbox = wx.BoxSizer(wx.VERTICAL)
+        self.second_chujia_label.SetFont(self.titlefont)
+        ##出价设置行
+        self.second_jiajia_sizer = wx.BoxSizer(wx.HORIZONTAL)
+        self.second_jiajia_time = wx.SpinCtrlDouble(self, -1, "", size=(52, 20),
+                                                    style=wx.ALIGN_CENTER | wx.TEXT_ALIGNMENT_CENTER)
+        self.second_jiajia_time.SetRange(0, 55)
+        self.second_jiajia_time.SetValue(48)
+        self.second_jiajia_time.SetIncrement(0.1)
+        # self.second_jiajia_time.SetFont(self.numberfont)
+        self.second_jiajia_price = wx.SpinCtrlDouble(self, -1, "", size=(55, 20))
+        self.second_jiajia_price.SetRange(300, 1500)
+        self.second_jiajia_price.SetValue(700)
+        self.second_jiajia_price.SetIncrement(100)
+        self.second_time_label = wx.StaticText(self, label="11 : 29 : ",
+                                               style=wx.ALIGN_RIGHT | wx.TEXT_ALIGNMENT_CENTER, size=(65, 16))
+        self.second_time_label.SetFont(self.numberfont)
+        self.second_jiajia_miao = wx.StaticText(self, label=" 秒",  style=wx.ALIGN_CENTER)
+        self.second_jiajia_miao.SetFont(self.wordfont)
+        self.second_jiahao = wx.StaticText(self, label=' 加价 ' ,style=wx.ALIGN_CENTER)
+        self.second_jiahao.SetFont(self.wordfont)
+        self.second_jiajia_sizer.Add(self.second_time_label,  wx.LEFT, border=10)
+        self.second_jiajia_sizer.Add(self.second_jiajia_time)
+        self.second_jiajia_sizer.Add(self.second_jiajia_miao)
+        self.second_jiajia_sizer.Add(self.second_jiahao)
+        self.second_jiajia_sizer.Add(self.second_jiajia_price)
+        ##提交设置行
+        self.second_tijiao_sizer = wx.BoxSizer(wx.HORIZONTAL)
+        tijiao_choices = get_val('tijiao_choices')
+        self.second_tijiao_pricediff = wx.Choice(self, -1, choices=tijiao_choices, size=(80, 17))
+        self.second_tijiao_pricediff.SetSelection(0)
+        self.second_tijiaoyanchi_label = wx.StaticText(self, label=" 延迟", style=wx.ALIGN_CENTER | wx.TEXT_ALIGNMENT_CENTER)
+        self.second_tijiaoyanchi_label.SetFont(self.wordfont)
+        self.second_tijiao_label = wx.StaticText(self, label=" 提交  ", style=wx.ALIGN_CENTER | wx.TEXT_ALIGNMENT_CENTER)
+        self.second_tijiao_label.SetFont(self.wordfont)
+        self.second_tijiaoyanchi_time = wx.SpinCtrlDouble(self, -1, "", size=(52, 20))
+        self.second_tijiaoyanchi_time.SetRange(0.0, 1.9)
+        self.second_tijiaoyanchi_time.SetValue(0.5)
+        self.second_tijiaoyanchi_time.SetIncrement(0.1)
+        self.second_tijiao_miao = wx.StaticText(self, label=" 秒",  style=wx.ALIGN_CENTER)
+        self.second_tijiao_miao.SetFont(self.wordfont)
+
+        self.second_tijiao_sizer.Add(self.second_tijiao_pricediff, flag=wx.LEFT, border=10)
+        self.second_tijiao_sizer.Add(self.second_tijiao_label, flag=wx.TOP, border=4)
+        self.second_tijiao_sizer.Add(self.second_tijiaoyanchi_label, flag=wx.TOP, border=4)
+        self.second_tijiao_sizer.Add(self.second_tijiaoyanchi_time, flag=wx.TOP, border=4)
+        self.second_tijiao_sizer.Add(self.second_tijiao_miao, flag=wx.TOP, border=4)
+
+        self.second_tijiaotime_sizer = wx.BoxSizer(wx.HORIZONTAL)
+        self.second_tijiaotime_label = wx.StaticText(self, label="11 : 29 : ", style=wx.ALIGN_RIGHT, size=(65, 16))
+        self.second_tijiaotime_label.SetFont(self.numberfont)
+        self.second_tijiao_time = wx.SpinCtrlDouble(self, -1, "", size=(52, 20))
+        self.second_tijiao_time.SetRange(0, 59)
+        self.second_tijiao_time.SetValue(58)
+        self.second_tijiao_time.SetIncrement(0.1)
+        self.second_forcetijiao_label = wx.StaticText(self, label=" 秒 强制提交", style=wx.ALIGN_CENTER)
+        self.second_forcetijiao_label.SetFont(self.wordfont)
+        self.second_tijiaotime_sizer.Add(self.second_tijiaotime_label)
+        self.second_tijiaotime_sizer.Add(self.second_tijiao_time)
+        self.second_tijiaotime_sizer.Add(self.second_forcetijiao_label)
+        self.second_chujia_vbox.Add(self.second_jiajia_sizer, flag=wx.BOTTOM, border=10)
+        self.second_chujia_vbox.Add(self.second_tijiao_sizer, flag=wx.BOTTOM, border=10)
+        self.second_chujia_vbox.Add(self.second_tijiaotime_sizer, flag=wx.BOTTOM, border=10)
+        self.second_chujia_label_sizer.Add(self.second_chujia_vbox)
+
+        ########第三次出价
+        ##label行
+        self.third_chujia_label = wx.StaticBox(self, -1, "第三次出价")
+        self.third_chujia_label_sizer = wx.StaticBoxSizer(self.third_chujia_label, wx.VERTICAL)
+        self.third_chujia_vbox = wx.BoxSizer(wx.VERTICAL)
+        self.third_chujia_label.SetFont(self.titlefont)
+        ##出价设置行
+        self.third_jiajia_sizer = wx.BoxSizer(wx.HORIZONTAL)
+        self.third_jiajia_time = wx.SpinCtrlDouble(self, -1, "", size=(52, 20),
+                                                    style=wx.ALIGN_CENTER | wx.TEXT_ALIGNMENT_CENTER)
+        self.third_jiajia_time.SetRange(0, 55)
+        self.third_jiajia_time.SetValue(48)
+        self.third_jiajia_time.SetIncrement(0.1)
+        # self.third_jiajia_time.SetFont(self.numberfont)
+        self.third_jiajia_price = wx.SpinCtrlDouble(self, -1, "", size=(55, 20))
+        self.third_jiajia_price.SetRange(300, 1500)
+        self.third_jiajia_price.SetValue(700)
+        self.third_jiajia_price.SetIncrement(100)
+        self.third_time_label = wx.StaticText(self, label="11 : 29 : ",
+                                               style=wx.ALIGN_RIGHT | wx.TEXT_ALIGNMENT_CENTER, size=(65, 16))
+        self.third_time_label.SetFont(self.numberfont)
+        self.third_jiajia_miao = wx.StaticText(self, label=" 秒",  style=wx.ALIGN_CENTER)
+        self.third_jiajia_miao.SetFont(self.wordfont)
+        self.third_jiahao = wx.StaticText(self, label=' 加价 ' ,style=wx.ALIGN_CENTER)
+        self.third_jiahao.SetFont(self.wordfont)
+        self.third_jiajia_sizer.Add(self.third_time_label,  wx.LEFT, border=10)
+        self.third_jiajia_sizer.Add(self.third_jiajia_time)
+        self.third_jiajia_sizer.Add(self.third_jiajia_miao)
+        self.third_jiajia_sizer.Add(self.third_jiahao)
+        self.third_jiajia_sizer.Add(self.third_jiajia_price)
+        ##提交设置行
+        self.third_tijiao_sizer = wx.BoxSizer(wx.HORIZONTAL)
+        tijiao_choices = get_val('tijiao_choices')
+        self.third_tijiao_pricediff = wx.Choice(self, -1, choices=tijiao_choices, size=(80, 17))
+        self.third_tijiao_pricediff.SetSelection(0)
+        self.third_tijiaoyanchi_label = wx.StaticText(self, label=" 延迟", style=wx.ALIGN_CENTER | wx.TEXT_ALIGNMENT_CENTER)
+        self.third_tijiaoyanchi_label.SetFont(self.wordfont)
+        self.third_tijiao_label = wx.StaticText(self, label=" 提交  ", style=wx.ALIGN_CENTER | wx.TEXT_ALIGNMENT_CENTER)
+        self.third_tijiao_label.SetFont(self.wordfont)
+        self.third_tijiaoyanchi_time = wx.SpinCtrlDouble(self, -1, "", size=(52, 20))
+        self.third_tijiaoyanchi_time.SetRange(0.0, 1.9)
+        self.third_tijiaoyanchi_time.SetValue(0.5)
+        self.third_tijiaoyanchi_time.SetIncrement(0.1)
+        self.third_tijiao_miao = wx.StaticText(self, label=" 秒",  style=wx.ALIGN_CENTER)
+        self.third_tijiao_miao.SetFont(self.wordfont)
+
+        self.third_tijiao_sizer.Add(self.third_tijiao_pricediff, flag=wx.LEFT, border=10)
+        self.third_tijiao_sizer.Add(self.third_tijiao_label, flag=wx.TOP, border=4)
+        self.third_tijiao_sizer.Add(self.third_tijiaoyanchi_label, flag=wx.TOP, border=4)
+        self.third_tijiao_sizer.Add(self.third_tijiaoyanchi_time, flag=wx.TOP, border=4)
+        self.third_tijiao_sizer.Add(self.third_tijiao_miao, flag=wx.TOP, border=4)
+
+        self.third_tijiaotime_sizer = wx.BoxSizer(wx.HORIZONTAL)
+        self.third_tijiaotime_label = wx.StaticText(self, label="11 : 29 : ", style=wx.ALIGN_RIGHT, size=(65, 16))
+        self.third_tijiaotime_label.SetFont(self.numberfont)
+        self.third_tijiao_time = wx.SpinCtrlDouble(self, -1, "", size=(52, 20))
+        self.third_tijiao_time.SetRange(0, 59)
+        self.third_tijiao_time.SetValue(58)
+        self.third_tijiao_time.SetIncrement(0.1)
+        self.third_forcetijiao_label = wx.StaticText(self, label=" 秒 强制提交", style=wx.ALIGN_CENTER)
+        self.third_forcetijiao_label.SetFont(self.wordfont)
+        self.third_tijiaotime_sizer.Add(self.third_tijiaotime_label)
+        self.third_tijiaotime_sizer.Add(self.third_tijiao_time)
+        self.third_tijiaotime_sizer.Add(self.third_forcetijiao_label)
+        self.third_chujia_vbox.Add(self.third_jiajia_sizer, flag=wx.BOTTOM, border=10)
+        self.third_chujia_vbox.Add(self.third_tijiao_sizer, flag=wx.BOTTOM, border=10)
+        self.third_chujia_vbox.Add(self.third_tijiaotime_sizer, flag=wx.BOTTOM, border=10)
+        self.third_chujia_label_sizer.Add(self.third_chujia_vbox)
+
+
+        self.Bind(wx.EVT_TEXT, self.Jiajia_time, self.jiajia_time)
+        self.Bind(wx.EVT_TEXT, self.Jiajia_price, self.jiajia_price)
+        self.Bind(wx.EVT_CHOICE, self.Select_tijiao, self.select_tijiao)
+        self.Bind(wx.EVT_TEXT, self.Yanchi_time, self.yanchi_time)
+        self.Bind(wx.EVT_TEXT, self.Tijiao_time, self.tijiao_time)
+        self.Bind(wx.EVT_TEXT, self.Jiajia_time2, self.jiajia_time2)
+        self.Bind(wx.EVT_TEXT, self.Jiajia_price2, self.jiajia_price2)
+        self.Bind(wx.EVT_CHOICE, self.Select_tijiao2, self.select_tijiao2)
+        self.Bind(wx.EVT_TEXT, self.Yanchi_time2, self.yanchi_time2)
+        self.Bind(wx.EVT_TEXT, self.Tijiao_time2, self.tijiao_time2)
+
+
+        ##构建组件
+        #单枪
+        self.strategy_secondshot_sizer.Add(self.second_chujia_label_sizer, flag=wx.ALL, border=3)
+        self.strategy_secondshot_sizer.Add(self.third_chujia_label_sizer, flag=wx.ALL, border=3)
+
+        self.strategy_area_vbox.Add(self.choice_strategy)
+        self.strategy_area_vbox.Add(self.strategy_secondshot_sizer)
+        self.strategy_area_sizer.Add(self.strategy_area_vbox)
+##----------------------------------------------------------------------
 
         ##提示框
         self.reminder = wx.StaticBox(self, -1, "提示")
@@ -153,14 +303,11 @@ class StatusPanel(wx.Panel):
         self.reminderbox.Add(self.remindergrid)
         self.vbox = wx.BoxSizer(wx.VERTICAL)
         self.vbox.Add(self.controlbox, flag=wx.BOTTOM, border=10)
-        self.vbox.Add(self.statusbox, flag=wx.BOTTOM, border=10)
+        self.vbox.Add(self.strategy_area_sizer, flag=wx.BOTTOM, border=10)
         self.vbox.Add(self.reminderbox, flag=wx.BOTTOM, border=10)
         self.SetSizer(self.vbox)
 
-        ## 创建一个timer事件，修改状态
-        self.status_timer = wx.Timer(self)
-        self.Bind(wx.EVT_TIMER, self.status_Timer, self.status_timer)
-        self.status_timer.Start(100)
+
 
         ## 创建时间框
         # self.timeframe1 = TimeFrame()
@@ -172,50 +319,11 @@ class StatusPanel(wx.Panel):
         pub.subscribe(self.change_strategy, 'change strategy')
         pub.subscribe(self.change_userprice, 'change userprice')  # 修改当前用户出价
 
-    def status_Timer(self, event):
-        now_ping = get_val('now_ping')
-        lowest_price = get_val('lowest_price')
-        try:
-            if now_ping != 'timeout':
-                self.net_status.SetLabel("%sms" % now_ping)
-            else:
-                self.net_status.SetLabel("%s" % now_ping)
-            self.lowestprice.SetLabel(str(lowest_price))
-            # 显示当前价格与价格相差
-            userprice = get_val('userprice')
-            tijiao_on = get_val('tijiao_on')
-            usertime = get_val('usertime')
-            moni_on = get_val('moni_on')
-            if userprice and tijiao_on:
-                max_price = get_val('lowest_price') + 300
-                diff_price = int(userprice) - max_price
-                self.pricediff.SetLabel(str(diff_price))
-                # 显示截止时间与当前时间相差
-                if moni_on:
-                    currenttime = get_val('moni_second')
-                    timediff = float(usertime) - float(currenttime)
-                    self.timediff.SetLabel('{:.1f}'.format(timediff))
-                else:
-                    currenttime = get_val('a_time')
-                    timediff = float(usertime) - float(currenttime)
-                    self.timediff.SetLabel('{:.1f}'.format(timediff))
-                # 热键状态
-                open = get_val('open')
-                label = self.hotkey_confirm.GetLabel()
-                if open and label == '异常状态':
-                    self.hotkey_confirm.SetLabel('启动正常')
-                elif not open:
-                    self.hotkey_confirm.SetLabel('未开启')
-            # 如果不是处于提交状态
-            elif not tijiao_on:
-                label = self.price_status.GetLabel()
-                if label != '未出价':
-                    self.userprice.SetLabel('未出价')  # 出价状态还原
-                    self.pricediff.SetLabel('未出价')
-                    self.timediff.SetLabel('未出价')
-        except:
-            logger.error("status_Timer error")
-            logger.exception('this is an exception message')
+
+    ###策略设置
+    def Choice_strategy(self, event):
+        pass
+
 
     ## 国拍与模拟切换
     def webtab(self, event):
@@ -283,27 +391,7 @@ class StatusPanel(wx.Panel):
     def posautoajust(self, event):
         findpos()
 
-    ##时间显示
-    # def Timeview(self, event):
-    #     timeSelected = event.GetEventObject()
-    #     moni_on = get_val('moni_on')
-    #     guopai_on = get_val('guopai_on')
-    #     if timeSelected.IsChecked():
-    #         set_val('view_time', True)
-    #         set_val('time_on', True)
-    #         if guopai_on:
-    #             self.timeframe1.Show(True)
-    #         elif moni_on:
-    #             self.timeframe2.Show(True)
-    #     else:
-    #         set_val('view_time', False)
-    #         set_val('time_on', False)
-    #         if guopai_on:
-    #             self.timeframe1.Show(False)
-    #             self.timeframe2.Show(False)
-    #         elif moni_on:
-    #             self.timeframe2.Show(False)
-    #             self.timeframe2.Show(False)
+
 
     ##时间调整
     def Add_time(self, event):
@@ -359,17 +447,17 @@ class StatusPanel(wx.Panel):
         else:
             set_val('a_time', a_time - 1)
 
-    # 关闭时间显示
-    def Closetime(self):
-        try:
-            self.timeframe1.Show(False)
-        except:
-            logger.exception('this is an exception message')
-
-        try:
-            self.timeframe2.Show(False)
-        except:
-            logger.exception('this is an exception message')
+    # # 关闭时间显示
+    # def Closetime(self):
+    #     try:
+    #         self.timeframe1.Show(False)
+    #     except:
+    #         logger.exception('this is an exception message')
+    #
+    #     try:
+    #         self.timeframe2.Show(False)
+    #     except:
+    #         logger.exception('this is an exception message')
 
     def Confirmchoice(self, event):
         con = self.confirm_choice.GetSelection()
@@ -388,6 +476,114 @@ class StatusPanel(wx.Panel):
     def change_userprice(self):
         userprice = get_val('userprice')
         self.userprice.SetLabel(str(userprice))
+
+##-------------------------------------------------------------------------
+    ##策略设置功能区
+    def Jiajia_time(self, event):
+        one_time1 = get_val('one_time1')
+        tem = self.jiajia_time.GetValue()
+        templist = [40 + i * 0.1 for i in range(151)]
+        if tem in templist:
+            one_time1 = tem
+            set_val('one_time1', float(one_time1))
+            set_val('one_real_time1', self.gettime(one_time1))  # 计算得到的时间戳
+        else:
+            self.jiajia_time.SetValue(one_time1)
+
+    def Jiajia_time2(self, event):
+        second_time1 = get_val('second_time1')
+        tem = self.jiajia_time2.GetValue()
+        templist = [400 + i * 1 for i in range(191)]
+        if int(tem * 10) in templist:
+            second_time1 = tem
+            set_val('second_time1', float(tem))
+            set_val('second_real_time1', self.gettime(second_time1))  # 计算得到的时间戳
+        else:
+            self.jiajia_time2.SetValue(second_time1)
+
+    def Jiajia_price(self, event):
+        one_diff = get_val('one_diff')
+        templist = [300 + i * 100 for i in range(13)]
+        tem = self.jiajia_price.GetValue()
+        if tem in templist:
+            set_val('one_diff', int(tem))
+        else:
+            self.jiajia_price.SetValue(one_diff)
+
+    def Jiajia_price2(self, event):
+        second_diff = get_val('second_diff')
+        templist = [300 + i * 100 for i in range(13)]
+        tem = self.jiajia_price2.GetValue()
+        if tem in templist:
+            set_val('second_diff', int(tem))
+        else:
+            self.jiajia_price2.SetValue(second_diff)
+
+    def Select_tijiao(self, event):
+        select = self.select_tijiao.GetString(self.select_tijiao.GetSelection())
+        if select == u"提前100":
+            set_val('one_advance', 100)
+        elif select == u"提前200":
+            set_val('one_advance', 200)
+        else:
+            set_val('one_advance', 0)
+
+    def Select_tijiao2(self, event):
+        select = self.select_tijiao2.GetString(self.select_tijiao2.GetSelection())
+        if select == u"提前100":
+            set_val('second_advance', 100)
+        elif select == u"提前200":
+            set_val('second_advance', 200)
+        else:
+            set_val('second_advance', 0)
+
+
+    def Yanchi_time(self, event):
+        one_delay = get_val('one_delay')
+        templist = ['0.%d' % i for i in range(11)]
+        templist.append('1.0')
+        tem = str(self.yanchi_time.GetValue())
+        if tem in templist:
+            set_val('one_delay', float(tem))
+        else:
+            self.yanchi_time.SetValue(one_delay)
+
+    def Yanchi_time2(self, event):
+        second_delay = get_val('second_delay')
+        templist = ['0.%d' % i for i in range(11)]  # 符点数运算BUG
+        templist.append('1.0')
+        tem = str(self.yanchi_time2.GetValue())
+        if tem in templist:
+            set_val('second_delay', float(tem))
+        else:
+            self.yanchi_time2.SetValue(second_delay)
+
+
+
+    def Tijiao_time(self, event):
+        one_time2 = get_val('one_time2')
+        tem = self.tijiao_time.GetValue()
+        templist = [400 + i * 1 for i in range(191)]
+        if int(tem * 10) in templist:
+            one_time2 = tem
+            set_val('one_time2', float(one_time2))
+            set_val('one_real_time2', self.gettime(one_time2))  # 计算得到的时间戳
+        else:
+            self.tijiao_time.SetValue(one_time2)
+
+
+    def Tijiao_time2(self, event):
+        second_time2 = get_val('second_time2')
+        tem = self.tijiao_time2.GetValue()
+        print("Tijiao_time2", tem)
+        templist = [53 + i * 0.1 for i in range(51)]
+        if tem in templist:
+            second_time2 = tem
+            set_val('second_time2', float(tem))
+            set_val('second_real_time2', self.gettime(second_time2))  # 计算得到的时间戳
+        else:
+            self.tijiao_time2.SetValue(second_time2)
+##-------------------------------------------------------------------------
 
 
 class AccountPanel(wx.Panel):
@@ -455,7 +651,7 @@ class StrategyPanel(wx.Panel):
         oneshot = wx.StaticBox(self, -1, u'单枪策略:')
         self.oneshotSizer = wx.StaticBoxSizer(oneshot, wx.VERTICAL)
         gridsizer1 = wx.GridBagSizer(4, 4)
-        self.jiajia_time = wx.SpinCtrlDouble(self, -1, "", size=(68, 25))  # ,style=wx.SP_WRAP最大值向上变最小值
+        self.jiajia_time = wx.SpinCtrlDouble(self, -1, "", size=(58, 20))  # ,style=wx.SP_WRAP最大值向上变最小值
         self.jiajia_time.SetRange(40, 55)
         self.jiajia_time.SetValue(48)
         self.jiajia_time.SetIncrement(0.1)
@@ -464,18 +660,18 @@ class StrategyPanel(wx.Panel):
         gridsizer1.Add(miao_label, pos=(0, 1), flag=wx.TOP | wx.ALIGN_LEFT, border=4)
         jiahao_label = wx.StaticText(self, label=u"加价", style=wx.ALIGN_CENTER, size=(25, 25))
         gridsizer1.Add(jiahao_label, pos=(0, 2), flag=wx.TOP, border=4)
-        self.jiajia_price = wx.SpinCtrlDouble(self, -1, "", size=(68, 25))
+        self.jiajia_price = wx.SpinCtrlDouble(self, -1, "秒", size=(58, 20))
         self.jiajia_price.SetRange(300, 1500)
         self.jiajia_price.SetValue(700)
         self.jiajia_price.SetIncrement(100)
         gridsizer1.Add(self.jiajia_price, pos=(0, 3))
         tijiao_choices = [u"提前100", u"提前200", u"踩点"]
-        self.select_tijiao = wx.Choice(self, -1, choices=tijiao_choices, size=(68, 25))
+        self.select_tijiao = wx.Choice(self, -1, choices=tijiao_choices, size=(58, 20))
         self.select_tijiao.SetSelection(0)
         gridsizer1.Add(self.select_tijiao, pos=(1, 0))
         yanchi_label = wx.StaticText(self, label=u"出价提交延迟")
         gridsizer1.Add(yanchi_label, pos=(1, 1), flag=wx.TOP, border=4)
-        self.yanchi_time = wx.SpinCtrlDouble(self, -1, "", size=(68, 25))
+        self.yanchi_time = wx.SpinCtrlDouble(self, -1, "", size=(58, 20))
         self.yanchi_time.SetRange(0.0, 1.0)
         self.yanchi_time.SetValue(0.5)
         self.yanchi_time.SetIncrement(0.1)
@@ -484,7 +680,7 @@ class StrategyPanel(wx.Panel):
         gridsizer1.Add(miao2_label, pos=(1, 4), flag=wx.TOP, border=4)
         tijiao_label = wx.StaticText(self, label=u"强制提交时间")
         gridsizer1.Add(tijiao_label, pos=(2, 0), flag=wx.TOP, border=4)
-        self.tijiao_time = wx.SpinCtrlDouble(self, -1, "", size=(68, 25))
+        self.tijiao_time = wx.SpinCtrlDouble(self, -1, "", size=(58, 20))
         self.tijiao_time.SetRange(40.0, 59.0)
         self.tijiao_time.SetValue(55.0)
         self.tijiao_time.SetIncrement(0.1)
@@ -492,10 +688,11 @@ class StrategyPanel(wx.Panel):
         miao3_label = wx.StaticText(self, label=u"秒")
         gridsizer1.Add(miao3_label, pos=(2, 2), flag=wx.TOP, border=4)
         self.oneshotSizer.Add(gridsizer1, 0, flag=wx.ALL, border=5)
+
         secondshot = wx.StaticBox(self, -1, u'双枪策略:')
         self.secondshotSizer = wx.StaticBoxSizer(secondshot, wx.VERTICAL)
         gridsizer2 = wx.GridBagSizer(4, 4)
-        self.jiajia_time2 = wx.SpinCtrlDouble(self, -1, "", size=(68, 25))
+        self.jiajia_time2 = wx.SpinCtrlDouble(self, -1, "", size=(58, 20))
         self.jiajia_time2.SetRange(40, 55)
         self.jiajia_time2.SetValue(48)
         self.jiajia_time2.SetIncrement(0.1)
@@ -504,18 +701,18 @@ class StrategyPanel(wx.Panel):
         gridsizer2.Add(miao_label2, pos=(0, 1), flag=wx.TOP | wx.ALIGN_LEFT, border=4)
         jiahao_label2 = wx.StaticText(self, label=u"加价", size=(25, 25), style=wx.ALIGN_CENTER)
         gridsizer2.Add(jiahao_label2, pos=(0, 2), flag=wx.TOP, border=4)
-        self.jiajia_price2 = wx.SpinCtrlDouble(self, -1, "", size=(68, 25))
+        self.jiajia_price2 = wx.SpinCtrlDouble(self, -1, "", size=(58, 20))
         self.jiajia_price2.SetRange(300, 1500)
         self.jiajia_price2.SetValue(600)
         self.jiajia_price2.SetIncrement(100)
         gridsizer2.Add(self.jiajia_price2, pos=(0, 3))
         tijiao_choices2 = [u"提前100", u"提前200", u"踩点"]
-        self.select_tijiao2 = wx.Choice(self, -1, choices=tijiao_choices2, size=(68, 25))
+        self.select_tijiao2 = wx.Choice(self, -1, choices=tijiao_choices2, size=(58, 20))
         self.select_tijiao2.SetSelection(0)
         gridsizer2.Add(self.select_tijiao2, pos=(1, 0))
         yanchi_label2 = wx.StaticText(self, label=u"出价提交延迟")
         gridsizer2.Add(yanchi_label2, pos=(1, 1), flag=wx.TOP, border=4)
-        self.yanchi_time2 = wx.SpinCtrlDouble(self, -1, "", size=(68, 25))
+        self.yanchi_time2 = wx.SpinCtrlDouble(self, -1, "", size=(58, 20))
         self.yanchi_time2.SetRange(0.0, 1.0)
         self.yanchi_time2.SetValue(0.5)
         self.yanchi_time2.SetIncrement(0.1)
@@ -524,7 +721,7 @@ class StrategyPanel(wx.Panel):
         gridsizer2.Add(miao2_label2, pos=(1, 4), flag=wx.TOP, border=4)
         tijiao_label2 = wx.StaticText(self, label=u"强制提交时间")
         gridsizer2.Add(tijiao_label2, pos=(2, 0), flag=wx.TOP, border=4)
-        self.tijiao_time2 = wx.SpinCtrlDouble(self, -1, "", size=(68, 25))
+        self.tijiao_time2 = wx.SpinCtrlDouble(self, -1, "", size=(58, 20))
         self.tijiao_time2.SetRange(52.0, 59.0)
         self.tijiao_time2.SetValue(55.0)
         self.tijiao_time2.SetIncrement(0.1)
@@ -1113,7 +1310,7 @@ class StrategyPanel(wx.Panel):
         c = self.changetime(b) + float(choice) - int(choice)
         return c  # 得到用户所确定的最终时间戳
 
-#
+
 # class OperationFrame(wx.Frame):
 #     def __init__(self, Px, Py, mainicon):  # name:窗口显示名称
 #         wx.Frame.__init__(self, None, 2, title="沪牌一号", pos=(Px + 902, Py), size=(300, 625), \
@@ -1162,7 +1359,9 @@ class StrategyPanel(wx.Panel):
 class OperationPanel(wx.Panel):
     def __init__(self, parent, tablabel):  # name:窗口显示名称
         websize = get_val('websize')
-        wx.Panel.__init__(self, parent=parent, size=(330, websize[1]), pos=(892, 0))
+        htmlsize = get_val('htmlsize')
+        x0 = websize[0] - htmlsize[0]
+        wx.Panel.__init__(self, parent=parent, size=(x0, websize[1]), pos=(892, 0))
         self.notebook = wx.Notebook(self)
         self.status_tab = StatusPanel(self.notebook, tablabel)  # notebook作为父类
         self.notebook.AddPage(self.status_tab, "常规功能")

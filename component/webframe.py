@@ -10,7 +10,6 @@ from component.staticmethod import *
 from component.OperationFrame import OperationPanel
 from component.statusbar import IcStatusBar
 import wx.html2 as webview
-from component.OperationFrame import StatusPanel, StrategyPanel
 from wx.lib.buttons import GenButton as wxButton
 from component.imgcut import findpos, timeset
 from component.YanzhengmaFrame import YanzhengmaFrame
@@ -243,14 +242,21 @@ class BottomeStatusbarPanel(wx.Panel):
 class CurrentStatusFrame(wx.Frame):
     def __init__(self, parent):
         x, y = parent.Position
-        super(CurrentStatusFrame, self).__init__(parent,  size=(225,125), pos=(x+180, 297+y),
-                                                 style=wx.FRAME_TOOL_WINDOW  | wx.FRAME_FLOAT_ON_PARENT)
+        x0, y0 = get_val('CurrentStatusFramePos')
+        CurrentStatusFrameSize = get_val('CurrentStatusFrameSize')
+        super(CurrentStatusFrame, self).__init__(parent,  size=CurrentStatusFrameSize, pos=(x+x0, y+y0),
+                                        style=wx.FRAME_NO_TASKBAR | wx.FRAME_FLOAT_ON_PARENT | wx.BORDER_NONE)
         self.currentstatuspanel = CurrentStatusPanel(self)
+
+        self.Bind(wx.EVT_LEFT_DOWN , self.OnSetFocus)
+
+    def OnSetFocus(self, event):
+        print("ffff")
+        event.Skip()
 
 class CurrentStatusPanel(wx.Panel):
     def __init__(self, parent):
-        super(CurrentStatusPanel, self).__init__(parent, size=(235,150)
-                                                 )
+        super(CurrentStatusPanel, self).__init__(parent, size=(235,150), style=wx.BORDER_NONE)
         self.SetBackgroundColour("#ACD6ff")
         self.timefont = wx.Font(12, wx.ROMAN, wx.NORMAL, wx.NORMAL, False)
 
@@ -259,6 +265,9 @@ class CurrentStatusPanel(wx.Panel):
         self.statustimer.Start(100)  # 设定时间间隔
 
     def Modify(self, event):  # 更新
+        x1, y1 = get_val('status_time')
+        x2, y2 = get_val('pricetext')
+        x3, y3 = get_val('statustext')
         ##当前时间label
         currenttime_label = get_val("currenttime_label")
         moni_on = get_val("moni_on")
@@ -274,7 +283,7 @@ class CurrentStatusPanel(wx.Panel):
             dc.Clear()
             dc.SetFont(self.timefont)
             tw, th = dc.GetTextExtent(st)
-            dc.DrawText(st, 10, 10)
+            dc.DrawText(st, x1, y1)
         else:
             a_time = get_val('a_time')
             temp = int((a_time - int(a_time)) * 10)
@@ -287,7 +296,7 @@ class CurrentStatusPanel(wx.Panel):
             dc.Clear()
             dc.SetFont(self.timefont)
             tw, th = dc.GetTextExtent(st)
-            dc.DrawText(st, 10, 10)
+            dc.DrawText(st, x1, y1)
 
         ##第二行  出价情况
         userprice = get_val('userprice')
@@ -299,7 +308,10 @@ class CurrentStatusPanel(wx.Panel):
         current_pricestatus = get_val('current_pricestatus')
         # print('current_pricestatus', current_pricestatus)
 
+
+
         if userprice and tijiao_on:  ##提交状态
+
             current_pricestatus_label = get_val('current_pricestatus_label')
             current_pricestatus = get_val('current_pricestatus')
             pricetext = "{0}  {1}".format(current_pricestatus_label, current_pricestatus)
@@ -316,8 +328,8 @@ class CurrentStatusPanel(wx.Panel):
                 timediff = float(usertime) - float(currenttime)
             statustext = "提交倒计时{0:.1f}秒  差价{1}".format(timediff, diff_price)
 
-            dc.DrawText(pricetext, 10, 50)
-            dc.DrawText(statustext, 10, 90)
+            dc.DrawText(pricetext, x2, y2)
+            dc.DrawText(statustext, x3, y3)
         else:
             current_pricestatus_label = get_val('current_pricestatus_label')
             current_pricestatus = get_val('current_pricestatus')
@@ -341,8 +353,8 @@ class CurrentStatusPanel(wx.Panel):
                     one_time2 = get_val('second_real_time1')
                     timediff = float(one_time2) - float(currenttime)
             statustext = "出价倒计时{0:.1f}秒  差价{1}".format(timediff, '-')
-            dc.DrawText(pricetext, 10, 50)
-            dc.DrawText(statustext, 10, 90)
+            dc.DrawText(pricetext, x2, y2)
+            dc.DrawText(statustext, x3, y3)
 
 
 
@@ -354,8 +366,7 @@ class MoniWebFrame(wx.Frame):
     def __init__(self, px, py, id, name, tablabel):  # name:窗口显示名称
         websize = get_val('websize')
         wx.Frame.__init__(self, None, id, name, size=(websize[0], websize[1]), pos=[px, py - 10],
-                        )
-                          # style=wx.CAPTION | wx.CLOSE_BOX)
+                          style=wx.CAPTION | wx.CLOSE_BOX)
         ##LOGO
         mainicon = get_val('mainicon')
         self.icon = wx.Icon(mainicon, wx.BITMAP_TYPE_ICO)
@@ -397,11 +408,11 @@ class MoniWebFrame(wx.Frame):
 
     def childmove(self, event):
         x, y = self.Position
-        self.currentstatusframe.MoveXY(x+180, 300+y)
-        Pos_yanzhengmaframe = get_val('Pos_yanzhengmaframe')
+        x0, y0 = get_val('CurrentStatusFramePos')
+        self.currentstatusframe.Move(x+x0, y+y0)
+        x1, y1 = get_val('YanzhengmaFramePos')
         try:
-            self.yanzhengmaframe.MoveXY(x+450, 175+y)  # 移动到新位置
-            set_val('yanzhengma_move', False)  # 无需动作
+            self.yanzhengmaframe.Move(x+x1, y+y1)  # 移动到新位置
         except:
             logger.exception('this is an exception message')
 
@@ -504,7 +515,7 @@ class WebFrame(wx.Frame):
         self.SetIcon(self.icon)
 
         ##状态栏
-        self.createStatusBar()
+        # self.createStatusBar()
 
         guopai_dianxin = get_val('guopai_dianxin')
         if guopai_dianxin:

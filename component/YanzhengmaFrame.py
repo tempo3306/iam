@@ -11,12 +11,11 @@ from component.variable import get_val
 
 class YanzhengmaFrame(wx.Frame):
     def __init__(self, parent, size):
-        # print(Pos_yanzhengmaframe)
         x, y = parent.Position
         Yanzhengmasize = get_val('Yanzhengmasize')
-        Pos_yanzhengmaframe = get_val('Pos_yanzhengmaframe')
-        wx.Frame.__init__(self, parent, 18, 'Price', size=Yanzhengmasize, pos=(x+450, 175+y),
-                          style=wx.FRAME_TOOL_WINDOW | wx.FRAME_FLOAT_ON_PARENT)
+        x0, y0 = get_val('YanzhengmaFramePos')
+        wx.Frame.__init__(self, parent, 18, 'Price', size=Yanzhengmasize, pos=(x+x0, y+y0),
+                          style=wx.FRAME_NO_TASKBAR | wx.FRAME_FLOAT_ON_PARENT)
         self.panel = wx.Panel(self, size=size)
         # image=wx.Image(path,wx.BITMAP_TYPE_PNG)
         # self.bmp = wx.StaticBitmap(self.panel, -1)

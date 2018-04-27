@@ -85,7 +85,7 @@ class TopFrame(wx.Frame):
         pub.subscribe(self.moni_chujia, "moni chujia")
 
         ##多线程
-        self.create_thread()
+        # self.create_thread()
 
         ##keep login timer事件
         self.keeptimer = wx.Timer(self)
