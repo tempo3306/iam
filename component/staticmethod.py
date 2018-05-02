@@ -9,7 +9,6 @@ import win32api
 import win32clipboard
 import time
 import threading
-import pyautogui as pg
 from component.variable import set_val, get_val
 import ctypes
 from ctypes import wintypes
@@ -60,7 +59,6 @@ def setText(aString):
 
 
 
-
 def Delete():
     a = time.clock()
     win32api.keybd_event(0x08, 0, 0, 0)
@@ -99,8 +97,8 @@ def Tijiao():
     tijiao_OK = get_val('tijiao_OK')
     tijiao_num = get_val('tijiao_num')
     chujia_on = get_val('chujia_on')
-    Position = get_val('Position')
-    Click(Position[2][0], Position[2][1])
+    Position_frame = get_val('Position_frame')
+    Click(Position_frame[2][0], Position_frame[2][1])
     set_val('tijiao_OK', False)  # 需要按E解锁，自动提交
     set_val('chujia_on', True)  # 激活自动
     confirm_one = get_val('confirm_one')
@@ -181,9 +179,9 @@ def SmartTijiao():
 
 
 def OnClick_Shuaxin():
-    Position = get_val('Position')
-    Click(Position[3][0], Position[3][1])
-    Click(Position[5][0], Position[5][1])
+    Position_frame = get_val('Position_frame')
+    Click(Position_frame[3][0], Position_frame[3][1])
+    Click(Position_frame[5][0], Position_frame[5][1])
     yanzhengma_view = get_val('yanzhengma_view')
     yanzhengma_close = get_val('yanzhengma_close')
     yanzhengma_count = get_val('yanzhengma_count')
@@ -192,13 +190,13 @@ def OnClick_Shuaxin():
 
 
 def OnClick_confirm():
-    Position = get_val('Position')
-    Click(Position[4][0], Position[4][1])
+    Position_frame = get_val('Position_frame')
+    Click(Position_frame[4][0], Position_frame[4][1])
 
 
 def OnClick_chujia():
     lowest_price = get_val('lowest_price')
-    Position = get_val('Position')
+    Position_frame = get_val('Position_frame')
     tijiao_num = get_val('tijiao_num')
     one_diff = get_val('one_diff')
     second_diff = get_val('second_diff')
@@ -209,8 +207,8 @@ def OnClick_chujia():
         set_val('own_price1', own_price1)
         setText(str(own_price1))
         selfdelete()
-        Click(Position[1][0], Position[1][1])
-        Click(Position[5][0], Position[5][1])
+        Click(Position_frame[1][0], Position_frame[1][1])
+        Click(Position_frame[5][0], Position_frame[5][1])
         set_val('tijiao_on', True)
         set_val('chujia_on', False)
         set_val('chujia_interval', False)  # 间隔结束
@@ -241,8 +239,8 @@ def OnClick_chujia():
         current_pricestatus = '{0:.1f}秒提前{1}'.format(second_time2, second_advance)
         set_val('current_pricestatus', current_pricestatus)
 
-        Click(Position[1][0], Position[1][1])
-        Click(Position[5][0], Position[5][1])
+        Click(Position_frame[1][0], Position_frame[1][1])
+        Click(Position_frame[5][0], Position_frame[5][1])
         set_val('tijiao_on', True)
         set_val('chujia_on', False)
         set_val('chujia_interval', False)  # 间隔结束
@@ -262,13 +260,13 @@ def Cancel_chujia():
     tijiao_ok = get_val('tijiao_ok')
     if tijiao_on and not yanzhengma_find and not tijiao_ok:
         print("触发2")
-        Position = get_val('Position')
-        Click(Position[7][0], Position[7][1])  # 取消
+        Position_frame = get_val('Position_frame')
+        Click(Position_frame[7][0], Position_frame[7][1])  # 取消
         userprice = get_val('userprice')
         setText(str(userprice))
         selfdelete()
-        Click(Position[1][0], Position[1][1])
-        Click(Position[5][0], Position[5][1])
+        Click(Position_frame[1][0], Position_frame[1][1])
+        Click(Position_frame[5][0], Position_frame[5][1])
         # 验证码放大打开
         set_val('yanzhengma_count', 0)  # 计数器，制造延迟
         set_val('yanzhengma_view', True)  # 打开验证码放大器
@@ -277,12 +275,12 @@ def Cancel_chujia():
 
 ##智能调整
 def Smart_ajust_chujia(price):
-    Position = get_val('Position')
-    Click(Position[7][0], Position[7][1])  # 取消
+    Position_frame = get_val('Position_frame')
+    Click(Position_frame[7][0], Position_frame[7][1])  # 取消
     setText(str(price))
     selfdelete()
-    Click(Position[1][0], Position[1][1])
-    Click(Position[5][0], Position[5][1])
+    Click(Position_frame[1][0], Position_frame[1][1])
+    Click(Position_frame[5][0], Position_frame[5][1])
     # 验证码放大打开
     set_val('yanzhengma_count', 0)  # 计数器，制造延迟
     set_val('yanzhengma_view', True)  # 打开验证码放大器
@@ -291,19 +289,19 @@ def Smart_ajust_chujia(price):
 
 ##测试用
 def Cancel_chujia_test():
-    px, py = pg.position()
+    px, py = win32api.GetCursorPos()
     print(px, py)
-    Position = get_val('Position')
+    Position_frame = get_val('Position_frame')
 
-    print (Position[6][0], Position[6][1])
+    print (Position_frame[6][0], Position_frame[6][1])
 
-    # Position = get_val('Position')
-    # Click(Position[7][0], Position[7][1])  # 取消
+    # Position_frame = get_val('Position_frame')
+    # Click(Position_frame[7][0], Position_frame[7][1])  # 取消
     # own_price = get_val('own_price1')
     # setText(str(own_price))
     # selfdelete()
-    # Click(Position[1][0], Position[1][1])
-    # Click(Position[5][0], Position[5][1])
+    # Click(Position_frame[1][0], Position_frame[1][1])
+    # Click(Position_frame[5][0], Position_frame[5][1])
     # # 验证码放大打开
     # set_val('yanzhengma_count', 0)  # 计数器，制造延迟
     # set_val('yanzhengma_view', True)  # 打开验证码放大器
@@ -313,7 +311,7 @@ def Cancel_chujia_test():
 def OnH_chujia():
     moni_on = get_val('moni_on')
     if moni_on:
-        Position = get_val('Position')
+        Position_frame = get_val('Position_frame')
         lowest_price = get_val('lowest_price')
         one_diff = get_val('one_diff')
         set_val('yanzhengma_view', True)
@@ -322,15 +320,15 @@ def OnH_chujia():
         own_price1 = get_val('own_price1')
         setText(str(own_price1))
         Paste_moni(own_price1)
-        Click(Position[1][0], Position[1][1])
-        Click(Position[5][0], Position[5][1])
+        Click(Position_frame[1][0], Position_frame[1][1])
+        Click(Position_frame[5][0], Position_frame[5][1])
     else:
         OnH_guopai_chujia()
 
 
 
 def OnH_guopai_chujia():
-    Position = get_val('Position')
+    Position_frame = get_val('Position_frame')
     lowest_price = get_val('lowest_price')
     one_diff = get_val('one_diff')
     set_val('yanzhengma_view', True)
@@ -340,24 +338,24 @@ def OnH_guopai_chujia():
     setText(str(own_price1))
     selfdelete()
 
-    Click(Position[1][0], Position[1][1])
-    Click(Position[5][0], Position[5][1])
+    Click(Position_frame[1][0], Position_frame[1][1])
+    Click(Position_frame[5][0], Position_frame[5][1])
 
 
 def selfdelete():
-    Position = get_val('Position')
-    # Click2(Position[6][0], Position[6][1])
-    Click2(Position[6][0], Position[6][1])
+    Position_frame = get_val('Position_frame')
+    # Click2(Position_frame[6][0], Position_frame[6][1])
+    Click2(Position_frame[6][0], Position_frame[6][1])
     many_delete()
     Paste()  # 真粘贴
 
 
 def selfChujia():
-    Position = get_val('Position')
-    Click(Position[4][0], Position[4][1])
-    Click(Position[0][0], Position[0][1])
-    Click(Position[1][0], Position[1][1])
-    Click(Position[5][0], Position[5][1])
+    Position_frame = get_val('Position_frame')
+    Click(Position_frame[4][0], Position_frame[4][1])
+    Click(Position_frame[0][0], Position_frame[0][1])
+    Click(Position_frame[1][0], Position_frame[1][1])
+    Click(Position_frame[5][0], Position_frame[5][1])
     set_val('price_view', True)
     set_val('price_count', 0)
     set_val('yanzhengma_count', 0)
@@ -365,12 +363,13 @@ def selfChujia():
 
 
 def selfTijiao():
-    Position = get_val('Position')
-    Click(Position[2][0], Position[2][1])
+    Position_frame = get_val('Position_frame')
+    Click(Position_frame[2][0], Position_frame[2][1])
 
 
 def OnClick_Backspace():
-    pg.press('backspace')
+    win32api.keybd_event(8, 0, 0, 0)  # v的键位码是86
+    win32api.keybd_event(8, 0, win32con.KEYEVENTF_KEYUP, 0)  # 释放按键
 
 
 def tijiao_ok():
@@ -396,7 +395,7 @@ def tijiao_ok2():
 def query():
     query_interval = get_val('query_interval')
     query_on = get_val('query_on')
-    Position = get_val('Position')
+    Position_frame = get_val('Position_frame')
     if not query_interval and not query_on:
         set_val('query_on', True)
         set_val('query_interval', True)
@@ -406,21 +405,21 @@ def query():
             selfdelete()
         else:
             Paste_moni(1000000)
-        Click(Position[1][0], Position[1][1])
+        Click(Position_frame[1][0], Position_frame[1][1])
         timer1 = threading.Timer(4, query_sleep4)
         timer1.start()
         timer2 = threading.Timer(6, query_sleep6)
         timer2.start()
     elif query_interval and query_on:
-        Click(Position[7][0], Position[7][1])
+        Click(Position_frame[7][0], Position_frame[7][1])
         set_val('query_on', False)
 
 
 def query_sleep4():
     query_on = get_val('query_on')
-    Position = get_val('Position')
+    Position_frame = get_val('Position_frame')
     if query_on:
-        Click(Position[7][0], Position[7][1])
+        Click(Position_frame[7][0], Position_frame[7][1])
         set_val('query_on', False)
 
 
@@ -489,12 +488,6 @@ def Listen():
             user32.DispatchMessageA(byref(msg))
     finally:
         pass
-        # self.Open()
-        # self.Listen()
-        # for id in HOTKEYS1.keys():
-        #     user32.UnregisterHotKey(None, id)
-        # for id in HOTKEYS2.keys():
-        #     user32.UnregisterHotKey(None, id)
 
 
 def Close():

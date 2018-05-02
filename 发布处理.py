@@ -8,7 +8,7 @@ import re,random,os
 filename="Iambest5.0.py"  ##文件名
 newname="Iambest5.0_1.py"  ##文件名
 
-target_list=["Position",'strategy','refresh','guopai','chujia','tijiao','lowestprice'
+target_list=["Position_frame",'strategy','refresh','guopai','chujia','tijiao','lowestprice'
     ,'real_time','one_time','yanzhengma','imgpos','findpos','a_time'
              ]
 

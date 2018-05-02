@@ -48,7 +48,7 @@ class SketchApp(wx.App):
         #     bitmap = wx.Bitmap('start.png', wx.BITMAP_TYPE_PNG)
         #
         #     wx.adv.SplashScreen(bitmap, wx.adv.SPLASH_CENTRE_ON_SCREEN | wx.adv.SPLASH_TIMEOUT,
-        #                                  1500, None, -1, wx.DefaultPosition, size=(300,240),
+        #                                  1500, None, -1, wx.DefaultPosition_frame, size=(300,240),
         #                                 style=wx.BORDER_SIMPLE | wx.STAY_ON_TOP)
         #
         #     wx.Yield()

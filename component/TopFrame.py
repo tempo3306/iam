@@ -92,7 +92,6 @@ class TopFrame(wx.Frame):
         self.Bind(wx.EVT_TIMER, self.keeplogin, self.keeptimer)
         self.keeptimer.Start(300000)
 
-        # self.keeptimer.Start(3000)
 
 
     def create_statusbar(self, rev):
@@ -119,7 +118,7 @@ class TopFrame(wx.Frame):
 
     def moni_chujia(self):
         lowest_price = get_val('lowest_price')
-        Position = get_val('Position')
+        Position_frame = get_val('Position_frame')
         tijiao_num = get_val('tijiao_num')
         one_diff = get_val('one_diff')
         second_diff = get_val('second_diff')
@@ -134,8 +133,8 @@ class TopFrame(wx.Frame):
             browser = topframe.htmlpanel.webview
             script = "$('#selfwrite').val('{0}')".format(own_price1)
             browser.RunScript(script)
-            Click(Position[1][0], Position[1][1])
-            Click(Position[5][0], Position[5][1])
+            Click(Position_frame[1][0], Position_frame[1][1])
+            Click(Position_frame[5][0], Position_frame[5][1])
             set_val('tijiao_on', True)
             set_val('chujia_on', False)
             set_val('chujia_interval', False)  # 间隔结束
@@ -160,8 +159,8 @@ class TopFrame(wx.Frame):
             script = "$('#selfwrite').val('{0}')".format(own_price2)
             browser.RunScript(script)
 
-            Click(Position[1][0], Position[1][1])
-            Click(Position[5][0], Position[5][1])
+            Click(Position_frame[1][0], Position_frame[1][1])
+            Click(Position_frame[5][0], Position_frame[5][1])
             set_val('tijiao_on', True)
             set_val('chujia_on', False)
             set_val('chujia_interval', False)  # 间隔结束

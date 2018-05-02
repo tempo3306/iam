@@ -9,7 +9,7 @@
 global 关键字在一个文件内是唯一的
 '''
 import pickle, time
-import pyautogui as pg
+import win32api
 import numpy as np
 import logging
 from component.remote_control import get_unique_id
@@ -112,15 +112,15 @@ def init_url():
     set_val('url_dianxin', "https://www.baidu.com")  # 电信
     set_val('url_nodianxin', "http://moni.51hupai.org/")  # 非电信
     set_val('url_moni', "https://hupai.pro/static/main/moni.html")
-    set_val('guopai_dianxin', True)  ##当前是否处于国拍电信
+    set_val('guopai_dianxin', False)  ##当前是否处于国拍电信  默认是非电信
 
 
 def init_label():
     set_val('moni_webstatus_label', '模拟中')
     set_val('dianxin_webstatus_label', '国拍电信')
     set_val('nodianxin_webstatus_label', '国拍非电信')
-    set_val('urlchange_dianxin_label', '切换电信')
-    set_val('urlchange_nodianxin_label', '切换非电信')
+    set_val('urlchange_dianxin_label', '切换线路')
+    set_val('urlchange_nodianxin_label', '切换线路')
 
 def init_id():
     set_val('userconfirm_on', False)
@@ -143,7 +143,7 @@ def init_size():
 
 
     websize = get_val('websize')
-    set_val('Pxy', pg.size())  # 分辨率
+    set_val('Pxy', (win32api.GetSystemMetrics(0), win32api.GetSystemMetrics(1))) # 分辨率
     Pxy = get_val('Pxy')
     set_val('Px1', Pxy[0] / 2)  # 屏幕中心位置
     set_val('Py2', Pxy[1] / 2)
@@ -414,7 +414,7 @@ def init_account():
     set_val('Username', 0)  # 用户名
     set_val('Password', 0)  # 密码
     set_val('Identify_code', 0)  # 密码
-
+    set_val('ip_address', '')  # 客户端ip
 
 def init_status():
     set_val('register_label', '未激活')

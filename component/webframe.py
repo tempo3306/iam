@@ -14,7 +14,7 @@ from wx.lib.buttons import GenButton as wxButton
 from component.imgcut import findpos, timeset
 from component.YanzhengmaFrame import YanzhengmaFrame
 from component.imgcut import cut_pic, find_yan_confirm
-import imagehash
+# import imagehash
 from PIL import Image, ImageGrab
 
 
@@ -27,8 +27,8 @@ class ButtonPanel(wx.Panel):
         pos = get_val('buttonpanel_pos')
         wx.Panel.__init__(self, parent, size=size, pos=pos)
         self.parent = parent
-        self.timefont = wx.Font(18, wx.ROMAN, wx.NORMAL, wx.NORMAL, False)
-        self.statusfont = wx.Font(18, wx.ROMAN, wx.NORMAL, wx.FONTWEIGHT_BOLD, False)
+        self.timefont = wx.Font(18, wx.FONTFAMILY_ROMAN, wx.FONTSTYLE_NORMAL, wx.FONTWEIGHT_NORMAL, False)
+        self.statusfont = wx.Font(18, wx.FONTFAMILY_ROMAN, wx.FONTSTYLE_NORMAL, wx.FONTWEIGHT_BOLD, False)
         ##时间同步功能
         if not moni:
             self.remotetime_button = wxButton(self, label='同步服务器时间', size=(90, 25), pos=(698, 2))
@@ -39,6 +39,8 @@ class ButtonPanel(wx.Panel):
         self.webtime_button.SetBackgroundColour("#ACD6ff")
         self.SetBackgroundColour("#ACD6ff")
         self.webtime_button.Bind(wx.EVT_BUTTON, self.timeautoajust)
+
+
 
         if not moni:
             guopai_dianxin = get_val('guopai_dianxin')
@@ -134,6 +136,7 @@ class ButtonPanel(wx.Panel):
 
     ## 同步本地时间
     def timeautoajust(self, event):
+        print("fff")
         guopai_on = get_val('guopai_on')
         moni_on = get_val('moni_on')
         imgpos_currenttime = get_val('imgpos_currenttime')
@@ -160,6 +163,18 @@ class ButtonPanel(wx.Panel):
             dianxin_webstatus_label = get_val('dianxin_webstatus_label')
             self.webstatus.SetLabel(dianxin_webstatus_label)
 
+    #
+    # def OnKeyDown(self, event):
+    #     # 按键时相应代码
+    #     # 	event.ControlDown
+    #     kc = event.GetKeyCode()
+    #     import win32gui
+    #     if 32 <= kc <= 126:
+    #         win32gui.MessageBox(0, "test,ok!", 'test', 0)
+    #         print(kc)
+    #     if event.AltDown():
+    #         print('ff', kc)
+
 
 class HtmlPanel(wx.Panel):
     def __init__(self, parent, moni):
@@ -172,6 +187,7 @@ class HtmlPanel(wx.Panel):
         webview_pos = get_val('webview_pos')
         self.webview = webview.WebView.New(self, size=htmlsize, pos=webview_pos,
                                            style=wx.BORDER_NONE)
+        self.webview.EnableContextMenu(False)
         url_moni = get_val('url_moni')
         url_dianxin = get_val('url_dianxin')
         url_nodianxin = get_val('url_nodianxin')
@@ -400,7 +416,7 @@ class MoniWebFrame(wx.Frame):
         self.Bind(wx.EVT_TIMER, self.Price_view, self.timer1)  # 绑定一个定时器事件，主判断
         self.timer1.Start(35)  # 设定时间间隔
 
-    #     self.statustimer = wx.Timer(self)
+        #     self.statustimer = wx.Timer(self)
     #     self.Bind(wx.EVT_TIMER, self.OnTimer, self.statustimer)  # 绑定一个定时器事件
     #     self.statustimer.Start(100)  # 设定时间间隔
     #
@@ -462,7 +478,8 @@ class MoniWebFrame(wx.Frame):
             Yanzhengmasize = get_val('Yanzhengmasize')
             yanzhengma_hash = get_val('yanzhengma_hash')
 
-            ##验证码放大是否需要刷新
+
+            #验证码放大是否需要刷新
             if yanzhengma_view:
                 set_val('yanzhengma_close', False)
                 path = get_val('path')
@@ -471,29 +488,50 @@ class MoniWebFrame(wx.Frame):
                 yanzhengma_img = Image.open(yanpath)
                 set_val('yanzhengma_img', yanzhengma_img)
                 yanzhengma_img = get_val('yanzhengma_img')
-                yan_hash = imagehash.dhash(yanzhengma_img)
-                if not yanzhengma_hash:  # 第一次
-                    set_val('yanzhengma_hash', yan_hash)
-                elif yan_hash == yanzhengma_hash:  # 验证码没变化
-                    set_val('yanzhengma_change', False)
-                else:
-                    set_val('yanzhengma_hash', yan_hash)
-                    set_val('yanzhengma_change', True)  # 发生变化了
+                try:
+                    yanpath = get_val('yanpath')
+                    yan = self.yanzhengmaframe
+                    yan.Show()
+                    yan.ShowImage(yanpath, event)
+                except:  # 找不到的情况下也要重新创建
+                    logger.exception('this is an exception message')
 
-            if yanzhengma_view:
-                if not yanzhengma_change:
+                finally:
                     pass
-                else:
-                    try:
-                        yanpath = get_val('yanpath')
-                        yan = self.yanzhengmaframe
-                        yan.Show()
-                        yan.ShowImage(yanpath, event)
-                    except:  # 找不到的情况下也要重新创建
-                        logger.exception('this is an exception message')
 
-                    finally:
-                        pass
+
+            ##验证码放大是否需要刷新
+            # if yanzhengma_view:
+            #     set_val('yanzhengma_close', False)
+            #     path = get_val('path')
+            #     yanpath = path + "\\yanzhengma.png"
+            #     cut_pic(imgpos_yanzhengma, Yanzhengmasize, yanpath)  # 直接调用得到 png 保存图片
+            #     yanzhengma_img = Image.open(yanpath)
+            #     set_val('yanzhengma_img', yanzhengma_img)
+            #     yanzhengma_img = get_val('yanzhengma_img')
+            #     yan_hash = imagehash.dhash(yanzhengma_img)
+            #     if not yanzhengma_hash:  # 第一次
+            #         set_val('yanzhengma_hash', yan_hash)
+            #     elif yan_hash == yanzhengma_hash:  # 验证码没变化
+            #         set_val('yanzhengma_change', False)
+            #     else:
+            #         set_val('yanzhengma_hash', yan_hash)
+            #         set_val('yanzhengma_change', True)  # 发生变化了
+            #
+            # if yanzhengma_view:
+            #     if not yanzhengma_change:
+            #         pass
+            #     else:
+            #         try:
+            #             yanpath = get_val('yanpath')
+            #             yan = self.yanzhengmaframe
+            #             yan.Show()
+            #             yan.ShowImage(yanpath, event)
+            #         except:  # 找不到的情况下也要重新创建
+            #             logger.exception('this is an exception message')
+            #
+            #         finally:
+            #             pass
         else:
             self.currentstatusframe.Show(False)
             self.yanzhengmaframe.Show(False)

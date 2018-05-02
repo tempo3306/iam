@@ -211,7 +211,7 @@ def findpos():
     min_val, max_val, min_loc, max_loc = cv2.minMaxLoc(res)
     px_relative = get_val('px_relative')
     py_relative = get_val('py_relative')
-    Position = get_val('Position')
+    Position_frame = get_val('Position_frame')
     P_relative2 = get_val('P_relative2')
     if max_val > 0.9:  # 找不到不动作
         set_val('px_lowestprice', max_loc[0] + px_relative)
@@ -226,10 +226,10 @@ def findpos():
         set_val('Py_currenttime', Py_lowestprice - 14)
         set_val('ghostbutton_pos', [px_lowestprice - 9, py_lowestprice + 84])
 
-        for i in range(len(Position)):
-            Position[i][0] = Px_lowestprice + P_relative2[i][0]
-            Position[i][1] = Py_lowestprice + P_relative2[i][1]
-        set_val('Position', Position)
+        for i in range(len(Position_frame)):
+            Position_frame[i][0] = Px_lowestprice + P_relative2[i][0]
+            Position_frame[i][1] = Py_lowestprice + P_relative2[i][1]
+        set_val('Position_frame', Position_frame)
         set_val('refresh_area', [396 - 150 + Px_lowestprice, 11 - 100 + Py_lowestprice, 396 + 150 + Px_lowestprice,
                                  11 + 100 + Py_lowestprice])
         set_val('confirm_area', [505 - 80 + Px_lowestprice, 68 - 50 + Py_lowestprice, 505 + 80 + Px_lowestprice,
@@ -238,7 +238,7 @@ def findpos():
                                      68 + 50 + Py_lowestprice])
         set_val('Pos_controlframe', [192 - 344 + Px_lowestprice, 514 - 183 + Py_lowestprice])
         set_val('Pos_yanzhengma',
-                [Position[5][0] - 277, Position[5][1] - 65, Position[5][0] - 97, Position[5][1] + 45])  # 验证码所在位置
+                [Position_frame[5][0] - 277, Position_frame[5][1] - 65, Position_frame[5][0] - 97, Position_frame[5][1] + 45])  # 验证码所在位置
         set_val('Pos_yanzhengmaframe', [Px_lowestprice + 297, Py_lowestprice - 283])  # 验证码框放置位置
         set_val('Pos_timeframe', [245 - 344 + Px_lowestprice, 399 - 183 + Py_lowestprice])
         lowestprice_sizex = get_val('lowestprice_sizex')
@@ -319,7 +319,7 @@ def findrefresh():
     refresh_on = get_val('refresh_on')
     refresh_need = get_val('refresh_need')
     refresh_one = get_val('refresh_one')
-    Position = get_val('Position')
+    Position_frame = get_val('Position_frame')
     refresh_area = get_val('refresh_area')
     confirm_area = get_val('confirm_area')
     template = dick_target[0]
@@ -342,7 +342,7 @@ def findrefresh():
 def findconfirm():
     dick_target = get_val('dick_target')
     confirm_on = get_val('confirm_on')
-    Position = get_val('Position')
+    Position_frame = get_val('Position_frame')
     template = dick_target[1]
     imgpos_confirm = get_val('imgpos_confirm')
     sc = imgpos_confirm

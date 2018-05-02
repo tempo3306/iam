@@ -58,11 +58,13 @@ def ConfirmCode(identify_code, version):  # 修改为参数传递
         result = web_request(target_url)
         set_val('type', 'identify_code')
         print(result)
+        return result
     except:
         logger.error("登录出现异常")
         logger.exception('this is an exception message')
         return {'result': 'net error'}
-    return result
+
+
 
 
 # 登出
@@ -143,7 +145,7 @@ def send_mail(subject, to_list, file_name):
     data.close()
     email.encoders.encode_base64(file_msg)
     basename = os.path.basename(file_name)
-    file_msg.add_header('Content-Disposition', 'attachment', filename=basename)
+    file_msg.add_header('Content-DisPosition_frame', 'attachment', filename=basename)
     to_list = to_list
     mail_host = 'smtp.qq.com'
     mail_user = os.environ.get('MAIL_USERNAME')

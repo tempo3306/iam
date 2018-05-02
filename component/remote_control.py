@@ -12,12 +12,12 @@
 
 import os, sys
 sys.coinit_flags = 0
-import pythoncom
 import time
 import wmi
 import logging
 from urllib import request
 logger = logging.getLogger()  #返回根目录的logger
+
 
 def web_request(url):
     import ssl, json
@@ -65,9 +65,24 @@ def get_unique_id():
         return None
 
 
-
-
-
+def getip_dianxin(ip):
+    ## http://ip.taobao.com/service/getIpInfo.php?ip=110.84.0.129
+    url = "http://ip.taobao.com/service/getIpInfo.php?ip={0}".format(ip)
+    result = web_request(url)
+    '''
+    {"code":0,"data":{"ip":"110.84.0.129","country":"中国","area":"",
+    "region":"福建","city":"厦门","county":"XX","isp":"电信","country_id":"CN",
+    "area_id":"","region_id":"350000","city_id":"350200","county_id":"xx","isp_id":"100017"}}
+    '''
+    from component.variable import set_val
+    try:
+        print(result)
+        if result['data']['city'] == '上海' and result['data']['isp'] == '电信':
+            set_val('guopai_dianxin', True)  ##当前是否处于国拍电信
+        else:
+            set_val('guopai_dianxin', False)  ##当前是否处于国拍电信
+    except:
+        set_val('guopai_dianxin', False)  ##当前是否处于国拍电信
 
 ###################-----------------
 # def get_cpu_info():

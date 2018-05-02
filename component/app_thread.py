@@ -16,7 +16,7 @@ from component.staticmethod import Smart_ajust_chujia
 from component.staticmethod import trans_time
 from component.variable import get_val, set_val
 from PIL import Image
-import imagehash
+from component.remote_control import getip_dianxin
 
 import logging
 
@@ -737,7 +737,7 @@ needpath = r'C:\Program Files (x86)\Internet Explorer\iexplore.exe'
 iepath = r'C:\Program Files (x86)\Internet Explorer\iexplore.exe'
 path1 = 'C:\Program Files (x86)'
 path2 = 'C:\Program Files'
-
+import wx
 
 def getwebpath():
     global needpath
@@ -764,6 +764,7 @@ def openweb(url):
     # command="\""+needpath+"\"" +" "+url  #需要加个空格
     # path=r'C:\Program Files (x86)\Internet Explorer\iexplore.exe www.baidu.com'
     subprocess.Popen([needpath, url])
+    # wx.Execute
 
 
 def openIE(url):
@@ -784,6 +785,21 @@ class OpenwebThread(Thread):
         """Run Worker Thread."""
         # This is the code executing in the new thread.
         openweb(self.url)
+
+class Getip_dianxinThread(Thread):
+    def __init__(self, ip):
+        """Init Worker Thread Class."""
+        Thread.__init__(self)
+        self.ip = ip
+        self.setDaemon(True)  # 启动进程之前选择，主进程关闭，子进程跟着关闭
+        self.start()  # start the thread
+
+    # ----------------------------------------------------------------------
+    def run(self):
+        """Run Worker Thread."""
+        # This is the code executing in the new thread.
+        getip_dianxin(self.ip)
+
 
 
 class GetremotetimeThread(Thread):

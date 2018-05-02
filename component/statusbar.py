@@ -31,7 +31,7 @@ class IcStatusBar(wx.StatusBar):
 
         self.createFields()
         self.Bind(wx.EVT_SIZE, self.OnSize)
-        self.Reposition()
+        self.RePosition_frame()
 
     def createFields(self):
         for k, v in IcRsrc.sbText.items():
@@ -41,9 +41,9 @@ class IcStatusBar(wx.StatusBar):
 
     def OnSize(self, event):
         event.Skip()
-        self.Reposition()
+        self.RePosition_frame()
 
-    def Reposition(self):
+    def RePosition_frame(self):
         """为了防止状态栏中的控件摆放错乱，需要设置好各自的位置以及大小"""
         for k, v in { 4: self.blog}.items():
             rect = self.GetFieldRect(k)

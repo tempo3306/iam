@@ -7,7 +7,7 @@
 import wx.lib.agw.hyperlink as hyperlink
 from wx.lib.pubsub import pub
 import wx
-from component.app_thread import HashThread, LoginThread, Login_codeThread
+from component.app_thread import HashThread, LoginThread, Login_codeThread, Getip_dianxinThread
 from component.variable import get_val, set_val
 from component.TopFrame import TopFrame
 import sys, pickle
@@ -202,6 +202,9 @@ class LoginFrame(wx.Frame):
             self.topframe = TopFrame('沪牌一号', version)
             self.topframe.Show(True)
             print(login_result)
+            ip_address = login_result['ip_address']
+            set_val('ip_address', ip_address)  ##设置IP
+            Getip_dianxinThread(ip_address) ##判定是否电信网址的功能
 
             if Identify_code == '123456':  ##这里作为测试用
                 pass
