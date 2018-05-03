@@ -70,7 +70,8 @@ class findposThread(Thread):
         self.start()
 
     def run(self):
-        for i in range(1000000):
+        while self.__running.isSet():
+            self.__flag.wait()  # 为True时立即返回, 为False时阻塞直到内部的标识位为True后返回
             time.sleep(0.1)
             try:
                 findpos_on = get_val('findpos_on')

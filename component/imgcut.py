@@ -13,7 +13,9 @@ import time
 from component.staticmethod import OnClick_Shuaxin, OnClick_confirm
 from component.variable import set_val, get_val
 import logging
+
 logger = logging.getLogger()
+
 
 def cut_pic(img, size, name):
     img = np.asarray(img)
@@ -32,7 +34,6 @@ def new_screenshot(area):  # x,y  pos      w,h size
     dcObj = win32ui.CreateDCFromHandle(wDC)
     cDC = dcObj.CreateCompatibleDC()
     dataBitMap = win32ui.CreateBitmap()
-
 
     dataBitMap.CreateCompatibleBitmap(dcObj, x, y)
     cDC.SelectObject(dataBitMap)
@@ -106,7 +107,6 @@ def cut(img):
         xy.append([x, y, w, h])
 
     xy = sorted(xy)
-
 
     xy0 = []  ##存放切块
     ##前n-1个块
@@ -218,7 +218,6 @@ def cut(img):
     for i in range(len(imgn)):
         imgn[i] = cv2.resize(imgn[i], (8, 8))
 
-
     return imgn
 
 
@@ -253,7 +252,7 @@ def timeset(guopai_on, moni_on, imgpos_currenttime, maindata):
         if guopai_on:
             # print(time.strptime(b, '%Y-%m-%d %H:%M:%S'))
             a_time_temp = time.mktime(time.strptime(b, '%Y-%m-%d %H:%M:%S')) + 0.6  # 转时间戳   补个平均时差
-            if a_time_temp -0.9 <=a_time <= a_time_temp + 0.9:
+            if a_time_temp - 0.9 <= a_time <= a_time_temp + 0.9:
                 pass
             else:
                 set_val('a_time', a_time_temp)
@@ -300,17 +299,32 @@ def findpos():
             Position_frame[i][0] = Px_lowestprice + P_relative2[i][0]
             Position_frame[i][1] = Py_lowestprice + P_relative2[i][1]
         set_val('Position_frame', Position_frame)
-        set_val('refresh_area', [396 - 150 + Px_lowestprice, 11 - 100 + Py_lowestprice, 396 + 150 + Px_lowestprice,
-                                 11 + 100 + Py_lowestprice])
-        set_val('confirm_area', [505 - 80 + Px_lowestprice, 68 - 50 + Py_lowestprice, 505 + 80 + Px_lowestprice,
-                                 68 + 50 + Py_lowestprice])
-        set_val('yan_confirm_area', [205 - 80 + Px_lowestprice, 68 - 50 + Py_lowestprice, 405 + 80 + Px_lowestprice,
-                                     68 + 50 + Py_lowestprice])
-        set_val('Pos_controlframe', [192 - 344 + Px_lowestprice, 514 - 183 + Py_lowestprice])
-        set_val('Pos_yanzhengma',
-                [Position_frame[5][0] - 277, Position_frame[5][1] - 65, Position_frame[5][0] - 97, Position_frame[5][1] + 45])  # 验证码所在位置
-        set_val('Pos_yanzhengmaframe', [Px_lowestprice + 297, Py_lowestprice - 283])  # 验证码框放置位置
+        ##几个截图位置, 通过服务器传来的相对位置 进行计算
+        refresh_area_relative = get_val('refresh_area_relative')
+        confirm_area_relative = get_val('confirm_area_relative')
+        yan_confirm_area_relative = get_val('yan_confirm_area_relative')
+        Pos_controlframe_relative = get_val('Pos_controlframe_relative')
+        Pos_yanzhengma_relative = get_val('Pos_yanzhengma_relative')  # 验证码所在位置
+        Pos_yanzhengmaframe_relative = get_val('Pos_yanzhengmaframe_relative')  # 验证码框放置位置
+        set_val('refresh_area', [refresh_area_relative[0] + Px_lowestprice, refresh_area_relative[1] + Py_lowestprice,
+                                 refresh_area_relative[2] + Px_lowestprice, refresh_area_relative[3] + Py_lowestprice])
+        set_val('confirm_area', [confirm_area_relative[0] + Px_lowestprice, confirm_area_relative[1] + Py_lowestprice,
+                                 confirm_area_relative[2] + Px_lowestprice, confirm_area_relative[3] + Py_lowestprice])
+        set_val('yan_confirm_area', [yan_confirm_area_relative[0] + Px_lowestprice,
+                                     yan_confirm_area_relative[1] + Py_lowestprice,
+                                     yan_confirm_area_relative[2] + Px_lowestprice,
+                                     yan_confirm_area_relative[3] + Py_lowestprice])
+        set_val('Pos_controlframe', [Pos_controlframe_relative[0] + Px_lowestprice,
+                                     Pos_controlframe_relative[1] + Py_lowestprice])
+        set_val('Pos_yanzhengma', [Position_frame[5][0] + Pos_yanzhengma_relative[0],
+                                   Position_frame[5][1] + Pos_yanzhengma_relative[1],
+                                   Position_frame[5][0] + Pos_yanzhengma_relative[2],
+                                   Position_frame[5][1] + Pos_yanzhengma_relative[3]])  # 验证码所在位置
+        set_val('Pos_yanzhengmaframe', [Px_lowestprice + Pos_yanzhengmaframe_relative[0],
+                                        Py_lowestprice + Pos_yanzhengmaframe_relative[1]])  # 验证码框放置位置
+
         set_val('Pos_timeframe', [245 - 344 + Px_lowestprice, 399 - 183 + Py_lowestprice])
+
         lowestprice_sizex = get_val('lowestprice_sizex')
         lowestprice_sizey = get_val('lowestprice_sizey')
         currenttime_sizex = get_val('currenttime_sizex')
@@ -402,10 +416,10 @@ def findrefresh():
     yanzhengma_find = get_val('yanzhengma_find')
     if max_val >= 0.8:
         print("refresh")
-        OnClick_Shuaxin() #刷新验证码
+        OnClick_Shuaxin()  # 刷新验证码
         set_val('yanzhengma_view', True)  # 激活放大器
         set_val('yanzhengma_count', 0)  # 归零
-        set_val('yanzhengma_find', False) #表示需要确认是否找到验证码
+        set_val('yanzhengma_find', False)  # 表示需要确认是否找到验证码
     else:
         set_val('yanzhengma_find', True)
 
@@ -444,13 +458,11 @@ def Price_read():
     imgpos_lowestprice = get_val('imgpos_lowestprice')
 
     avt = get_val('avt')
-    avt+=1
+    avt += 1
     if avt == 500 or avt == 501:
-        avt =0
+        avt = 0
     set_val('avt', avt)
-    cv2.imwrite(r'./pic/%s.png'%avt, imgpos_lowestprice)
-
-
+    cv2.imwrite(r'./pic/%s.png' % avt, imgpos_lowestprice)
 
     lowest_price_img = cv2.cvtColor(imgpos_lowestprice, cv2.COLOR_BGR2GRAY)
     price = readpic(lowest_price_img, 'maindata.xml')

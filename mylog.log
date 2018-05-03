@@ -1,520 +1,1629 @@
-Wed, 02 May 2018 09:19:38 PngImagePlugin.py[line:137] DEBUG STREAM b'IHDR' 16 13
-Wed, 02 May 2018 09:19:38 PngImagePlugin.py[line:137] DEBUG STREAM b'IDAT' 41 65536
-Wed, 02 May 2018 09:19:38 PngImagePlugin.py[line:137] DEBUG STREAM b'IHDR' 16 13
-Wed, 02 May 2018 09:19:38 PngImagePlugin.py[line:137] DEBUG STREAM b'IDAT' 41 65536
-Wed, 02 May 2018 09:19:46 app_thread.py[line:147] ERROR 刷新失败
-Wed, 02 May 2018 09:19:46 app_thread.py[line:148] ERROR this is an exception message
+Thu, 03 May 2018 15:19:57 PngImagePlugin.py[line:137] DEBUG STREAM b'IHDR' 16 13
+Thu, 03 May 2018 15:19:57 PngImagePlugin.py[line:137] DEBUG STREAM b'IDAT' 41 65536
+Thu, 03 May 2018 15:19:58 PngImagePlugin.py[line:137] DEBUG STREAM b'IHDR' 16 13
+Thu, 03 May 2018 15:19:58 PngImagePlugin.py[line:137] DEBUG STREAM b'IDAT' 41 65536
+Thu, 03 May 2018 15:20:00 app_thread.py[line:148] ERROR 刷新失败
+Thu, 03 May 2018 15:20:00 app_thread.py[line:149] ERROR this is an exception message
 Traceback (most recent call last):
-  File "E:\hupai\component\app_thread.py", line 145, in run
+  File "E:\hupai\component\app_thread.py", line 146, in run
     findrefresh()
-  File "E:\hupai\component\imgcut.py", line 398, in findrefresh
+  File "E:\hupai\component\imgcut.py", line 412, in findrefresh
     img = cv2.cvtColor(sc, cv2.COLOR_BGR2GRAY)  # 转灰度图
 cv2.error: C:\projects\opencv-python\opencv\modules\imgproc\src\color.cpp:11073: error: (-215) depth == 0 || depth == 2 || depth == 5 in function cv::cvtColor
 
-Wed, 02 May 2018 09:19:46 imgcut.py[line:383] ERROR cut_img 这里出错
-Wed, 02 May 2018 09:19:46 imgcut.py[line:384] ERROR this is an exception message
+Thu, 03 May 2018 15:20:00 imgcut.py[line:397] ERROR cut_img 这里出错
+Thu, 03 May 2018 15:20:00 imgcut.py[line:398] ERROR this is an exception message
 Traceback (most recent call last):
-  File "E:\hupai\component\imgcut.py", line 376, in cut_img
+  File "E:\hupai\component\imgcut.py", line 390, in cut_img
     set_val('imgpos_lowestprice', img[use_area[0][1]:use_area[0][3], use_area[0][0]:use_area[0][2]])  # ok
 IndexError: list index out of range
-Wed, 02 May 2018 09:19:46 app_thread.py[line:147] ERROR 刷新失败
-Wed, 02 May 2018 09:19:46 app_thread.py[line:148] ERROR this is an exception message
+Thu, 03 May 2018 15:20:00 app_thread.py[line:148] ERROR 刷新失败
+Thu, 03 May 2018 15:20:00 app_thread.py[line:149] ERROR this is an exception message
 Traceback (most recent call last):
-  File "E:\hupai\component\app_thread.py", line 145, in run
+  File "E:\hupai\component\app_thread.py", line 146, in run
     findrefresh()
-  File "E:\hupai\component\imgcut.py", line 398, in findrefresh
+  File "E:\hupai\component\imgcut.py", line 412, in findrefresh
     img = cv2.cvtColor(sc, cv2.COLOR_BGR2GRAY)  # 转灰度图
 cv2.error: C:\projects\opencv-python\opencv\modules\imgproc\src\color.cpp:11073: error: (-215) depth == 0 || depth == 2 || depth == 5 in function cv::cvtColor
 
-Wed, 02 May 2018 09:19:46 imgcut.py[line:383] ERROR cut_img 这里出错
-Wed, 02 May 2018 09:19:46 imgcut.py[line:384] ERROR this is an exception message
+Thu, 03 May 2018 15:20:00 imgcut.py[line:397] ERROR cut_img 这里出错
+Thu, 03 May 2018 15:20:00 imgcut.py[line:398] ERROR this is an exception message
 Traceback (most recent call last):
-  File "E:\hupai\component\imgcut.py", line 376, in cut_img
+  File "E:\hupai\component\imgcut.py", line 390, in cut_img
     set_val('imgpos_lowestprice', img[use_area[0][1]:use_area[0][3], use_area[0][0]:use_area[0][2]])  # ok
 IndexError: list index out of range
-Wed, 02 May 2018 09:19:46 app_thread.py[line:147] ERROR 刷新失败
-Wed, 02 May 2018 09:19:46 app_thread.py[line:148] ERROR this is an exception message
+Thu, 03 May 2018 15:20:00 app_thread.py[line:148] ERROR 刷新失败
+Thu, 03 May 2018 15:20:00 app_thread.py[line:149] ERROR this is an exception message
 Traceback (most recent call last):
-  File "E:\hupai\component\app_thread.py", line 145, in run
+  File "E:\hupai\component\app_thread.py", line 146, in run
     findrefresh()
-  File "E:\hupai\component\imgcut.py", line 398, in findrefresh
+  File "E:\hupai\component\imgcut.py", line 412, in findrefresh
     img = cv2.cvtColor(sc, cv2.COLOR_BGR2GRAY)  # 转灰度图
 cv2.error: C:\projects\opencv-python\opencv\modules\imgproc\src\color.cpp:11073: error: (-215) depth == 0 || depth == 2 || depth == 5 in function cv::cvtColor
 
-Wed, 02 May 2018 09:19:46 imgcut.py[line:383] ERROR cut_img 这里出错
-Wed, 02 May 2018 09:19:46 imgcut.py[line:384] ERROR this is an exception message
+Thu, 03 May 2018 15:20:00 app_thread.py[line:148] ERROR 刷新失败
+Thu, 03 May 2018 15:20:00 app_thread.py[line:149] ERROR this is an exception message
 Traceback (most recent call last):
-  File "E:\hupai\component\imgcut.py", line 376, in cut_img
+  File "E:\hupai\component\app_thread.py", line 146, in run
+    findrefresh()
+  File "E:\hupai\component\imgcut.py", line 412, in findrefresh
+    img = cv2.cvtColor(sc, cv2.COLOR_BGR2GRAY)  # 转灰度图
+cv2.error: C:\projects\opencv-python\opencv\modules\imgproc\src\color.cpp:11073: error: (-215) depth == 0 || depth == 2 || depth == 5 in function cv::cvtColor
+
+Thu, 03 May 2018 15:20:00 imgcut.py[line:397] ERROR cut_img 这里出错
+Thu, 03 May 2018 15:20:00 imgcut.py[line:398] ERROR this is an exception message
+Traceback (most recent call last):
+  File "E:\hupai\component\imgcut.py", line 390, in cut_img
     set_val('imgpos_lowestprice', img[use_area[0][1]:use_area[0][3], use_area[0][0]:use_area[0][2]])  # ok
 IndexError: list index out of range
-Wed, 02 May 2018 09:19:46 app_thread.py[line:147] ERROR 刷新失败
-Wed, 02 May 2018 09:19:46 app_thread.py[line:148] ERROR this is an exception message
+Thu, 03 May 2018 15:20:00 app_thread.py[line:148] ERROR 刷新失败
+Thu, 03 May 2018 15:20:00 app_thread.py[line:149] ERROR this is an exception message
 Traceback (most recent call last):
-  File "E:\hupai\component\app_thread.py", line 145, in run
+  File "E:\hupai\component\app_thread.py", line 146, in run
     findrefresh()
-  File "E:\hupai\component\imgcut.py", line 398, in findrefresh
+  File "E:\hupai\component\imgcut.py", line 412, in findrefresh
     img = cv2.cvtColor(sc, cv2.COLOR_BGR2GRAY)  # 转灰度图
 cv2.error: C:\projects\opencv-python\opencv\modules\imgproc\src\color.cpp:11073: error: (-215) depth == 0 || depth == 2 || depth == 5 in function cv::cvtColor
 
-Wed, 02 May 2018 09:19:46 imgcut.py[line:383] ERROR cut_img 这里出错
-Wed, 02 May 2018 09:19:46 imgcut.py[line:384] ERROR this is an exception message
+Thu, 03 May 2018 15:20:00 imgcut.py[line:397] ERROR cut_img 这里出错
+Thu, 03 May 2018 15:20:00 imgcut.py[line:398] ERROR this is an exception message
 Traceback (most recent call last):
-  File "E:\hupai\component\imgcut.py", line 376, in cut_img
+  File "E:\hupai\component\imgcut.py", line 390, in cut_img
     set_val('imgpos_lowestprice', img[use_area[0][1]:use_area[0][3], use_area[0][0]:use_area[0][2]])  # ok
 IndexError: list index out of range
-Wed, 02 May 2018 09:19:46 app_thread.py[line:147] ERROR 刷新失败
-Wed, 02 May 2018 09:19:46 app_thread.py[line:148] ERROR this is an exception message
+Thu, 03 May 2018 15:20:00 app_thread.py[line:148] ERROR 刷新失败
+Thu, 03 May 2018 15:20:00 app_thread.py[line:149] ERROR this is an exception message
 Traceback (most recent call last):
-  File "E:\hupai\component\app_thread.py", line 145, in run
+  File "E:\hupai\component\app_thread.py", line 146, in run
     findrefresh()
-  File "E:\hupai\component\imgcut.py", line 398, in findrefresh
+  File "E:\hupai\component\imgcut.py", line 412, in findrefresh
     img = cv2.cvtColor(sc, cv2.COLOR_BGR2GRAY)  # 转灰度图
 cv2.error: C:\projects\opencv-python\opencv\modules\imgproc\src\color.cpp:11073: error: (-215) depth == 0 || depth == 2 || depth == 5 in function cv::cvtColor
 
-Wed, 02 May 2018 09:19:46 app_thread.py[line:147] ERROR 刷新失败
-Wed, 02 May 2018 09:19:46 app_thread.py[line:148] ERROR this is an exception message
+Thu, 03 May 2018 15:20:00 imgcut.py[line:397] ERROR cut_img 这里出错
+Thu, 03 May 2018 15:20:00 imgcut.py[line:398] ERROR this is an exception message
 Traceback (most recent call last):
-  File "E:\hupai\component\app_thread.py", line 145, in run
-    findrefresh()
-  File "E:\hupai\component\imgcut.py", line 398, in findrefresh
-    img = cv2.cvtColor(sc, cv2.COLOR_BGR2GRAY)  # 转灰度图
-cv2.error: C:\projects\opencv-python\opencv\modules\imgproc\src\color.cpp:11073: error: (-215) depth == 0 || depth == 2 || depth == 5 in function cv::cvtColor
-
-Wed, 02 May 2018 09:19:46 imgcut.py[line:383] ERROR cut_img 这里出错
-Wed, 02 May 2018 09:19:46 imgcut.py[line:384] ERROR this is an exception message
-Traceback (most recent call last):
-  File "E:\hupai\component\imgcut.py", line 376, in cut_img
+  File "E:\hupai\component\imgcut.py", line 390, in cut_img
     set_val('imgpos_lowestprice', img[use_area[0][1]:use_area[0][3], use_area[0][0]:use_area[0][2]])  # ok
 IndexError: list index out of range
-Wed, 02 May 2018 09:19:46 app_thread.py[line:147] ERROR 刷新失败
-Wed, 02 May 2018 09:19:46 app_thread.py[line:148] ERROR this is an exception message
+Thu, 03 May 2018 15:20:00 app_thread.py[line:148] ERROR 刷新失败
+Thu, 03 May 2018 15:20:00 app_thread.py[line:149] ERROR this is an exception message
 Traceback (most recent call last):
-  File "E:\hupai\component\app_thread.py", line 145, in run
+  File "E:\hupai\component\app_thread.py", line 146, in run
     findrefresh()
-  File "E:\hupai\component\imgcut.py", line 398, in findrefresh
+  File "E:\hupai\component\imgcut.py", line 412, in findrefresh
     img = cv2.cvtColor(sc, cv2.COLOR_BGR2GRAY)  # 转灰度图
 cv2.error: C:\projects\opencv-python\opencv\modules\imgproc\src\color.cpp:11073: error: (-215) depth == 0 || depth == 2 || depth == 5 in function cv::cvtColor
 
-Wed, 02 May 2018 09:19:46 imgcut.py[line:383] ERROR cut_img 这里出错
-Wed, 02 May 2018 09:19:46 imgcut.py[line:384] ERROR this is an exception message
+Thu, 03 May 2018 15:20:01 app_thread.py[line:148] ERROR 刷新失败
+Thu, 03 May 2018 15:20:01 app_thread.py[line:149] ERROR this is an exception message
 Traceback (most recent call last):
-  File "E:\hupai\component\imgcut.py", line 376, in cut_img
+  File "E:\hupai\component\app_thread.py", line 146, in run
+    findrefresh()
+  File "E:\hupai\component\imgcut.py", line 412, in findrefresh
+    img = cv2.cvtColor(sc, cv2.COLOR_BGR2GRAY)  # 转灰度图
+cv2.error: C:\projects\opencv-python\opencv\modules\imgproc\src\color.cpp:11073: error: (-215) depth == 0 || depth == 2 || depth == 5 in function cv::cvtColor
+
+Thu, 03 May 2018 15:20:01 imgcut.py[line:397] ERROR cut_img 这里出错
+Thu, 03 May 2018 15:20:01 imgcut.py[line:398] ERROR this is an exception message
+Traceback (most recent call last):
+  File "E:\hupai\component\imgcut.py", line 390, in cut_img
     set_val('imgpos_lowestprice', img[use_area[0][1]:use_area[0][3], use_area[0][0]:use_area[0][2]])  # ok
 IndexError: list index out of range
-Wed, 02 May 2018 09:19:46 app_thread.py[line:147] ERROR 刷新失败
-Wed, 02 May 2018 09:19:46 app_thread.py[line:148] ERROR this is an exception message
+Thu, 03 May 2018 15:20:01 app_thread.py[line:148] ERROR 刷新失败
+Thu, 03 May 2018 15:20:01 app_thread.py[line:149] ERROR this is an exception message
 Traceback (most recent call last):
-  File "E:\hupai\component\app_thread.py", line 145, in run
+  File "E:\hupai\component\app_thread.py", line 146, in run
     findrefresh()
-  File "E:\hupai\component\imgcut.py", line 398, in findrefresh
+  File "E:\hupai\component\imgcut.py", line 412, in findrefresh
     img = cv2.cvtColor(sc, cv2.COLOR_BGR2GRAY)  # 转灰度图
 cv2.error: C:\projects\opencv-python\opencv\modules\imgproc\src\color.cpp:11073: error: (-215) depth == 0 || depth == 2 || depth == 5 in function cv::cvtColor
 
-Wed, 02 May 2018 09:19:46 imgcut.py[line:383] ERROR cut_img 这里出错
-Wed, 02 May 2018 09:19:46 imgcut.py[line:384] ERROR this is an exception message
+Thu, 03 May 2018 15:20:01 imgcut.py[line:397] ERROR cut_img 这里出错
+Thu, 03 May 2018 15:20:01 imgcut.py[line:398] ERROR this is an exception message
 Traceback (most recent call last):
-  File "E:\hupai\component\imgcut.py", line 376, in cut_img
+  File "E:\hupai\component\imgcut.py", line 390, in cut_img
     set_val('imgpos_lowestprice', img[use_area[0][1]:use_area[0][3], use_area[0][0]:use_area[0][2]])  # ok
 IndexError: list index out of range
-Wed, 02 May 2018 09:19:46 app_thread.py[line:147] ERROR 刷新失败
-Wed, 02 May 2018 09:19:46 app_thread.py[line:148] ERROR this is an exception message
+Thu, 03 May 2018 15:20:01 app_thread.py[line:148] ERROR 刷新失败
+Thu, 03 May 2018 15:20:01 app_thread.py[line:149] ERROR this is an exception message
 Traceback (most recent call last):
-  File "E:\hupai\component\app_thread.py", line 145, in run
+  File "E:\hupai\component\app_thread.py", line 146, in run
     findrefresh()
-  File "E:\hupai\component\imgcut.py", line 398, in findrefresh
+  File "E:\hupai\component\imgcut.py", line 412, in findrefresh
     img = cv2.cvtColor(sc, cv2.COLOR_BGR2GRAY)  # 转灰度图
 cv2.error: C:\projects\opencv-python\opencv\modules\imgproc\src\color.cpp:11073: error: (-215) depth == 0 || depth == 2 || depth == 5 in function cv::cvtColor
 
-Wed, 02 May 2018 09:19:46 app_thread.py[line:147] ERROR 刷新失败
-Wed, 02 May 2018 09:19:46 app_thread.py[line:148] ERROR this is an exception message
+Thu, 03 May 2018 15:20:01 app_thread.py[line:148] ERROR 刷新失败
+Thu, 03 May 2018 15:20:01 app_thread.py[line:149] ERROR this is an exception message
 Traceback (most recent call last):
-  File "E:\hupai\component\app_thread.py", line 145, in run
+  File "E:\hupai\component\app_thread.py", line 146, in run
     findrefresh()
-  File "E:\hupai\component\imgcut.py", line 398, in findrefresh
+  File "E:\hupai\component\imgcut.py", line 412, in findrefresh
     img = cv2.cvtColor(sc, cv2.COLOR_BGR2GRAY)  # 转灰度图
 cv2.error: C:\projects\opencv-python\opencv\modules\imgproc\src\color.cpp:11073: error: (-215) depth == 0 || depth == 2 || depth == 5 in function cv::cvtColor
 
-Wed, 02 May 2018 09:19:46 imgcut.py[line:383] ERROR cut_img 这里出错
-Wed, 02 May 2018 09:19:46 imgcut.py[line:384] ERROR this is an exception message
+Thu, 03 May 2018 15:20:01 imgcut.py[line:397] ERROR cut_img 这里出错
+Thu, 03 May 2018 15:20:01 imgcut.py[line:398] ERROR this is an exception message
 Traceback (most recent call last):
-  File "E:\hupai\component\imgcut.py", line 376, in cut_img
+  File "E:\hupai\component\imgcut.py", line 390, in cut_img
     set_val('imgpos_lowestprice', img[use_area[0][1]:use_area[0][3], use_area[0][0]:use_area[0][2]])  # ok
 IndexError: list index out of range
-Wed, 02 May 2018 09:19:46 app_thread.py[line:147] ERROR 刷新失败
-Wed, 02 May 2018 09:19:46 app_thread.py[line:148] ERROR this is an exception message
+Thu, 03 May 2018 15:20:01 app_thread.py[line:148] ERROR 刷新失败
+Thu, 03 May 2018 15:20:01 app_thread.py[line:149] ERROR this is an exception message
 Traceback (most recent call last):
-  File "E:\hupai\component\app_thread.py", line 145, in run
+  File "E:\hupai\component\app_thread.py", line 146, in run
     findrefresh()
-  File "E:\hupai\component\imgcut.py", line 398, in findrefresh
+  File "E:\hupai\component\imgcut.py", line 412, in findrefresh
     img = cv2.cvtColor(sc, cv2.COLOR_BGR2GRAY)  # 转灰度图
 cv2.error: C:\projects\opencv-python\opencv\modules\imgproc\src\color.cpp:11073: error: (-215) depth == 0 || depth == 2 || depth == 5 in function cv::cvtColor
 
-Wed, 02 May 2018 09:19:46 imgcut.py[line:383] ERROR cut_img 这里出错
-Wed, 02 May 2018 09:19:46 imgcut.py[line:384] ERROR this is an exception message
+Thu, 03 May 2018 15:20:01 imgcut.py[line:397] ERROR cut_img 这里出错
+Thu, 03 May 2018 15:20:01 imgcut.py[line:398] ERROR this is an exception message
 Traceback (most recent call last):
-  File "E:\hupai\component\imgcut.py", line 376, in cut_img
+  File "E:\hupai\component\imgcut.py", line 390, in cut_img
     set_val('imgpos_lowestprice', img[use_area[0][1]:use_area[0][3], use_area[0][0]:use_area[0][2]])  # ok
 IndexError: list index out of range
-Wed, 02 May 2018 09:19:46 app_thread.py[line:147] ERROR 刷新失败
-Wed, 02 May 2018 09:19:46 app_thread.py[line:148] ERROR this is an exception message
+Thu, 03 May 2018 15:20:01 app_thread.py[line:148] ERROR 刷新失败
+Thu, 03 May 2018 15:20:01 app_thread.py[line:149] ERROR this is an exception message
 Traceback (most recent call last):
-  File "E:\hupai\component\app_thread.py", line 145, in run
+  File "E:\hupai\component\app_thread.py", line 146, in run
     findrefresh()
-  File "E:\hupai\component\imgcut.py", line 398, in findrefresh
+  File "E:\hupai\component\imgcut.py", line 412, in findrefresh
     img = cv2.cvtColor(sc, cv2.COLOR_BGR2GRAY)  # 转灰度图
 cv2.error: C:\projects\opencv-python\opencv\modules\imgproc\src\color.cpp:11073: error: (-215) depth == 0 || depth == 2 || depth == 5 in function cv::cvtColor
 
-Wed, 02 May 2018 09:19:46 imgcut.py[line:383] ERROR cut_img 这里出错
-Wed, 02 May 2018 09:19:46 imgcut.py[line:384] ERROR this is an exception message
+Thu, 03 May 2018 15:20:01 app_thread.py[line:148] ERROR 刷新失败
+Thu, 03 May 2018 15:20:01 imgcut.py[line:397] ERROR cut_img 这里出错
+Thu, 03 May 2018 15:20:01 app_thread.py[line:149] ERROR this is an exception message
 Traceback (most recent call last):
-  File "E:\hupai\component\imgcut.py", line 376, in cut_img
+  File "E:\hupai\component\app_thread.py", line 146, in run
+    findrefresh()
+  File "E:\hupai\component\imgcut.py", line 412, in findrefresh
+    img = cv2.cvtColor(sc, cv2.COLOR_BGR2GRAY)  # 转灰度图
+cv2.error: C:\projects\opencv-python\opencv\modules\imgproc\src\color.cpp:11073: error: (-215) depth == 0 || depth == 2 || depth == 5 in function cv::cvtColor
+
+Thu, 03 May 2018 15:20:01 imgcut.py[line:398] ERROR this is an exception message
+Traceback (most recent call last):
+  File "E:\hupai\component\imgcut.py", line 390, in cut_img
     set_val('imgpos_lowestprice', img[use_area[0][1]:use_area[0][3], use_area[0][0]:use_area[0][2]])  # ok
 IndexError: list index out of range
-Wed, 02 May 2018 09:19:46 app_thread.py[line:147] ERROR 刷新失败
-Wed, 02 May 2018 09:19:46 app_thread.py[line:148] ERROR this is an exception message
+Thu, 03 May 2018 15:20:01 app_thread.py[line:148] ERROR 刷新失败
+Thu, 03 May 2018 15:20:01 app_thread.py[line:149] ERROR this is an exception message
 Traceback (most recent call last):
-  File "E:\hupai\component\app_thread.py", line 145, in run
+  File "E:\hupai\component\app_thread.py", line 146, in run
     findrefresh()
-  File "E:\hupai\component\imgcut.py", line 398, in findrefresh
+  File "E:\hupai\component\imgcut.py", line 412, in findrefresh
     img = cv2.cvtColor(sc, cv2.COLOR_BGR2GRAY)  # 转灰度图
 cv2.error: C:\projects\opencv-python\opencv\modules\imgproc\src\color.cpp:11073: error: (-215) depth == 0 || depth == 2 || depth == 5 in function cv::cvtColor
 
-Wed, 02 May 2018 09:19:46 app_thread.py[line:147] ERROR 刷新失败
-Wed, 02 May 2018 09:19:46 app_thread.py[line:148] ERROR this is an exception message
+Thu, 03 May 2018 15:20:01 imgcut.py[line:397] ERROR cut_img 这里出错
+Thu, 03 May 2018 15:20:01 imgcut.py[line:398] ERROR this is an exception message
 Traceback (most recent call last):
-  File "E:\hupai\component\app_thread.py", line 145, in run
-    findrefresh()
-  File "E:\hupai\component\imgcut.py", line 398, in findrefresh
-    img = cv2.cvtColor(sc, cv2.COLOR_BGR2GRAY)  # 转灰度图
-cv2.error: C:\projects\opencv-python\opencv\modules\imgproc\src\color.cpp:11073: error: (-215) depth == 0 || depth == 2 || depth == 5 in function cv::cvtColor
-
-Wed, 02 May 2018 09:19:47 imgcut.py[line:383] ERROR cut_img 这里出错
-Wed, 02 May 2018 09:19:47 imgcut.py[line:384] ERROR this is an exception message
-Traceback (most recent call last):
-  File "E:\hupai\component\imgcut.py", line 376, in cut_img
+  File "E:\hupai\component\imgcut.py", line 390, in cut_img
     set_val('imgpos_lowestprice', img[use_area[0][1]:use_area[0][3], use_area[0][0]:use_area[0][2]])  # ok
 IndexError: list index out of range
-Wed, 02 May 2018 09:19:47 app_thread.py[line:147] ERROR 刷新失败
-Wed, 02 May 2018 09:19:47 app_thread.py[line:148] ERROR this is an exception message
+Thu, 03 May 2018 15:20:01 app_thread.py[line:148] ERROR 刷新失败
+Thu, 03 May 2018 15:20:01 app_thread.py[line:149] ERROR this is an exception message
 Traceback (most recent call last):
-  File "E:\hupai\component\app_thread.py", line 145, in run
+  File "E:\hupai\component\app_thread.py", line 146, in run
     findrefresh()
-  File "E:\hupai\component\imgcut.py", line 398, in findrefresh
+  File "E:\hupai\component\imgcut.py", line 412, in findrefresh
     img = cv2.cvtColor(sc, cv2.COLOR_BGR2GRAY)  # 转灰度图
 cv2.error: C:\projects\opencv-python\opencv\modules\imgproc\src\color.cpp:11073: error: (-215) depth == 0 || depth == 2 || depth == 5 in function cv::cvtColor
 
-Wed, 02 May 2018 09:19:47 imgcut.py[line:383] ERROR cut_img 这里出错
-Wed, 02 May 2018 09:19:47 imgcut.py[line:384] ERROR this is an exception message
+Thu, 03 May 2018 15:20:01 imgcut.py[line:397] ERROR cut_img 这里出错
+Thu, 03 May 2018 15:20:01 imgcut.py[line:398] ERROR this is an exception message
 Traceback (most recent call last):
-  File "E:\hupai\component\imgcut.py", line 376, in cut_img
+  File "E:\hupai\component\imgcut.py", line 390, in cut_img
     set_val('imgpos_lowestprice', img[use_area[0][1]:use_area[0][3], use_area[0][0]:use_area[0][2]])  # ok
 IndexError: list index out of range
-Wed, 02 May 2018 09:19:47 app_thread.py[line:147] ERROR 刷新失败
-Wed, 02 May 2018 09:19:47 app_thread.py[line:148] ERROR this is an exception message
+Thu, 03 May 2018 15:20:01 app_thread.py[line:148] ERROR 刷新失败
+Thu, 03 May 2018 15:20:01 app_thread.py[line:149] ERROR this is an exception message
 Traceback (most recent call last):
-  File "E:\hupai\component\app_thread.py", line 145, in run
+  File "E:\hupai\component\app_thread.py", line 146, in run
     findrefresh()
-  File "E:\hupai\component\imgcut.py", line 398, in findrefresh
+  File "E:\hupai\component\imgcut.py", line 412, in findrefresh
     img = cv2.cvtColor(sc, cv2.COLOR_BGR2GRAY)  # 转灰度图
 cv2.error: C:\projects\opencv-python\opencv\modules\imgproc\src\color.cpp:11073: error: (-215) depth == 0 || depth == 2 || depth == 5 in function cv::cvtColor
 
-Wed, 02 May 2018 09:19:47 app_thread.py[line:147] ERROR 刷新失败
-Wed, 02 May 2018 09:19:47 app_thread.py[line:148] ERROR this is an exception message
+Thu, 03 May 2018 15:20:01 app_thread.py[line:148] ERROR 刷新失败
+Thu, 03 May 2018 15:20:01 app_thread.py[line:149] ERROR this is an exception message
 Traceback (most recent call last):
-  File "E:\hupai\component\app_thread.py", line 145, in run
+  File "E:\hupai\component\app_thread.py", line 146, in run
     findrefresh()
-  File "E:\hupai\component\imgcut.py", line 398, in findrefresh
+  File "E:\hupai\component\imgcut.py", line 412, in findrefresh
     img = cv2.cvtColor(sc, cv2.COLOR_BGR2GRAY)  # 转灰度图
 cv2.error: C:\projects\opencv-python\opencv\modules\imgproc\src\color.cpp:11073: error: (-215) depth == 0 || depth == 2 || depth == 5 in function cv::cvtColor
 
-Wed, 02 May 2018 09:19:47 imgcut.py[line:383] ERROR cut_img 这里出错
-Wed, 02 May 2018 09:19:47 imgcut.py[line:384] ERROR this is an exception message
+Thu, 03 May 2018 15:20:01 imgcut.py[line:397] ERROR cut_img 这里出错
+Thu, 03 May 2018 15:20:01 imgcut.py[line:398] ERROR this is an exception message
 Traceback (most recent call last):
-  File "E:\hupai\component\imgcut.py", line 376, in cut_img
+  File "E:\hupai\component\imgcut.py", line 390, in cut_img
     set_val('imgpos_lowestprice', img[use_area[0][1]:use_area[0][3], use_area[0][0]:use_area[0][2]])  # ok
 IndexError: list index out of range
-Wed, 02 May 2018 09:19:47 app_thread.py[line:147] ERROR 刷新失败
-Wed, 02 May 2018 09:19:47 app_thread.py[line:148] ERROR this is an exception message
+Thu, 03 May 2018 15:20:01 app_thread.py[line:148] ERROR 刷新失败
+Thu, 03 May 2018 15:20:01 app_thread.py[line:149] ERROR this is an exception message
 Traceback (most recent call last):
-  File "E:\hupai\component\app_thread.py", line 145, in run
+  File "E:\hupai\component\app_thread.py", line 146, in run
     findrefresh()
-  File "E:\hupai\component\imgcut.py", line 398, in findrefresh
+  File "E:\hupai\component\imgcut.py", line 412, in findrefresh
     img = cv2.cvtColor(sc, cv2.COLOR_BGR2GRAY)  # 转灰度图
 cv2.error: C:\projects\opencv-python\opencv\modules\imgproc\src\color.cpp:11073: error: (-215) depth == 0 || depth == 2 || depth == 5 in function cv::cvtColor
 
-Wed, 02 May 2018 09:19:47 imgcut.py[line:383] ERROR cut_img 这里出错
-Wed, 02 May 2018 09:19:47 imgcut.py[line:384] ERROR this is an exception message
+Thu, 03 May 2018 15:20:01 app_thread.py[line:148] ERROR 刷新失败
+Thu, 03 May 2018 15:20:01 app_thread.py[line:149] ERROR this is an exception message
 Traceback (most recent call last):
-  File "E:\hupai\component\imgcut.py", line 376, in cut_img
+  File "E:\hupai\component\app_thread.py", line 146, in run
+    findrefresh()
+  File "E:\hupai\component\imgcut.py", line 412, in findrefresh
+    img = cv2.cvtColor(sc, cv2.COLOR_BGR2GRAY)  # 转灰度图
+cv2.error: C:\projects\opencv-python\opencv\modules\imgproc\src\color.cpp:11073: error: (-215) depth == 0 || depth == 2 || depth == 5 in function cv::cvtColor
+
+Thu, 03 May 2018 15:20:01 imgcut.py[line:397] ERROR cut_img 这里出错
+Thu, 03 May 2018 15:20:01 imgcut.py[line:398] ERROR this is an exception message
+Traceback (most recent call last):
+  File "E:\hupai\component\imgcut.py", line 390, in cut_img
     set_val('imgpos_lowestprice', img[use_area[0][1]:use_area[0][3], use_area[0][0]:use_area[0][2]])  # ok
 IndexError: list index out of range
-Wed, 02 May 2018 09:19:47 app_thread.py[line:147] ERROR 刷新失败
-Wed, 02 May 2018 09:19:47 app_thread.py[line:148] ERROR this is an exception message
+Thu, 03 May 2018 15:20:01 app_thread.py[line:148] ERROR 刷新失败
+Thu, 03 May 2018 15:20:01 app_thread.py[line:149] ERROR this is an exception message
 Traceback (most recent call last):
-  File "E:\hupai\component\app_thread.py", line 145, in run
+  File "E:\hupai\component\app_thread.py", line 146, in run
     findrefresh()
-  File "E:\hupai\component\imgcut.py", line 398, in findrefresh
+  File "E:\hupai\component\imgcut.py", line 412, in findrefresh
     img = cv2.cvtColor(sc, cv2.COLOR_BGR2GRAY)  # 转灰度图
 cv2.error: C:\projects\opencv-python\opencv\modules\imgproc\src\color.cpp:11073: error: (-215) depth == 0 || depth == 2 || depth == 5 in function cv::cvtColor
 
-Wed, 02 May 2018 09:19:47 imgcut.py[line:383] ERROR cut_img 这里出错
-Wed, 02 May 2018 09:19:47 imgcut.py[line:384] ERROR this is an exception message
+Thu, 03 May 2018 15:20:01 imgcut.py[line:397] ERROR cut_img 这里出错
+Thu, 03 May 2018 15:20:01 imgcut.py[line:398] ERROR this is an exception message
 Traceback (most recent call last):
-  File "E:\hupai\component\imgcut.py", line 376, in cut_img
+  File "E:\hupai\component\imgcut.py", line 390, in cut_img
     set_val('imgpos_lowestprice', img[use_area[0][1]:use_area[0][3], use_area[0][0]:use_area[0][2]])  # ok
 IndexError: list index out of range
-Wed, 02 May 2018 09:19:47 app_thread.py[line:147] ERROR 刷新失败
-Wed, 02 May 2018 09:19:47 app_thread.py[line:148] ERROR this is an exception message
+Thu, 03 May 2018 15:20:01 app_thread.py[line:148] ERROR 刷新失败
+Thu, 03 May 2018 15:20:01 app_thread.py[line:149] ERROR this is an exception message
 Traceback (most recent call last):
-  File "E:\hupai\component\app_thread.py", line 145, in run
+  File "E:\hupai\component\app_thread.py", line 146, in run
     findrefresh()
-  File "E:\hupai\component\imgcut.py", line 398, in findrefresh
+  File "E:\hupai\component\imgcut.py", line 412, in findrefresh
     img = cv2.cvtColor(sc, cv2.COLOR_BGR2GRAY)  # 转灰度图
 cv2.error: C:\projects\opencv-python\opencv\modules\imgproc\src\color.cpp:11073: error: (-215) depth == 0 || depth == 2 || depth == 5 in function cv::cvtColor
 
-Wed, 02 May 2018 09:19:47 app_thread.py[line:147] ERROR 刷新失败
-Wed, 02 May 2018 09:19:47 app_thread.py[line:148] ERROR this is an exception message
+Thu, 03 May 2018 15:20:01 app_thread.py[line:148] ERROR 刷新失败
+Thu, 03 May 2018 15:20:01 imgcut.py[line:397] ERROR cut_img 这里出错
+Thu, 03 May 2018 15:20:01 app_thread.py[line:149] ERROR this is an exception message
 Traceback (most recent call last):
-  File "E:\hupai\component\app_thread.py", line 145, in run
+  File "E:\hupai\component\app_thread.py", line 146, in run
     findrefresh()
-  File "E:\hupai\component\imgcut.py", line 398, in findrefresh
+  File "E:\hupai\component\imgcut.py", line 412, in findrefresh
     img = cv2.cvtColor(sc, cv2.COLOR_BGR2GRAY)  # 转灰度图
 cv2.error: C:\projects\opencv-python\opencv\modules\imgproc\src\color.cpp:11073: error: (-215) depth == 0 || depth == 2 || depth == 5 in function cv::cvtColor
 
-Wed, 02 May 2018 09:19:47 imgcut.py[line:383] ERROR cut_img 这里出错
-Wed, 02 May 2018 09:19:47 imgcut.py[line:384] ERROR this is an exception message
+Thu, 03 May 2018 15:20:01 imgcut.py[line:398] ERROR this is an exception message
 Traceback (most recent call last):
-  File "E:\hupai\component\imgcut.py", line 376, in cut_img
+  File "E:\hupai\component\imgcut.py", line 390, in cut_img
     set_val('imgpos_lowestprice', img[use_area[0][1]:use_area[0][3], use_area[0][0]:use_area[0][2]])  # ok
 IndexError: list index out of range
-Wed, 02 May 2018 09:19:47 app_thread.py[line:147] ERROR 刷新失败
-Wed, 02 May 2018 09:19:47 app_thread.py[line:148] ERROR this is an exception message
+Thu, 03 May 2018 15:20:02 app_thread.py[line:148] ERROR 刷新失败
+Thu, 03 May 2018 15:20:02 app_thread.py[line:149] ERROR this is an exception message
 Traceback (most recent call last):
-  File "E:\hupai\component\app_thread.py", line 145, in run
+  File "E:\hupai\component\app_thread.py", line 146, in run
     findrefresh()
-  File "E:\hupai\component\imgcut.py", line 398, in findrefresh
+  File "E:\hupai\component\imgcut.py", line 412, in findrefresh
     img = cv2.cvtColor(sc, cv2.COLOR_BGR2GRAY)  # 转灰度图
 cv2.error: C:\projects\opencv-python\opencv\modules\imgproc\src\color.cpp:11073: error: (-215) depth == 0 || depth == 2 || depth == 5 in function cv::cvtColor
 
-Wed, 02 May 2018 09:19:47 imgcut.py[line:383] ERROR cut_img 这里出错
-Wed, 02 May 2018 09:19:47 imgcut.py[line:384] ERROR this is an exception message
+Thu, 03 May 2018 15:20:02 imgcut.py[line:397] ERROR cut_img 这里出错
+Thu, 03 May 2018 15:20:02 imgcut.py[line:398] ERROR this is an exception message
 Traceback (most recent call last):
-  File "E:\hupai\component\imgcut.py", line 376, in cut_img
+  File "E:\hupai\component\imgcut.py", line 390, in cut_img
     set_val('imgpos_lowestprice', img[use_area[0][1]:use_area[0][3], use_area[0][0]:use_area[0][2]])  # ok
 IndexError: list index out of range
-Wed, 02 May 2018 09:19:47 app_thread.py[line:147] ERROR 刷新失败
-Wed, 02 May 2018 09:19:47 app_thread.py[line:148] ERROR this is an exception message
+Thu, 03 May 2018 15:20:02 app_thread.py[line:148] ERROR 刷新失败
+Thu, 03 May 2018 15:20:02 app_thread.py[line:149] ERROR this is an exception message
 Traceback (most recent call last):
-  File "E:\hupai\component\app_thread.py", line 145, in run
+  File "E:\hupai\component\app_thread.py", line 146, in run
     findrefresh()
-  File "E:\hupai\component\imgcut.py", line 398, in findrefresh
+  File "E:\hupai\component\imgcut.py", line 412, in findrefresh
     img = cv2.cvtColor(sc, cv2.COLOR_BGR2GRAY)  # 转灰度图
 cv2.error: C:\projects\opencv-python\opencv\modules\imgproc\src\color.cpp:11073: error: (-215) depth == 0 || depth == 2 || depth == 5 in function cv::cvtColor
 
-Wed, 02 May 2018 09:19:47 imgcut.py[line:383] ERROR cut_img 这里出错
-Wed, 02 May 2018 09:19:47 imgcut.py[line:384] ERROR this is an exception message
+Thu, 03 May 2018 15:20:02 imgcut.py[line:397] ERROR cut_img 这里出错
+Thu, 03 May 2018 15:20:02 imgcut.py[line:398] ERROR this is an exception message
 Traceback (most recent call last):
-  File "E:\hupai\component\imgcut.py", line 376, in cut_img
+  File "E:\hupai\component\imgcut.py", line 390, in cut_img
     set_val('imgpos_lowestprice', img[use_area[0][1]:use_area[0][3], use_area[0][0]:use_area[0][2]])  # ok
 IndexError: list index out of range
-Wed, 02 May 2018 09:19:47 app_thread.py[line:147] ERROR 刷新失败
-Wed, 02 May 2018 09:19:47 app_thread.py[line:148] ERROR this is an exception message
+Thu, 03 May 2018 15:20:02 app_thread.py[line:148] ERROR 刷新失败
+Thu, 03 May 2018 15:20:02 app_thread.py[line:149] ERROR this is an exception message
 Traceback (most recent call last):
-  File "E:\hupai\component\app_thread.py", line 145, in run
+  File "E:\hupai\component\app_thread.py", line 146, in run
     findrefresh()
-  File "E:\hupai\component\imgcut.py", line 398, in findrefresh
+  File "E:\hupai\component\imgcut.py", line 412, in findrefresh
     img = cv2.cvtColor(sc, cv2.COLOR_BGR2GRAY)  # 转灰度图
 cv2.error: C:\projects\opencv-python\opencv\modules\imgproc\src\color.cpp:11073: error: (-215) depth == 0 || depth == 2 || depth == 5 in function cv::cvtColor
 
-Wed, 02 May 2018 09:19:47 app_thread.py[line:147] ERROR 刷新失败
-Wed, 02 May 2018 09:19:47 app_thread.py[line:148] ERROR this is an exception message
+Thu, 03 May 2018 15:20:02 app_thread.py[line:148] ERROR 刷新失败
+Thu, 03 May 2018 15:20:02 app_thread.py[line:149] ERROR this is an exception message
 Traceback (most recent call last):
-  File "E:\hupai\component\app_thread.py", line 145, in run
+  File "E:\hupai\component\app_thread.py", line 146, in run
     findrefresh()
-  File "E:\hupai\component\imgcut.py", line 398, in findrefresh
+  File "E:\hupai\component\imgcut.py", line 412, in findrefresh
     img = cv2.cvtColor(sc, cv2.COLOR_BGR2GRAY)  # 转灰度图
 cv2.error: C:\projects\opencv-python\opencv\modules\imgproc\src\color.cpp:11073: error: (-215) depth == 0 || depth == 2 || depth == 5 in function cv::cvtColor
 
-Wed, 02 May 2018 09:19:47 imgcut.py[line:383] ERROR cut_img 这里出错
-Wed, 02 May 2018 09:19:47 imgcut.py[line:384] ERROR this is an exception message
+Thu, 03 May 2018 15:20:02 imgcut.py[line:270] ERROR this is an exception message
 Traceback (most recent call last):
-  File "E:\hupai\component\imgcut.py", line 376, in cut_img
+  File "E:\hupai\component\imgcut.py", line 240, in timeset
+    currenttime = cv2.cvtColor(imgpos_currenttime, cv2.COLOR_BGR2GRAY)
+cv2.error: C:\projects\opencv-python\opencv\modules\imgproc\src\color.cpp:11073: error: (-215) depth == 0 || depth == 2 || depth == 5 in function cv::cvtColor
+
+Thu, 03 May 2018 15:20:02 imgcut.py[line:397] ERROR cut_img 这里出错
+Thu, 03 May 2018 15:20:02 imgcut.py[line:398] ERROR this is an exception message
+Traceback (most recent call last):
+  File "E:\hupai\component\imgcut.py", line 390, in cut_img
     set_val('imgpos_lowestprice', img[use_area[0][1]:use_area[0][3], use_area[0][0]:use_area[0][2]])  # ok
 IndexError: list index out of range
-Wed, 02 May 2018 09:19:47 app_thread.py[line:147] ERROR 刷新失败
-Wed, 02 May 2018 09:19:47 app_thread.py[line:148] ERROR this is an exception message
+Thu, 03 May 2018 15:20:02 app_thread.py[line:148] ERROR 刷新失败
+Thu, 03 May 2018 15:20:02 app_thread.py[line:149] ERROR this is an exception message
 Traceback (most recent call last):
-  File "E:\hupai\component\app_thread.py", line 145, in run
+  File "E:\hupai\component\app_thread.py", line 146, in run
     findrefresh()
-  File "E:\hupai\component\imgcut.py", line 398, in findrefresh
+  File "E:\hupai\component\imgcut.py", line 412, in findrefresh
     img = cv2.cvtColor(sc, cv2.COLOR_BGR2GRAY)  # 转灰度图
 cv2.error: C:\projects\opencv-python\opencv\modules\imgproc\src\color.cpp:11073: error: (-215) depth == 0 || depth == 2 || depth == 5 in function cv::cvtColor
 
-Wed, 02 May 2018 09:19:47 imgcut.py[line:383] ERROR cut_img 这里出错
-Wed, 02 May 2018 09:19:47 imgcut.py[line:384] ERROR this is an exception message
+Thu, 03 May 2018 15:20:02 app_thread.py[line:148] ERROR 刷新失败
+Thu, 03 May 2018 15:20:02 app_thread.py[line:149] ERROR this is an exception message
 Traceback (most recent call last):
-  File "E:\hupai\component\imgcut.py", line 376, in cut_img
+  File "E:\hupai\component\app_thread.py", line 146, in run
+    findrefresh()
+  File "E:\hupai\component\imgcut.py", line 412, in findrefresh
+    img = cv2.cvtColor(sc, cv2.COLOR_BGR2GRAY)  # 转灰度图
+cv2.error: C:\projects\opencv-python\opencv\modules\imgproc\src\color.cpp:11073: error: (-215) depth == 0 || depth == 2 || depth == 5 in function cv::cvtColor
+
+Thu, 03 May 2018 15:20:02 imgcut.py[line:397] ERROR cut_img 这里出错
+Thu, 03 May 2018 15:20:02 imgcut.py[line:398] ERROR this is an exception message
+Traceback (most recent call last):
+  File "E:\hupai\component\imgcut.py", line 390, in cut_img
     set_val('imgpos_lowestprice', img[use_area[0][1]:use_area[0][3], use_area[0][0]:use_area[0][2]])  # ok
 IndexError: list index out of range
-Wed, 02 May 2018 09:19:47 app_thread.py[line:147] ERROR 刷新失败
-Wed, 02 May 2018 09:19:47 app_thread.py[line:148] ERROR this is an exception message
+Thu, 03 May 2018 15:20:02 app_thread.py[line:148] ERROR 刷新失败
+Thu, 03 May 2018 15:20:02 app_thread.py[line:149] ERROR this is an exception message
 Traceback (most recent call last):
-  File "E:\hupai\component\app_thread.py", line 145, in run
+  File "E:\hupai\component\app_thread.py", line 146, in run
     findrefresh()
-  File "E:\hupai\component\imgcut.py", line 398, in findrefresh
+  File "E:\hupai\component\imgcut.py", line 412, in findrefresh
     img = cv2.cvtColor(sc, cv2.COLOR_BGR2GRAY)  # 转灰度图
 cv2.error: C:\projects\opencv-python\opencv\modules\imgproc\src\color.cpp:11073: error: (-215) depth == 0 || depth == 2 || depth == 5 in function cv::cvtColor
 
-Wed, 02 May 2018 09:19:47 imgcut.py[line:383] ERROR cut_img 这里出错
-Wed, 02 May 2018 09:19:47 imgcut.py[line:384] ERROR this is an exception message
+Thu, 03 May 2018 15:20:08 imgcut.py[line:267] ERROR this is an exception message
 Traceback (most recent call last):
-  File "E:\hupai\component\imgcut.py", line 376, in cut_img
-    set_val('imgpos_lowestprice', img[use_area[0][1]:use_area[0][3], use_area[0][0]:use_area[0][2]])  # ok
+  File "E:\hupai\component\imgcut.py", line 261, in timeset
+    moni_second_temp = int(currenttime.split(':')[2]) + 0.6
 IndexError: list index out of range
-Wed, 02 May 2018 09:19:47 app_thread.py[line:147] ERROR 刷新失败
-Wed, 02 May 2018 09:19:47 app_thread.py[line:148] ERROR this is an exception message
+Thu, 03 May 2018 15:20:15 PngImagePlugin.py[line:137] DEBUG STREAM b'IHDR' 16 13
+Thu, 03 May 2018 15:20:15 PngImagePlugin.py[line:137] DEBUG STREAM b'IDAT' 41 8192
+Thu, 03 May 2018 15:20:15 PngImagePlugin.py[line:137] DEBUG STREAM b'IHDR' 16 13
+Thu, 03 May 2018 15:20:15 PngImagePlugin.py[line:137] DEBUG STREAM b'IDAT' 41 985
+Thu, 03 May 2018 15:20:15 PngImagePlugin.py[line:137] DEBUG STREAM b'IHDR' 16 13
+Thu, 03 May 2018 15:20:15 PngImagePlugin.py[line:137] DEBUG STREAM b'IDAT' 41 8192
+Thu, 03 May 2018 15:20:15 PngImagePlugin.py[line:137] DEBUG STREAM b'IHDR' 16 13
+Thu, 03 May 2018 15:20:15 PngImagePlugin.py[line:137] DEBUG STREAM b'IDAT' 41 8192
+Thu, 03 May 2018 15:20:15 PngImagePlugin.py[line:137] DEBUG STREAM b'IHDR' 16 13
+Thu, 03 May 2018 15:20:15 PngImagePlugin.py[line:137] DEBUG STREAM b'IDAT' 41 8192
+Thu, 03 May 2018 15:20:15 PngImagePlugin.py[line:137] DEBUG STREAM b'IHDR' 16 13
+Thu, 03 May 2018 15:20:15 PngImagePlugin.py[line:137] DEBUG STREAM b'IDAT' 41 8192
+Thu, 03 May 2018 15:20:16 PngImagePlugin.py[line:137] DEBUG STREAM b'IHDR' 16 13
+Thu, 03 May 2018 15:20:16 PngImagePlugin.py[line:137] DEBUG STREAM b'IDAT' 41 8192
+Thu, 03 May 2018 15:20:16 PngImagePlugin.py[line:137] DEBUG STREAM b'IHDR' 16 13
+Thu, 03 May 2018 15:20:16 PngImagePlugin.py[line:137] DEBUG STREAM b'IDAT' 41 8192
+Thu, 03 May 2018 15:20:16 PngImagePlugin.py[line:137] DEBUG STREAM b'IHDR' 16 13
+Thu, 03 May 2018 15:20:16 PngImagePlugin.py[line:137] DEBUG STREAM b'IDAT' 41 8192
+Thu, 03 May 2018 15:20:16 PngImagePlugin.py[line:137] DEBUG STREAM b'IHDR' 16 13
+Thu, 03 May 2018 15:20:16 PngImagePlugin.py[line:137] DEBUG STREAM b'IDAT' 41 8192
+Thu, 03 May 2018 15:20:16 PngImagePlugin.py[line:137] DEBUG STREAM b'IHDR' 16 13
+Thu, 03 May 2018 15:20:16 PngImagePlugin.py[line:137] DEBUG STREAM b'IDAT' 41 8192
+Thu, 03 May 2018 15:20:16 PngImagePlugin.py[line:137] DEBUG STREAM b'IHDR' 16 13
+Thu, 03 May 2018 15:20:16 PngImagePlugin.py[line:137] DEBUG STREAM b'IDAT' 41 8192
+Thu, 03 May 2018 15:20:16 PngImagePlugin.py[line:137] DEBUG STREAM b'IHDR' 16 13
+Thu, 03 May 2018 15:20:16 PngImagePlugin.py[line:137] DEBUG STREAM b'IDAT' 41 8192
+Thu, 03 May 2018 15:20:16 PngImagePlugin.py[line:137] DEBUG STREAM b'IHDR' 16 13
+Thu, 03 May 2018 15:20:16 PngImagePlugin.py[line:137] DEBUG STREAM b'IDAT' 41 8192
+Thu, 03 May 2018 15:20:16 PngImagePlugin.py[line:137] DEBUG STREAM b'IHDR' 16 13
+Thu, 03 May 2018 15:20:16 PngImagePlugin.py[line:137] DEBUG STREAM b'IDAT' 41 8192
+Thu, 03 May 2018 15:20:16 PngImagePlugin.py[line:137] DEBUG STREAM b'IHDR' 16 13
+Thu, 03 May 2018 15:20:16 PngImagePlugin.py[line:137] DEBUG STREAM b'IDAT' 41 8192
+Thu, 03 May 2018 15:20:16 PngImagePlugin.py[line:137] DEBUG STREAM b'IHDR' 16 13
+Thu, 03 May 2018 15:20:16 PngImagePlugin.py[line:137] DEBUG STREAM b'IDAT' 41 8192
+Thu, 03 May 2018 15:20:16 PngImagePlugin.py[line:137] DEBUG STREAM b'IHDR' 16 13
+Thu, 03 May 2018 15:20:16 PngImagePlugin.py[line:137] DEBUG STREAM b'IDAT' 41 8192
+Thu, 03 May 2018 15:20:16 PngImagePlugin.py[line:137] DEBUG STREAM b'IHDR' 16 13
+Thu, 03 May 2018 15:20:16 PngImagePlugin.py[line:137] DEBUG STREAM b'IDAT' 41 8192
+Thu, 03 May 2018 15:20:18 imgcut.py[line:270] ERROR this is an exception message
 Traceback (most recent call last):
-  File "E:\hupai\component\app_thread.py", line 145, in run
-    findrefresh()
-  File "E:\hupai\component\imgcut.py", line 398, in findrefresh
-    img = cv2.cvtColor(sc, cv2.COLOR_BGR2GRAY)  # 转灰度图
-cv2.error: C:\projects\opencv-python\opencv\modules\imgproc\src\color.cpp:11073: error: (-215) depth == 0 || depth == 2 || depth == 5 in function cv::cvtColor
-
-Wed, 02 May 2018 09:19:47 app_thread.py[line:147] ERROR 刷新失败
-Wed, 02 May 2018 09:19:47 app_thread.py[line:148] ERROR this is an exception message
-Traceback (most recent call last):
-  File "E:\hupai\component\app_thread.py", line 145, in run
-    findrefresh()
-  File "E:\hupai\component\imgcut.py", line 398, in findrefresh
-    img = cv2.cvtColor(sc, cv2.COLOR_BGR2GRAY)  # 转灰度图
-cv2.error: C:\projects\opencv-python\opencv\modules\imgproc\src\color.cpp:11073: error: (-215) depth == 0 || depth == 2 || depth == 5 in function cv::cvtColor
-
-Wed, 02 May 2018 09:19:47 imgcut.py[line:383] ERROR cut_img 这里出错
-Wed, 02 May 2018 09:19:47 imgcut.py[line:384] ERROR this is an exception message
-Traceback (most recent call last):
-  File "E:\hupai\component\imgcut.py", line 376, in cut_img
-    set_val('imgpos_lowestprice', img[use_area[0][1]:use_area[0][3], use_area[0][0]:use_area[0][2]])  # ok
+  File "E:\hupai\component\imgcut.py", line 242, in timeset
+    currenttime = readpic(currenttime, maindata)  # 识别出来的时间
+  File "E:\hupai\component\imgcut.py", line 226, in readpic
+    testData = cut(img)
+  File "E:\hupai\component\imgcut.py", line 167, in cut
+    diff = xy[-1][2]  # 最后一个 图像块
 IndexError: list index out of range
-Wed, 02 May 2018 09:19:47 app_thread.py[line:147] ERROR 刷新失败
-Wed, 02 May 2018 09:19:47 app_thread.py[line:148] ERROR this is an exception message
+Thu, 03 May 2018 15:20:18 imgcut.py[line:270] ERROR this is an exception message
 Traceback (most recent call last):
-  File "E:\hupai\component\app_thread.py", line 145, in run
-    findrefresh()
-  File "E:\hupai\component\imgcut.py", line 398, in findrefresh
-    img = cv2.cvtColor(sc, cv2.COLOR_BGR2GRAY)  # 转灰度图
-cv2.error: C:\projects\opencv-python\opencv\modules\imgproc\src\color.cpp:11073: error: (-215) depth == 0 || depth == 2 || depth == 5 in function cv::cvtColor
-
-Wed, 02 May 2018 09:19:48 imgcut.py[line:383] ERROR cut_img 这里出错
-Wed, 02 May 2018 09:19:48 imgcut.py[line:384] ERROR this is an exception message
-Traceback (most recent call last):
-  File "E:\hupai\component\imgcut.py", line 376, in cut_img
-    set_val('imgpos_lowestprice', img[use_area[0][1]:use_area[0][3], use_area[0][0]:use_area[0][2]])  # ok
+  File "E:\hupai\component\imgcut.py", line 242, in timeset
+    currenttime = readpic(currenttime, maindata)  # 识别出来的时间
+  File "E:\hupai\component\imgcut.py", line 226, in readpic
+    testData = cut(img)
+  File "E:\hupai\component\imgcut.py", line 167, in cut
+    diff = xy[-1][2]  # 最后一个 图像块
 IndexError: list index out of range
-Wed, 02 May 2018 09:19:48 app_thread.py[line:147] ERROR 刷新失败
-Wed, 02 May 2018 09:19:48 app_thread.py[line:148] ERROR this is an exception message
+Thu, 03 May 2018 15:20:18 imgcut.py[line:270] ERROR this is an exception message
 Traceback (most recent call last):
-  File "E:\hupai\component\app_thread.py", line 145, in run
-    findrefresh()
-  File "E:\hupai\component\imgcut.py", line 398, in findrefresh
-    img = cv2.cvtColor(sc, cv2.COLOR_BGR2GRAY)  # 转灰度图
-cv2.error: C:\projects\opencv-python\opencv\modules\imgproc\src\color.cpp:11073: error: (-215) depth == 0 || depth == 2 || depth == 5 in function cv::cvtColor
-
-Wed, 02 May 2018 09:19:48 imgcut.py[line:383] ERROR cut_img 这里出错
-Wed, 02 May 2018 09:19:48 imgcut.py[line:384] ERROR this is an exception message
-Traceback (most recent call last):
-  File "E:\hupai\component\imgcut.py", line 376, in cut_img
-    set_val('imgpos_lowestprice', img[use_area[0][1]:use_area[0][3], use_area[0][0]:use_area[0][2]])  # ok
+  File "E:\hupai\component\imgcut.py", line 242, in timeset
+    currenttime = readpic(currenttime, maindata)  # 识别出来的时间
+  File "E:\hupai\component\imgcut.py", line 226, in readpic
+    testData = cut(img)
+  File "E:\hupai\component\imgcut.py", line 167, in cut
+    diff = xy[-1][2]  # 最后一个 图像块
 IndexError: list index out of range
-Wed, 02 May 2018 09:19:48 app_thread.py[line:147] ERROR 刷新失败
-Wed, 02 May 2018 09:19:48 app_thread.py[line:148] ERROR this is an exception message
+Thu, 03 May 2018 15:20:19 imgcut.py[line:270] ERROR this is an exception message
 Traceback (most recent call last):
-  File "E:\hupai\component\app_thread.py", line 145, in run
-    findrefresh()
-  File "E:\hupai\component\imgcut.py", line 398, in findrefresh
-    img = cv2.cvtColor(sc, cv2.COLOR_BGR2GRAY)  # 转灰度图
-cv2.error: C:\projects\opencv-python\opencv\modules\imgproc\src\color.cpp:11073: error: (-215) depth == 0 || depth == 2 || depth == 5 in function cv::cvtColor
-
-Wed, 02 May 2018 09:19:48 app_thread.py[line:147] ERROR 刷新失败
-Wed, 02 May 2018 09:19:48 app_thread.py[line:148] ERROR this is an exception message
-Traceback (most recent call last):
-  File "E:\hupai\component\app_thread.py", line 145, in run
-    findrefresh()
-  File "E:\hupai\component\imgcut.py", line 398, in findrefresh
-    img = cv2.cvtColor(sc, cv2.COLOR_BGR2GRAY)  # 转灰度图
-cv2.error: C:\projects\opencv-python\opencv\modules\imgproc\src\color.cpp:11073: error: (-215) depth == 0 || depth == 2 || depth == 5 in function cv::cvtColor
-
-Wed, 02 May 2018 09:19:48 imgcut.py[line:383] ERROR cut_img 这里出错
-Wed, 02 May 2018 09:19:48 imgcut.py[line:384] ERROR this is an exception message
-Traceback (most recent call last):
-  File "E:\hupai\component\imgcut.py", line 376, in cut_img
-    set_val('imgpos_lowestprice', img[use_area[0][1]:use_area[0][3], use_area[0][0]:use_area[0][2]])  # ok
+  File "E:\hupai\component\imgcut.py", line 242, in timeset
+    currenttime = readpic(currenttime, maindata)  # 识别出来的时间
+  File "E:\hupai\component\imgcut.py", line 226, in readpic
+    testData = cut(img)
+  File "E:\hupai\component\imgcut.py", line 167, in cut
+    diff = xy[-1][2]  # 最后一个 图像块
 IndexError: list index out of range
-Wed, 02 May 2018 09:19:48 app_thread.py[line:147] ERROR 刷新失败
-Wed, 02 May 2018 09:19:48 app_thread.py[line:148] ERROR this is an exception message
+Thu, 03 May 2018 15:20:19 imgcut.py[line:270] ERROR this is an exception message
 Traceback (most recent call last):
-  File "E:\hupai\component\app_thread.py", line 145, in run
-    findrefresh()
-  File "E:\hupai\component\imgcut.py", line 398, in findrefresh
-    img = cv2.cvtColor(sc, cv2.COLOR_BGR2GRAY)  # 转灰度图
-cv2.error: C:\projects\opencv-python\opencv\modules\imgproc\src\color.cpp:11073: error: (-215) depth == 0 || depth == 2 || depth == 5 in function cv::cvtColor
-
-Wed, 02 May 2018 09:19:48 imgcut.py[line:383] ERROR cut_img 这里出错
-Wed, 02 May 2018 09:19:48 imgcut.py[line:384] ERROR this is an exception message
-Traceback (most recent call last):
-  File "E:\hupai\component\imgcut.py", line 376, in cut_img
-    set_val('imgpos_lowestprice', img[use_area[0][1]:use_area[0][3], use_area[0][0]:use_area[0][2]])  # ok
+  File "E:\hupai\component\imgcut.py", line 242, in timeset
+    currenttime = readpic(currenttime, maindata)  # 识别出来的时间
+  File "E:\hupai\component\imgcut.py", line 226, in readpic
+    testData = cut(img)
+  File "E:\hupai\component\imgcut.py", line 167, in cut
+    diff = xy[-1][2]  # 最后一个 图像块
 IndexError: list index out of range
-Wed, 02 May 2018 09:19:48 app_thread.py[line:147] ERROR 刷新失败
-Wed, 02 May 2018 09:19:48 app_thread.py[line:148] ERROR this is an exception message
+Thu, 03 May 2018 15:20:19 imgcut.py[line:270] ERROR this is an exception message
 Traceback (most recent call last):
-  File "E:\hupai\component\app_thread.py", line 145, in run
-    findrefresh()
-  File "E:\hupai\component\imgcut.py", line 398, in findrefresh
-    img = cv2.cvtColor(sc, cv2.COLOR_BGR2GRAY)  # 转灰度图
-cv2.error: C:\projects\opencv-python\opencv\modules\imgproc\src\color.cpp:11073: error: (-215) depth == 0 || depth == 2 || depth == 5 in function cv::cvtColor
-
-Wed, 02 May 2018 09:19:48 imgcut.py[line:383] ERROR cut_img 这里出错
-Wed, 02 May 2018 09:19:48 imgcut.py[line:384] ERROR this is an exception message
-Traceback (most recent call last):
-  File "E:\hupai\component\imgcut.py", line 376, in cut_img
-    set_val('imgpos_lowestprice', img[use_area[0][1]:use_area[0][3], use_area[0][0]:use_area[0][2]])  # ok
+  File "E:\hupai\component\imgcut.py", line 242, in timeset
+    currenttime = readpic(currenttime, maindata)  # 识别出来的时间
+  File "E:\hupai\component\imgcut.py", line 226, in readpic
+    testData = cut(img)
+  File "E:\hupai\component\imgcut.py", line 167, in cut
+    diff = xy[-1][2]  # 最后一个 图像块
 IndexError: list index out of range
-Wed, 02 May 2018 09:19:48 app_thread.py[line:147] ERROR 刷新失败
-Wed, 02 May 2018 09:19:48 app_thread.py[line:148] ERROR this is an exception message
+Thu, 03 May 2018 15:20:20 imgcut.py[line:270] ERROR this is an exception message
 Traceback (most recent call last):
-  File "E:\hupai\component\app_thread.py", line 145, in run
-    findrefresh()
-  File "E:\hupai\component\imgcut.py", line 398, in findrefresh
-    img = cv2.cvtColor(sc, cv2.COLOR_BGR2GRAY)  # 转灰度图
-cv2.error: C:\projects\opencv-python\opencv\modules\imgproc\src\color.cpp:11073: error: (-215) depth == 0 || depth == 2 || depth == 5 in function cv::cvtColor
-
-Wed, 02 May 2018 09:19:48 imgcut.py[line:383] ERROR cut_img 这里出错
-Wed, 02 May 2018 09:19:48 app_thread.py[line:147] ERROR 刷新失败
-Wed, 02 May 2018 09:19:48 imgcut.py[line:384] ERROR this is an exception message
-Traceback (most recent call last):
-  File "E:\hupai\component\imgcut.py", line 376, in cut_img
-    set_val('imgpos_lowestprice', img[use_area[0][1]:use_area[0][3], use_area[0][0]:use_area[0][2]])  # ok
+  File "E:\hupai\component\imgcut.py", line 242, in timeset
+    currenttime = readpic(currenttime, maindata)  # 识别出来的时间
+  File "E:\hupai\component\imgcut.py", line 226, in readpic
+    testData = cut(img)
+  File "E:\hupai\component\imgcut.py", line 167, in cut
+    diff = xy[-1][2]  # 最后一个 图像块
 IndexError: list index out of range
-Wed, 02 May 2018 09:19:48 app_thread.py[line:148] ERROR this is an exception message
+Thu, 03 May 2018 15:20:21 imgcut.py[line:270] ERROR this is an exception message
 Traceback (most recent call last):
-  File "E:\hupai\component\app_thread.py", line 145, in run
-    findrefresh()
-  File "E:\hupai\component\imgcut.py", line 398, in findrefresh
-    img = cv2.cvtColor(sc, cv2.COLOR_BGR2GRAY)  # 转灰度图
-cv2.error: C:\projects\opencv-python\opencv\modules\imgproc\src\color.cpp:11073: error: (-215) depth == 0 || depth == 2 || depth == 5 in function cv::cvtColor
-
-Wed, 02 May 2018 09:19:48 app_thread.py[line:147] ERROR 刷新失败
-Wed, 02 May 2018 09:19:48 app_thread.py[line:148] ERROR this is an exception message
+  File "E:\hupai\component\imgcut.py", line 254, in timeset
+    a_time_temp = time.mktime(time.strptime(b, '%Y-%m-%d %H:%M:%S')) + 0.6  # 转时间戳   补个平均时差
+  File "C:\Users\Administrator\Python\Python36\Lib\_strptime.py", line 559, in _strptime_time
+    tt = _strptime(data_string, format)[0]
+  File "C:\Users\Administrator\Python\Python36\Lib\_strptime.py", line 362, in _strptime
+    (data_string, format))
+ValueError: time data '2018-05-03 44444' does not match format '%Y-%m-%d %H:%M:%S'
+Thu, 03 May 2018 15:20:21 imgcut.py[line:270] ERROR this is an exception message
 Traceback (most recent call last):
-  File "E:\hupai\component\app_thread.py", line 145, in run
-    findrefresh()
-  File "E:\hupai\component\imgcut.py", line 398, in findrefresh
-    img = cv2.cvtColor(sc, cv2.COLOR_BGR2GRAY)  # 转灰度图
-cv2.error: C:\projects\opencv-python\opencv\modules\imgproc\src\color.cpp:11073: error: (-215) depth == 0 || depth == 2 || depth == 5 in function cv::cvtColor
-
-Wed, 02 May 2018 09:19:48 imgcut.py[line:383] ERROR cut_img 这里出错
-Wed, 02 May 2018 09:19:48 imgcut.py[line:384] ERROR this is an exception message
+  File "E:\hupai\component\imgcut.py", line 254, in timeset
+    a_time_temp = time.mktime(time.strptime(b, '%Y-%m-%d %H:%M:%S')) + 0.6  # 转时间戳   补个平均时差
+  File "C:\Users\Administrator\Python\Python36\Lib\_strptime.py", line 559, in _strptime_time
+    tt = _strptime(data_string, format)[0]
+  File "C:\Users\Administrator\Python\Python36\Lib\_strptime.py", line 362, in _strptime
+    (data_string, format))
+ValueError: time data '2018-05-03 44444' does not match format '%Y-%m-%d %H:%M:%S'
+Thu, 03 May 2018 15:20:21 imgcut.py[line:270] ERROR this is an exception message
 Traceback (most recent call last):
-  File "E:\hupai\component\imgcut.py", line 376, in cut_img
-    set_val('imgpos_lowestprice', img[use_area[0][1]:use_area[0][3], use_area[0][0]:use_area[0][2]])  # ok
+  File "E:\hupai\component\imgcut.py", line 254, in timeset
+    a_time_temp = time.mktime(time.strptime(b, '%Y-%m-%d %H:%M:%S')) + 0.6  # 转时间戳   补个平均时差
+  File "C:\Users\Administrator\Python\Python36\Lib\_strptime.py", line 559, in _strptime_time
+    tt = _strptime(data_string, format)[0]
+  File "C:\Users\Administrator\Python\Python36\Lib\_strptime.py", line 362, in _strptime
+    (data_string, format))
+ValueError: time data '2018-05-03 44444' does not match format '%Y-%m-%d %H:%M:%S'
+Thu, 03 May 2018 15:20:21 imgcut.py[line:270] ERROR this is an exception message
+Traceback (most recent call last):
+  File "E:\hupai\component\imgcut.py", line 242, in timeset
+    currenttime = readpic(currenttime, maindata)  # 识别出来的时间
+  File "E:\hupai\component\imgcut.py", line 226, in readpic
+    testData = cut(img)
+  File "E:\hupai\component\imgcut.py", line 167, in cut
+    diff = xy[-1][2]  # 最后一个 图像块
 IndexError: list index out of range
+Thu, 03 May 2018 15:20:21 imgcut.py[line:270] ERROR this is an exception message
+Traceback (most recent call last):
+  File "E:\hupai\component\imgcut.py", line 242, in timeset
+    currenttime = readpic(currenttime, maindata)  # 识别出来的时间
+  File "E:\hupai\component\imgcut.py", line 226, in readpic
+    testData = cut(img)
+  File "E:\hupai\component\imgcut.py", line 167, in cut
+    diff = xy[-1][2]  # 最后一个 图像块
+IndexError: list index out of range
+Thu, 03 May 2018 15:20:22 imgcut.py[line:270] ERROR this is an exception message
+Traceback (most recent call last):
+  File "E:\hupai\component\imgcut.py", line 242, in timeset
+    currenttime = readpic(currenttime, maindata)  # 识别出来的时间
+  File "E:\hupai\component\imgcut.py", line 226, in readpic
+    testData = cut(img)
+  File "E:\hupai\component\imgcut.py", line 167, in cut
+    diff = xy[-1][2]  # 最后一个 图像块
+IndexError: list index out of range
+Thu, 03 May 2018 15:20:22 imgcut.py[line:270] ERROR this is an exception message
+Traceback (most recent call last):
+  File "E:\hupai\component\imgcut.py", line 242, in timeset
+    currenttime = readpic(currenttime, maindata)  # 识别出来的时间
+  File "E:\hupai\component\imgcut.py", line 226, in readpic
+    testData = cut(img)
+  File "E:\hupai\component\imgcut.py", line 167, in cut
+    diff = xy[-1][2]  # 最后一个 图像块
+IndexError: list index out of range
+Thu, 03 May 2018 15:20:22 imgcut.py[line:270] ERROR this is an exception message
+Traceback (most recent call last):
+  File "E:\hupai\component\imgcut.py", line 242, in timeset
+    currenttime = readpic(currenttime, maindata)  # 识别出来的时间
+  File "E:\hupai\component\imgcut.py", line 226, in readpic
+    testData = cut(img)
+  File "E:\hupai\component\imgcut.py", line 167, in cut
+    diff = xy[-1][2]  # 最后一个 图像块
+IndexError: list index out of range
+Thu, 03 May 2018 15:20:23 imgcut.py[line:270] ERROR this is an exception message
+Traceback (most recent call last):
+  File "E:\hupai\component\imgcut.py", line 254, in timeset
+    a_time_temp = time.mktime(time.strptime(b, '%Y-%m-%d %H:%M:%S')) + 0.6  # 转时间戳   补个平均时差
+  File "C:\Users\Administrator\Python\Python36\Lib\_strptime.py", line 559, in _strptime_time
+    tt = _strptime(data_string, format)[0]
+  File "C:\Users\Administrator\Python\Python36\Lib\_strptime.py", line 365, in _strptime
+    data_string[found.end():])
+ValueError: unconverted data remains: 2
+Thu, 03 May 2018 15:20:23 imgcut.py[line:270] ERROR this is an exception message
+Traceback (most recent call last):
+  File "E:\hupai\component\imgcut.py", line 254, in timeset
+    a_time_temp = time.mktime(time.strptime(b, '%Y-%m-%d %H:%M:%S')) + 0.6  # 转时间戳   补个平均时差
+  File "C:\Users\Administrator\Python\Python36\Lib\_strptime.py", line 559, in _strptime_time
+    tt = _strptime(data_string, format)[0]
+  File "C:\Users\Administrator\Python\Python36\Lib\_strptime.py", line 365, in _strptime
+    data_string[found.end():])
+ValueError: unconverted data remains: 2
+Thu, 03 May 2018 15:20:24 imgcut.py[line:270] ERROR this is an exception message
+Traceback (most recent call last):
+  File "E:\hupai\component\imgcut.py", line 254, in timeset
+    a_time_temp = time.mktime(time.strptime(b, '%Y-%m-%d %H:%M:%S')) + 0.6  # 转时间戳   补个平均时差
+  File "C:\Users\Administrator\Python\Python36\Lib\_strptime.py", line 559, in _strptime_time
+    tt = _strptime(data_string, format)[0]
+  File "C:\Users\Administrator\Python\Python36\Lib\_strptime.py", line 362, in _strptime
+    (data_string, format))
+ValueError: time data '2018-05-03 444141200::10496' does not match format '%Y-%m-%d %H:%M:%S'
+Thu, 03 May 2018 15:20:24 imgcut.py[line:270] ERROR this is an exception message
+Traceback (most recent call last):
+  File "E:\hupai\component\imgcut.py", line 254, in timeset
+    a_time_temp = time.mktime(time.strptime(b, '%Y-%m-%d %H:%M:%S')) + 0.6  # 转时间戳   补个平均时差
+  File "C:\Users\Administrator\Python\Python36\Lib\_strptime.py", line 559, in _strptime_time
+    tt = _strptime(data_string, format)[0]
+  File "C:\Users\Administrator\Python\Python36\Lib\_strptime.py", line 362, in _strptime
+    (data_string, format))
+ValueError: time data '2018-05-03 444141200::10496' does not match format '%Y-%m-%d %H:%M:%S'
+Thu, 03 May 2018 15:20:25 imgcut.py[line:270] ERROR this is an exception message
+Traceback (most recent call last):
+  File "E:\hupai\component\imgcut.py", line 254, in timeset
+    a_time_temp = time.mktime(time.strptime(b, '%Y-%m-%d %H:%M:%S')) + 0.6  # 转时间戳   补个平均时差
+  File "C:\Users\Administrator\Python\Python36\Lib\_strptime.py", line 559, in _strptime_time
+    tt = _strptime(data_string, format)[0]
+  File "C:\Users\Administrator\Python\Python36\Lib\_strptime.py", line 362, in _strptime
+    (data_string, format))
+ValueError: time data '2018-05-03 44444' does not match format '%Y-%m-%d %H:%M:%S'
+Thu, 03 May 2018 15:20:26 imgcut.py[line:270] ERROR this is an exception message
+Traceback (most recent call last):
+  File "E:\hupai\component\imgcut.py", line 242, in timeset
+    currenttime = readpic(currenttime, maindata)  # 识别出来的时间
+  File "E:\hupai\component\imgcut.py", line 226, in readpic
+    testData = cut(img)
+  File "E:\hupai\component\imgcut.py", line 219, in cut
+    imgn[i] = cv2.resize(imgn[i], (8, 8))
+cv2.error: C:\projects\opencv-python\opencv\modules\imgproc\src\resize.cpp:4044: error: (-215) ssize.width > 0 && ssize.height > 0 in function cv::resize
+
+Thu, 03 May 2018 15:20:26 imgcut.py[line:270] ERROR this is an exception message
+Traceback (most recent call last):
+  File "E:\hupai\component\imgcut.py", line 242, in timeset
+    currenttime = readpic(currenttime, maindata)  # 识别出来的时间
+  File "E:\hupai\component\imgcut.py", line 226, in readpic
+    testData = cut(img)
+  File "E:\hupai\component\imgcut.py", line 167, in cut
+    diff = xy[-1][2]  # 最后一个 图像块
+IndexError: list index out of range
+Thu, 03 May 2018 15:20:26 imgcut.py[line:270] ERROR this is an exception message
+Traceback (most recent call last):
+  File "E:\hupai\component\imgcut.py", line 242, in timeset
+    currenttime = readpic(currenttime, maindata)  # 识别出来的时间
+  File "E:\hupai\component\imgcut.py", line 226, in readpic
+    testData = cut(img)
+  File "E:\hupai\component\imgcut.py", line 167, in cut
+    diff = xy[-1][2]  # 最后一个 图像块
+IndexError: list index out of range
+Thu, 03 May 2018 15:20:27 imgcut.py[line:270] ERROR this is an exception message
+Traceback (most recent call last):
+  File "E:\hupai\component\imgcut.py", line 254, in timeset
+    a_time_temp = time.mktime(time.strptime(b, '%Y-%m-%d %H:%M:%S')) + 0.6  # 转时间戳   补个平均时差
+  File "C:\Users\Administrator\Python\Python36\Lib\_strptime.py", line 559, in _strptime_time
+    tt = _strptime(data_string, format)[0]
+  File "C:\Users\Administrator\Python\Python36\Lib\_strptime.py", line 362, in _strptime
+    (data_string, format))
+ValueError: time data '2018-05-03 436044444:66' does not match format '%Y-%m-%d %H:%M:%S'
+Thu, 03 May 2018 15:20:27 imgcut.py[line:270] ERROR this is an exception message
+Traceback (most recent call last):
+  File "E:\hupai\component\imgcut.py", line 242, in timeset
+    currenttime = readpic(currenttime, maindata)  # 识别出来的时间
+  File "E:\hupai\component\imgcut.py", line 226, in readpic
+    testData = cut(img)
+  File "E:\hupai\component\imgcut.py", line 167, in cut
+    diff = xy[-1][2]  # 最后一个 图像块
+IndexError: list index out of range
+Thu, 03 May 2018 15:20:27 imgcut.py[line:270] ERROR this is an exception message
+Traceback (most recent call last):
+  File "E:\hupai\component\imgcut.py", line 242, in timeset
+    currenttime = readpic(currenttime, maindata)  # 识别出来的时间
+  File "E:\hupai\component\imgcut.py", line 226, in readpic
+    testData = cut(img)
+  File "E:\hupai\component\imgcut.py", line 167, in cut
+    diff = xy[-1][2]  # 最后一个 图像块
+IndexError: list index out of range
+Thu, 03 May 2018 15:20:28 imgcut.py[line:270] ERROR this is an exception message
+Traceback (most recent call last):
+  File "E:\hupai\component\imgcut.py", line 242, in timeset
+    currenttime = readpic(currenttime, maindata)  # 识别出来的时间
+  File "E:\hupai\component\imgcut.py", line 226, in readpic
+    testData = cut(img)
+  File "E:\hupai\component\imgcut.py", line 167, in cut
+    diff = xy[-1][2]  # 最后一个 图像块
+IndexError: list index out of range
+Thu, 03 May 2018 15:20:28 imgcut.py[line:270] ERROR this is an exception message
+Traceback (most recent call last):
+  File "E:\hupai\component\imgcut.py", line 242, in timeset
+    currenttime = readpic(currenttime, maindata)  # 识别出来的时间
+  File "E:\hupai\component\imgcut.py", line 226, in readpic
+    testData = cut(img)
+  File "E:\hupai\component\imgcut.py", line 167, in cut
+    diff = xy[-1][2]  # 最后一个 图像块
+IndexError: list index out of range
+Thu, 03 May 2018 15:20:29 imgcut.py[line:270] ERROR this is an exception message
+Traceback (most recent call last):
+  File "E:\hupai\component\imgcut.py", line 254, in timeset
+    a_time_temp = time.mktime(time.strptime(b, '%Y-%m-%d %H:%M:%S')) + 0.6  # 转时间戳   补个平均时差
+  File "C:\Users\Administrator\Python\Python36\Lib\_strptime.py", line 559, in _strptime_time
+    tt = _strptime(data_string, format)[0]
+  File "C:\Users\Administrator\Python\Python36\Lib\_strptime.py", line 362, in _strptime
+    (data_string, format))
+ValueError: time data '2018-05-03 904806611:11:29:07' does not match format '%Y-%m-%d %H:%M:%S'
+Thu, 03 May 2018 15:20:29 imgcut.py[line:270] ERROR this is an exception message
+Traceback (most recent call last):
+  File "E:\hupai\component\imgcut.py", line 254, in timeset
+    a_time_temp = time.mktime(time.strptime(b, '%Y-%m-%d %H:%M:%S')) + 0.6  # 转时间戳   补个平均时差
+  File "C:\Users\Administrator\Python\Python36\Lib\_strptime.py", line 559, in _strptime_time
+    tt = _strptime(data_string, format)[0]
+  File "C:\Users\Administrator\Python\Python36\Lib\_strptime.py", line 362, in _strptime
+    (data_string, format))
+ValueError: time data '2018-05-03 904806611:11:29:08' does not match format '%Y-%m-%d %H:%M:%S'
+Thu, 03 May 2018 15:20:30 imgcut.py[line:270] ERROR this is an exception message
+Traceback (most recent call last):
+  File "E:\hupai\component\imgcut.py", line 242, in timeset
+    currenttime = readpic(currenttime, maindata)  # 识别出来的时间
+  File "E:\hupai\component\imgcut.py", line 226, in readpic
+    testData = cut(img)
+  File "E:\hupai\component\imgcut.py", line 167, in cut
+    diff = xy[-1][2]  # 最后一个 图像块
+IndexError: list index out of range
+Thu, 03 May 2018 15:20:30 imgcut.py[line:270] ERROR this is an exception message
+Traceback (most recent call last):
+  File "E:\hupai\component\imgcut.py", line 242, in timeset
+    currenttime = readpic(currenttime, maindata)  # 识别出来的时间
+  File "E:\hupai\component\imgcut.py", line 226, in readpic
+    testData = cut(img)
+  File "E:\hupai\component\imgcut.py", line 167, in cut
+    diff = xy[-1][2]  # 最后一个 图像块
+IndexError: list index out of range
+Thu, 03 May 2018 15:20:32 imgcut.py[line:270] ERROR this is an exception message
+Traceback (most recent call last):
+  File "E:\hupai\component\imgcut.py", line 254, in timeset
+    a_time_temp = time.mktime(time.strptime(b, '%Y-%m-%d %H:%M:%S')) + 0.6  # 转时间戳   补个平均时差
+  File "C:\Users\Administrator\Python\Python36\Lib\_strptime.py", line 559, in _strptime_time
+    tt = _strptime(data_string, format)[0]
+  File "C:\Users\Administrator\Python\Python36\Lib\_strptime.py", line 362, in _strptime
+    (data_string, format))
+ValueError: time data '2018-05-03 904806611:11:29:10' does not match format '%Y-%m-%d %H:%M:%S'
+Thu, 03 May 2018 15:20:33 imgcut.py[line:270] ERROR this is an exception message
+Traceback (most recent call last):
+  File "E:\hupai\component\imgcut.py", line 242, in timeset
+    currenttime = readpic(currenttime, maindata)  # 识别出来的时间
+  File "E:\hupai\component\imgcut.py", line 226, in readpic
+    testData = cut(img)
+  File "E:\hupai\component\imgcut.py", line 167, in cut
+    diff = xy[-1][2]  # 最后一个 图像块
+IndexError: list index out of range
+Thu, 03 May 2018 15:20:33 imgcut.py[line:270] ERROR this is an exception message
+Traceback (most recent call last):
+  File "E:\hupai\component\imgcut.py", line 254, in timeset
+    a_time_temp = time.mktime(time.strptime(b, '%Y-%m-%d %H:%M:%S')) + 0.6  # 转时间戳   补个平均时差
+  File "C:\Users\Administrator\Python\Python36\Lib\_strptime.py", line 559, in _strptime_time
+    tt = _strptime(data_string, format)[0]
+  File "C:\Users\Administrator\Python\Python36\Lib\_strptime.py", line 362, in _strptime
+    (data_string, format))
+ValueError: time data '2018-05-03 904806611:11:29:11' does not match format '%Y-%m-%d %H:%M:%S'
+Thu, 03 May 2018 15:20:33 imgcut.py[line:270] ERROR this is an exception message
+Traceback (most recent call last):
+  File "E:\hupai\component\imgcut.py", line 254, in timeset
+    a_time_temp = time.mktime(time.strptime(b, '%Y-%m-%d %H:%M:%S')) + 0.6  # 转时间戳   补个平均时差
+  File "C:\Users\Administrator\Python\Python36\Lib\_strptime.py", line 559, in _strptime_time
+    tt = _strptime(data_string, format)[0]
+  File "C:\Users\Administrator\Python\Python36\Lib\_strptime.py", line 362, in _strptime
+    (data_string, format))
+ValueError: time data '2018-05-03 904806611:11:29:11' does not match format '%Y-%m-%d %H:%M:%S'
+Thu, 03 May 2018 15:20:35 imgcut.py[line:270] ERROR this is an exception message
+Traceback (most recent call last):
+  File "E:\hupai\component\imgcut.py", line 242, in timeset
+    currenttime = readpic(currenttime, maindata)  # 识别出来的时间
+  File "E:\hupai\component\imgcut.py", line 226, in readpic
+    testData = cut(img)
+  File "E:\hupai\component\imgcut.py", line 167, in cut
+    diff = xy[-1][2]  # 最后一个 图像块
+IndexError: list index out of range
+Thu, 03 May 2018 15:20:36 imgcut.py[line:270] ERROR this is an exception message
+Traceback (most recent call last):
+  File "E:\hupai\component\imgcut.py", line 254, in timeset
+    a_time_temp = time.mktime(time.strptime(b, '%Y-%m-%d %H:%M:%S')) + 0.6  # 转时间戳   补个平均时差
+  File "C:\Users\Administrator\Python\Python36\Lib\_strptime.py", line 559, in _strptime_time
+    tt = _strptime(data_string, format)[0]
+  File "C:\Users\Administrator\Python\Python36\Lib\_strptime.py", line 362, in _strptime
+    (data_string, format))
+ValueError: time data '2018-05-03 904806611:11:29:11' does not match format '%Y-%m-%d %H:%M:%S'
+Thu, 03 May 2018 15:20:36 imgcut.py[line:270] ERROR this is an exception message
+Traceback (most recent call last):
+  File "E:\hupai\component\imgcut.py", line 254, in timeset
+    a_time_temp = time.mktime(time.strptime(b, '%Y-%m-%d %H:%M:%S')) + 0.6  # 转时间戳   补个平均时差
+  File "C:\Users\Administrator\Python\Python36\Lib\_strptime.py", line 559, in _strptime_time
+    tt = _strptime(data_string, format)[0]
+  File "C:\Users\Administrator\Python\Python36\Lib\_strptime.py", line 362, in _strptime
+    (data_string, format))
+ValueError: time data '2018-05-03 904806611:11:29:11' does not match format '%Y-%m-%d %H:%M:%S'
+Thu, 03 May 2018 15:20:36 imgcut.py[line:270] ERROR this is an exception message
+Traceback (most recent call last):
+  File "E:\hupai\component\imgcut.py", line 254, in timeset
+    a_time_temp = time.mktime(time.strptime(b, '%Y-%m-%d %H:%M:%S')) + 0.6  # 转时间戳   补个平均时差
+  File "C:\Users\Administrator\Python\Python36\Lib\_strptime.py", line 559, in _strptime_time
+    tt = _strptime(data_string, format)[0]
+  File "C:\Users\Administrator\Python\Python36\Lib\_strptime.py", line 362, in _strptime
+    (data_string, format))
+ValueError: time data '2018-05-03 904806611:11:29:11' does not match format '%Y-%m-%d %H:%M:%S'
+Thu, 03 May 2018 15:20:42 imgcut.py[line:270] ERROR this is an exception message
+Traceback (most recent call last):
+  File "E:\hupai\component\imgcut.py", line 242, in timeset
+    currenttime = readpic(currenttime, maindata)  # 识别出来的时间
+  File "E:\hupai\component\imgcut.py", line 226, in readpic
+    testData = cut(img)
+  File "E:\hupai\component\imgcut.py", line 167, in cut
+    diff = xy[-1][2]  # 最后一个 图像块
+IndexError: list index out of range
+Thu, 03 May 2018 15:20:42 imgcut.py[line:267] ERROR this is an exception message
+Traceback (most recent call last):
+  File "E:\hupai\component\imgcut.py", line 261, in timeset
+    moni_second_temp = int(currenttime.split(':')[2]) + 0.6
+IndexError: list index out of range
+Thu, 03 May 2018 15:20:42 imgcut.py[line:267] ERROR this is an exception message
+Traceback (most recent call last):
+  File "E:\hupai\component\imgcut.py", line 261, in timeset
+    moni_second_temp = int(currenttime.split(':')[2]) + 0.6
+IndexError: list index out of range
+Thu, 03 May 2018 15:20:43 imgcut.py[line:267] ERROR this is an exception message
+Traceback (most recent call last):
+  File "E:\hupai\component\imgcut.py", line 261, in timeset
+    moni_second_temp = int(currenttime.split(':')[2]) + 0.6
+IndexError: list index out of range
+Thu, 03 May 2018 15:20:43 imgcut.py[line:267] ERROR this is an exception message
+Traceback (most recent call last):
+  File "E:\hupai\component\imgcut.py", line 261, in timeset
+    moni_second_temp = int(currenttime.split(':')[2]) + 0.6
+IndexError: list index out of range
+Thu, 03 May 2018 15:20:43 imgcut.py[line:267] ERROR this is an exception message
+Traceback (most recent call last):
+  File "E:\hupai\component\imgcut.py", line 261, in timeset
+    moni_second_temp = int(currenttime.split(':')[2]) + 0.6
+IndexError: list index out of range
+Thu, 03 May 2018 15:20:44 imgcut.py[line:267] ERROR this is an exception message
+Traceback (most recent call last):
+  File "E:\hupai\component\imgcut.py", line 261, in timeset
+    moni_second_temp = int(currenttime.split(':')[2]) + 0.6
+IndexError: list index out of range
+Thu, 03 May 2018 15:20:44 imgcut.py[line:267] ERROR this is an exception message
+Traceback (most recent call last):
+  File "E:\hupai\component\imgcut.py", line 261, in timeset
+    moni_second_temp = int(currenttime.split(':')[2]) + 0.6
+IndexError: list index out of range
+Thu, 03 May 2018 15:20:44 imgcut.py[line:267] ERROR this is an exception message
+Traceback (most recent call last):
+  File "E:\hupai\component\imgcut.py", line 261, in timeset
+    moni_second_temp = int(currenttime.split(':')[2]) + 0.6
+IndexError: list index out of range
+Thu, 03 May 2018 15:20:45 imgcut.py[line:267] ERROR this is an exception message
+Traceback (most recent call last):
+  File "E:\hupai\component\imgcut.py", line 261, in timeset
+    moni_second_temp = int(currenttime.split(':')[2]) + 0.6
+IndexError: list index out of range
+Thu, 03 May 2018 15:20:45 imgcut.py[line:267] ERROR this is an exception message
+Traceback (most recent call last):
+  File "E:\hupai\component\imgcut.py", line 261, in timeset
+    moni_second_temp = int(currenttime.split(':')[2]) + 0.6
+IndexError: list index out of range
+Thu, 03 May 2018 15:20:46 imgcut.py[line:267] ERROR this is an exception message
+Traceback (most recent call last):
+  File "E:\hupai\component\imgcut.py", line 261, in timeset
+    moni_second_temp = int(currenttime.split(':')[2]) + 0.6
+IndexError: list index out of range
+Thu, 03 May 2018 15:20:46 imgcut.py[line:267] ERROR this is an exception message
+Traceback (most recent call last):
+  File "E:\hupai\component\imgcut.py", line 261, in timeset
+    moni_second_temp = int(currenttime.split(':')[2]) + 0.6
+IndexError: list index out of range
+Thu, 03 May 2018 15:20:46 imgcut.py[line:267] ERROR this is an exception message
+Traceback (most recent call last):
+  File "E:\hupai\component\imgcut.py", line 261, in timeset
+    moni_second_temp = int(currenttime.split(':')[2]) + 0.6
+IndexError: list index out of range
+Thu, 03 May 2018 15:20:47 imgcut.py[line:267] ERROR this is an exception message
+Traceback (most recent call last):
+  File "E:\hupai\component\imgcut.py", line 261, in timeset
+    moni_second_temp = int(currenttime.split(':')[2]) + 0.6
+IndexError: list index out of range
+Thu, 03 May 2018 15:20:47 imgcut.py[line:267] ERROR this is an exception message
+Traceback (most recent call last):
+  File "E:\hupai\component\imgcut.py", line 261, in timeset
+    moni_second_temp = int(currenttime.split(':')[2]) + 0.6
+IndexError: list index out of range
+Thu, 03 May 2018 15:20:47 imgcut.py[line:267] ERROR this is an exception message
+Traceback (most recent call last):
+  File "E:\hupai\component\imgcut.py", line 261, in timeset
+    moni_second_temp = int(currenttime.split(':')[2]) + 0.6
+IndexError: list index out of range
+Thu, 03 May 2018 15:20:48 imgcut.py[line:267] ERROR this is an exception message
+Traceback (most recent call last):
+  File "E:\hupai\component\imgcut.py", line 261, in timeset
+    moni_second_temp = int(currenttime.split(':')[2]) + 0.6
+IndexError: list index out of range
+Thu, 03 May 2018 15:20:48 imgcut.py[line:267] ERROR this is an exception message
+Traceback (most recent call last):
+  File "E:\hupai\component\imgcut.py", line 261, in timeset
+    moni_second_temp = int(currenttime.split(':')[2]) + 0.6
+IndexError: list index out of range
+Thu, 03 May 2018 15:20:48 imgcut.py[line:267] ERROR this is an exception message
+Traceback (most recent call last):
+  File "E:\hupai\component\imgcut.py", line 261, in timeset
+    moni_second_temp = int(currenttime.split(':')[2]) + 0.6
+IndexError: list index out of range
+Thu, 03 May 2018 15:20:49 imgcut.py[line:267] ERROR this is an exception message
+Traceback (most recent call last):
+  File "E:\hupai\component\imgcut.py", line 261, in timeset
+    moni_second_temp = int(currenttime.split(':')[2]) + 0.6
+IndexError: list index out of range
+Thu, 03 May 2018 15:20:49 imgcut.py[line:267] ERROR this is an exception message
+Traceback (most recent call last):
+  File "E:\hupai\component\imgcut.py", line 261, in timeset
+    moni_second_temp = int(currenttime.split(':')[2]) + 0.6
+IndexError: list index out of range
+Thu, 03 May 2018 15:20:49 imgcut.py[line:267] ERROR this is an exception message
+Traceback (most recent call last):
+  File "E:\hupai\component\imgcut.py", line 261, in timeset
+    moni_second_temp = int(currenttime.split(':')[2]) + 0.6
+IndexError: list index out of range
+Thu, 03 May 2018 15:20:50 imgcut.py[line:267] ERROR this is an exception message
+Traceback (most recent call last):
+  File "E:\hupai\component\imgcut.py", line 261, in timeset
+    moni_second_temp = int(currenttime.split(':')[2]) + 0.6
+IndexError: list index out of range
+Thu, 03 May 2018 15:20:52 imgcut.py[line:267] ERROR this is an exception message
+Traceback (most recent call last):
+  File "E:\hupai\component\imgcut.py", line 261, in timeset
+    moni_second_temp = int(currenttime.split(':')[2]) + 0.6
+IndexError: list index out of range
+Thu, 03 May 2018 15:20:52 imgcut.py[line:267] ERROR this is an exception message
+Traceback (most recent call last):
+  File "E:\hupai\component\imgcut.py", line 261, in timeset
+    moni_second_temp = int(currenttime.split(':')[2]) + 0.6
+IndexError: list index out of range
+Thu, 03 May 2018 15:20:52 imgcut.py[line:267] ERROR this is an exception message
+Traceback (most recent call last):
+  File "E:\hupai\component\imgcut.py", line 261, in timeset
+    moni_second_temp = int(currenttime.split(':')[2]) + 0.6
+IndexError: list index out of range
+Thu, 03 May 2018 15:20:53 imgcut.py[line:267] ERROR this is an exception message
+Traceback (most recent call last):
+  File "E:\hupai\component\imgcut.py", line 261, in timeset
+    moni_second_temp = int(currenttime.split(':')[2]) + 0.6
+IndexError: list index out of range
+Thu, 03 May 2018 15:20:53 imgcut.py[line:267] ERROR this is an exception message
+Traceback (most recent call last):
+  File "E:\hupai\component\imgcut.py", line 261, in timeset
+    moni_second_temp = int(currenttime.split(':')[2]) + 0.6
+IndexError: list index out of range
+Thu, 03 May 2018 15:20:53 imgcut.py[line:267] ERROR this is an exception message
+Traceback (most recent call last):
+  File "E:\hupai\component\imgcut.py", line 261, in timeset
+    moni_second_temp = int(currenttime.split(':')[2]) + 0.6
+IndexError: list index out of range
+Thu, 03 May 2018 15:20:55 imgcut.py[line:267] ERROR this is an exception message
+Traceback (most recent call last):
+  File "E:\hupai\component\imgcut.py", line 261, in timeset
+    moni_second_temp = int(currenttime.split(':')[2]) + 0.6
+IndexError: list index out of range
+Thu, 03 May 2018 15:20:56 imgcut.py[line:267] ERROR this is an exception message
+Traceback (most recent call last):
+  File "E:\hupai\component\imgcut.py", line 261, in timeset
+    moni_second_temp = int(currenttime.split(':')[2]) + 0.6
+IndexError: list index out of range
+Thu, 03 May 2018 15:20:56 imgcut.py[line:267] ERROR this is an exception message
+Traceback (most recent call last):
+  File "E:\hupai\component\imgcut.py", line 261, in timeset
+    moni_second_temp = int(currenttime.split(':')[2]) + 0.6
+IndexError: list index out of range
+Thu, 03 May 2018 15:20:56 imgcut.py[line:267] ERROR this is an exception message
+Traceback (most recent call last):
+  File "E:\hupai\component\imgcut.py", line 261, in timeset
+    moni_second_temp = int(currenttime.split(':')[2]) + 0.6
+IndexError: list index out of range
+Thu, 03 May 2018 15:20:57 imgcut.py[line:267] ERROR this is an exception message
+Traceback (most recent call last):
+  File "E:\hupai\component\imgcut.py", line 261, in timeset
+    moni_second_temp = int(currenttime.split(':')[2]) + 0.6
+IndexError: list index out of range
+Thu, 03 May 2018 15:20:57 imgcut.py[line:267] ERROR this is an exception message
+Traceback (most recent call last):
+  File "E:\hupai\component\imgcut.py", line 261, in timeset
+    moni_second_temp = int(currenttime.split(':')[2]) + 0.6
+IndexError: list index out of range
+Thu, 03 May 2018 15:20:57 imgcut.py[line:267] ERROR this is an exception message
+Traceback (most recent call last):
+  File "E:\hupai\component\imgcut.py", line 261, in timeset
+    moni_second_temp = int(currenttime.split(':')[2]) + 0.6
+IndexError: list index out of range
+Thu, 03 May 2018 15:20:58 imgcut.py[line:267] ERROR this is an exception message
+Traceback (most recent call last):
+  File "E:\hupai\component\imgcut.py", line 261, in timeset
+    moni_second_temp = int(currenttime.split(':')[2]) + 0.6
+IndexError: list index out of range
+Thu, 03 May 2018 15:20:58 imgcut.py[line:267] ERROR this is an exception message
+Traceback (most recent call last):
+  File "E:\hupai\component\imgcut.py", line 261, in timeset
+    moni_second_temp = int(currenttime.split(':')[2]) + 0.6
+IndexError: list index out of range
+Thu, 03 May 2018 15:20:58 imgcut.py[line:267] ERROR this is an exception message
+Traceback (most recent call last):
+  File "E:\hupai\component\imgcut.py", line 261, in timeset
+    moni_second_temp = int(currenttime.split(':')[2]) + 0.6
+IndexError: list index out of range
+Thu, 03 May 2018 15:20:59 imgcut.py[line:267] ERROR this is an exception message
+Traceback (most recent call last):
+  File "E:\hupai\component\imgcut.py", line 261, in timeset
+    moni_second_temp = int(currenttime.split(':')[2]) + 0.6
+IndexError: list index out of range
+Thu, 03 May 2018 15:20:59 imgcut.py[line:267] ERROR this is an exception message
+Traceback (most recent call last):
+  File "E:\hupai\component\imgcut.py", line 261, in timeset
+    moni_second_temp = int(currenttime.split(':')[2]) + 0.6
+IndexError: list index out of range
+Thu, 03 May 2018 15:20:59 imgcut.py[line:267] ERROR this is an exception message
+Traceback (most recent call last):
+  File "E:\hupai\component\imgcut.py", line 261, in timeset
+    moni_second_temp = int(currenttime.split(':')[2]) + 0.6
+IndexError: list index out of range
+Thu, 03 May 2018 15:21:00 imgcut.py[line:267] ERROR this is an exception message
+Traceback (most recent call last):
+  File "E:\hupai\component\imgcut.py", line 261, in timeset
+    moni_second_temp = int(currenttime.split(':')[2]) + 0.6
+IndexError: list index out of range
+Thu, 03 May 2018 15:21:00 imgcut.py[line:267] ERROR this is an exception message
+Traceback (most recent call last):
+  File "E:\hupai\component\imgcut.py", line 261, in timeset
+    moni_second_temp = int(currenttime.split(':')[2]) + 0.6
+IndexError: list index out of range
+Thu, 03 May 2018 15:21:00 imgcut.py[line:267] ERROR this is an exception message
+Traceback (most recent call last):
+  File "E:\hupai\component\imgcut.py", line 261, in timeset
+    moni_second_temp = int(currenttime.split(':')[2]) + 0.6
+IndexError: list index out of range
+Thu, 03 May 2018 15:21:02 imgcut.py[line:270] ERROR this is an exception message
+Traceback (most recent call last):
+  File "E:\hupai\component\imgcut.py", line 242, in timeset
+    currenttime = readpic(currenttime, maindata)  # 识别出来的时间
+  File "E:\hupai\component\imgcut.py", line 226, in readpic
+    testData = cut(img)
+  File "E:\hupai\component\imgcut.py", line 167, in cut
+    diff = xy[-1][2]  # 最后一个 图像块
+IndexError: list index out of range
+Thu, 03 May 2018 15:21:02 imgcut.py[line:267] ERROR this is an exception message
+Traceback (most recent call last):
+  File "E:\hupai\component\imgcut.py", line 261, in timeset
+    moni_second_temp = int(currenttime.split(':')[2]) + 0.6
+IndexError: list index out of range
+Thu, 03 May 2018 15:21:02 imgcut.py[line:267] ERROR this is an exception message
+Traceback (most recent call last):
+  File "E:\hupai\component\imgcut.py", line 261, in timeset
+    moni_second_temp = int(currenttime.split(':')[2]) + 0.6
+IndexError: list index out of range
+Thu, 03 May 2018 15:21:03 imgcut.py[line:270] ERROR this is an exception message
+Traceback (most recent call last):
+  File "E:\hupai\component\imgcut.py", line 242, in timeset
+    currenttime = readpic(currenttime, maindata)  # 识别出来的时间
+  File "E:\hupai\component\imgcut.py", line 226, in readpic
+    testData = cut(img)
+  File "E:\hupai\component\imgcut.py", line 219, in cut
+    imgn[i] = cv2.resize(imgn[i], (8, 8))
+cv2.error: C:\projects\opencv-python\opencv\modules\imgproc\src\resize.cpp:4044: error: (-215) ssize.width > 0 && ssize.height > 0 in function cv::resize
+
+Thu, 03 May 2018 15:21:03 PngImagePlugin.py[line:137] DEBUG STREAM b'IHDR' 16 13
+Thu, 03 May 2018 15:21:03 PngImagePlugin.py[line:137] DEBUG STREAM b'IDAT' 41 8192
+Thu, 03 May 2018 15:21:03 PngImagePlugin.py[line:137] DEBUG STREAM b'IHDR' 16 13
+Thu, 03 May 2018 15:21:03 PngImagePlugin.py[line:137] DEBUG STREAM b'IDAT' 41 8192
+Thu, 03 May 2018 15:21:03 PngImagePlugin.py[line:137] DEBUG STREAM b'IHDR' 16 13
+Thu, 03 May 2018 15:21:03 PngImagePlugin.py[line:137] DEBUG STREAM b'IDAT' 41 8192
+Thu, 03 May 2018 15:21:03 PngImagePlugin.py[line:137] DEBUG STREAM b'IHDR' 16 13
+Thu, 03 May 2018 15:21:03 PngImagePlugin.py[line:137] DEBUG STREAM b'IDAT' 41 8192
+Thu, 03 May 2018 15:21:03 PngImagePlugin.py[line:137] DEBUG STREAM b'IHDR' 16 13
+Thu, 03 May 2018 15:21:03 PngImagePlugin.py[line:137] DEBUG STREAM b'IDAT' 41 8192
+Thu, 03 May 2018 15:21:03 PngImagePlugin.py[line:137] DEBUG STREAM b'IHDR' 16 13
+Thu, 03 May 2018 15:21:03 PngImagePlugin.py[line:137] DEBUG STREAM b'IDAT' 41 8192
+Thu, 03 May 2018 15:21:03 PngImagePlugin.py[line:137] DEBUG STREAM b'IHDR' 16 13
+Thu, 03 May 2018 15:21:03 PngImagePlugin.py[line:137] DEBUG STREAM b'IDAT' 41 8192
+Thu, 03 May 2018 15:21:03 PngImagePlugin.py[line:137] DEBUG STREAM b'IHDR' 16 13
+Thu, 03 May 2018 15:21:03 PngImagePlugin.py[line:137] DEBUG STREAM b'IDAT' 41 8192
+Thu, 03 May 2018 15:21:03 imgcut.py[line:270] ERROR this is an exception message
+Traceback (most recent call last):
+  File "E:\hupai\component\imgcut.py", line 242, in timeset
+    currenttime = readpic(currenttime, maindata)  # 识别出来的时间
+  File "E:\hupai\component\imgcut.py", line 226, in readpic
+    testData = cut(img)
+  File "E:\hupai\component\imgcut.py", line 219, in cut
+    imgn[i] = cv2.resize(imgn[i], (8, 8))
+cv2.error: C:\projects\opencv-python\opencv\modules\imgproc\src\resize.cpp:4044: error: (-215) ssize.width > 0 && ssize.height > 0 in function cv::resize
+
+Thu, 03 May 2018 15:21:03 imgcut.py[line:270] ERROR this is an exception message
+Traceback (most recent call last):
+  File "E:\hupai\component\imgcut.py", line 242, in timeset
+    currenttime = readpic(currenttime, maindata)  # 识别出来的时间
+  File "E:\hupai\component\imgcut.py", line 226, in readpic
+    testData = cut(img)
+  File "E:\hupai\component\imgcut.py", line 219, in cut
+    imgn[i] = cv2.resize(imgn[i], (8, 8))
+cv2.error: C:\projects\opencv-python\opencv\modules\imgproc\src\resize.cpp:4044: error: (-215) ssize.width > 0 && ssize.height > 0 in function cv::resize
+
+Thu, 03 May 2018 15:21:04 imgcut.py[line:270] ERROR this is an exception message
+Traceback (most recent call last):
+  File "E:\hupai\component\imgcut.py", line 242, in timeset
+    currenttime = readpic(currenttime, maindata)  # 识别出来的时间
+  File "E:\hupai\component\imgcut.py", line 226, in readpic
+    testData = cut(img)
+  File "E:\hupai\component\imgcut.py", line 219, in cut
+    imgn[i] = cv2.resize(imgn[i], (8, 8))
+cv2.error: C:\projects\opencv-python\opencv\modules\imgproc\src\resize.cpp:4044: error: (-215) ssize.width > 0 && ssize.height > 0 in function cv::resize
+
+Thu, 03 May 2018 15:21:04 imgcut.py[line:270] ERROR this is an exception message
+Traceback (most recent call last):
+  File "E:\hupai\component\imgcut.py", line 242, in timeset
+    currenttime = readpic(currenttime, maindata)  # 识别出来的时间
+  File "E:\hupai\component\imgcut.py", line 226, in readpic
+    testData = cut(img)
+  File "E:\hupai\component\imgcut.py", line 219, in cut
+    imgn[i] = cv2.resize(imgn[i], (8, 8))
+cv2.error: C:\projects\opencv-python\opencv\modules\imgproc\src\resize.cpp:4044: error: (-215) ssize.width > 0 && ssize.height > 0 in function cv::resize
+
+Thu, 03 May 2018 15:21:04 imgcut.py[line:270] ERROR this is an exception message
+Traceback (most recent call last):
+  File "E:\hupai\component\imgcut.py", line 242, in timeset
+    currenttime = readpic(currenttime, maindata)  # 识别出来的时间
+  File "E:\hupai\component\imgcut.py", line 226, in readpic
+    testData = cut(img)
+  File "E:\hupai\component\imgcut.py", line 219, in cut
+    imgn[i] = cv2.resize(imgn[i], (8, 8))
+cv2.error: C:\projects\opencv-python\opencv\modules\imgproc\src\resize.cpp:4044: error: (-215) ssize.width > 0 && ssize.height > 0 in function cv::resize
+
+Thu, 03 May 2018 15:21:05 imgcut.py[line:270] ERROR this is an exception message
+Traceback (most recent call last):
+  File "E:\hupai\component\imgcut.py", line 242, in timeset
+    currenttime = readpic(currenttime, maindata)  # 识别出来的时间
+  File "E:\hupai\component\imgcut.py", line 226, in readpic
+    testData = cut(img)
+  File "E:\hupai\component\imgcut.py", line 219, in cut
+    imgn[i] = cv2.resize(imgn[i], (8, 8))
+cv2.error: C:\projects\opencv-python\opencv\modules\imgproc\src\resize.cpp:4044: error: (-215) ssize.width > 0 && ssize.height > 0 in function cv::resize
+
+Thu, 03 May 2018 15:21:05 imgcut.py[line:270] ERROR this is an exception message
+Traceback (most recent call last):
+  File "E:\hupai\component\imgcut.py", line 242, in timeset
+    currenttime = readpic(currenttime, maindata)  # 识别出来的时间
+  File "E:\hupai\component\imgcut.py", line 226, in readpic
+    testData = cut(img)
+  File "E:\hupai\component\imgcut.py", line 219, in cut
+    imgn[i] = cv2.resize(imgn[i], (8, 8))
+cv2.error: C:\projects\opencv-python\opencv\modules\imgproc\src\resize.cpp:4044: error: (-215) ssize.width > 0 && ssize.height > 0 in function cv::resize
+
+Thu, 03 May 2018 15:21:05 imgcut.py[line:270] ERROR this is an exception message
+Traceback (most recent call last):
+  File "E:\hupai\component\imgcut.py", line 242, in timeset
+    currenttime = readpic(currenttime, maindata)  # 识别出来的时间
+  File "E:\hupai\component\imgcut.py", line 226, in readpic
+    testData = cut(img)
+  File "E:\hupai\component\imgcut.py", line 219, in cut
+    imgn[i] = cv2.resize(imgn[i], (8, 8))
+cv2.error: C:\projects\opencv-python\opencv\modules\imgproc\src\resize.cpp:4044: error: (-215) ssize.width > 0 && ssize.height > 0 in function cv::resize
+
+Thu, 03 May 2018 15:21:06 imgcut.py[line:270] ERROR this is an exception message
+Traceback (most recent call last):
+  File "E:\hupai\component\imgcut.py", line 242, in timeset
+    currenttime = readpic(currenttime, maindata)  # 识别出来的时间
+  File "E:\hupai\component\imgcut.py", line 226, in readpic
+    testData = cut(img)
+  File "E:\hupai\component\imgcut.py", line 219, in cut
+    imgn[i] = cv2.resize(imgn[i], (8, 8))
+cv2.error: C:\projects\opencv-python\opencv\modules\imgproc\src\resize.cpp:4044: error: (-215) ssize.width > 0 && ssize.height > 0 in function cv::resize
+
+Thu, 03 May 2018 15:21:06 imgcut.py[line:270] ERROR this is an exception message
+Traceback (most recent call last):
+  File "E:\hupai\component\imgcut.py", line 242, in timeset
+    currenttime = readpic(currenttime, maindata)  # 识别出来的时间
+  File "E:\hupai\component\imgcut.py", line 226, in readpic
+    testData = cut(img)
+  File "E:\hupai\component\imgcut.py", line 219, in cut
+    imgn[i] = cv2.resize(imgn[i], (8, 8))
+cv2.error: C:\projects\opencv-python\opencv\modules\imgproc\src\resize.cpp:4044: error: (-215) ssize.width > 0 && ssize.height > 0 in function cv::resize
+
+Thu, 03 May 2018 15:21:06 imgcut.py[line:270] ERROR this is an exception message
+Traceback (most recent call last):
+  File "E:\hupai\component\imgcut.py", line 242, in timeset
+    currenttime = readpic(currenttime, maindata)  # 识别出来的时间
+  File "E:\hupai\component\imgcut.py", line 226, in readpic
+    testData = cut(img)
+  File "E:\hupai\component\imgcut.py", line 219, in cut
+    imgn[i] = cv2.resize(imgn[i], (8, 8))
+cv2.error: C:\projects\opencv-python\opencv\modules\imgproc\src\resize.cpp:4044: error: (-215) ssize.width > 0 && ssize.height > 0 in function cv::resize
+
+Thu, 03 May 2018 15:21:07 imgcut.py[line:270] ERROR this is an exception message
+Traceback (most recent call last):
+  File "E:\hupai\component\imgcut.py", line 242, in timeset
+    currenttime = readpic(currenttime, maindata)  # 识别出来的时间
+  File "E:\hupai\component\imgcut.py", line 226, in readpic
+    testData = cut(img)
+  File "E:\hupai\component\imgcut.py", line 219, in cut
+    imgn[i] = cv2.resize(imgn[i], (8, 8))
+cv2.error: C:\projects\opencv-python\opencv\modules\imgproc\src\resize.cpp:4044: error: (-215) ssize.width > 0 && ssize.height > 0 in function cv::resize
+
+Thu, 03 May 2018 15:21:07 imgcut.py[line:270] ERROR this is an exception message
+Traceback (most recent call last):
+  File "E:\hupai\component\imgcut.py", line 242, in timeset
+    currenttime = readpic(currenttime, maindata)  # 识别出来的时间
+  File "E:\hupai\component\imgcut.py", line 226, in readpic
+    testData = cut(img)
+  File "E:\hupai\component\imgcut.py", line 219, in cut
+    imgn[i] = cv2.resize(imgn[i], (8, 8))
+cv2.error: C:\projects\opencv-python\opencv\modules\imgproc\src\resize.cpp:4044: error: (-215) ssize.width > 0 && ssize.height > 0 in function cv::resize
+
+Thu, 03 May 2018 15:21:07 imgcut.py[line:270] ERROR this is an exception message
+Traceback (most recent call last):
+  File "E:\hupai\component\imgcut.py", line 242, in timeset
+    currenttime = readpic(currenttime, maindata)  # 识别出来的时间
+  File "E:\hupai\component\imgcut.py", line 226, in readpic
+    testData = cut(img)
+  File "E:\hupai\component\imgcut.py", line 219, in cut
+    imgn[i] = cv2.resize(imgn[i], (8, 8))
+cv2.error: C:\projects\opencv-python\opencv\modules\imgproc\src\resize.cpp:4044: error: (-215) ssize.width > 0 && ssize.height > 0 in function cv::resize
+
+Thu, 03 May 2018 15:21:08 imgcut.py[line:270] ERROR this is an exception message
+Traceback (most recent call last):
+  File "E:\hupai\component\imgcut.py", line 242, in timeset
+    currenttime = readpic(currenttime, maindata)  # 识别出来的时间
+  File "E:\hupai\component\imgcut.py", line 226, in readpic
+    testData = cut(img)
+  File "E:\hupai\component\imgcut.py", line 219, in cut
+    imgn[i] = cv2.resize(imgn[i], (8, 8))
+cv2.error: C:\projects\opencv-python\opencv\modules\imgproc\src\resize.cpp:4044: error: (-215) ssize.width > 0 && ssize.height > 0 in function cv::resize
+
+Thu, 03 May 2018 15:21:08 imgcut.py[line:270] ERROR this is an exception message
+Traceback (most recent call last):
+  File "E:\hupai\component\imgcut.py", line 242, in timeset
+    currenttime = readpic(currenttime, maindata)  # 识别出来的时间
+  File "E:\hupai\component\imgcut.py", line 226, in readpic
+    testData = cut(img)
+  File "E:\hupai\component\imgcut.py", line 219, in cut
+    imgn[i] = cv2.resize(imgn[i], (8, 8))
+cv2.error: C:\projects\opencv-python\opencv\modules\imgproc\src\resize.cpp:4044: error: (-215) ssize.width > 0 && ssize.height > 0 in function cv::resize
+
+Thu, 03 May 2018 15:21:08 imgcut.py[line:270] ERROR this is an exception message
+Traceback (most recent call last):
+  File "E:\hupai\component\imgcut.py", line 242, in timeset
+    currenttime = readpic(currenttime, maindata)  # 识别出来的时间
+  File "E:\hupai\component\imgcut.py", line 226, in readpic
+    testData = cut(img)
+  File "E:\hupai\component\imgcut.py", line 219, in cut
+    imgn[i] = cv2.resize(imgn[i], (8, 8))
+cv2.error: C:\projects\opencv-python\opencv\modules\imgproc\src\resize.cpp:4044: error: (-215) ssize.width > 0 && ssize.height > 0 in function cv::resize
+
+Thu, 03 May 2018 15:21:09 imgcut.py[line:270] ERROR this is an exception message
+Traceback (most recent call last):
+  File "E:\hupai\component\imgcut.py", line 242, in timeset
+    currenttime = readpic(currenttime, maindata)  # 识别出来的时间
+  File "E:\hupai\component\imgcut.py", line 226, in readpic
+    testData = cut(img)
+  File "E:\hupai\component\imgcut.py", line 219, in cut
+    imgn[i] = cv2.resize(imgn[i], (8, 8))
+cv2.error: C:\projects\opencv-python\opencv\modules\imgproc\src\resize.cpp:4044: error: (-215) ssize.width > 0 && ssize.height > 0 in function cv::resize
+
+Thu, 03 May 2018 15:21:10 imgcut.py[line:267] ERROR this is an exception message
+Traceback (most recent call last):
+  File "E:\hupai\component\imgcut.py", line 261, in timeset
+    moni_second_temp = int(currenttime.split(':')[2]) + 0.6
+IndexError: list index out of range
+Thu, 03 May 2018 15:21:10 imgcut.py[line:267] ERROR this is an exception message
+Traceback (most recent call last):
+  File "E:\hupai\component\imgcut.py", line 261, in timeset
+    moni_second_temp = int(currenttime.split(':')[2]) + 0.6
+IndexError: list index out of range
+Thu, 03 May 2018 15:21:11 imgcut.py[line:270] ERROR this is an exception message
+Traceback (most recent call last):
+  File "E:\hupai\component\imgcut.py", line 242, in timeset
+    currenttime = readpic(currenttime, maindata)  # 识别出来的时间
+  File "E:\hupai\component\imgcut.py", line 226, in readpic
+    testData = cut(img)
+  File "E:\hupai\component\imgcut.py", line 167, in cut
+    diff = xy[-1][2]  # 最后一个 图像块
+IndexError: list index out of range
+Thu, 03 May 2018 15:21:13 imgcut.py[line:267] ERROR this is an exception message
+Traceback (most recent call last):
+  File "E:\hupai\component\imgcut.py", line 261, in timeset
+    moni_second_temp = int(currenttime.split(':')[2]) + 0.6
+IndexError: list index out of range
+Thu, 03 May 2018 15:21:13 imgcut.py[line:267] ERROR this is an exception message
+Traceback (most recent call last):
+  File "E:\hupai\component\imgcut.py", line 261, in timeset
+    moni_second_temp = int(currenttime.split(':')[2]) + 0.6
+IndexError: list index out of range
+Thu, 03 May 2018 15:21:14 imgcut.py[line:267] ERROR this is an exception message
+Traceback (most recent call last):
+  File "E:\hupai\component\imgcut.py", line 261, in timeset
+    moni_second_temp = int(currenttime.split(':')[2]) + 0.6
+IndexError: list index out of range
+Thu, 03 May 2018 15:21:15 imgcut.py[line:267] ERROR this is an exception message
+Traceback (most recent call last):
+  File "E:\hupai\component\imgcut.py", line 261, in timeset
+    moni_second_temp = int(currenttime.split(':')[2]) + 0.6
+IndexError: list index out of range
+Thu, 03 May 2018 15:21:15 imgcut.py[line:267] ERROR this is an exception message
+Traceback (most recent call last):
+  File "E:\hupai\component\imgcut.py", line 261, in timeset
+    moni_second_temp = int(currenttime.split(':')[2]) + 0.6
+IndexError: list index out of range
+Thu, 03 May 2018 15:21:15 imgcut.py[line:267] ERROR this is an exception message
+Traceback (most recent call last):
+  File "E:\hupai\component\imgcut.py", line 261, in timeset
+    moni_second_temp = int(currenttime.split(':')[2]) + 0.6
+IndexError: list index out of range
+Thu, 03 May 2018 15:21:16 imgcut.py[line:267] ERROR this is an exception message
+Traceback (most recent call last):
+  File "E:\hupai\component\imgcut.py", line 261, in timeset
+    moni_second_temp = int(currenttime.split(':')[2]) + 0.6
+IndexError: list index out of range
+Thu, 03 May 2018 15:21:16 imgcut.py[line:267] ERROR this is an exception message
+Traceback (most recent call last):
+  File "E:\hupai\component\imgcut.py", line 261, in timeset
+    moni_second_temp = int(currenttime.split(':')[2]) + 0.6
+IndexError: list index out of range
+Thu, 03 May 2018 15:21:16 imgcut.py[line:267] ERROR this is an exception message
+Traceback (most recent call last):
+  File "E:\hupai\component\imgcut.py", line 261, in timeset
+    moni_second_temp = int(currenttime.split(':')[2]) + 0.6
+IndexError: list index out of range
+Thu, 03 May 2018 15:21:17 imgcut.py[line:267] ERROR this is an exception message
+Traceback (most recent call last):
+  File "E:\hupai\component\imgcut.py", line 261, in timeset
+    moni_second_temp = int(currenttime.split(':')[2]) + 0.6
+IndexError: list index out of range
+Thu, 03 May 2018 15:21:18 imgcut.py[line:270] ERROR this is an exception message
+Traceback (most recent call last):
+  File "E:\hupai\component\imgcut.py", line 254, in timeset
+    a_time_temp = time.mktime(time.strptime(b, '%Y-%m-%d %H:%M:%S')) + 0.6  # 转时间戳   补个平均时差
+  File "C:\Users\Administrator\Python\Python36\Lib\_strptime.py", line 559, in _strptime_time
+    tt = _strptime(data_string, format)[0]
+  File "C:\Users\Administrator\Python\Python36\Lib\_strptime.py", line 362, in _strptime
+    (data_string, format))
+ValueError: time data '2018-05-03 888830964804040046' does not match format '%Y-%m-%d %H:%M:%S'
+Thu, 03 May 2018 15:21:18 imgcut.py[line:270] ERROR this is an exception message
+Traceback (most recent call last):
+  File "E:\hupai\component\imgcut.py", line 254, in timeset
+    a_time_temp = time.mktime(time.strptime(b, '%Y-%m-%d %H:%M:%S')) + 0.6  # 转时间戳   补个平均时差
+  File "C:\Users\Administrator\Python\Python36\Lib\_strptime.py", line 559, in _strptime_time
+    tt = _strptime(data_string, format)[0]
+  File "C:\Users\Administrator\Python\Python36\Lib\_strptime.py", line 362, in _strptime
+    (data_string, format))
+ValueError: time data '2018-05-03 888830964804040046' does not match format '%Y-%m-%d %H:%M:%S'
+Thu, 03 May 2018 15:21:18 imgcut.py[line:270] ERROR this is an exception message
+Traceback (most recent call last):
+  File "E:\hupai\component\imgcut.py", line 254, in timeset
+    a_time_temp = time.mktime(time.strptime(b, '%Y-%m-%d %H:%M:%S')) + 0.6  # 转时间戳   补个平均时差
+  File "C:\Users\Administrator\Python\Python36\Lib\_strptime.py", line 559, in _strptime_time
+    tt = _strptime(data_string, format)[0]
+  File "C:\Users\Administrator\Python\Python36\Lib\_strptime.py", line 362, in _strptime
+    (data_string, format))
+ValueError: time data '2018-05-03 888830964804040046' does not match format '%Y-%m-%d %H:%M:%S'
+Thu, 03 May 2018 15:21:18 imgcut.py[line:270] ERROR this is an exception message
+Traceback (most recent call last):
+  File "E:\hupai\component\imgcut.py", line 242, in timeset
+    currenttime = readpic(currenttime, maindata)  # 识别出来的时间
+  File "E:\hupai\component\imgcut.py", line 226, in readpic
+    testData = cut(img)
+  File "E:\hupai\component\imgcut.py", line 167, in cut
+    diff = xy[-1][2]  # 最后一个 图像块
+IndexError: list index out of range
+Thu, 03 May 2018 15:21:18 imgcut.py[line:270] ERROR this is an exception message
+Traceback (most recent call last):
+  File "E:\hupai\component\imgcut.py", line 242, in timeset
+    currenttime = readpic(currenttime, maindata)  # 识别出来的时间
+  File "E:\hupai\component\imgcut.py", line 226, in readpic
+    testData = cut(img)
+  File "E:\hupai\component\imgcut.py", line 167, in cut
+    diff = xy[-1][2]  # 最后一个 图像块
+IndexError: list index out of range
+Thu, 03 May 2018 15:21:19 imgcut.py[line:270] ERROR this is an exception message
+Traceback (most recent call last):
+  File "E:\hupai\component\imgcut.py", line 254, in timeset
+    a_time_temp = time.mktime(time.strptime(b, '%Y-%m-%d %H:%M:%S')) + 0.6  # 转时间戳   补个平均时差
+  File "C:\Users\Administrator\Python\Python36\Lib\_strptime.py", line 559, in _strptime_time
+    tt = _strptime(data_string, format)[0]
+  File "C:\Users\Administrator\Python\Python36\Lib\_strptime.py", line 362, in _strptime
+    (data_string, format))
+ValueError: time data '2018-05-03 3468' does not match format '%Y-%m-%d %H:%M:%S'
+Thu, 03 May 2018 15:21:19 imgcut.py[line:270] ERROR this is an exception message
+Traceback (most recent call last):
+  File "E:\hupai\component\imgcut.py", line 254, in timeset
+    a_time_temp = time.mktime(time.strptime(b, '%Y-%m-%d %H:%M:%S')) + 0.6  # 转时间戳   补个平均时差
+  File "C:\Users\Administrator\Python\Python36\Lib\_strptime.py", line 559, in _strptime_time
+    tt = _strptime(data_string, format)[0]
+  File "C:\Users\Administrator\Python\Python36\Lib\_strptime.py", line 362, in _strptime
+    (data_string, format))
+ValueError: time data '2018-05-03 44444' does not match format '%Y-%m-%d %H:%M:%S'
+Thu, 03 May 2018 15:21:19 imgcut.py[line:270] ERROR this is an exception message
+Traceback (most recent call last):
+  File "E:\hupai\component\imgcut.py", line 254, in timeset
+    a_time_temp = time.mktime(time.strptime(b, '%Y-%m-%d %H:%M:%S')) + 0.6  # 转时间戳   补个平均时差
+  File "C:\Users\Administrator\Python\Python36\Lib\_strptime.py", line 559, in _strptime_time
+    tt = _strptime(data_string, format)[0]
+  File "C:\Users\Administrator\Python\Python36\Lib\_strptime.py", line 362, in _strptime
+    (data_string, format))
+ValueError: time data '2018-05-03 44444' does not match format '%Y-%m-%d %H:%M:%S'
+Thu, 03 May 2018 15:21:20 imgcut.py[line:270] ERROR this is an exception message
+Traceback (most recent call last):
+  File "E:\hupai\component\imgcut.py", line 242, in timeset
+    currenttime = readpic(currenttime, maindata)  # 识别出来的时间
+  File "E:\hupai\component\imgcut.py", line 226, in readpic
+    testData = cut(img)
+  File "E:\hupai\component\imgcut.py", line 167, in cut
+    diff = xy[-1][2]  # 最后一个 图像块
+IndexError: list index out of range
+Thu, 03 May 2018 15:21:22 imgcut.py[line:270] ERROR this is an exception message
+Traceback (most recent call last):
+  File "E:\hupai\component\imgcut.py", line 254, in timeset
+    a_time_temp = time.mktime(time.strptime(b, '%Y-%m-%d %H:%M:%S')) + 0.6  # 转时间戳   补个平均时差
+  File "C:\Users\Administrator\Python\Python36\Lib\_strptime.py", line 559, in _strptime_time
+    tt = _strptime(data_string, format)[0]
+  File "C:\Users\Administrator\Python\Python36\Lib\_strptime.py", line 362, in _strptime
+    (data_string, format))
+ValueError: time data '2018-05-03 48' does not match format '%Y-%m-%d %H:%M:%S'
+Thu, 03 May 2018 15:21:22 imgcut.py[line:270] ERROR this is an exception message
+Traceback (most recent call last):
+  File "E:\hupai\component\imgcut.py", line 254, in timeset
+    a_time_temp = time.mktime(time.strptime(b, '%Y-%m-%d %H:%M:%S')) + 0.6  # 转时间戳   补个平均时差
+  File "C:\Users\Administrator\Python\Python36\Lib\_strptime.py", line 559, in _strptime_time
+    tt = _strptime(data_string, format)[0]
+  File "C:\Users\Administrator\Python\Python36\Lib\_strptime.py", line 362, in _strptime
+    (data_string, format))
+ValueError: time data '2018-05-03 48' does not match format '%Y-%m-%d %H:%M:%S'
+Thu, 03 May 2018 15:21:22 imgcut.py[line:270] ERROR this is an exception message
+Traceback (most recent call last):
+  File "E:\hupai\component\imgcut.py", line 254, in timeset
+    a_time_temp = time.mktime(time.strptime(b, '%Y-%m-%d %H:%M:%S')) + 0.6  # 转时间戳   补个平均时差
+  File "C:\Users\Administrator\Python\Python36\Lib\_strptime.py", line 559, in _strptime_time
+    tt = _strptime(data_string, format)[0]
+  File "C:\Users\Administrator\Python\Python36\Lib\_strptime.py", line 362, in _strptime
+    (data_string, format))
+ValueError: time data '2018-05-03 48' does not match format '%Y-%m-%d %H:%M:%S'
+Thu, 03 May 2018 15:21:24 imgcut.py[line:270] ERROR this is an exception message
+Traceback (most recent call last):
+  File "E:\hupai\component\imgcut.py", line 242, in timeset
+    currenttime = readpic(currenttime, maindata)  # 识别出来的时间
+  File "E:\hupai\component\imgcut.py", line 226, in readpic
+    testData = cut(img)
+  File "E:\hupai\component\imgcut.py", line 167, in cut
+    diff = xy[-1][2]  # 最后一个 图像块
+IndexError: list index out of range
+Thu, 03 May 2018 15:21:24 imgcut.py[line:270] ERROR this is an exception message
+Traceback (most recent call last):
+  File "E:\hupai\component\imgcut.py", line 242, in timeset
+    currenttime = readpic(currenttime, maindata)  # 识别出来的时间
+  File "E:\hupai\component\imgcut.py", line 226, in readpic
+    testData = cut(img)
+  File "E:\hupai\component\imgcut.py", line 167, in cut
+    diff = xy[-1][2]  # 最后一个 图像块
+IndexError: list index out of range
+Thu, 03 May 2018 15:21:25 imgcut.py[line:270] ERROR this is an exception message
+Traceback (most recent call last):
+  File "E:\hupai\component\imgcut.py", line 254, in timeset
+    a_time_temp = time.mktime(time.strptime(b, '%Y-%m-%d %H:%M:%S')) + 0.6  # 转时间戳   补个平均时差
+  File "C:\Users\Administrator\Python\Python36\Lib\_strptime.py", line 559, in _strptime_time
+    tt = _strptime(data_string, format)[0]
+  File "C:\Users\Administrator\Python\Python36\Lib\_strptime.py", line 362, in _strptime
+    (data_string, format))
+ValueError: time data '2018-05-03 0:966' does not match format '%Y-%m-%d %H:%M:%S'
+Thu, 03 May 2018 15:21:25 imgcut.py[line:270] ERROR this is an exception message
+Traceback (most recent call last):
+  File "E:\hupai\component\imgcut.py", line 254, in timeset
+    a_time_temp = time.mktime(time.strptime(b, '%Y-%m-%d %H:%M:%S')) + 0.6  # 转时间戳   补个平均时差
+  File "C:\Users\Administrator\Python\Python36\Lib\_strptime.py", line 559, in _strptime_time
+    tt = _strptime(data_string, format)[0]
+  File "C:\Users\Administrator\Python\Python36\Lib\_strptime.py", line 362, in _strptime
+    (data_string, format))
+ValueError: time data '2018-05-03 :68388806066880068' does not match format '%Y-%m-%d %H:%M:%S'
+Thu, 03 May 2018 15:21:25 imgcut.py[line:270] ERROR this is an exception message
+Traceback (most recent call last):
+  File "E:\hupai\component\imgcut.py", line 254, in timeset
+    a_time_temp = time.mktime(time.strptime(b, '%Y-%m-%d %H:%M:%S')) + 0.6  # 转时间戳   补个平均时差
+  File "C:\Users\Administrator\Python\Python36\Lib\_strptime.py", line 559, in _strptime_time
+    tt = _strptime(data_string, format)[0]
+  File "C:\Users\Administrator\Python\Python36\Lib\_strptime.py", line 362, in _strptime
+    (data_string, format))
+ValueError: time data '2018-05-03 :68388806066880068' does not match format '%Y-%m-%d %H:%M:%S'
+Thu, 03 May 2018 15:21:26 imgcut.py[line:270] ERROR this is an exception message
+Traceback (most recent call last):
+  File "E:\hupai\component\imgcut.py", line 254, in timeset
+    a_time_temp = time.mktime(time.strptime(b, '%Y-%m-%d %H:%M:%S')) + 0.6  # 转时间戳   补个平均时差
+  File "C:\Users\Administrator\Python\Python36\Lib\_strptime.py", line 559, in _strptime_time
+    tt = _strptime(data_string, format)[0]
+  File "C:\Users\Administrator\Python\Python36\Lib\_strptime.py", line 362, in _strptime
+    (data_string, format))
+ValueError: time data '2018-05-03 :68388806066880068' does not match format '%Y-%m-%d %H:%M:%S'
+Thu, 03 May 2018 15:21:26 imgcut.py[line:270] ERROR this is an exception message
+Traceback (most recent call last):
+  File "E:\hupai\component\imgcut.py", line 242, in timeset
+    currenttime = readpic(currenttime, maindata)  # 识别出来的时间
+  File "E:\hupai\component\imgcut.py", line 226, in readpic
+    testData = cut(img)
+  File "E:\hupai\component\imgcut.py", line 167, in cut
+    diff = xy[-1][2]  # 最后一个 图像块
+IndexError: list index out of range
+Thu, 03 May 2018 15:21:26 imgcut.py[line:270] ERROR this is an exception message
+Traceback (most recent call last):
+  File "E:\hupai\component\imgcut.py", line 242, in timeset
+    currenttime = readpic(currenttime, maindata)  # 识别出来的时间
+  File "E:\hupai\component\imgcut.py", line 226, in readpic
+    testData = cut(img)
+  File "E:\hupai\component\imgcut.py", line 167, in cut
+    diff = xy[-1][2]  # 最后一个 图像块
+IndexError: list index out of range
+Thu, 03 May 2018 15:21:27 imgcut.py[line:270] ERROR this is an exception message
+Traceback (most recent call last):
+  File "E:\hupai\component\imgcut.py", line 242, in timeset
+    currenttime = readpic(currenttime, maindata)  # 识别出来的时间
+  File "E:\hupai\component\imgcut.py", line 226, in readpic
+    testData = cut(img)
+  File "E:\hupai\component\imgcut.py", line 167, in cut
+    diff = xy[-1][2]  # 最后一个 图像块
+IndexError: list index out of range
+Thu, 03 May 2018 15:21:28 imgcut.py[line:270] ERROR this is an exception message
+Traceback (most recent call last):
+  File "E:\hupai\component\imgcut.py", line 254, in timeset
+    a_time_temp = time.mktime(time.strptime(b, '%Y-%m-%d %H:%M:%S')) + 0.6  # 转时间戳   补个平均时差
+  File "C:\Users\Administrator\Python\Python36\Lib\_strptime.py", line 559, in _strptime_time
+    tt = _strptime(data_string, format)[0]
+  File "C:\Users\Administrator\Python\Python36\Lib\_strptime.py", line 362, in _strptime
+    (data_string, format))
+ValueError: time data '2018-05-03 :68388806066880068' does not match format '%Y-%m-%d %H:%M:%S'
+Thu, 03 May 2018 15:21:28 imgcut.py[line:270] ERROR this is an exception message
+Traceback (most recent call last):
+  File "E:\hupai\component\imgcut.py", line 254, in timeset
+    a_time_temp = time.mktime(time.strptime(b, '%Y-%m-%d %H:%M:%S')) + 0.6  # 转时间戳   补个平均时差
+  File "C:\Users\Administrator\Python\Python36\Lib\_strptime.py", line 559, in _strptime_time
+    tt = _strptime(data_string, format)[0]
+  File "C:\Users\Administrator\Python\Python36\Lib\_strptime.py", line 362, in _strptime
+    (data_string, format))
+ValueError: time data '2018-05-03 :68388806066880068' does not match format '%Y-%m-%d %H:%M:%S'
+Thu, 03 May 2018 15:21:28 imgcut.py[line:270] ERROR this is an exception message
+Traceback (most recent call last):
+  File "E:\hupai\component\imgcut.py", line 254, in timeset
+    a_time_temp = time.mktime(time.strptime(b, '%Y-%m-%d %H:%M:%S')) + 0.6  # 转时间戳   补个平均时差
+  File "C:\Users\Administrator\Python\Python36\Lib\_strptime.py", line 559, in _strptime_time
+    tt = _strptime(data_string, format)[0]
+  File "C:\Users\Administrator\Python\Python36\Lib\_strptime.py", line 362, in _strptime
+    (data_string, format))
+ValueError: time data '2018-05-03 :68388806066880068' does not match format '%Y-%m-%d %H:%M:%S'
+Thu, 03 May 2018 15:21:28 imgcut.py[line:270] ERROR this is an exception message
+Traceback (most recent call last):
+  File "E:\hupai\component\imgcut.py", line 242, in timeset
+    currenttime = readpic(currenttime, maindata)  # 识别出来的时间
+  File "E:\hupai\component\imgcut.py", line 226, in readpic
+    testData = cut(img)
+  File "E:\hupai\component\imgcut.py", line 167, in cut
+    diff = xy[-1][2]  # 最后一个 图像块
+IndexError: list index out of range
+Thu, 03 May 2018 15:21:28 imgcut.py[line:270] ERROR this is an exception message
+Traceback (most recent call last):
+  File "E:\hupai\component\imgcut.py", line 242, in timeset
+    currenttime = readpic(currenttime, maindata)  # 识别出来的时间
+  File "E:\hupai\component\imgcut.py", line 226, in readpic
+    testData = cut(img)
+  File "E:\hupai\component\imgcut.py", line 167, in cut
+    diff = xy[-1][2]  # 最后一个 图像块
+IndexError: list index out of range
+Thu, 03 May 2018 15:21:29 imgcut.py[line:270] ERROR this is an exception message
+Traceback (most recent call last):
+  File "E:\hupai\component\imgcut.py", line 242, in timeset
+    currenttime = readpic(currenttime, maindata)  # 识别出来的时间
+  File "E:\hupai\component\imgcut.py", line 226, in readpic
+    testData = cut(img)
+  File "E:\hupai\component\imgcut.py", line 167, in cut
+    diff = xy[-1][2]  # 最后一个 图像块
+IndexError: list index out of range
+Thu, 03 May 2018 15:21:30 imgcut.py[line:270] ERROR this is an exception message
+Traceback (most recent call last):
+  File "E:\hupai\component\imgcut.py", line 254, in timeset
+    a_time_temp = time.mktime(time.strptime(b, '%Y-%m-%d %H:%M:%S')) + 0.6  # 转时间戳   补个平均时差
+  File "C:\Users\Administrator\Python\Python36\Lib\_strptime.py", line 559, in _strptime_time
+    tt = _strptime(data_string, format)[0]
+  File "C:\Users\Administrator\Python\Python36\Lib\_strptime.py", line 362, in _strptime
+    (data_string, format))
+ValueError: time data '2018-05-03 1:86:04' does not match format '%Y-%m-%d %H:%M:%S'
+Thu, 03 May 2018 15:21:30 imgcut.py[line:270] ERROR this is an exception message
+Traceback (most recent call last):
+  File "E:\hupai\component\imgcut.py", line 254, in timeset
+    a_time_temp = time.mktime(time.strptime(b, '%Y-%m-%d %H:%M:%S')) + 0.6  # 转时间戳   补个平均时差
+  File "C:\Users\Administrator\Python\Python36\Lib\_strptime.py", line 559, in _strptime_time
+    tt = _strptime(data_string, format)[0]
+  File "C:\Users\Administrator\Python\Python36\Lib\_strptime.py", line 362, in _strptime
+    (data_string, format))
+ValueError: time data '2018-05-03 1:86:04' does not match format '%Y-%m-%d %H:%M:%S'
+Thu, 03 May 2018 15:21:31 imgcut.py[line:270] ERROR this is an exception message
+Traceback (most recent call last):
+  File "E:\hupai\component\imgcut.py", line 254, in timeset
+    a_time_temp = time.mktime(time.strptime(b, '%Y-%m-%d %H:%M:%S')) + 0.6  # 转时间戳   补个平均时差
+  File "C:\Users\Administrator\Python\Python36\Lib\_strptime.py", line 559, in _strptime_time
+    tt = _strptime(data_string, format)[0]
+  File "C:\Users\Administrator\Python\Python36\Lib\_strptime.py", line 362, in _strptime
+    (data_string, format))
+ValueError: time data '2018-05-03 1:86:04' does not match format '%Y-%m-%d %H:%M:%S'
+Thu, 03 May 2018 15:21:31 imgcut.py[line:270] ERROR this is an exception message
+Traceback (most recent call last):
+  File "E:\hupai\component\imgcut.py", line 254, in timeset
+    a_time_temp = time.mktime(time.strptime(b, '%Y-%m-%d %H:%M:%S')) + 0.6  # 转时间戳   补个平均时差
+  File "C:\Users\Administrator\Python\Python36\Lib\_strptime.py", line 559, in _strptime_time
+    tt = _strptime(data_string, format)[0]
+  File "C:\Users\Administrator\Python\Python36\Lib\_strptime.py", line 362, in _strptime
+    (data_string, format))
+ValueError: time data '2018-05-03 4:70:34' does not match format '%Y-%m-%d %H:%M:%S'
+Thu, 03 May 2018 15:21:31 imgcut.py[line:270] ERROR this is an exception message
+Traceback (most recent call last):
+  File "E:\hupai\component\imgcut.py", line 254, in timeset
+    a_time_temp = time.mktime(time.strptime(b, '%Y-%m-%d %H:%M:%S')) + 0.6  # 转时间戳   补个平均时差
+  File "C:\Users\Administrator\Python\Python36\Lib\_strptime.py", line 559, in _strptime_time
+    tt = _strptime(data_string, format)[0]
+  File "C:\Users\Administrator\Python\Python36\Lib\_strptime.py", line 362, in _strptime
+    (data_string, format))
+ValueError: time data '2018-05-03 4:70:34' does not match format '%Y-%m-%d %H:%M:%S'
+Thu, 03 May 2018 15:21:32 imgcut.py[line:270] ERROR this is an exception message
+Traceback (most recent call last):
+  File "E:\hupai\component\imgcut.py", line 254, in timeset
+    a_time_temp = time.mktime(time.strptime(b, '%Y-%m-%d %H:%M:%S')) + 0.6  # 转时间戳   补个平均时差
+  File "C:\Users\Administrator\Python\Python36\Lib\_strptime.py", line 559, in _strptime_time
+    tt = _strptime(data_string, format)[0]
+  File "C:\Users\Administrator\Python\Python36\Lib\_strptime.py", line 362, in _strptime
+    (data_string, format))
+ValueError: time data '2018-05-03 4:70:34' does not match format '%Y-%m-%d %H:%M:%S'

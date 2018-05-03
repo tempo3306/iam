@@ -155,10 +155,7 @@ def init_size():
             [[343, -66], [346, 40], [96, 121], [92, 43], [201, 100], [281, 40], [261, 37], [282, 118]])  # 各按钮相对于WEB位置
     P_relative = get_val('P_relative')
 
-    ## 相对于最低成交价位置
-    #   ## 0:加价  1：出价 2：提交  3：刷新   4 ：确认   5：验证码    6:验证码输入框     7：取消
-    set_val('P_relative2', [[647, -98], [650, 8], [400, 89], [396, 14], [505, 68], [585, 8], [565, 5], [586, 86]])
-    set_val('Position_frame', [[0, 0] for i in range(len(P_relative))])
+
     set_val('px_ajust', 0)
     set_val('py_ajust', 0)
     set_val('px_price', 770 - 171)
@@ -229,8 +226,7 @@ def init_size():
     set_val('Py_currenttime', Py_lowestprice + 17)
     set_val('currenttime_sizex', 132)
     set_val('currenttime_sizey', 13)
-    set_val('px_relative', 49)  # 查找出来位置反算相对位置
-    set_val('py_relative', 0)
+
     set_val('px_confirm', 656)
     px_confirm = get_val('px_confirm')
     set_val('py_confirm', 475)
@@ -269,7 +265,7 @@ def init_size():
 
 
 def init_strategy():
-    strategy_choices = ['单枪策略(专注一次出价）', '双枪策略（一伏二补）']
+    strategy_choices = ['单枪策略(专注一次出价）', '双枪策略（一伏二补']
     strategy_dick = {
         0: [0, 48.0, 700, 100, 0.5, 55],
         1: [1, 40.0, 500, 0, 0.5, 48, 50, 700, 100, 0.5, 56]
@@ -291,7 +287,7 @@ def init_strategy():
 
     set_val('mainicon', 'ico.ico')
     set_val('view', False)  # 定位显示
-    set_val('do', False)  # 开启辅助
+    set_val('hotkey_on', False)  # 开启辅助
     set_val('ad_view', False)  # 显示广告
     set_val('price_view', False)  # 显示价格,控制截图
     set_val('yanzhengma_view', False)  # 验证码放大,控制截图+-
@@ -316,6 +312,9 @@ def init_strategy():
 
     set_val('moni_on', False)  # 判断开启的是哪个窗口 ，限制同时只能开启一个
     set_val('guopai_on', False)
+    set_val('listen_on', False)  #f是否开启监听
+
+
     set_val('current_moni', True) ##当前哪个WEB激活状态
     set_val('strategy1', 53)  # 策略整数时间
     set_val('strategy2', 0.0)  # 策略小数时间
@@ -426,20 +425,41 @@ def init_status():
     set_val('current_pricestatus_label', '等待第二次出价')
     one_time1 = get_val('one_time1')
     one_diff = get_val('one_diff')
-    current_pricestatus = '{0}秒提前{1}'.format(one_time1, one_diff)
+    current_pricestatus = '{0}秒加{1}'.format(one_time1, one_diff)
     set_val('current_pricestatus', current_pricestatus)
 
     ##状态框三行
     set_val('status_time', (5, 15))
     set_val('lowestprice_text', (5, 45))
-    set_val('pricetext', (210, 15))
-    set_val('statustext', (210, 45))
+    set_val('pricelabeltext', (192, 15))
+    set_val('pricetext', (348, 15))
+    set_val('timestatustext', (192, 45))
+    set_val('pricestatustext', (348, 45))
 
 
 
 
 
+##初始化变量, 由服务器给定
+def remote_variables(**kwargs):
+    for key, value in kwargs.items():
+        set_val(key, value)
 
 
-
+def remote_init():
+    ##用于计算 最低成交价位置
+    set_val('px_relative', 49)  # 查找出来位置反算相对位置
+    set_val('py_relative', 0)
+    ## 相对于最低成交价位置
+    #   ## 0:加价  1：出价 2：提交  3：刷新   4 ：确认   5：验证码    6:验证码输入框     7：取消
+    set_val('P_relative2', [[647, -98], [650, 8], [400, 89], [396, 14], [505, 68], [585, 8], [565, 5], [586, 86]])
+    P_relative2 = get_val('P_relative2')
+    set_val('Position_frame', [[0, 0] for i in range(len(P_relative2))])
+    ## 限定截图位置
+    set_val('refresh_area_relative', [396 - 150, 11 - 100, 396 + 150, 11 + 100])
+    set_val('confirm_area_relative', [505 - 80, 68 - 50, 505 + 80, 68 + 50])
+    set_val('yan_confirm_area_relative', [205 - 80, 68 - 50, 405 + 80, 68 + 50])
+    set_val('Pos_controlframe_relative', [192 - 344, 514 - 183])
+    set_val('Pos_yanzhengma_relative', [-277, - 65, - 97, + 45])  # 验证码所在位置
+    set_val('Pos_yanzhengmaframe_relative', [297, - 283])  # 验证码框放置位置
 

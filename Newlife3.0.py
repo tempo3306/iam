@@ -6,7 +6,7 @@
 # 时间同步
 import logging, time
 
-version = '3.0'  # 版本号
+version = '3.4'  # 版本号
 timenow = time.time()
 # 转换成localtime
 time_local = time.localtime(timenow)

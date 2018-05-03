@@ -430,87 +430,81 @@ def query_sleep6():
 def nothing():
     pass
 
+##热键模块
+# 快捷键对应的驱动函数   1: TopFrame.handle_Jiajia
+VK_CODE = {'0': 0x30, '1': 0x31, '2': 0x32, '3': 0x33, '4': 0x34, '5': 0x35, '6': 0x36, '7': 0x37,
+           '8': 0x38,
+           '9': 0x39, 'a': 0x41, 'b': 0x42, 'c': 0x43, 'd': 0x44, 'e': 0x45, 'f': 0x46, 's': 0x53,
+           'q': 0x51, 'h': 0x48}
+user32 = ctypes.windll.user32
+HOTKEYS1 = {1: (VK_CODE['2'], win32con.MOD_ALT), 2: (VK_CODE['3'], win32con.MOD_ALT),
+            3: (VK_CODE['4'], win32con.MOD_ALT), 4: (VK_CODE['5'], win32con.MOD_ALT),
+            5: (VK_CODE['6'], win32con.MOD_ALT), 6: (VK_CODE['7'], win32con.MOD_ALT),
+            }
+HOTKEYS2 = {7: (VK_CODE['s'], 0x4000), 8: (VK_CODE['f'], 0x4000), 9: (VK_CODE['d'], 0x4000),
+            10: (win32con.VK_SPACE, 0x4000), 11: (VK_CODE['e'], 0x4000), 12: (win32con.VK_RETURN, 0x4000),
+            13: (VK_CODE['q'], 0x4000), 14: (VK_CODE['h'], 0x4000)}
 
-def Open():
-    do = get_val('do')
-    if not do:
-        set_val('do', True)
-        # 定义快捷键                                                                         /
-        ############################
-        VK_CODE = {'0': 0x30, '1': 0x31, '2': 0x32, '3': 0x33, '4': 0x34, '5': 0x35, '6': 0x36, '7': 0x37,
-                   '8': 0x38,
-                   '9': 0x39, 'a': 0x41, 'b': 0x42, 'c': 0x43, 'd': 0x44, 'e': 0x45, 'f': 0x46, 's': 0x53,
-                   'q': 0x51, 'h': 0x48}
-        user32 = ctypes.windll.user32
-        HOTKEYS1 = {1: (VK_CODE['2'], win32con.MOD_ALT), 2: (VK_CODE['3'], win32con.MOD_ALT),
-                    3: (VK_CODE['4'], win32con.MOD_ALT), 4: (VK_CODE['5'], win32con.MOD_ALT),
-                    5: (VK_CODE['6'], win32con.MOD_ALT), 6: (VK_CODE['7'], win32con.MOD_ALT),
-                    }
-        HOTKEYS2 = {7: (VK_CODE['s'], 0x4000), 8: (VK_CODE['f'], 0x4000), 9: (VK_CODE['d'], 0x4000),
-                    10: (win32con.VK_SPACE, 0x4000), 11: (VK_CODE['e'], 0x4000), 12: (win32con.VK_RETURN, 0x4000),
-                    13: (VK_CODE['q'], 0x4000), 14: (VK_CODE['h'], 0x4000)}
-        # 注册快捷键
-        for id, (vk, modifiers) in HOTKEYS1.items():
-            if not user32.RegisterHotKey(None, id, modifiers, vk):
-                print("Unable to register id", id)
-                set_val('do', False)
-        for id, (vk, modifiers) in HOTKEYS2.items():
-            if not user32.RegisterHotKey(None, id, modifiers, vk):
-                print("Unable to register id", id)
-                set_val('do', False)
+HOTKEY_ACTIONS = {
+    1: Cancel_chujia_test, 2: OnClick_chujia, 3: many_delete,
+    4: nothing, 5: nothing,
+    6: nothing, 7: OnClick_Shuaxin, 8: selfTijiao,
+    9: selfChujia, 10: OnClick_Backspace, 11: tijiao_ok,
+    12: tijiao_ok2,
+    13: query, 14: OnH_chujia}
+
 
 
 # 启动监听
-def Listen():
+def Hotkey_listen():
     try:
-        # 快捷键对应的驱动函数   1: TopFrame.handle_Jiajia
-        VK_CODE = {'0': 0x30, '1': 0x31, '2': 0x32, '3': 0x33, '4': 0x34, '5': 0x35, '6': 0x36, '7': 0x37,
-                   '8': 0x38,
-                   '9': 0x39, 'a': 0x41, 'b': 0x42, 'c': 0x43, 'd': 0x44, 'e': 0x45, 'f': 0x46, 's': 0x53,
-                   'q': 0x51, 'h': 0x48}
-        HOTKEY_ACTIONS = {
-            1: Cancel_chujia_test, 2: OnClick_chujia, 3: many_delete,
-            4: nothing, 5: nothing,
-            6: nothing, 7: OnClick_Shuaxin, 8: selfTijiao,
-            9: selfChujia, 10: OnClick_Backspace, 11: tijiao_ok,
-            12: tijiao_ok2,
-            13: query, 14: OnH_chujia}
-        user32 = ctypes.windll.user32
         msg = wintypes.MSG()
         byref = ctypes.byref
         while user32.GetMessageA(byref(msg), None, 0, 0) != 0:
             # print("listening")
             if msg.message == win32con.WM_HOTKEY:
                 action_to_take = HOTKEY_ACTIONS.get(msg.wParam)
-                if action_to_take:
+                hotkey_on = get_val('hotkey_on')
+                # if action_to_take:
+                if action_to_take and hotkey_on:
                     action_to_take()
             user32.TranslateMessage(byref(msg))
             user32.DispatchMessageA(byref(msg))
-    finally:
+            print("fff")
+    except:
         pass
-
-
-def Close():
-    do = get_val('do')
-    if do:
-        set_val('do', False)
-        VK_CODE = {'0': 0x30, '1': 0x31, '2': 0x32, '3': 0x33, '4': 0x34, '5': 0x35, '6': 0x36, '7': 0x37,
-                   '8': 0x38,
-                   '9': 0x39, 'a': 0x41, 'b': 0x42, 'c': 0x43, 'd': 0x44, 'e': 0x45, 'f': 0x46, 's': 0x53,
-                   'q': 0x51, 'h': 0x48}
-        HOTKEYS1 = {1: (VK_CODE['2'], win32con.MOD_ALT), 2: (VK_CODE['3'], win32con.MOD_ALT),
-                    3: (VK_CODE['4'], win32con.MOD_ALT), 4: (VK_CODE['5'], win32con.MOD_ALT),
-                    5: (VK_CODE['6'], win32con.MOD_ALT), 6: (VK_CODE['7'], win32con.MOD_ALT),
-                    }
-        user32 = ctypes.windll.user32
-        HOTKEYS2 = {7: (VK_CODE['s'], 0x4000), 8: (VK_CODE['f'], 0x4000), 9: (VK_CODE['d'], 0x4000),
-                    10: (win32con.VK_SPACE, 0x4000), 11: (VK_CODE['e'], 0x4000), 12: (win32con.VK_RETURN, 0x4000),
-                    13: (VK_CODE['q'], 0x4000), 14: (VK_CODE['h'], 0x4000)}
+    finally:
+        print("失败")
         for id in HOTKEYS1.keys():
             user32.UnregisterHotKey(None, id)
         for id in HOTKEYS2.keys():
             user32.UnregisterHotKey(None, id)
-    else:
+        set_val('hotkey_on', False)
+##开启
+def Hotkey_open():
+    try:
+        # 注册快捷键
+        for id, (vk, modifiers) in HOTKEYS1.items():
+            if not user32.RegisterHotKey(None, id, modifiers, vk):
+                print("Unable to register id", id)
+        for id, (vk, modifiers) in HOTKEYS2.items():
+            if not user32.RegisterHotKey(None, id, modifiers, vk):
+                print("Unable to register id", id)
+    except:
+        pass
+    finally:
+        pass
+
+
+def Hotkey_close():
+    try:
+        for id in HOTKEYS1.keys():
+            user32.UnregisterHotKey(None, id)
+        for id in HOTKEYS2.keys():
+            user32.UnregisterHotKey(None, id)
+    except:
+        pass
+    finally:
         pass
 
 
@@ -526,11 +520,9 @@ class listenThread(threading.Thread):
         self.start()
 
     def run(self):
-        while 1:
-            Listen()
-        # while self.__running.isSet():
-        #     self.__flag.wait()  # 为True时立即返回, 为False时阻塞直到内部的标识位为True后返回
-        #     Listen()
+        while self.__running.isSet():
+            self.__flag.wait()  # 为True时立即返回, 为False时阻塞直到内部的标识位为True后返回
+            Hotkey_listen()
 
     def pause(self):
         self.__flag.clear()  # 设置为False, 让线程阻塞

@@ -16,7 +16,7 @@ from component.YanzhengmaFrame import YanzhengmaFrame
 from component.imgcut import cut_pic, find_yan_confirm
 # import imagehash
 from PIL import Image, ImageGrab
-
+import win32api
 
 import logging
 logger = logging.getLogger()
@@ -64,10 +64,6 @@ class ButtonPanel(wx.Panel):
         # self.refresh_web = wxButton(self, label='刷新界面', size=(80, 25), pos=(25, 2), style=wx.BORDER_NONE)
         # self.refresh_web.SetBackgroundColour("#ACD6ff")
 
-        self.timer = wx.Timer(self)  # 创建定时器
-        self.Bind(wx.EVT_TIMER, self.OnTimer, self.timer)  # 绑定一个定时器事件
-        self.timer.Start(100)  # 设定时间间隔
-
         self.autotime_timer = wx.Timer(self)  # 创建定时器
         self.Bind(wx.EVT_TIMER, self.autotime_set_timer, self.autotime_timer)  # 绑定一个定时器事件
         self.autotime_timer.Start(1000)  # 设定时间间隔
@@ -88,7 +84,8 @@ class ButtonPanel(wx.Panel):
         tw, th = dc.GetTextExtent(st)
         dc.DrawText(st, (w - tw) / 2, (h) / 2 - th / 2)
 
-    def Modify(self, dc):  # 更新
+    def Modify(self):  # 更新
+        dc = wx.BufferedDC(wx.ClientDC(self))  # ClientDC客户区  ，BufferedDC双缓冲绘图设备
         moni_on = get_val('moni_on')
         if moni_on:
             moni_second = get_val('moni_second')  # 取得全局变量的值
@@ -116,18 +113,14 @@ class ButtonPanel(wx.Panel):
             tw, th = dc.GetTextExtent(st)
             dc.DrawText(st, (w - tw) / 2, (h) / 2 - th / 2)
 
-    def OnTimer(self, event):  # 显示时间事件处理函数
-        dc = wx.BufferedDC(wx.ClientDC(self))  # ClientDC客户区  ，BufferedDC双缓冲绘图设备
-        self.Modify(dc)
 
     def autotime_set_timer(self, event):
         autotime_on = get_val('autotime_on')
         if autotime_on:
             self.timeautoajust(event)
 
-    def OnPaint(self, evt):
-        dc = wx.BufferedPaintDC(self)  # 用于重绘事件
-        self.Draw(dc)
+
+
 
     ## 获取服务器时间
     def getremotetime(self, event):
@@ -136,7 +129,6 @@ class ButtonPanel(wx.Panel):
 
     ## 同步本地时间
     def timeautoajust(self, event):
-        print("fff")
         guopai_on = get_val('guopai_on')
         moni_on = get_val('moni_on')
         imgpos_currenttime = get_val('imgpos_currenttime')
@@ -212,10 +204,6 @@ class BottomeStatusbarPanel(wx.Panel):
         self.textfont = wx.Font(12, wx.ROMAN, wx.NORMAL, wx.NORMAL, False)
 
 
-        self.timer = wx.Timer(self)  # 创建定时器
-        self.Bind(wx.EVT_TIMER, self.OnTimer, self.timer)  # 绑定一个定时器事件
-        self.timer.Start(100)  # 设定时间间隔
-
         self.registered_bitmap = wx.Bitmap('icons/registered.png')
         self.unregistered_bitmap = wx.Bitmap('icons/unregistered.png')
         # self.slow_bitmap = wx.Bitmap('icons/slow.png')
@@ -225,7 +213,7 @@ class BottomeStatusbarPanel(wx.Panel):
 
 
 
-    def Modify(self, event):  # 更新
+    def Modify(self):  # 更新
         activate_status = get_val('activate_status')
         now_ping = get_val('now_ping')
         current_strategy_name = get_val('current_strategy_name')
@@ -253,9 +241,6 @@ class BottomeStatusbarPanel(wx.Panel):
         tw, th = dc.GetTextExtent(text)
         dc.DrawText(text, 270, (h) / 2 - th / 2)
 
-    def OnTimer(self, event):  # 显示时间事件处理函数
-        self.Modify(event)
-
 
 class CurrentStatusFrame(wx.Frame):
     def __init__(self, parent):
@@ -279,15 +264,16 @@ class CurrentStatusPanel(wx.Panel):
         self.timefont = wx.Font(12, wx.FONTFAMILY_MODERN, wx.FONTSTYLE_NORMAL, wx.FONTWEIGHT_BOLD, False)
 
         self.statustimer = wx.Timer(self)
-        self.Bind(wx.EVT_TIMER, self.OnTimer, self.statustimer)  # 绑定一个定时器事件
-        self.statustimer.Start(100)  # 设定时间间隔
 
-    def Modify(self, event):  # 更新
+
+    def Modify(self):  # 更新
         self.SetForegroundColour('#FF8000')  ##设置文字颜色
         x1, y1 = get_val('status_time')
         x2, y2 = get_val('lowestprice_text')
-        x3, y3 = get_val('pricetext')
-        x4, y4 = get_val('statustext')
+        x3, y3 = get_val('pricelabeltext')
+        x4, y4 = get_val('pricetext')
+        x5, y5 = get_val('timestatustext')
+        x6, y6 = get_val('pricestatustext')
         ##当前时间label
         currenttime_label = get_val("currenttime_label")
         moni_on = get_val("moni_on")
@@ -295,9 +281,9 @@ class CurrentStatusPanel(wx.Panel):
         if moni_on:
             moni_second = get_val('moni_second')  # 取得全局变量的值
             if moni_second < 10:
-                st = "{0} {1}:{2}:0{3:.1f}".format(currenttime_label, 11, 29, moni_second)
+                st = "{0}{1}:{2}:0{3:.1f}".format(currenttime_label, 11, 29, moni_second)
             else:
-                st = "{0} {1}:{2}:{3:.1f}".format(currenttime_label, 11, 29, moni_second)
+                st = "{0}{1}:{2}:{3:.1f}".format(currenttime_label, 11, 29, moni_second)
             w, h = self.GetClientSize()
             dc.SetBackground(wx.Brush(self.GetBackgroundColour()))
             dc.Clear()
@@ -319,10 +305,16 @@ class CurrentStatusPanel(wx.Panel):
             dc.DrawText(st, x1, y1)
 
         ##显示最低成交价
-        lowest_price = get_val('lowest_price')
-        lowestpricelabel = get_val('lowestpricelabel')
-        lowestpricetext = "{0}:  {1}".format(lowestpricelabel, lowest_price)
-        dc.DrawText(lowestpricetext, x2, y2)
+        findpos_on = get_val('findpos_on')
+        if findpos_on:
+            lowestpricelabel = get_val('lowestpricelabel')
+            lowestpricetext = "{0}: {1}".format(lowestpricelabel, '未识别')
+            dc.DrawText(lowestpricetext, x2, y2)
+        else:
+            lowest_price = get_val('lowest_price')
+            lowestpricelabel = get_val('lowestpricelabel')
+            lowestpricetext = "{0}: {1}".format(lowestpricelabel, lowest_price)
+            dc.DrawText(lowestpricetext, x2, y2)
 
 
         ##第二行  出价情况
@@ -335,11 +327,11 @@ class CurrentStatusPanel(wx.Panel):
         current_pricestatus = get_val('current_pricestatus')
         # print('current_pricestatus', current_pricestatus)
 
-
         if userprice and tijiao_on:  ##提交状态
             current_pricestatus_label = get_val('current_pricestatus_label')
             current_pricestatus = get_val('current_pricestatus')
-            pricetext = "{0}  {1}".format(current_pricestatus_label, current_pricestatus)
+            pricelabeltext = "{0}".format(current_pricestatus_label)
+            pricetext = "{0}".format(current_pricestatus)
             ##第三行  剩余状态
             # 显示截止时间与当前时间相差
             max_price = get_val('lowest_price') + 300
@@ -351,14 +343,17 @@ class CurrentStatusPanel(wx.Panel):
             else:
                 currenttime = get_val('a_time')
                 timediff = float(usertime) - float(currenttime)
-            statustext = "提交倒计时{0:.1f}秒  差价{1}".format(timediff, diff_price)
-
-            dc.DrawText(pricetext, x3, y3)
-            dc.DrawText(statustext, x4, y4)
+            timestatustext = "提交倒计时{0:.1f}秒".format(timediff)
+            pricestatustext = "差价{0}".format(diff_price)
+            dc.DrawText(pricelabeltext, x3, y3)
+            dc.DrawText(pricetext, x4, y4)
+            dc.DrawText(timestatustext, x5, y5)
+            dc.DrawText(pricestatustext, x6, y6)
         else:
             current_pricestatus_label = get_val('current_pricestatus_label')
             current_pricestatus = get_val('current_pricestatus')
-            pricetext = "{0}  {1}".format(current_pricestatus_label, current_pricestatus)
+            pricelabeltext = "{0}".format(current_pricestatus_label)
+            pricetext = "{0}".format(current_pricestatus)
             tijiao_num = get_val('tijiao_num')
             # 显示截止时间与当前时间相差
             if moni_on:
@@ -377,14 +372,13 @@ class CurrentStatusPanel(wx.Panel):
                 elif tijiao_num == 2:
                     one_time2 = get_val('second_real_time1')
                     timediff = float(one_time2) - float(currenttime)
-            statustext = "出价倒计时{0:.1f}秒  差价{1}".format(timediff, '-')
-            dc.DrawText(pricetext, x3, y3)
-            dc.DrawText(statustext, x4, y4)
+            timestatustext = "出价倒计时{0:.1f}秒".format(timediff)
+            pricestatustext = "差价{0}".format('-')
+            dc.DrawText(pricelabeltext, x3, y3)
+            dc.DrawText(pricetext, x4, y4)
+            dc.DrawText(timestatustext, x5, y5)
+            dc.DrawText(pricestatustext, x6, y6)
 
-
-
-    def OnTimer(self, event):  # 显示时间事件处理函数
-        self.Modify(event)
 
 
 class MoniWebFrame(wx.Frame):
@@ -416,15 +410,7 @@ class MoniWebFrame(wx.Frame):
         self.Bind(wx.EVT_TIMER, self.Price_view, self.timer1)  # 绑定一个定时器事件，主判断
         self.timer1.Start(35)  # 设定时间间隔
 
-        #     self.statustimer = wx.Timer(self)
-    #     self.Bind(wx.EVT_TIMER, self.OnTimer, self.statustimer)  # 绑定一个定时器事件
-    #     self.statustimer.Start(100)  # 设定时间间隔
-    #
-    # def OnTimer(self, event):  # 显示时间事件处理函数
-    #     if self.IsIconized():
-    #         self.currentstatusframe.Show(False)
-    #     else:
-    #         self.currentstatusframe.Show(True)
+        # self.Bind(wx.EVT_ACTIVATE , self.hotkey_open)
 
     def iconize(self,event):
         self.currentstatusframe.Show(False)
@@ -442,7 +428,14 @@ class MoniWebFrame(wx.Frame):
             logger.exception('this is an exception message')
 
     def Price_view(self, event):
-        if self.IsShown():
+        moni_on = get_val('moni_on')
+        if moni_on and self.IsShown() and not self.IsIconized():
+            ###子面板刷新
+            self.buttonpanel.Modify()
+            self.bottomstatusbarpanel.Modify()
+            self.currentstatusframe.currentstatuspanel.Modify()
+
+            ###判定验证码放大框
             Pos_yanzhengmaframe = get_val('Pos_yanzhengmaframe')
             x, y = self.Position
             Pricesize = get_val('Pricesize')
@@ -472,13 +465,8 @@ class MoniWebFrame(wx.Frame):
                     logger.exception('this is an exception message')
 
             yanzhengma_view = get_val('yanzhengma_view')
-            yanzhengma_change = get_val('yanzhengma_change')  # 默认是True
-            yanzhengma_view = get_val('yanzhengma_view')
             imgpos_yanzhengma = get_val('imgpos_yanzhengma')
             Yanzhengmasize = get_val('Yanzhengmasize')
-            yanzhengma_hash = get_val('yanzhengma_hash')
-
-
             #验证码放大是否需要刷新
             if yanzhengma_view:
                 set_val('yanzhengma_close', False)
@@ -499,42 +487,39 @@ class MoniWebFrame(wx.Frame):
                 finally:
                     pass
 
+            #根据当前句柄判断是否需要激活快捷键
+            hwnd = win32gui.GetForegroundWindow()
+            currenthwnd = self.Handle
+            print(hwnd, currenthwnd)
+            if hwnd == currenthwnd:
+                self.hotkey_open(event)
+            else:
+                self.hotkey_close(event)
 
-            ##验证码放大是否需要刷新
-            # if yanzhengma_view:
-            #     set_val('yanzhengma_close', False)
-            #     path = get_val('path')
-            #     yanpath = path + "\\yanzhengma.png"
-            #     cut_pic(imgpos_yanzhengma, Yanzhengmasize, yanpath)  # 直接调用得到 png 保存图片
-            #     yanzhengma_img = Image.open(yanpath)
-            #     set_val('yanzhengma_img', yanzhengma_img)
-            #     yanzhengma_img = get_val('yanzhengma_img')
-            #     yan_hash = imagehash.dhash(yanzhengma_img)
-            #     if not yanzhengma_hash:  # 第一次
-            #         set_val('yanzhengma_hash', yan_hash)
-            #     elif yan_hash == yanzhengma_hash:  # 验证码没变化
-            #         set_val('yanzhengma_change', False)
-            #     else:
-            #         set_val('yanzhengma_hash', yan_hash)
-            #         set_val('yanzhengma_change', True)  # 发生变化了
-            #
-            # if yanzhengma_view:
-            #     if not yanzhengma_change:
-            #         pass
-            #     else:
-            #         try:
-            #             yanpath = get_val('yanpath')
-            #             yan = self.yanzhengmaframe
-            #             yan.Show()
-            #             yan.ShowImage(yanpath, event)
-            #         except:  # 找不到的情况下也要重新创建
-            #             logger.exception('this is an exception message')
-            #
-            #         finally:
-            #             pass
         else:
             self.currentstatusframe.Show(False)
             self.yanzhengmaframe.Show(False)
+
+
+    def hotkey_open(self, event):
+        ###热键控制
+        hotkey_on = get_val('hotkey_on')
+        if not hotkey_on:
+            set_val('hotkey_on', True)
+            print("获得焦点")
+            Hotkey_open()
+
+    def hotkey_close(self, event):
+        hwnd = win32gui.GetForegroundWindow()
+        currenthwnd = self.Handle
+        print(hwnd, currenthwnd)
+
+        hotkey_on = get_val('hotkey_on')
+        if hotkey_on:
+            print("失去焦点")
+            set_val('hotkey_on', False)
+            Hotkey_close()
+
 
     def OnClose(self, event):
         set_val('web_on', False)
@@ -605,7 +590,14 @@ class WebFrame(wx.Frame):
             logger.exception('this is an exception message')
 
     def Price_view(self, event):
-        if self.IsShown():
+        guopai_on = get_val('guopai_on')
+        if guopai_on and self.IsShown() and not self.IsIconized() :
+            ###子面板刷新
+            self.buttonpanel.Modify()
+            self.bottomstatusbarpanel.Modify()
+            self.currentstatusframe.currentstatuspanel.Modify()
+
+            ###判定验证码放大框
             Pos_yanzhengmaframe = get_val('Pos_yanzhengmaframe')
             x, y = self.Position
             Pricesize = get_val('Pricesize')
@@ -635,13 +627,9 @@ class WebFrame(wx.Frame):
                     logger.exception('this is an exception message')
 
             yanzhengma_view = get_val('yanzhengma_view')
-            yanzhengma_change = get_val('yanzhengma_change')  # 默认是True
-            yanzhengma_view = get_val('yanzhengma_view')
             imgpos_yanzhengma = get_val('imgpos_yanzhengma')
             Yanzhengmasize = get_val('Yanzhengmasize')
-            yanzhengma_hash = get_val('yanzhengma_hash')
-
-            ##验证码放大是否需要刷新
+            #验证码放大是否需要刷新
             if yanzhengma_view:
                 set_val('yanzhengma_close', False)
                 path = get_val('path')
@@ -650,32 +638,44 @@ class WebFrame(wx.Frame):
                 yanzhengma_img = Image.open(yanpath)
                 set_val('yanzhengma_img', yanzhengma_img)
                 yanzhengma_img = get_val('yanzhengma_img')
-                yan_hash = imagehash.dhash(yanzhengma_img)
-                if not yanzhengma_hash:  # 第一次
-                    set_val('yanzhengma_hash', yan_hash)
-                elif yan_hash == yanzhengma_hash:  # 验证码没变化
-                    set_val('yanzhengma_change', False)
-                else:
-                    set_val('yanzhengma_hash', yan_hash)
-                    set_val('yanzhengma_change', True)  # 发生变化了
+                try:
+                    yanpath = get_val('yanpath')
+                    yan = self.yanzhengmaframe
+                    yan.Show()
+                    yan.ShowImage(yanpath, event)
+                except:  # 找不到的情况下也要重新创建
+                    logger.exception('this is an exception message')
 
-            if yanzhengma_view:
-                if not yanzhengma_change:
+                finally:
                     pass
-                else:
-                    try:
-                        yanpath = get_val('yanpath')
-                        yan = self.yanzhengmaframe
-                        yan.Show()
-                        yan.ShowImage(yanpath, event)
-                    except:  # 找不到的情况下也要重新创建
-                        logger.exception('this is an exception message')
+            ##根据当前句柄判断是否需要激活快捷键
+            hwnd = win32gui.GetForegroundWindow()
+            currenthwnd = self.Handle
+            print(hwnd, currenthwnd)
+            if hwnd == currenthwnd:
+                self.hotkey_open(event)
+            else:
+                self.hotkey_close(event)
 
-                    finally:
-                        pass
-        else:
-            self.currentstatusframe.Show(False)
-            self.yanzhengmaframe.Show(False)
+
+    def hotkey_open(self, event):
+        ###热键控制
+        hotkey_on = get_val('hotkey_on')
+        if not hotkey_on:
+            set_val('hotkey_on', True)
+            print("获得焦点")
+            Hotkey_open()
+
+    def hotkey_close(self, event):
+        hwnd = win32gui.GetForegroundWindow()
+        currenthwnd = self.Handle
+        print(hwnd, currenthwnd)
+
+        hotkey_on = get_val('hotkey_on')
+        if hotkey_on:
+            print("失去焦点")
+            set_val('hotkey_on', False)
+            Hotkey_close()
 
     def createStatusBar(self):
         self.statusbar = IcStatusBar(self)

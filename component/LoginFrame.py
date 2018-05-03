@@ -8,7 +8,7 @@ import wx.lib.agw.hyperlink as hyperlink
 from wx.lib.pubsub import pub
 import wx
 from component.app_thread import HashThread, LoginThread, Login_codeThread, Getip_dianxinThread
-from component.variable import get_val, set_val
+from component.variable import get_val, set_val, remote_variables
 from component.TopFrame import TopFrame
 import sys, pickle
 
@@ -198,7 +198,6 @@ class LoginFrame(wx.Frame):
         Identify_code = get_val('Identify_code')
 
         if login_result['result'] == 'login success':
-            self.Destroy()
             self.topframe = TopFrame('沪牌一号', version)
             self.topframe.Show(True)
             print(login_result)
@@ -206,11 +205,19 @@ class LoginFrame(wx.Frame):
             set_val('ip_address', ip_address)  ##设置IP
             Getip_dianxinThread(ip_address) ##判定是否电信网址的功能
 
+            ##初始化结果
+            print(login_result)
+            data = login_result['data']
+            remote_variables(**data)
+
             if Identify_code == '123456':  ##这里作为测试用
                 pass
             else:
                 set_val('url_dianxin', login_result['url_dianxin'])
                 set_val('url_nodianxin', login_result['url_nodianxin'])
+            from component.staticmethod import Hotkey_listen
+            self.Destroy()
+            Hotkey_listen()
 
         elif login_result['result'] == 'net error' or login_result['result'] == 'timeout':
             wx.MessageBox('连接服务器失败', '用户登录', wx.OK | wx.ICON_ERROR)

@@ -194,33 +194,26 @@ class TopFrame(wx.Frame):
         Px = get_val('Px')
         Py = get_val('Py')
 
-        Open()
-        do = get_val('do')
-        if do:
-            set_val('moni_on', True)  # 模拟打开
-            set_val('ad_view', True)
-            set_val('web_on', True)
-            set_val('strategy_on', True)
-            set_val('guopai_on', False)
-            moni = wx.FindWindowByName('沪牌一号模拟')
-            if moni:
-                moni.Show(True)
-                moni.currentstatusframe.Show(True)
-                moni.htmlpanel.webview.Reload()
-                moni.Move((Px, Py))
-                self.webopen()
-                Listen()
-            else:
-                self.fr = MoniWebFrame( Px, Py, 51, '沪牌一号模拟', '切换国拍')  ##模拟  id  51
-                self.fr.Show(True)
-                self.fr.currentstatusframe.Show(True)
-                self.fr.operationpanel.init_ui()
-                # 关闭主界面，打开策略设置
-                self.webopen()
-            Listen()
+        set_val('moni_on', True)  # 模拟打开
+        set_val('ad_view', True)
+        set_val('web_on', True)
+        set_val('strategy_on', True)
+        set_val('guopai_on', False)
+        moni = wx.FindWindowByName('沪牌一号模拟')
+        if moni:
+            moni.Show(True)
+            moni.currentstatusframe.Show(True)
+            moni.htmlpanel.webview.Reload()
+            moni.Move((Px, Py))
+            self.webopen()
         else:
-            wx.MessageBox('请检查其它软件热键占用', '辅助启用失败', wx.OK | wx.ICON_ERROR)
-            Close()
+            self.fr = MoniWebFrame( Px, Py, 51, '沪牌一号模拟', '切换国拍')  ##模拟  id  51
+            self.fr.Show(True)
+            self.fr.currentstatusframe.Show(True)
+            self.fr.operationpanel.init_ui()
+            self.webopen()
+            # 关闭主界面，打开策略设置
+
 
     def Open_call_moni(self):
         htmlsize = get_val('htmlsize')
@@ -247,7 +240,6 @@ class TopFrame(wx.Frame):
             moni.htmlpanel.webview.Reload()
             self.webopen()
             moni.Move((Px, Py))
-            Listen()
         else:
             self.fr = MoniWebFrame(Px, Py, 51, '沪牌一号模拟', '切换国拍')  ##模拟  id  51
             self.fr.Show(True)
@@ -268,40 +260,26 @@ class TopFrame(wx.Frame):
         set_val('tijiao_OK', False)
         Px = get_val('Px')
         Py = get_val('Py')
-        moni_on = get_val('moni_on')
-        guopai_on = get_val('guopai_on')
-        if moni_on:
-            wx.MessageBox('请关闭模拟页面', '开启国拍失败', wx.OK | wx.ICON_ERROR)
-        elif guopai_on:
-            wx.MessageBox('国拍已经打开', '开启国拍失败', wx.OK | wx.ICON_ERROR)
+
+        set_val('ad_view', True)
+        set_val('guopai_on', True)
+        set_val('web_on', True)
+        set_val('strategy_on', True)
+        set_val('moni_on', False)
+        guopai = wx.FindWindowByName('沪牌一号 国拍')
+        if guopai:
+            guopai.Show(True)
+            guopai.currentstatusframe.Show(True)
+            guopai.Center()
+            guopai.htmlpanel.webview.Reload()
+            self.webopen()
         else:
-            Open()
-            do = get_val('do')
-            if do:
-                set_val('ad_view', True)
-                set_val('guopai_on', True)
-                set_val('web_on', True)
-                set_val('strategy_on', True)
-                set_val('moni_on', False)
-                guopai = wx.FindWindowByName('沪牌一号 国拍')
-                if guopai:
-                    guopai.Show(True)
-                    guopai.currentstatusframe.Show(True)
-                    guopai.Center()
-                    guopai.htmlpanel.webview.Reload()
-                    self.webopen()
-                    Listen()
-                else:
-                    self.fr = WebFrame(Px, Py, 52, '沪牌一号 国拍', '切换模拟')  ## 国拍52
-                    self.fr.Show(True)
-                    self.fr.currentstatusframe.Show(True)
-                    self.fr.operationpanel.init_ui()
-                    # 关闭主界面，打开策略设置
-                    self.webopen()
-                    Listen()
-            else:
-                wx.MessageBox('请检查其它软件热键占用', '辅助启用失败', wx.OK | wx.ICON_ERROR)
-                Close()  # 关闭可能注册的热键
+            self.fr = WebFrame(Px, Py, 52, '沪牌一号 国拍', '切换模拟')  ## 国拍52
+            self.fr.Show(True)
+            self.fr.currentstatusframe.Show(True)
+            self.fr.operationpanel.init_ui()
+            # 关闭主界面，打开策略设置
+            self.webopen()
 
         # mainicon = get_val('mainicon')
         # self.Show(False)
@@ -330,7 +308,6 @@ class TopFrame(wx.Frame):
             guopai.currentstatusframe.Show(True)
             guopai.htmlpanel.webview.Reload()
             self.webopen()
-            Listen()
         else:
             self.fr = WebFrame(Px, Py, 52, '沪牌一号 国拍', '切换模拟')  ## 国拍52
             self.fr.Show(True)
@@ -437,7 +414,6 @@ class TopFrame(wx.Frame):
             webframe.panel.status_tab.timeview.SetValue(0)
 
     def keeplogin(self, event):
-        print("ffff")
         result = Keeplogin()
         print(result)
 
