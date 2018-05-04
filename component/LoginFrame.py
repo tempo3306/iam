@@ -208,7 +208,7 @@ class LoginFrame(wx.Frame):
             ##初始化结果
             print(login_result)
             data = login_result['data']
-            remote_variables(**data)
+            # remote_variables(**data)
 
             if Identify_code == '123456':  ##这里作为测试用
                 pass

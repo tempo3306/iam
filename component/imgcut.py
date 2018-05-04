@@ -317,10 +317,10 @@ def findpos():
         set_val('Pos_controlframe', [Pos_controlframe_relative[0] + Px_lowestprice,
                                      Pos_controlframe_relative[1] + Py_lowestprice])
         print(Position_frame)
-        set_val('Pos_yanzhengma', [Position_frame[5][0] + Pos_yanzhengma_relative[0],
-                                   Position_frame[5][1] + Pos_yanzhengma_relative[1],
-                                   Position_frame[5][0] + Pos_yanzhengma_relative[2],
-                                   Position_frame[5][1] + Pos_yanzhengma_relative[3]])  # 验证码所在位置
+        set_val('Pos_yanzhengma', [Position_frame[6][0] + Pos_yanzhengma_relative[0],
+                                   Position_frame[6][1] + Pos_yanzhengma_relative[1],
+                                   Position_frame[6][0] + Pos_yanzhengma_relative[2],
+                                   Position_frame[6][1] + Pos_yanzhengma_relative[3]])  # 验证码所在位置
         set_val('Pos_yanzhengmaframe', [Px_lowestprice + Pos_yanzhengmaframe_relative[0],
                                         Py_lowestprice + Pos_yanzhengmaframe_relative[1]])  # 验证码框放置位置
 

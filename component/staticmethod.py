@@ -14,9 +14,6 @@ import ctypes
 from ctypes import wintypes
 
 
-
-
-
 def Click(x, y):  # 鼠标点击
     a = win32gui.GetCursorPos()
     x = int(x)
@@ -24,6 +21,7 @@ def Click(x, y):  # 鼠标点击
     win32api.SetCursorPos((x, y))
     win32api.mouse_event(win32con.MOUSEEVENTF_LEFTDOWN, x, y, 0, 0)
     win32api.mouse_event(win32con.MOUSEEVENTF_LEFTUP, x, y, 0, 0)
+    print(x, y)
 
 
 def Click2(x, y):  # 鼠标点击
@@ -42,12 +40,16 @@ def Paste():  # ctrl + V
     win32api.keybd_event(86, 0, win32con.KEYEVENTF_KEYUP, 0)  # 释放按键
     win32api.keybd_event(17, 0, win32con.KEYEVENTF_KEYUP, 0)
 
+
 import wx
+
+
 def Paste_moni(price):
     topframe = wx.FindWindowById(51)
     browser = topframe.htmlpanel.webview
     script = "$('#selfwrite').val('{0}')".format(price)
     browser.RunScript(script)
+
 
 def setText(aString):
     aString = aString.encode('utf-8')
@@ -57,17 +59,16 @@ def setText(aString):
     win32clipboard.CloseClipboard()
 
 
-
-
 def Delete():
     a = time.clock()
     win32api.keybd_event(0x08, 0, 0, 0)
     win32api.keybd_event(0x08, 0, win32con.KEYEVENTF_KEYUP, 0)
     b = time.clock()
-    print(b-a)
+    print(b - a)
+
 
 def many_delete():
-    for i in range(8):
+    for i in range(10):
         Delete()
 
 
@@ -181,10 +182,7 @@ def SmartTijiao():
 def OnClick_Shuaxin():
     Position_frame = get_val('Position_frame')
     Click(Position_frame[3][0], Position_frame[3][1])
-    Click(Position_frame[5][0], Position_frame[5][1])
-    yanzhengma_view = get_val('yanzhengma_view')
-    yanzhengma_close = get_val('yanzhengma_close')
-    yanzhengma_count = get_val('yanzhengma_count')
+    Click(Position_frame[6][0], Position_frame[6][1])
     set_val('yanzhengma_view', True)  # 激活放大器
     set_val('yanzhengma_count', 0)  # 归零
 
@@ -208,7 +206,7 @@ def OnClick_chujia():
         setText(str(own_price1))
         selfdelete()
         Click(Position_frame[1][0], Position_frame[1][1])
-        Click(Position_frame[5][0], Position_frame[5][1])
+        Click(Position_frame[6][0], Position_frame[6][1])
         set_val('tijiao_on', True)
         set_val('chujia_on', False)
         set_val('chujia_interval', False)  # 间隔结束
@@ -229,7 +227,7 @@ def OnClick_chujia():
     elif tijiao_num == 2 and twice:
         own_price2 = lowest_price + second_diff
         set_val('own_price2', own_price2)
-        moni_on =  get_val('moni_on')
+        moni_on = get_val('moni_on')
         setText(str(own_price2))
         selfdelete()
 
@@ -240,7 +238,7 @@ def OnClick_chujia():
         set_val('current_pricestatus', current_pricestatus)
 
         Click(Position_frame[1][0], Position_frame[1][1])
-        Click(Position_frame[5][0], Position_frame[5][1])
+        Click(Position_frame[6][0], Position_frame[6][1])
         set_val('tijiao_on', True)
         set_val('chujia_on', False)
         set_val('chujia_interval', False)  # 间隔结束
@@ -266,12 +264,13 @@ def Cancel_chujia():
         setText(str(userprice))
         selfdelete()
         Click(Position_frame[1][0], Position_frame[1][1])
-        Click(Position_frame[5][0], Position_frame[5][1])
+        Click(Position_frame[6][0], Position_frame[6][1])
         # 验证码放大打开
         set_val('yanzhengma_count', 0)  # 计数器，制造延迟
         set_val('yanzhengma_view', True)  # 打开验证码放大器
         ##提交关闭
         set_val('tijiao_OK', False)
+
 
 ##智能调整
 def Smart_ajust_chujia(price):
@@ -280,12 +279,13 @@ def Smart_ajust_chujia(price):
     setText(str(price))
     selfdelete()
     Click(Position_frame[1][0], Position_frame[1][1])
-    Click(Position_frame[5][0], Position_frame[5][1])
+    Click(Position_frame[6][0], Position_frame[6][1])
     # 验证码放大打开
     set_val('yanzhengma_count', 0)  # 计数器，制造延迟
     set_val('yanzhengma_view', True)  # 打开验证码放大器
     ##提交关闭
     set_val('tijiao_OK', False)
+
 
 ##测试用
 def Cancel_chujia_test():
@@ -293,7 +293,7 @@ def Cancel_chujia_test():
     print(px, py)
     Position_frame = get_val('Position_frame')
 
-    print (Position_frame[6][0], Position_frame[6][1])
+    print(Position_frame[6][0], Position_frame[6][1])
 
     # Position_frame = get_val('Position_frame')
     # Click(Position_frame[7][0], Position_frame[7][1])  # 取消
@@ -308,23 +308,23 @@ def Cancel_chujia_test():
     # ##提交关闭
     # set_val('tijiao_OK', False)
 
+
 def OnH_chujia():
     moni_on = get_val('moni_on')
     if moni_on:
         Position_frame = get_val('Position_frame')
         lowest_price = get_val('lowest_price')
         one_diff = get_val('one_diff')
-        set_val('yanzhengma_view', True)
-        set_val('yanzhengma_count', 0)
         set_val('own_price1', lowest_price + one_diff)
         own_price1 = get_val('own_price1')
         setText(str(own_price1))
         Paste_moni(own_price1)
-        Click(Position_frame[1][0], Position_frame[1][1])
-        Click(Position_frame[5][0], Position_frame[5][1])
+        Click(Position_frame[1][0], Position_frame[1][1])  ##出价
+        Click(Position_frame[6][0], Position_frame[6][1])  ##点击验证码框
+        set_val('yanzhengma_view', True)
+        set_val('yanzhengma_count', 0)
     else:
         OnH_guopai_chujia()
-
 
 
 def OnH_guopai_chujia():
@@ -337,15 +337,13 @@ def OnH_guopai_chujia():
     own_price1 = get_val('own_price1')
     setText(str(own_price1))
     selfdelete()
-
     Click(Position_frame[1][0], Position_frame[1][1])
-    Click(Position_frame[5][0], Position_frame[5][1])
+    Click(Position_frame[6][0], Position_frame[6][1])
 
 
 def selfdelete():
     Position_frame = get_val('Position_frame')
-    # Click2(Position_frame[6][0], Position_frame[6][1])
-    Click2(Position_frame[6][0], Position_frame[6][1])
+    Click(Position_frame[5][0], Position_frame[5][1])
     many_delete()
     Paste()  # 真粘贴
 
@@ -355,7 +353,7 @@ def selfChujia():
     Click(Position_frame[4][0], Position_frame[4][1])
     Click(Position_frame[0][0], Position_frame[0][1])
     Click(Position_frame[1][0], Position_frame[1][1])
-    Click(Position_frame[5][0], Position_frame[5][1])
+    Click(Position_frame[6][0], Position_frame[6][1])
     set_val('price_view', True)
     set_val('price_count', 0)
     set_val('yanzhengma_count', 0)
@@ -430,6 +428,7 @@ def query_sleep6():
 def nothing():
     pass
 
+
 ##热键模块
 # 快捷键对应的驱动函数   1: TopFrame.handle_Jiajia
 VK_CODE = {'0': 0x30, '1': 0x31, '2': 0x32, '3': 0x33, '4': 0x34, '5': 0x35, '6': 0x36, '7': 0x37,
@@ -454,10 +453,11 @@ HOTKEY_ACTIONS = {
     13: query, 14: OnH_chujia}
 
 
-
 # 启动监听
 def Hotkey_listen():
     try:
+        Hotkey_open()
+
         msg = wintypes.MSG()
         byref = ctypes.byref
         while user32.GetMessageA(byref(msg), None, 0, 0) != 0:
@@ -479,6 +479,8 @@ def Hotkey_listen():
         for id in HOTKEYS2.keys():
             user32.UnregisterHotKey(None, id)
         set_val('hotkey_on', False)
+
+
 ##开启
 def Hotkey_open():
     try:
@@ -556,10 +558,12 @@ def changetime(a):  # 换算成时间戳
     final_time = time.mktime(time.strptime(a, '%Y-%m-%d %H:%M:%S'))
     return final_time  # 以时间戳输出
 
+
 def get_nowtime():
     tem1 = time.time()
     a = time.strftime('%Y-%m-%d', time.localtime(tem1))
     return a  # 输出时间格式字符串
+
 
 def gettime(choice):  # choice1:55, choice2:0.5
     tem = get_nowtime()
@@ -591,4 +595,4 @@ def smart_price():
         timestr = time.strftime("%H-%M-%S", structtime)
         hour, minute, second = timestr.split('-')
         if int(hour) == 11 and int(minute) == 29:
-            return  [str(int(second))] + lowest_price
+            return [str(int(second))] + lowest_price

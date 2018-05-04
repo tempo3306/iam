@@ -263,7 +263,6 @@ class CurrentStatusPanel(wx.Panel):
         self.SetBackgroundColour("#585858")
         self.timefont = wx.Font(12, wx.FONTFAMILY_MODERN, wx.FONTSTYLE_NORMAL, wx.FONTWEIGHT_BOLD, False)
 
-        self.statustimer = wx.Timer(self)
 
 
     def Modify(self):  # 更新
@@ -408,8 +407,10 @@ class MoniWebFrame(wx.Frame):
 
         self.timer1 = wx.Timer(self)
         self.Bind(wx.EVT_TIMER, self.Price_view, self.timer1)  # 绑定一个定时器事件，主判断
-        self.timer1.Start(35)  # 设定时间间隔
+        self.timer1.Start(4000)  # 设定时间间隔
 
+
+        self.hotkey_open2()
         # self.Bind(wx.EVT_ACTIVATE , self.hotkey_open)
 
     def iconize(self,event):
@@ -428,7 +429,14 @@ class MoniWebFrame(wx.Frame):
             logger.exception('this is an exception message')
 
     def Price_view(self, event):
+        print("Price_view")
         moni_on = get_val('moni_on')
+
+        id = get_val('topframe')
+        topframe = wx.FindWindowById(id)
+        topframe.Show(True)
+
+
         if moni_on and self.IsShown() and not self.IsIconized():
             ###子面板刷新
             self.buttonpanel.Modify()
@@ -436,11 +444,7 @@ class MoniWebFrame(wx.Frame):
             self.currentstatusframe.currentstatuspanel.Modify()
 
             ###判定验证码放大框
-            Pos_yanzhengmaframe = get_val('Pos_yanzhengmaframe')
-            x, y = self.Position
-            Pricesize = get_val('Pricesize')
             yanzhengma_move = get_val('yanzhengma_move')
-            Pos_price = get_val('Pos_price')
             Pos_yanzhengmaframe = get_val('Pos_yanzhengmaframe')
             if yanzhengma_move:
                 yan = self.yanzhengmaframe
@@ -487,19 +491,31 @@ class MoniWebFrame(wx.Frame):
                 finally:
                     pass
 
-            #根据当前句柄判断是否需要激活快捷键
-            hwnd = win32gui.GetForegroundWindow()
-            currenthwnd = self.Handle
-            print(hwnd, currenthwnd)
-            if hwnd == currenthwnd:
-                self.hotkey_open(event)
-            else:
-                self.hotkey_close(event)
-
+            ## 根据当前句柄判断是否需要激活快捷键
+            # hwnd = win32gui.GetForegroundWindow()
+            # currenthwnd = self.Handle
+            # hotkey_on = get_val('hotkey_on')
+            # yanhwnd = self.yanzhengmaframe.Handle
+            # statushwnd = self.currentstatusframe.Handle
+            # if hwnd == currenthwnd or hwnd == yanhwnd or hwnd == statushwnd:
+            #     if not hotkey_on:
+            #         self.hotkey_open(event)
+            #         Position_frame = get_val('Position_frame')
+            # elif hotkey_on and hwnd != currenthwnd or hwnd != yanhwnd or hwnd != statushwnd:
+            #     print(hwnd, currenthwnd)
+            #     self.hotkey_close(event)
         else:
             self.currentstatusframe.Show(False)
             self.yanzhengmaframe.Show(False)
 
+
+    def hotkey_open2(self):
+        ###热键控制
+        hotkey_on = get_val('hotkey_on')
+        if not hotkey_on:
+            set_val('hotkey_on', True)
+            print("获得焦点")
+            Hotkey_open()
 
     def hotkey_open(self, event):
         ###热键控制
@@ -648,14 +664,16 @@ class WebFrame(wx.Frame):
 
                 finally:
                     pass
-            ##根据当前句柄判断是否需要激活快捷键
-            hwnd = win32gui.GetForegroundWindow()
-            currenthwnd = self.Handle
-            print(hwnd, currenthwnd)
-            if hwnd == currenthwnd:
-                self.hotkey_open(event)
-            else:
-                self.hotkey_close(event)
+            #根据当前句柄判断是否需要激活快捷键
+            # hwnd = win32gui.GetForegroundWindow()
+            # currenthwnd = self.Handle
+            # yanhwnd = self.yanzhengmaframe.Handle
+            # statushwnd = self.currentstatusframe.Handle
+            # print(hwnd, currenthwnd)
+            # if hwnd == currenthwnd or hwnd == yanhwnd or hwnd == statushwnd:
+            #     self.hotkey_open(event)
+            # else:
+            #     self.hotkey_close(event)
 
 
     def hotkey_open(self, event):

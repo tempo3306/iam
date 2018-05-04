@@ -73,6 +73,7 @@ def init_val():
     init_strategy()
     init_account()
     init_status()
+    remote_init()
     diskid = get_unique_id()
     set_val('diskid', get_id_hash(diskid))   ##sha1 hash化
 
@@ -451,8 +452,8 @@ def remote_init():
     set_val('px_relative', 49)  # 查找出来位置反算相对位置
     set_val('py_relative', 0)
     ## 相对于最低成交价位置
-    #   ## 0:加价  1：出价 2：提交  3：刷新   4 ：确认   5：验证码    6:验证码输入框     7：取消
-    set_val('P_relative2', [[647, -98], [650, 8], [400, 89], [396, 14], [505, 68], [585, 8], [565, 5], [586, 86]])
+    #   ## 0:加价  1：出价 2：提交  3：刷新按钮   4 ：确认   5：价格输入框    6:验证码输入框     7：取消
+    set_val('P_relative2', [[647, -98], [650, 8], [400, 89], [396, 14], [505, 68], [562, 8], [585, 8], [586, 86]])
     P_relative2 = get_val('P_relative2')
     set_val('Position_frame', [[0, 0] for i in range(len(P_relative2))])
     ## 限定截图位置
