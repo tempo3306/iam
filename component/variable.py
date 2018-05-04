@@ -256,8 +256,8 @@ def init_size():
 
 
     ##状态框与验证码放大框
-    set_val('CurrentStatusFramePos', (430, 610))
-    set_val('CurrentStatusFrameSize', (451,79))
+    set_val('CurrentStatusFramePos', (425, 607))
+    set_val('CurrentStatusFrameSize', (451,77))
 
 
     set_val('YanzhengmaFramePos', (450, 175))

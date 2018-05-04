@@ -470,7 +470,6 @@ def Hotkey_listen():
                     action_to_take()
             user32.TranslateMessage(byref(msg))
             user32.DispatchMessageA(byref(msg))
-            print("fff")
     except:
         pass
     finally:
@@ -509,9 +508,9 @@ def Hotkey_close():
 
 
 # 创建一个确认进程
-class listenThread(threading.Thread):
+class ListenThread(threading.Thread):
     def __init__(self, *args, **kwargs):
-        super(listenThread, self).__init__(*args, **kwargs)
+        super(ListenThread, self).__init__(*args, **kwargs)
         self.__flag = threading.Event()  # 用于暂停线程的标识
         self.__flag.set()  # 设置为True
         self.__running = threading.Event()  # 用于停止线程的标识
@@ -520,9 +519,9 @@ class listenThread(threading.Thread):
         self.start()
 
     def run(self):
-        while self.__running.isSet():
-            self.__flag.wait()  # 为True时立即返回, 为False时阻塞直到内部的标识位为True后返回
-            Hotkey_listen()
+        # while self.__running.isSet():
+        #     self.__flag.wait()  # 为True时立即返回, 为False时阻塞直到内部的标识位为True后返回
+        Hotkey_listen()
 
     def pause(self):
         self.__flag.clear()  # 设置为False, 让线程阻塞

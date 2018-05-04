@@ -29,12 +29,6 @@ if sys.platform != 'win32':
     exit()
 
 import pickle
-import wx.adv
-from PIL import Image
-import os
-from PIL import ImageGrab
-# 组件
-from component.variable import set_val
 from component.LoginFrame import LoginFrame
 from component.variable import Create_hash, init_val, get_val
 from component.app_thread import *

@@ -216,7 +216,7 @@ class LoginFrame(wx.Frame):
                 set_val('url_dianxin', login_result['url_dianxin'])
                 set_val('url_nodianxin', login_result['url_nodianxin'])
             from component.staticmethod import Hotkey_listen
-            self.Destroy()
+            self.Destroy()  ##关闭窗口
             Hotkey_listen()
 
         elif login_result['result'] == 'net error' or login_result['result'] == 'timeout':
