@@ -196,9 +196,9 @@ class HtmlPanel(wx.Panel):
 
 class BottomeStatusbarPanel(wx.Panel):
     def __init__(self, parent, moni):
-        bottomestatusbarsanel_size = get_val('bottomestatusbarsanel_size')
-        bottomestatusbarsanel_pos = get_val('bottomestatusbarsanel_pos')
-        wx.Panel.__init__(self, parent, size=bottomestatusbarsanel_size, pos=bottomestatusbarsanel_pos,
+        bottomestatusbarpanel_size = get_val('bottomestatusbarpanel_size')
+        bottomestatusbarpanel_pos = get_val('bottomestatusbarpanel_pos')
+        wx.Panel.__init__(self, parent, size=bottomestatusbarpanel_size, pos=bottomestatusbarpanel_pos,
                           style=wx.BORDER_NONE)
 
         self.textfont = wx.Font(12, wx.ROMAN, wx.NORMAL, wx.NORMAL, False)
