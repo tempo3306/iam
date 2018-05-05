@@ -132,7 +132,7 @@ def init_id():
 
 def init_size():
     ##webframe相关
-    set_val('websize', [1148, 728])  # webframe大小
+    set_val('websize', [1148, 715])  # webframe大小
     set_val('webview_pos', [-5, -16])  # WEB在 WEBVIEW里的相对位置
     set_val('buttonpanel_size', (892, 30))
     set_val('buttonpanel_pos', (0, 0))

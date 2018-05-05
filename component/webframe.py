@@ -201,7 +201,7 @@ class BottomeStatusbarPanel(wx.Panel):
         wx.Panel.__init__(self, parent, size=bottomestatusbarpanel_size, pos=bottomestatusbarpanel_pos,
                           style=wx.BORDER_NONE)
 
-        self.textfont = wx.Font(12, wx.ROMAN, wx.NORMAL, wx.NORMAL, False)
+        self.textfont = wx.Font(12, wx.FONTFAMILY_ROMAN, wx.FONTSTYLE_NORMAL, wx.FONTWEIGHT_BOLD, False)
 
 
         self.registered_bitmap = wx.Bitmap('icons/registered.png')
@@ -484,19 +484,20 @@ class MoniWebFrame(wx.Frame):
                 finally:
                     pass
 
-            ## 根据当前句柄判断是否需要激活快捷键
-            # hwnd = win32gui.GetForegroundWindow()
-            # currenthwnd = self.Handle
-            # hotkey_on = get_val('hotkey_on')
-            # yanhwnd = self.yanzhengmaframe.Handle
-            # statushwnd = self.currentstatusframe.Handle
-            # if hwnd == currenthwnd or hwnd == yanhwnd or hwnd == statushwnd:
-            #     if not hotkey_on:
-            #         self.hotkey_open(event)
-            #         Position_frame = get_val('Position_frame')
-            # elif hotkey_on and hwnd != currenthwnd or hwnd != yanhwnd or hwnd != statushwnd:
-            #     print(hwnd, currenthwnd)
-            #     self.hotkey_close(event)
+            # 根据当前句柄判断是否需要激活快捷键
+            hwnd = win32gui.GetForegroundWindow()
+            currenthwnd = self.Handle
+            hotkey_on = get_val('hotkey_on')
+            yanhwnd = self.yanzhengmaframe.Handle
+            statushwnd = self.currentstatusframe.Handle
+            if hwnd == currenthwnd or hwnd == yanhwnd or hwnd == statushwnd:
+                if not hotkey_on:
+                    self.hotkey_open(event)
+                    Position_frame = get_val('Position_frame')
+            elif hotkey_on and hwnd != currenthwnd or hwnd != yanhwnd or hwnd != statushwnd:
+                print(hwnd, currenthwnd)
+                self.hotkey_close(event)
+
         else:
             self.currentstatusframe.Show(False)
             self.yanzhengmaframe.Show(False)
@@ -657,17 +658,19 @@ class WebFrame(wx.Frame):
 
                 finally:
                     pass
-            #根据当前句柄判断是否需要激活快捷键
-            # hwnd = win32gui.GetForegroundWindow()
-            # currenthwnd = self.Handle
-            # yanhwnd = self.yanzhengmaframe.Handle
-            # statushwnd = self.currentstatusframe.Handle
-            # print(hwnd, currenthwnd)
-            # if hwnd == currenthwnd or hwnd == yanhwnd or hwnd == statushwnd:
-            #     self.hotkey_open(event)
-            # else:
-            #     self.hotkey_close(event)
-
+            ## 根据当前句柄判断是否需要激活快捷键
+            hwnd = win32gui.GetForegroundWindow()
+            currenthwnd = self.Handle
+            yanhwnd = self.yanzhengmaframe.Handle
+            statushwnd = self.currentstatusframe.Handle
+            print(hwnd, currenthwnd)
+            if hwnd == currenthwnd or hwnd == yanhwnd or hwnd == statushwnd:
+                self.hotkey_open(event)
+            else:
+                self.hotkey_close(event)
+        else:
+            self.currentstatusframe.Show(False)
+            self.yanzhengmaframe.Show(False)
 
     def hotkey_open(self, event):
         ###热键控制
