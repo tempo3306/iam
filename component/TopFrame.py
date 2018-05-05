@@ -127,10 +127,10 @@ class TopFrame(wx.Frame):
 
         if tijiao_num == 1:
             print("moni_chujia")
-
             own_price1 = lowest_price + one_diff
-            topframe = wx.FindWindowById(51)
-            browser = topframe.htmlpanel.webview
+            id = get_val('moni_webframe')
+            moni = wx.FindWindowById(id)
+            browser = moni.htmlpanel.webview
             script = "$('#selfwrite').val('{0}')".format(own_price1)
             browser.RunScript(script)
             Click(Position_frame[1][0], Position_frame[1][1])
@@ -153,9 +153,9 @@ class TopFrame(wx.Frame):
         elif tijiao_num == 2 and twice:
             own_price2 = lowest_price + second_diff
             set_val('own_price2', own_price2)
-            moni_on = get_val('moni_on')
-            topframe = wx.FindWindowById(51)
-            browser = topframe.htmlpanel.webview
+            id = get_val('moni_webframe')
+            moni = wx.FindWindowById(id)
+            browser = moni.htmlpanel.webview
             script = "$('#selfwrite').val('{0}')".format(own_price2)
             browser.RunScript(script)
 
@@ -182,8 +182,6 @@ class TopFrame(wx.Frame):
         self.Show(False)
 
     def Openmoni(self, event):
-        htmlsize = get_val('htmlsize')
-        webview_pos = get_val('webview_pos')
         timer0 = threading.Timer(5, findpos)
         init_strategy() #初始化
         Px = get_val('Px')
@@ -202,7 +200,9 @@ class TopFrame(wx.Frame):
             moni.Move((Px, Py))
             self.webopen()
         else:
-            self.fr = MoniWebFrame( Px, Py, 51, '沪牌一号模拟', '切换国拍')  ##模拟  id  51
+            id = wx.NewId()
+            set_val('moni_webframe', id)
+            self.fr = MoniWebFrame( Px, Py, id, '沪牌一号模拟', '切换国拍')  ##模拟  id  51
             self.fr.Show(True)
             self.fr.currentstatusframe.Show(True)
             self.fr.operationpanel.init_ui()
@@ -232,7 +232,9 @@ class TopFrame(wx.Frame):
             self.webopen()
             moni.Move((Px, Py))
         else:
-            self.fr = MoniWebFrame(Px, Py, 51, '沪牌一号模拟', '切换国拍')  ##模拟  id  51
+            id = wx.NewId()
+            set_val('moni_webframe', id)
+            self.fr = MoniWebFrame(Px, Py, id, '沪牌一号模拟', '切换国拍')  ##模拟  id  51
             self.fr.Show(True)
             self.fr.currentstatusframe.Show(True)
             self.fr.operationpanel.init_ui()
@@ -261,7 +263,9 @@ class TopFrame(wx.Frame):
             guopai.htmlpanel.webview.Reload()
             self.webopen()
         else:
-            self.fr = WebFrame(Px, Py, 52, '沪牌一号 国拍', '切换模拟')  ## 国拍52
+            id = wx.NewId()
+            set_val('guopai_webframe', id)
+            self.fr = WebFrame(Px, Py, id, '沪牌一号 国拍', '切换模拟')  ## 国拍52
             self.fr.Show(True)
             self.fr.currentstatusframe.Show(True)
             self.fr.operationpanel.init_ui()
@@ -292,7 +296,9 @@ class TopFrame(wx.Frame):
             guopai.htmlpanel.webview.Reload()
             self.webopen()
         else:
-            self.fr = WebFrame(Px, Py, 52, '沪牌一号 国拍', '切换模拟')  ## 国拍52
+            id = wx.NewId()
+            set_val('guopai_webframe', id)
+            self.fr = WebFrame(Px, Py, id, '沪牌一号 国拍', '切换模拟')  ## 国拍52
             self.fr.Show(True)
             self.fr.currentstatusframe.Show(True)
             self.fr.operationpanel.init_ui()

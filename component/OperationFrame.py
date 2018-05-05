@@ -335,9 +335,11 @@ class StatusPanel(wx.Panel):
     def webtab(self, event):
         moni_on = get_val('moni_on')
         if moni_on:
-            moni = wx.FindWindowByName('沪牌一号模拟')
-            guopai = wx.FindWindowByName('沪牌一号 国拍')
-            if guopai:
+            moni_webframe = get_val('moni_webframe')
+            guopai_webframe = get_val('guopai_webframe')
+            moni = wx.FindWindowById(moni_webframe)
+            guopai = wx.FindWindowById(guopai_webframe)
+            if guopai_webframe != -1:
                 guopai.Show(True)
                 guopai.currentstatusframe.Show(True)
                 guopai.operationpanel.init_ui()
@@ -348,10 +350,13 @@ class StatusPanel(wx.Panel):
                 moni.Show(False)
                 wx.CallAfter(pub.sendMessage, "open dianxin")
         else:
-            guopai = wx.FindWindowByName('沪牌一号 国拍')
-            moni = wx.FindWindowByName('沪牌一号模拟')
-            if moni:
+            moni_webframe = get_val('moni_webframe')
+            guopai_webframe = get_val('guopai_webframe')
+            moni = wx.FindWindowById(moni_webframe)
+            guopai = wx.FindWindowById(guopai_webframe)
+            if moni_webframe != -1:
                 moni.Show(True)
+                moni.htmlpanel.webview.Reload()
                 moni.currentstatusframe.Show(True)
                 guopai.Show(False)
                 moni.operationpanel.init_ui()

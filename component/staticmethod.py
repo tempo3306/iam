@@ -45,8 +45,9 @@ import wx
 
 
 def Paste_moni(price):
-    topframe = wx.FindWindowById(51)
-    browser = topframe.htmlpanel.webview
+    id = get_val('moni_webframe')
+    moni = wx.FindWindowById(id)
+    browser = moni.htmlpanel.webview
     script = "$('#selfwrite').val('{0}')".format(price)
     browser.RunScript(script)
 
