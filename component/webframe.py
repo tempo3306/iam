@@ -407,7 +407,7 @@ class MoniWebFrame(wx.Frame):
 
         self.timer1 = wx.Timer(self)
         self.Bind(wx.EVT_TIMER, self.Price_view, self.timer1)  # 绑定一个定时器事件，主判断
-        self.timer1.Start(4000)  # 设定时间间隔
+        self.timer1.Start(35)  # 设定时间间隔
 
 
         self.hotkey_open2()
@@ -429,14 +429,7 @@ class MoniWebFrame(wx.Frame):
             logger.exception('this is an exception message')
 
     def Price_view(self, event):
-        print("Price_view")
         moni_on = get_val('moni_on')
-
-        id = get_val('topframe')
-        topframe = wx.FindWindowById(id)
-        topframe.Show(True)
-
-
         if moni_on and self.IsShown() and not self.IsIconized():
             ###子面板刷新
             self.buttonpanel.Modify()
@@ -484,7 +477,7 @@ class MoniWebFrame(wx.Frame):
                     yanpath = get_val('yanpath')
                     yan = self.yanzhengmaframe
                     yan.Show()
-                    yan.ShowImage(yanpath, event)
+                    yan.ShowImage(yanpath)
                 except:  # 找不到的情况下也要重新创建
                     logger.exception('this is an exception message')
 
@@ -658,7 +651,7 @@ class WebFrame(wx.Frame):
                     yanpath = get_val('yanpath')
                     yan = self.yanzhengmaframe
                     yan.Show()
-                    yan.ShowImage(yanpath, event)
+                    yan.ShowImage(yanpath)
                 except:  # 找不到的情况下也要重新创建
                     logger.exception('this is an exception message')
 
