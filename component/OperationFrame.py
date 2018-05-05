@@ -1517,3 +1517,4 @@ class OperationPanel(wx.Panel):
 
     def init_ui(self):
         self.status_tab.init_ui()
+        init_strategy() #初始化策略

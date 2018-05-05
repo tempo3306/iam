@@ -185,12 +185,7 @@ class TopFrame(wx.Frame):
         htmlsize = get_val('htmlsize')
         webview_pos = get_val('webview_pos')
         timer0 = threading.Timer(5, findpos)
-        set_val('strategy_on', True)
-        set_val('twice', False)
-        set_val('chujia_on', True)
-        set_val('tijiao_on', False)
-        set_val('tijiao_num', 1)  # 初始化
-        set_val('tijiao_OK', False)
+        init_strategy() #初始化
         Px = get_val('Px')
         Py = get_val('Py')
 
@@ -219,12 +214,8 @@ class TopFrame(wx.Frame):
         htmlsize = get_val('htmlsize')
         webview_pos = get_val('webview_pos')
         timer0 = threading.Timer(5, findpos)
-        set_val('strategy_on', True)
-        set_val('twice', False)
-        set_val('chujia_on', True)
-        set_val('tijiao_on', False)
-        set_val('tijiao_num', 1)  # 初始化
-        set_val('tijiao_OK', False)
+        init_strategy() #初始化
+
         Px = get_val('Px')
         Py = get_val('Py')
 
@@ -252,12 +243,8 @@ class TopFrame(wx.Frame):
         htmlsize = get_val('htmlsize')
         timer0 = threading.Timer(5, findpos)
         webview_pos = get_val('webview_pos')
-        set_val('strategy_on', True)
-        set_val('twice', False)
-        set_val('chujia_on', True)
-        set_val('tijiao_on', False)
-        set_val('tijiao_num', 1)  # 初始化
-        set_val('tijiao_OK', False)
+        init_strategy() #初始化
+
         Px = get_val('Px')
         Py = get_val('Py')
 
@@ -289,12 +276,8 @@ class TopFrame(wx.Frame):
         htmlsize = get_val('htmlsize')
         timer0 = threading.Timer(5, findpos)
         webview_pos = get_val('webview_pos')
-        set_val('strategy_on', True)
-        set_val('twice', False)
-        set_val('chujia_on', True)
-        set_val('tijiao_on', False)
-        set_val('tijiao_num', 1)  # 初始化
-        set_val('tijiao_OK', False)
+        init_strategy() #初始化
+
         Px = get_val('Px')
         Py = get_val('Py')
         set_val('ad_view', True)

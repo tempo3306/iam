@@ -596,3 +596,12 @@ def smart_price():
         hour, minute, second = timestr.split('-')
         if int(hour) == 11 and int(minute) == 29:
             return [str(int(second))] + lowest_price
+
+##初始化 还原
+def init_strategy():
+    set_val('strategy_on', True)
+    set_val('twice', False)
+    set_val('chujia_on', True)
+    set_val('tijiao_on', False)
+    set_val('tijiao_num', 1)  # 初始化
+    set_val('tijiao_OK', False)

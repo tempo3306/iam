@@ -17,6 +17,7 @@ from component.staticmethod import trans_time
 from component.variable import get_val, set_val
 from PIL import Image
 from component.remote_control import getip_dianxin
+from component.staticmethod import init_strategy
 
 import logging
 
@@ -711,7 +712,7 @@ class TimeThread(Thread):
             set_val('moni_second', moni_second)
             if moni_second >= 60:
                 set_val('moni_second', 0)
-
+                init_strategy() ##初始化
             ##计数，保证间隔
             price_count = get_val('price_count')
             yanzhengma_count = get_val('yanzhengma_count')
