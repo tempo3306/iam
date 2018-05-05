@@ -316,7 +316,6 @@ def findpos():
                                      yan_confirm_area_relative[3] + Py_lowestprice])
         set_val('Pos_controlframe', [Pos_controlframe_relative[0] + Px_lowestprice,
                                      Pos_controlframe_relative[1] + Py_lowestprice])
-        print(Position_frame)
         set_val('Pos_yanzhengma', [Position_frame[6][0] + Pos_yanzhengma_relative[0],
                                    Position_frame[6][1] + Pos_yanzhengma_relative[1],
                                    Position_frame[6][0] + Pos_yanzhengma_relative[2],

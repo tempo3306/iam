@@ -192,7 +192,8 @@ class TopFrame(wx.Frame):
         set_val('web_on', True)
         set_val('strategy_on', True)
         set_val('guopai_on', False)
-        moni = wx.FindWindowByName('沪牌一号模拟')
+        id = get_val('moni_webframe')
+        moni = wx.FindWindowById(id)
         if moni:
             moni.Show(True)
             moni.currentstatusframe.Show(True)
@@ -202,7 +203,7 @@ class TopFrame(wx.Frame):
         else:
             id = wx.NewId()
             set_val('moni_webframe', id)
-            self.fr = MoniWebFrame( Px, Py, id, '沪牌一号模拟', '切换国拍')  ##模拟  id  51
+            self.fr = MoniWebFrame( Px, Py, id, '沪牌一号 模拟', '切换国拍')  ##模拟  id  51
             self.fr.Show(True)
             self.fr.currentstatusframe.Show(True)
             self.fr.operationpanel.init_ui()
@@ -224,7 +225,8 @@ class TopFrame(wx.Frame):
         set_val('web_on', True)
         set_val('strategy_on', True)
         set_val('guopai_on', False)
-        moni = wx.FindWindowByName('沪牌一号模拟')
+        id = get_val('moni_webframe')
+        moni = wx.FindWindowById(id)
         if moni:
             moni.Show(True)
             moni.currentstatusframe.Show(True)
@@ -255,7 +257,8 @@ class TopFrame(wx.Frame):
         set_val('web_on', True)
         set_val('strategy_on', True)
         set_val('moni_on', False)
-        guopai = wx.FindWindowByName('沪牌一号 国拍')
+        id = get_val('guopai_webframe')
+        guopai= wx.FindWindowById(id)
         if guopai:
             guopai.Show(True)
             guopai.currentstatusframe.Show(True)
@@ -289,7 +292,8 @@ class TopFrame(wx.Frame):
         set_val('web_on', True)
         set_val('strategy_on', True)
         set_val('moni_on', False)
-        guopai = wx.FindWindowByName('沪牌一号 国拍')
+        id = get_val('guopai_webframe')
+        guopai= wx.FindWindowById(id)
         if guopai:
             guopai.Show(True)
             guopai.currentstatusframe.Show(True)
@@ -425,8 +429,10 @@ class TopFrame(wx.Frame):
             loginframe = LoginFrame('小鲜肉拍牌', code)
             loginframe.Show(True)
 
-            moni = wx.FindWindowByName('沪牌一号模拟')
-            guopai = wx.FindWindowByName('沪牌一号 国拍')
+            moni_id = get_val('moni_webframe')
+            guopai_id = get_val('guopai_webframe')
+            moni = wx.FindWindowById(moni_id)
+            guopai = wx.FindWindowById(guopai_id)
             try:
                 moni.Show(False)
             except:

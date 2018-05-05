@@ -291,10 +291,8 @@ def Smart_ajust_chujia(price):
 ##测试用
 def Cancel_chujia_test():
     px, py = win32api.GetCursorPos()
-    print(px, py)
     Position_frame = get_val('Position_frame')
 
-    print(Position_frame[6][0], Position_frame[6][1])
 
     # Position_frame = get_val('Position_frame')
     # Click(Position_frame[7][0], Position_frame[7][1])  # 取消
