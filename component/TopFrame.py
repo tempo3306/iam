@@ -192,9 +192,9 @@ class TopFrame(wx.Frame):
         set_val('web_on', True)
         set_val('strategy_on', True)
         set_val('guopai_on', False)
-        id = get_val('moni_webframe')
-        moni = wx.FindWindowById(id)
-        if moni:
+        moni_id = get_val('moni_webframe')
+        moni = wx.FindWindowById(moni_id)
+        if moni_id != -1:
             moni.Show(True)
             moni.currentstatusframe.Show(True)
             moni.htmlpanel.webview.Reload()
@@ -225,9 +225,9 @@ class TopFrame(wx.Frame):
         set_val('web_on', True)
         set_val('strategy_on', True)
         set_val('guopai_on', False)
-        id = get_val('moni_webframe')
-        moni = wx.FindWindowById(id)
-        if moni:
+        moni_id = get_val('moni_webframe')
+        moni = wx.FindWindowById(moni_id)
+        if moni_id != -1:
             moni.Show(True)
             moni.currentstatusframe.Show(True)
             moni.htmlpanel.webview.Reload()
@@ -257,9 +257,9 @@ class TopFrame(wx.Frame):
         set_val('web_on', True)
         set_val('strategy_on', True)
         set_val('moni_on', False)
-        id = get_val('guopai_webframe')
-        guopai= wx.FindWindowById(id)
-        if guopai:
+        guopai_id = get_val('guopai_webframe')
+        guopai= wx.FindWindowById(guopai_id)
+        if guopai_id != -1:
             guopai.Show(True)
             guopai.currentstatusframe.Show(True)
             guopai.Center()
@@ -292,9 +292,9 @@ class TopFrame(wx.Frame):
         set_val('web_on', True)
         set_val('strategy_on', True)
         set_val('moni_on', False)
-        id = get_val('guopai_webframe')
-        guopai= wx.FindWindowById(id)
-        if guopai:
+        guopai_id = get_val('guopai_webframe')
+        guopai= wx.FindWindowById(guopai_id)
+        if guopai_id != -1:
             guopai.Show(True)
             guopai.currentstatusframe.Show(True)
             guopai.htmlpanel.webview.Reload()

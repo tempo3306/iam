@@ -201,7 +201,7 @@ class BottomeStatusbarPanel(wx.Panel):
         wx.Panel.__init__(self, parent, size=bottomestatusbarpanel_size, pos=bottomestatusbarpanel_pos,
                           style=wx.BORDER_NONE)
 
-        self.textfont = wx.Font(12, wx.FONTFAMILY_ROMAN, wx.FONTSTYLE_NORMAL, wx.FONTWEIGHT_BOLD, False)
+        self.textfont = wx.Font(12, wx.FONTFAMILY_ROMAN, wx.FONTSTYLE_NORMAL, wx.FONTWEIGHT_NORMAL, False)
 
 
         self.registered_bitmap = wx.Bitmap('icons/registered.png')
