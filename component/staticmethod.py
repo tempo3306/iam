@@ -45,6 +45,7 @@ import wx
 
 
 def Paste_moni(price):
+    price = int(price)
     id = get_val('moni_webframe')
     moni = wx.FindWindowById(id)
     browser = moni.htmlpanel.webview
@@ -53,6 +54,7 @@ def Paste_moni(price):
 
 
 def setText(aString):
+    aString = str(int(aString))
     aString = aString.encode('utf-8')
     win32clipboard.OpenClipboard()
     win32clipboard.EmptyClipboard()
@@ -61,11 +63,8 @@ def setText(aString):
 
 
 def Delete():
-    a = time.clock()
     win32api.keybd_event(0x08, 0, 0, 0)
     win32api.keybd_event(0x08, 0, win32con.KEYEVENTF_KEYUP, 0)
-    b = time.clock()
-    print(b - a)
 
 
 def many_delete():

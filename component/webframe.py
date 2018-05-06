@@ -391,7 +391,7 @@ class CurrentStatusPanel(wx.Panel):
 class MoniWebFrame(wx.Frame):
     def __init__(self, px, py, id, name, tablabel):  # name:窗口显示名称
         websize = get_val('websize')
-        wx.Frame.__init__(self, None, id, name, size=(websize[0], websize[1]), pos=[px, py - 10],
+        wx.Frame.__init__(self, None, id, name, size=(websize[0], websize[1]), pos=(px, py - 10),
                           style=wx.CAPTION | wx.CLOSE_BOX)
         ##LOGO
         mainicon = get_val('mainicon')

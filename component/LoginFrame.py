@@ -216,6 +216,8 @@ class LoginFrame(wx.Frame):
                 set_val('url_dianxin', login_result['url_dianxin'])
                 set_val('url_nodianxin', login_result['url_nodianxin'])
             from component.staticmethod import Hotkey_listen
+            from component.variable import init_pos
+            init_pos()
             self.Destroy()  ##关闭窗口
             Hotkey_listen()
 

@@ -285,6 +285,13 @@ def findpos():
     if max_val > 0.9:  # 找不到不动作
         set_val('px_lowestprice', max_loc[0] + px_relative)
         set_val('py_lowestprice', max_loc[1] + py_relative)
+
+        Px = get_val('Px')
+        Py = get_val('Py')
+        logger.info("px_lowestprice: {0}".format(max_loc[0] + px_relative - Px))
+        logger.info("py_lowestprice: {0}".format(max_loc[1] + py_relative - Py))
+
+
         px_lowestprice = get_val('px_lowestprice')
         py_lowestprice = get_val('py_lowestprice')
         set_val('Px_lowestprice', px_lowestprice)
