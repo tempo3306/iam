@@ -344,10 +344,14 @@ class StatusPanel(wx.Panel):
                 guopai.currentstatusframe.Show(True)
                 guopai.operationpanel.init_ui()
                 moni.Show(False)
+                moni.currentstatusframe.Show(False)
+                moni.yanzhengmaframe.Show(False)
                 set_val('guopai_on', True)
                 set_val('moni_on', False)
             else:
                 moni.Show(False)
+                moni.currentstatusframe.Show(False)
+                moni.yanzhengmaframe.Show(False)
                 wx.CallAfter(pub.sendMessage, "open dianxin")
         else:
             moni_webframe = get_val('moni_webframe')
@@ -359,11 +363,15 @@ class StatusPanel(wx.Panel):
                 moni.htmlpanel.webview.Reload()
                 moni.currentstatusframe.Show(True)
                 guopai.Show(False)
+                guopai.currentstatusframe.Show(False)
+                guopai.yanzhengmaframe.Show(False)
                 moni.operationpanel.init_ui()
                 set_val('moni_on', True)
                 set_val('guopai_on', False)
             else:
                 guopai.Show(False)
+                guopai.currentstatusframe.Show(False)
+                guopai.yanzhengmaframe.Show(False)
                 wx.CallAfter(pub.sendMessage, "open moni")
 
     ###策略设置
