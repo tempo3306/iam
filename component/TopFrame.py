@@ -400,12 +400,10 @@ class TopFrame(wx.Frame):
 
     def MainControl(self, event):
         web_on = get_val('web_on')
-        time_on = get_val('time_on')
-        if not web_on and time_on:  # 网页关就把时间关掉
-            set_val('time_on', False)
-            webframe = wx.FindWindowById(51)
-            webframe.panel.status_tab.Closetime()
-            webframe.panel.status_tab.timeview.SetValue(0)
+        hotkey_on = get_val('hotkey_on')
+        if not web_on and hotkey_on:
+            Hotkey_close()  #关闭热键
+
 
     def keeplogin(self, event):
         result = Keeplogin()
@@ -472,6 +470,7 @@ class TopFrame(wx.Frame):
                     self.tijiaoThread.stop()
                     self.lowestThread.stop()
                     self.pinger.stop()
+                    Hotkey_close()  ##关闭热键
                 except:
                     pass
 

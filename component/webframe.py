@@ -501,14 +501,14 @@ class MoniWebFrame(wx.Frame):
             if hwnd == currenthwnd or hwnd == yanhwnd or hwnd == statushwnd:
                 if not hotkey_on:
                     self.hotkey_open(event)
-                    Position_frame = get_val('Position_frame')
             elif hotkey_on and hwnd != currenthwnd or hwnd != yanhwnd or hwnd != statushwnd:
-                print(hwnd, currenthwnd)
                 self.hotkey_close(event)
 
         else:
             self.currentstatusframe.Show(False)
             self.yanzhengmaframe.Show(False)
+
+        guopai_on = get_val('guopai_on')
 
 
     def hotkey_open2(self):
@@ -530,8 +530,6 @@ class MoniWebFrame(wx.Frame):
     def hotkey_close(self, event):
         hwnd = win32gui.GetForegroundWindow()
         currenthwnd = self.Handle
-        print(hwnd, currenthwnd)
-
         hotkey_on = get_val('hotkey_on')
         if hotkey_on:
             print("失去焦点")
@@ -666,14 +664,16 @@ class WebFrame(wx.Frame):
 
                 finally:
                     pass
-            ## 根据当前句柄判断是否需要激活快捷键
+
             hwnd = win32gui.GetForegroundWindow()
             currenthwnd = self.Handle
+            hotkey_on = get_val('hotkey_on')
             yanhwnd = self.yanzhengmaframe.Handle
             statushwnd = self.currentstatusframe.Handle
             if hwnd == currenthwnd or hwnd == yanhwnd or hwnd == statushwnd:
-                self.hotkey_open(event)
-            else:
+                if not hotkey_on:
+                    self.hotkey_open(event)
+            elif hotkey_on and hwnd != currenthwnd or hwnd != yanhwnd or hwnd != statushwnd:
                 self.hotkey_close(event)
         else:
             self.currentstatusframe.Show(False)
@@ -690,8 +690,6 @@ class WebFrame(wx.Frame):
     def hotkey_close(self, event):
         hwnd = win32gui.GetForegroundWindow()
         currenthwnd = self.Handle
-        print(hwnd, currenthwnd)
-
         hotkey_on = get_val('hotkey_on')
         if hotkey_on:
             print("失去焦点")
