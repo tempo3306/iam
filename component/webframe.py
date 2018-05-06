@@ -361,17 +361,25 @@ class CurrentStatusPanel(wx.Panel):
                     one_time1 = get_val('one_time1')
                     timediff = float(one_time1) - float(currenttime)
                 elif tijiao_num == 2:
-                    one_time2 = get_val('second_time1')
-                    timediff = float(one_time2) - float(currenttime)
+                    second_time1 = get_val('second_time1')
+                    timediff = float(second_time1) - float(currenttime)
+                else:
+                    timediff = '-'
             else:
                 currenttime = get_val('a_time')
                 if tijiao_num == 1:
                     one_time1 = get_val('one_real_time1')
                     timediff = float(one_time1) - float(currenttime)
                 elif tijiao_num == 2:
-                    one_time2 = get_val('second_real_time1')
-                    timediff = float(one_time2) - float(currenttime)
-            timestatustext = "出价倒计时{0:.1f}秒".format(timediff)
+                    second_real_time1 = get_val('second_real_time1')
+                    timediff = float(second_real_time1) - float(currenttime)
+                else:
+                    timediff = '-'
+
+            if timediff == '-':
+                timestatustext = "出价倒计时{0}秒".format(timediff)
+            else:
+                timestatustext = "出价倒计时{0:.1f}秒".format(timediff)
             pricestatustext = "差价{0}".format('-')
             dc.DrawText(pricelabeltext, x3, y3)
             dc.DrawText(pricetext, x4, y4)
@@ -663,7 +671,6 @@ class WebFrame(wx.Frame):
             currenthwnd = self.Handle
             yanhwnd = self.yanzhengmaframe.Handle
             statushwnd = self.currentstatusframe.Handle
-            print(hwnd, currenthwnd)
             if hwnd == currenthwnd or hwnd == yanhwnd or hwnd == statushwnd:
                 self.hotkey_open(event)
             else:

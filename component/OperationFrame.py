@@ -392,13 +392,7 @@ class StatusPanel(wx.Panel):
     def update_ui(self, strategy_type):  ##根据不同的出价策略调整界面
         strategy_list = get_val(strategy_type)
         if strategy_type == 0:  # 单次
-            set_val('twice', False)
-            set_val('strategy_on', True)
-            set_val('chujia_on', True)
-            set_val('tijiao_on', False)
-            set_val('tijiao_num', 1)  # 初始化
-            set_val('tijiao_OK', False)
-            set_val('tijiao_one', False)  # 单枪未开
+            init_strategy_one()
             self.choice_strategy.SetSelection(strategy_type)
             self.second_jiajia_time.SetValue(strategy_list[1])
             self.second_tijiao_time.SetValue(strategy_list[5])
@@ -434,13 +428,7 @@ class StatusPanel(wx.Panel):
             self.Layout()
 
         elif strategy_type == 1:  # 双枪
-            set_val('strategy_on', True)
-            set_val('twice', True)
-            set_val('chujia_on', True)
-            set_val('tijiao_on', False)
-            set_val('tijiao_num', 1)  # 初始化
-            set_val('tijiao_OK', False)
-            set_val('tijiao_one', False)  # 单枪未开
+            init_strategy_second()
             self.choice_strategy.SetSelection(strategy_type)
             self.second_jiajia_time.SetValue(strategy_list[1])
             self.second_tijiao_time.SetValue(strategy_list[5])
@@ -1522,4 +1510,3 @@ class OperationPanel(wx.Panel):
 
     def init_ui(self):
         self.status_tab.init_ui()
-        init_strategy() #初始化策略

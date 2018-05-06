@@ -597,10 +597,20 @@ def smart_price():
             return [str(int(second))] + lowest_price
 
 ##初始化 还原
-def init_strategy():
-    set_val('strategy_on', True)
+def init_strategy_one():
     set_val('twice', False)
+    set_val('strategy_on', True)
     set_val('chujia_on', True)
     set_val('tijiao_on', False)
     set_val('tijiao_num', 1)  # 初始化
     set_val('tijiao_OK', False)
+    set_val('tijiao_one', False)  # 单枪未开
+
+def init_strategy_second():
+    set_val('strategy_on', True)
+    set_val('twice', True)
+    set_val('chujia_on', True)
+    set_val('tijiao_on', False)
+    set_val('tijiao_num', 1)  # 初始化
+    set_val('tijiao_OK', False)
+    set_val('tijiao_one', False)  # 单枪未开

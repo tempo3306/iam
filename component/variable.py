@@ -74,9 +74,6 @@ def init_val():
     init_account()
     init_status()
     # remote_init()
-    diskid = get_unique_id()
-    set_val('diskid', get_id_hash(diskid))   ##sha1 hash化
-
     set_val('price_list', price_list)
 
 

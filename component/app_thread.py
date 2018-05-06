@@ -17,7 +17,7 @@ from component.staticmethod import trans_time
 from component.variable import get_val, set_val
 from PIL import Image
 from component.remote_control import getip_dianxin
-from component.staticmethod import init_strategy
+from component.staticmethod import init_strategy_one, init_strategy_second
 
 import logging
 
@@ -706,13 +706,19 @@ class TimeThread(Thread):
             b = time.clock()
             a_time = get_val('a_time')
             moni_second = get_val('moni_second')
+            moni_on = get_val('moni_on')
             a_time += b - a  # 实际运行时间作为真实间隔
-            moni_second += b - a
             set_val('a_time', a_time)
-            set_val('moni_second', moni_second)
-            if moni_second >= 60:
-                set_val('moni_second', 0)
-                init_strategy() ##初始化
+            strategy_type = get_val('strategy_type')
+            if moni_on:
+                moni_second += b - a
+                set_val('moni_second', moni_second)
+                if moni_second >= 60:
+                    set_val('moni_second', 0)
+                    if strategy_type == 0:
+                        init_strategy_one() ##初始化
+                    elif strategy_type == 1:
+                        init_strategy_second()
             ##计数，保证间隔
             price_count = get_val('price_count')
             yanzhengma_count = get_val('yanzhengma_count')
@@ -880,3 +886,42 @@ class LowestpfriceThread(Thread):
     def stop(self):
         self.__flag.set()  # 将线程从暂停状态恢复, 如何已经暂停的话
         self.__running.clear()  # 设置为False
+
+
+class Start_thread(Thread):
+    def __init__(self, *args, **kwargs):
+        super(Start_thread, self).__init__(*args, **kwargs)
+        self.setDaemon(True)
+        self.start()
+
+    def run(self):
+        import logging, time
+        version = 3.5
+        timenow = time.time()
+        # 转换成localtime
+        time_local = time.localtime(timenow)
+        # 转换成新的时间格式(2016-05-09 18:59:20)
+        myapplog = 'mylog'
+        logging.basicConfig(level=logging.DEBUG,
+                            format='%(asctime)s %(filename)s[line:%(lineno)d] %(levelname)s %(message)s',
+                            datefmt='%a, %d %b %Y %H:%M:%S',
+                            filename='%s.log' % myapplog,
+                            filemode='w')
+
+        root = logging.getLogger()
+        print(root.name, type(root), root.parent, id(root))
+
+        ## getwebpath()  # 初始化浏览器地址
+        # 图片打开提速
+        yimg = ImageGrab.grab().save("yanzhengma.png")
+        yanzhengma_img = Image.open("yanzhengma.png")  # 打开图片的全局变量 ,提升第一次打开的速度
+        set_val('yanzhengma_img', yanzhengma_img)
+        # 变量初始化
+        from component.variable import Create_hash, init_val
+        Create_hash()
+        init_val()
+        set_val('version', version)
+        ###获取路径+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-
+        path = get_val('path')
+        iconpath = path + 'ico.ico'  # 图标路径
+        set_val('mainicon', iconpath)

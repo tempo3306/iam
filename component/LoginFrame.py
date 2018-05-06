@@ -163,7 +163,7 @@ class Identify_codePanel(wx.Panel):
 
 class LoginFrame(wx.Frame):
     def __init__(self, name, code):  ##########版本号
-        mainicon = get_val('mainicon')
+        mainicon = 'ico.ico'
         wx.Frame.__init__(self, None, -1, name, size=(300, 240), style=wx.CAPTION | wx.CLOSE_BOX)
         id = self.GetId()
         set_val('loginframe', id)

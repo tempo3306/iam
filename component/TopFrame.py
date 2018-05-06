@@ -183,7 +183,6 @@ class TopFrame(wx.Frame):
 
     def Openmoni(self, event):
         timer0 = threading.Timer(5, findpos)
-        init_strategy() #初始化
         Px = get_val('Px')
         Py = get_val('Py')
 
@@ -199,6 +198,9 @@ class TopFrame(wx.Frame):
             moni.currentstatusframe.Show(True)
             moni.htmlpanel.webview.Reload()
             moni.Move((Px, Py))
+            moni.operationpanel.init_ui()
+            moni.Show(True)
+            moni.currentstatusframe.Show(True)
             self.webopen()
         else:
             id = wx.NewId()
@@ -215,8 +217,6 @@ class TopFrame(wx.Frame):
         htmlsize = get_val('htmlsize')
         webview_pos = get_val('webview_pos')
         timer0 = threading.Timer(5, findpos)
-        init_strategy() #初始化
-
         Px = get_val('Px')
         Py = get_val('Py')
 
@@ -228,11 +228,12 @@ class TopFrame(wx.Frame):
         moni_id = get_val('moni_webframe')
         moni = wx.FindWindowById(moni_id)
         if moni_id != -1:
-            moni.Show(True)
-            moni.currentstatusframe.Show(True)
             moni.htmlpanel.webview.Reload()
+            moni.operationpanel.init_ui()
             self.webopen()
             moni.Move((Px, Py))
+            moni.Show(True)
+            moni.currentstatusframe.Show(True)
         else:
             id = wx.NewId()
             set_val('moni_webframe', id)
@@ -247,7 +248,6 @@ class TopFrame(wx.Frame):
         htmlsize = get_val('htmlsize')
         timer0 = threading.Timer(5, findpos)
         webview_pos = get_val('webview_pos')
-        init_strategy() #初始化
 
         Px = get_val('Px')
         Py = get_val('Py')
@@ -260,10 +260,11 @@ class TopFrame(wx.Frame):
         guopai_id = get_val('guopai_webframe')
         guopai= wx.FindWindowById(guopai_id)
         if guopai_id != -1:
-            guopai.Show(True)
-            guopai.currentstatusframe.Show(True)
+            guopai.operationpanel.init_ui()
             guopai.Center()
             guopai.htmlpanel.webview.Reload()
+            guopai.Show(True)
+            guopai.currentstatusframe.Show(True)
             self.webopen()
         else:
             id = wx.NewId()
@@ -283,7 +284,6 @@ class TopFrame(wx.Frame):
         htmlsize = get_val('htmlsize')
         timer0 = threading.Timer(5, findpos)
         webview_pos = get_val('webview_pos')
-        init_strategy() #初始化
 
         Px = get_val('Px')
         Py = get_val('Py')
@@ -295,9 +295,10 @@ class TopFrame(wx.Frame):
         guopai_id = get_val('guopai_webframe')
         guopai= wx.FindWindowById(guopai_id)
         if guopai_id != -1:
+            guopai.operationpanel.init_ui()
+            guopai.htmlpanel.webview.Reload()
             guopai.Show(True)
             guopai.currentstatusframe.Show(True)
-            guopai.htmlpanel.webview.Reload()
             self.webopen()
         else:
             id = wx.NewId()

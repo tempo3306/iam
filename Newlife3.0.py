@@ -4,22 +4,6 @@
 # 无确认
 # 新增验证码放大器功能
 # 时间同步
-import logging, time
-
-version = '3.4'  # 版本号
-timenow = time.time()
-# 转换成localtime
-time_local = time.localtime(timenow)
-# 转换成新的时间格式(2016-05-09 18:59:20)
-myapplog = 'mylog'
-logging.basicConfig(level=logging.DEBUG,
-                    format='%(asctime)s %(filename)s[line:%(lineno)d] %(levelname)s %(message)s',
-                    datefmt='%a, %d %b %Y %H:%M:%S',
-                    filename='%s.log' % myapplog,
-                    filemode='w')
-
-root = logging.getLogger()
-print(root.name, type(root), root.parent, id(root))
 # ----------------------------------------------------------------
 # 导入模块#####################
 import sys
@@ -30,9 +14,10 @@ if sys.platform != 'win32':
 
 import pickle
 from component.LoginFrame import LoginFrame
-from component.variable import Create_hash, init_val, get_val
 from component.app_thread import *
-
+from component.app_thread import Start_thread
+from component.remote_control import get_unique_id
+from component.variable import get_id_hash
 # --------------------------------------------------------------
 # 创建app
 class SketchApp(wx.App):
@@ -49,26 +34,19 @@ class SketchApp(wx.App):
             code = ''
         loginframe = LoginFrame('小鲜肉拍牌', code)
         loginframe.Show(True)
+        start_thread = Start_thread()  ##初始化线程， 加速启动
         return True
 
 
+
 if __name__ == '__main__':
-    ## getwebpath()  # 初始化浏览器地址
-    # 图片打开提速
-    yimg = ImageGrab.grab().save("yanzhengma.png")
-    yanzhengma_img = Image.open("yanzhengma.png")  # 打开图片的全局变量 ,提升第一次打开的速度
-    set_val('yanzhengma_img', yanzhengma_img)
-    # 变量初始化
-    Create_hash()
-    init_val()
-    set_val('version', version)
-    ###获取路径+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-
-    path = get_val('path')
-    iconpath = path + 'ico.ico'  # 图标路径
-    set_val('mainicon', iconpath)
+    import time
+    a = time.time()
     app = SketchApp()
+    diskid = get_unique_id()
+    set_val('diskid', get_id_hash(diskid))   ##sha1 hash化
+    app.MainLoop()
     ## 打开刷新与确认进程
     # monitijaoThread = MoniTijiaoThread() #模拟提交
-    app.MainLoop()
 
 ##  self.Bind(wx.EVT_KEY_DOWN, self.OnKeyDown)

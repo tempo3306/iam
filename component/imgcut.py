@@ -393,6 +393,13 @@ def cut_img():  # 将所得的img 处理成  lowestprice_img   confirm_img  yanz
         set_val('imgpos_yanzhengma', img[use_area[3][1]:use_area[3][3], use_area[3][0]:use_area[3][2]])  # ok
         set_val('imgpos_yanzhengmaconfirm', img[use_area[4][1]:use_area[4][3], use_area[4][0]:use_area[4][2]])  # ok
         set_val('imgpos_currenttime', img[use_area[5][1]:use_area[5][3], use_area[5][0]:use_area[5][2]])
+        logger.info("截图成功")
+        logger.info("imgpos_yanzhengma {0}:{1}, {2}:{3}".format(
+            use_area[3][1], use_area[3][3], use_area[3][0], use_area[3][2]))
+        logger.info("imgpos_yanzhengmaconfirm {0}:{1}, {2}:{3}".format(
+            use_area[4][1], use_area[4][3], use_area[4][0], use_area[4][2]))
+        imgpos_yanzhengma = get_val('imgpos_yanzhengma')
+        cv2.imwrite('yan.png', imgpos_yanzhengma)
     except:
         logger.error("cut_img 这里出错")
         logger.exception('this is an exception message')
