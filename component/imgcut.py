@@ -10,7 +10,7 @@ import win32ui
 import win32con
 import numpy as np
 import time
-from component.staticmethod import OnClick_Shuaxin, OnClick_confirm
+from component.staticmethod import OnClick_Shuaxin, OnClick_confirm, Smart_chujia
 from component.variable import set_val, get_val
 import logging
 
@@ -428,8 +428,7 @@ def findrefresh():
 
 def findconfirm():
     dick_target = get_val('dick_target')
-    confirm_on = get_val('confirm_on')
-    Position_frame = get_val('Position_frame')
+    smartprice_chujia = get_val('smartprice_chujia')
     template = dick_target[1]
     imgpos_confirm = get_val('imgpos_confirm')
     sc = imgpos_confirm
@@ -439,7 +438,12 @@ def findconfirm():
     min_val, max_val, min_loc, max_loc = cv2.minMaxLoc(res)
     if max_val >= 0.9:
         print(max_val, 'max_val')
-        OnClick_confirm()
+        if not smartprice_chujia:
+            OnClick_confirm()
+        else:
+            Smart_chujia()
+
+
 
 
 def find_yan_confirm():

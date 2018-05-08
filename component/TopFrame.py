@@ -72,12 +72,10 @@ class TopFrame(wx.Frame):
         # self.timer3.Start(60)
 
         ## 链接到子frame
-        pub.subscribe(self.Open_call_guopai, "open dianxin")  # 打开电信
-        pub.subscribe(self.Open_call_moni, "open moni")  # 打开模拟
-
-
         pub.subscribe(self.Close, "close topframe")  #
-        pub.subscribe(self.moni_chujia, "moni chujia")
+
+        pub.subscribe(self.Chujia, "moni chujia")
+        pub.subscribe(self.Smartchujia, "moni smartchujia")
 
         ##多线程
         self.create_thread()
@@ -111,61 +109,54 @@ class TopFrame(wx.Frame):
         self.pinger = pingerThread()
 
 
-    def moni_chujia(self):
+    def Chujia(self):
         lowest_price = get_val('lowest_price')
-        Position_frame = get_val('Position_frame')
         tijiao_num = get_val('tijiao_num')
         one_diff = get_val('one_diff')
         second_diff = get_val('second_diff')
         twice = get_val('twice')
-
         if tijiao_num == 1:
             print("moni_chujia")
             own_price1 = lowest_price + one_diff
-            id = get_val('moni_webframe')
-            moni = wx.FindWindowById(id)
-            browser = moni.htmlpanel.webview
-            script = "$('#selfwrite').val('{0}')".format(own_price1)
-            browser.RunScript(script)
-            Click(Position_frame[1][0], Position_frame[1][1])
-            Click(Position_frame[5][0], Position_frame[5][1])
-            set_val('tijiao_on', True)
-            set_val('chujia_on', False)
-            set_val('chujia_interval', False)  # 间隔结束
-            ##提交关闭
-            set_val('tijiao_OK', False)
+            self.moni_chujia(own_price1)
             set_val('current_pricestatus_label', '等待第二次提交')
             one_time2 = get_val('one_time2')
             one_advance = get_val('one_advance')
             current_pricestatus = '{0}秒提前{1}'.format(one_time2, one_advance)
             set_val('current_pricestatus', current_pricestatus)
             ##5秒后调用取消出价
-            timer = threading.Timer(6, Cancel_chujia)
+            timer = threading.Timer(5.1, Cancel_chujia)
             timer.start()
-
         elif tijiao_num == 2 and twice:
             own_price2 = lowest_price + second_diff
             set_val('own_price2', own_price2)
-            id = get_val('moni_webframe')
-            moni = wx.FindWindowById(id)
-            browser = moni.htmlpanel.webview
-            script = "$('#selfwrite').val('{0}')".format(own_price2)
-            browser.RunScript(script)
-
-            Click(Position_frame[1][0], Position_frame[1][1])
-            Click(Position_frame[5][0], Position_frame[5][1])
-            set_val('tijiao_on', True)
-            set_val('chujia_on', False)
-            set_val('chujia_interval', False)  # 间隔结束
-            ##提交关闭
-            set_val('tijiao_OK', False)
-
+            self.moni_chujia(own_price2)
             set_val('current_pricestatus_label', '等待第三次提交')
             second_time2 = get_val('second_time2')
             second_advance = get_val('second_advance')
             current_pricestatus = '{0}秒提前{1}'.format(second_time2, second_advance)
             set_val('current_pricestatus', current_pricestatus)
 
+    def Smartchujia(self, price):
+        self.moni_chujia(price)
+        set_val('current_pricestatus_label', '等待智能提交')
+        current_pricestatus = '智能补枪'
+        set_val('current_pricestatus', current_pricestatus)
+
+    def moni_chujia(self, price):
+        Position_frame = get_val('Position_frame')
+        id = get_val('moni_webframe')
+        moni = wx.FindWindowById(id)
+        browser = moni.htmlpanel.webview
+        script = "$('#selfwrite').val('{0}')".format(price)
+        browser.RunScript(script)
+        Click(Position_frame[1][0], Position_frame[1][1])
+        Click(Position_frame[5][0], Position_frame[5][1])
+        set_val('tijiao_on', True)
+        set_val('chujia_on', False)
+        set_val('chujia_interval', False)  # 间隔结束
+        ##提交关闭
+        set_val('tijiao_OK', False)
         set_val('yanzhengma_count', 0)  # 计数器，制造延迟
         set_val('yanzhengma_view', True)  # 打开验证码放大器
         set_val('tijiao_on', True)  # 激活自动出价

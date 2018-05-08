@@ -109,7 +109,7 @@ class confirmThread(threading.Thread):
             tijiao_num = get_val('tijiao_num')
             twice = get_val('twice')
             # print('tijiao_num', tijiao_num)
-
+            smartprice_chujia = get_val('smartprice_chujia')
             if tijiao_num == 2 and twice:
             # if tijiao_num == 2 and twice:
                 try:
@@ -117,7 +117,12 @@ class confirmThread(threading.Thread):
                 except:
                     logger.error("查找确认出错")
                     logger.exception('this is an exception message')
-
+            elif smartprice_chujia:
+                try:
+                    findconfirm()
+                except:
+                    logger.error("智能补枪失败")
+                    logger.exception('this is an exception message')
 
 
 
@@ -341,6 +346,9 @@ class TijiaoThread(Thread):
                 second_delay = get_val('second_delay')
                 one_diff = get_val('one_diff')
                 second_diff = get_val('second_diff')
+
+                smartprice_chujia = get_val('smartprice_chujia')  ##智能出价
+
                 ##提交
                 if tijiao_on and strategy_on  and tijiao_OK:  # 判断是否需要提交,国拍开启状态方可触发
                     if tijiao_num == 1 and a_time >= one_real_time2 and not tijiao_one:  # 判断是否满足条件
@@ -365,27 +373,24 @@ class TijiaoThread(Thread):
                         set_val('own_price1', lowest_price + one_diff)
                         set_val('userprice', lowest_price + one_diff)
                         set_val('usertime', one_real_time2)  # 设定当前的截止时间
-                        wx.CallAfter(pub.sendMessage, 'change userprice')
-                        set_val('tijiao_on', True)
-
-                        if guopai_on:
-                            OnClick_chujia()  # 调用出价
-                        else:
-                            wx.CallAfter(pub.sendMessage, 'moni chujia')  # 调用方法
+                        OnClick_chujia()  # 调用出价
 
                     elif tijiao_num == 2 and twice and second_real_time1 <= a_time:  # 判断是否满足条件
                         set_val('own_price2', lowest_price + second_diff)
                         set_val('userprice', lowest_price + second_diff)
                         set_val('usertime', second_real_time2)  # 设定当前的截止时间
-                        wx.CallAfter(pub.sendMessage, 'change userprice')
                         set_val('tijiao_on', True)
                         ##国拍与模拟触发方式不一样
-                        if guopai_on:
-                            OnClick_chujia()  # 调用出价
-                        else:
-                            wx.CallAfter(pub.sendMessage, 'moni chujia')  # 调用方法
+                        OnClick_chujia()  # 调用出价
 
-###-----------------------------------------------------------------------------
+                ##智能出价之后提交判定
+                userprice = get_val('userprice')
+                if smartprice_chujia and tijiao_OK and lowest_price >= userprice - 300\
+                        and a_time <= second_real_time2 - second_delay:
+                    set_val('smartprice_chujia', False)  ##关闭确认查找，停止智能出价
+                    OnClick_Tijiao()  # 调用方法
+
+                ###-----------------------------------------------------------------------------
                 ##智能判断价格是否合理
                 # 以50秒为参考   1100  600   1200  700   1300   800
                 smart_ajust = get_val('smart_ajust')
@@ -719,20 +724,16 @@ class TimeThread(Thread):
             time.sleep(0.1)
             b = time.clock()
             a_time = get_val('a_time')
-            moni_on = get_val('moni_on')
             a_time += b - a  # 实际运行时间作为真实间隔
             set_val('a_time', a_time)
             strategy_type = get_val('strategy_type')
-            # moni_second = get_val('moni_second')
-            # if moni_on:
-            #     moni_second += b - a
-            #     set_val('moni_second', moni_second)
-            #     if moni_second >= 60:
-            #         set_val('moni_second', 0)
-            #         if strategy_type == 0:
-            #             init_strategy_one() ##初始化
-            #         elif strategy_type == 1:
-            #             init_strategy_second()
+            target_time = get_val('target_time')
+            tijiao_num = get_val('tijiao_num')
+            if target_time > a_time and tijiao_num == 0:  ##只要出现时间小于11：30：1就触发还原
+                if strategy_type == 0:
+                    init_strategy_one() ##初始化
+                elif strategy_type == 1:
+                    init_strategy_second()
             ##计数，保证间隔
             price_count = get_val('price_count')
             yanzhengma_count = get_val('yanzhengma_count')
@@ -907,7 +908,7 @@ class Start_thread(Thread):
 
     def run(self):
         import logging, time
-        version = 3.5
+        version = 3.6
         timenow = time.time()
         # 转换成localtime
         time_local = time.localtime(timenow)

@@ -391,9 +391,6 @@ def init_strategy():
 
 
 
-
-
-
 def init_account():
     set_val('activate_status', 0)   ##0: 未激活
     set_val('strategy_name', '默认策略') #策略名称
@@ -441,7 +438,8 @@ def init_smart():
 
     ## 完成智能出价
     set_val('smart_autoprice', False)  ##智能补枪
-    set_val('smartprice_confirm', False) ##智能之后需要确认
+    set_val('smartprice_chujia', False) ##智能出价 出价启动状态
+    set_val('smartprice_tijiao', False) ##智能出价 提交启动状态
 
 ##------------------------------------------------------------------------------------------
 ###
@@ -549,3 +547,6 @@ def remote_init():
     set_val('Pos_yanzhengma_relative', [-277, - 65, - 97, + 45])  # 验证码所在位置
     set_val('Pos_yanzhengmaframe_relative', [297, - 283])  # 验证码框放置位置
 
+    ##计算当天的时间
+    set_val('timebase_str', '')  ##时间基数，避免重复计算
+    set_val('target_time', 11111111111111111)  ##时间基数，避免重复计算  11:30:1 分的时间戳
