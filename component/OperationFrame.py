@@ -267,6 +267,8 @@ class StatusPanel(wx.Panel):
         self.Bind(wx.EVT_TEXT, self.Yanchi_time2, self.third_tijiaoyanchi_time)
         self.Bind(wx.EVT_TEXT, self.Tijiao_time2, self.third_tijiao_time)
 
+        self.Bind(wx.EVT_CHECKBOX, self.Smart_autoprice, self.buqiang_checkbox)
+
         ##构建组件
         self.strategy_sizer.Add(self.second_chujia_label_sizer, flag=wx.ALL, border=3)
         self.strategy_sizer.Add(self.third_chujia_label_sizer, flag=wx.ALL, border=3)
@@ -742,6 +744,14 @@ class StatusPanel(wx.Panel):
             self.update_strategy()
         else:
             self.third_tijiao_time.SetValue(second_time2)
+
+
+    ##智能补枪
+    def Smart_autoprice(self, event):
+        if self.buqiang_checkbox.IsChecked():
+            set_val('smart_autoprice', True)
+        else:
+            set_val('smart_autoprice', False)
 
 
 ##-------------------------------------------------------------------------

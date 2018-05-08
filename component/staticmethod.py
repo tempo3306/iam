@@ -212,7 +212,6 @@ def OnClick_chujia():
         set_val('chujia_interval', False)  # 间隔结束
         ##提交关闭
         set_val('tijiao_OK', False)
-
         set_val('current_pricestatus_label', '等待第二次提交')
         one_time2 = get_val('one_time2')
         one_advance = get_val('one_advance')
@@ -454,8 +453,6 @@ HOTKEY_ACTIONS = {
 # 启动监听
 def Hotkey_listen():
     try:
-        Hotkey_open()
-
         msg = wintypes.MSG()
         byref = ctypes.byref
         while user32.GetMessageA(byref(msg), None, 0, 0) != 0:
@@ -511,10 +508,6 @@ def Hotkey_close():
 class ListenThread(threading.Thread):
     def __init__(self, *args, **kwargs):
         super(ListenThread, self).__init__(*args, **kwargs)
-        self.__flag = threading.Event()  # 用于暂停线程的标识
-        self.__flag.set()  # 设置为True
-        self.__running = threading.Event()  # 用于停止线程的标识
-        self.__running.set()  # 将running设置为True
         self.setDaemon(True)
         self.start()
 
@@ -522,16 +515,6 @@ class ListenThread(threading.Thread):
         # while self.__running.isSet():
         #     self.__flag.wait()  # 为True时立即返回, 为False时阻塞直到内部的标识位为True后返回
         Hotkey_listen()
-
-    def pause(self):
-        self.__flag.clear()  # 设置为False, 让线程阻塞
-
-    def resume(self):
-        self.__flag.set()  # 设置为True, 让线程停止阻塞
-
-    def stop(self):
-        self.__flag.set()  # 将线程从暂停状态恢复, 如何已经暂停的话
-        self.__running.clear()  # 设置为False
 
 
 ##时间转化

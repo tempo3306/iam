@@ -118,6 +118,9 @@ class confirmThread(threading.Thread):
                     logger.error("查找确认出错")
                     logger.exception('this is an exception message')
 
+
+
+
     def pause(self):
         self.__flag.clear()  # 设置为False, 让线程阻塞
 
@@ -887,7 +890,7 @@ class LowestpfriceThread(Thread):
         self.__flag.set()  # 将线程从暂停状态恢复, 如何已经暂停的话
         self.__running.clear()  # 设置为False
 
-
+###软件启动后后台初始化，加速软件启动
 class Start_thread(Thread):
     def __init__(self, *args, **kwargs):
         super(Start_thread, self).__init__(*args, **kwargs)

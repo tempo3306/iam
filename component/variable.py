@@ -73,6 +73,7 @@ def init_val():
     init_strategy()
     init_account()
     init_status()
+    init_smart()
     # remote_init()
     set_val('price_list', price_list)
 
@@ -92,14 +93,8 @@ def init_val():
 
 
 
-    ##智能出价服务
-    set_val('smart_ajust', False) #智能调整出价，默认关闭
 
-    a = time.strftime('%Y-%m-%d', time.localtime(time.time()))
-    b = a + ' ' + '11:29:50'
-    a_time = time.mktime(time.strptime(b, '%Y-%m-%d %H:%M:%S')) # 转时间戳   补个平均时差
-    set_val('smart_ajust_time_guopai', a_time) #智能调整触发时间
-    set_val('smart_ajust_time_moni', 50) #智能调整触发时间
+
 
 
 def init_url():
@@ -434,6 +429,20 @@ def init_status():
     set_val('timestatustext', (192, 45))
     set_val('pricestatustext', (348, 45))
 
+
+def init_smart():
+    ##智能出价服务
+    set_val('smart_ajust', False)  # 智能调整出价，默认关闭
+
+    a = time.strftime('%Y-%m-%d', time.localtime(time.time()))
+    b = a + ' ' + '11:29:50'
+    a_time = time.mktime(time.strptime(b, '%Y-%m-%d %H:%M:%S'))  # 转时间戳   补个平均时差
+    set_val('smart_ajust_time_guopai', a_time)  # 智能调整触发时间
+    set_val('smart_ajust_time_moni', 50)  # 智能调整触发时间
+
+    ## 完成智能出价
+    set_val('smart_autoprice', False)  ##智能补枪
+    set_val('smartprice_confirm', False) ##智能之后需要确认
 
 ##------------------------------------------------------------------------------------------
 ###

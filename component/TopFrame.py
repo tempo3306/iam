@@ -71,7 +71,7 @@ class TopFrame(wx.Frame):
 
         self.timer2 = wx.Timer(self)
         self.Bind(wx.EVT_TIMER, self.MainControl, self.timer2)  # 绑定一个定时器事件，主判断
-        self.timer2.Start(100)  # 设定时间间隔
+        self.timer2.Start(200)  # 设定时间间隔
         # self.timer3 = wx.Timer(self)
         # self.Bind(wx.EVT_TIMER, self.Lowest_price, self.timer3)  # 设置一个截屏取价  和查看时间
         # self.timer3.Start(60)
@@ -403,7 +403,7 @@ class TopFrame(wx.Frame):
         hotkey_on = get_val('hotkey_on')
         if not web_on and hotkey_on:
             Hotkey_close()  #关闭热键
-
+            set_val('hotkey_on', False)
 
     def keeplogin(self, event):
         result = Keeplogin()
