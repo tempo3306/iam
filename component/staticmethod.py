@@ -81,6 +81,8 @@ def OnClick_Tijiao():
     if tijiao_num == 1:
         if twice:
             set_val('tijiao_num', 2)
+        else:
+            set_val('tijiao_num', 0)
         timer = threading.Timer(one_delay, Tijiao)
         timer.start()
         set_val('tijiao_on', False)

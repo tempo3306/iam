@@ -13,8 +13,6 @@ from component.login import Keeplogin
 
 class TopFrame(wx.Frame):
     def __init__(self, name, rev):  ##########版本号
-        Px = get_val('Px')
-        Py = get_val('Py')
         wx.Frame.__init__(self, None, -1, name,
                           size=(300, 240), style=wx.CAPTION | wx.CLOSE_BOX | wx.MINIMIZE_BOX)
         id = self.GetId()
@@ -62,7 +60,6 @@ class TopFrame(wx.Frame):
         self.vbox.Add(self.operationareasizer, 0, wx.ALL | wx.CENTER, 5)
 
         panel.SetSizer(self.vbox)
-        self.thread = TimeThread()  # 创建时间进程
 
         self.timer2 = wx.Timer(self)
         self.Bind(wx.EVT_TIMER, self.MainControl, self.timer2)  # 绑定一个定时器事件，主判断
@@ -107,6 +104,7 @@ class TopFrame(wx.Frame):
         self.lowestThread = LowestpfriceThread()  # 价格识别
         # 创建网速测试线程  通过这个线程控制启动或关闭
         self.pinger = pingerThread()
+        self.timethread = TimeThread()  # 创建时间进程
 
 
     def Chujia(self):

@@ -729,15 +729,16 @@ class TimeThread(Thread):
             strategy_type = get_val('strategy_type')
             target_time = get_val('target_time')
             tijiao_num = get_val('tijiao_num')
+            print('tijiao_num= ', tijiao_num)
+            print('target_time= ', target_time)
+            print('a_time= ', a_time)
             if target_time > a_time and tijiao_num == 0:  ##只要出现时间小于11：30：1就触发还原
                 if strategy_type == 0:
                     init_strategy_one() ##初始化
                 elif strategy_type == 1:
                     init_strategy_second()
             ##计数，保证间隔
-            price_count = get_val('price_count')
             yanzhengma_count = get_val('yanzhengma_count')
-            set_val('price_count', 1 + price_count)
             set_val('yanzhengma_count', 1 + yanzhengma_count)
 
     def pause(self):
