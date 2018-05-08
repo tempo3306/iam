@@ -241,30 +241,18 @@ def timeset(guopai_on, moni_on, imgpos_currenttime, maindata):
         # cv2.imwrite('time.png', currenttime)
         currenttime = readpic(currenttime, maindata)  # 识别出来的时间
 
-        moni_second = get_val('moni_second')
         a_time = get_val('a_time')
-
         # print('currenttime', currenttime)
 
         tem1 = time.time()
         a = time.strftime('%Y-%m-%d', time.localtime(tem1))
         b = a + ' ' + currenttime
-        if guopai_on:
-            # print(time.strptime(b, '%Y-%m-%d %H:%M:%S'))
-            a_time_temp = time.mktime(time.strptime(b, '%Y-%m-%d %H:%M:%S')) + 0.6  # 转时间戳   补个平均时差
-            if a_time_temp - 0.9 <= a_time <= a_time_temp + 0.9:
-                pass
-            else:
-                set_val('a_time', a_time_temp)
-        if moni_on:
-            try:
-                moni_second_temp = int(currenttime.split(':')[2]) + 0.6
-                if moni_second_temp - 0.9 <= a_time <= moni_second_temp + 0.9:
-                    pass
-                else:
-                    set_val('moni_second', moni_second_temp)
-            except:
-                logger.exception('this is an exception message')
+        a_time_temp = time.mktime(time.strptime(b, '%Y-%m-%d %H:%M:%S')) + 0.6  # 转时间戳   补个平均时差
+        if a_time_temp - 0.9 <= a_time <= a_time_temp + 0.9:
+            pass
+        else:
+            set_val('a_time', a_time_temp)
+
 
     except:
         logger.exception('this is an exception message')

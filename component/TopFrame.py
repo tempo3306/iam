@@ -3,16 +3,11 @@
 @contact: 810909753@q.com
 @time: 2018/1/25 14:37
 '''
-import wx
 import wx.html2
-from wx.lib.pubsub import pub
-from component.OperationFrame import OperationPanel
-from component.app_thread import TimeThread, OpenwebThread
 from component.staticmethod import *
 from component.imgcut import findpos, timeset, Price_read
 from component.webframe import WebFrame, MoniWebFrame
 from component.Pinger import pingerThread
-from component.Guopaiframe import GuopaiFrame
 from component.app_thread import *
 from component.login import Keeplogin
 
@@ -124,7 +119,6 @@ class TopFrame(wx.Frame):
         second_diff = get_val('second_diff')
         twice = get_val('twice')
 
-
         if tijiao_num == 1:
             print("moni_chujia")
             own_price1 = lowest_price + one_diff
@@ -140,7 +134,6 @@ class TopFrame(wx.Frame):
             set_val('chujia_interval', False)  # 间隔结束
             ##提交关闭
             set_val('tijiao_OK', False)
-
             set_val('current_pricestatus_label', '等待第二次提交')
             one_time2 = get_val('one_time2')
             one_advance = get_val('one_advance')
@@ -362,7 +355,6 @@ class TopFrame(wx.Frame):
     def Lowest_price(self, event):  #
         lowest_price = get_val('lowest_price')
         pricelist = get_val('pricelist')
-        moni_second = get_val('moni_second')
         a_time = get_val('a_time')
         moni_on = get_val('moni_on')
         try:
@@ -375,10 +367,7 @@ class TopFrame(wx.Frame):
                 else:
                     set_val('lowest_price', price)
                     trans_time()  # 保存价格
-                    if moni_on:
-                        set_val('changetime', moni_second)
-                    else:
-                        set_val('changetime', a_time)
+                    set_val('changetime', a_time)
             else:
                 set_val('findpos_on', True)
         except:

@@ -74,44 +74,22 @@ class ButtonPanel(wx.Panel):
         # tmpButton.SetBackgroundColour("#ff0000")
         # tmpButton.SetForegroundColour("#ffffff")
 
-    def Draw(self, dc):  # 绘制当前时间
-        moni_second = get_val('moni_second')
-        st = "%s:%s:%s" % (11, 29, moni_second)
+
+
+    def Modify(self):  # 更新
+        dc = wx.BufferedDC(wx.ClientDC(self))  # ClientDC客户区  ，BufferedDC双缓冲绘图设备
+        moni_on = get_val('moni_on')
+        a_time = get_val('a_time')
+        time_local = time.localtime(a_time)
+        st = time.strftime("%H:%M:%S", time_local)  # + '.' + str(b_time)
+        # st="%s:%s:%s"%(b_time[0],b_time[1],b_time[2])
+        st = '国拍时间：%s' % st
         w, h = self.GetClientSize()
         dc.SetBackground(wx.Brush(self.GetBackgroundColour()))
         dc.Clear()
         dc.SetFont(self.timefont)
         tw, th = dc.GetTextExtent(st)
         dc.DrawText(st, (w - tw) / 2, (h) / 2 - th / 2)
-
-    def Modify(self):  # 更新
-        dc = wx.BufferedDC(wx.ClientDC(self))  # ClientDC客户区  ，BufferedDC双缓冲绘图设备
-        moni_on = get_val('moni_on')
-        if moni_on:
-            moni_second = get_val('moni_second')  # 取得全局变量的值
-            moni_s = int(moni_second)  # 整数化
-            if moni_second < 10:
-                st = "国拍时间：%s:%s:0%s" % (11, 29, moni_s)
-            else:
-                st = "国拍时间：%s:%s:%s" % (11, 29, moni_s)
-            w, h = self.GetClientSize()
-            dc.SetBackground(wx.Brush(self.GetBackgroundColour()))
-            dc.Clear()
-            dc.SetFont(self.timefont)
-            tw, th = dc.GetTextExtent(st)
-            dc.DrawText(st, (w - tw) / 2, (h) / 2 - th / 2)
-        else:
-            a_time = get_val('a_time')
-            time_local = time.localtime(a_time)
-            st = time.strftime("%H:%M:%S", time_local)  # + '.' + str(b_time)
-            # st="%s:%s:%s"%(b_time[0],b_time[1],b_time[2])
-            st = '国拍时间：%s' % st
-            w, h = self.GetClientSize()
-            dc.SetBackground(wx.Brush(self.GetBackgroundColour()))
-            dc.Clear()
-            dc.SetFont(self.timefont)
-            tw, th = dc.GetTextExtent(st)
-            dc.DrawText(st, (w - tw) / 2, (h) / 2 - th / 2)
 
 
     def autotime_set_timer(self, event):
@@ -263,8 +241,6 @@ class CurrentStatusPanel(wx.Panel):
         self.SetBackgroundColour("#585858")
         self.timefont = wx.Font(12, wx.FONTFAMILY_MODERN, wx.FONTSTYLE_NORMAL, wx.FONTWEIGHT_BOLD, False)
 
-
-
     def Modify(self):  # 更新
         self.SetForegroundColour('#FF8000')  ##设置文字颜色
         x1, y1 = get_val('status_time')
@@ -277,31 +253,18 @@ class CurrentStatusPanel(wx.Panel):
         currenttime_label = get_val("currenttime_label")
         moni_on = get_val("moni_on")
         dc = wx.BufferedDC(wx.ClientDC(self))  # ClientDC客户区  ，BufferedDC双缓冲绘图设备
-        if moni_on:
-            moni_second = get_val('moni_second')  # 取得全局变量的值
-            if moni_second < 10:
-                st = "{0}{1}:{2}:0{3:.1f}".format(currenttime_label, 11, 29, moni_second)
-            else:
-                st = "{0}{1}:{2}:{3:.1f}".format(currenttime_label, 11, 29, moni_second)
-            w, h = self.GetClientSize()
-            dc.SetBackground(wx.Brush(self.GetBackgroundColour()))
-            dc.Clear()
-            dc.SetFont(self.timefont)
-            tw, th = dc.GetTextExtent(st)
-            dc.DrawText(st, x1, y1)
-        else:
-            a_time = get_val('a_time')
-            temp = int((a_time - int(a_time)) * 10)
-            time_local = time.localtime(a_time)
-            st = time.strftime("%H:%M:%S", time_local)  # + '.' + str(b_time)
-            # st="%s:%s:%s"%(b_time[0],b_time[1],b_time[2])
-            st = '{0}{1}.{2}'.format(currenttime_label, st, temp)
-            w, h = self.GetClientSize()
-            dc.SetBackground(wx.Brush(self.GetBackgroundColour()))
-            dc.Clear()
-            dc.SetFont(self.timefont)
-            tw, th = dc.GetTextExtent(st)
-            dc.DrawText(st, x1, y1)
+        a_time = get_val('a_time')
+        temp = int((a_time - int(a_time)) * 10)
+        time_local = time.localtime(a_time)
+        st = time.strftime("%H:%M:%S", time_local)  # + '.' + str(b_time)
+        # st="%s:%s:%s"%(b_time[0],b_time[1],b_time[2])
+        st = '{0}{1}.{2}'.format(currenttime_label, st, temp)
+        w, h = self.GetClientSize()
+        dc.SetBackground(wx.Brush(self.GetBackgroundColour()))
+        dc.Clear()
+        dc.SetFont(self.timefont)
+        tw, th = dc.GetTextExtent(st)
+        dc.DrawText(st, x1, y1)
 
         ##显示最低成交价
         findpos_on = get_val('findpos_on')
@@ -336,12 +299,8 @@ class CurrentStatusPanel(wx.Panel):
             max_price = get_val('lowest_price') + 300
             diff_price = int(userprice) - max_price
             # 显示截止时间与当前时间相差
-            if moni_on:
-                currenttime = get_val('moni_second')
-                timediff = float(usertime) - float(currenttime)
-            else:
-                currenttime = get_val('a_time')
-                timediff = float(usertime) - float(currenttime)
+            currenttime = get_val('a_time')
+            timediff = float(usertime) - float(currenttime)
             timestatustext = "提交倒计时{0:.1f}秒".format(timediff)
             pricestatustext = "差价{0}".format(diff_price)
             dc.DrawText(pricelabeltext, x3, y3)
@@ -355,26 +314,15 @@ class CurrentStatusPanel(wx.Panel):
             pricetext = "{0}".format(current_pricestatus)
             tijiao_num = get_val('tijiao_num')
             # 显示截止时间与当前时间相差
-            if moni_on:
-                currenttime = get_val('moni_second')
-                if tijiao_num == 1:
-                    one_time1 = get_val('one_time1')
-                    timediff = float(one_time1) - float(currenttime)
-                elif tijiao_num == 2:
-                    second_time1 = get_val('second_time1')
-                    timediff = float(second_time1) - float(currenttime)
-                else:
-                    timediff = '-'
+            currenttime = get_val('a_time')
+            if tijiao_num == 1:
+                one_time1 = get_val('one_real_time1')
+                timediff = float(one_time1) - float(currenttime)
+            elif tijiao_num == 2:
+                second_real_time1 = get_val('second_real_time1')
+                timediff = float(second_real_time1) - float(currenttime)
             else:
-                currenttime = get_val('a_time')
-                if tijiao_num == 1:
-                    one_time1 = get_val('one_real_time1')
-                    timediff = float(one_time1) - float(currenttime)
-                elif tijiao_num == 2:
-                    second_real_time1 = get_val('second_real_time1')
-                    timediff = float(second_real_time1) - float(currenttime)
-                else:
-                    timediff = '-'
+                timediff = '-'
 
             if timediff == '-':
                 timestatustext = "出价倒计时{0}秒".format(timediff)

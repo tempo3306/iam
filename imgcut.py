@@ -186,16 +186,10 @@ def timeset(guopai_on, moni_on, imgpos_currenttime, maindata):
         tem1 = time.time()
         a = time.strftime('%Y-%m-%d', time.localtime(tem1))
         b = a + ' ' + currenttime
-        if guopai_on:
-            print(time.strptime(b, '%Y-%m-%d %H:%M:%S'))
-            a_time = time.mktime(time.strptime(b, '%Y-%m-%d %H:%M:%S')) + 0.5  # 转时间戳   补个平均时差
-            set_val('a_time', a_time)
-        if moni_on:
-            try:
-                moni_second = int(currenttime.split(':')[2]) + 0.5
-                set_val('moni_second', moni_second)
-            except:
-                logger.exception('this is an exception message')
+        print(time.strptime(b, '%Y-%m-%d %H:%M:%S'))
+        a_time = time.mktime(time.strptime(b, '%Y-%m-%d %H:%M:%S')) + 0.5  # 转时间戳   补个平均时差
+        set_val('a_time', a_time)
+
 
     except:
         logger.exception('this is an exception message')

@@ -131,16 +131,13 @@ def SmartTijiao():
     own_price1 = get_val('own_price1')
     own_price2 = get_val('own_price2')
     moni_on = get_val('moni_on')
-    moni_second = get_val('moni_second')
     changetime = get_val('changetime')
     a_time = get_val('a_time')
     lowest_price = get_val('lowest_price')
     twice = get_val('twice')
     set_val('confirm_need', True)
-    if moni_on:
-        interval = moni_second - changetime
-    else:
-        interval = a_time - changetime
+
+    interval = a_time - changetime
     if tijiao_num == 2:  # 说明是第二次出价
         if lowest_price <= own_price2 - 600:
             print("触发延迟")
@@ -190,6 +187,32 @@ def OnClick_Shuaxin():
 def OnClick_confirm():
     Position_frame = get_val('Position_frame')
     Click(Position_frame[4][0], Position_frame[4][1])
+
+
+##-------------------------------------------------------------------------------------
+##智能出价
+def Smart_chujia():
+    Position_frame = get_val('Position_frame')
+    Click(Position_frame[4][0], Position_frame[4][1]) ##确认
+
+##智能出价
+time_price = {'35': 1200,
+              '36': 1100, '37': 1100, '38': 1100, '39': 1100, '40': 1100, '41': 1100,
+              '42': 1100, '43': 1100, '44': 1000, '45': 1000, '46': 900, '47': 800,
+              '48': 800, '49': 700, '50': 700, '51': 600, '52': 600, '53': 500, '54': 500,
+              '55': 500, '56': 300
+              }
+
+def smart_price():
+    lowest_price = get_val('lowest_price')
+    a_time = get_val('a_time')
+    structtime = time.localtime(a_time)
+    timestr = time.strftime("%H-%M-%S", structtime)
+    hour, minute, second = timestr.split('-')
+    if int(hour) == 11 and int(minute) == 29:
+        return time_price[str(int(second))] + lowest_price
+
+##-------------------------------------------------------------------------------------
 
 
 def OnClick_chujia():
@@ -521,18 +544,13 @@ class ListenThread(threading.Thread):
 ##将当前时间与 价格列表对应起来
 def trans_time():
     pricelist = get_val('price_list')
-    moni_on = get_val('moni_on')
     lowest_price = get_val('lowest_price')
-    if moni_on:
-        moni_second = int(get_val('moni_second'))
-        pricelist[moni_second] = lowest_price
-    else:
-        a_time = get_val('a_time')
-        structtime = time.localtime(a_time)
-        timestr = time.strftime("%H-%M-%S", structtime)
-        hour, minute, second = timestr.split('-')
-        if int(hour) == 11 and int(minute) == 29:
-            pricelist[int(second)] = lowest_price
+    a_time = get_val('a_time')
+    structtime = time.localtime(a_time)
+    timestr = time.strftime("%H-%M-%S", structtime)
+    hour, minute, second = timestr.split('-')
+    if int(hour) == 11 and int(minute) == 29:
+        pricelist[int(second)] = lowest_price
 
 
 def changetime(a):  # 换算成时间戳
@@ -555,28 +573,7 @@ def gettime(choice):  # choice1:55, choice2:0.5
     return c  # 得到用户所确定的最终时间戳
 
 
-##智能出价
-time_price = {'35': 1200,
-              '36': 1100, '37': 1100, '38': 1100, '39': 1100, '40': 1100, '41': 1100,
-              '42': 1100, '43': 1100, '44': 1000, '45': 1000, '46': 900, '47': 800,
-              '48': 800, '49': 700, '50': 700, '51': 600, '52': 600, '53': 500, '54': 500,
-              '55': 500, '56': 300
-              }
 
-
-def smart_price():
-    moni_on = get_val('moni_on')
-    lowest_price = get_val('lowest_price')
-    if moni_on:
-        moni_second = int(get_val('moni_second'))
-        return time_price[str(moni_second)] + lowest_price
-    else:
-        a_time = get_val('a_time')
-        structtime = time.localtime(a_time)
-        timestr = time.strftime("%H-%M-%S", structtime)
-        hour, minute, second = timestr.split('-')
-        if int(hour) == 11 and int(minute) == 29:
-            return [str(int(second))] + lowest_price
 
 ##初始化 还原
 def init_strategy_one():

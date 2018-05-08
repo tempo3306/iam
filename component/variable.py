@@ -258,7 +258,7 @@ def init_size():
 
 
 def init_strategy():
-    strategy_choices = ['单枪策略(专注一次出价）', '双枪策略（一伏二补']
+    strategy_choices = ['单枪策略(专注一次出价)', '双枪策略(一伏二补)']
     strategy_dick = {
         0: [0, 48.0, 700, 100, 0.5, 55],
         1: [1, 40.0, 500, 0, 0.5, 48, 50, 700, 100, 0.5, 56]
@@ -300,7 +300,6 @@ def init_strategy():
     set_val('a_time', time.time())  # 国拍初始时间
     set_val('b_time', 0)  # 制作0.1秒
     set_val('moni_minute', 29)
-    set_val('moni_second', 0)
     set_val('chujia_time', 0)  # 出价时间
 
     set_val('moni_on', False)  # 判断开启的是哪个窗口 ，限制同时只能开启一个

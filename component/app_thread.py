@@ -335,13 +335,14 @@ class TijiaoThread(Thread):
                 one_real_time1 = get_val('one_real_time1')
                 one_real_time2 = get_val('one_real_time2')
                 guopai_on = get_val('guopai_on')
+                moni_on = get_val('moni_on')
                 twice = get_val('twice')
                 one_delay = get_val('one_delay')
                 second_delay = get_val('second_delay')
                 one_diff = get_val('one_diff')
                 second_diff = get_val('second_diff')
                 ##提交
-                if tijiao_on and strategy_on and guopai_on and tijiao_OK:  # 判断是否需要提交,国拍开启状态方可触发
+                if tijiao_on and strategy_on  and tijiao_OK:  # 判断是否需要提交,国拍开启状态方可触发
                     if tijiao_num == 1 and a_time >= one_real_time2 and not tijiao_one:  # 判断是否满足条件
                         set_val('tijiao_on', False)
                         SmartTijiao()  # 调用方法
@@ -359,22 +360,32 @@ class TijiaoThread(Thread):
                         set_val('tijiao_on', False)  # 执行提交之后只能通过选择进程开启自动提交
                         OnClick_Tijiao()  # 调用方法
 
-                if strategy_on and guopai_on and chujia_on:  # 判断是否需要提交,国拍开启状态方可触发
+                if strategy_on  and chujia_on:  # 判断是否需要提交,国拍开启状态方可触发
                     if tijiao_num == 1 and one_real_time1 <= a_time <= one_real_time1 + 0.6:  # 判断是否满足条件
                         set_val('own_price1', lowest_price + one_diff)
                         set_val('userprice', lowest_price + one_diff)
                         set_val('usertime', one_real_time2)  # 设定当前的截止时间
                         wx.CallAfter(pub.sendMessage, 'change userprice')
                         set_val('tijiao_on', True)
-                        OnClick_chujia()  # 调用出价
+
+                        if guopai_on:
+                            OnClick_chujia()  # 调用出价
+                        else:
+                            wx.CallAfter(pub.sendMessage, 'moni chujia')  # 调用方法
+
                     elif tijiao_num == 2 and twice and second_real_time1 <= a_time:  # 判断是否满足条件
                         set_val('own_price2', lowest_price + second_diff)
                         set_val('userprice', lowest_price + second_diff)
                         set_val('usertime', second_real_time2)  # 设定当前的截止时间
                         wx.CallAfter(pub.sendMessage, 'change userprice')
                         set_val('tijiao_on', True)
-                        OnClick_chujia()  # 调用出价
-                ##-----------------------------------------------------------------------------
+                        ##国拍与模拟触发方式不一样
+                        if guopai_on:
+                            OnClick_chujia()  # 调用出价
+                        else:
+                            wx.CallAfter(pub.sendMessage, 'moni chujia')  # 调用方法
+
+###-----------------------------------------------------------------------------
                 ##智能判断价格是否合理
                 # 以50秒为参考   1100  600   1200  700   1300   800
                 smart_ajust = get_val('smart_ajust')
@@ -471,150 +482,150 @@ class TijiaoThread(Thread):
                                 set_val('userprice', lowest_price + 800)
                                 Smart_ajust_chujia(userprice)
 
-                ####模拟触发
-                moni_on = get_val('moni_on')
-                moni_second = get_val('moni_second')
-                if strategy_on and moni_on and tijiao_on and smart_ajust:
-                    if smart_ajust_time_moni <= moni_second <= smart_ajust_time_moni + 0.6:
-                        if one_diff == 1000:
-                            userprice2 = lowest_price + 500
-                            diff = userprice2 - userprice
-                            if diff == 0 or diff == -100 or diff == -200 or diff == -300:
-                                pass
-                            elif diff < -300 or diff > 300:
-                                userprice = lowest_price + 500
-                                set_val('userprice', lowest_price + 500)
-                                Smart_ajust_chujia(userprice)
-                            elif diff == 300:
-                                userprice = lowest_price + 600
-                                set_val('userprice', lowest_price + 600)
-                                Smart_ajust_chujia(userprice)
-                            elif diff == 200:
-                                userprice = lowest_price + 700
-                                set_val('userprice', lowest_price + 700)
-                                Smart_ajust_chujia(userprice)
-                            elif diff == 100:
-                                userprice = lowest_price + 800
-                                set_val('userprice', lowest_price + 800)
-                                Smart_ajust_chujia(userprice)
-
-                        elif one_diff == 1100:
-                            userprice2 = lowest_price + 600
-                            diff = userprice2 - userprice
-                            if diff == 0 or diff == 100 or diff == -100 or diff == -200:
-                                pass
-                            elif diff == -300:
-                                userprice = lowest_price + 500
-                                set_val('userprice', lowest_price + 500)
-                                Smart_ajust_chujia(userprice)
-                            elif diff < -300 or diff > 300:
-                                userprice = lowest_price + 600
-                                set_val('userprice', lowest_price + 600)
-                                Smart_ajust_chujia(userprice)
-                            elif diff == 300:
-                                userprice = lowest_price + 700
-                                set_val('userprice', lowest_price + 700)
-                                Smart_ajust_chujia(userprice)
-                            elif diff == 200:
-                                userprice = lowest_price + 800
-                                set_val('userprice', lowest_price + 800)
-                                Smart_ajust_chujia(userprice)
-                        elif one_diff == 1200:
-                            userprice2 = lowest_price + 700
-                            diff = userprice2 - userprice
-                            if diff == 0 or diff == 100 or diff == 200 or diff == -100:
-                                pass
-                            elif diff == -200:
-                                userprice = lowest_price + 500
-                                set_val('userprice', lowest_price + 500)
-                                Smart_ajust_chujia(userprice)
-                            elif diff == -300:
-                                userprice = lowest_price + 600
-                                set_val('userprice', lowest_price + 600)
-                                Smart_ajust_chujia(userprice)
-                            elif diff < -300 or diff > 300:
-                                userprice = lowest_price + 700
-                                set_val('userprice', lowest_price + 700)
-                                Smart_ajust_chujia(userprice)
-                            elif diff == 300:
-                                userprice = lowest_price + 800
-                                set_val('userprice', lowest_price + 800)
-                                Smart_ajust_chujia(userprice)
-                        elif one_diff == 1300:
-                            userprice2 = lowest_price + 800
-                            diff = userprice2 - userprice
-                            if diff == 0 or diff == 100 or diff == 200 or diff == 300:
-                                pass
-                            elif diff == -100:
-                                userprice = lowest_price + 500
-                                set_val('userprice', lowest_price + 500)
-                                Smart_ajust_chujia(userprice)
-                            elif diff == -200:
-                                userprice = lowest_price + 600
-                                set_val('userprice', lowest_price + 600)
-                                Smart_ajust_chujia(userprice)
-                            elif diff == -300:
-                                userprice = lowest_price + 700
-                                set_val('userprice', lowest_price + 700)
-                                Smart_ajust_chujia(userprice)
-                            elif diff < -300 or diff > 300:
-                                userprice = lowest_price + 800
-                                set_val('userprice', lowest_price + 800)
-                                Smart_ajust_chujia(userprice)
-                ##-----------------------------------------------------------------------------
-                ## 模拟提交
-                moni_second = get_val('moni_second')
-                strategy_on = get_val('strategy_on')
-                moni_on = get_val('moni_on')
-                tijiao_on = get_val('tijiao_on')
-                own_price1 = get_val('own_price1')
-                own_price2 = get_val('own_price2')
-                tijiao_num = get_val('tijiao_num')
-                tijiao_OK = get_val('tijiao_OK')
-                one_advance = get_val('one_advance')
-                second_advance = get_val('second_advance')
-                tijiao_one = get_val('tijiao_one')
-                one_time1 = get_val('one_time1')
-                one_time2 = get_val('one_time2')
-                second_time1 = get_val('second_time1')
-                second_time2 = get_val('second_time2')
-                lowest_price = get_val('lowest_price')
-                chujia_on = get_val('chujia_on')
-                twice = get_val('twice')
-                one_diff = get_val('one_diff')
-                second_diff = get_val('second_diff')
-                if tijiao_on and strategy_on and moni_on and tijiao_OK:  # 判断是否需要提交，模拟开启方可触发
-                    if tijiao_num == 1 and moni_second >= one_time2 and not tijiao_one:  # 判断是否满足条件
-                        SmartTijiao()  # 调用方法
-                        set_val('tijiao_on', False)
-                        set_val('tijiao_one', True)  # 第一枪已开
-                    elif tijiao_num == 2 and moni_second >= second_time2 and twice:  # 判断是否满足条件
-                        SmartTijiao()  # 调用方法
-                        set_val('tijiao_on', False)
-                    elif tijiao_num == 1 and lowest_price >= own_price1 - 300 - one_advance and not tijiao_one:  # 价格判断
-                        set_val('tijiao_on', False)  # 执行提交之后只能通过选择进程开启自动提交
-                        OnClick_Tijiao()  # 调用方法
-                        set_val('tijiao_one', True)  # 第一枪已开
-                    elif tijiao_num == 2 and lowest_price >= own_price2 - 300 - second_advance and twice:  # 价格判断
-                        set_val('tijiao_on', False)  # 执行提交之后只能通过选择进程开启自动提交
-                        OnClick_Tijiao()  # 调用方法
-                if strategy_on and moni_on and chujia_on:  # 判断是否需要出价,模拟开启方可触发
-                    if tijiao_num == 1 and one_time1 <= moni_second <= one_time1 + 0.6:  # 判断是否满足条件
-                        wx.CallAfter(pub.sendMessage, 'moni chujia')  # 调用方法
-                        set_val('own_price1', lowest_price + one_diff)
-                        set_val('userprice', lowest_price + one_diff)
-                        set_val('usertime', one_time2)  # 设定当前的截止时间
-                        wx.CallAfter(pub.sendMessage, 'change userprice')
-                        set_val('tijiao_on', True)
-                    elif tijiao_num == 2 and twice and second_time1 <= moni_second:
-                        print('tijiao_num', tijiao_num)
-                        print('twice', twice)
-                        wx.CallAfter(pub.sendMessage, 'moni chujia')  # 调用方法
-                        set_val('own_price2', lowest_price + second_diff)
-                        set_val('userprice', lowest_price + second_diff)  # 当前的出价
-                        set_val('usertime', second_time2)
-                        wx.CallAfter(pub.sendMessage, 'change userprice')
-                        set_val('tijiao_on', True)
+                # ####模拟触发
+                # moni_on = get_val('moni_on')
+                # moni_second = get_val('moni_second')
+                # if strategy_on and moni_on and tijiao_on and smart_ajust:
+                #     if smart_ajust_time_moni <= moni_second <= smart_ajust_time_moni + 0.6:
+                #         if one_diff == 1000:
+                #             userprice2 = lowest_price + 500
+                #             diff = userprice2 - userprice
+                #             if diff == 0 or diff == -100 or diff == -200 or diff == -300:
+                #                 pass
+                #             elif diff < -300 or diff > 300:
+                #                 userprice = lowest_price + 500
+                #                 set_val('userprice', lowest_price + 500)
+                #                 Smart_ajust_chujia(userprice)
+                #             elif diff == 300:
+                #                 userprice = lowest_price + 600
+                #                 set_val('userprice', lowest_price + 600)
+                #                 Smart_ajust_chujia(userprice)
+                #             elif diff == 200:
+                #                 userprice = lowest_price + 700
+                #                 set_val('userprice', lowest_price + 700)
+                #                 Smart_ajust_chujia(userprice)
+                #             elif diff == 100:
+                #                 userprice = lowest_price + 800
+                #                 set_val('userprice', lowest_price + 800)
+                #                 Smart_ajust_chujia(userprice)
+                #
+                #         elif one_diff == 1100:
+                #             userprice2 = lowest_price + 600
+                #             diff = userprice2 - userprice
+                #             if diff == 0 or diff == 100 or diff == -100 or diff == -200:
+                #                 pass
+                #             elif diff == -300:
+                #                 userprice = lowest_price + 500
+                #                 set_val('userprice', lowest_price + 500)
+                #                 Smart_ajust_chujia(userprice)
+                #             elif diff < -300 or diff > 300:
+                #                 userprice = lowest_price + 600
+                #                 set_val('userprice', lowest_price + 600)
+                #                 Smart_ajust_chujia(userprice)
+                #             elif diff == 300:
+                #                 userprice = lowest_price + 700
+                #                 set_val('userprice', lowest_price + 700)
+                #                 Smart_ajust_chujia(userprice)
+                #             elif diff == 200:
+                #                 userprice = lowest_price + 800
+                #                 set_val('userprice', lowest_price + 800)
+                #                 Smart_ajust_chujia(userprice)
+                #         elif one_diff == 1200:
+                #             userprice2 = lowest_price + 700
+                #             diff = userprice2 - userprice
+                #             if diff == 0 or diff == 100 or diff == 200 or diff == -100:
+                #                 pass
+                #             elif diff == -200:
+                #                 userprice = lowest_price + 500
+                #                 set_val('userprice', lowest_price + 500)
+                #                 Smart_ajust_chujia(userprice)
+                #             elif diff == -300:
+                #                 userprice = lowest_price + 600
+                #                 set_val('userprice', lowest_price + 600)
+                #                 Smart_ajust_chujia(userprice)
+                #             elif diff < -300 or diff > 300:
+                #                 userprice = lowest_price + 700
+                #                 set_val('userprice', lowest_price + 700)
+                #                 Smart_ajust_chujia(userprice)
+                #             elif diff == 300:
+                #                 userprice = lowest_price + 800
+                #                 set_val('userprice', lowest_price + 800)
+                #                 Smart_ajust_chujia(userprice)
+                #         elif one_diff == 1300:
+                #             userprice2 = lowest_price + 800
+                #             diff = userprice2 - userprice
+                #             if diff == 0 or diff == 100 or diff == 200 or diff == 300:
+                #                 pass
+                #             elif diff == -100:
+                #                 userprice = lowest_price + 500
+                #                 set_val('userprice', lowest_price + 500)
+                #                 Smart_ajust_chujia(userprice)
+                #             elif diff == -200:
+                #                 userprice = lowest_price + 600
+                #                 set_val('userprice', lowest_price + 600)
+                #                 Smart_ajust_chujia(userprice)
+                #             elif diff == -300:
+                #                 userprice = lowest_price + 700
+                #                 set_val('userprice', lowest_price + 700)
+                #                 Smart_ajust_chujia(userprice)
+                #             elif diff < -300 or diff > 300:
+                #                 userprice = lowest_price + 800
+                #                 set_val('userprice', lowest_price + 800)
+                #                 Smart_ajust_chujia(userprice)
+                # ##-----------------------------------------------------------------------------
+                # ## 模拟提交
+                # moni_second = get_val('moni_second')
+                # strategy_on = get_val('strategy_on')
+                # moni_on = get_val('moni_on')
+                # tijiao_on = get_val('tijiao_on')
+                # own_price1 = get_val('own_price1')
+                # own_price2 = get_val('own_price2')
+                # tijiao_num = get_val('tijiao_num')
+                # tijiao_OK = get_val('tijiao_OK')
+                # one_advance = get_val('one_advance')
+                # second_advance = get_val('second_advance')
+                # tijiao_one = get_val('tijiao_one')
+                # one_time1 = get_val('one_time1')
+                # one_time2 = get_val('one_time2')
+                # second_time1 = get_val('second_time1')
+                # second_time2 = get_val('second_time2')
+                # lowest_price = get_val('lowest_price')
+                # chujia_on = get_val('chujia_on')
+                # twice = get_val('twice')
+                # one_diff = get_val('one_diff')
+                # second_diff = get_val('second_diff')
+                # if tijiao_on and strategy_on and moni_on and tijiao_OK:  # 判断是否需要提交，模拟开启方可触发
+                #     if tijiao_num == 1 and moni_second >= one_time2 and not tijiao_one:  # 判断是否满足条件
+                #         SmartTijiao()  # 调用方法
+                #         set_val('tijiao_on', False)
+                #         set_val('tijiao_one', True)  # 第一枪已开
+                #     elif tijiao_num == 2 and moni_second >= second_time2 and twice:  # 判断是否满足条件
+                #         SmartTijiao()  # 调用方法
+                #         set_val('tijiao_on', False)
+                #     elif tijiao_num == 1 and lowest_price >= own_price1 - 300 - one_advance and not tijiao_one:  # 价格判断
+                #         set_val('tijiao_on', False)  # 执行提交之后只能通过选择进程开启自动提交
+                #         OnClick_Tijiao()  # 调用方法
+                #         set_val('tijiao_one', True)  # 第一枪已开
+                #     elif tijiao_num == 2 and lowest_price >= own_price2 - 300 - second_advance and twice:  # 价格判断
+                #         set_val('tijiao_on', False)  # 执行提交之后只能通过选择进程开启自动提交
+                #         OnClick_Tijiao()  # 调用方法
+                # if strategy_on and moni_on and chujia_on:  # 判断是否需要出价,模拟开启方可触发
+                #     if tijiao_num == 1 and one_time1 <= moni_second <= one_time1 + 0.6:  # 判断是否满足条件
+                #         wx.CallAfter(pub.sendMessage, 'moni chujia')  # 调用方法
+                #         set_val('own_price1', lowest_price + one_diff)
+                #         set_val('userprice', lowest_price + one_diff)
+                #         set_val('usertime', one_time2)  # 设定当前的截止时间
+                #         wx.CallAfter(pub.sendMessage, 'change userprice')
+                #         set_val('tijiao_on', True)
+                #     elif tijiao_num == 2 and twice and second_time1 <= moni_second:
+                #         print('tijiao_num', tijiao_num)
+                #         print('twice', twice)
+                #         wx.CallAfter(pub.sendMessage, 'moni chujia')  # 调用方法
+                #         set_val('own_price2', lowest_price + second_diff)
+                #         set_val('userprice', lowest_price + second_diff)  # 当前的出价
+                #         set_val('usertime', second_time2)
+                #         wx.CallAfter(pub.sendMessage, 'change userprice')
+                #         set_val('tijiao_on', True)
             except:
                 logger.error("提交出错")
                 logger.exception('this is an exception message')
@@ -708,20 +719,20 @@ class TimeThread(Thread):
             time.sleep(0.1)
             b = time.clock()
             a_time = get_val('a_time')
-            moni_second = get_val('moni_second')
             moni_on = get_val('moni_on')
             a_time += b - a  # 实际运行时间作为真实间隔
             set_val('a_time', a_time)
             strategy_type = get_val('strategy_type')
-            if moni_on:
-                moni_second += b - a
-                set_val('moni_second', moni_second)
-                if moni_second >= 60:
-                    set_val('moni_second', 0)
-                    if strategy_type == 0:
-                        init_strategy_one() ##初始化
-                    elif strategy_type == 1:
-                        init_strategy_second()
+            # moni_second = get_val('moni_second')
+            # if moni_on:
+            #     moni_second += b - a
+            #     set_val('moni_second', moni_second)
+            #     if moni_second >= 60:
+            #         set_val('moni_second', 0)
+            #         if strategy_type == 0:
+            #             init_strategy_one() ##初始化
+            #         elif strategy_type == 1:
+            #             init_strategy_second()
             ##计数，保证间隔
             price_count = get_val('price_count')
             yanzhengma_count = get_val('yanzhengma_count')
@@ -857,7 +868,6 @@ class LowestpfriceThread(Thread):
             a = time.time()
             lowest_price = get_val('lowest_price')
             pricelist = get_val('pricelist')
-            moni_second = get_val('moni_second')
             a_time = get_val('a_time')
             moni_on = get_val('moni_on')
             try:
@@ -869,10 +879,8 @@ class LowestpfriceThread(Thread):
                     else:
                         set_val('lowest_price', price)
                         trans_time()  # 保存价格
-                        if moni_on:
-                            set_val('changetime', moni_second)
-                        else:
-                            set_val('changetime', a_time)
+
+                        set_val('changetime', a_time)
                 else:
                     set_val('findpos_on', True)
             except:
