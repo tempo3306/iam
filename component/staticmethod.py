@@ -217,7 +217,6 @@ def Smart_chujia():
     Position_frame = get_val('Position_frame')
     moni_on = get_val('moni_on')
     Click(Position_frame[4][0], Position_frame[4][1]) ##确认
-    Click(Position_frame[7][0], Position_frame[7][1])  # 取消
     price = smart_price()  ##智能计算出价
     set_val('userprice', price)  ##保存用户出价
     if moni_on:
@@ -227,7 +226,19 @@ def Smart_chujia():
     else:
         guopai_chujia(price)
 
-
+def esc_chujia():
+    Position_frame = get_val('Position_frame')
+    moni_on = get_val('moni_on')
+    Click(Position_frame[7][0], Position_frame[7][1])  # 取消
+    Click(Position_frame[4][0], Position_frame[4][1]) ##确认
+    price = smart_price()  ##智能计算出价
+    set_val('userprice', price)  ##保存用户出价
+    if moni_on:
+        wx.CallAfter(pub.sendMessage, 'moni smartchujia', price=price)
+        # wx.CallAfter(self.call, 1, ‘abc’, name=”ccc”, help=”test”)
+        # wx.FutureCall(5000, self.call, ‘call after 100ms’, name=”test”)
+    else:
+        guopai_chujia(price)
 
 
 ##智能出价
@@ -502,7 +513,7 @@ HOTKEY_ACTIONS = {
     9: selfChujia, 10: OnClick_Backspace, 11: tijiao_ok,
     12: tijiao_ok2,
     13: query, 14: OnH_chujia,
-    15: Smart_chujia}
+    15: esc_chujia}
 
 
 # 启动监听

@@ -422,7 +422,7 @@ class MoniWebFrame(wx.Frame):
             yanzhengma_count = get_val("yanzhengma_count")
             yanzhengma_close = get_val("yanzhengma_close")
 
-            if yanzhengma_count >= 5 and not yanzhengma_close:  # 0.5秒之后没有确认触发关闭验证码
+            if yanzhengma_count >= 4 and not yanzhengma_close:  # 0.4秒之后没有确认触发关闭验证码
                 find_yan_confirm()
             yanzhengma_close = get_val("yanzhengma_close")
 
