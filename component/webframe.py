@@ -278,7 +278,6 @@ class CurrentStatusPanel(wx.Panel):
             lowestpricetext = "{0}: {1}".format(lowestpricelabel, lowest_price)
             dc.DrawText(lowestpricetext, x2, y2)
 
-
         ##第二行  出价情况
         userprice = get_val('userprice')
         tijiao_on = get_val('tijiao_on')
@@ -323,26 +322,36 @@ class CurrentStatusPanel(wx.Panel):
             dc.DrawText(timestatustext, x5, y5)
             dc.DrawText(pricestatustext, x6, y6)
         else:
-            current_pricestatus_label = get_val('current_pricestatus_label')
-            current_pricestatus = get_val('current_pricestatus')
-            pricelabeltext = "{0}".format(current_pricestatus_label)
-            pricetext = "{0}".format(current_pricestatus)
             tijiao_num = get_val('tijiao_num')
             # 显示截止时间与当前时间相差
             currenttime = get_val('a_time')
             if tijiao_num == 1:
                 one_time1 = get_val('one_real_time1')
                 timediff = float(one_time1) - float(currenttime)
+                ##修改状态
+                one_time1 = get_val('one_time1')
+                one_diff = get_val('one_diff')
+                current_pricestatus = '{0}秒加{1}'.format(one_time1, one_diff)
+                set_val('current_pricestatus', current_pricestatus)
             elif tijiao_num == 2:
                 second_real_time1 = get_val('second_real_time1')
                 timediff = float(second_real_time1) - float(currenttime)
+                ##修改状态
+                second_time1 = get_val('second_time1')
+                second_diff = get_val('second_diff')
+                current_pricestatus = '{0}秒加{1}'.format(second_time1, second_diff)
+                set_val('current_pricestatus', current_pricestatus)
             else:
                 timediff = '-'
-
+            current_pricestatus_label = get_val('current_pricestatus_label')
+            current_pricestatus = get_val('current_pricestatus')
+            pricelabeltext = "{0}".format(current_pricestatus_label)
+            pricetext = "{0}".format(current_pricestatus)
             if timediff == '-':
                 timestatustext = "出价倒计时{0}秒".format(timediff)
             else:
                 timestatustext = "出价倒计时{0:.1f}秒".format(timediff)
+
             pricestatustext = "差价{0}".format('-')
             dc.DrawText(pricelabeltext, x3, y3)
             dc.DrawText(pricetext, x4, y4)

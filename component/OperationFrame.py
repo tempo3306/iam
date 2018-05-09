@@ -496,9 +496,7 @@ class StatusPanel(wx.Panel):
     ###需要进一步扩展 调整策略设置后需要 修正templist
     def update_strategy(self):
         strategy_type = self.choice_strategy.GetSelection()
-
         advance_list = [100, 200, 300, 0]
-
         if strategy_type == 0:
             templist = [0] * 20
             templist[0] = strategy_type
@@ -510,7 +508,6 @@ class StatusPanel(wx.Panel):
             set_val(strategy_type, templist)
             strategy_choices = get_val('strategy_choices')
             set_val('strategy_description', strategy_choices[strategy_type])
-
             # '{0}秒加{1} 提前{2}延迟{3}秒 强制{4}秒'.format(templist[1], templist[2], templist[3], templist[4], templist[5]))
         elif strategy_type == 1:
             templist = [0] * 20
@@ -528,6 +525,7 @@ class StatusPanel(wx.Panel):
             strategy_choices = get_val('strategy_choices')
             set_val('strategy_description', strategy_choices[strategy_type])
             set_val(strategy_type, templist)
+
 
     ##导出跳价
     def priceview(self, event):
