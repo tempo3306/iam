@@ -14,6 +14,9 @@ import ctypes
 from ctypes import wintypes
 from wx.lib.pubsub import pub
 
+import logging
+logger = logging.getLogger()
+
 def Click(x, y):  # 鼠标点击
     a = win32gui.GetCursorPos()
     x = int(x)
@@ -45,7 +48,6 @@ import wx
 
 
 def Paste_moni(price):
-    price = int(price)
     id = get_val('moni_webframe')
     moni = wx.FindWindowById(id)
     browser = moni.htmlpanel.webview
@@ -54,7 +56,6 @@ def Paste_moni(price):
 
 
 def setText(aString):
-    aString = str(int(aString))
     aString = aString.encode('utf-8')
     win32clipboard.OpenClipboard()
     win32clipboard.EmptyClipboard()
@@ -72,26 +73,41 @@ def many_delete():
         Delete()
 
 
+'''
+tijiao_num  
+1代表初始状态 等待第二次出价  
+2代表第二次出价结束 等待第三次出价
+3代表等待自动补枪
+0代表所有触发都结束
+'''
 def OnClick_Tijiao():
     one_delay = get_val('one_delay')
     second_delay = get_val('second_delay')
     tijiao_num = get_val('tijiao_num')
     twice = get_val('twice')
+    smart_autoprice = get_val('smart_autoprice')
     set_val('confirm_need', True)
+    print("tijiao_num", tijiao_num)
+    print("smart_autoprice", smart_autoprice)
+    print("twice", twice)
     if tijiao_num == 1:
         if twice:
             set_val('tijiao_num', 2)
+        elif smart_autoprice:
+            set_val('tijiao_num', 3)
         else:
             set_val('tijiao_num', 0)
         timer = threading.Timer(one_delay, Tijiao)
         timer.start()
         set_val('tijiao_on', False)
-
     elif tijiao_num == 2:
         set_val('tijiao_num', 0)
         timer = threading.Timer(second_delay, Tijiao)
         timer.start()
         set_val('tijiao_on', False)
+    elif tijiao_num == 3:
+        set_val('tijiao_num', 0)
+        Tijiao()
     else:
         Tijiao()
 
@@ -102,29 +118,26 @@ def Tijiao():
     set_val('tijiao_OK', False)  # 需要按E解锁，自动提交
     set_val('chujia_on', True)  # 激活自动
     smart_autoprice = get_val('smart_autoprice')
-
-
     tijiao_num = get_val('tijiao_num')
-    print("tijiao_num", tijiao_num)
+    # print("tijiao_num", tijiao_num)
+    # print("smart_autoprice", smart_autoprice)
     if tijiao_num == 2:
         set_val('current_pricestatus_label', '等待第三次出价')
         second_time1 = get_val('second_time1')
         second_diff = get_val('second_diff')
         current_pricestatus = '{0:.1f}秒加{1}'.format(second_time1, second_diff)
         set_val('current_pricestatus', current_pricestatus)
-
     elif tijiao_num == 0:
-        print("smart_autoprice", smart_autoprice)
-        if not smart_autoprice:
-            set_val('current_pricestatus_label', '等待第二次出价')
-            one_time1 = get_val('one_time1')
-            one_diff = get_val('one_diff')
-            current_pricestatus = '{0:.1f}秒加{1}'.format(one_time1, one_diff)
-            set_val('current_pricestatus', current_pricestatus)
-        else:
-            set_val('smartprice_chujia', True) ##开启智能出价， 打开确认查找
-            set_val('current_pricestatus_label', '智能补枪')
-            set_val('current_pricestatus', '智能出价')
+        set_val('current_pricestatus_label', '等待第二次出价')
+        one_time1 = get_val('one_time1')
+        one_diff = get_val('one_diff')
+        current_pricestatus = '{0:.1f}秒加{1}'.format(one_time1, one_diff)
+        set_val('current_pricestatus', current_pricestatus)
+    elif tijiao_num == 3:
+        set_val('smartprice_chujia', True) ##开启智能出价， 打开确认查找
+        set_val('current_pricestatus_label', '智能补枪')
+        set_val('current_pricestatus', '智能出价')
+        print("开启智能出价")
 
 def SmartTijiao():
     tijiao_on = get_val('tijiao_on')
@@ -201,10 +214,10 @@ def OnClick_confirm():
 ##-------------------------------------------------------------------------------------
 ##智能出价
 def Smart_chujia():
-    print("mm")
     Position_frame = get_val('Position_frame')
     moni_on = get_val('moni_on')
     Click(Position_frame[4][0], Position_frame[4][1]) ##确认
+    Click(Position_frame[7][0], Position_frame[7][1])  # 取消
     price = smart_price()  ##智能计算出价
     set_val('userprice', price)  ##保存用户出价
     if moni_on:
@@ -508,7 +521,7 @@ def Hotkey_listen():
             user32.TranslateMessage(byref(msg))
             user32.DispatchMessageA(byref(msg))
     except:
-        pass
+        logger.exception("listening stop")
     finally:
         print("失败")
         for id in HOTKEYS1.keys():
@@ -586,9 +599,7 @@ def get_nowtime():
 
 def gettime(choice):  # choice1:55, choice2:0.5
     tem = get_nowtime()
-    print(tem)
     b = tem + ' 11:29:' + str(int(choice))
-    print(b)
     c = changetime(b) + float(choice) - int(choice)
     return c  # 得到用户所确定的最终时间戳
 

@@ -274,6 +274,7 @@ def init_strategy():
     '''
 
 
+
     set_val('strategy_choices', strategy_choices)
     tijiao_choices = [u"提前100", u"提前200", u"提前300", u"踩点"]
     set_val('tijiao_choices', tijiao_choices)
@@ -305,7 +306,6 @@ def init_strategy():
     set_val('moni_on', False)  # 判断开启的是哪个窗口 ，限制同时只能开启一个
     set_val('guopai_on', False)
     set_val('listen_on', False)  #f是否开启监听
-
 
     set_val('current_moni', True) ##当前哪个WEB激活状态
     set_val('strategy1', 53)  # 策略整数时间
@@ -550,3 +550,4 @@ def remote_init():
     ##计算当天的时间
     set_val('timebase_str', '')  ##时间基数，避免重复计算
     set_val('target_time', 11111111111111111)  ##时间基数，避免重复计算  11:30:1 分的时间戳
+    set_val('final_time', 111111111111)

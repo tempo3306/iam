@@ -20,7 +20,6 @@ from component.remote_control import getip_dianxin
 from component.staticmethod import init_strategy_one, init_strategy_second
 
 import logging
-
 logger = logging.getLogger()
 
 ##初始化打开PNG
@@ -111,7 +110,6 @@ class confirmThread(threading.Thread):
             # print('tijiao_num', tijiao_num)
             smartprice_chujia = get_val('smartprice_chujia')
             if tijiao_num == 2 and twice:
-            # if tijiao_num == 2 and twice:
                 try:
                     findconfirm()
                 except:
@@ -351,22 +349,16 @@ class TijiaoThread(Thread):
 
                 ##提交
                 if tijiao_on and strategy_on  and tijiao_OK:  # 判断是否需要提交,国拍开启状态方可触发
-                    if tijiao_num == 1 and a_time >= one_real_time2 and not tijiao_one:  # 判断是否满足条件
-                        set_val('tijiao_on', False)
-                        SmartTijiao()  # 调用方法
-                        set_val('tijiao_on', False)
-                        set_val('tijiao_one', True)
+                    if tijiao_num == 1 and a_time >= one_real_time2:  # 判断是否满足条件
+                        OnClick_Tijiao()
+                        # SmartTijiao()
                     elif tijiao_num == 2 and a_time >= second_real_time2:  # 判断是否满足条件
-                        set_val('tijiao_on', False)
-                        SmartTijiao()  # 调用方法
-                        set_val('tijiao_on', False)
-                    elif tijiao_num == 1 and lowest_price >= own_price1 - 300 - one_advance and a_time <= one_real_time2 - one_delay and not tijiao_one:  # 价格判断
-                        set_val('tijiao_on', False)  # 执行提交之后只能通过选择进程开启自动提交
-                        OnClick_Tijiao()  # 调用方法
-                        set_val('tijiao_one', True)
+                        OnClick_Tijiao()
+                        # SmartTijiao()
+                    elif tijiao_num == 1 and lowest_price >= own_price1 - 300 - one_advance and a_time <= one_real_time2 - one_delay:  # 价格判断
+                        OnClick_Tijiao()
                     elif tijiao_num == 2 and lowest_price >= own_price2 - 300 - second_advance and a_time <= second_real_time2 - second_delay:  # 价格判断
-                        set_val('tijiao_on', False)  # 执行提交之后只能通过选择进程开启自动提交
-                        OnClick_Tijiao()  # 调用方法
+                        OnClick_Tijiao()
 
                 if strategy_on  and chujia_on:  # 判断是否需要提交,国拍开启状态方可触发
                     if tijiao_num == 1 and one_real_time1 <= a_time <= one_real_time1 + 0.6:  # 判断是否满足条件
@@ -385,10 +377,13 @@ class TijiaoThread(Thread):
 
                 ##智能出价之后提交判定
                 userprice = get_val('userprice')
-                if smartprice_chujia and tijiao_OK and lowest_price >= userprice - 300\
-                        and a_time <= second_real_time2 - second_delay:
-                    set_val('smartprice_chujia', False)  ##关闭确认查找，停止智能出价
-                    OnClick_Tijiao()  # 调用方法
+                final_time = get_val('final_time')
+                print('smartprice_chujia', smartprice_chujia)
+                print('tijiao_OK', tijiao_OK)
+                if smartprice_chujia and tijiao_OK:
+                    if lowest_price >= userprice - 300 or a_time <= final_time:
+                        set_val('smartprice_chujia', False)  ##关闭确认查找，停止智能出价
+                        OnClick_Tijiao()  # 调用方法
 
                 ###-----------------------------------------------------------------------------
                 ##智能判断价格是否合理
@@ -729,9 +724,9 @@ class TimeThread(Thread):
             strategy_type = get_val('strategy_type')
             target_time = get_val('target_time')
             tijiao_num = get_val('tijiao_num')
-            print('tijiao_num= ', tijiao_num)
-            print('target_time= ', target_time)
-            print('a_time= ', a_time)
+            # print('tijiao_num= ', tijiao_num)
+            # print('target_time= ', target_time)
+            # print('a_time= ', a_time)
             if target_time > a_time and tijiao_num == 0:  ##只要出现时间小于11：30：1就触发还原
                 if strategy_type == 0:
                     init_strategy_one() ##初始化

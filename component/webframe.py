@@ -283,7 +283,7 @@ class CurrentStatusPanel(wx.Panel):
         userprice = get_val('userprice')
         tijiao_on = get_val('tijiao_on')
         usertime = get_val('usertime')
-        moni_on = get_val('moni_on')
+        smartprice_chujia = get_val('smartprice_chujia')
 
         current_pricestatus_label = get_val('current_pricestatus_label')
         current_pricestatus = get_val('current_pricestatus')
@@ -302,6 +302,21 @@ class CurrentStatusPanel(wx.Panel):
             currenttime = get_val('a_time')
             timediff = float(usertime) - float(currenttime)
             timestatustext = "提交倒计时{0:.1f}秒".format(timediff)
+            pricestatustext = "差价{0}".format(diff_price)
+            dc.DrawText(pricelabeltext, x3, y3)
+            dc.DrawText(pricetext, x4, y4)
+            dc.DrawText(timestatustext, x5, y5)
+            dc.DrawText(pricestatustext, x6, y6)
+        elif smartprice_chujia:
+            current_pricestatus_label = get_val('current_pricestatus_label')
+            current_pricestatus = get_val('current_pricestatus')
+            pricelabeltext = "{0}".format(current_pricestatus_label)
+            pricetext = "{0}".format(current_pricestatus)
+            ##第三行  剩余状态
+            max_price = get_val('lowest_price') + 300
+            diff_price = int(userprice) - max_price
+            timediff = '-'
+            timestatustext = "提交倒计时{0}秒".format(timediff)
             pricestatustext = "差价{0}".format(diff_price)
             dc.DrawText(pricelabeltext, x3, y3)
             dc.DrawText(pricetext, x4, y4)

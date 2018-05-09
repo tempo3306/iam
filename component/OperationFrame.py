@@ -379,6 +379,7 @@ class StatusPanel(wx.Panel):
     ###策略设置
     def Choice_strategy(self, event):
         strategy_type = self.choice_strategy.GetSelection()
+        print('strategy_type', strategy_type)
         self.update_ui(strategy_type)
         set_val('strategy_type', strategy_type)  ##保存当前用户选择的策略
 
@@ -401,6 +402,7 @@ class StatusPanel(wx.Panel):
 
     def update_ui(self, strategy_type):  ##根据不同的出价策略调整界面
         strategy_list = get_val(strategy_type)
+        print(strategy_list)
         if strategy_type == 0:  # 单次
             init_strategy_one()
             self.choice_strategy.SetSelection(strategy_type)
@@ -491,32 +493,36 @@ class StatusPanel(wx.Panel):
             self.strategy_sizer.Hide(self.buqiang_label_sizer)
             self.Layout()
 
-    ###需要进一步扩展
+    ###需要进一步扩展 调整策略设置后需要 修正templist
     def update_strategy(self):
         strategy_type = self.choice_strategy.GetSelection()
+
+        advance_list = [100, 200, 300, 0]
+
         if strategy_type == 0:
             templist = [0] * 20
             templist[0] = strategy_type
             templist[1] = self.second_jiajia_time.GetValue()
-            templist[2] = self.second_jiajia_price.GetValue()
-            templist[3] = self.second_tijiao_pricediff.GetString(self.second_tijiao_pricediff.GetSelection())
+            templist[2] = int(self.second_jiajia_price.GetValue())
+            templist[3] = advance_list[self.second_tijiao_pricediff.GetSelection()]
             templist[4] = self.second_tijiaoyanchi_time.GetValue()
             templist[5] = self.second_tijiao_time.GetValue()
             set_val(strategy_type, templist)
             strategy_choices = get_val('strategy_choices')
             set_val('strategy_description', strategy_choices[strategy_type])
+
             # '{0}秒加{1} 提前{2}延迟{3}秒 强制{4}秒'.format(templist[1], templist[2], templist[3], templist[4], templist[5]))
         elif strategy_type == 1:
             templist = [0] * 20
             templist[0] = strategy_type
             templist[1] = self.second_jiajia_time.GetValue()
-            templist[2] = self.second_jiajia_price.GetValue()
-            templist[3] = self.second_tijiao_pricediff.GetString(self.second_tijiao_pricediff.GetSelection())
+            templist[2] = int(self.second_jiajia_price.GetValue())
+            templist[3] = advance_list[self.second_tijiao_pricediff.GetSelection()]
             templist[4] = self.second_tijiaoyanchi_time.GetValue()
             templist[5] = self.second_tijiao_time.GetValue()
             templist[6] = self.third_jiajia_time.GetValue()
-            templist[7] = self.third_jiajia_price.GetValue()
-            templist[8] = self.third_tijiao_pricediff.GetString(self.third_tijiao_pricediff.GetSelection())
+            templist[7] = int(self.third_jiajia_price.GetValue())
+            templist[8] = advance_list[self.third_tijiao_pricediff.GetSelection()]
             templist[9] = self.third_tijiaoyanchi_time.GetValue()
             templist[10] = self.third_tijiao_time.GetValue()
             strategy_choices = get_val('strategy_choices')
@@ -607,22 +613,20 @@ class StatusPanel(wx.Panel):
     def Jiajia_price(self, event):
         one_diff = get_val('one_diff')
         templist = [300 + i * 100 for i in range(13)]
-        tem = self.second_jiajia_price.GetValue()
+        tem = int(self.second_jiajia_price.GetValue())
         if tem in templist:
             set_val('one_diff', int(tem))
             self.update_strategy()
-
         else:
             self.second_jiajia_price.SetValue(one_diff)
 
     def Jiajia_price2(self, event):
         second_diff = get_val('second_diff')
         templist = [300 + i * 100 for i in range(13)]
-        tem = self.third_jiajia_price.GetValue()
+        tem = int(self.third_jiajia_price.GetValue())
         if tem in templist:
             set_val('second_diff', int(tem))
             self.update_strategy()
-
         else:
             self.third_jiajia_price.SetValue(second_diff)
 
@@ -687,7 +691,6 @@ class StatusPanel(wx.Panel):
     def Tijiao_time2(self, event):
         second_time2 = get_val('second_time2')
         tem = self.third_tijiao_time.GetValue()
-        print("Tijiao_time2", tem)
         templist = [53 + i * 0.1 for i in range(51)]
         if tem in templist:
             second_time2 = tem

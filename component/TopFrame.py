@@ -70,7 +70,8 @@ class TopFrame(wx.Frame):
 
         ## 链接到子frame
         pub.subscribe(self.Close, "close topframe")  #
-
+        pub.subscribe(self.Open_call_guopai, "open dianxin")  # 打开电信
+        pub.subscribe(self.Open_call_moni, "open moni")  # 打开模拟
         pub.subscribe(self.Chujia, "moni chujia")
         pub.subscribe(self.Smartchujia, "moni smartchujia")
 
