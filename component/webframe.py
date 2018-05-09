@@ -289,38 +289,39 @@ class CurrentStatusPanel(wx.Panel):
         # print('current_pricestatus', current_pricestatus)
 
         if userprice and tijiao_on:  ##提交状态
-            current_pricestatus_label = get_val('current_pricestatus_label')
-            current_pricestatus = get_val('current_pricestatus')
-            pricelabeltext = "{0}".format(current_pricestatus_label)
-            pricetext = "{0}".format(current_pricestatus)
-            ##第三行  剩余状态
-            # 显示截止时间与当前时间相差
-            max_price = get_val('lowest_price') + 300
-            diff_price = int(userprice) - max_price
-            # 显示截止时间与当前时间相差
-            currenttime = get_val('a_time')
-            timediff = float(usertime) - float(currenttime)
-            timestatustext = "提交倒计时{0:.1f}秒".format(timediff)
-            pricestatustext = "差价{0}".format(diff_price)
-            dc.DrawText(pricelabeltext, x3, y3)
-            dc.DrawText(pricetext, x4, y4)
-            dc.DrawText(timestatustext, x5, y5)
-            dc.DrawText(pricestatustext, x6, y6)
-        elif smartprice_chujia:
-            current_pricestatus_label = get_val('current_pricestatus_label')
-            current_pricestatus = get_val('current_pricestatus')
-            pricelabeltext = "{0}".format(current_pricestatus_label)
-            pricetext = "{0}".format(current_pricestatus)
-            ##第三行  剩余状态
-            max_price = get_val('lowest_price') + 300
-            diff_price = int(userprice) - max_price
-            timediff = '-'
-            timestatustext = "提交倒计时{0}秒".format(timediff)
-            pricestatustext = "差价{0}".format(diff_price)
-            dc.DrawText(pricelabeltext, x3, y3)
-            dc.DrawText(pricetext, x4, y4)
-            dc.DrawText(timestatustext, x5, y5)
-            dc.DrawText(pricestatustext, x6, y6)
+            if not smartprice_chujia:
+                current_pricestatus_label = get_val('current_pricestatus_label')
+                current_pricestatus = get_val('current_pricestatus')
+                pricelabeltext = "{0}".format(current_pricestatus_label)
+                pricetext = "{0}".format(current_pricestatus)
+                ##第三行  剩余状态
+                # 显示截止时间与当前时间相差
+                max_price = get_val('lowest_price') + 300
+                diff_price = int(userprice) - max_price
+                # 显示截止时间与当前时间相差
+                currenttime = get_val('a_time')
+                timediff = float(usertime) - float(currenttime)
+                timestatustext = "提交倒计时{0:.1f}秒".format(timediff)
+                pricestatustext = "差价{0}".format(diff_price)
+                dc.DrawText(pricelabeltext, x3, y3)
+                dc.DrawText(pricetext, x4, y4)
+                dc.DrawText(timestatustext, x5, y5)
+                dc.DrawText(pricestatustext, x6, y6)
+            else:
+                current_pricestatus_label = get_val('current_pricestatus_label')
+                current_pricestatus = get_val('current_pricestatus')
+                pricelabeltext = "{0}".format(current_pricestatus_label)
+                pricetext = "{0}".format(current_pricestatus)
+                ##第三行  剩余状态
+                max_price = get_val('lowest_price') + 300
+                diff_price = int(userprice) - max_price
+                timediff = '-'
+                timestatustext = "提交倒计时{0}秒".format(timediff)
+                pricestatustext = "差价{0}".format(diff_price)
+                dc.DrawText(pricelabeltext, x3, y3)
+                dc.DrawText(pricetext, x4, y4)
+                dc.DrawText(timestatustext, x5, y5)
+                dc.DrawText(pricestatustext, x6, y6)
         else:
             tijiao_num = get_val('tijiao_num')
             # 显示截止时间与当前时间相差
@@ -555,6 +556,9 @@ class WebFrame(wx.Frame):
         Yanzhengmasize = get_val('Yanzhengmasize')
         self.yanzhengmaframe = YanzhengmaFrame(self, Yanzhengmasize)
 
+        self.hotkey_open2()
+
+
         self.Bind(wx.EVT_MOVE, self.childmove)
         self.Bind(wx.EVT_ICONIZE, self.iconize)
 
@@ -667,6 +671,15 @@ class WebFrame(wx.Frame):
             print("失去焦点")
             set_val('hotkey_on', False)
             Hotkey_close()
+
+    def hotkey_open2(self):
+        ###热键控制
+        hotkey_on = get_val('hotkey_on')
+        if not hotkey_on:
+            set_val('hotkey_on', True)
+            print("获得焦点")
+            Hotkey_open()
+
 
     def createStatusBar(self):
         self.statusbar = IcStatusBar(self)
