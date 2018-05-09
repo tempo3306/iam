@@ -378,8 +378,8 @@ class TijiaoThread(Thread):
                 ##智能出价之后提交判定
                 userprice = get_val('userprice')
                 final_time = get_val('final_time')
-                print('smartprice_chujia', smartprice_chujia)
-                print('tijiao_OK', tijiao_OK)
+                # print('smartprice_chujia', smartprice_chujia)
+                # print('tijiao_OK', tijiao_OK)
                 if smartprice_chujia and tijiao_OK:
                     if lowest_price >= userprice - 300 or a_time <= final_time:
                         set_val('smartprice_chujia', False)  ##关闭确认查找，停止智能出价

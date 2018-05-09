@@ -15,10 +15,137 @@
     <list default="true" id="8cc8c298-bf99-4eca-8018-53239952b6ea" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/component/app_thread.py" beforeDir="false" afterPath="$PROJECT_DIR$/component/app_thread.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/component/staticmethod.py" beforeDir="false" afterPath="$PROJECT_DIR$/component/staticmethod.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/component/webframe.py" beforeDir="false" afterPath="$PROJECT_DIR$/component/webframe.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/component/variable.py" beforeDir="false" afterPath="$PROJECT_DIR$/component/variable.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/mylog.log" beforeDir="false" afterPath="$PROJECT_DIR$/mylog.log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/yan.png" beforeDir="false" afterPath="$PROJECT_DIR$/yan.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pic/299.png" beforeDir="false" afterPath="$PROJECT_DIR$/pic/299.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pic/300.png" beforeDir="false" afterPath="$PROJECT_DIR$/pic/300.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pic/301.png" beforeDir="false" afterPath="$PROJECT_DIR$/pic/301.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pic/302.png" beforeDir="false" afterPath="$PROJECT_DIR$/pic/302.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pic/303.png" beforeDir="false" afterPath="$PROJECT_DIR$/pic/303.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pic/304.png" beforeDir="false" afterPath="$PROJECT_DIR$/pic/304.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pic/305.png" beforeDir="false" afterPath="$PROJECT_DIR$/pic/305.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pic/306.png" beforeDir="false" afterPath="$PROJECT_DIR$/pic/306.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pic/307.png" beforeDir="false" afterPath="$PROJECT_DIR$/pic/307.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pic/308.png" beforeDir="false" afterPath="$PROJECT_DIR$/pic/308.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pic/309.png" beforeDir="false" afterPath="$PROJECT_DIR$/pic/309.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pic/310.png" beforeDir="false" afterPath="$PROJECT_DIR$/pic/310.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pic/311.png" beforeDir="false" afterPath="$PROJECT_DIR$/pic/311.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pic/312.png" beforeDir="false" afterPath="$PROJECT_DIR$/pic/312.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pic/313.png" beforeDir="false" afterPath="$PROJECT_DIR$/pic/313.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pic/314.png" beforeDir="false" afterPath="$PROJECT_DIR$/pic/314.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pic/315.png" beforeDir="false" afterPath="$PROJECT_DIR$/pic/315.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pic/316.png" beforeDir="false" afterPath="$PROJECT_DIR$/pic/316.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pic/317.png" beforeDir="false" afterPath="$PROJECT_DIR$/pic/317.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pic/318.png" beforeDir="false" afterPath="$PROJECT_DIR$/pic/318.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pic/319.png" beforeDir="false" afterPath="$PROJECT_DIR$/pic/319.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pic/320.png" beforeDir="false" afterPath="$PROJECT_DIR$/pic/320.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pic/321.png" beforeDir="false" afterPath="$PROJECT_DIR$/pic/321.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pic/322.png" beforeDir="false" afterPath="$PROJECT_DIR$/pic/322.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pic/323.png" beforeDir="false" afterPath="$PROJECT_DIR$/pic/323.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pic/324.png" beforeDir="false" afterPath="$PROJECT_DIR$/pic/324.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pic/325.png" beforeDir="false" afterPath="$PROJECT_DIR$/pic/325.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pic/326.png" beforeDir="false" afterPath="$PROJECT_DIR$/pic/326.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pic/327.png" beforeDir="false" afterPath="$PROJECT_DIR$/pic/327.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pic/328.png" beforeDir="false" afterPath="$PROJECT_DIR$/pic/328.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pic/329.png" beforeDir="false" afterPath="$PROJECT_DIR$/pic/329.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pic/330.png" beforeDir="false" afterPath="$PROJECT_DIR$/pic/330.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pic/331.png" beforeDir="false" afterPath="$PROJECT_DIR$/pic/331.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pic/332.png" beforeDir="false" afterPath="$PROJECT_DIR$/pic/332.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pic/333.png" beforeDir="false" afterPath="$PROJECT_DIR$/pic/333.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pic/334.png" beforeDir="false" afterPath="$PROJECT_DIR$/pic/334.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pic/335.png" beforeDir="false" afterPath="$PROJECT_DIR$/pic/335.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pic/336.png" beforeDir="false" afterPath="$PROJECT_DIR$/pic/336.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pic/337.png" beforeDir="false" afterPath="$PROJECT_DIR$/pic/337.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pic/338.png" beforeDir="false" afterPath="$PROJECT_DIR$/pic/338.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pic/339.png" beforeDir="false" afterPath="$PROJECT_DIR$/pic/339.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pic/340.png" beforeDir="false" afterPath="$PROJECT_DIR$/pic/340.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pic/341.png" beforeDir="false" afterPath="$PROJECT_DIR$/pic/341.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pic/342.png" beforeDir="false" afterPath="$PROJECT_DIR$/pic/342.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pic/343.png" beforeDir="false" afterPath="$PROJECT_DIR$/pic/343.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pic/344.png" beforeDir="false" afterPath="$PROJECT_DIR$/pic/344.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pic/345.png" beforeDir="false" afterPath="$PROJECT_DIR$/pic/345.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pic/346.png" beforeDir="false" afterPath="$PROJECT_DIR$/pic/346.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pic/347.png" beforeDir="false" afterPath="$PROJECT_DIR$/pic/347.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pic/348.png" beforeDir="false" afterPath="$PROJECT_DIR$/pic/348.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pic/349.png" beforeDir="false" afterPath="$PROJECT_DIR$/pic/349.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pic/350.png" beforeDir="false" afterPath="$PROJECT_DIR$/pic/350.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pic/351.png" beforeDir="false" afterPath="$PROJECT_DIR$/pic/351.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pic/352.png" beforeDir="false" afterPath="$PROJECT_DIR$/pic/352.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pic/353.png" beforeDir="false" afterPath="$PROJECT_DIR$/pic/353.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pic/354.png" beforeDir="false" afterPath="$PROJECT_DIR$/pic/354.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pic/355.png" beforeDir="false" afterPath="$PROJECT_DIR$/pic/355.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pic/356.png" beforeDir="false" afterPath="$PROJECT_DIR$/pic/356.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pic/357.png" beforeDir="false" afterPath="$PROJECT_DIR$/pic/357.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pic/358.png" beforeDir="false" afterPath="$PROJECT_DIR$/pic/358.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pic/359.png" beforeDir="false" afterPath="$PROJECT_DIR$/pic/359.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pic/360.png" beforeDir="false" afterPath="$PROJECT_DIR$/pic/360.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pic/361.png" beforeDir="false" afterPath="$PROJECT_DIR$/pic/361.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pic/362.png" beforeDir="false" afterPath="$PROJECT_DIR$/pic/362.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pic/363.png" beforeDir="false" afterPath="$PROJECT_DIR$/pic/363.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pic/364.png" beforeDir="false" afterPath="$PROJECT_DIR$/pic/364.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pic/365.png" beforeDir="false" afterPath="$PROJECT_DIR$/pic/365.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pic/366.png" beforeDir="false" afterPath="$PROJECT_DIR$/pic/366.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pic/367.png" beforeDir="false" afterPath="$PROJECT_DIR$/pic/367.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pic/368.png" beforeDir="false" afterPath="$PROJECT_DIR$/pic/368.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pic/369.png" beforeDir="false" afterPath="$PROJECT_DIR$/pic/369.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pic/370.png" beforeDir="false" afterPath="$PROJECT_DIR$/pic/370.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pic/371.png" beforeDir="false" afterPath="$PROJECT_DIR$/pic/371.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pic/372.png" beforeDir="false" afterPath="$PROJECT_DIR$/pic/372.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pic/373.png" beforeDir="false" afterPath="$PROJECT_DIR$/pic/373.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pic/374.png" beforeDir="false" afterPath="$PROJECT_DIR$/pic/374.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pic/375.png" beforeDir="false" afterPath="$PROJECT_DIR$/pic/375.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pic/376.png" beforeDir="false" afterPath="$PROJECT_DIR$/pic/376.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pic/377.png" beforeDir="false" afterPath="$PROJECT_DIR$/pic/377.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pic/378.png" beforeDir="false" afterPath="$PROJECT_DIR$/pic/378.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pic/379.png" beforeDir="false" afterPath="$PROJECT_DIR$/pic/379.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pic/380.png" beforeDir="false" afterPath="$PROJECT_DIR$/pic/380.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pic/381.png" beforeDir="false" afterPath="$PROJECT_DIR$/pic/381.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pic/382.png" beforeDir="false" afterPath="$PROJECT_DIR$/pic/382.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pic/383.png" beforeDir="false" afterPath="$PROJECT_DIR$/pic/383.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pic/384.png" beforeDir="false" afterPath="$PROJECT_DIR$/pic/384.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pic/385.png" beforeDir="false" afterPath="$PROJECT_DIR$/pic/385.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pic/386.png" beforeDir="false" afterPath="$PROJECT_DIR$/pic/386.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pic/387.png" beforeDir="false" afterPath="$PROJECT_DIR$/pic/387.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pic/388.png" beforeDir="false" afterPath="$PROJECT_DIR$/pic/388.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pic/389.png" beforeDir="false" afterPath="$PROJECT_DIR$/pic/389.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pic/390.png" beforeDir="false" afterPath="$PROJECT_DIR$/pic/390.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pic/391.png" beforeDir="false" afterPath="$PROJECT_DIR$/pic/391.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pic/392.png" beforeDir="false" afterPath="$PROJECT_DIR$/pic/392.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pic/393.png" beforeDir="false" afterPath="$PROJECT_DIR$/pic/393.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pic/394.png" beforeDir="false" afterPath="$PROJECT_DIR$/pic/394.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pic/395.png" beforeDir="false" afterPath="$PROJECT_DIR$/pic/395.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pic/396.png" beforeDir="false" afterPath="$PROJECT_DIR$/pic/396.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pic/397.png" beforeDir="false" afterPath="$PROJECT_DIR$/pic/397.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pic/398.png" beforeDir="false" afterPath="$PROJECT_DIR$/pic/398.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pic/399.png" beforeDir="false" afterPath="$PROJECT_DIR$/pic/399.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pic/400.png" beforeDir="false" afterPath="$PROJECT_DIR$/pic/400.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pic/401.png" beforeDir="false" afterPath="$PROJECT_DIR$/pic/401.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pic/402.png" beforeDir="false" afterPath="$PROJECT_DIR$/pic/402.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pic/403.png" beforeDir="false" afterPath="$PROJECT_DIR$/pic/403.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pic/404.png" beforeDir="false" afterPath="$PROJECT_DIR$/pic/404.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pic/405.png" beforeDir="false" afterPath="$PROJECT_DIR$/pic/405.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pic/406.png" beforeDir="false" afterPath="$PROJECT_DIR$/pic/406.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pic/407.png" beforeDir="false" afterPath="$PROJECT_DIR$/pic/407.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pic/408.png" beforeDir="false" afterPath="$PROJECT_DIR$/pic/408.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pic/409.png" beforeDir="false" afterPath="$PROJECT_DIR$/pic/409.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pic/410.png" beforeDir="false" afterPath="$PROJECT_DIR$/pic/410.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pic/411.png" beforeDir="false" afterPath="$PROJECT_DIR$/pic/411.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pic/412.png" beforeDir="false" afterPath="$PROJECT_DIR$/pic/412.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pic/413.png" beforeDir="false" afterPath="$PROJECT_DIR$/pic/413.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pic/414.png" beforeDir="false" afterPath="$PROJECT_DIR$/pic/414.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pic/415.png" beforeDir="false" afterPath="$PROJECT_DIR$/pic/415.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pic/416.png" beforeDir="false" afterPath="$PROJECT_DIR$/pic/416.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pic/417.png" beforeDir="false" afterPath="$PROJECT_DIR$/pic/417.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pic/418.png" beforeDir="false" afterPath="$PROJECT_DIR$/pic/418.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pic/419.png" beforeDir="false" afterPath="$PROJECT_DIR$/pic/419.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pic/420.png" beforeDir="false" afterPath="$PROJECT_DIR$/pic/420.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pic/421.png" beforeDir="false" afterPath="$PROJECT_DIR$/pic/421.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pic/422.png" beforeDir="false" afterPath="$PROJECT_DIR$/pic/422.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pic/423.png" beforeDir="false" afterPath="$PROJECT_DIR$/pic/423.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pic/424.png" beforeDir="false" afterPath="$PROJECT_DIR$/pic/424.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pic/425.png" beforeDir="false" afterPath="$PROJECT_DIR$/pic/425.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pic/426.png" beforeDir="false" afterPath="$PROJECT_DIR$/pic/426.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pic/427.png" beforeDir="false" afterPath="$PROJECT_DIR$/pic/427.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/yanzhengma.png" beforeDir="false" afterPath="$PROJECT_DIR$/yanzhengma.png" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -47,7 +174,7 @@
     <SUITE FILE_PATH="coverage/BestAssistant$test1__1_.coverage" NAME="test1 (1) Coverage Results" MODIFIED="1520298346949" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="F:/COMPRESS" />
     <SUITE FILE_PATH="coverage/hupai$test__1_.coverage" NAME="test (1) Coverage Results" MODIFIED="1525184244688" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/test" />
     <SUITE FILE_PATH="coverage/hupai$OperationFrame.coverage" NAME="OperationFrame Coverage Results" MODIFIED="1524790866224" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/component" />
-    <SUITE FILE_PATH="coverage/hupai$Newlife3_0.coverage" NAME="Newlife3.0 Coverage Results" MODIFIED="1525833897147" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/hupai$Newlife3_0.coverage" NAME="Newlife3.0 Coverage Results" MODIFIED="1525834787715" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/hupai$Newlife1_1.coverage" NAME="Newlife1.1 Coverage Results" MODIFIED="1523157815668" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/BestAssistant$Newlife1_1.coverage" NAME="Newlife1.1 Coverage Results" MODIFIED="1520845107285" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/hupai$imgcut.coverage" NAME="imgcut Coverage Results" MODIFIED="1522155061233" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/component" />
@@ -100,11 +227,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="staticmethod.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="staticmethod.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/component/staticmethod.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="184">
-              <caret line="515" column="18" selection-start-line="515" selection-start-column="18" selection-end-line="515" selection-end-column="18" />
+            <state relative-caret-position="140">
+              <caret line="558" selection-start-line="558" selection-end-line="558" />
               <folding>
                 <element signature="e#73#88#0" expanded="true" />
               </folding>
@@ -112,11 +239,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="app_thread.py" pinned="false" current-in-tab="false">
+      <file leaf-file-name="app_thread.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/component/app_thread.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="518">
-              <caret line="922" column="16" selection-start-line="922" selection-start-column="16" selection-end-line="922" selection-end-column="16" />
+            <state relative-caret-position="142">
+              <caret line="111" selection-start-line="111" selection-end-line="123" />
               <folding>
                 <element signature="e#74#83#0" expanded="true" />
               </folding>
@@ -139,8 +266,8 @@
       <file leaf-file-name="imgcut.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/component/imgcut.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="76">
-              <caret line="425" column="40" selection-start-line="425" selection-start-column="40" selection-end-line="425" selection-end-column="40" />
+            <state relative-caret-position="283">
+              <caret line="298" column="62" selection-start-line="298" selection-start-column="41" selection-end-line="298" selection-end-column="62" />
               <folding>
                 <element signature="e#74#106#0" expanded="true" />
               </folding>
@@ -163,8 +290,8 @@
       <file leaf-file-name="variable.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/component/variable.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="468">
-              <caret line="553" selection-start-line="553" selection-end-line="553" />
+            <state relative-caret-position="234">
+              <caret line="539" column="22" selection-start-line="539" selection-start-column="22" selection-end-line="539" selection-end-column="22" />
               <folding>
                 <element signature="e#133#152#0" expanded="true" />
               </folding>
@@ -183,8 +310,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>tijiao_num</find>
-      <find>init_stra</find>
       <find>one</find>
       <find>init_str</find>
       <find>time</find>
@@ -213,6 +338,8 @@
       <find>timer</find>
       <find>timeth</find>
       <find>Tijiao</find>
+      <find>confirmth</find>
+      <find>imgpos_yanzhengmaconfirm</find>
     </findStrings>
     <replaceStrings>
       <replace>self</replace>
@@ -280,10 +407,10 @@
         <option value="$PROJECT_DIR$/component/imgcut.py" />
         <option value="$PROJECT_DIR$/component/TopFrame.py" />
         <option value="$PROJECT_DIR$/component/OperationFrame.py" />
-        <option value="$PROJECT_DIR$/component/variable.py" />
-        <option value="$PROJECT_DIR$/component/app_thread.py" />
         <option value="$PROJECT_DIR$/component/webframe.py" />
         <option value="$PROJECT_DIR$/component/staticmethod.py" />
+        <option value="$PROJECT_DIR$/component/variable.py" />
+        <option value="$PROJECT_DIR$/component/app_thread.py" />
       </list>
     </option>
   </component>
@@ -294,7 +421,7 @@
     <sorting>DEFINITION_ORDER</sorting>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="272" />
+    <option name="x" value="386" />
     <option name="width" value="1024" />
     <option name="height" value="728" />
   </component>
@@ -320,7 +447,7 @@
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="SearchEverywhereHistoryKey" value="web&#9;FILE&#9;file://E:/hupai/component/webframe.py&#10;login&#9;FILE&#9;file://E:/hupai/component/LoginFrame.py&#10;app&#9;FILE&#9;file://E:/hupai/component/app_thread.py&#10;va&#9;FILE&#9;file://E:/hupai/component/variable.py&#10;myl&#9;FILE&#9;file://E:/hupai/mylog.log&#10;mylo&#9;FILE&#9;file://E:/hupai/mylog.log&#10;sta&#9;RUN_CONFIGURATION&#9;staticmethod&#10;app_&#9;FILE&#9;file://E:/hupai/component/app_thread.py&#10;oper&#9;FILE&#9;file://E:/hupai/component/OperationFrame.py&#10;tijiao&#9;null&#9;null&#10;timethr&#9;null&#9;null&#10;Login&#9;FILE&#9;file://E:/hupai/component/LoginFrame.py&#10;New&#9;FILE&#9;file://E:/hupai/Newlife3.0.py&#10;Sta&#9;FILE&#9;file://E:/hupai/component/staticmethod.py&#10;mylog&#9;FILE&#9;file://E:/hupai/mylog.log&#10;cut&#9;FILE&#9;file://E:/hupai/component/imgcut.py&#10;topfr&#9;FILE&#9;file://E:/hupai/component/TopFrame.py&#10;Top&#9;FILE&#9;file://E:/hupai/component/TopFrame.py&#10;nEW&#9;FILE&#9;file://E:/hupai/Newlife3.0.py&#10;imgcut&#9;FILE&#9;file://E:/hupai/component/imgcut.py&#10;topfram&#9;FILE&#9;file://E:/hupai/component/TopFrame.py&#10;timeth&#9;null&#9;null&#10;a&#9;FILE&#9;file://E:/hupai/component/variable.py&#10;findpo&#9;null&#9;null&#10;imgc&#9;FILE&#9;file://E:/hupai/imgcut.py&#10;app_t&#9;FILE&#9;file://E:/hupai/component/app_thread.py&#10;findpos&#9;null&#9;null&#10;top&#9;FILE&#9;file://E:/hupai/component/TopFrame.py&#10;stati&#9;FILE&#9;file://E:/hupai/component/staticmethod.py&#10;webf&#9;FILE&#9;file://E:/OUTPUT/component/webframe.py&#10;ap&#9;FILE&#9;file://E:/hupai/component/app_thread.py&#10;webframe&#9;FILE&#9;file://E:/hupai/component/webframe.py&#10;hasht&#9;null&#9;null&#10;hash&#9;null&#9;null&#10;*.log&#9;FILE&#9;file://E:/hupai/mylog.log&#10;loginfr&#9;FILE&#9;file://E:/hupai/component/LoginFrame.py&#10;login.py&#9;FILE&#9;file://E:/hupai/component/login.py&#10;findp&#9;null&#9;null&#10;stat&#9;FILE&#9;file://E:/hupai/component/staticmethod.py&#10;webfr&#9;FILE&#9;file://E:/hupai/component/webframe.py&#10;test&#9;FILE&#9;file://E:/hupai/test/test.py&#10;img&#9;FILE&#9;file://E:/hupai/component/imgcut.py&#10;topfra&#9;FILE&#9;file://E:/hupai/component/TopFrame.py&#10;topf&#9;FILE&#9;file://E:/hupai/component/TopFrame.py&#10;loginf&#9;FILE&#9;file://E:/hupai/component/LoginFrame.py&#10;web_requ&#9;null&#9;null&#10;webfra&#9;FILE&#9;file://E:/hupai/component/webframe.py&#10;tofra&#9;FILE&#9;file://E:/hupai/component/TopFrame.py&#10;operation&#9;FILE&#9;file://E:/hupai/component/OperationFrame.py&#10;yan&#9;FILE&#9;file://E:/hupai/component/YanzhengmaFrame.py" />
+    <property name="SearchEverywhereHistoryKey" value="va&#9;FILE&#9;file://E:/hupai/component/variable.py&#10;web&#9;FILE&#9;file://E:/hupai/component/webframe.py&#10;login&#9;FILE&#9;file://E:/hupai/component/LoginFrame.py&#10;app&#9;FILE&#9;file://E:/hupai/component/app_thread.py&#10;myl&#9;FILE&#9;file://E:/hupai/mylog.log&#10;mylo&#9;FILE&#9;file://E:/hupai/mylog.log&#10;sta&#9;RUN_CONFIGURATION&#9;staticmethod&#10;app_&#9;FILE&#9;file://E:/hupai/component/app_thread.py&#10;oper&#9;FILE&#9;file://E:/hupai/component/OperationFrame.py&#10;tijiao&#9;null&#9;null&#10;timethr&#9;null&#9;null&#10;Login&#9;FILE&#9;file://E:/hupai/component/LoginFrame.py&#10;New&#9;FILE&#9;file://E:/hupai/Newlife3.0.py&#10;Sta&#9;FILE&#9;file://E:/hupai/component/staticmethod.py&#10;mylog&#9;FILE&#9;file://E:/hupai/mylog.log&#10;cut&#9;FILE&#9;file://E:/hupai/component/imgcut.py&#10;topfr&#9;FILE&#9;file://E:/hupai/component/TopFrame.py&#10;Top&#9;FILE&#9;file://E:/hupai/component/TopFrame.py&#10;nEW&#9;FILE&#9;file://E:/hupai/Newlife3.0.py&#10;imgcut&#9;FILE&#9;file://E:/hupai/component/imgcut.py&#10;topfram&#9;FILE&#9;file://E:/hupai/component/TopFrame.py&#10;timeth&#9;null&#9;null&#10;a&#9;FILE&#9;file://E:/hupai/component/variable.py&#10;findpo&#9;null&#9;null&#10;imgc&#9;FILE&#9;file://E:/hupai/imgcut.py&#10;app_t&#9;FILE&#9;file://E:/hupai/component/app_thread.py&#10;findpos&#9;null&#9;null&#10;top&#9;FILE&#9;file://E:/hupai/component/TopFrame.py&#10;stati&#9;FILE&#9;file://E:/hupai/component/staticmethod.py&#10;webf&#9;FILE&#9;file://E:/OUTPUT/component/webframe.py&#10;ap&#9;FILE&#9;file://E:/hupai/component/app_thread.py&#10;webframe&#9;FILE&#9;file://E:/hupai/component/webframe.py&#10;hasht&#9;null&#9;null&#10;hash&#9;null&#9;null&#10;*.log&#9;FILE&#9;file://E:/hupai/mylog.log&#10;loginfr&#9;FILE&#9;file://E:/hupai/component/LoginFrame.py&#10;login.py&#9;FILE&#9;file://E:/hupai/component/login.py&#10;findp&#9;null&#9;null&#10;stat&#9;FILE&#9;file://E:/hupai/component/staticmethod.py&#10;webfr&#9;FILE&#9;file://E:/hupai/component/webframe.py&#10;test&#9;FILE&#9;file://E:/hupai/test/test.py&#10;img&#9;FILE&#9;file://E:/hupai/component/imgcut.py&#10;topfra&#9;FILE&#9;file://E:/hupai/component/TopFrame.py&#10;topf&#9;FILE&#9;file://E:/hupai/component/TopFrame.py&#10;loginf&#9;FILE&#9;file://E:/hupai/component/LoginFrame.py&#10;web_requ&#9;null&#9;null&#10;webfra&#9;FILE&#9;file://E:/hupai/component/webframe.py&#10;tofra&#9;FILE&#9;file://E:/hupai/component/TopFrame.py&#10;operation&#9;FILE&#9;file://E:/hupai/component/OperationFrame.py&#10;yan&#9;FILE&#9;file://E:/hupai/component/YanzhengmaFrame.py" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="last_opened_file_path" value="E:/hupai-5-5" />
     <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
@@ -881,32 +1008,12 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/component/imgcut.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="76">
-          <caret line="425" column="40" selection-start-line="425" selection-start-column="40" selection-end-line="425" selection-end-column="40" />
-          <folding>
-            <element signature="e#74#106#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/component/OperationFrame.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1654">
           <caret line="635" column="39" selection-start-line="635" selection-start-column="39" selection-end-line="635" selection-end-column="39" />
           <folding>
             <element signature="e#74#106#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/component/variable.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="468">
-          <caret line="553" selection-start-line="553" selection-end-line="553" />
-          <folding>
-            <element signature="e#133#152#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -941,22 +1048,42 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/component/app_thread.py">
+    <entry file="file://$PROJECT_DIR$/component/staticmethod.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="518">
-          <caret line="922" column="16" selection-start-line="922" selection-start-column="16" selection-end-line="922" selection-end-column="16" />
+        <state relative-caret-position="140">
+          <caret line="558" selection-start-line="558" selection-end-line="558" />
           <folding>
-            <element signature="e#74#83#0" expanded="true" />
+            <element signature="e#73#88#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/component/staticmethod.py">
+    <entry file="file://$PROJECT_DIR$/component/imgcut.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="184">
-          <caret line="515" column="18" selection-start-line="515" selection-start-column="18" selection-end-line="515" selection-end-column="18" />
+        <state relative-caret-position="283">
+          <caret line="298" column="62" selection-start-line="298" selection-start-column="41" selection-end-line="298" selection-end-column="62" />
           <folding>
-            <element signature="e#73#88#0" expanded="true" />
+            <element signature="e#74#106#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/component/variable.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="234">
+          <caret line="539" column="22" selection-start-line="539" selection-start-column="22" selection-end-line="539" selection-end-column="22" />
+          <folding>
+            <element signature="e#133#152#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/component/app_thread.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="142">
+          <caret line="111" selection-start-line="111" selection-end-line="123" />
+          <folding>
+            <element signature="e#74#83#0" expanded="true" />
           </folding>
         </state>
       </provider>

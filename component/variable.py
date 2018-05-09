@@ -541,8 +541,8 @@ def remote_init():
     set_val('Position_frame', [[0, 0] for i in range(len(P_relative2))])
     ## 限定截图位置
     set_val('refresh_area_relative', [396 - 150, 11 - 100, 396 + 150, 11 + 100])
-    set_val('confirm_area_relative', [505 - 80, 68 - 50, 505 + 80, 68 + 50])
-    set_val('yan_confirm_area_relative', [205 - 80, 68 - 50, 405 + 80, 68 + 50])
+    set_val('confirm_area_relative', [505 - 60, 68 - 40, 505 + 60, 68 + 40])
+    set_val('yan_confirm_area_relative', [205 - 60, 68 - 40, 405 + 60, 68 + 40])
     set_val('Pos_controlframe_relative', [192 - 344, 514 - 183])
     set_val('Pos_yanzhengma_relative', [-277, - 65, - 97, + 45])  # 验证码所在位置
     set_val('Pos_yanzhengmaframe_relative', [297, - 283])  # 验证码框放置位置
