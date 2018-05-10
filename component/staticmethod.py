@@ -224,6 +224,7 @@ def Smart_chujia():
         # wx.CallAfter(self.call, 1, ‘abc’, name=”ccc”, help=”test”)
         # wx.FutureCall(5000, self.call, ‘call after 100ms’, name=”test”)
     else:
+        print("国拍智能出价")
         guopai_chujia(price)
 
 def esc_chujia():
@@ -311,6 +312,8 @@ def guopai_chujia(price):
     set_val('yanzhengma_count', 0)  # 计数器，制造延迟
     set_val('yanzhengma_view', True)  # 打开验证码放大器
     set_val('refresh_need', True)  # 激活刷新验证码
+
+    set_val('smartprice_chujia', True)  ##再次打开确认查找
 
 
 ##如果一直处理提交状态和查找验证码阶段，取消后重新出价

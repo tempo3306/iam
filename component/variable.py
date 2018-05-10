@@ -279,7 +279,7 @@ def init_strategy():
     tijiao_choices = [u"提前100", u"提前200", u"提前300", u"踩点"]
     set_val('tijiao_choices', tijiao_choices)
 
-    set_val('mainicon', 'ico.ico')
+    set_val('mainicon', 'logo.ico')
     set_val('view', False)  # 定位显示
     set_val('hotkey_on', False)  # 开启辅助
     set_val('ad_view', False)  # 显示广告

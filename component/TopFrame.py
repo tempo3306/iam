@@ -97,12 +97,12 @@ class TopFrame(wx.Frame):
         self.statusbar.SetStatusText(u"软件作者：ZS ", 2)
 
     def create_thread(self):
-        self.confirmthread = confirmThread()  # 确认线程
-        self.refreshthread = refreshThread()  # 刷新线程
+        # self.confirmthread = confirmThread()  # 确认线程
+        # self.refreshthread = refreshThread()  # 刷新线程
+        # self.lowestThread = LowestpfriceThread()  # 价格识别
         self.finposthread = findposThread()  # 定位线程
         self.cutimgthread = cutimgThread()  # 截图线程
         self.tijiaoThread = TijiaoThread()  # 提交
-        self.lowestThread = LowestpfriceThread()  # 价格识别
         # 创建网速测试线程  通过这个线程控制启动或关闭
         self.pinger = pingerThread()
         self.timethread = TimeThread()  # 创建时间进程
@@ -141,6 +141,9 @@ class TopFrame(wx.Frame):
         set_val('current_pricestatus_label', '等待智能提交')
         current_pricestatus = '智能补枪'
         set_val('current_pricestatus', current_pricestatus)
+
+        set_val('smartprice_chujia', True)  ##再次打开确认查找
+
 
     def moni_chujia(self, price):
         Position_frame = get_val('Position_frame')
@@ -442,12 +445,12 @@ class TopFrame(wx.Frame):
             ret = wx.MessageBox('真的要退出助手吗?', '确认', wx.OK | wx.CANCEL)
             if ret == wx.OK:
                 try:
-                    self.confirmthread.stop()
-                    self.refreshthread.stop()
+                    # self.confirmthread.stop()
+                    # self.refreshthread.stop()
                     self.finposthread.stop()
                     self.cutimgthread.stop()
                     self.tijiaoThread.stop()
-                    self.lowestThread.stop()
+                    # self.lowestThread.stop()
                     self.pinger.stop()
                     Hotkey_close()  ##关闭热键
                 except:

@@ -80,7 +80,7 @@ if __name__ == '__main__':
     allpath = os.path.abspath(os.path.realpath(sys.argv[0]))
     path = os.path.split(allpath)[0] + '\\'  # 分割
     set_val('path', path)
-    iconpath = path + 'ico.ico'  # 图标路径
+    iconpath = path + 'logo.ico'  # 图标路径
     set_val('mainicon', iconpath)
     app = SketchApp()
     ## 打开刷新与确认进程

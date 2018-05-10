@@ -179,13 +179,65 @@ class cutimgThread(Thread):
     def run(self):
         while self.__running.isSet():
             self.__flag.wait()  # 为True时立即返回, 为False时阻塞直到内部的标识位为True后返回
-            time.sleep(0.04)
-            # cut_img()
+            time.sleep(0.05)
             try:
+###################截图
+                a = time.time()
                 cut_img()
+##################查找确认
+                tijiao_num = get_val('tijiao_num')
+                twice = get_val('twice')
+                # print('tijiao_num', tijiao_num)
+                smartprice_chujia = get_val('smartprice_chujia')
+                if tijiao_num == 2 and twice:
+                    try:
+                        findconfirm()
+                    except:
+                        logger.error("查找确认出错")
+                        logger.exception('this is an exception message')
+                elif smartprice_chujia:
+                    try:
+                        findconfirm()
+                    except:
+                        logger.error("智能补枪失败")
+                        logger.exception('this is an exception message')
+###################查找刷新
+                try:
+                    findrefresh()
+                except:
+                    logger.error("刷新失败")
+                    logger.exception('this is an exception message')
+###################lowestprice
+                lowest_price = get_val('lowest_price')
+                pricelist = get_val('pricelist')
+                a_time = get_val('a_time')
+                try:
+                    price = int(Price_read())  # 获取当前最低价
+                    if price in pricelist:  # 字典查找
+                        set_val('findpos_on', False)
+                        if lowest_price == price:
+                            trans_time()  # 保存价格
+                        else:
+                            set_val('lowest_price', price)
+                            trans_time()  # 保存价格
+
+                            set_val('changetime', a_time)
+                    else:
+                        set_val('findpos_on', True)
+
+                except:
+                    set_val('findpos_on', True)
+                    logger.error("识别价格失败")
+                    logger.exception('this is an exception message')
+                b = time.time()
+                print('b-a', b - a)
             except:
                 logger.error("截图失败")
                 logger.exception('this is an exception message')
+###########
+
+
+
 
     def pause(self):
         self.__flag.clear()  # 设置为False, 让线程阻塞
@@ -862,11 +914,9 @@ class LowestpfriceThread(Thread):
     def run(self):
         for i in range(10000000):
             time.sleep(0.035)
-            a = time.time()
             lowest_price = get_val('lowest_price')
             pricelist = get_val('pricelist')
             a_time = get_val('a_time')
-            moni_on = get_val('moni_on')
             try:
                 price = int(Price_read())  # 获取当前最低价
                 if price in pricelist:  # 字典查找
@@ -883,7 +933,6 @@ class LowestpfriceThread(Thread):
             except:
                 set_val('findpos_on', True)
 
-            c = time.time()
 
     def pause(self):
         self.__flag.clear()  # 设置为False, 让线程阻塞
@@ -931,5 +980,5 @@ class Start_thread(Thread):
         set_val('version', version)
         ###获取路径+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-
         path = get_val('path')
-        iconpath = path + 'ico.ico'  # 图标路径
+        iconpath = path + 'logo.ico'  # 图标路径
         set_val('mainicon', iconpath)

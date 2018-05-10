@@ -87,13 +87,13 @@ class Identify_codePanel(wx.Panel):
         wx.Panel.__init__(self, parent, -1)
         # 主sizer
         self.code_sizer_v1 = wx.BoxSizer(wx.VERTICAL)
-        self.code_welcomelabel = wx.StaticText(self, -1, label="沪牌一号", style=wx.ALIGN_CENTER)
-        self.code_sizer_v1.Add(self.code_welcomelabel, flag=wx.ALIGN_LEFT | wx.LEFT | wx.TOP, border=15)
-
-        self.code_userbox = wx.BoxSizer(wx.HORIZONTAL)
         ##登录图标
         self.code_bmp_account = wx.StaticBitmap(self, -1)
-        # self.bmp_account.SetBitmap(wx.Bitmap('login.png'))
+        self.code_bmp_account.SetBitmap(wx.Bitmap('login.png'))
+        self.code_sizer_v1.Add(self.code_bmp_account, flag=wx.ALIGN_CENTER_HORIZONTAL | wx.TOP, border=15)
+
+        self.code_userbox = wx.BoxSizer(wx.HORIZONTAL)
+
         self.code_userlabel = wx.StaticText(self, -1, label="激活码")
         self.code_userText = wx.TextCtrl(self, -1, size=(139, -1),
                                          style=wx.TE_CENTER | wx.TE_PROCESS_ENTER)
@@ -163,7 +163,7 @@ class Identify_codePanel(wx.Panel):
 
 class LoginFrame(wx.Frame):
     def __init__(self, name, code):  ##########版本号
-        mainicon = 'ico.ico'
+        mainicon = 'logo.ico'
         wx.Frame.__init__(self, None, -1, name, size=(300, 240), style=wx.CAPTION | wx.CLOSE_BOX)
         id = self.GetId()
         set_val('loginframe', id)

@@ -70,7 +70,7 @@ if __name__ == '__main__':
     set_val('version', version)
     ###获取路径+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-
     path = get_val('path')
-    iconpath = path + 'ico.ico'  # 图标路径
+    iconpath = path + 'logo.ico'  # 图标路径
     set_val('mainicon', iconpath)
     app = SketchApp()
     ## 打开刷新与确认进程

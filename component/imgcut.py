@@ -279,7 +279,6 @@ def findpos():
         logger.info("px_lowestprice: {0}".format(max_loc[0] + px_relative - Px))
         logger.info("py_lowestprice: {0}".format(max_loc[1] + py_relative - Py))
 
-
         px_lowestprice = get_val('px_lowestprice')
         py_lowestprice = get_val('py_lowestprice')
         set_val('Px_lowestprice', px_lowestprice)
@@ -441,9 +440,9 @@ def findconfirm():
         if not smartprice_chujia:
             OnClick_confirm()
         else:
+            print("max_val", max_val)
+            set_val('smartprice_chujia', False)
             Smart_chujia()
-
-
 
 
 def find_yan_confirm():
@@ -463,12 +462,12 @@ def find_yan_confirm():
 def Price_read():
     imgpos_lowestprice = get_val('imgpos_lowestprice')
 
-    avt = get_val('avt')
-    avt += 1
-    if avt == 500 or avt == 501:
-        avt = 0
-    set_val('avt', avt)
-    cv2.imwrite(r'./pic/%s.png' % avt, imgpos_lowestprice)
+    # avt = get_val('avt')
+    # avt += 1
+    # if avt == 500 or avt == 501:
+    #     avt = 0
+    # set_val('avt', avt)
+    # cv2.imwrite(r'./pic/%s.png' % avt, imgpos_lowestprice)
 
     lowest_price_img = cv2.cvtColor(imgpos_lowestprice, cv2.COLOR_BGR2GRAY)
     price = readpic(lowest_price_img, 'maindata.xml')
