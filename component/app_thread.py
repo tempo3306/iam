@@ -24,7 +24,6 @@ logger = logging.getLogger()
 
 ##初始化打开PNG
 import sys
-from PIL import ImageGrab
 
 allpath = os.path.abspath(os.path.realpath(sys.argv[0]))
 path = os.path.split(allpath)[0] + '\\'  # 分割
@@ -971,8 +970,8 @@ class Start_thread(Thread):
 
         ## getwebpath()  # 初始化浏览器地址
         # 图片打开提速
-        yanzhengma_img = Image.open("yanzhengma.png")  # 打开图片的全局变量 ,提升第一次打开的速度
-        set_val('yanzhengma_img', yanzhengma_img)
+        # yanzhengma_img = Image.open("yanzhengma.png")  # 打开图片的全局变量 ,提升第一次打开的速度
+        # set_val('yanzhengma_img', yanzhengma_img)
         # 变量初始化
         from component.variable import Create_hash, init_val
         Create_hash()

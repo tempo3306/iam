@@ -28,54 +28,52 @@ def cut_pic(img, size, name):
     cv2.imwrite(name, im)
 
 
-def new_screenshot(area):  # x,y  pos      w,h size
-    x, y = area[0], area[1]
-    w, h = area[2], area[3]
-    hwnd = win32gui.FindWindow(None, "win32")
-    wDC = win32gui.GetWindowDC(hwnd)
-    dcObj = win32ui.CreateDCFromHandle(wDC)
-    cDC = dcObj.CreateCompatibleDC()
-    dataBitMap = win32ui.CreateBitmap()
-
-    dataBitMap.CreateCompatibleBitmap(dcObj, x, y)
-    cDC.SelectObject(dataBitMap)
-    cDC.BitBlt((0, 0), (x, y), dcObj, (0, 0), win32con.SRCCOPY)
-    im = dataBitMap.GetBitmapBits(True)  # Tried False also
-    bmpinfo = dataBitMap.GetInfo()
-    img = Image.frombuffer(
-        'RGB',
-        (bmpinfo['bmWidth'], bmpinfo['bmHeight']),
-        im, 'raw', 'RGBX', 0, 1).convert('L')
-    dcObj.DeleteDC()
-    cDC.DeleteDC()
-    win32gui.ReleaseDC(hwnd, wDC)
-    win32gui.DeleteObject(dataBitMap.GetHandle())
-    return img
+# def new_screenshot(area):  # x,y  pos      w,h size
+#     x, y = area[0], area[1]
+#     w, h = area[2], area[3]
+#     hwnd = win32gui.FindWindow(None, "win32")
+#     wDC = win32gui.GetWindowDC(hwnd)
+#     dcObj = win32ui.CreateDCFromHandle(wDC)
+#     cDC = dcObj.CreateCompatibleDC()
+#     dataBitMap = win32ui.CreateBitmap()
+#     dataBitMap.CreateCompatibleBitmap(dcObj, x, y)
+#     cDC.SelectObject(dataBitMap)
+#     cDC.BitBlt((0, 0), (x, y), dcObj, (0, 0), win32con.SRCCOPY)
+#     im = dataBitMap.GetBitmapBits(True)  # Tried False also
+#     bmpinfo = dataBitMap.GetInfo()
+#     img = np.frombuffer(im, dtype='uint8')
+#     img.shape = (bmpinfo['bmWidth'], bmpinfo['bmHeight'], 4)
+#     dcObj.DeleteDC()
+#     cDC.DeleteDC()
+#     win32gui.ReleaseDC(hwnd, wDC)
+#     win32gui.DeleteObject(dataBitMap.GetHandle())
+#     img = cv2.cvtColor(img, cv2.COLOR_BGRA2BGR)
+#     return img
 
 
-def new_screenshot_getimg(area, size, name):
-    x, y = area[0], area[1]
-    w, h = area[2], area[3]
-    hwnd = win32gui.FindWindow(None, "win32")
-    wDC = win32gui.GetWindowDC(hwnd)
-    dcObj = win32ui.CreateDCFromHandle(wDC)
-    cDC = dcObj.CreateCompatibleDC()
-    dataBitMap = win32ui.CreateBitmap()
-    dataBitMap.CreateCompatibleBitmap(dcObj, w - x, h - y)
-    cDC.SelectObject(dataBitMap)
-    cDC.BitBlt((-x, -y), (w, h), dcObj, (0, 0), win32con.SRCCOPY)
-    im = dataBitMap.GetBitmapBits(True)  # Tried False also
-    bmpinfo = dataBitMap.GetInfo()
-    img = Image.frombuffer(
-        'RGB',
-        (bmpinfo['bmWidth'], bmpinfo['bmHeight']),
-        im, 'raw', 'RGBX', 0, 1)
-    img = np.array(img)
-    cut_pic(img, size, name)
-    dcObj.DeleteDC()
-    cDC.DeleteDC()
-    win32gui.ReleaseDC(hwnd, wDC)
-    win32gui.DeleteObject(dataBitMap.GetHandle())
+# def new_screenshot_getimg(area, size, name):
+#     x, y = area[0], area[1]
+#     w, h = area[2], area[3]
+#     hwnd = win32gui.FindWindow(None, "win32")
+#     wDC = win32gui.GetWindowDC(hwnd)
+#     dcObj = win32ui.CreateDCFromHandle(wDC)
+#     cDC = dcObj.CreateCompatibleDC()
+#     dataBitMap = win32ui.CreateBitmap()
+#     dataBitMap.CreateCompatibleBitmap(dcObj, w - x, h - y)
+#     cDC.SelectObject(dataBitMap)
+#     cDC.BitBlt((-x, -y), (w, h), dcObj, (0, 0), win32con.SRCCOPY)
+#     im = dataBitMap.GetBitmapBits(True)  # Tried False also
+#     bmpinfo = dataBitMap.GetInfo()
+#     img = Image.frombuffer(
+#         'RGB',
+#         (bmpinfo['bmWidth'], bmpinfo['bmHeight']),
+#         im, 'raw', 'RGBX', 0, 1)
+#     img = np.array(img)
+#     cut_pic(img, size, name)
+#     dcObj.DeleteDC()
+#     cDC.DeleteDC()
+#     win32gui.ReleaseDC(hwnd, wDC)
+#     win32gui.DeleteObject(dataBitMap.GetHandle())
 
 
 SZ = 20
@@ -361,7 +359,6 @@ def findpos():
                                    Position_frame[6][1] + Pos_yanzhengma_relative[3]])  # 验证码所在位置
         set_val('Pos_yanzhengmaframe', [Px_lowestprice + Pos_yanzhengmaframe_relative[0],
                                         Py_lowestprice + Pos_yanzhengmaframe_relative[1]])  # 验证码框放置位置
-
         set_val('Pos_timeframe', [245 - 344 + Px_lowestprice, 399 - 183 + Py_lowestprice])
 
         lowestprice_sizex = get_val('lowestprice_sizex')
@@ -409,15 +406,17 @@ def only_screenshot(area):  # x,y  pos      w,h size
     cDC.BitBlt((-x, -y), (w, h), dcObj, (0, 0), win32con.SRCCOPY)
     im = dataBitMap.GetBitmapBits(True)  # Tried False also
     bmpinfo = dataBitMap.GetInfo()
-    img = Image.frombuffer(
-        'RGB',
-        (bmpinfo['bmWidth'], bmpinfo['bmHeight']),
-        im, 'raw', 'RGBX', 0, 1)
+    img = np.frombuffer(im, dtype='uint8')
+    img.shape = (bmpinfo['bmHeight'], bmpinfo['bmWidth'], 4)
     dcObj.DeleteDC()
     cDC.DeleteDC()
     win32gui.ReleaseDC(hwnd, wDC)
     win32gui.DeleteObject(dataBitMap.GetHandle())
+    img = cv2.cvtColor(img, cv2.COLOR_BGRA2BGR)
+    cv2.imwrite('n.png', img)
     return img
+
+
 
 
 def cut_img():  # 将所得的img 处理成  lowestprice_img   confirm_img  yanzhengma_confirm_img  refresh_img
