@@ -3,14 +3,8 @@
 @contact: 810909753@q.com
 @time: 2018/1/22 14:34
 '''
-from PIL import Image, ImageGrab
-from component.timeFrame import TimeFrame, MoniTimeFrame  # 时间窗口
-from component.imgcut import cut_pic, find_yan_confirm
-import pickle
-import os
-from component.variable import set_val, get_val
-from component.imgcut import findpos, timeset
-from wx.lib.pubsub import pub
+
+from component.imgcut import findpos
 from component.staticmethod import *
 
 import logging

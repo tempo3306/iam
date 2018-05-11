@@ -142,7 +142,7 @@ def init_size():
     set_val('Py2', Pxy[1] / 2)
     set_val('Px', int((Pxy[0] - websize[0]) / 2))
     Px = get_val('Px')
-    set_val('Py', int((Pxy[1] - websize[1]) / 2))
+    set_val('Py', int((Pxy[1] - websize[1]) / 2) - 10)
     Py = get_val('Py')
     set_val('P_relative',
             [[343, -66], [346, 40], [96, 121], [92, 43], [201, 100], [281, 40], [261, 37], [282, 118]])  # 各按钮相对于WEB位置
@@ -442,13 +442,16 @@ def init_smart():
     set_val('smartprice_tijiao', False) ##智能出价 提交启动状态
 
 ##------------------------------------------------------------------------------------------
-###
-def init_pos():
-    Px = get_val('Px')
-    Py = get_val('Py')
+### 窗口左上角位置计算对应位置
+def init_pos(Px, Py):
+    '''
+    PxPy     109  26
+    px, py   262  474
+    '''
+
     Position_frame =  get_val('Position_frame')
     set_val('px_lowestprice', 153)
-    set_val('py_lowestprice', 448)
+    set_val('py_lowestprice', 458)
     px_lowestprice = get_val('px_lowestprice')
     py_lowestprice = get_val('py_lowestprice')
     set_val('Px_lowestprice', px_lowestprice + Px)
@@ -458,6 +461,7 @@ def init_pos():
     set_val('Px_currenttime', Px_lowestprice - 27)  # 参考最低成交价位置
     set_val('Py_currenttime', Py_lowestprice - 14)
     P_relative2 = get_val('P_relative2')
+
     for i in range(len(Position_frame)):
         Position_frame[i][0] = Px_lowestprice + P_relative2[i][0]
         Position_frame[i][1] = Py_lowestprice + P_relative2[i][1]
@@ -469,24 +473,27 @@ def init_pos():
     Pos_controlframe_relative = get_val('Pos_controlframe_relative')
     Pos_yanzhengma_relative = get_val('Pos_yanzhengma_relative')  # 验证码所在位置
     Pos_yanzhengmaframe_relative = get_val('Pos_yanzhengmaframe_relative')  # 验证码框放置位置
-    set_val('refresh_area', [refresh_area_relative[0] + Px_lowestprice, refresh_area_relative[1] + Py_lowestprice,
-                             refresh_area_relative[2] + Px_lowestprice, refresh_area_relative[3] + Py_lowestprice])
-    set_val('confirm_area', [confirm_area_relative[0] + Px_lowestprice, confirm_area_relative[1] + Py_lowestprice,
-                             confirm_area_relative[2] + Px_lowestprice, confirm_area_relative[3] + Py_lowestprice])
-    set_val('yan_confirm_area', [yan_confirm_area_relative[0] + Px_lowestprice,
+    set_val('refresh_area', (refresh_area_relative[0] + Px_lowestprice, refresh_area_relative[1] + Py_lowestprice,
+                             refresh_area_relative[2] + Px_lowestprice, refresh_area_relative[3] + Py_lowestprice))
+    set_val('confirm_area', (confirm_area_relative[0] + Px_lowestprice, confirm_area_relative[1] + Py_lowestprice,
+                             confirm_area_relative[2] + Px_lowestprice, confirm_area_relative[3] + Py_lowestprice))
+    set_val('yan_confirm_area', (yan_confirm_area_relative[0] + Px_lowestprice,
                                  yan_confirm_area_relative[1] + Py_lowestprice,
                                  yan_confirm_area_relative[2] + Px_lowestprice,
-                                 yan_confirm_area_relative[3] + Py_lowestprice])
-    set_val('Pos_controlframe', [Pos_controlframe_relative[0] + Px_lowestprice,
-                                 Pos_controlframe_relative[1] + Py_lowestprice])
-    set_val('Pos_yanzhengma', [Position_frame[6][0] + Pos_yanzhengma_relative[0],
+                                 yan_confirm_area_relative[3] + Py_lowestprice))
+    set_val('Pos_controlframe', (Pos_controlframe_relative[0] + Px_lowestprice,
+                                 Pos_controlframe_relative[1] + Py_lowestprice))
+    set_val('Pos_yanzhengma', (Position_frame[6][0] + Pos_yanzhengma_relative[0],
                                Position_frame[6][1] + Pos_yanzhengma_relative[1],
                                Position_frame[6][0] + Pos_yanzhengma_relative[2],
-                               Position_frame[6][1] + Pos_yanzhengma_relative[3]])  # 验证码所在位置
-    set_val('Pos_yanzhengmaframe', [Px_lowestprice + Pos_yanzhengmaframe_relative[0],
-                                    Py_lowestprice + Pos_yanzhengmaframe_relative[1]])  # 验证码框放置位置
+                               Position_frame[6][1] + Pos_yanzhengma_relative[3]))  # 验证码所在位置
+    set_val('Pos_yanzhengmaframe', (Px_lowestprice + Pos_yanzhengmaframe_relative[0],
+                                    Py_lowestprice + Pos_yanzhengmaframe_relative[1]))  # 验证码框放置位置
 
-    set_val('Pos_timeframe', [245 - 344 + Px_lowestprice, 399 - 183 + Py_lowestprice])
+    set_val('Pos_timeframe', (245 - 344 + Px_lowestprice, 399 - 183 + Py_lowestprice))
+
+    # set_val('Findpos_area', (Px + 100 , Py + 400, Px + 200, Py + 550))
+
 
     lowestprice_sizex = get_val('lowestprice_sizex')
     lowestprice_sizey = get_val('lowestprice_sizey')
@@ -494,12 +501,12 @@ def init_pos():
     currenttime_sizey = get_val('currenttime_sizey')
     set_val('findpos_on', False)  # 无需定位
     set_val('yanzhengma_move', True)  # 需要定位
-    set_val('lowest', [Px_lowestprice, Py_lowestprice, lowestprice_sizex + Px_lowestprice,
-                       lowestprice_sizey + Py_lowestprice])
+    set_val('lowest', (Px_lowestprice, Py_lowestprice, lowestprice_sizex + Px_lowestprice,
+                       lowestprice_sizey + Py_lowestprice))
     Px_currenttime = get_val("Px_currenttime")
     Py_currenttime = get_val("Py_currenttime")
-    set_val('currenttime', [Px_currenttime, Py_currenttime, Px_currenttime + currenttime_sizex,
-                            Py_currenttime + currenttime_sizey])
+    set_val('currenttime', (Px_currenttime, Py_currenttime, Px_currenttime + currenttime_sizex,
+                            Py_currenttime + currenttime_sizey))
     dis_x = 50
     dis_y = 100
     x1 = Px_lowestprice - dis_x  # 截图起始点
@@ -511,9 +518,9 @@ def init_pos():
     yan_confirm_area = get_val('yan_confirm_area')
     currenttime = get_val('currenttime')
 
-    cal_area = [lowest, refresh_area, confirm_area, Pos_yanzhengma, yan_confirm_area, currenttime]  # 构建截图区域
+    cal_area = (lowest, refresh_area, confirm_area, Pos_yanzhengma, yan_confirm_area, currenttime)  ## 构建截图区域
     use_area = []
-    set_val('sc_area', [Px_lowestprice - dis_x, Py_lowestprice - dis_y, Px_lowestprice + 600, Py_lowestprice + 120])
+    set_val('sc_area', (Px_lowestprice - dis_x, Py_lowestprice - dis_y, Px_lowestprice + 600, Py_lowestprice + 120))
     for i in range(len(cal_area)):
         temp = [cal_area[i][0] - x1, cal_area[i][1] - y1, cal_area[i][2] - x1, cal_area[i][3] - y1]
         use_area.append(temp)

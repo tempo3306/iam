@@ -17,7 +17,7 @@ from component.imgcut import cut_pic, find_yan_confirm
 # import imagehash
 from PIL import Image, ImageGrab
 import win32api
-
+from component.variable import init_pos
 import logging
 logger = logging.getLogger()
 
@@ -192,9 +192,6 @@ class BottomeStatusbarPanel(wx.Panel):
 
 
     def Modify(self):  # 更新
-        activate_status = get_val('activate_status')
-        now_ping = get_val('now_ping')
-        current_strategy_name = get_val('current_strategy_name')
         dc = wx.BufferedDC(wx.ClientDC(self))  # ClientDC客户区  ，BufferedDC双缓冲绘图设备
         w, h = self.GetClientSize()
         dc.SetBackground(wx.Brush(self.GetBackgroundColour()))  ##保存刷新不闪烁
@@ -385,7 +382,6 @@ class MoniWebFrame(wx.Frame):
         self.yanzhengmaframe = YanzhengmaFrame(self, Yanzhengmasize)
 
         self.Bind(wx.EVT_MOVE, self.childmove)
-        self.Bind(wx.EVT_ICONIZE, self.iconize)
 
         self.timer1 = wx.Timer(self)
         self.Bind(wx.EVT_TIMER, self.Price_view, self.timer1)  # 绑定一个定时器事件，主判断
@@ -395,9 +391,6 @@ class MoniWebFrame(wx.Frame):
         self.hotkey_open2()
         # self.Bind(wx.EVT_ACTIVATE , self.hotkey_open)
 
-    def iconize(self,event):
-        self.currentstatusframe.Show(False)
-        event.Skip()
 
 
     def childmove(self, event):
@@ -409,6 +402,13 @@ class MoniWebFrame(wx.Frame):
             self.yanzhengmaframe.Move(x+x1, y+y1)  # 移动到新位置
         except:
             logger.exception('this is an exception message')
+
+        #位置重新计算
+        Px, Py = self.Position
+        import time
+        init_pos(Px, Py)
+
+
 
     def Price_view(self, event):
         moni_on = get_val('moni_on')
@@ -561,15 +561,11 @@ class WebFrame(wx.Frame):
 
 
         self.Bind(wx.EVT_MOVE, self.childmove)
-        self.Bind(wx.EVT_ICONIZE, self.iconize)
 
         self.timer1 = wx.Timer(self)
         self.Bind(wx.EVT_TIMER, self.Price_view, self.timer1)  # 绑定一个定时器事件，主判断
         self.timer1.Start(35)  # 设定时间间隔
 
-    def iconize(self,event):
-        self.currentstatusframe.Show(False)
-        event.Skip()
 
 
     def childmove(self, event):
@@ -581,6 +577,15 @@ class WebFrame(wx.Frame):
             self.yanzhengmaframe.Move(x+x1, y+y1)  # 移动到新位置
         except:
             logger.exception('this is an exception message')
+
+        #位置重新计算
+        Px, Py = self.Position
+        import time
+        a = time.time()
+        init_pos(Px, Py)
+        b = time.time()
+        print('b-a', b-a)
+
 
     def Price_view(self, event):
         guopai_on = get_val('guopai_on')

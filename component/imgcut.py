@@ -8,11 +8,13 @@ import cv2
 import win32gui
 import win32ui
 import win32con
+import win32api
 import numpy as np
 import time
 from component.staticmethod import OnClick_Shuaxin, OnClick_confirm, Smart_chujia
 from component.variable import set_val, get_val
 import logging
+
 
 logger = logging.getLogger()
 
@@ -252,14 +254,52 @@ def timeset(guopai_on, moni_on, imgpos_currenttime, maindata):
             pass
         else:
             set_val('a_time', a_time_temp)
-
-
     except:
         logger.exception('this is an exception message')
 
 
+def grab_screen(region=None, title=None):
+    hwin = win32gui.GetDesktopWindow()
+    if region:
+        left,top,x2,y2 = region
+        width = x2 - left + 1
+        height = y2 - top + 1
+    elif title:
+        gtawin = win32gui.FindWindow(None, title)
+        if not gtawin:
+            raise Exception('window title not found')
+        #get the bounding box of the window
+        left, top, x2, y2 = win32gui.GetWindowRect(gtawin)
+        width = x2 - left +1
+        height = y2 - top +1
+    else:
+        width = win32api.GetSystemMetrics(win32con.SM_CXVIRTUALSCREEN)
+        height = win32api.GetSystemMetrics(win32con.SM_CYVIRTUALSCREEN)
+        left = win32api.GetSystemMetrics(win32con.SM_XVIRTUALSCREEN)
+        top = win32api.GetSystemMetrics(win32con.SM_YVIRTUALSCREEN)
+
+    hwindc = win32gui.GetWindowDC(hwin)
+    srcdc = win32ui.CreateDCFromHandle(hwindc)
+    memdc = srcdc.CreateCompatibleDC()
+    bmp = win32ui.CreateBitmap()
+    bmp.CreateCompatibleBitmap(srcdc, width, height)
+    memdc.SelectObject(bmp)
+    memdc.BitBlt((0, 0), (width, height), srcdc, (left, top), win32con.SRCCOPY)
+
+    signedIntsArray = bmp.GetBitmapBits(True)
+    img = np.frombuffer(signedIntsArray, dtype='uint8')
+    img.shape = (height,width,4)
+
+    srcdc.DeleteDC()
+    memdc.DeleteDC()
+    win32gui.ReleaseDC(hwin, hwindc)
+    win32gui.DeleteObject(bmp.GetHandle())
+    img = cv2.cvtColor(img, cv2.COLOR_BGRA2GRAY)
+    return  img
+
+
 def findpos():
-    sc = ImageGrab.grab().convert('L')
+    sc = grab_screen()
     img = np.asarray(sc)
     dick_target = get_val('dick_target')
     template = dick_target[2]
@@ -276,8 +316,9 @@ def findpos():
 
         Px = get_val('Px')
         Py = get_val('Py')
-        logger.info("px_lowestprice: {0}".format(max_loc[0] + px_relative - Px))
-        logger.info("py_lowestprice: {0}".format(max_loc[1] + py_relative - Py))
+
+        print("PxPy", Px, Py)
+        print("px,py", max_loc[0] + px_relative, max_loc[1] + py_relative)
 
         px_lowestprice = get_val('px_lowestprice')
         py_lowestprice = get_val('py_lowestprice')
@@ -285,6 +326,10 @@ def findpos():
         set_val('Py_lowestprice', py_lowestprice)
         Px_lowestprice = get_val('Px_lowestprice')
         Py_lowestprice = get_val('Py_lowestprice')
+
+        print("找到的Px_lowestprice", Px_lowestprice)
+        print("找到的Py_lowestprice", Py_lowestprice)
+
         set_val('Px_currenttime', Px_lowestprice - 27)  # 参考最低成交价位置
         set_val('Py_currenttime', Py_lowestprice - 14)
         set_val('ghostbutton_pos', [px_lowestprice - 9, py_lowestprice + 84])

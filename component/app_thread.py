@@ -30,11 +30,11 @@ allpath = os.path.abspath(os.path.realpath(sys.argv[0]))
 path = os.path.split(allpath)[0] + '\\'  # 分割
 set_val('path', path)
 path = get_val('path')
-yimg = ImageGrab.grab().save("yanzhengma.png")
+# yimg = ImageGrab.grab().save("yanzhengma.png")
 yanpath = path + "\\yanzhengma.png"
-yanzhengma_img = Image.open(yanpath)
+# yanzhengma_img = Image.open(yanpath)
 set_val('yanpath', yanpath)
-set_val('yanzhengma_img', yanzhengma_img)
+set_val('yanzhengma_img', None)
 
 
 class HashThread(Thread):
@@ -72,7 +72,7 @@ class findposThread(Thread):
     def run(self):
         while self.__running.isSet():
             self.__flag.wait()  # 为True时立即返回, 为False时阻塞直到内部的标识位为True后返回
-            time.sleep(0.1)
+            time.sleep(0.5)
             try:
                 findpos_on = get_val('findpos_on')
                 if findpos_on:
@@ -971,7 +971,6 @@ class Start_thread(Thread):
 
         ## getwebpath()  # 初始化浏览器地址
         # 图片打开提速
-        yimg = ImageGrab.grab().save("yanzhengma.png")
         yanzhengma_img = Image.open("yanzhengma.png")  # 打开图片的全局变量 ,提升第一次打开的速度
         set_val('yanzhengma_img', yanzhengma_img)
         # 变量初始化
