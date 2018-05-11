@@ -134,6 +134,7 @@ def Tijiao():
         current_pricestatus = '{0:.1f}秒加{1}'.format(one_time1, one_diff)
         set_val('current_pricestatus', current_pricestatus)
     elif tijiao_num == 3:
+        print("tijiao_fsdfs")
         set_val('smartprice_chujia', True) ##开启智能出价， 打开确认查找
         set_val('current_pricestatus_label', '智能补枪')
         set_val('current_pricestatus', '智能出价')
@@ -313,7 +314,6 @@ def guopai_chujia(price):
     set_val('yanzhengma_view', True)  # 打开验证码放大器
     set_val('refresh_need', True)  # 激活刷新验证码
 
-    set_val('smartprice_chujia', True)  ##再次打开确认查找
 
 
 ##如果一直处理提交状态和查找验证码阶段，取消后重新出价

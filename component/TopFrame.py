@@ -142,7 +142,6 @@ class TopFrame(wx.Frame):
         current_pricestatus = '智能补枪'
         set_val('current_pricestatus', current_pricestatus)
 
-        set_val('smartprice_chujia', True)  ##再次打开确认查找
 
 
     def moni_chujia(self, price):

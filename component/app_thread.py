@@ -182,7 +182,7 @@ class cutimgThread(Thread):
             time.sleep(0.05)
             try:
 ###################截图
-                a = time.time()
+                # a = time.time()
                 cut_img()
 ##################查找确认
                 tijiao_num = get_val('tijiao_num')
@@ -229,8 +229,8 @@ class cutimgThread(Thread):
                     set_val('findpos_on', True)
                     logger.error("识别价格失败")
                     logger.exception('this is an exception message')
-                b = time.time()
-                print('b-a', b - a)
+                # b = time.time()
+                # print('b-a', b - a)
             except:
                 logger.error("截图失败")
                 logger.exception('this is an exception message')
@@ -435,6 +435,7 @@ class TijiaoThread(Thread):
                 if smartprice_chujia and tijiao_OK:
                     if lowest_price >= userprice - 300 or a_time <= final_time:
                         set_val('smartprice_chujia', False)  ##关闭确认查找，停止智能出价
+                        print("智能提交ffffffffffffff")
                         OnClick_Tijiao()  # 调用方法
 
                 ###-----------------------------------------------------------------------------

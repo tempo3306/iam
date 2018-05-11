@@ -441,9 +441,7 @@ def findconfirm():
             OnClick_confirm()
         else:
             print("max_val", max_val)
-            set_val('smartprice_chujia', False)
             Smart_chujia()
-
 
 def find_yan_confirm():
     dick_target = get_val('dick_target')
