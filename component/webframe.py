@@ -11,12 +11,10 @@ from component.OperationFrame import OperationPanel
 from component.statusbar import IcStatusBar
 import wx.html2 as webview
 from wx.lib.buttons import GenButton as wxButton
-from component.imgcut import findpos, timeset
+from component.imgcut import  timeset
 from component.YanzhengmaFrame import YanzhengmaFrame
 from component.imgcut import cut_pic, find_yan_confirm
-# import imagehash
-from PIL import Image, ImageGrab
-import win32api
+
 from component.variable import init_pos
 import logging
 logger = logging.getLogger()
@@ -312,7 +310,8 @@ class CurrentStatusPanel(wx.Panel):
                 pricetext = "{0}".format(current_pricestatus)
                 ##第三行  剩余状态
                 max_price = get_val('lowest_price') + 300
-                diff_price = int(userprice) - max_price
+                # diff_price = int(userprice) - max_price
+                diff_price = '-'
                 timediff = '-'
                 timestatustext = "提交倒计时{0}秒".format(timediff)
                 pricestatustext = "差价{0}".format(diff_price)
@@ -452,9 +451,6 @@ class MoniWebFrame(wx.Frame):
                 path = get_val('path')
                 yanpath = path + "\\yanzhengma.png"
                 cut_pic(imgpos_yanzhengma, Yanzhengmasize, yanpath)  # 直接调用得到 png 保存图片
-                yanzhengma_img = Image.open(yanpath)
-                set_val('yanzhengma_img', yanzhengma_img)
-                yanzhengma_img = get_val('yanzhengma_img')
                 try:
                     yanpath = get_val('yanpath')
                     yan = self.yanzhengmaframe
@@ -633,9 +629,6 @@ class WebFrame(wx.Frame):
                 path = get_val('path')
                 yanpath = path + "\\yanzhengma.png"
                 cut_pic(imgpos_yanzhengma, Yanzhengmasize, yanpath)  # 直接调用得到 png 保存图片
-                yanzhengma_img = Image.open(yanpath)
-                set_val('yanzhengma_img', yanzhengma_img)
-                yanzhengma_img = get_val('yanzhengma_img')
                 try:
                     yanpath = get_val('yanpath')
                     yan = self.yanzhengmaframe

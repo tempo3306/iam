@@ -135,14 +135,16 @@ class TopFrame(wx.Frame):
             second_advance = get_val('second_advance')
             current_pricestatus = '{0}秒提前{1}'.format(second_time2, second_advance)
             set_val('current_pricestatus', current_pricestatus)
+        set_val('tijiao_on', True)
+        set_val('chujia_on', False)
+        set_val('chujia_interval', False)  # 间隔结束
+
 
     def Smartchujia(self, price):
         self.moni_chujia(price)
         set_val('current_pricestatus_label', '等待智能提交')
         current_pricestatus = '智能补枪'
         set_val('current_pricestatus', current_pricestatus)
-
-
 
     def moni_chujia(self, price):
         Position_frame = get_val('Position_frame')
@@ -153,14 +155,10 @@ class TopFrame(wx.Frame):
         browser.RunScript(script)
         Click(Position_frame[1][0], Position_frame[1][1])
         Click(Position_frame[5][0], Position_frame[5][1])
-        set_val('tijiao_on', True)
-        set_val('chujia_on', False)
-        set_val('chujia_interval', False)  # 间隔结束
         ##提交关闭
         set_val('tijiao_OK', False)
         set_val('yanzhengma_count', 0)  # 计数器，制造延迟
         set_val('yanzhengma_view', True)  # 打开验证码放大器
-        set_val('tijiao_on', True)  # 激活自动出价
         set_val('refresh_need', True)  # 激活刷新验证码
 
     def webopen(self):

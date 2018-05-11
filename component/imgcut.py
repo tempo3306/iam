@@ -3,7 +3,6 @@
 @contact: 810909753@q.com
 @time: 2018/1/22 10:07
 '''
-from PIL import Image, ImageGrab
 import cv2
 import win32gui
 import win32ui
@@ -315,7 +314,7 @@ def findpos():
         Px = get_val('Px')
         Py = get_val('Py')
 
-        print("PxPy", Px, Py)
+        print("PxPy  ffff", Px, Py)
         print("px,py", max_loc[0] + px_relative, max_loc[1] + py_relative)
 
         px_lowestprice = get_val('px_lowestprice')
@@ -394,6 +393,7 @@ def findpos():
 
 
 def only_screenshot(area):  # x,y  pos      w,h size
+    a = time.time()
     x, y = int(area[0]), int(area[1])
     w, h = int(area[2]), int(area[3])
     hwnd = win32gui.FindWindow(None, "win32")
@@ -413,7 +413,8 @@ def only_screenshot(area):  # x,y  pos      w,h size
     win32gui.ReleaseDC(hwnd, wDC)
     win32gui.DeleteObject(dataBitMap.GetHandle())
     img = cv2.cvtColor(img, cv2.COLOR_BGRA2BGR)
-    cv2.imwrite('n.png', img)
+    b = time.time()
+    print('b-a', b-a)
     return img
 
 
@@ -445,12 +446,6 @@ def cut_img():  # 将所得的img 处理成  lowestprice_img   confirm_img  yanz
 
 def findrefresh():
     dick_target = get_val('dick_target')
-    refresh_on = get_val('refresh_on')
-    refresh_need = get_val('refresh_need')
-    refresh_one = get_val('refresh_one')
-    Position_frame = get_val('Position_frame')
-    refresh_area = get_val('refresh_area')
-    confirm_area = get_val('confirm_area')
     template = dick_target[0]
     imgpos_refresh = get_val('imgpos_refresh')
     sc = imgpos_refresh

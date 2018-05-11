@@ -13,18 +13,26 @@ from component.variable import set_val, get_val
 import ctypes
 from ctypes import wintypes
 from wx.lib.pubsub import pub
-
+import time
 import logging
 logger = logging.getLogger()
 
+
+def cal_time(func):
+    def wrapper(*args, **kw):
+        local_time = time.time()
+        func(*args, **kw)
+        print ('current Function [%s] run time is %.2f' % (func.__name__ ,time.time() - local_time))
+    return wrapper
+
+
 def Click(x, y):  # 鼠标点击
-    a = win32gui.GetCursorPos()
     x = int(x)
     y = int(y)
     win32api.SetCursorPos((x, y))
     win32api.mouse_event(win32con.MOUSEEVENTF_LEFTDOWN, x, y, 0, 0)
     win32api.mouse_event(win32con.MOUSEEVENTF_LEFTUP, x, y, 0, 0)
-    print(x, y)
+    # print(x, y)
 
 
 def Click2(x, y):  # 鼠标点击
@@ -300,6 +308,10 @@ def OnClick_chujia():
             set_val('tijiao_OK', False)
     else:
         wx.CallAfter(pub.sendMessage, 'moni chujia')  # 调用方法
+    set_val('tijiao_on', True)
+    set_val('chujia_on', False)
+    set_val('chujia_interval', False)  # 间隔结束
+
 
 def guopai_chujia(price):
     Position_frame = get_val('Position_frame')
@@ -307,9 +319,7 @@ def guopai_chujia(price):
     selfdelete()
     Click(Position_frame[1][0], Position_frame[1][1])
     Click(Position_frame[6][0], Position_frame[6][1])
-    set_val('tijiao_on', True)
-    set_val('chujia_on', False)
-    set_val('chujia_interval', False)  # 间隔结束
+
     set_val('yanzhengma_count', 0)  # 计数器，制造延迟
     set_val('yanzhengma_view', True)  # 打开验证码放大器
     set_val('refresh_need', True)  # 激活刷新验证码
@@ -434,22 +444,34 @@ def OnClick_Backspace():
 def tijiao_ok():
     tijiao_on = get_val('tijiao_on')
     e_on = get_val('e_on')
+    smartprice_chujia = get_val('smartprice_chujia')
     if e_on and tijiao_on:
+        print("tijiao_ok")
+        set_val('tijiao_OK', True)
+        set_val('yanzhengma_view', False)
+        set_val('yanzhengma_close', True)
+    elif e_on and smartprice_chujia:
         print("tijiao_ok")
         set_val('tijiao_OK', True)
         set_val('yanzhengma_view', False)
         set_val('yanzhengma_close', True)
 
 
+
 def tijiao_ok2():
     enter_on = get_val('enter_on')
     tijiao_on = get_val('tijiao_on')
+    smartprice_chujia = get_val('smartprice_chujia')
+
     if enter_on and tijiao_on:
         set_val('tijiao_OK', True)
-    if enter_on:
         set_val('yanzhengma_close', True)
         set_val('yanzhengma_view', False)
-
+    elif enter_on and smartprice_chujia:
+        print("tijiao_ok")
+        set_val('tijiao_OK', True)
+        set_val('yanzhengma_view', False)
+        set_val('yanzhengma_close', True)
 
 def query():
     query_interval = get_val('query_interval')
@@ -629,6 +651,7 @@ def init_strategy_one():
     set_val('tijiao_one', False)  # 单枪未开
     init_label()
 
+
 def init_strategy_second():
     set_val('strategy_on', True)
     set_val('twice', True)
@@ -638,6 +661,8 @@ def init_strategy_second():
     set_val('tijiao_OK', False)
     set_val('tijiao_one', False)  # 单枪未开
     init_label()
+
+
 
 def init_label():
     set_val('current_pricestatus_label', '等待第二次出价')

@@ -11,11 +11,9 @@ import sys, os
 from component.imgcut import cut_img, findconfirm, findrefresh, findpos, Price_read, cut_pic
 from component.login import ConfirmUser, Keeplogin, ConfirmCode
 from component.staticmethod import OnClick_chujia, OnClick_Tijiao
-from component.staticmethod import SmartTijiao
 from component.staticmethod import Smart_ajust_chujia
 from component.staticmethod import trans_time
 from component.variable import get_val, set_val
-from PIL import Image
 from component.remote_control import getip_dianxin
 from component.staticmethod import init_strategy_one, init_strategy_second
 
@@ -953,7 +951,7 @@ class Start_thread(Thread):
 
     def run(self):
         import logging, time
-        version = 3.7
+        version = 3.9
         timenow = time.time()
         # 转换成localtime
         time_local = time.localtime(timenow)
