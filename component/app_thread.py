@@ -393,15 +393,15 @@ class TijiaoThread(Thread):
                 second_delay = get_val('second_delay')
                 one_diff = get_val('one_diff')
                 second_diff = get_val('second_diff')
-
                 smartprice_chujia = get_val('smartprice_chujia')  ##智能出价
-
+                second_forcetijiao_on = get_val('second_forcetijiao_on')
+                third_forcetijiao_on = get_val('third_forcetijiao_on')
                 ##提交
                 if tijiao_on and strategy_on  and tijiao_OK:  # 判断是否需要提交,国拍开启状态方可触发
-                    if tijiao_num == 1 and a_time >= one_real_time2:  # 判断是否满足条件
+                    if tijiao_num == 1 and a_time >= one_real_time2 and second_forcetijiao_on:  # 判断是否满足条件
                         OnClick_Tijiao()
                         # SmartTijiao()
-                    elif tijiao_num == 2 and a_time >= second_real_time2:  # 判断是否满足条件
+                    elif tijiao_num == 2 and a_time >= second_real_time2 and third_forcetijiao_on:  # 判断是否满足条件
                         OnClick_Tijiao()
                         # SmartTijiao()
                     elif tijiao_num == 1 and lowest_price >= own_price1 - 300 - one_advance and a_time <= one_real_time2 - one_delay:  # 价格判断
@@ -424,13 +424,14 @@ class TijiaoThread(Thread):
                         ##国拍与模拟触发方式不一样
                         OnClick_chujia()  # 调用出价
 
+                ###-----------------------------------------------------------------------------
                 ##智能出价之后提交判定
                 userprice = get_val('userprice')
                 final_time = get_val('final_time')
                 # print('smartprice_chujia', smartprice_chujia)
                 # print('tijiao_OK', tijiao_OK)
                 if smartprice_chujia and tijiao_OK:
-                    if lowest_price >= userprice - 300 or a_time <= final_time:
+                    if lowest_price >= userprice - 300 or a_time >= final_time:
                         set_val('smartprice_chujia', False)  ##关闭确认查找，停止智能出价
                         print("智能提交ffffffffffffff")
                         OnClick_Tijiao()  # 调用方法

@@ -414,7 +414,6 @@ def only_screenshot(area):  # x,y  pos      w,h size
     win32gui.DeleteObject(dataBitMap.GetHandle())
     img = cv2.cvtColor(img, cv2.COLOR_BGRA2BGR)
     b = time.time()
-    print('b-a', b-a)
     return img
 
 

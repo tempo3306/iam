@@ -11,6 +11,7 @@ from component.app_thread import HashThread, LoginThread, Login_codeThread, Geti
 from component.variable import get_val, set_val, remote_variables
 from component.TopFrame import TopFrame
 import sys, pickle
+from wx.lib.buttons import GenButton as wxButton
 
 
 class AccountPanel(wx.Panel):
@@ -51,8 +52,12 @@ class AccountPanel(wx.Panel):
         self.Bind(wx.EVT_TEXT_ENTER, self.OnLogin, self.userText)
         self.Bind(wx.EVT_TEXT_ENTER, self.OnLogin, self.passText)
 
-        self.monibtn = wx.Button(self, -1, label="免费模拟", size=(90, 30))
-        self.loginbtn = wx.Button(self, -1, label="登录", size=(90, 30))
+
+        self.monibtn = wxButton(self, label="免费模拟", size=(90, 30))
+        self.monibtn.SetBackgroundColour("#ACD6FF")
+        self.loginbtn = wxButton(self, label="登录", size=(90, 30))
+        self.loginbtn.SetBackgroundColour("#ACD6FF")
+
         self.btnSizer = wx.BoxSizer(wx.HORIZONTAL)
         self.btnSizer.Add(self.monibtn, flag=wx.ALIGN_LEFT | wx.ALL, border=3)
         self.btnSizer.Add(self.loginbtn, flag=wx.ALIGN_RIGHT | wx.ALL, border=3)
@@ -211,7 +216,7 @@ class LoginFrame(wx.Frame):
             remote_variables(**data)
 
             if Identify_code == '123456':  ##这里作为测试用
-                pass
+                set_val('test', True)
             else:
                 set_val('url_dianxin', login_result['url_dianxin'])
                 set_val('url_nodianxin', login_result['url_nodianxin'])

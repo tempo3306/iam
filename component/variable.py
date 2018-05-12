@@ -64,6 +64,17 @@ def get_id_hash(id):
 
 
 
+class Hotkey_label():
+    SMART_PRICE_LABEL = '智能出价'
+    SMART_PRICE = 'ESC'
+    REFRESH_WEB_LABEL = '刷新页面'
+    REFRESH_WEB = 'F5'
+    FORCE_TIJIAO_LABEL = '强制提交'
+    FORCE_TIJIAO = 'F1'
+    CLEAR_YAN_LABEL = '清空验证码'
+    CLEAR_YAN = '空格'
+
+
 def init_val():
     ##封装
     init_id()
@@ -260,16 +271,19 @@ def init_size():
 def init_strategy():
     strategy_choices = ['单枪策略(专注一次出价)', '双枪策略(一伏二补)']
     strategy_dick = {
-        0: [0, 48.0, 700, 100, 0.5, 55],
-        1: [1, 40.0, 500, 0, 0.5, 48, 50, 700, 100, 0.5, 56]
+        0: [0, 48.0, 700, 100, 0.5, 55, 1],
+        1: [1, 40.0, 500, 0, 0.5, 48, 1, 50, 700, 100, 0.5, 56, 1]
     }
     for strategy_type, strategy_list in strategy_dick.items():
         set_val(strategy_type, strategy_list)
     set_val('strategy_type', 0) ##当前状态
     '''
-    (1)单枪  依次为 0: strategy_type 1: one_time1 2: one_diff  3: one_advance 4: one_delay 5: one_time2
-    (2)双枪  依次为 0: strategy_type 1: one_time1 2: one_diff  3: one_advance 4: one_delay 5: one_time2
-                                    6: second_time1 7: second_diff  8: second_advance 9: second_delay 10: second_time2 
+    (1)单枪  依次为 0: strategy_type 1: one_time1  2: one_diff  3: one_advance 4: one_delay 5: one_time2 
+                                    6: second_forcetijiao_on
+    (2)双枪  依次为 0: strategy_type 1: one_time1  2: one_diff  3: one_advance 4: one_delay 5: one_time2
+                                    6: second_forcetijiao_on   
+                                    7: second_time1  8: second_diff  9: second_advance  10: second_delay 
+                                    11: second_time2  12: third_forcetijiao_on
     (3)
     '''
 
@@ -403,6 +417,8 @@ def init_account():
     set_val('Password', 0)  # 密码
     set_val('Identify_code', 0)  # 密码
     set_val('ip_address', '')  # 客户端ip
+
+    set_val("test", False)  ##默认关闭测试模式
 
 def init_status():
     set_val('register_label', '未激活')

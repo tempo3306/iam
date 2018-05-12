@@ -38,8 +38,6 @@ class ButtonPanel(wx.Panel):
         self.SetBackgroundColour("#ACD6ff")
         self.webtime_button.Bind(wx.EVT_BUTTON, self.timeautoajust)
 
-
-
         if not moni:
             guopai_dianxin = get_val('guopai_dianxin')
             if guopai_dianxin:
@@ -246,7 +244,6 @@ class CurrentStatusPanel(wx.Panel):
         x6, y6 = get_val('pricestatustext')
         ##当前时间label
         currenttime_label = get_val("currenttime_label")
-        moni_on = get_val("moni_on")
         dc = wx.BufferedDC(wx.ClientDC(self))  # ClientDC客户区  ，BufferedDC双缓冲绘图设备
         a_time = get_val('a_time')
         temp = int((a_time - int(a_time)) * 10)
