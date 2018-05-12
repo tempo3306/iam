@@ -220,6 +220,14 @@ def OnClick_confirm():
     Click(Position_frame[4][0], Position_frame[4][1])
 
 
+def Refresh_web():
+    moni_on = get_val('moni_on')
+    if moni_on:
+        wx.CallAfter(pub.sendMessage, "moni refresh_web")
+    else:
+        wx.CallAfter(pub.sendMessage, "guopai refresh_web")
+
+
 ##-------------------------------------------------------------------------------------
 ##智能出价
 def Smart_chujia():
@@ -527,7 +535,10 @@ HOTKEYS1 = {1: (VK_CODE['2'], win32con.MOD_ALT), 2: (VK_CODE['3'], win32con.MOD_
 HOTKEYS2 = {7: (VK_CODE['s'], 0x4000), 8: (VK_CODE['f'], 0x4000), 9: (VK_CODE['d'], 0x4000),
             10: (win32con.VK_SPACE, 0x4000), 11: (VK_CODE['e'], 0x4000), 12: (win32con.VK_RETURN, 0x4000),
             13: (VK_CODE['q'], 0x4000), 14: (VK_CODE['h'], 0x4000),
-            15: (win32con.VK_ESCAPE, 0x4000)}
+            15: (win32con.VK_ESCAPE, 0x4000),
+            16: (win32con.VK_F1, 0x4000), 17:(win32con.VK_F5, 0x4000)}
+
+
 
 HOTKEY_ACTIONS = {
     1: Cancel_chujia_test, 2: OnClick_chujia, 3: many_delete,
@@ -536,7 +547,8 @@ HOTKEY_ACTIONS = {
     9: selfChujia, 10: OnClick_Backspace, 11: tijiao_ok,
     12: tijiao_ok2,
     13: query, 14: OnH_chujia,
-    15: esc_chujia}
+    15: esc_chujia,
+    16: OnClick_Tijiao, 17: Refresh_web}
 
 
 # 启动监听

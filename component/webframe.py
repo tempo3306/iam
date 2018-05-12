@@ -387,6 +387,7 @@ class MoniWebFrame(wx.Frame):
         self.hotkey_open2()
         # self.Bind(wx.EVT_ACTIVATE , self.hotkey_open)
 
+        pub.subscribe(self.refresh_web, 'moni refresh_web')
 
 
     def childmove(self, event):
@@ -403,6 +404,14 @@ class MoniWebFrame(wx.Frame):
         Px, Py = self.Position
         import time
         init_pos(Px, Py)
+
+    def refresh_web(self):
+        self.htmlpanel.webview.Reload()
+        strategy_type = get_val("strategy_type")
+        if strategy_type == 0:
+            init_strategy_one()
+        elif strategy_type == 1:
+            init_strategy_second()
 
 
 
@@ -559,6 +568,7 @@ class WebFrame(wx.Frame):
         self.Bind(wx.EVT_TIMER, self.Price_view, self.timer1)  # 绑定一个定时器事件，主判断
         self.timer1.Start(35)  # 设定时间间隔
 
+        pub.subscribe(self.refresh_web, 'guopai refresh_web')  # 刷新页面
 
 
     def childmove(self, event):
@@ -578,6 +588,14 @@ class WebFrame(wx.Frame):
         init_pos(Px, Py)
         b = time.time()
         print('b-a', b-a)
+
+    def refresh_web(self):
+        self.htmlpanel.webview.Reload()
+        strategy_type = get_val("strategy_type")
+        if strategy_type == 0:
+            init_strategy_one()
+        elif strategy_type == 1:
+            init_strategy_second()
 
 
     def Price_view(self, event):
@@ -675,6 +693,8 @@ class WebFrame(wx.Frame):
             set_val('hotkey_on', True)
             print("获得焦点")
             Hotkey_open()
+
+
 
 
     def createStatusBar(self):
