@@ -53,9 +53,9 @@ class AccountPanel(wx.Panel):
         self.Bind(wx.EVT_TEXT_ENTER, self.OnLogin, self.passText)
 
 
-        self.monibtn = wxButton(self, label="免费模拟", size=(90, 30))
+        self.monibtn = wx.Button(self, label="免费模拟", size=(90, 30))
         self.monibtn.SetBackgroundColour("#ACD6FF")
-        self.loginbtn = wxButton(self, label="登录", size=(90, 30))
+        self.loginbtn = wx.Button(self, label="登录", size=(90, 30))
         self.loginbtn.SetBackgroundColour("#ACD6FF")
 
         self.btnSizer = wx.BoxSizer(wx.HORIZONTAL)
@@ -112,6 +112,9 @@ class Identify_codePanel(wx.Panel):
 
         self.code_monibtn = wx.Button(self, -1, label="免费模拟", size=(90, 30))
         self.code_loginbtn = wx.Button(self, -1, label="登录", size=(90, 30))
+        # self.code_monibtn.SetBackgroundColour('#ff6b3b')
+        # self.code_loginbtn.SetBackgroundColour('#ff6b3b')
+
         self.code_btnSizer = wx.BoxSizer(wx.HORIZONTAL)
         self.code_btnSizer.Add(self.code_monibtn, flag=wx.ALIGN_LEFT | wx.ALL, border=3)
         self.code_btnSizer.Add(self.code_loginbtn, flag=wx.ALIGN_RIGHT | wx.ALL, border=3)
