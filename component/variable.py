@@ -364,6 +364,9 @@ def init_strategy():
     set_val('tijiao_num', 1)  # 开启二次出价，设置为2，执行一次之后，减1
     set_val('tijiao_one', False)  # 第一次出价之后开闭
 
+    set_val('px_calculate_relative', 153)
+    set_val('py_calculate_relative', 458)
+
     # self.jiajia_time.SetValue(40.0)
     # self.tijiao_time.SetValue(48.0)
     # self.jiajia_price.SetValue(500)
@@ -467,12 +470,15 @@ def init_pos(Px, Py):
     '''
 
     Position_frame =  get_val('Position_frame')
-    set_val('px_lowestprice', 153)
-    set_val('py_lowestprice', 458)
-    px_lowestprice = get_val('px_lowestprice')
-    py_lowestprice = get_val('py_lowestprice')
-    set_val('Px_lowestprice', px_lowestprice + Px)
-    set_val('Py_lowestprice', py_lowestprice + Py)
+    # set_val('px_lowestprice', 153)
+    # set_val('py_lowestprice', 458)
+    '''
+    px_calculate_relative, py_calculate_relative  为找到的价格位置与窗口相对关系
+    '''
+    px_calculate_relative = get_val('px_calculate_relative')
+    py_calculate_relative = get_val('py_calculate_relative')
+    set_val('Px_lowestprice', px_calculate_relative + Px)
+    set_val('Py_lowestprice', py_calculate_relative + Py)
     Px_lowestprice = get_val('Px_lowestprice')
     Py_lowestprice = get_val('Py_lowestprice')
     set_val('Px_currenttime', Px_lowestprice - 27)  # 参考最低成交价位置

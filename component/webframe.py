@@ -265,12 +265,14 @@ class CurrentStatusPanel(wx.Panel):
         ##显示最低成交价
         findpos_on = get_val('findpos_on')
         if findpos_on:
-            self.parent.Show(False)
+            if self.parent.IsShown():
+                self.parent.Show(False)
             # lowestpricelabel = get_val('lowestpricelabel')
             # lowestpricetext = "{0}: {1}".format(lowestpricelabel, '未识别')
             # dc.DrawText(lowestpricetext, x2, y2)
         else:
-            self.parent.Show(True)
+            if not self.parent.IsShown():
+                self.parent.Show(True)
             lowest_price = get_val('lowest_price')
             lowestpricelabel = get_val('lowestpricelabel')
             lowestpricetext = "{0}: {1}".format(lowestpricelabel, lowest_price)
@@ -282,9 +284,6 @@ class CurrentStatusPanel(wx.Panel):
             usertime = get_val('usertime')
             smartprice_chujia = get_val('smartprice_chujia')
 
-            current_pricestatus_label = get_val('current_pricestatus_label')
-            current_pricestatus = get_val('current_pricestatus')
-            # print('current_pricestatus', current_pricestatus)
 
             if userprice and tijiao_on:  ##提交状态
                 current_pricestatus_label = get_val('current_pricestatus_label')
@@ -396,8 +395,16 @@ class WebFrame(wx.Frame):
         pub.subscribe(self.refresh_web, 'moni refresh_web')
         pub.subscribe(self.refresh_web, 'guopai refresh_web')
 
-
+    ##移动跟随
     def childmove(self, event):
+        #位置重新计算
+        Px, Py = self.Position
+        init_pos(Px, Py)
+
+        set_val('Px', Px)
+        set_val('Py', Py)
+
+
         x, y = self.Position
         x0, y0 = get_val('CurrentStatusFramePos')
         self.currentstatusframe.Move(x+x0, y+y0)
@@ -407,10 +414,7 @@ class WebFrame(wx.Frame):
         except:
             logger.exception('this is an exception message')
 
-        #位置重新计算
-        Px, Py = self.Position
-        import time
-        init_pos(Px, Py)
+
 
     def refresh_web(self):
         self.htmlpanel.webview.Reload()

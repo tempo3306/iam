@@ -69,7 +69,7 @@ class findposThread(Thread):
     def run(self):
         while self.__running.isSet():
             self.__flag.wait()  # 为True时立即返回, 为False时阻塞直到内部的标识位为True后返回
-            time.sleep(0.5)
+            time.sleep(0.4)
             try:
                 findpos_on = get_val('findpos_on')
                 if findpos_on:
@@ -210,6 +210,7 @@ class cutimgThread(Thread):
                 a_time = get_val('a_time')
                 try:
                     price = int(Price_read())  # 获取当前最低价
+                    print('price=', price)
                     if price in pricelist:  # 字典查找
                         set_val('findpos_on', False)
                         if lowest_price == price:

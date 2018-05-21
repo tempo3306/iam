@@ -14,7 +14,6 @@ from component.staticmethod import OnClick_Shuaxin, OnClick_confirm, Smart_chuji
 from component.variable import set_val, get_val
 import logging
 
-
 logger = logging.getLogger()
 
 
@@ -258,17 +257,17 @@ def timeset(guopai_on, moni_on, imgpos_currenttime, maindata):
 def grab_screen(region=None, title=None):
     hwin = win32gui.GetDesktopWindow()
     if region:
-        left,top,x2,y2 = region
+        left, top, x2, y2 = region
         width = x2 - left + 1
         height = y2 - top + 1
     elif title:
         gtawin = win32gui.FindWindow(None, title)
         if not gtawin:
             raise Exception('window title not found')
-        #get the bounding box of the window
+        # get the bounding box of the window
         left, top, x2, y2 = win32gui.GetWindowRect(gtawin)
-        width = x2 - left +1
-        height = y2 - top +1
+        width = x2 - left + 1
+        height = y2 - top + 1
     else:
         width = win32api.GetSystemMetrics(win32con.SM_CXVIRTUALSCREEN)
         height = win32api.GetSystemMetrics(win32con.SM_CYVIRTUALSCREEN)
@@ -285,14 +284,14 @@ def grab_screen(region=None, title=None):
 
     signedIntsArray = bmp.GetBitmapBits(True)
     img = np.frombuffer(signedIntsArray, dtype='uint8')
-    img.shape = (height,width,4)
+    img.shape = (height, width, 4)
 
     srcdc.DeleteDC()
     memdc.DeleteDC()
     win32gui.ReleaseDC(hwin, hwindc)
     win32gui.DeleteObject(bmp.GetHandle())
     img = cv2.cvtColor(img, cv2.COLOR_BGRA2GRAY)
-    return  img
+    return img
 
 
 def findpos():
@@ -313,9 +312,15 @@ def findpos():
 
         Px = get_val('Px')
         Py = get_val('Py')
-
+        '''
+        PxPy    253 31
+        px,py   411 489
+        '''
         print("PxPy  ffff", Px, Py)
         print("px,py", max_loc[0] + px_relative, max_loc[1] + py_relative)
+
+        set_val('px_calculate_relative', max_loc[0] + px_relative - Px) ##计算得到相差
+        set_val('py_calculate_relative', max_loc[1] + py_relative - Py)
 
         px_lowestprice = get_val('px_lowestprice')
         py_lowestprice = get_val('py_lowestprice')
@@ -417,8 +422,6 @@ def only_screenshot(area):  # x,y  pos      w,h size
     return img
 
 
-
-
 def cut_img():  # 将所得的img 处理成  lowestprice_img   confirm_img  yanzhengma_confirm_img  refresh_img
     use_area = get_val('use_area')
     sc_area = get_val('sc_area')
@@ -454,7 +457,7 @@ def findrefresh():
     min_val, max_val, min_loc, max_loc = cv2.minMaxLoc(res)
     yanzhengma_find = get_val('yanzhengma_find')
 
-    print(max_val)
+    # print(max_val)
 
     if max_val >= 0.8:
         print("refresh")
@@ -484,6 +487,7 @@ def findconfirm():
             print("max_val", max_val)
             Smart_chujia()
 
+
 def find_yan_confirm():
     dick_target = get_val('dick_target')
     template = dick_target[1]
@@ -501,12 +505,12 @@ def find_yan_confirm():
 def Price_read():
     imgpos_lowestprice = get_val('imgpos_lowestprice')
 
-    # avt = get_val('avt')
-    # avt += 1
-    # if avt == 500 or avt == 501:
-    #     avt = 0
-    # set_val('avt', avt)
-    # cv2.imwrite(r'./pic/%s.png' % avt, imgpos_lowestprice)
+    avt = get_val('avt')
+    avt += 1
+    if avt == 500 or avt == 501:
+        avt = 0
+    set_val('avt', avt)
+    cv2.imwrite(r'./pic/%s.png' % avt, imgpos_lowestprice)
 
     lowest_price_img = cv2.cvtColor(imgpos_lowestprice, cv2.COLOR_BGR2GRAY)
     price = readpic(lowest_price_img, 'maindata.xml')
