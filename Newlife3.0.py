@@ -43,8 +43,6 @@ if __name__ == '__main__':
     import time
     a = time.time()
     app = SketchApp()
-    diskid = get_unique_id()
-    set_val('diskid', get_id_hash(diskid))   ##sha1 hash化
     app.MainLoop()
     ## 打开刷新与确认进程
     # monitijaoThread = MoniTijiaoThread() #模拟提交

@@ -84,7 +84,6 @@ def Logout():  # 修改为参数传递
     print(result)
 
     try:
-        from component.remote_control import get_unique_id  ##获取硬盘ID
         # debug 模式
         host_ali = get_val('host_ali')
         Identify_code = get_val('Identify_code')
@@ -116,7 +115,6 @@ def Logout():  # 修改为参数传递
 
 def Keeplogin():
     try:
-        from component.remote_control import get_unique_id  ##获取硬盘ID
         # debug 模式
         host_ali = get_val('host_ali')
         Identify_code = get_val('Identify_code')

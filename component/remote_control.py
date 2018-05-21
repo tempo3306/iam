@@ -62,7 +62,44 @@ def get_unique_id():
             print ('disk id:', physical_disk.SerialNumber.strip())
             return diskid
     except:
-        return "helong"
+        pass
+    try:
+        cpus = c.Win32_Processor()
+        return cpus[0].ProcessorId
+    except:
+        pass
+    ##计算机名 + mac地址
+    try:
+        mac = get_mac_address()
+        cname = getname()
+        return mac + cname
+    except:
+        return "wrong"
+
+##获取MAC
+import uuid
+def get_mac_address():
+    mac=uuid.UUID(int = uuid.getnode()).hex[-12:]
+    return mac
+
+
+import ctypes
+import os
+
+
+# 获取计算机名
+def getname():
+    pcName = ctypes.c_char_p(''.encode('utf-8'))
+    pcSize = 16
+    pcName = ctypes.cast(pcName, ctypes.c_char_p)
+    try:
+        ctypes.windll.kernel32.GetComputerNameA(pcName, ctypes.byref(ctypes.c_int(pcSize)))
+    except Exception:
+        print("Sth wrong in getname!")
+    return pcName.value.decode('utf-8')
+
+
+
 
 
 def getip_dianxin(ip):
@@ -157,8 +194,8 @@ def getip_dianxin(ip):
 #     return encrypt_str
 #
 #
-# if __name__ == "__main__":
-#     #     a = get_cpu_info()
-#     get_disk_info()
-#
-#
+if __name__ == "__main__":
+    #     a = get_cpu_info()
+    mac = get_mac_address()
+    cname = getname()
+    print ( mac + cname)

@@ -221,7 +221,7 @@ class CurrentStatusFrame(wx.Frame):
         x0, y0 = get_val('CurrentStatusFramePos')
         CurrentStatusFrameSize = get_val('CurrentStatusFrameSize')
         super(CurrentStatusFrame, self).__init__(parent,  size=CurrentStatusFrameSize, pos=(x+x0, y+y0),
-                                        style=wx.FRAME_NO_TASKBAR | wx.FRAME_FLOAT_ON_PARENT | wx.BORDER_NONE)
+                                        style=wx.FRAME_TOOL_WINDOW | wx.FRAME_FLOAT_ON_PARENT | wx.BORDER_NONE)
         self.currentstatuspanel = CurrentStatusPanel(self)
 
         self.Bind(wx.EVT_LEFT_DOWN , self.OnSetFocus)

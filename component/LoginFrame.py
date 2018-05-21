@@ -8,7 +8,8 @@ import wx.lib.agw.hyperlink as hyperlink
 from wx.lib.pubsub import pub
 import wx
 from component.app_thread import HashThread, LoginThread, Login_codeThread, Getip_dianxinThread
-from component.variable import get_val, set_val, remote_variables
+from component.remote_control import get_unique_id
+from component.variable import get_val, set_val, remote_variables, get_id_hash
 from component.TopFrame import TopFrame
 import sys, pickle
 from wx.lib.buttons import GenButton as wxButton
@@ -148,6 +149,9 @@ class Identify_codePanel(wx.Panel):
         self.SetSizer(self.code_sizer_v1)
 
     def OnLogin(self, event):
+
+        diskid = get_unique_id()
+        set_val('diskid', get_id_hash(diskid))  ##sha1 hash化
         Identify_code = self.code_userText.GetValue()
         if Identify_code == "":
             wx.MessageBox('请输入激活码！')
