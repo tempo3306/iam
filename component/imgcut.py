@@ -505,12 +505,12 @@ def find_yan_confirm():
 def Price_read():
     imgpos_lowestprice = get_val('imgpos_lowestprice')
 
-    avt = get_val('avt')
-    avt += 1
-    if avt == 500 or avt == 501:
-        avt = 0
-    set_val('avt', avt)
-    cv2.imwrite(r'./pic/%s.png' % avt, imgpos_lowestprice)
+    # avt = get_val('avt')
+    # avt += 1
+    # if avt == 500 or avt == 501:
+    #     avt = 0
+    # set_val('avt', avt)
+    # cv2.imwrite(r'./pic/%s.png' % avt, imgpos_lowestprice)
 
     lowest_price_img = cv2.cvtColor(imgpos_lowestprice, cv2.COLOR_BGR2GRAY)
     price = readpic(lowest_price_img, 'maindata.xml')
