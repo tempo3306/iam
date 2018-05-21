@@ -197,7 +197,7 @@ class LoginFrame(wx.Frame):
         pub.subscribe(self.connect_success, "connect")
         # pub.subscribe(self.connect_failure, "connect failure")
 
-        self.hashthread = HashThread()
+        # self.hashthread = HashThread()
 
     def connect_success(self):
         self.panel.code_loginbtn.Enable()

@@ -116,6 +116,7 @@ def init_url():
     set_val('url_dianxin', "https://www.baidu.com")  # 电信
     set_val('url_nodianxin', "http://moni.51hupai.org/")  # 非电信
     set_val('url_moni', "https://hupai.pro/static/main/moni.html")
+    # set_val('url_moni', "http://192.168.3.20:3000/static/main/moni.html")
     set_val('guopai_dianxin', False)  ##当前是否处于国拍电信  默认是非电信
 
 
@@ -139,7 +140,7 @@ def init_size():
     set_val('webview_pos', (-5, -16))  # WEB在 WEBVIEW里的相对位置
     set_val('buttonpanel_size', (892, 30))
     set_val('buttonpanel_pos', (0, 0))
-    set_val('htmlsize', [898, 768])
+    set_val('htmlsize', [918, 768])
     set_val('htmlpanel_size', (892, 628))
     set_val('htmlpanel_pos', (0, 30))
     set_val('bottomestatusbarpanel_size', (892, 30))
@@ -260,7 +261,7 @@ def init_size():
 
 
     ##状态框与验证码放大框
-    set_val('CurrentStatusFramePos', (425, 607))
+    set_val('CurrentStatusFramePos', (426, 607))
     set_val('CurrentStatusFrameSize', (451,77))
 
 

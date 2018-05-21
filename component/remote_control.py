@@ -62,7 +62,7 @@ def get_unique_id():
             print ('disk id:', physical_disk.SerialNumber.strip())
             return diskid
     except:
-        return None
+        return "helong"
 
 
 def getip_dianxin(ip):

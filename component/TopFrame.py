@@ -6,7 +6,7 @@
 import wx.html2
 from component.staticmethod import *
 from component.imgcut import findpos, timeset, Price_read
-from component.webframe import WebFrame, MoniWebFrame
+from component.webframe import WebFrame
 from component.Pinger import pingerThread
 from component.app_thread import *
 from component.login import Keeplogin
@@ -178,19 +178,18 @@ class TopFrame(wx.Frame):
         moni = wx.FindWindowById(moni_id)
         if moni_id != -1:
             moni.Show(True)
-            moni.currentstatusframe.Show(True)
+            moni.currentstatusframe.Show(False)
             moni.htmlpanel.webview.Reload()
             moni.Move((Px, Py))
             moni.operationpanel.init_ui()
             moni.Show(True)
-            moni.currentstatusframe.Show(True)
             self.webopen()
         else:
             id = wx.NewId()
             set_val('moni_webframe', id)
-            self.fr = MoniWebFrame( Px, Py, id, '沪牌一号 模拟', '切换国拍')  ##模拟  id  51
+            self.fr = WebFrame( Px, Py, id, '沪牌一号 模拟', '切换国拍', True)  ##模拟  id  51
             self.fr.Show(True)
-            self.fr.currentstatusframe.Show(True)
+            self.fr.currentstatusframe.Show(False)
             self.fr.operationpanel.init_ui()
             self.webopen()
             # 关闭主界面，打开策略设置
@@ -216,13 +215,13 @@ class TopFrame(wx.Frame):
             self.webopen()
             moni.Move((Px, Py))
             moni.Show(True)
-            moni.currentstatusframe.Show(True)
+            moni.currentstatusframe.Show(False)
         else:
             id = wx.NewId()
             set_val('moni_webframe', id)
-            self.fr = MoniWebFrame(Px, Py, id, '沪牌一号模拟', '切换国拍')  ##模拟  id  51
+            self.fr = WebFrame(Px, Py, id, '沪牌一号模拟', '切换国拍', True)  ##模拟  id  51
             self.fr.Show(True)
-            self.fr.currentstatusframe.Show(True)
+            self.fr.currentstatusframe.Show(False)
             self.fr.operationpanel.init_ui()
             # 关闭主界面，打开策略设置
             self.webopen()
@@ -247,14 +246,14 @@ class TopFrame(wx.Frame):
             guopai.Center()
             guopai.htmlpanel.webview.Reload()
             guopai.Show(True)
-            guopai.currentstatusframe.Show(True)
+            guopai.currentstatusframe.Show(False)
             self.webopen()
         else:
             id = wx.NewId()
             set_val('guopai_webframe', id)
-            self.fr = WebFrame(Px, Py, id, '沪牌一号 国拍', '切换模拟')  ## 国拍52
+            self.fr = WebFrame(Px, Py, id, '沪牌一号 国拍', '切换模拟', False)  ## 国拍52
             self.fr.Show(True)
-            self.fr.currentstatusframe.Show(True)
+            self.fr.currentstatusframe.Show(False)
             self.fr.operationpanel.init_ui()
             # 关闭主界面，打开策略设置
             self.webopen()
@@ -281,14 +280,14 @@ class TopFrame(wx.Frame):
             guopai.operationpanel.init_ui()
             guopai.htmlpanel.webview.Reload()
             guopai.Show(True)
-            guopai.currentstatusframe.Show(True)
+            guopai.currentstatusframe.Show(False)
             self.webopen()
         else:
             id = wx.NewId()
             set_val('guopai_webframe', id)
-            self.fr = WebFrame(Px, Py, id, '沪牌一号 国拍', '切换模拟')  ## 国拍52
+            self.fr = WebFrame(Px, Py, id, '沪牌一号 国拍', '切换模拟', False)  ## 国拍52
             self.fr.Show(True)
-            self.fr.currentstatusframe.Show(True)
+            self.fr.currentstatusframe.Show(False)
             self.fr.operationpanel.init_ui()
             # 关闭主界面，打开策略设置
             self.webopen()

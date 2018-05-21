@@ -15,6 +15,7 @@ from ctypes import wintypes
 from wx.lib.pubsub import pub
 import time
 import logging
+
 logger = logging.getLogger()
 
 
@@ -22,7 +23,8 @@ def cal_time(func):
     def wrapper(*args, **kw):
         local_time = time.time()
         func(*args, **kw)
-        print ('current Function [%s] run time is %.2f' % (func.__name__ ,time.time() - local_time))
+        print('current Function [%s] run time is %.2f' % (func.__name__, time.time() - local_time))
+
     return wrapper
 
 
@@ -43,6 +45,7 @@ def Click2(x, y):  # 鼠标点击
     win32api.mouse_event(win32con.MOUSEEVENTF_LEFTDOWN, x, y, 0, 0)
     win32api.mouse_event(win32con.MOUSEEVENTF_LEFTUP, x, y, 0, 0)
     win32api.SetCursorPos(a)  # 模拟键盘输入
+
 
 
 def Paste():  # ctrl + V
@@ -88,6 +91,8 @@ tijiao_num
 3代表等待自动补枪
 0代表所有触发都结束
 '''
+
+
 def OnClick_Tijiao():
     one_delay = get_val('one_delay')
     second_delay = get_val('second_delay')
@@ -143,10 +148,11 @@ def Tijiao():
         set_val('current_pricestatus', current_pricestatus)
     elif tijiao_num == 3:
         print("tijiao_fsdfs")
-        set_val('smartprice_chujia', True) ##开启智能出价， 打开确认查找
+        set_val('smartprice_chujia', True)  ##开启智能出价， 打开确认查找
         set_val('current_pricestatus_label', '智能补枪')
         set_val('current_pricestatus', '智能出价')
         print("开启智能出价")
+
 
 def SmartTijiao():
     tijiao_on = get_val('tijiao_on')
@@ -233,7 +239,7 @@ def Refresh_web():
 def Smart_chujia():
     Position_frame = get_val('Position_frame')
     moni_on = get_val('moni_on')
-    Click(Position_frame[4][0], Position_frame[4][1]) ##确认
+    Click(Position_frame[4][0], Position_frame[4][1])  ##确认
     price = smart_price()  ##智能计算出价
     set_val('userprice', price)  ##保存用户出价
     if moni_on:
@@ -244,11 +250,12 @@ def Smart_chujia():
         print("国拍智能出价")
         guopai_chujia(price)
 
+
 def esc_chujia():
     Position_frame = get_val('Position_frame')
     moni_on = get_val('moni_on')
     Click(Position_frame[7][0], Position_frame[7][1])  # 取消
-    Click(Position_frame[4][0], Position_frame[4][1]) ##确认
+    Click(Position_frame[4][0], Position_frame[4][1])  ##确认
     price = smart_price()  ##智能计算出价
     set_val('userprice', price)  ##保存用户出价
     if moni_on:
@@ -267,6 +274,7 @@ time_price = {'35': 1200,
               '55': 500, '56': 300
               }
 
+
 def smart_price():
     lowest_price = get_val('lowest_price')
     a_time = get_val('a_time')
@@ -278,6 +286,8 @@ def smart_price():
         return add_price + lowest_price
     else:
         return 1300 + lowest_price  ##除了榜上有的其余均加1300出价
+
+
 ##-------------------------------------------------------------------------------------
 
 
@@ -331,7 +341,6 @@ def guopai_chujia(price):
     set_val('yanzhengma_count', 0)  # 计数器，制造延迟
     set_val('yanzhengma_view', True)  # 打开验证码放大器
     set_val('refresh_need', True)  # 激活刷新验证码
-
 
 
 ##如果一直处理提交状态和查找验证码阶段，取消后重新出价
@@ -465,7 +474,6 @@ def tijiao_ok():
         set_val('yanzhengma_close', True)
 
 
-
 def tijiao_ok2():
     enter_on = get_val('enter_on')
     tijiao_on = get_val('tijiao_on')
@@ -480,6 +488,7 @@ def tijiao_ok2():
         set_val('tijiao_OK', True)
         set_val('yanzhengma_view', False)
         set_val('yanzhengma_close', True)
+
 
 def query():
     query_interval = get_val('query_interval')
@@ -526,7 +535,7 @@ VK_CODE = {'0': 0x30, '1': 0x31, '2': 0x32, '3': 0x33, '4': 0x34, '5': 0x35, '6'
            '8': 0x38,
            '9': 0x39, 'a': 0x41, 'b': 0x42, 'c': 0x43, 'd': 0x44, 'e': 0x45, 'f': 0x46, 's': 0x53,
            'q': 0x51, 'h': 0x48,
-          }
+           }
 user32 = ctypes.windll.user32
 HOTKEYS1 = {1: (VK_CODE['2'], win32con.MOD_ALT), 2: (VK_CODE['3'], win32con.MOD_ALT),
             3: (VK_CODE['4'], win32con.MOD_ALT), 4: (VK_CODE['5'], win32con.MOD_ALT),
@@ -536,9 +545,7 @@ HOTKEYS2 = {7: (VK_CODE['s'], 0x4000), 8: (VK_CODE['f'], 0x4000), 9: (VK_CODE['d
             10: (win32con.VK_SPACE, 0x4000), 11: (VK_CODE['e'], 0x4000), 12: (win32con.VK_RETURN, 0x4000),
             13: (VK_CODE['q'], 0x4000), 14: (VK_CODE['h'], 0x4000),
             15: (win32con.VK_ESCAPE, 0x4000),
-            16: (win32con.VK_F1, 0x4000), 17:(win32con.VK_F5, 0x4000)}
-
-
+            16: (win32con.VK_F1, 0x4000), 17: (win32con.VK_F5, 0x4000)}
 
 HOTKEY_ACTIONS = {
     1: Cancel_chujia_test, 2: OnClick_chujia, 3: many_delete,
@@ -650,8 +657,6 @@ def gettime(choice):  # choice1:55, choice2:0.5
     return c  # 得到用户所确定的最终时间戳
 
 
-
-
 ##初始化 还原
 def init_strategy_one():
     set_val('twice', False)
@@ -675,11 +680,9 @@ def init_strategy_second():
     init_label()
 
 
-
 def init_label():
     set_val('current_pricestatus_label', '等待第二次出价')
     one_time1 = get_val('one_time1')
     one_diff = get_val('one_diff')
     current_pricestatus = '{0:.1f}秒加{1}'.format(one_time1, one_diff)
     set_val('current_pricestatus', current_pricestatus)
-

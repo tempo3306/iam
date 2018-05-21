@@ -300,7 +300,7 @@ class StatusPanel(wx.Panel):
             guopai = wx.FindWindowById(guopai_webframe)
             if guopai_webframe != -1:
                 guopai.Show(True)
-                guopai.currentstatusframe.Show(True)
+                guopai.currentstatusframe.Show(False)
                 guopai.operationpanel.init_ui()
                 moni.Show(False)
                 moni.currentstatusframe.Show(False)
@@ -320,7 +320,7 @@ class StatusPanel(wx.Panel):
             if moni_webframe != -1:
                 moni.Show(True)
                 moni.htmlpanel.webview.Reload()
-                moni.currentstatusframe.Show(True)
+                moni.currentstatusframe.Show(False)
                 guopai.Show(False)
                 guopai.currentstatusframe.Show(False)
                 guopai.yanzhengmaframe.Show(False)

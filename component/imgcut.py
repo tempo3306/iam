@@ -453,6 +453,9 @@ def findrefresh():
     res = cv2.matchTemplate(img, template, cv2.TM_CCOEFF_NORMED)
     min_val, max_val, min_loc, max_loc = cv2.minMaxLoc(res)
     yanzhengma_find = get_val('yanzhengma_find')
+
+    print(max_val)
+
     if max_val >= 0.8:
         print("refresh")
         OnClick_Shuaxin()  # 刷新验证码

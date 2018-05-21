@@ -159,12 +159,14 @@ class HtmlPanel(wx.Panel):
         url_nodianxin = get_val('url_nodianxin')
         guopai_dianxin = get_val('guopai_dianxin')
         if moni:
+            print("fsdfsfsfdsfsf")
             self.webview.LoadURL(url_moni)
         elif guopai_dianxin:
             self.webview.LoadURL(url_dianxin)
+            print("352", url_dianxin)
         else:
             self.webview.LoadURL(url_nodianxin)
-
+            print("Jfsd", url_nodianxin)
 
 
 
@@ -233,6 +235,8 @@ class CurrentStatusPanel(wx.Panel):
         super(CurrentStatusPanel, self).__init__(parent, size=CurrentStatusFrameSize, style=wx.BORDER_NONE)
         self.SetBackgroundColour("#585858")
         self.timefont = wx.Font(12, wx.FONTFAMILY_MODERN, wx.FONTSTYLE_NORMAL, wx.FONTWEIGHT_BOLD, False)
+        self.parent = parent
+
 
     def Modify(self):  # 更新
         self.SetForegroundColour('#FF8000')  ##设置文字颜色
@@ -261,102 +265,104 @@ class CurrentStatusPanel(wx.Panel):
         ##显示最低成交价
         findpos_on = get_val('findpos_on')
         if findpos_on:
-            lowestpricelabel = get_val('lowestpricelabel')
-            lowestpricetext = "{0}: {1}".format(lowestpricelabel, '未识别')
-            dc.DrawText(lowestpricetext, x2, y2)
+            self.parent.Show(False)
+            # lowestpricelabel = get_val('lowestpricelabel')
+            # lowestpricetext = "{0}: {1}".format(lowestpricelabel, '未识别')
+            # dc.DrawText(lowestpricetext, x2, y2)
         else:
+            self.parent.Show(True)
             lowest_price = get_val('lowest_price')
             lowestpricelabel = get_val('lowestpricelabel')
             lowestpricetext = "{0}: {1}".format(lowestpricelabel, lowest_price)
             dc.DrawText(lowestpricetext, x2, y2)
 
-        ##第二行  出价情况
-        userprice = get_val('userprice')
-        tijiao_on = get_val('tijiao_on')
-        usertime = get_val('usertime')
-        smartprice_chujia = get_val('smartprice_chujia')
+            ##第二行  出价情况
+            userprice = get_val('userprice')
+            tijiao_on = get_val('tijiao_on')
+            usertime = get_val('usertime')
+            smartprice_chujia = get_val('smartprice_chujia')
 
-        current_pricestatus_label = get_val('current_pricestatus_label')
-        current_pricestatus = get_val('current_pricestatus')
-        # print('current_pricestatus', current_pricestatus)
-
-        if userprice and tijiao_on:  ##提交状态
             current_pricestatus_label = get_val('current_pricestatus_label')
             current_pricestatus = get_val('current_pricestatus')
-            pricelabeltext = "{0}".format(current_pricestatus_label)
-            pricetext = "{0}".format(current_pricestatus)
-            ##第三行  剩余状态
-            # 显示截止时间与当前时间相差
-            max_price = get_val('lowest_price') + 300
-            diff_price = int(userprice) - max_price
-            # 显示截止时间与当前时间相差
-            currenttime = get_val('a_time')
-            timediff = float(usertime) - float(currenttime)
-            timestatustext = "提交倒计时{0:.1f}秒".format(timediff)
-            pricestatustext = "差价{0}".format(diff_price)
-            dc.DrawText(pricelabeltext, x3, y3)
-            dc.DrawText(pricetext, x4, y4)
-            dc.DrawText(timestatustext, x5, y5)
-            dc.DrawText(pricestatustext, x6, y6)
+            # print('current_pricestatus', current_pricestatus)
 
-        else:
-            if smartprice_chujia:
+            if userprice and tijiao_on:  ##提交状态
                 current_pricestatus_label = get_val('current_pricestatus_label')
                 current_pricestatus = get_val('current_pricestatus')
                 pricelabeltext = "{0}".format(current_pricestatus_label)
                 pricetext = "{0}".format(current_pricestatus)
                 ##第三行  剩余状态
+                # 显示截止时间与当前时间相差
                 max_price = get_val('lowest_price') + 300
-                # diff_price = int(userprice) - max_price
-                diff_price = '-'
-                timediff = '-'
-                timestatustext = "提交倒计时{0}秒".format(timediff)
+                diff_price = int(userprice) - max_price
+                # 显示截止时间与当前时间相差
+                currenttime = get_val('a_time')
+                timediff = float(usertime) - float(currenttime)
+                timestatustext = "提交倒计时{0:.1f}秒".format(timediff)
                 pricestatustext = "差价{0}".format(diff_price)
                 dc.DrawText(pricelabeltext, x3, y3)
                 dc.DrawText(pricetext, x4, y4)
                 dc.DrawText(timestatustext, x5, y5)
                 dc.DrawText(pricestatustext, x6, y6)
+
             else:
-                tijiao_num = get_val('tijiao_num')
-                # 显示截止时间与当前时间相差
-                currenttime = get_val('a_time')
-                if tijiao_num == 1:
-                    one_time1 = get_val('one_real_time1')
-                    timediff = float(one_time1) - float(currenttime)
-                    ##修改状态
-                    one_time1 = get_val('one_time1')
-                    one_diff = get_val('one_diff')
-                    current_pricestatus = '{0}秒加{1}'.format(one_time1, one_diff)
-                    set_val('current_pricestatus', current_pricestatus)
-                elif tijiao_num == 2:
-                    second_real_time1 = get_val('second_real_time1')
-                    timediff = float(second_real_time1) - float(currenttime)
-                    ##修改状态
-                    second_time1 = get_val('second_time1')
-                    second_diff = get_val('second_diff')
-                    current_pricestatus = '{0}秒加{1}'.format(second_time1, second_diff)
-                    set_val('current_pricestatus', current_pricestatus)
-                else:
+                if smartprice_chujia:
+                    current_pricestatus_label = get_val('current_pricestatus_label')
+                    current_pricestatus = get_val('current_pricestatus')
+                    pricelabeltext = "{0}".format(current_pricestatus_label)
+                    pricetext = "{0}".format(current_pricestatus)
+                    ##第三行  剩余状态
+                    max_price = get_val('lowest_price') + 300
+                    # diff_price = int(userprice) - max_price
+                    diff_price = '-'
                     timediff = '-'
-                current_pricestatus_label = get_val('current_pricestatus_label')
-                current_pricestatus = get_val('current_pricestatus')
-                pricelabeltext = "{0}".format(current_pricestatus_label)
-                pricetext = "{0}".format(current_pricestatus)
-                if timediff == '-':
-                    timestatustext = "出价倒计时{0}秒".format(timediff)
+                    timestatustext = "提交倒计时{0}秒".format(timediff)
+                    pricestatustext = "差价{0}".format(diff_price)
+                    dc.DrawText(pricelabeltext, x3, y3)
+                    dc.DrawText(pricetext, x4, y4)
+                    dc.DrawText(timestatustext, x5, y5)
+                    dc.DrawText(pricestatustext, x6, y6)
                 else:
-                    timestatustext = "出价倒计时{0:.1f}秒".format(timediff)
+                    tijiao_num = get_val('tijiao_num')
+                    # 显示截止时间与当前时间相差
+                    currenttime = get_val('a_time')
+                    if tijiao_num == 1:
+                        one_time1 = get_val('one_real_time1')
+                        timediff = float(one_time1) - float(currenttime)
+                        ##修改状态
+                        one_time1 = get_val('one_time1')
+                        one_diff = get_val('one_diff')
+                        current_pricestatus = '{0}秒加{1}'.format(one_time1, one_diff)
+                        set_val('current_pricestatus', current_pricestatus)
+                    elif tijiao_num == 2:
+                        second_real_time1 = get_val('second_real_time1')
+                        timediff = float(second_real_time1) - float(currenttime)
+                        ##修改状态
+                        second_time1 = get_val('second_time1')
+                        second_diff = get_val('second_diff')
+                        current_pricestatus = '{0}秒加{1}'.format(second_time1, second_diff)
+                        set_val('current_pricestatus', current_pricestatus)
+                    else:
+                        timediff = '-'
+                    current_pricestatus_label = get_val('current_pricestatus_label')
+                    current_pricestatus = get_val('current_pricestatus')
+                    pricelabeltext = "{0}".format(current_pricestatus_label)
+                    pricetext = "{0}".format(current_pricestatus)
+                    if timediff == '-':
+                        timestatustext = "出价倒计时{0}秒".format(timediff)
+                    else:
+                        timestatustext = "出价倒计时{0:.1f}秒".format(timediff)
 
-            pricestatustext = "差价{0}".format('-')
-            dc.DrawText(pricelabeltext, x3, y3)
-            dc.DrawText(pricetext, x4, y4)
-            dc.DrawText(timestatustext, x5, y5)
-            dc.DrawText(pricestatustext, x6, y6)
+                pricestatustext = "差价{0}".format('-')
+                dc.DrawText(pricelabeltext, x3, y3)
+                dc.DrawText(pricetext, x4, y4)
+                dc.DrawText(timestatustext, x5, y5)
+                dc.DrawText(pricestatustext, x6, y6)
 
 
 
-class MoniWebFrame(wx.Frame):
-    def __init__(self, px, py, id, name, tablabel):  # name:窗口显示名称
+class WebFrame(wx.Frame):
+    def __init__(self, px, py, id, name, tablabel, moni):  # name:窗口显示名称
         websize = get_val('websize')
         wx.Frame.__init__(self, None, id, name, size=(websize[0], websize[1]), pos=(px, py - 10),
                           style=wx.CAPTION | wx.CLOSE_BOX)
@@ -364,16 +370,16 @@ class MoniWebFrame(wx.Frame):
         mainicon = get_val('mainicon')
         self.icon = wx.Icon(mainicon, wx.BITMAP_TYPE_ICO)
         self.SetIcon(self.icon)
-
+        self.moni = moni
         self.Bind(wx.EVT_CLOSE, self.OnClose)
-        self.htmlpanel = HtmlPanel(self, True)  ## moni: True
+        self.htmlpanel = HtmlPanel(self, moni)  ## moni: True
         webstatus_label = get_val('moni_webstatus_label')
-        self.buttonpanel = ButtonPanel(self, webstatus_label, True)  ##moni: True
+        self.buttonpanel = ButtonPanel(self, webstatus_label, moni)  ##moni: True
         self.operationpanel = OperationPanel(self, tablabel)
-        self.bottomstatusbarpanel = BottomeStatusbarPanel(self, True)
+        self.bottomstatusbarpanel = BottomeStatusbarPanel(self, moni)
 
         self.currentstatusframe = CurrentStatusFrame(self)
-        self.currentstatusframe.Show(True)
+        self.currentstatusframe.Show(False)
         Yanzhengmasize = get_val('Yanzhengmasize')
         self.yanzhengmaframe = YanzhengmaFrame(self, Yanzhengmasize)
 
@@ -388,6 +394,7 @@ class MoniWebFrame(wx.Frame):
         # self.Bind(wx.EVT_ACTIVATE , self.hotkey_open)
 
         pub.subscribe(self.refresh_web, 'moni refresh_web')
+        pub.subscribe(self.refresh_web, 'guopai refresh_web')
 
 
     def childmove(self, event):
@@ -417,7 +424,11 @@ class MoniWebFrame(wx.Frame):
 
     def Price_view(self, event):
         moni_on = get_val('moni_on')
-        if moni_on and self.IsShown() and not self.IsIconized():
+        guopai_on = get_val('guopai_on')
+        on1 = moni_on and self.moni
+        on2 = guopai_on and not self.moni
+        on = on1 or on2
+        if on and self.IsShown() and not self.IsIconized():
             ###子面板刷新
             self.buttonpanel.Modify()
             self.bottomstatusbarpanel.Modify()
@@ -484,7 +495,6 @@ class MoniWebFrame(wx.Frame):
             self.currentstatusframe.Show(False)
             self.yanzhengmaframe.Show(False)
 
-        guopai_on = get_val('guopai_on')
 
 
     def hotkey_open2(self):
@@ -527,8 +537,9 @@ class MoniWebFrame(wx.Frame):
 
 
 ## moni  51    国拍52
+'''
 class WebFrame(wx.Frame):
-    def __init__(self, px, py, id, name, tablabel):  # name:窗口显示名称
+    def __init__(self, px, py, id, name, tablabel, moni):  # name:窗口显示名称
         websize = get_val('websize')
 
         wx.Frame.__init__(self, None, id, name, size=(websize[0], websize[1]), pos=[px, py - 10],
@@ -554,7 +565,7 @@ class WebFrame(wx.Frame):
         # pub.subscribe(self.Close2, "close guopai")  # 打开非电信
         self.bottomstatusbarpanel = BottomeStatusbarPanel(self, False)
         self.currentstatusframe = CurrentStatusFrame(self)
-        self.currentstatusframe.Show(True)
+        self.currentstatusframe.Show(False)
         # self.currentstatuspanel = CurrentStatusPanel(self)
         Yanzhengmasize = get_val('Yanzhengmasize')
         self.yanzhengmaframe = YanzhengmaFrame(self, Yanzhengmasize)
@@ -695,8 +706,6 @@ class WebFrame(wx.Frame):
             Hotkey_open()
 
 
-
-
     def createStatusBar(self):
         self.statusbar = IcStatusBar(self)
         self.SetStatusBar(self.statusbar)
@@ -748,3 +757,4 @@ class WebFrame(wx.Frame):
         #         dlg.Destroy()
         #         self.Destroy()
         #         event.Skip()  # 绑在同一事件上的两个函数，如果 没有这个，就只执行后绑定的。
+'''
