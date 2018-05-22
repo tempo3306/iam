@@ -93,7 +93,7 @@ tijiao_num
 '''
 
 
-def OnClick_Tijiao():
+def OnClick_Tijiao(delay=0):
     one_delay = get_val('one_delay')
     second_delay = get_val('second_delay')
     tijiao_num = get_val('tijiao_num')
@@ -110,12 +110,12 @@ def OnClick_Tijiao():
             set_val('tijiao_num', 3)
         else:
             set_val('tijiao_num', 0)
-        timer = threading.Timer(one_delay, Tijiao)
+        timer = threading.Timer(delay, Tijiao)
         timer.start()
         set_val('tijiao_on', False)
     elif tijiao_num == 2:
         set_val('tijiao_num', 0)
-        timer = threading.Timer(second_delay, Tijiao)
+        timer = threading.Timer(delay, Tijiao)
         timer.start()
         set_val('tijiao_on', False)
     elif tijiao_num == 3:
@@ -658,7 +658,16 @@ def gettime(choice):  # choice1:55, choice2:0.5
 
 
 ##初始化 还原
-def init_strategy_one():
+def init_strategy():
+    strategy_type = get_val('strategy_type')
+    if strategy_type == 0:
+        init_strategy0()
+    elif strategy_type == 1:
+        init_strategy1()
+    elif strategy_type == 2:
+        init_strategy2()
+
+def init_strategy0():
     set_val('twice', False)
     set_val('strategy_on', True)
     set_val('chujia_on', True)
@@ -669,7 +678,7 @@ def init_strategy_one():
     init_label()
 
 
-def init_strategy_second():
+def init_strategy1():
     set_val('strategy_on', True)
     set_val('twice', True)
     set_val('chujia_on', True)
@@ -678,6 +687,17 @@ def init_strategy_second():
     set_val('tijiao_OK', False)
     set_val('tijiao_one', False)  # 单枪未开
     init_label()
+
+def init_strategy2():
+    set_val('twice', False)
+    set_val('strategy_on', True)
+    set_val('chujia_on', True)
+    set_val('tijiao_on', False)
+    set_val('tijiao_num', 1)  # 初始化
+    set_val('tijiao_OK', False)
+    set_val('tijiao_one', False)  # 单枪未开
+    init_label()
+
 
 
 def init_label():

@@ -270,22 +270,40 @@ def init_size():
 
 
 def init_strategy():
-    strategy_choices = ['单枪策略(专注一次出价)', '双枪策略(一伏二补)']
+    strategy_choices = ['单枪策略(专注一次出价)', '双枪策略(一伏二补)', '单枪策略 智能提交']
     strategy_dick = {
-        0: [0, 48.0, 700, 100, 0.5, 55, 1],
-        1: [1, 40.0, 500, 0, 0.5, 48, 1, 50, 700, 100, 0.5, 56, 1]
+
+        0: [0, 48.0, 700, 100, 0.5, 55,
+            1],
+
+        1: [1, 40.0, 500, 0, 0.5, 48,
+            1,
+            50, 700, 100, 0.5,
+            56, 1],
+
+        2: [2, 48.0, 700,
+            0, 0, 54,
+            100, 0.6, 55,
+            200, 0.5, 56,
+            56.5],
     }
+
     for strategy_type, strategy_list in strategy_dick.items():
         set_val(strategy_type, strategy_list)
     set_val('strategy_type', 0) ##当前状态
     '''
     (1)单枪  依次为 0: strategy_type 1: one_time1  2: one_diff  3: one_advance 4: one_delay 5: one_time2 
-                                    6: second_forcetijiao_on
+                                    6: one_forcetijiao_on
     (2)双枪  依次为 0: strategy_type 1: one_time1  2: one_diff  3: one_advance 4: one_delay 5: one_time2
-                                    6: second_forcetijiao_on   
+                                    6: one_forcetijiao_on   
                                     7: second_time1  8: second_diff  9: second_advance  10: second_delay 
-                                    11: second_time2  12: third_forcetijiao_on
-    (3)
+                                    11: second_time2  12: second_forcetijiao_on
+    (3)单枪动态提交  依次为 0: strategy_type 1: one_time1  2: one_diff  
+                                           3: one_advance_smart1  4: one_delay_smart1   5: one_time2_smart1
+                                           6: one_advance_smart2  7: one_delay_smart2   8: one_time2_smart2
+                                           9: one_advance_smart3  10: one_delay_smart3  11: one_time2_smart3
+                                           12: one_time2_smart
+                                      
     '''
 
 

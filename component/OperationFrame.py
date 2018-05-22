@@ -40,11 +40,11 @@ class StatusPanel(wx.Panel):
         self.controlgrid.Add(self.posajustButton, pos=(1, 0))
         self.controlgrid.Add(self.localtimeButton, pos=(1, 1))
 
-        # 时间区
-        self.autotime = wx.CheckBox(self, -1, label=u'自动时间同步')  # 开启时间显示
-        self.Bind(wx.EVT_CHECKBOX, self.autotime_set, self.autotime)
-        hbox1 = wx.BoxSizer(wx.HORIZONTAL)
-        hbox1.Add(self.autotime)
+        # # 时间区
+        # self.autotime = wx.CheckBox(self, -1, label=u'自动时间同步')  # 开启时间显示
+        # self.Bind(wx.EVT_CHECKBOX, self.autotime_set, self.autotime)
+        # hbox1 = wx.BoxSizer(wx.HORIZONTAL)
+        # hbox1.Add(self.autotime)
 
         ##确认方式
         confirm_choice = ["E键", "回车"]
@@ -58,7 +58,7 @@ class StatusPanel(wx.Panel):
         hbox2.Add(self.confirm_choice)
 
         self.controlbox.Add(self.controlgrid)  # 把网格组加到 功能框内
-        self.controlbox.Add(hbox1)
+        # self.controlbox.Add(hbox1)
         self.controlbox.Add(hbox2)
         ##----------------------------------------------------------------------
         ###策略设置区域
@@ -168,6 +168,23 @@ class StatusPanel(wx.Panel):
         self.buqiang_vbox.Add(self.buqiang_tiplabel_hbox, flag=wx.TOP, border=6)
         self.buqiang_label_sizer.Add(self.buqiang_vbox)
 
+
+        ##单枪动态提交
+        self.smart_tijiao_label = wx.StaticBox(self, -1, "单枪动态提交")
+        self.smart_tijiao_label_sizer = wx.StaticBoxSizer(self.smart_tijiao_label, wx.VERTICAL)
+        self.smart_tijiao_label.SetFont(self.titlefont)
+        self.smart_tijiao_vsizer = wx.BoxSizer(wx.VERTICAL)
+        self.smart_tijiao_hsizer = wx.BoxSizer(wx.HORIZONTAL)
+        self.smart_tijiao_label = wx.StaticText(self, label = '动态提交', style = wx.ALIGN_RIGHT, size=(80,25))
+        self.smart_tijiao_button = wx.Button(self, label='设置', size=(50, 25))
+        self.smart_tijiao_hsizer.Add(self.smart_tijiao_label, flag=wx.TOP, border=5)
+        self.smart_tijiao_hsizer.Add(self.smart_tijiao_button, flag=wx.LEFT, border=20)
+        self.smart_tijiao_vsizer.Add(self.second_jiajia_sizer, flag=wx.BOTTOM, border=12)
+        self.smart_tijiao_vsizer.Add(self.smart_tijiao_hsizer, flag=wx.RIGHT, border=60)
+        self.smart_tijiao_label_sizer.Add(self.smart_tijiao_vsizer, flag=wx.BOTTOM, border=2)
+
+        self.smart_tijiao_button.Bind(wx.EVT_BUTTON, self.Smart_tijiao_button)
+
         ########第三次出价
         ##label行
         self.third_chujia_label = wx.StaticBox(self, -1, "第三次出价")
@@ -260,6 +277,7 @@ class StatusPanel(wx.Panel):
         ##构建组件
         self.strategy_sizer.Add(self.second_chujia_label_sizer, flag=wx.ALL, border=3)
         self.strategy_sizer.Add(self.third_chujia_label_sizer, flag=wx.ALL, border=3)
+        self.strategy_sizer.Add(self.smart_tijiao_label_sizer, flag=wx.ALL, border=3)
         self.strategy_sizer.Add(self.buqiang_label_sizer, flag=wx.ALL, border=3)
 
         self.strategy_area_vbox.Add(self.choice_strategy, flag=wx.LEFT, border=3)
@@ -349,10 +367,6 @@ class StatusPanel(wx.Panel):
             self.confirm_choice.SetSelection(0)
         elif enter_on:
             self.confirm_choice.SetSelection(1)
-        if autotime_on:
-            self.autotime.SetValue(True)
-        else:
-            self.autotime.SetValue(False)
         strategy_type = get_val('strategy_type')
         self.update_ui(strategy_type)
 
@@ -360,7 +374,7 @@ class StatusPanel(wx.Panel):
         strategy_list = get_val(strategy_type)
         print(strategy_list)
         if strategy_type == 0:  # 单次
-            init_strategy_one()
+            init_strategy()
             self.choice_strategy.SetSelection(strategy_type)
             self.second_jiajia_time.SetValue(strategy_list[1])
             self.second_tijiao_time.SetValue(strategy_list[5])
@@ -381,7 +395,7 @@ class StatusPanel(wx.Panel):
             set_val('one_advance', strategy_list[3])  # 第一次提交提前量
             set_val('one_delay', strategy_list[4])  # 第一次延迟
             set_val('one_time2', strategy_list[5])  # 第一次出价提交
-            set_val('third_forcetijiao_on', strategy_list[6])  # 强制提交
+            set_val('second_forcetijiao_on', strategy_list[6])  # 强制提交
 
             one_time1 = get_val('one_time1')
             one_time2 = get_val('one_time2')
@@ -392,13 +406,14 @@ class StatusPanel(wx.Panel):
             set_val('second_real_time1', gettime(second_time1))
             set_val('second_real_time2', gettime(second_time2))
             ####刷新界面排版
-            self.strategy_sizer.Show(self.third_chujia_label_sizer)
+            self.strategy_sizer.Show(self.second_chujia_label_sizer)
             self.strategy_sizer.Hide(self.third_chujia_label_sizer)
             self.strategy_sizer.Show(self.buqiang_label_sizer)
+            self.strategy_sizer.Hide(self.smart_tijiao_label_sizer)
             self.Layout()
 
         elif strategy_type == 1:  # 双枪
-            init_strategy_second()
+            init_strategy()
             self.choice_strategy.SetSelection(strategy_type)
             self.second_jiajia_time.SetValue(strategy_list[1])
             self.second_jiajia_price.SetValue(strategy_list[2])
@@ -441,14 +456,14 @@ class StatusPanel(wx.Panel):
             set_val('one_advance', strategy_list[3])  # 第一次提交提前量
             set_val('one_delay', strategy_list[4])  # 第一次延迟
             set_val('one_time2', strategy_list[5])  # 第一次出价提交
-            set_val('second_forcetijiao_on', strategy_list[6])
+            set_val('one_forcetijiao_on', strategy_list[6])
 
             set_val('second_time1', strategy_list[7])  # 第二次次出价加价
             set_val('second_diff', strategy_list[8])  # 第二次加价幅度
             set_val('second_advance', strategy_list[9])  # 第二次出价提交提前量
             set_val('second_delay', strategy_list[10])  # 第二次出价延迟
             set_val('second_time2', strategy_list[11])  # 第二次出价提交
-            set_val('third_forcetijiao_on', strategy_list[12])
+            set_val('second_forcetijiao_on', strategy_list[12])
 
             one_time1 = get_val('one_time1')
             one_time2 = get_val('one_time2')
@@ -460,10 +475,50 @@ class StatusPanel(wx.Panel):
             set_val('second_real_time2', gettime(second_time2))
 
             ####刷新界面排版
-            self.strategy_sizer.Show(self.third_chujia_label_sizer)
+            self.strategy_sizer.Show(self.second_chujia_label_sizer)
             self.strategy_sizer.Show(self.third_chujia_label_sizer)
             self.strategy_sizer.Hide(self.buqiang_label_sizer)
+            self.strategy_sizer.Hide(self.smart_tijiao_label_sizer)
             self.Layout()
+
+        elif strategy_type == 2:  # 单枪动态提交
+            init_strategy()
+            self.choice_strategy.SetSelection(strategy_type)
+            self.second_jiajia_time.SetValue(strategy_list[1])
+            self.second_jiajia_price.SetValue(strategy_list[2])
+
+# '''
+#     (3)单枪动态提交  依次为 0: strategy_type 1: one_time1  2: one_diff
+#                                            3: one_advance_smart1  4: one_delay_smart1   5: one_time2_smart1
+#                                            6: one_advance_smart2  7: one_delay_smart2   8: one_time2_smart2
+#                                            9: one_advance_smart3  10: one_delay_smart3  11: one_time2_smart3
+#                                            12: one_time2_smart
+# '''
+            set_val('one_time1', strategy_list[1])  # 第一次出价加价
+            set_val('one_diff', strategy_list[2])  # 第一次加价幅度
+            set_val('one_advance_smart1', strategy_list[3])
+            set_val('one_delay_smart1', strategy_list[4])
+            set_val('one_time2_smart1', strategy_list[5])
+            set_val('one_advance_smart2', strategy_list[6])
+            set_val('one_delay_smart2', strategy_list[7])
+            set_val('one_time2_smart2', strategy_list[8])
+            set_val('one_advance_smart3', strategy_list[9])
+            set_val('one_delay_smart3', strategy_list[10])
+            set_val('one_time2_smart3', strategy_list[11])
+            set_val('one_time2_smart', strategy_list[12])
+
+            set_val('one_realtime2_smart1', gettime(strategy_list[5]))
+            set_val('one_realtime2_smart2', gettime(strategy_list[8]))
+            set_val('one_realtime2_smart3', gettime(strategy_list[11]))
+            set_val('one_realtime2_smart', gettime(strategy_list[12]))
+
+            ####刷新界面排版
+            self.strategy_sizer.Hide(self.second_chujia_label_sizer)
+            self.strategy_sizer.Hide(self.third_chujia_label_sizer)
+            self.strategy_sizer.Show(self.smart_tijiao_label_sizer)
+            self.strategy_sizer.Show(self.buqiang_label_sizer)
+            self.Layout()
+
 
     ###需要进一步扩展 调整策略设置后需要 修正templist
     def update_strategy(self):
@@ -501,6 +556,8 @@ class StatusPanel(wx.Panel):
             set_val('strategy_description', strategy_choices[strategy_type])
             set_val(strategy_type, templist)
 
+
+
     ##导出跳价
     def priceview(self, event):
         price_list = get_val('price_list')
@@ -510,12 +567,7 @@ class StatusPanel(wx.Panel):
                 price_file.write(text)
                 price_file.write('\n')
 
-    def autotime_set(self, event):
-        timeSelected = event.GetEventObject()
-        if timeSelected.IsChecked():
-            set_val('autotime_on', True)
-        else:
-            set_val('autotime_on', False)
+
 
     ##刷新定位
     def posautoajust(self, event):
@@ -656,20 +708,20 @@ class StatusPanel(wx.Panel):
 
     def Second_forcetijiao(self, event):
         if self.second_forcetijiao_check.IsChecked():
-            set_val('second_forcetijiao_on', True)
+            set_val('one_forcetijiao_on', True)
             self.second_tijiao_time.Enable()
         else:
-            set_val('second_forcetijiao_on', False)
+            set_val('one_forcetijiao_on', False)
             self.second_tijiao_time.Disable()
         self.update_strategy()
 
 
     def Third_forcetijiao(self, event):
         if self.third_forcetijiao_check.IsChecked():
-            set_val('third_forcetijiao_on', True)
+            set_val('second_forcetijiao_on', True)
             self.third_tijiao_time.Enable()
         else:
-            set_val('third_forcetijiao_on', False)
+            set_val('second_forcetijiao_on', False)
             self.third_tijiao_time.Disable()
         self.update_strategy()
 
@@ -680,6 +732,12 @@ class StatusPanel(wx.Panel):
         else:
             set_val('smart_autoprice', False)
         self.update_strategy()
+
+    ##单枪动态提交
+    def Smart_tijiao_button(self, event):
+        from component.smartprice_dialog import Smart_tijiaoDialog
+        dlg = Smart_tijiaoDialog(self, "动态提交设置")
+        dlg.ShowModal()
 
 
 ##-------------------------------------------------------------------------
@@ -713,9 +771,25 @@ class TestPanel(wx.Panel):
         self.hbox2.Add(self.fast_timeset)
         self.fast_timeset.Bind(wx.EVT_TEXT, self.Fast_timeset)
 
-        self.vbox.Add(self.hbox1, flag=wx.TOP, border=10)
+        # 时间区
+        self.autotime = wx.CheckBox(self, -1, label=u'自动时间同步')  # 开启时间显示
+        self.Bind(wx.EVT_CHECKBOX, self.autotime_set, self.autotime)
+        self.hbox3 = wx.BoxSizer(wx.HORIZONTAL)
+        self.hbox3.Add(self.autotime)
+
+        self.vbox.Add(self.hbox1, flag=wx.TOP, border=300)
         self.vbox.Add(self.hbox2, flag=wx.TOP, border=5)
+        self.vbox.Add(self.hbox3, flag=wx.TOP, border=5)
         self.SetSizer(self.vbox)
+
+
+
+    def autotime_set(self, event):
+        timeSelected = event.GetEventObject()
+        if timeSelected.IsChecked():
+            set_val('autotime_on', True)
+        else:
+            set_val('autotime_on', False)
 
     ##时间调整
     def Add_time(self, event):
@@ -738,6 +812,14 @@ class TestPanel(wx.Panel):
         second = self.fast_timeset.GetValue()
         print(second)
         set_val('a_time', gettime(second))  # 计算得到的时间戳
+
+    ##初始化
+    def init_ui(self):
+        autotime_on = get_val('autotime_on')
+        if autotime_on:
+            self.autotime.SetValue(True)
+        else:
+            self.autotime.SetValue(False)
 
 
 class AdvancePanel(wx.Panel):
@@ -776,3 +858,5 @@ class OperationPanel(wx.Panel):
 
     def init_ui(self):
         self.status_tab.init_ui()
+        if get_val('test'):
+            self.test_tab.init_ui()

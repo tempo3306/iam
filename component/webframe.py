@@ -90,9 +90,12 @@ class ButtonPanel(wx.Panel):
 
     def autotime_set_timer(self, event):
         autotime_on = get_val('autotime_on')
-        if autotime_on:
+        moni_on = get_val('moni_on')
+        test = get_val('test')
+        if not test and moni_on:
             self.timeautoajust(event)
-
+        elif test and autotime_on:
+            self.timeautoajust(event)
 
 
 
@@ -283,7 +286,7 @@ class CurrentStatusPanel(wx.Panel):
             tijiao_on = get_val('tijiao_on')
             usertime = get_val('usertime')
             smartprice_chujia = get_val('smartprice_chujia')
-
+            strategy_type = get_val('strategy_type')
 
             if userprice and tijiao_on:  ##提交状态
                 current_pricestatus_label = get_val('current_pricestatus_label')
@@ -303,7 +306,6 @@ class CurrentStatusPanel(wx.Panel):
                 dc.DrawText(pricetext, x4, y4)
                 dc.DrawText(timestatustext, x5, y5)
                 dc.DrawText(pricestatustext, x6, y6)
-
             else:
                 if smartprice_chujia:
                     current_pricestatus_label = get_val('current_pricestatus_label')
@@ -420,9 +422,9 @@ class WebFrame(wx.Frame):
         self.htmlpanel.webview.Reload()
         strategy_type = get_val("strategy_type")
         if strategy_type == 0:
-            init_strategy_one()
+            init_strategy()
         elif strategy_type == 1:
-            init_strategy_second()
+            init_strategy()
 
 
 
@@ -608,9 +610,9 @@ class WebFrame(wx.Frame):
         self.htmlpanel.webview.Reload()
         strategy_type = get_val("strategy_type")
         if strategy_type == 0:
-            init_strategy_one()
+            init_strategy()
         elif strategy_type == 1:
-            init_strategy_second()
+            init_strategy()
 
 
     def Price_view(self, event):

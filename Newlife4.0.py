@@ -15,7 +15,6 @@ if sys.platform != 'win32':
 import pickle
 from component.LoginFrame import LoginFrame
 from component.app_thread import *
-from component.app_thread import Start_thread
 
 # --------------------------------------------------------------
 # 创建app
@@ -39,8 +38,7 @@ class SketchApp(wx.App):
 
 
 if __name__ == '__main__':
-    import time
-    a = time.time()
+
     app = SketchApp()
     app.MainLoop()
     ## 打开刷新与确认进程

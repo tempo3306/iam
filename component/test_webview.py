@@ -51,6 +51,9 @@ class TestPanel(wx.Panel):
         self.SetSizer(sizer)
         self.wv.LoadURL(self.current)
 
+
+
+
     # WebView events
     def OnWebViewNavigating(self, evt):
         # this event happens prior to trying to get a resource
