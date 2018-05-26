@@ -61,7 +61,7 @@ strategy_dick = {
     'yanzhengma_scale': True,
     'strategy_description': '单枪   48秒加700截止56秒提前100',  #策略名称
     'strategy_type': '0',
-
+    'enter_on': True,
 }
 
 # 初始化变量
@@ -404,8 +404,7 @@ def init_strategy():
     set_val('own_price2', 0)  # 第二次出价
     set_val('own_price', 0)  # 当前出价
     set_val('tijiao_OK', False)  # 表示输完验证码
-    set_val('e_on', True)  # 表示s激活tijiao_OK
-    set_val('enter_on', False)  # 表示回车激活tijiao_Ok
+
     set_val('twice', False)  # 开启两次出价
     set_val('tijiao_num', 1)  # 开启二次出价，设置为2，执行一次之后，减1
     set_val('tijiao_one', False)  # 第一次出价之后开闭

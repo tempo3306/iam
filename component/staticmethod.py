@@ -460,14 +460,14 @@ def OnClick_Backspace():
 
 def tijiao_ok():
     tijiao_on = get_val('tijiao_on')
-    e_on = get_val('e_on')
+    enter_on = get_dick('enter_on')
     smartprice_chujia = get_val('smartprice_chujia')
-    if e_on and tijiao_on:
+    if not enter_on and tijiao_on:
         print("tijiao_ok")
         set_val('tijiao_OK', True)
         set_val('yanzhengma_view', False)
         set_val('yanzhengma_close', True)
-    elif e_on and smartprice_chujia:
+    elif not enter_on and smartprice_chujia:
         print("tijiao_ok")
         set_val('tijiao_OK', True)
         set_val('yanzhengma_view', False)
@@ -475,7 +475,7 @@ def tijiao_ok():
 
 
 def tijiao_ok2():
-    enter_on = get_val('enter_on')
+    enter_on = get_dick('enter_on')
     tijiao_on = get_val('tijiao_on')
     smartprice_chujia = get_val('smartprice_chujia')
 

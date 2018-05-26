@@ -319,10 +319,9 @@ class StatusPanel(wx.Panel):
     ## 验证码放大
     def Yanzhengma_scale(self, event):
         if self.yanzhengma_scale.IsChecked():
-            set_dick("yanzhengama_scale", True)
+            set_dick("yanzhengma_scale", True)
         else:
-            set_dick("yanzhengama_scale", False)
-
+            set_dick("yanzhengma_scale", False)
 
 
     ## 国拍与模拟切换
@@ -377,12 +376,19 @@ class StatusPanel(wx.Panel):
 
     ##初始化
     def init_ui(self):
-        e_on = get_val('e_on')
-        enter_on = get_val('enter_on')
-        if e_on:
-            self.confirm_choice.SetSelection(0)
-        elif enter_on:
+        enter_on = get_dick('enter_on')
+        if enter_on:
             self.confirm_choice.SetSelection(1)
+        else:
+            self.confirm_choice.SetSelection(0)
+
+        yanzhengma_scale = get_dick('yanzhengma_scale')
+        if yanzhengma_scale:
+            self.yanzhengma_scale.SetValue(True)
+        else:
+            self.yanzhengma_scale.SetValue(False)
+
+
         strategy_type = get_dick('strategy_type')
         self.update_ui(strategy_type)
 
@@ -592,11 +598,9 @@ class StatusPanel(wx.Panel):
     def Confirmchoice(self, event):
         con = self.confirm_choice.GetSelection()
         if con == 0:
-            set_val('e_on', True)
-            set_val('enter_on', False)
+            set_dick('enter_on', False)
         elif con == 1:
-            set_val('e_on', False)
-            set_val('enter_on', True)
+            set_dick('enter_on', True)
 
     #######
     def change_strategy(self):

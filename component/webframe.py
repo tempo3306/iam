@@ -443,17 +443,18 @@ class WebFrame(wx.Frame):
         ##------------------------------
         ###判定验证码放大框
             yanzhengma_scale = get_dick('yanzhengma_scale')
+            print('yanzhengma_scale', yanzhengma_scale)
             if yanzhengma_scale:
                 yanzhengma_move = get_val('yanzhengma_move')
                 Pos_yanzhengmaframe = get_val('Pos_yanzhengmaframe')
-                if yanzhengma_move:
-                    yan = self.yanzhengmaframe
-                    if yan:
-                        try:
-                            yan.Move(Pos_yanzhengmaframe)  # 移动到新位置
-                            set_val('yanzhengma_move', False)  # 无需动作
-                        except:
-                            logger.exception('this is an exception message')
+                # if yanzhengma_move:
+                #     yan = self.yanzhengmaframe
+                #     if yan:
+                #         try:
+                #             yan.Move(Pos_yanzhengmaframe)  # 移动到新位置
+                #             set_val('yanzhengma_move', False)  # 无需动作
+                #         except:
+                #             logger.exception('this is an exception message')
 
                 yanzhengma_count = get_val("yanzhengma_count")
                 yanzhengma_close = get_val("yanzhengma_close")
