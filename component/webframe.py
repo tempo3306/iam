@@ -266,7 +266,8 @@ class CurrentStatusPanel(wx.Panel):
 
         ##显示最低成交价
         findpos_on = get_val('findpos_on')
-        if findpos_on:
+        yanzhengma_view = get_val('yanzhengma_view')
+        if findpos_on or yanzhengma_view:
             if self.parent.IsShown():
                 self.parent.Show(False)
             # lowestpricelabel = get_val('lowestpricelabel')
@@ -443,7 +444,6 @@ class WebFrame(wx.Frame):
         ##------------------------------
         ###判定验证码放大框
             yanzhengma_scale = get_dick('yanzhengma_scale')
-            print('yanzhengma_scale', yanzhengma_scale)
             if yanzhengma_scale:
                 yanzhengma_move = get_val('yanzhengma_move')
                 Pos_yanzhengmaframe = get_val('Pos_yanzhengmaframe')
@@ -466,6 +466,7 @@ class WebFrame(wx.Frame):
                 if yanzhengma_close:
                     try:
                         self.yanzhengmaframe.Show(False)
+                        self.currentstatusframe.Show(True)
                     except:
                         logger.exception('this is an exception message')
 
@@ -483,6 +484,7 @@ class WebFrame(wx.Frame):
                         yan = self.yanzhengmaframe
                         yan.Show()
                         yan.ShowImage(yanpath)
+                        self.currentstatusframe.Show(False)
                     except:  # 找不到的情况下也要重新创建
                         logger.exception('this is an exception message')
 

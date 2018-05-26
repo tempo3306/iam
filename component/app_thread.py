@@ -13,7 +13,7 @@ from component.login import ConfirmUser, Keeplogin, ConfirmCode
 from component.staticmethod import OnClick_chujia, OnClick_Tijiao
 from component.staticmethod import Smart_ajust_chujia
 from component.staticmethod import trans_time
-from component.variable import get_val, set_val
+from component.variable import get_val, set_val, get_dick
 from component.remote_control import getip_dianxin
 from component.staticmethod import init_strategy
 
@@ -982,7 +982,7 @@ class Start_thread(Thread):
 
     def run(self):
         import logging, time
-        version = 4.1
+        version = 4.2
         timenow = time.time()
         # 转换成localtime
         time_local = time.localtime(timenow)

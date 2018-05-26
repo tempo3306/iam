@@ -323,13 +323,18 @@ def init_size():
     set_val('imgpos_currenttime', np.array(nptemp))  # 当前时间
 
 
-    ##状态框与验证码放大框
-    set_val('CurrentStatusFramePos', (426, 607))
+    ##状态框
+    set_val('CurrentStatusFramePos', (426, 212))   ###相对WEBFRAME位置
     set_val('CurrentStatusFrameSize', (451,77))
 
+    ##验证码放大框
+    set_val('YanzhengmaFramePos', (450, 175))    ###相对WEBFRAME位置
+    set_val('Yanzhengmasize', (400, 220))
 
-    set_val('YanzhengmaFramePos', (450, 175))
-    set_val('Yanzhengmasize', [400, 220])
+'''
+214 645
+215 224
+'''
 
 
 def init_strategy():
@@ -422,6 +427,7 @@ def init_strategy():
     # self.jiajia_price2.SetValue(700)
     # self.select_tijiao2.SetSelection(0)
     # self.yanchi_time2.SetValue(0.5)
+
     ## 保存当前的设置
     current_setting = {
         'jiajia_time': 40.0,

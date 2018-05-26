@@ -381,6 +381,10 @@ def Smart_ajust_chujia(price):
 
 ##测试用
 def Cancel_chujia_test():
+    x, y = win32api.GetCursorPos()
+    print(x, y)
+
+
     px, py = win32api.GetCursorPos()
     Position_frame = get_val('Position_frame')
     # Position_frame = get_val('Position_frame')
@@ -462,32 +466,33 @@ def tijiao_ok():
     tijiao_on = get_val('tijiao_on')
     enter_on = get_dick('enter_on')
     smartprice_chujia = get_val('smartprice_chujia')
-    if not enter_on and tijiao_on:
-        print("tijiao_ok")
+    print(tijiao_on)
+    if not enter_on:
         set_val('tijiao_OK', True)
         set_val('yanzhengma_view', False)
         set_val('yanzhengma_close', True)
     elif not enter_on and smartprice_chujia:
-        print("tijiao_ok")
         set_val('tijiao_OK', True)
         set_val('yanzhengma_view', False)
         set_val('yanzhengma_close', True)
-
+    tijiao_OK = get_val('tijiao_OK')
+    print(tijiao_OK)
 
 def tijiao_ok2():
     enter_on = get_dick('enter_on')
     tijiao_on = get_val('tijiao_on')
     smartprice_chujia = get_val('smartprice_chujia')
-
-    if enter_on and tijiao_on:
+    print(enter_on)
+    if enter_on :
         set_val('tijiao_OK', True)
         set_val('yanzhengma_close', True)
         set_val('yanzhengma_view', False)
     elif enter_on and smartprice_chujia:
-        print("tijiao_ok")
         set_val('tijiao_OK', True)
         set_val('yanzhengma_view', False)
         set_val('yanzhengma_close', True)
+    tijiao_OK = get_val('tijiao_OK')
+    print(tijiao_OK)
 
 
 def query():
