@@ -854,10 +854,9 @@ class AdvancePanel(wx.Panel):
 
 class OperationPanel(wx.Panel):
     def __init__(self, parent, tablabel):  # name:窗口显示名称
-        websize = get_val('websize')
-        htmlsize = get_val('htmlsize')
-        x0 = websize[0] - htmlsize[0]
-        wx.Panel.__init__(self, parent=parent, size=(x0, websize[1]), pos=(892, 0))
+        operationpanel_pos = get_val('operationpanel_pos')
+        operationpanel_size = get_val('operationpanel_size')
+        wx.Panel.__init__(self, parent=parent, size=operationpanel_size, pos=operationpanel_pos)
         self.notebook = wx.Notebook(self)
         self.status_tab = StatusPanel(self.notebook, tablabel)  # notebook作为父类
         self.advance_tab = AdvancePanel(self.notebook)

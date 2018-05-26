@@ -209,6 +209,11 @@ def init_size():
     set_val('bottomestatusbarpanel_size', (892, 30))
     set_val('bottomestatusbarpanel_pos', (0, 658))
 
+    websize = get_val('websize')
+    htmlpanel_size = get_val('htmlpanel_size')
+    x0 = websize[0] - htmlpanel_size[0]
+    set_val('operationpanel_size', (x0, websize[1]))
+    set_val('operationpanel_pos', (htmlpanel_size[0], 0))
 
     websize = get_val('websize')
     set_val('Pxy', (win32api.GetSystemMetrics(0), win32api.GetSystemMetrics(1))) # 分辨率
