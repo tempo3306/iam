@@ -465,8 +465,9 @@ class WebFrame(wx.Frame):
 
                 if yanzhengma_close:
                     try:
-                        self.yanzhengmaframe.Show(False)
-                        self.currentstatusframe.Show(True)
+                        if self.yanzhengmaframe.IsShown():
+                            self.yanzhengmaframe.Show(False)
+                            self.currentstatusframe.Show(True)
                     except:
                         logger.exception('this is an exception message')
 

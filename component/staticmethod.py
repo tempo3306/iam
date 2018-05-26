@@ -466,7 +466,6 @@ def tijiao_ok():
     tijiao_on = get_val('tijiao_on')
     enter_on = get_dick('enter_on')
     smartprice_chujia = get_val('smartprice_chujia')
-    print(tijiao_on)
     if not enter_on:
         set_val('tijiao_OK', True)
         set_val('yanzhengma_view', False)
@@ -475,14 +474,12 @@ def tijiao_ok():
         set_val('tijiao_OK', True)
         set_val('yanzhengma_view', False)
         set_val('yanzhengma_close', True)
-    tijiao_OK = get_val('tijiao_OK')
-    print(tijiao_OK)
+
 
 def tijiao_ok2():
     enter_on = get_dick('enter_on')
     tijiao_on = get_val('tijiao_on')
     smartprice_chujia = get_val('smartprice_chujia')
-    print(enter_on)
     if enter_on :
         set_val('tijiao_OK', True)
         set_val('yanzhengma_close', True)
@@ -491,8 +488,7 @@ def tijiao_ok2():
         set_val('tijiao_OK', True)
         set_val('yanzhengma_view', False)
         set_val('yanzhengma_close', True)
-    tijiao_OK = get_val('tijiao_OK')
-    print(tijiao_OK)
+
 
 
 def query():
