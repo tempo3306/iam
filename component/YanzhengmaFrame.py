@@ -20,6 +20,9 @@ class YanzhengmaFrame(wx.Frame):
         # image=wx.Image(path,wx.BITMAP_TYPE_PNG)
         # self.bmp = wx.StaticBitmap(self.panel, -1)
         # 更换图片显示
+        self.Disable()
+
+
 
     def ShowImage(self, bm):
         self.bmp = wx.Bitmap(bm)

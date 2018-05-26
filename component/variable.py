@@ -24,6 +24,46 @@ for i in range(65, 91):
     keycode[chr(i)] = i
 
 
+
+# --------------------------------------------------
+
+'''
+(1)单枪  依次为 0: strategy_type 1: one_time1  2: one_diff  3: one_advance 4: one_delay 5: one_time2 
+                                6: one_forcetijiao_on
+(2)双枪  依次为 0: strategy_type 1: one_time1  2: one_diff  3: one_advance 4: one_delay 5: one_time2
+                                6: one_forcetijiao_on   
+                                7: second_time1  8: second_diff  9: second_advance  10: second_delay 
+                                11: second_time2  12: second_forcetijiao_on
+(3)单枪动态提交  依次为 0: strategy_type 1: one_time1  2: one_diff  
+                                       3: one_advance_smart1  4: one_delay_smart1   5: one_time2_smart1
+                                       6: one_advance_smart2  7: one_delay_smart2   8: one_time2_smart2
+                                       9: one_advance_smart3  10: one_delay_smart3  11: one_time2_smart3
+                                       12: one_time2_smart
+
+'''
+
+strategy_dick = {
+
+    '0': [0, 48.0, 700, 100, 0.5, 55,
+        1],
+
+    '1': [1, 40.0, 500, 0, 0.5, 48,
+        1,
+        50, 700, 100, 0.5,
+        56, 1],
+
+    '2': [2, 48.0, 700,
+        0, 0, 54,
+        100, 0.6, 55,
+        200, 0.5, 56,
+        56.5],
+
+    'yanzhengma_scale': True,
+    'strategy_description': '单枪   48秒加700截止56秒提前100',  #策略名称
+    'strategy_type': '0',
+
+}
+
 # 初始化变量
 # --------------------------------------------------
 # 修改变量值
@@ -43,6 +83,29 @@ def get_val(key):
     except KeyError:
         return 'Null'
 
+
+# 修改 策略字典
+def set_dick(key, value):
+    try:
+        strategy_dick[key] = value
+    except:
+        logger.exception('this is an exception message')
+
+# 获取 策略字典
+def get_dick(key):
+    try:
+        val = strategy_dick[key]
+        return val
+    except KeyError:
+        return 'Null'
+
+def get_strategy_dick():
+    return strategy_dick
+
+def set_strategy_dick(dick):
+    global strategy_dick
+    print(dick)
+    strategy_dick = dick
 
 # --------------------------------------------------
 # 变量初始化
@@ -271,44 +334,9 @@ def init_size():
 
 def init_strategy():
     strategy_choices = ['单枪策略(专注一次出价)', '双枪策略(一伏二补)', '单枪策略 智能提交']
-    strategy_dick = {
-
-        0: [0, 48.0, 700, 100, 0.5, 55,
-            1],
-
-        1: [1, 40.0, 500, 0, 0.5, 48,
-            1,
-            50, 700, 100, 0.5,
-            56, 1],
-
-        2: [2, 48.0, 700,
-            0, 0, 54,
-            100, 0.6, 55,
-            200, 0.5, 56,
-            56.5],
-    }
-
-    for strategy_type, strategy_list in strategy_dick.items():
-        set_val(strategy_type, strategy_list)
-    set_val('strategy_type', 0) ##当前状态
-    '''
-    (1)单枪  依次为 0: strategy_type 1: one_time1  2: one_diff  3: one_advance 4: one_delay 5: one_time2 
-                                    6: one_forcetijiao_on
-    (2)双枪  依次为 0: strategy_type 1: one_time1  2: one_diff  3: one_advance 4: one_delay 5: one_time2
-                                    6: one_forcetijiao_on   
-                                    7: second_time1  8: second_diff  9: second_advance  10: second_delay 
-                                    11: second_time2  12: second_forcetijiao_on
-    (3)单枪动态提交  依次为 0: strategy_type 1: one_time1  2: one_diff  
-                                           3: one_advance_smart1  4: one_delay_smart1   5: one_time2_smart1
-                                           6: one_advance_smart2  7: one_delay_smart2   8: one_time2_smart2
-                                           9: one_advance_smart3  10: one_delay_smart3  11: one_time2_smart3
-                                           12: one_time2_smart
-                                      
-    '''
-
-
-
     set_val('strategy_choices', strategy_choices)
+
+
     tijiao_choices = [u"提前100", u"提前200", u"提前300", u"踩点"]
     set_val('tijiao_choices', tijiao_choices)
 
@@ -430,7 +458,6 @@ def init_strategy():
 def init_account():
     set_val('activate_status', 0)   ##0: 未激活
     set_val('strategy_name', '默认策略') #策略名称
-    set_val('strategy_description', '单枪   48秒加700截止56秒提前100') #策略名称
 
     set_val('current_strategy_name', '') #当前策略
     set_val('current_strategy_status', 0)    ##当前所处状态

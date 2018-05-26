@@ -9,7 +9,7 @@ import win32api
 import win32clipboard
 import time
 import threading
-from component.variable import set_val, get_val
+from component.variable import set_val, get_val, get_dick, set_dick
 import ctypes
 from ctypes import wintypes
 from wx.lib.pubsub import pub
@@ -659,12 +659,12 @@ def gettime(choice):  # choice1:55, choice2:0.5
 
 ##初始化 还原
 def init_strategy():
-    strategy_type = get_val('strategy_type')
-    if strategy_type == 0:
+    strategy_type = get_dick('strategy_type')
+    if strategy_type == '0':
         init_strategy0()
-    elif strategy_type == 1:
+    elif strategy_type == '1':
         init_strategy1()
-    elif strategy_type == 2:
+    elif strategy_type == '2':
         init_strategy2()
 
 def init_strategy0():

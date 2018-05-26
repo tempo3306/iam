@@ -185,9 +185,8 @@ class TopFrame(wx.Frame):
             moni.Show(True)
             self.webopen()
         else:
-            id = wx.NewId()
-            set_val('moni_webframe', id)
-            self.fr = WebFrame( Px, Py, id, '沪牌一号 模拟', '切换国拍', True)  ##模拟  id  51
+            self.fr = WebFrame( Px, Py, -1, '沪牌一号 模拟', '切换国拍', True)  ##模拟  id  51
+            set_val('moni_webframe', self.fr.GetId())
             self.fr.Show(True)
             self.fr.currentstatusframe.Show(False)
             self.fr.operationpanel.init_ui()
@@ -217,10 +216,9 @@ class TopFrame(wx.Frame):
             moni.Show(True)
             moni.currentstatusframe.Show(False)
         else:
-            id = wx.NewId()
-            set_val('moni_webframe', id)
-            self.fr = WebFrame(Px, Py, id, '沪牌一号模拟', '切换国拍', True)  ##模拟  id  51
+            self.fr = WebFrame(Px, Py, -1, '沪牌一号模拟', '切换国拍', True)  ##模拟  id  51
             self.fr.Show(True)
+            set_val('moni_webframe', self.fr.GetId())
             self.fr.currentstatusframe.Show(False)
             self.fr.operationpanel.init_ui()
             # 关闭主界面，打开策略设置
@@ -249,9 +247,8 @@ class TopFrame(wx.Frame):
             guopai.currentstatusframe.Show(False)
             self.webopen()
         else:
-            id = wx.NewId()
-            set_val('guopai_webframe', id)
-            self.fr = WebFrame(Px, Py, id, '沪牌一号 国拍', '切换模拟', False)  ## 国拍52
+            self.fr = WebFrame(Px, Py, -1, '沪牌一号 国拍', '切换模拟', False)  ## 国拍52
+            set_val('guopai_webframe', self.fr.GetId())
             self.fr.Show(True)
             self.fr.currentstatusframe.Show(False)
             self.fr.operationpanel.init_ui()
@@ -283,9 +280,8 @@ class TopFrame(wx.Frame):
             guopai.currentstatusframe.Show(False)
             self.webopen()
         else:
-            id = wx.NewId()
-            set_val('guopai_webframe', id)
-            self.fr = WebFrame(Px, Py, id, '沪牌一号 国拍', '切换模拟', False)  ## 国拍52
+            self.fr = WebFrame(Px, Py, -1, '沪牌一号 国拍', '切换模拟', False)  ## 国拍52
+            set_val('guopai_webframe', self.fr.GetId())
             self.fr.Show(True)
             self.fr.currentstatusframe.Show(False)
             self.fr.operationpanel.init_ui()

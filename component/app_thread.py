@@ -397,7 +397,7 @@ class TijiaoThread(Thread):
                 smartprice_chujia = get_val('smartprice_chujia')  ##智能出价
                 one_forcetijiao_on = get_val('one_forcetijiao_on')
                 second_forcetijiao_on = get_val('second_forcetijiao_on')
-                strategy_type = get_val('strategy_type')
+                strategy_type = get_dick('strategy_type')
                 ##提交
                 one_advance_smart1 = get_val('one_advance_smart1')
                 one_delay_smart1 = get_val('one_delay_smart1')
@@ -409,7 +409,7 @@ class TijiaoThread(Thread):
                 one_delay_smart3 = get_val('one_delay_smart3')
                 one_realtime2_smart3 = get_val('one_realtime2_smart3')
                 one_realtime2_smart = get_val('one_realtime2_smart')
-                if strategy_type == 2: ##动态提交
+                if strategy_type == '2': ##动态提交
                     if tijiao_on and strategy_on and tijiao_OK:  # 判断是否需要提交,国拍开启状态方可触发
                         if lowest_price >= own_price1 - 300 - one_advance_smart1 and a_time <= one_realtime2_smart1 + 0.1:  # 判断是否满足条件
                             OnClick_Tijiao(one_delay_smart1)
@@ -440,7 +440,7 @@ class TijiaoThread(Thread):
                     elif tijiao_num == 2 and lowest_price >= own_price2 - 300 - second_advance and a_time <= second_real_time2 - second_delay:  # 价格判断
                         OnClick_Tijiao(second_delay)
                 ##出价
-                if strategy_type == 2:  ##如果为动态出价
+                if strategy_type == '2':  ##如果为动态出价
                     if strategy_on and chujia_on:  # 判断是否需要提交,国拍开启状态方可触发
                         if tijiao_num == 1 and one_real_time1 <= a_time <= one_real_time1 + 0.6:  # 判断是否满足条件
                             set_val('own_price1', lowest_price + one_diff)

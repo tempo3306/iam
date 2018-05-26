@@ -9,7 +9,7 @@ from component.staticmethod import *
 import logging
 
 logger = logging.getLogger()
-
+from component.variable import get_dick, set_dick
 
 # -----------------------------------------------------------
 class StatusPanel(wx.Panel):
@@ -40,6 +40,13 @@ class StatusPanel(wx.Panel):
         self.controlgrid.Add(self.posajustButton, pos=(1, 0))
         self.controlgrid.Add(self.localtimeButton, pos=(1, 1))
 
+        # # 验证码放大
+        self.yanzhengma_scale = wx.CheckBox(self, -1, label=u'验证码放大')  # 开启时间显示
+        self.Bind(wx.EVT_CHECKBOX, self.Yanzhengma_scale, self.yanzhengma_scale)
+        hbox1 = wx.BoxSizer(wx.HORIZONTAL)
+        hbox1.Add(self.yanzhengma_scale)
+
+
         # # 时间区
         # self.autotime = wx.CheckBox(self, -1, label=u'自动时间同步')  # 开启时间显示
         # self.Bind(wx.EVT_CHECKBOX, self.autotime_set, self.autotime)
@@ -58,7 +65,7 @@ class StatusPanel(wx.Panel):
         hbox2.Add(self.confirm_choice)
 
         self.controlbox.Add(self.controlgrid)  # 把网格组加到 功能框内
-        # self.controlbox.Add(hbox1)
+        self.controlbox.Add(hbox1)
         self.controlbox.Add(hbox2)
         ##----------------------------------------------------------------------
         ###策略设置区域
@@ -308,6 +315,16 @@ class StatusPanel(wx.Panel):
         pub.subscribe(self.change_strategy, 'change strategy')
         pub.subscribe(self.change_userprice, 'change userprice')  # 修改当前用户出价
 
+
+    ## 验证码放大
+    def Yanzhengma_scale(self, event):
+        if self.yanzhengma_scale.IsChecked():
+            set_dick("yanzhengama_scale", True)
+        else:
+            set_dick("yanzhengama_scale", False)
+
+
+
     ## 国拍与模拟切换
     def webtab(self, event):
         moni_on = get_val('moni_on')
@@ -353,29 +370,28 @@ class StatusPanel(wx.Panel):
 
     ###策略设置
     def Choice_strategy(self, event):
-        strategy_type = self.choice_strategy.GetSelection()
+        strategy_type = str(self.choice_strategy.GetSelection())
         print('strategy_type', strategy_type)
         self.update_ui(strategy_type)
-        set_val('strategy_type', strategy_type)  ##保存当前用户选择的策略
+        set_dick('strategy_type', strategy_type)  ##保存当前用户选择的策略
 
     ##初始化
     def init_ui(self):
         e_on = get_val('e_on')
         enter_on = get_val('enter_on')
-        autotime_on = get_val('autotime_on')
         if e_on:
             self.confirm_choice.SetSelection(0)
         elif enter_on:
             self.confirm_choice.SetSelection(1)
-        strategy_type = get_val('strategy_type')
+        strategy_type = get_dick('strategy_type')
         self.update_ui(strategy_type)
 
     def update_ui(self, strategy_type):  ##根据不同的出价策略调整界面
-        strategy_list = get_val(strategy_type)
+        strategy_list = get_dick(strategy_type)
         print(strategy_list)
-        if strategy_type == 0:  # 单次
+        if strategy_type == '0':  # 单次
             init_strategy()
-            self.choice_strategy.SetSelection(strategy_type)
+            self.choice_strategy.SetSelection(int(strategy_type))
             self.second_jiajia_time.SetValue(strategy_list[1])
             self.second_tijiao_time.SetValue(strategy_list[5])
             self.second_jiajia_price.SetValue(strategy_list[2])
@@ -412,9 +428,9 @@ class StatusPanel(wx.Panel):
             self.strategy_sizer.Hide(self.smart_tijiao_label_sizer)
             self.Layout()
 
-        elif strategy_type == 1:  # 双枪
+        elif strategy_type == '1':  # 双枪
             init_strategy()
-            self.choice_strategy.SetSelection(strategy_type)
+            self.choice_strategy.SetSelection(int(strategy_type))
             self.second_jiajia_time.SetValue(strategy_list[1])
             self.second_jiajia_price.SetValue(strategy_list[2])
             if strategy_list[3] == 100:
@@ -481,9 +497,9 @@ class StatusPanel(wx.Panel):
             self.strategy_sizer.Hide(self.smart_tijiao_label_sizer)
             self.Layout()
 
-        elif strategy_type == 2:  # 单枪动态提交
+        elif strategy_type == '2':  # 单枪动态提交
             init_strategy()
-            self.choice_strategy.SetSelection(strategy_type)
+            self.choice_strategy.SetSelection(int(strategy_type))
             self.second_jiajia_time.SetValue(strategy_list[1])
             self.second_jiajia_price.SetValue(strategy_list[2])
 
@@ -522,9 +538,9 @@ class StatusPanel(wx.Panel):
 
     ###需要进一步扩展 调整策略设置后需要 修正templist
     def update_strategy(self):
-        strategy_type = self.choice_strategy.GetSelection()
+        strategy_type = str(self.choice_strategy.GetSelection())
         advance_list = [100, 200, 300, 0]
-        if strategy_type == 0:
+        if strategy_type == '0':
             templist = [0] * 20
             templist[0] = strategy_type
             templist[1] = self.second_jiajia_time.GetValue()
@@ -533,11 +549,11 @@ class StatusPanel(wx.Panel):
             templist[4] = self.second_tijiaoyanchi_time.GetValue()
             templist[5] = self.second_tijiao_time.GetValue()
             templist[6] = self.second_forcetijiao_check.IsChecked()
-            set_val(strategy_type, templist)
+            set_dick(strategy_type, templist)
             strategy_choices = get_val('strategy_choices')
-            set_val('strategy_description', strategy_choices[strategy_type])
+            set_dick('strategy_description', strategy_choices[int(strategy_type)])
             # '{0}秒加{1} 提前{2}延迟{3}秒 强制{4}秒'.format(templist[1], templist[2], templist[3], templist[4], templist[5]))
-        elif strategy_type == 1:
+        elif strategy_type == '1':
             templist = [0] * 20
             templist[0] = strategy_type
             templist[1] = self.second_jiajia_time.GetValue()
@@ -553,8 +569,8 @@ class StatusPanel(wx.Panel):
             templist[11] = self.third_tijiao_time.GetValue()
             templist[12] = self.third_forcetijiao_check.IsChecked()
             strategy_choices = get_val('strategy_choices')
-            set_val('strategy_description', strategy_choices[strategy_type])
-            set_val(strategy_type, templist)
+            set_dick('strategy_description', strategy_choices[int(strategy_type)])
+            set_dick(strategy_type, templist)
 
 
 

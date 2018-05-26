@@ -11,8 +11,9 @@ from component.app_thread import HashThread, LoginThread, Login_codeThread, Geti
 from component.remote_control import get_unique_id
 from component.variable import get_val, set_val, remote_variables, get_id_hash
 from component.TopFrame import TopFrame
-import sys, pickle
+import sys, pickle, json
 from wx.lib.buttons import GenButton as wxButton
+from component.variable import set_strategy_dick
 
 
 class AccountPanel(wx.Panel):
@@ -221,7 +222,12 @@ class LoginFrame(wx.Frame):
             print(login_result)
             data = login_result['data']
             remote_variables(**data)
-
+            strategy_dick =login_result['strategy_dick']
+            if strategy_dick:
+                strategy_dick = json.loads(strategy_dick)
+                if strategy_dick != 'none':
+                    print("fdsfsf", strategy_dick)
+                    set_strategy_dick(strategy_dick) ##初始化策略数据
             if Identify_code == '123456':  ##这里作为测试用
                 set_val('test', True)
             else:

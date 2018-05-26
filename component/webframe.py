@@ -4,18 +4,15 @@
 @contact: 810909753@q.com
 @time: 2018/1/22 13:58
 '''
-import wx
-from wx.lib.pubsub import pub  # 代替了publisher
 from component.staticmethod import *
 from component.OperationFrame import OperationPanel
-from component.statusbar import IcStatusBar
 import wx.html2 as webview
 from wx.lib.buttons import GenButton as wxButton
 from component.imgcut import  timeset
 from component.YanzhengmaFrame import YanzhengmaFrame
 from component.imgcut import cut_pic, find_yan_confirm
 
-from component.variable import init_pos
+from component.variable import init_pos, get_val, set_val, get_dick, set_dick
 import logging
 logger = logging.getLogger()
 
@@ -211,7 +208,7 @@ class BottomeStatusbarPanel(wx.Panel):
 
         strategy_label = get_val('strategy_label')
         strategy_name = get_val('strategy_name')
-        strategy_description = get_val('strategy_description')
+        strategy_description = get_dick('strategy_description')
         text = "{0}  {1}         {2}".format(strategy_label, strategy_name, strategy_description)
         dc.SetFont(self.textfont)
         tw, th = dc.GetTextExtent(text)
@@ -220,6 +217,7 @@ class BottomeStatusbarPanel(wx.Panel):
 
 class CurrentStatusFrame(wx.Frame):
     def __init__(self, parent):
+        self.parent = parent
         x, y = parent.Position
         x0, y0 = get_val('CurrentStatusFramePos')
         CurrentStatusFrameSize = get_val('CurrentStatusFrameSize')
@@ -227,10 +225,11 @@ class CurrentStatusFrame(wx.Frame):
                                         style=wx.FRAME_TOOL_WINDOW | wx.FRAME_FLOAT_ON_PARENT | wx.BORDER_NONE)
         self.currentstatuspanel = CurrentStatusPanel(self)
 
-        self.Bind(wx.EVT_LEFT_DOWN , self.OnSetFocus)
+        # self.Bind(wx.EVT_ACTIVATE, self.print)
+        self.Disable()
 
-    def OnSetFocus(self, event):
-        event.Skip()
+
+
 
 class CurrentStatusPanel(wx.Panel):
     def __init__(self, parent):
@@ -286,7 +285,7 @@ class CurrentStatusPanel(wx.Panel):
             tijiao_on = get_val('tijiao_on')
             usertime = get_val('usertime')
             smartprice_chujia = get_val('smartprice_chujia')
-            strategy_type = get_val('strategy_type')
+            strategy_type = get_dick('strategy_type')
 
             if userprice and tijiao_on:  ##提交状态
                 current_pricestatus_label = get_val('current_pricestatus_label')
@@ -390,12 +389,13 @@ class WebFrame(wx.Frame):
         self.Bind(wx.EVT_TIMER, self.Price_view, self.timer1)  # 绑定一个定时器事件，主判断
         self.timer1.Start(35)  # 设定时间间隔
 
-
         self.hotkey_open2()
         # self.Bind(wx.EVT_ACTIVATE , self.hotkey_open)
 
         pub.subscribe(self.refresh_web, 'moni refresh_web')
         pub.subscribe(self.refresh_web, 'guopai refresh_web')
+
+
 
     ##移动跟随
     def childmove(self, event):
@@ -420,7 +420,7 @@ class WebFrame(wx.Frame):
 
     def refresh_web(self):
         self.htmlpanel.webview.Reload()
-        strategy_type = get_val("strategy_type")
+        strategy_type = get_dick("strategy_type")
         if strategy_type == 0:
             init_strategy()
         elif strategy_type == 1:
@@ -440,50 +440,54 @@ class WebFrame(wx.Frame):
             self.bottomstatusbarpanel.Modify()
             self.currentstatusframe.currentstatuspanel.Modify()
 
-            ###判定验证码放大框
-            yanzhengma_move = get_val('yanzhengma_move')
-            Pos_yanzhengmaframe = get_val('Pos_yanzhengmaframe')
-            if yanzhengma_move:
-                yan = self.yanzhengmaframe
-                if yan:
+        ##------------------------------
+        ###判定验证码放大框
+            yanzhengma_scale = get_dick('yanzhengma_scale')
+            if yanzhengma_scale:
+                yanzhengma_move = get_val('yanzhengma_move')
+                Pos_yanzhengmaframe = get_val('Pos_yanzhengmaframe')
+                if yanzhengma_move:
+                    yan = self.yanzhengmaframe
+                    if yan:
+                        try:
+                            yan.Move(Pos_yanzhengmaframe)  # 移动到新位置
+                            set_val('yanzhengma_move', False)  # 无需动作
+                        except:
+                            logger.exception('this is an exception message')
+
+                yanzhengma_count = get_val("yanzhengma_count")
+                yanzhengma_close = get_val("yanzhengma_close")
+
+                if yanzhengma_count >= 4 and not yanzhengma_close:  # 0.4秒之后没有确认触发关闭验证码
+                    find_yan_confirm()
+                yanzhengma_close = get_val("yanzhengma_close")
+
+                if yanzhengma_close:
                     try:
-                        yan.Move(Pos_yanzhengmaframe)  # 移动到新位置
-                        set_val('yanzhengma_move', False)  # 无需动作
+                        self.yanzhengmaframe.Show(False)
                     except:
                         logger.exception('this is an exception message')
 
-            yanzhengma_count = get_val("yanzhengma_count")
-            yanzhengma_close = get_val("yanzhengma_close")
+                yanzhengma_view = get_val('yanzhengma_view')
+                imgpos_yanzhengma = get_val('imgpos_yanzhengma')
+                Yanzhengmasize = get_val('Yanzhengmasize')
+                #验证码放大是否需要刷新
+                if yanzhengma_view:
+                    set_val('yanzhengma_close', False)
+                    path = get_val('path')
+                    yanpath = path + "\\yanzhengma.png"
+                    cut_pic(imgpos_yanzhengma, Yanzhengmasize, yanpath)  # 直接调用得到 png 保存图片
+                    try:
+                        yanpath = get_val('yanpath')
+                        yan = self.yanzhengmaframe
+                        yan.Show()
+                        yan.ShowImage(yanpath)
+                    except:  # 找不到的情况下也要重新创建
+                        logger.exception('this is an exception message')
 
-            if yanzhengma_count >= 4 and not yanzhengma_close:  # 0.4秒之后没有确认触发关闭验证码
-                find_yan_confirm()
-            yanzhengma_close = get_val("yanzhengma_close")
-
-            if yanzhengma_close:
-                try:
-                    self.yanzhengmaframe.Show(False)
-                except:
-                    logger.exception('this is an exception message')
-
-            yanzhengma_view = get_val('yanzhengma_view')
-            imgpos_yanzhengma = get_val('imgpos_yanzhengma')
-            Yanzhengmasize = get_val('Yanzhengmasize')
-            #验证码放大是否需要刷新
-            if yanzhengma_view:
-                set_val('yanzhengma_close', False)
-                path = get_val('path')
-                yanpath = path + "\\yanzhengma.png"
-                cut_pic(imgpos_yanzhengma, Yanzhengmasize, yanpath)  # 直接调用得到 png 保存图片
-                try:
-                    yanpath = get_val('yanpath')
-                    yan = self.yanzhengmaframe
-                    yan.Show()
-                    yan.ShowImage(yanpath)
-                except:  # 找不到的情况下也要重新创建
-                    logger.exception('this is an exception message')
-
-                finally:
-                    pass
+                    finally:
+                        pass
+            ##------------------------------
 
             # 根据当前句柄判断是否需要激活快捷键
             hwnd = win32gui.GetForegroundWindow()
@@ -608,7 +612,7 @@ class WebFrame(wx.Frame):
 
     def refresh_web(self):
         self.htmlpanel.webview.Reload()
-        strategy_type = get_val("strategy_type")
+        strategy_type = get_dick("strategy_type")
         if strategy_type == 0:
             init_strategy()
         elif strategy_type == 1:

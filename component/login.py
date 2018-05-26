@@ -69,28 +69,18 @@ def ConfirmCode(identify_code, version):  # 修改为参数传递
 
 # 登出
 def Logout():  # 修改为参数传递
-    from component.remote_control import get_unique_id  ##获取硬盘ID
-    # debug 模式
-    host_ali = get_val('host_ali')
-    Identify_code = get_val('Identify_code')
-    diskid = get_val('diskid')
-    type = get_val('type')
-    target_url = '{0}/api/bid/bid_logout/?type={1}&identify_code={2}&diskid={3}'.format(
-        host_ali, type, Identify_code, diskid
-    )
-    # target_url = host_ali + r'/main_api/userconfirm/info?' + 'username=%s' % Username + '&' + 'passwd=%s' % Password
-    print(target_url)
-    result = web_request(target_url)
-    print(result)
-
     try:
         # debug 模式
         host_ali = get_val('host_ali')
         Identify_code = get_val('Identify_code')
         diskid = get_val('diskid')
         type = get_val('type')
-        target_url = '{0}/api/bid/bid_logout/?type={1}&identify_code={2}&diskid={3}'.format(
-            host_ali, type, Identify_code, diskid
+        from component.variable import get_strategy_dick
+        strategy_dick = get_strategy_dick()
+        strategy_dick = json.dumps(strategy_dick)
+        print(strategy_dick)
+        target_url = '{0}/api/bid/bid_logout/?type={1}&identify_code={2}&diskid={3}&strategy_dick={4}'.format(
+            host_ali, type, Identify_code, diskid, strategy_dick
         )
         # target_url = host_ali + r'/main_api/userconfirm/info?' + 'username=%s' % Username + '&' + 'passwd=%s' % Password
         print(target_url)
@@ -120,8 +110,12 @@ def Keeplogin():
         Identify_code = get_val('Identify_code')
         diskid = get_val('diskid')
         type = get_val('type')
-        target_url = '{0}/api/bid/bid_keeplogin/?type={1}&identify_code={2}&diskid={3}'.format(
-            host_ali, type, Identify_code, diskid
+        from component.variable import get_strategy_dick
+        import json
+        strategy_dick = get_strategy_dick()
+        strategy_dick = json.dumps(strategy_dick)
+        target_url = '{0}/api/bid/bid_keeplogin/?type={1}&identify_code={2}&diskid={3}&strategy_dick={4}'.format(
+            host_ali, type, Identify_code, diskid, strategy_dick
         )
         # target_url = host_ali + r'/main_api/userconfirm/info?' + 'username=%s' % Username + '&' + 'passwd=%s' % Password
         result = web_request(target_url)

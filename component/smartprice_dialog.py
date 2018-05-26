@@ -1,7 +1,6 @@
 import wx
-from component.variable import get_val, set_val
+from component.variable import get_val, set_val, get_dick, set_dick
 from component.staticmethod import gettime
-
 
 class Smart_tijiaoDialog(wx.Dialog):
     def __init__(self, parent, title):
@@ -264,7 +263,7 @@ class Smart_tijiaoDialog(wx.Dialog):
 
     ###需要进一步扩展 调整策略设置后需要 修正templist
     def update_strategy(self):
-        strategy_type = get_val('strategy_type')
+        strategy_type = get_dick('strategy_type')
         advance_list = [100, 200, 300, 0]
         templist = [0] * 20
         templist[0] = get_val('strategy_type')
@@ -281,15 +280,15 @@ class Smart_tijiaoDialog(wx.Dialog):
         templist[11] = self.second_tijiao_time_smart3.GetValue()
         templist[12] = self.second_tijiao_time_smart.GetValue()
         strategy_choices = get_val('strategy_choices')
-        set_val('strategy_description', strategy_choices[strategy_type])
-        set_val(strategy_type, templist)
+        set_dick('strategy_description', strategy_choices[strategy_type])
+        set_dick(strategy_type, templist)
 
 
 
 
     def init_dlg(self):
-        strategy_type = get_val('strategy_type')
-        strategy_list = get_val(strategy_type)
+        strategy_type = get_dick('strategy_type')
+        strategy_list = get_dick(str(strategy_type))
         advance_list = [100, 200, 300, 0]
         self.second_tijiao_pricediff_smart1.SetSelection(advance_list.index(strategy_list[3]))
         self.second_tijiaoyanchi_time_smart1.SetValue(strategy_list[4])
