@@ -92,44 +92,94 @@ def hog(img):
 
 # 二值化，切割
 def cut(img):
-    # ret, thresh1 = cv2.threshold(img, 100, 255, cv2.THRESH_BINARY)
-    ret, thresh1 = cv2.threshold(img, 155, 255, cv2.THRESH_BINARY_INV)
-    # thresh1=fushi(thresh1)
-    # image,contours,hierarchy = cv2.findContours(thresh1,cv2.RETR_EXTERNAL,cv2.CHAIN_APPROX_NONE)
-    image, contours, hierarchy = cv2.findContours(thresh1, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_NONE)
-    imgn = []
-    xy = []
-    for i in range(len(contours)):
-        cnt = contours[i]
-        x, y, w, h = cv2.boundingRect(cnt)
-        xy.append([x, y, w, h])
+    try:
+        # ret, thresh1 = cv2.threshold(img, 100, 255, cv2.THRESH_BINARY)
+        ret, thresh1 = cv2.threshold(img, 155, 255, cv2.THRESH_BINARY_INV)
+        # thresh1=fushi(thresh1)
+        # image,contours,hierarchy = cv2.findContours(thresh1,cv2.RETR_EXTERNAL,cv2.CHAIN_APPROX_NONE)
+        image, contours, hierarchy = cv2.findContours(thresh1, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_NONE)
+        imgn = []
+        xy = []
+        for i in range(len(contours)):
+            cnt = contours[i]
+            x, y, w, h = cv2.boundingRect(cnt)
+            xy.append([x, y, w, h])
 
-    xy = sorted(xy)
+        xy = sorted(xy)
 
-    xy0 = []  ##存放切块
-    ##前n-1个块
-    for i in range(len(xy) - 1):
-        diff = xy[i + 1][0] - xy[i][0]
-        if diff < 5:
-            t0 = min(xy[i][0], xy[i + 1][0])
-            t1 = min(xy[i][1], xy[i + 1][1])
-            t2 = max(xy[i][2] + xy[i][0], xy[i + 1][2] + xy[i + 1][0]) - t0
-            t3 = max(xy[i][3] + xy[i][1], xy[i + 1][3] + xy[i + 1][1]) - t1
-            xy[i + 1] = [t0, t1, t2, t3]
-        elif 5 <= diff < 12:
-            xy0.append(xy[i])
+        xy0 = []  ##存放切块
+        ##前n-1个块
+        for i in range(len(xy) - 1):
+            diff = xy[i + 1][0] - xy[i][0]
+            if diff < 4:
+                t0 = min(xy[i][0], xy[i + 1][0])
+                t1 = min(xy[i][1], xy[i + 1][1])
+                t2 = max(xy[i][2] + xy[i][0], xy[i + 1][2] + xy[i + 1][0]) - t0
+                t3 = max(xy[i][3] + xy[i][1], xy[i + 1][3] + xy[i + 1][1]) - t1
+                xy[i + 1] = [t0, t1, t2, t3]
+            elif 4 <= diff < 12:
+                xy0.append(xy[i])
+            else:
+                if 12 <= diff <= 16:
+                    temp1 = [xy[i][0], xy[i][1], xy[i][2] - int(diff / 2), xy[i][3]]
+                    temp2 = [int(diff / 2) + xy[i][0], xy[i + 1][1], xy[i + 1][2], xy[i + 1][3]]
+                    xy0.append(temp1)
+                    xy0.append(temp2)
+                elif 17 <= diff <= 23:
+                    t1 = int(diff / 3)
+                    t2 = int(diff / 3) * 2
+                    temp1 = [xy[i][0], xy[i][1], t1, xy[i][3]]
+                    temp2 = [xy[i][0] + t1, xy[i][1], t2 - t1, xy[i][3]]
+                    temp3 = [xy[i][0] + t2, xy[i][1], diff - t2, xy[i][3]]
+                    xy0.append(temp1)
+                    xy0.append(temp2)
+                    xy0.append(temp3)
+                elif 24 <= diff <= 30:
+                    t1 = int(diff / 4)
+                    t2 = int(diff / 4) * 2
+                    t3 = int(diff / 4) * 3
+                    temp1 = [xy[i][0], xy[i][1], t1, xy[i][3]]
+                    temp2 = [xy[i][0] + t1, xy[i][1], t2 - t1, xy[i][3]]
+                    temp3 = [xy[i][0] + t2, xy[i][1], t3 - t2, xy[i][3]]
+                    temp4 = [xy[i][0] + t3, xy[i][1], diff - t3, xy[i][3]]
+                    xy0.append(temp1)
+                    xy0.append(temp2)
+                    xy0.append(temp3)
+                    xy0.append(temp4)
+                elif 31 <= diff:
+                    t1 = int(diff / 5)
+                    t2 = int(diff / 5) * 2
+                    t3 = int(diff / 5) * 3
+                    t4 = int(diff / 5) * 4
+                    temp1 = [xy[i][0], xy[i][1], t1, xy[i][3]]
+                    temp2 = [xy[i][0] + t1, xy[i][1], t2 - t1, xy[i][3]]
+                    temp3 = [xy[i][0] + t2, xy[i][1], t3 - t2, xy[i][3]]
+                    temp4 = [xy[i][0] + t3, xy[i][1], t4 - t3, xy[i][3]]
+                    temp5 = [xy[i][0] + t4, xy[i][1], diff - t4, xy[i][3]]
+                    xy0.append(temp1)
+                    xy0.append(temp2)
+                    xy0.append(temp3)
+                    xy0.append(temp4)
+                    xy0.append(temp5)
+
+        # 最后一个 图像块
+        diff = xy[-1][2]  # 最后一个 图像块
+        if diff < 3:
+            pass
+        elif 3 <= diff < 12:
+            xy0.append(xy[-1])
         else:
             if 12 <= diff <= 16:
-                temp1 = [xy[i][0], xy[i][1], xy[i][2] - int(diff / 2), xy[i][3]]
-                temp2 = [int(diff / 2) + xy[i][0], xy[i + 1][1], xy[i + 1][2], xy[i + 1][3]]
+                temp1 = [xy[-1][0], xy[-1][1], int(diff / 2), xy[-1][3]]
+                temp2 = [int(diff / 2) + xy[-1][0], xy[-1][1], xy[-1][2] - int(diff / 2), xy[-1][3]]
                 xy0.append(temp1)
                 xy0.append(temp2)
             elif 17 <= diff <= 23:
                 t1 = int(diff / 3)
                 t2 = int(diff / 3) * 2
-                temp1 = [xy[i][0], xy[i][1], t1, xy[i][3]]
-                temp2 = [xy[i][0] + t1, xy[i][1], t2 - t1, xy[i][3]]
-                temp3 = [xy[i][0] + t2, xy[i][1], diff - t2, xy[i][3]]
+                temp1 = [xy[-1][0], xy[-1][1], t1, xy[-1][3]]
+                temp2 = [xy[-1][0] + t1, xy[-1][1], t2 - t1, xy[-1][3]]
+                temp3 = [xy[-1][0] + t2, xy[-1][1], diff - t2, xy[-1][3]]
                 xy0.append(temp1)
                 xy0.append(temp2)
                 xy0.append(temp3)
@@ -137,10 +187,10 @@ def cut(img):
                 t1 = int(diff / 4)
                 t2 = int(diff / 4) * 2
                 t3 = int(diff / 4) * 3
-                temp1 = [xy[i][0], xy[i][1], t1, xy[i][3]]
-                temp2 = [xy[i][0] + t1, xy[i][1], t2 - t1, xy[i][3]]
-                temp3 = [xy[i][0] + t2, xy[i][1], t3 - t2, xy[i][3]]
-                temp4 = [xy[i][0] + t3, xy[i][1], diff - t3, xy[i][3]]
+                temp1 = [xy[-1][0], xy[-1][1], t1, xy[-1][3]]
+                temp2 = [xy[-1][0] + t1, xy[-1][1], t2 - t1, xy[-1][3]]
+                temp3 = [xy[-1][0] + t2, xy[-1][1], t3 - t2, xy[-1][3]]
+                temp4 = [xy[-1][0] + t3, xy[-1][1], diff - t3, xy[-1][3]]
                 xy0.append(temp1)
                 xy0.append(temp2)
                 xy0.append(temp3)
@@ -150,74 +200,27 @@ def cut(img):
                 t2 = int(diff / 5) * 2
                 t3 = int(diff / 5) * 3
                 t4 = int(diff / 5) * 4
-                temp1 = [xy[i][0], xy[i][1], t1, xy[i][3]]
-                temp2 = [xy[i][0] + t1, xy[i][1], t2 - t1, xy[i][3]]
-                temp3 = [xy[i][0] + t2, xy[i][1], t3 - t2, xy[i][3]]
-                temp4 = [xy[i][0] + t3, xy[i][1], t4 - t3, xy[i][3]]
-                temp5 = [xy[i][0] + t4, xy[i][1], diff - t4, xy[i][3]]
+                temp1 = [xy[-1][0], xy[-1][1], t1, xy[-1][3]]
+                temp2 = [xy[-1][0] + t1, xy[-1][1], t2 - t1, xy[-1][3]]
+                temp3 = [xy[-1][0] + t2, xy[-1][1], t3 - t2, xy[-1][3]]
+                temp4 = [xy[-1][0] + t3, xy[-1][1], t4 - t3, xy[-1][3]]
+                temp5 = [xy[-1][0] + t4, xy[-1][1], diff - t4, xy[-1][3]]
                 xy0.append(temp1)
                 xy0.append(temp2)
                 xy0.append(temp3)
                 xy0.append(temp4)
                 xy0.append(temp5)
 
-    # 最后一个 图像块
-    diff = xy[-1][2]  # 最后一个 图像块
-    if diff < 3:
-        pass
-    elif 3 <= diff < 12:
-        xy0.append(xy[-1])
-    else:
-        if 12 <= diff <= 16:
-            temp1 = [xy[-1][0], xy[-1][1], int(diff / 2), xy[-1][3]]
-            temp2 = [int(diff / 2) + xy[-1][0], xy[-1][1], xy[-1][2] - int(diff / 2), xy[-1][3]]
-            xy0.append(temp1)
-            xy0.append(temp2)
-        elif 17 <= diff <= 23:
-            t1 = int(diff / 3)
-            t2 = int(diff / 3) * 2
-            temp1 = [xy[-1][0], xy[-1][1], t1, xy[-1][3]]
-            temp2 = [xy[-1][0] + t1, xy[-1][1], t2 - t1, xy[-1][3]]
-            temp3 = [xy[-1][0] + t2, xy[-1][1], diff - t2, xy[-1][3]]
-            xy0.append(temp1)
-            xy0.append(temp2)
-            xy0.append(temp3)
-        elif 24 <= diff <= 30:
-            t1 = int(diff / 4)
-            t2 = int(diff / 4) * 2
-            t3 = int(diff / 4) * 3
-            temp1 = [xy[-1][0], xy[-1][1], t1, xy[-1][3]]
-            temp2 = [xy[-1][0] + t1, xy[-1][1], t2 - t1, xy[-1][3]]
-            temp3 = [xy[-1][0] + t2, xy[-1][1], t3 - t2, xy[-1][3]]
-            temp4 = [xy[-1][0] + t3, xy[-1][1], diff - t3, xy[-1][3]]
-            xy0.append(temp1)
-            xy0.append(temp2)
-            xy0.append(temp3)
-            xy0.append(temp4)
-        elif 31 <= diff:
-            t1 = int(diff / 5)
-            t2 = int(diff / 5) * 2
-            t3 = int(diff / 5) * 3
-            t4 = int(diff / 5) * 4
-            temp1 = [xy[-1][0], xy[-1][1], t1, xy[-1][3]]
-            temp2 = [xy[-1][0] + t1, xy[-1][1], t2 - t1, xy[-1][3]]
-            temp3 = [xy[-1][0] + t2, xy[-1][1], t3 - t2, xy[-1][3]]
-            temp4 = [xy[-1][0] + t3, xy[-1][1], t4 - t3, xy[-1][3]]
-            temp5 = [xy[-1][0] + t4, xy[-1][1], diff - t4, xy[-1][3]]
-            xy0.append(temp1)
-            xy0.append(temp2)
-            xy0.append(temp3)
-            xy0.append(temp4)
-            xy0.append(temp5)
+        for i in range(len(xy0)):
+            x, y, w, h = xy0[i]
+            imgn.append(image[y:y + h, x:x + w])
+        for i in range(len(imgn)):
+            imgn[i] = cv2.resize(imgn[i], (8, 8))
 
-    for i in range(len(xy0)):
-        x, y, w, h = xy0[i]
-        imgn.append(image[y:y + h, x:x + w])
-    for i in range(len(imgn)):
-        imgn[i] = cv2.resize(imgn[i], (8, 8))
-
-    return imgn
-
+        return imgn
+    except:
+        logger.exception("error message")
+        return []
 
 def readpic(img, maindata):
     svm = cv2.ml.SVM_load(maindata)

@@ -290,34 +290,80 @@ class Smart_tijiaoDialog(wx.Dialog):
         strategy_type = get_dick('strategy_type')
         strategy_list = get_dick(str(strategy_type))
         advance_list = [100, 200, 300, 0]
-        self.second_tijiao_pricediff_smart1.SetSelection(advance_list.index(strategy_list[3]))
-        self.second_tijiaoyanchi_time_smart1.SetValue(strategy_list[4])
-        self.second_tijiao_time_smart1.SetValue(strategy_list[5])
-        self.second_tijiao_pricediff_smart2.SetSelection(advance_list.index(strategy_list[6]))
-        self.second_tijiaoyanchi_time_smart2.SetValue(strategy_list[7])
-        self.second_tijiao_time_smart2.SetValue(strategy_list[8])
-        self.second_tijiao_pricediff_smart3.SetSelection(advance_list.index(strategy_list[9]))
-        self.second_tijiaoyanchi_time_smart3.SetValue(strategy_list[10])
-        self.second_tijiao_time_smart3.SetValue(strategy_list[11])
-        self.second_tijiao_time_smart.SetValue(strategy_list[12])
 
-        set_val('one_time1', strategy_list[1])  # 第一次出价加价
-        set_val('one_diff', strategy_list[2])  # 第一次加价幅度
-        set_val('one_advance_smart1', strategy_list[3])
-        set_val('one_delay_smart1', strategy_list[4])
-        set_val('one_time2_smart1', strategy_list[5])
-        set_val('one_advance_smart2', strategy_list[6])
-        set_val('one_delay_smart2', strategy_list[7])
-        set_val('one_time2_smart2', strategy_list[8])
-        set_val('one_advance_smart3', strategy_list[9])
-        set_val('one_delay_smart3', strategy_list[10])
-        set_val('one_time2_smart3', strategy_list[11])
-        set_val('one_time2_smart', strategy_list[12])
-        
-        set_val('one_realtime2_smart1', gettime(strategy_list[5]))
-        set_val('one_realtime2_smart2', gettime(strategy_list[8]))
-        set_val('one_realtime2_smart3', gettime(strategy_list[11]))
-        set_val('one_realtime2_smart', gettime(strategy_list[12]))
+        if strategy_type == '2':
+            self.second_tijiao_pricediff_smart1.SetSelection(advance_list.index(strategy_list[3]))
+            self.second_tijiaoyanchi_time_smart1.SetValue(strategy_list[4])
+            self.second_tijiao_time_smart1.SetValue(strategy_list[5])
+            self.second_tijiao_pricediff_smart2.SetSelection(advance_list.index(strategy_list[6]))
+            self.second_tijiaoyanchi_time_smart2.SetValue(strategy_list[7])
+            self.second_tijiao_time_smart2.SetValue(strategy_list[8])
+            self.second_tijiao_pricediff_smart3.SetSelection(advance_list.index(strategy_list[9]))
+            self.second_tijiaoyanchi_time_smart3.SetValue(strategy_list[10])
+            self.second_tijiao_time_smart3.SetValue(strategy_list[11])
+            self.second_tijiao_time_smart.SetValue(strategy_list[12])
+
+            set_val('one_time1', strategy_list[1])  # 第一次出价加价
+            set_val('one_diff', strategy_list[2])  # 第一次加价幅度
+            set_val('one_advance_smart1', strategy_list[3])
+            set_val('one_delay_smart1', strategy_list[4])
+            set_val('one_time2_smart1', strategy_list[5])
+            set_val('one_advance_smart2', strategy_list[6])
+            set_val('one_delay_smart2', strategy_list[7])
+            set_val('one_time2_smart2', strategy_list[8])
+            set_val('one_advance_smart3', strategy_list[9])
+            set_val('one_delay_smart3', strategy_list[10])
+            set_val('one_time2_smart3', strategy_list[11])
+            set_val('one_time2_smart', strategy_list[12])
+
+            set_val('one_realtime2_smart1', gettime(strategy_list[5]))
+            set_val('one_realtime2_smart2', gettime(strategy_list[8]))
+            set_val('one_realtime2_smart3', gettime(strategy_list[11]))
+            set_val('one_realtime2_smart', gettime(strategy_list[12]))
+        elif strategy_type == '3':
+            self.second_tijiao_pricediff_smart1.SetSelection(advance_list.index(strategy_list[9]))
+            self.second_tijiaoyanchi_time_smart1.SetValue(strategy_list[10])
+            self.second_tijiao_time_smart1.SetValue(strategy_list[11])
+            self.second_tijiao_pricediff_smart2.SetSelection(advance_list.index(strategy_list[12]))
+            self.second_tijiaoyanchi_time_smart2.SetValue(strategy_list[13])
+            self.second_tijiao_time_smart2.SetValue(strategy_list[14])
+            self.second_tijiao_pricediff_smart3.SetSelection(advance_list.index(strategy_list[15]))
+            self.second_tijiaoyanchi_time_smart3.SetValue(strategy_list[16])
+            self.second_tijiao_time_smart3.SetValue(strategy_list[17])
+            self.second_tijiao_time_smart.SetValue(strategy_list[18])
+
+            set_val('one_time1', strategy_list[1])  # 第一次出价加价
+            set_val('one_diff', strategy_list[2])  # 第一次加价幅度
+            set_val('one_advance', strategy_list[3])  # 第一次提交提前量
+            set_val('one_delay', strategy_list[4])  # 第一次延迟
+            set_val('one_time2', strategy_list[5])  # 第一次出价提交
+            set_val('one_forcetijiao_on', strategy_list[6])
+
+            set_val('second_time1', strategy_list[7])  # 第二次次出价加价
+            set_val('second_diff', strategy_list[8])  # 第二次加价幅度
+
+            set_val('one_advance_smart1', strategy_list[9])
+            set_val('one_delay_smart1', strategy_list[10])
+            set_val('one_time2_smart1', strategy_list[11])
+            set_val('one_advance_smart2', strategy_list[12])
+            set_val('one_delay_smart2', strategy_list[13])
+            set_val('one_time2_smart2', strategy_list[14])
+            set_val('one_advance_smart3', strategy_list[15])
+            set_val('one_delay_smart3', strategy_list[16])
+            set_val('one_time2_smart3', strategy_list[17])
+            set_val('one_time2_smart', strategy_list[18])
+
+            one_time1 = get_val('one_time1')
+            one_time2 = get_val('one_time2')
+            second_time1 = get_val('second_time1')
+            set_val('one_real_time1', gettime(one_time1))
+            set_val('one_real_time2', gettime(one_time2))
+            set_val('second_real_time1', gettime(second_time1))
+
+            set_val('one_realtime2_smart1', gettime(strategy_list[11]))
+            set_val('one_realtime2_smart2', gettime(strategy_list[14]))
+            set_val('one_realtime2_smart3', gettime(strategy_list[17]))
+            set_val('one_realtime2_smart', gettime(strategy_list[18]))
 
 
 class Mywin(wx.Frame):

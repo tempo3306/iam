@@ -9,7 +9,8 @@ from component.staticmethod import *
 import logging
 
 logger = logging.getLogger()
-from component.variable import get_dick, set_dick
+from component.variable import get_dick, set_dick, get_strategy_dick
+
 
 # -----------------------------------------------------------
 class StatusPanel(wx.Panel):
@@ -176,21 +177,6 @@ class StatusPanel(wx.Panel):
         self.buqiang_label_sizer.Add(self.buqiang_vbox)
 
 
-        ##单枪动态提交
-        self.smart_tijiao_label = wx.StaticBox(self, -1, "单枪动态提交")
-        self.smart_tijiao_label_sizer = wx.StaticBoxSizer(self.smart_tijiao_label, wx.VERTICAL)
-        self.smart_tijiao_label.SetFont(self.titlefont)
-        self.smart_tijiao_vsizer = wx.BoxSizer(wx.VERTICAL)
-        self.smart_tijiao_hsizer = wx.BoxSizer(wx.HORIZONTAL)
-        self.smart_tijiao_label = wx.StaticText(self, label = '动态提交', style = wx.ALIGN_RIGHT, size=(80,25))
-        self.smart_tijiao_button = wx.Button(self, label='设置', size=(50, 25))
-        self.smart_tijiao_hsizer.Add(self.smart_tijiao_label, flag=wx.TOP, border=5)
-        self.smart_tijiao_hsizer.Add(self.smart_tijiao_button, flag=wx.LEFT, border=20)
-        self.smart_tijiao_vsizer.Add(self.second_jiajia_sizer, flag=wx.BOTTOM, border=12)
-        self.smart_tijiao_vsizer.Add(self.smart_tijiao_hsizer, flag=wx.RIGHT, border=60)
-        self.smart_tijiao_label_sizer.Add(self.smart_tijiao_vsizer, flag=wx.BOTTOM, border=2)
-
-        self.smart_tijiao_button.Bind(wx.EVT_BUTTON, self.Smart_tijiao_button)
 
         ########第三次出价
         ##label行
@@ -281,10 +267,103 @@ class StatusPanel(wx.Panel):
         self.Bind(wx.EVT_CHECKBOX, self.Second_forcetijiao, self.second_forcetijiao_check)
         self.Bind(wx.EVT_CHECKBOX, self.Third_forcetijiao, self.third_forcetijiao_check)
 
+        ####动态提交
+        ##单枪动态提交
+        self.smart_tijiao_label = wx.StaticBox(self, -1, "单枪动态提交")
+        self.smart_tijiao_label_sizer = wx.StaticBoxSizer(self.smart_tijiao_label, wx.VERTICAL)
+        self.smart_tijiao_label.SetFont(self.titlefont)
+        self.smart_tijiao_vsizer = wx.BoxSizer(wx.VERTICAL)
+
+        ##双枪动态提交
+        self.smart_tijiao_label2 = wx.StaticBox(self, -1, "第三次出价动态提交")
+        self.smart_tijiao_label_sizer2 = wx.StaticBoxSizer(self.smart_tijiao_label2, wx.VERTICAL)
+        self.smart_tijiao_label2.SetFont(self.titlefont)
+        self.smart_tijiao_vsizer2 = wx.BoxSizer(wx.VERTICAL)
+        ##复制出价部分
+        ##出价设置行
+        ##第二次
+        self.secondsmart_jiajia_sizer = wx.BoxSizer(wx.HORIZONTAL)
+        self.secondsmart_jiajia_time = wx.SpinCtrlDouble(self, -1, "", size=(52, 20),
+                                                    style=wx.ALIGN_CENTER | wx.TEXT_ALIGNMENT_CENTER)
+        self.secondsmart_jiajia_time.SetRange(0, 55)
+        self.secondsmart_jiajia_time.SetValue(48)
+        self.secondsmart_jiajia_time.SetIncrement(0.1)
+        # self.secondsmart_jiajia_time.SetFont(self.numberfont)
+        self.secondsmart_jiajia_price = wx.SpinCtrlDouble(self, -1, "", size=(55, 20))
+        self.secondsmart_jiajia_price.SetRange(300, 1500)
+        self.secondsmart_jiajia_price.SetValue(700)
+        self.secondsmart_jiajia_price.SetIncrement(100)
+        self.secondsmart_time_label = wx.StaticText(self, label="11 : 29 : ",
+                                               style=wx.ALIGN_RIGHT)
+        self.secondsmart_time_label.SetFont(self.numberfont)
+        self.secondsmart_jiahao = wx.StaticText(self, label=' + ', style=wx.ALIGN_CENTER)
+        self.secondsmart_jiahao.SetFont(self.wordfont)
+        self.secondsmart_jiajia_sizer.Add(self.secondsmart_time_label, wx.LEFT, border=10)
+        self.secondsmart_jiajia_sizer.Add(self.secondsmart_jiajia_time)
+        self.secondsmart_jiajia_sizer.Add(self.secondsmart_jiahao)
+        self.secondsmart_jiajia_sizer.Add(self.secondsmart_jiajia_price)
+
+        self.Bind(wx.EVT_TEXT, self.Jiajia_time, self.second_jiajia_time)
+        self.Bind(wx.EVT_TEXT, self.Jiajia_price, self.second_jiajia_price)
+        ##第三次
+        ##出价设置行
+        self.thirdsmart_jiajia_sizer = wx.BoxSizer(wx.HORIZONTAL)
+        self.thirdsmart_jiajia_time = wx.SpinCtrlDouble(self, -1, "", size=(52, 20),
+                                                   style=wx.ALIGN_CENTER | wx.TEXT_ALIGNMENT_CENTER)
+        self.thirdsmart_jiajia_time.SetRange(0, 55)
+        self.thirdsmart_jiajia_time.SetValue(48)
+        self.thirdsmart_jiajia_time.SetIncrement(0.1)
+        self.thirdsmart_jiajia_price = wx.SpinCtrlDouble(self, -1, "", size=(55, 20))
+        self.thirdsmart_jiajia_price.SetRange(300, 1500)
+        self.thirdsmart_jiajia_price.SetValue(700)
+        self.thirdsmart_jiajia_price.SetIncrement(100)
+        self.thirdsmart_time_label = wx.StaticText(self, label="11 : 29 : ",
+                                              style=wx.ALIGN_RIGHT)
+        self.thirdsmart_time_label.SetFont(self.numberfont)
+        self.thirdsmart_jiahao = wx.StaticText(self, label=' + ', style=wx.ALIGN_CENTER)
+        self.thirdsmart_jiahao.SetFont(self.wordfont)
+        self.thirdsmart_jiajia_sizer.Add(self.thirdsmart_time_label, wx.LEFT, border=10)
+        self.thirdsmart_jiajia_sizer.Add(self.thirdsmart_jiajia_time)
+        self.thirdsmart_jiajia_sizer.Add(self.thirdsmart_jiahao)
+        self.thirdsmart_jiajia_sizer.Add(self.thirdsmart_jiajia_price)
+
+        self.Bind(wx.EVT_TEXT, self.Jiajia_time2, self.thirdsmart_jiajia_time)
+        self.Bind(wx.EVT_TEXT, self.Jiajia_price2, self.thirdsmart_jiajia_price)
+
+
+        ##单枪智能提交组件 
+        self.smart_tijiao_hsizer = wx.BoxSizer(wx.HORIZONTAL)
+        self.smart_tijiao_label = wx.StaticText(self, label = '动态提交', style = wx.ALIGN_RIGHT, size=(76,25))
+        self.smart_tijiao_button = wx.Button(self, label='设置', size=(50, 25))
+        self.smart_tijiao_hsizer.Add(self.smart_tijiao_label, flag=wx.TOP, border=5)
+        self.smart_tijiao_hsizer.Add(self.smart_tijiao_button, flag=wx.LEFT, border=20)
+        self.smart_tijiao_button.Bind(wx.EVT_BUTTON, self.Smart_tijiao_button)
+
+        ##双枪智能提交组件 
+        self.smart2_tijiao_hsizer = wx.BoxSizer(wx.HORIZONTAL)
+        self.smart2_tijiao_label = wx.StaticText(self, label = '动态提交', style = wx.ALIGN_RIGHT, size=(76,25))
+        self.smart2_tijiao_button = wx.Button(self, label='设置', size=(50, 25))
+        self.smart2_tijiao_hsizer.Add(self.smart2_tijiao_label, flag=wx.TOP, border=5)
+        self.smart2_tijiao_hsizer.Add(self.smart2_tijiao_button, flag=wx.LEFT, border=20)
+        self.smart2_tijiao_button.Bind(wx.EVT_BUTTON, self.Smart_tijiao_button)
+
+
+        ##单枪组装
+        self.smart_tijiao_vsizer.Add(self.smart_tijiao_hsizer, flag=wx.RIGHT, border=60)
+        self.smart_tijiao_vsizer.Add(self.secondsmart_jiajia_sizer, flag=wx.BOTTOM, border=12)
+        self.smart_tijiao_label_sizer.Add(self.smart_tijiao_vsizer, flag=wx.BOTTOM, border=2)
+        ##双枪组装
+        self.smart_tijiao_vsizer2.Add(self.smart2_tijiao_hsizer, flag=wx.RIGHT, border=60)
+        self.smart_tijiao_vsizer2.Add(self.thirdsmart_jiajia_sizer, flag=wx.BOTTOM, border=12)
+        self.smart_tijiao_label_sizer2.Add(self.smart_tijiao_vsizer2, flag=wx.BOTTOM, border=2)
+
+
+
         ##构建组件
         self.strategy_sizer.Add(self.second_chujia_label_sizer, flag=wx.ALL, border=3)
         self.strategy_sizer.Add(self.third_chujia_label_sizer, flag=wx.ALL, border=3)
         self.strategy_sizer.Add(self.smart_tijiao_label_sizer, flag=wx.ALL, border=3)
+        self.strategy_sizer.Add(self.smart_tijiao_label_sizer2, flag=wx.ALL, border=3)
         self.strategy_sizer.Add(self.buqiang_label_sizer, flag=wx.ALL, border=3)
 
         self.strategy_area_vbox.Add(self.choice_strategy, flag=wx.LEFT, border=3)
@@ -394,7 +473,7 @@ class StatusPanel(wx.Panel):
 
     def update_ui(self, strategy_type):  ##根据不同的出价策略调整界面
         strategy_list = get_dick(strategy_type)
-        print(strategy_list)
+
         if strategy_type == '0':  # 单次
             init_strategy()
             self.choice_strategy.SetSelection(int(strategy_type))
@@ -432,6 +511,7 @@ class StatusPanel(wx.Panel):
             self.strategy_sizer.Hide(self.third_chujia_label_sizer)
             self.strategy_sizer.Show(self.buqiang_label_sizer)
             self.strategy_sizer.Hide(self.smart_tijiao_label_sizer)
+            self.strategy_sizer.Hide(self.smart_tijiao_label_sizer2)
             self.Layout()
 
         elif strategy_type == '1':  # 双枪
@@ -501,6 +581,8 @@ class StatusPanel(wx.Panel):
             self.strategy_sizer.Show(self.third_chujia_label_sizer)
             self.strategy_sizer.Hide(self.buqiang_label_sizer)
             self.strategy_sizer.Hide(self.smart_tijiao_label_sizer)
+            self.strategy_sizer.Hide(self.smart_tijiao_label_sizer2)
+
             self.Layout()
 
         elif strategy_type == '2':  # 单枪动态提交
@@ -516,6 +598,7 @@ class StatusPanel(wx.Panel):
 #                                            9: one_advance_smart3  10: one_delay_smart3  11: one_time2_smart3
 #                                            12: one_time2_smart
 # '''
+
             set_val('one_time1', strategy_list[1])  # 第一次出价加价
             set_val('one_diff', strategy_list[2])  # 第一次加价幅度
             set_val('one_advance_smart1', strategy_list[3])
@@ -539,7 +622,90 @@ class StatusPanel(wx.Panel):
             self.strategy_sizer.Hide(self.third_chujia_label_sizer)
             self.strategy_sizer.Show(self.smart_tijiao_label_sizer)
             self.strategy_sizer.Show(self.buqiang_label_sizer)
+            self.strategy_sizer.Hide(self.smart_tijiao_label_sizer2)
+
             self.Layout()
+
+        elif strategy_type == '3':  # 双枪动态提交
+            init_strategy()
+
+            self.choice_strategy.SetSelection(int(strategy_type))
+            self.second_jiajia_time.SetValue(strategy_list[1])
+            self.second_jiajia_price.SetValue(strategy_list[2])
+            if strategy_list[3] == 100:
+                self.second_tijiao_pricediff.SetSelection(0)
+            elif strategy_list[3] == 200:
+                self.second_tijiao_pricediff.SetSelection(1)
+            elif strategy_list[3] == 300:
+                self.second_tijiao_pricediff.SetSelection(2)
+            else:
+                self.second_tijiao_pricediff.SetSelection(3)
+            self.second_tijiaoyanchi_time.SetValue(strategy_list[4])
+            self.second_tijiao_time.SetValue(strategy_list[5])
+            self.second_forcetijiao_check.SetValue(strategy_list[6])
+            if strategy_list[6]:
+                self.second_tijiao_time.Enable()
+            else:
+                self.second_tijiao_time.Disable()
+
+            self.third_jiajia_time.SetValue(strategy_list[7])
+            self.third_jiajia_price.SetValue(strategy_list[8])
+
+
+            # '''
+            # (4)双枪动态提交  依次为 0: strategy_type 1: one_time1  2: one_diff  3: one_advance 4: one_delay 5: one_time2
+            #                                        6: one_forcetijiao_on   7: second_time1  8: second_diff
+            #                                        9: one_advance_smart1  10: one_delay_smart1   11: one_time2_smart1
+            #                                        12: one_advance_smart2  13: one_delay_smart2   14: one_time2_smart2
+            #                                        15: one_advance_smart3  16: one_delay_smart3  17: one_time2_smart3
+            #                                        18: one_time2_smart
+            #
+            #
+            # '''
+
+            set_val('one_time1', strategy_list[1])  # 第一次出价加价
+            set_val('one_diff', strategy_list[2])  # 第一次加价幅度
+            set_val('one_advance', strategy_list[3])  # 第一次提交提前量
+            set_val('one_delay', strategy_list[4])  # 第一次延迟
+            set_val('one_time2', strategy_list[5])  # 第一次出价提交
+            set_val('one_forcetijiao_on', strategy_list[6])
+
+            set_val('second_time1', strategy_list[7])  # 第二次次出价加价
+            set_val('second_diff', strategy_list[8])  # 第二次加价幅度
+
+            set_val('one_advance_smart1', strategy_list[9])
+            set_val('one_delay_smart1', strategy_list[10])
+            set_val('one_time2_smart1', strategy_list[11])
+            set_val('one_advance_smart2', strategy_list[12])
+            set_val('one_delay_smart2', strategy_list[13])
+            set_val('one_time2_smart2', strategy_list[14])
+            set_val('one_advance_smart3', strategy_list[15])
+            set_val('one_delay_smart3', strategy_list[16])
+            set_val('one_time2_smart3', strategy_list[17])
+            set_val('one_time2_smart', strategy_list[18])
+
+
+            one_time1 = get_val('one_time1')
+            one_time2 = get_val('one_time2')
+            second_time1 = get_val('second_time1')
+            set_val('one_real_time1', gettime(one_time1))
+            set_val('one_real_time2', gettime(one_time2))
+            set_val('second_real_time1', gettime(second_time1))
+
+            set_val('one_realtime2_smart1', gettime(strategy_list[11]))
+            set_val('one_realtime2_smart2', gettime(strategy_list[14]))
+            set_val('one_realtime2_smart3', gettime(strategy_list[17]))
+            set_val('one_realtime2_smart', gettime(strategy_list[18]))
+
+            ####刷新界面排版
+            self.strategy_sizer.Show(self.second_chujia_label_sizer)
+            self.strategy_sizer.Hide(self.third_chujia_label_sizer)
+            self.strategy_sizer.Hide(self.smart_tijiao_label_sizer)
+            self.strategy_sizer.Show(self.smart_tijiao_label_sizer2)
+            self.strategy_sizer.Hide(self.buqiang_label_sizer)
+            self.Layout()
+
+
 
 
     ###需要进一步扩展 调整策略设置后需要 修正templist

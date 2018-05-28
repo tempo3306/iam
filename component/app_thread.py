@@ -212,7 +212,7 @@ class cutimgThread(Thread):
                     str_price = Price_read()
                     if len(str_price) == 5:  ##防止前面有0
                         price = int(str_price)  # 获取当前最低价
-                        print('price=', price)
+                        # print('price=', price)
                         if price in pricelist:  # 字典查找
                             set_val('findpos_on', False)
                             if lowest_price == price:
@@ -997,7 +997,7 @@ class Start_thread(Thread):
 
     def run(self):
         import logging, time
-        version = 4.2
+        version = 4.3
         timenow = time.time()
         # 转换成localtime
         time_local = time.localtime(timenow)

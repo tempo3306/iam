@@ -39,6 +39,16 @@ for i in range(65, 91):
                                        6: one_advance_smart2  7: one_delay_smart2   8: one_time2_smart2
                                        9: one_advance_smart3  10: one_delay_smart3  11: one_time2_smart3
                                        12: one_time2_smart
+(4)双枪动态提交  依次为 0: strategy_type 1: one_time1  2: one_diff  3: one_advance 4: one_delay 5: one_time2
+                                       6: one_forcetijiao_on   7: second_time1  8: second_diff 
+                                       9: one_advance_smart1  10: one_delay_smart1   11: one_time2_smart1
+                                       12: one_advance_smart2  13: one_delay_smart2   14: one_time2_smart2
+                                       15: one_advance_smart3  16: one_delay_smart3  17: one_time2_smart3
+                                       18: one_time2_smart
+
+
+(5)智能出价提交   依次为 0: strategy_type  1: one_time1  2: one_diff
+
 
 '''
 
@@ -52,11 +62,21 @@ strategy_dick = {
         50, 700, 100, 0.5,
         56, 1],
 
-    '2': [2, 48.0, 700,
+    '2': [2, 50.0, 700,
         0, 0, 54,
         100, 0.6, 55,
         200, 0.5, 56,
         56.5],
+
+    '3': [3, 40.0, 500, 0, 0.5, 48,
+         1,
+         50, 700,
+         0, 0, 54,
+         100, 0.6, 55,
+         200, 0.5, 56,
+         56.5
+          ],
+    '4':[4, 48.0, 700],
 
     'yanzhengma_scale': True,
     'strategy_description': '单枪   48秒加700截止56秒提前100',  #策略名称
@@ -341,7 +361,7 @@ def init_size():
 
 
 def init_strategy():
-    strategy_choices = ['单枪策略(专注一次出价)', '双枪策略(一伏二补)', '单枪策略 智能提交']
+    strategy_choices = ['单枪策略(专注一次出价)', '双枪策略(一伏二补)', '单枪策略 智能提交', '双枪策略 智能提交']
     set_val('strategy_choices', strategy_choices)
 
 

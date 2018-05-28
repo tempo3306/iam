@@ -674,6 +674,8 @@ def init_strategy():
         init_strategy1()
     elif strategy_type == '2':
         init_strategy2()
+    elif strategy_type == '3':
+        init_strategy3()
 
 def init_strategy0():
     set_val('twice', False)
@@ -699,6 +701,16 @@ def init_strategy1():
 def init_strategy2():
     set_val('twice', False)
     set_val('strategy_on', True)
+    set_val('chujia_on', True)
+    set_val('tijiao_on', False)
+    set_val('tijiao_num', 1)  # 初始化
+    set_val('tijiao_OK', False)
+    set_val('tijiao_one', False)  # 单枪未开
+    init_label()
+
+def init_strategy3():
+    set_val('strategy_on', True)
+    set_val('twice', True)
     set_val('chujia_on', True)
     set_val('tijiao_on', False)
     set_val('tijiao_num', 1)  # 初始化
