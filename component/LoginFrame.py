@@ -222,6 +222,9 @@ class LoginFrame(wx.Frame):
             print(login_result)
             data = login_result['data']
             remote_variables(**data)
+            target_time = get_val('target_time')
+            start_time = target_time - 30 * 60
+            set_val('start_time', start_time)
             strategy_dick =login_result['strategy_dick']
             if strategy_dick:
                 strategy_dick = json.loads(strategy_dick)

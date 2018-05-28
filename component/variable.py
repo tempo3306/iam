@@ -167,17 +167,15 @@ def init_val():
 
 
 
-
-
-
-
 def init_url():
     set_val('remotetime_url', "https://hupai.pro/api/bid/get_remotetime")
     set_val('host_ali', "https://hupai.pro")
     # set_val('host_ali', "http://192.168.3.20:3000")
     set_val('url_51', "http://moni.51hupai.org/")
-    set_val('url_dianxin', "https://www.baidu.com")  # 电信
+    set_val('url_dianxin', "http://test.alltobid.com/moni/gerenlogin.html")  # 电信
+    # set_val('url_dianxin', "https://www.baidu.com")  # 电信
     set_val('url_nodianxin', "http://moni.51hupai.org/")  # 非电信
+    # set_val('url_moni', "http://test.alltobid.com/moni/gerenlogin.html")
     set_val('url_moni', "https://hupai.pro/static/main/moni.html")
     # set_val('url_moni', "http://192.168.3.20:3000/static/main/moni.html")
     set_val('guopai_dianxin', False)  ##当前是否处于国拍电信  默认是非电信
@@ -461,7 +459,7 @@ def init_strategy():
     set_val('query_interval', False)  # 间隔
     set_val('query_on', False)  # 是否处于查询状态
 
-    set_val('autotime_on', True)  #是否处理自动时间同步状态
+    set_val('autotime_on', False)  #是否处理自动时间同步状态
 
 
 
@@ -499,6 +497,9 @@ def init_status():
     set_val('pricetext', (348, 15))
     set_val('timestatustext', (192, 45))
     set_val('pricestatustext', (348, 45))
+
+    set_val('px_timerelative', 94)
+    set_val('py_timerelative', 3)
 
 
 def init_smart():
@@ -605,7 +606,17 @@ def init_pos(Px, Py):
     set_val('use_area', use_area)
 
 
+    ##一键登录
+    bidnumber = '12345678'
+    bidpassword = '12345678'
+    idcard = '1'
 
+    bidnumber_js  = "document.getElementById('bidnumber').value = '{0}';".format(bidnumber)
+    bidpassword_js = "document.getElementById('bidpassword').value = '{0}';".format(bidpassword)
+    idcard_js = "document.getElementById('idcard').value = '{0}';".format(idcard)
+    set_val('bidnumber_js', bidnumber_js)
+    set_val('bidpassword_js', bidpassword_js)
+    set_val('idcard_js', idcard_js)
 
 ##初始化变量, 由服务器给定
 def remote_variables(**kwargs):
@@ -617,8 +628,9 @@ def remote_variables(**kwargs):
 ####
 def remote_init():
     ##用于计算 最低成交价位置
-    set_val('px_relative', 49)  # 查找出来位置反算相对位置
-    set_val('py_relative', 0)
+    set_val('px_relative', 118)  # 查找出来位置反算相对位置
+    set_val('py_relative', 1)
+
     ## 相对于最低成交价位置
     #   ## 0:加价  1：出价 2：提交  3：刷新按钮   4 ：确认   5：价格输入框    6:验证码输入框     7：取消
     set_val('P_relative2', [[647, -98], [650, 8], [400, 89], [396, 14], [505, 68], [562, 8], [585, 8], [586, 86]])
@@ -635,4 +647,19 @@ def remote_init():
     ##计算当天的时间
     set_val('timebase_str', '')  ##时间基数，避免重复计算
     set_val('target_time', 11111111111111111)  ##时间基数，避免重复计算  11:30:1 分的时间戳
+    set_val('start_time', 111111111111111)  ## 11点之后的时间
     set_val('final_time', 111111111111)
+
+    set_val('final_stage', True)  ##判断是不是处理最终状态
+
+    ##一键登录
+    bidnumber = '12345678'
+    bidpassword = '12345678'
+    idcard = '1'
+
+    bidnumber_js  = "document.getElementById('bidnumber').value = '{0}';".format(bidnumber)
+    bidpassword_js = "document.getElementById('bidpassword').value = '{0}';".format(bidpassword)
+    idcard_js = "document.getElementById('idcard').value = '{0}';".format(idcard)
+    set_val('bidnumber_js', bidnumber_js)
+    set_val('bidpassword_js', bidpassword_js)
+    set_val('idcard_js', idcard_js)

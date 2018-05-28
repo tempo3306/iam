@@ -233,6 +233,12 @@ def Refresh_web():
     else:
         wx.CallAfter(pub.sendMessage, "guopai refresh_web")
 
+def Onekey_login():
+    guopai_on = get_val('guopai_on')
+    if guopai_on:
+        print("fdssfs")
+        wx.CallAfter(pub.sendMessage, "onekey_login")
+
 
 ##-------------------------------------------------------------------------------------
 ##智能出价
@@ -310,7 +316,7 @@ def OnClick_chujia():
             one_advance = get_val('one_advance')
             current_pricestatus = '{0:.1f}秒提前{1}'.format(one_time2, one_advance)
             set_val('current_pricestatus', current_pricestatus)
-            ##5.1秒后调用取消出价
+            ##5.1秒后调用取消出
             timer = threading.Timer(5.1, Cancel_chujia)
             timer.start()
         elif tijiao_num == 2 and twice:
@@ -546,7 +552,8 @@ HOTKEYS2 = {7: (VK_CODE['s'], 0x4000), 8: (VK_CODE['f'], 0x4000), 9: (VK_CODE['d
             10: (win32con.VK_SPACE, 0x4000), 11: (VK_CODE['e'], 0x4000), 12: (win32con.VK_RETURN, 0x4000),
             13: (VK_CODE['q'], 0x4000), 14: (VK_CODE['h'], 0x4000),
             15: (win32con.VK_ESCAPE, 0x4000),
-            16: (win32con.VK_F1, 0x4000), 17: (win32con.VK_F5, 0x4000)}
+            16: (win32con.VK_F1, 0x4000), 17: (win32con.VK_F5, 0x4000),
+            18: (win32con.VK_F7, 0x4000),}
 
 HOTKEY_ACTIONS = {
     1: Cancel_chujia_test, 2: OnClick_chujia, 3: many_delete,
@@ -556,7 +563,7 @@ HOTKEY_ACTIONS = {
     12: tijiao_ok2,
     13: query, 14: OnH_chujia,
     15: esc_chujia,
-    16: OnClick_Tijiao, 17: Refresh_web}
+    16: OnClick_Tijiao, 17: Refresh_web, 18: Onekey_login}
 
 
 # 启动监听

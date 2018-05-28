@@ -103,10 +103,8 @@ class ButtonPanel(wx.Panel):
 
     ## 同步本地时间
     def timeautoajust(self, event):
-        guopai_on = get_val('guopai_on')
-        moni_on = get_val('moni_on')
         imgpos_currenttime = get_val('imgpos_currenttime')
-        timeset(guopai_on, moni_on, imgpos_currenttime, 'maindata.xml')  # 调用时间同步
+        timeset(imgpos_currenttime, 'maindata.xml')  # 调用时间同步
 
     def urlchange(self, event):
         guopai_dianxin = get_val('guopai_dianxin')
@@ -267,7 +265,8 @@ class CurrentStatusPanel(wx.Panel):
         ##显示最低成交价
         findpos_on = get_val('findpos_on')
         yanzhengma_view = get_val('yanzhengma_view')
-        if findpos_on or yanzhengma_view:
+        final_stage = get_val('final_stage')  ##判断是不是11点之后
+        if findpos_on or yanzhengma_view or not final_stage:
             if self.parent.IsShown():
                 self.parent.Show(False)
             # lowestpricelabel = get_val('lowestpricelabel')
@@ -392,9 +391,11 @@ class WebFrame(wx.Frame):
 
         self.hotkey_open2()
         # self.Bind(wx.EVT_ACTIVATE , self.hotkey_open)
-
-        pub.subscribe(self.refresh_web, 'moni refresh_web')
-        pub.subscribe(self.refresh_web, 'guopai refresh_web')
+        if moni:
+            pub.subscribe(self.refresh_web, 'moni refresh_web')
+        else:
+            pub.subscribe(self.refresh_web, 'guopai refresh_web')
+            pub.subscribe(self.onekey_login, 'onekey_login')  # 登录
 
 
 
@@ -427,7 +428,22 @@ class WebFrame(wx.Frame):
         elif strategy_type == 1:
             init_strategy()
 
-
+    def onekey_login(self):
+        bidnumber_js = get_val('bidnumber_js')
+        bidpassword_js = get_val('bidpassword_js')
+        idcard_js = get_val('idcard_js')
+        self.htmlpanel.webview.RunScript(bidnumber_js)
+        self.htmlpanel.webview.RunScript(bidpassword_js)
+        self.htmlpanel.webview.RunScript(idcard_js)
+        try:
+            browser = self.htmlpanel.webview
+            print(browser)
+            print(bidnumber_js)
+            browser.RunScript(bidnumber_js)
+            browser.RunScript(bidpassword_js)
+            browser.RunScript(idcard_js)
+        except:
+            logger.exception("error message")
 
     def Price_view(self, event):
         moni_on = get_val('moni_on')

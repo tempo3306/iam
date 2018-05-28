@@ -370,7 +370,7 @@ class TopFrame(wx.Frame):
         guopai_on = get_val('guopai_on')
         moni_on = get_val('moni_on')
         imgpos_currenttime = get_val('imgpos_currenttime')
-        timeset(guopai_on, moni_on, imgpos_currenttime, 'maindata.xml')  # 调用时间同步
+        timeset(imgpos_currenttime, 'maindata.xml')  # 调用时间同步
 
     def MainControl(self, event):
         web_on = get_val('web_on')

@@ -209,17 +209,21 @@ class cutimgThread(Thread):
                 pricelist = get_val('pricelist')
                 a_time = get_val('a_time')
                 try:
-                    price = int(Price_read())  # 获取当前最低价
-                    # print('price=', price)
-                    if price in pricelist:  # 字典查找
-                        set_val('findpos_on', False)
-                        if lowest_price == price:
-                            trans_time()  # 保存价格
-                        else:
-                            set_val('lowest_price', price)
-                            trans_time()  # 保存价格
+                    str_price = Price_read()
+                    if len(str_price) == 5:  ##防止前面有0
+                        price = int(str_price)  # 获取当前最低价
+                        print('price=', price)
+                        if price in pricelist:  # 字典查找
+                            set_val('findpos_on', False)
+                            if lowest_price == price:
+                                trans_time()  # 保存价格
+                            else:
+                                set_val('lowest_price', price)
+                                trans_time()  # 保存价格
 
-                            set_val('changetime', a_time)
+                                set_val('changetime', a_time)
+                        else:
+                            set_val('findpos_on', True)
                     else:
                         set_val('findpos_on', True)
 
@@ -811,11 +815,22 @@ class TimeThread(Thread):
             a_time += b - a  # 实际运行时间作为真实间隔
             set_val('a_time', a_time)
             one_real_time1 = get_val('one_real_time1')
-            if one_real_time1 > a_time:  ##只要出现时间小于第一次出价就触发还原
-                init_strategy()
-            ##计数，保证间隔
-            yanzhengma_count = get_val('yanzhengma_count')
-            set_val('yanzhengma_count', 1 + yanzhengma_count)
+            try:
+                if one_real_time1 > a_time:  ##只要出现时间小于第一次出价就触发还原
+                    init_strategy()
+                start_time = get_val('start_time')
+                target_time = get_val('target_time')
+
+                if   start_time  <  a_time  <   target_time:  ##11点到11点半之间
+                    set_val("final_stage", True)
+                else:
+                    set_val("final_stage", False)
+                ##计数，保证间隔
+                yanzhengma_count = get_val('yanzhengma_count')
+                set_val('yanzhengma_count', 1 + yanzhengma_count)
+            except:
+                logger.exception("error message")
+
 
     def pause(self):
         self.__flag.clear()  # 设置为False, 让线程阻塞

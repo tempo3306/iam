@@ -110,13 +110,13 @@ def cut(img):
     ##前n-1个块
     for i in range(len(xy) - 1):
         diff = xy[i + 1][0] - xy[i][0]
-        if diff < 6:
+        if diff < 5:
             t0 = min(xy[i][0], xy[i + 1][0])
             t1 = min(xy[i][1], xy[i + 1][1])
             t2 = max(xy[i][2] + xy[i][0], xy[i + 1][2] + xy[i + 1][0]) - t0
             t3 = max(xy[i][3] + xy[i][1], xy[i + 1][3] + xy[i + 1][1]) - t1
             xy[i + 1] = [t0, t1, t2, t3]
-        elif 6 <= diff < 12:
+        elif 5 <= diff < 12:
             xy0.append(xy[i])
         else:
             if 12 <= diff <= 16:
@@ -233,15 +233,13 @@ def readpic(img, maindata):
     return price  # 返回的是price str   也可以是时间
 
 
-def timeset(guopai_on, moni_on, imgpos_currenttime, maindata):
+def timeset( imgpos_currenttime, maindata):
     try:
         currenttime = cv2.cvtColor(imgpos_currenttime, cv2.COLOR_BGR2GRAY)
         # cv2.imwrite('time.png', currenttime)
         currenttime = readpic(currenttime, maindata)  # 识别出来的时间
-
+        print(currenttime)
         a_time = get_val('a_time')
-        # print('currenttime', currenttime)
-
         tem1 = time.time()
         a = time.strftime('%Y-%m-%d', time.localtime(tem1))
         b = a + ' ' + currenttime
@@ -252,6 +250,10 @@ def timeset(guopai_on, moni_on, imgpos_currenttime, maindata):
             set_val('a_time', a_time_temp)
     except:
         logger.exception('this is an exception message')
+
+
+
+
 
 
 def grab_screen(region=None, title=None):
@@ -299,28 +301,34 @@ def findpos():
     img = np.asarray(sc)
     dick_target = get_val('dick_target')
     template = dick_target[2]
+    time_template = dick_target[3]
     w, h = template.shape[::-1]
     res = cv2.matchTemplate(img, template, cv2.TM_CCOEFF_NORMED)
     min_val, max_val, min_loc, max_loc = cv2.minMaxLoc(res)
     px_relative = get_val('px_relative')
     py_relative = get_val('py_relative')
+    px_timerelative = get_val('px_timerelative')
+    py_timerelative = get_val('py_timerelative')
     Position_frame = get_val('Position_frame')
     P_relative2 = get_val('P_relative2')
-    if max_val > 0.9:  # 找不到不动作
+
+    res2 = cv2.matchTemplate(img, time_template, cv2.TM_CCOEFF_NORMED)
+    time_min_val, time_max_val, time_min_loc, time_max_loc = cv2.minMaxLoc(res2)
+
+    if max_val > 0.75:  # 找不到不动作
+        ##计算位置
         set_val('px_lowestprice', max_loc[0] + px_relative)
         set_val('py_lowestprice', max_loc[1] + py_relative)
-
         Px = get_val('Px')
         Py = get_val('Py')
-        '''
-        PxPy    253 31
-        px,py   411 489
-        '''
-        print("PxPy  ffff", Px, Py)
-        print("px,py", max_loc[0] + px_relative, max_loc[1] + py_relative)
-
         set_val('px_calculate_relative', max_loc[0] + px_relative - Px) ##计算得到相差
         set_val('py_calculate_relative', max_loc[1] + py_relative - Py)
+        ##计算时间位置
+        print('time_max_val', time_max_val)
+        set_val('Px_currenttime', time_max_loc[0] + px_timerelative)    #时间的位置
+        set_val('Py_currenttime', time_max_loc[1] + py_timerelative)
+
+
 
         px_lowestprice = get_val('px_lowestprice')
         py_lowestprice = get_val('py_lowestprice')
@@ -332,8 +340,6 @@ def findpos():
         print("找到的Px_lowestprice", Px_lowestprice)
         print("找到的Py_lowestprice", Py_lowestprice)
 
-        set_val('Px_currenttime', Px_lowestprice - 27)  # 参考最低成交价位置
-        set_val('Py_currenttime', Py_lowestprice - 14)
         set_val('ghostbutton_pos', [px_lowestprice - 9, py_lowestprice + 84])
 
         for i in range(len(Position_frame)):
@@ -369,8 +375,6 @@ def findpos():
         lowestprice_sizey = get_val('lowestprice_sizey')
         currenttime_sizex = get_val('currenttime_sizex')
         currenttime_sizey = get_val('currenttime_sizey')
-        set_val('findpos_on', False)  # 无需定位
-        set_val('yanzhengma_move', True)  # 需要定位
         set_val('lowest', [Px_lowestprice, Py_lowestprice, lowestprice_sizex + Px_lowestprice,
                            lowestprice_sizey + Py_lowestprice])
         Px_currenttime = get_val("Px_currenttime")
@@ -395,6 +399,10 @@ def findpos():
             temp = [cal_area[i][0] - x1, cal_area[i][1] - y1, cal_area[i][2] - x1, cal_area[i][3] - y1]
             use_area.append(temp)
         set_val('use_area', use_area)
+
+
+
+
 
 
 def only_screenshot(area):  # x,y  pos      w,h size
