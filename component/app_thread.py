@@ -413,38 +413,57 @@ class TijiaoThread(Thread):
                 one_delay_smart3 = get_val('one_delay_smart3')
                 one_realtime2_smart3 = get_val('one_realtime2_smart3')
                 one_realtime2_smart = get_val('one_realtime2_smart')
-                if strategy_type == '2': ##动态提交
+
+                #-------------------------------------------------------
+                ##提交
+                if strategy_type == '2': ##单枪动态提交
                     if tijiao_on and strategy_on and tijiao_OK:  # 判断是否需要提交,国拍开启状态方可触发
                         if lowest_price >= own_price1 - 300 - one_advance_smart1 and a_time <= one_realtime2_smart1 + 0.1:  # 判断是否满足条件
                             OnClick_Tijiao(one_delay_smart1)
-                            print("fdsfs")
                         elif lowest_price >= own_price1 - 300 - one_advance_smart2 \
                                 and  one_realtime2_smart1 + 0.1 <= a_time <= one_realtime2_smart2 + 0.1:  # 判断是否满足条件
                             OnClick_Tijiao(one_delay_smart2)
-                            print("3333")
-
                         elif lowest_price >= own_price1 - 300 - one_advance_smart3 \
                                 and one_realtime2_smart2 + 0.1 <= a_time <= one_realtime2_smart3 + 0.1:  # 判断是否满足条件
                             OnClick_Tijiao(one_delay_smart3)
-                            print("dhh")
-
                         elif a_time >= one_realtime2_smart: #截止时间
                             OnClick_Tijiao()
-                            print("hkkk")
 
-                elif tijiao_on and strategy_on  and tijiao_OK:  # 判断是否需要提交,国拍开启状态方可触发
-                    if tijiao_num == 1 and a_time >= one_real_time2 and one_forcetijiao_on:  # 判断是否满足条件
-                        OnClick_Tijiao(one_delay)
-                        # SmartTijiao()
-                    elif tijiao_num == 2 and a_time >= second_real_time2 and second_forcetijiao_on:  # 判断是否满足条件
-                        OnClick_Tijiao(second_delay)
-                        # SmartTijiao()
-                    elif tijiao_num == 1 and lowest_price >= own_price1 - 300 - one_advance and a_time <= one_real_time2 - one_delay:  # 价格判断
-                        OnClick_Tijiao(one_delay)
-                    elif tijiao_num == 2 and lowest_price >= own_price2 - 300 - second_advance and a_time <= second_real_time2 - second_delay:  # 价格判断
-                        OnClick_Tijiao(second_delay)
+                elif strategy_type == '3':  ##双枪动态提交
+                    if tijiao_on and strategy_on and tijiao_OK:  # 判断是否需要提交,国拍开启状态方可触发
+                        if tijiao_num == 1:
+                            if a_time >= one_real_time2 and one_forcetijiao_on:  # 判断是否满足条件
+                                OnClick_Tijiao(one_delay)
+                            elif lowest_price >= own_price1 - 300 - one_advance and a_time <= one_real_time2 - one_delay:  # 价格判断
+                                OnClick_Tijiao(one_delay)
+                        elif tijiao_num == 2:
+                            if lowest_price >= own_price1 - 300 - one_advance_smart1 and a_time <= one_realtime2_smart1 + 0.1:  # 判断是否满足条件
+                                OnClick_Tijiao(one_delay_smart1)
+                            elif lowest_price >= own_price1 - 300 - one_advance_smart2 \
+                                    and one_realtime2_smart1 + 0.1 <= a_time <= one_realtime2_smart2 + 0.1:  # 判断是否满足条件
+                                OnClick_Tijiao(one_delay_smart2)
+                            elif lowest_price >= own_price1 - 300 - one_advance_smart3 \
+                                    and one_realtime2_smart2 + 0.1 <= a_time <= one_realtime2_smart3 + 0.1:  # 判断是否满足条件
+                                OnClick_Tijiao(one_delay_smart3)
+                            elif a_time >= one_realtime2_smart:  # 截止时间
+                                OnClick_Tijiao()
+
+                else:
+                    if tijiao_on and strategy_on  and tijiao_OK:  # 判断是否需要提交,国拍开启状态方可触发
+                        if tijiao_num == 1 and a_time >= one_real_time2 and one_forcetijiao_on:  # 判断是否满足条件
+                            OnClick_Tijiao(one_delay)
+                            # SmartTijiao()
+                        elif tijiao_num == 2 and a_time >= second_real_time2 and second_forcetijiao_on:  # 判断是否满足条件
+                            OnClick_Tijiao(second_delay)
+                            # SmartTijiao()
+                        elif tijiao_num == 1 and lowest_price >= own_price1 - 300 - one_advance and a_time <= one_real_time2 - one_delay:  # 价格判断
+                            OnClick_Tijiao(one_delay)
+                        elif tijiao_num == 2 and lowest_price >= own_price2 - 300 - second_advance and a_time <= second_real_time2 - second_delay:  # 价格判断
+                            OnClick_Tijiao(second_delay)
+
+                #-------------------------------------------------------
                 ##出价
-                if strategy_type == '2':  ##如果为动态出价
+                if strategy_type == '2':  ##如果为动态提交
                     if strategy_on and chujia_on:  # 判断是否需要提交,国拍开启状态方可触发
                         if tijiao_num == 1 and one_real_time1 <= a_time <= one_real_time1 + 0.6:  # 判断是否满足条件
                             set_val('own_price1', lowest_price + one_diff)

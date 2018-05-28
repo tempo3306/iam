@@ -5,8 +5,8 @@
     <bookmark url="file://$PROJECT_DIR$/component/TopFrame.py" line="210" mnemonic="1" />
     <bookmark url="file://$PROJECT_DIR$/component/LoginFrame.py" line="232" mnemonic="0" />
     <bookmark url="file://$PROJECT_DIR$/component/OperationFrame.py" line="474" />
-    <bookmark url="file://$PROJECT_DIR$/component/staticmethod.py" line="565" mnemonic="6" />
-    <bookmark url="file://$PROJECT_DIR$/component/webframe.py" line="439" mnemonic="8" />
+    <bookmark url="file://$PROJECT_DIR$/component/staticmethod.py" line="563" mnemonic="6" />
+    <bookmark url="file://$PROJECT_DIR$/component/webframe.py" line="435" mnemonic="8" />
     <bookmark url="file://$PROJECT_DIR$/component/staticmethod.py" line="65" mnemonic="9" />
     <bookmark url="file://$PROJECT_DIR$/component/variable.py" line="136" mnemonic="7" />
     <bookmark url="file://$PROJECT_DIR$/component/imgcut.py" line="301" mnemonic="4" />
@@ -14,12 +14,10 @@
   <component name="ChangeListManager">
     <list default="true" id="8cc8c298-bf99-4eca-8018-53239952b6ea" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/component/LoginFrame.py" beforeDir="false" afterPath="$PROJECT_DIR$/component/LoginFrame.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/component/OperationFrame.py" beforeDir="false" afterPath="$PROJECT_DIR$/component/OperationFrame.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/component/app_thread.py" beforeDir="false" afterPath="$PROJECT_DIR$/component/app_thread.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/component/imgcut.py" beforeDir="false" afterPath="$PROJECT_DIR$/component/imgcut.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/component/smartprice_dialog.py" beforeDir="false" afterPath="$PROJECT_DIR$/component/smartprice_dialog.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/component/staticmethod.py" beforeDir="false" afterPath="$PROJECT_DIR$/component/staticmethod.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/component/variable.py" beforeDir="false" afterPath="$PROJECT_DIR$/component/variable.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/component/webframe.py" beforeDir="false" afterPath="$PROJECT_DIR$/component/webframe.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/mylog.log" beforeDir="false" afterPath="$PROJECT_DIR$/mylog.log" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/yan.png" beforeDir="false" afterPath="$PROJECT_DIR$/yan.png" afterDir="false" />
@@ -62,7 +60,7 @@
     <SUITE FILE_PATH="coverage/BestAssistant$Newlife1_1.coverage" NAME="Newlife1.1 Coverage Results" MODIFIED="1520845107285" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/hupai$c_screenshot.coverage" NAME="c_screenshot Coverage Results" MODIFIED="1526018980876" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/test" />
     <SUITE FILE_PATH="coverage/hupai$imgcut.coverage" NAME="imgcut Coverage Results" MODIFIED="1522155061233" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/component" />
-    <SUITE FILE_PATH="coverage/hupai$Newlife4_0.coverage" NAME="Newlife4.0 Coverage Results" MODIFIED="1527484800426" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/hupai$Newlife4_0.coverage" NAME="Newlife4.0 Coverage Results" MODIFIED="1527488424979" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/hupai$Newlife1_1__1_.coverage" NAME="Newlife1.1 (1) Coverage Results" MODIFIED="1522769635582" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="E:/OUTPUT" />
     <SUITE FILE_PATH="coverage/hupai$notebook_frame.coverage" NAME="notebook_frame Coverage Results" MODIFIED="1523181274239" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/component" />
     <SUITE FILE_PATH="coverage/hupai$resize_pic.coverage" NAME="resize_pic Coverage Results" MODIFIED="1525941855597" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
@@ -95,8 +93,8 @@
       <file leaf-file-name="LoginFrame.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/component/LoginFrame.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="195">
-              <caret line="229" column="48" selection-start-line="229" selection-start-column="48" selection-end-line="229" selection-end-column="48" />
+            <state relative-caret-position="159">
+              <caret line="237" column="46" selection-start-line="237" selection-start-column="46" selection-end-line="237" selection-end-column="46" />
               <folding>
                 <element signature="e#92#132#0" expanded="true" />
               </folding>
@@ -119,8 +117,8 @@
       <file leaf-file-name="staticmethod.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/component/staticmethod.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="177">
-              <caret line="565" selection-start-line="565" selection-end-line="565" />
+            <state relative-caret-position="324">
+              <caret line="575" column="48" lean-forward="true" selection-start-line="575" selection-start-column="48" selection-end-line="575" selection-end-column="48" />
               <folding>
                 <element signature="e#73#88#0" expanded="true" />
               </folding>
@@ -128,11 +126,14 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="_strptime.py" pinned="false" current-in-tab="false">
-        <entry file="file://$USER_HOME$/Python/Python36/Lib/_strptime.py">
+      <file leaf-file-name="app_thread.py" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/component/app_thread.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="95">
-              <caret line="364" selection-start-line="364" selection-end-line="364" />
+            <state relative-caret-position="213">
+              <caret line="1020" column="22" lean-forward="true" selection-start-line="1020" selection-start-column="22" selection-end-line="1020" selection-end-column="22" />
+              <folding>
+                <element signature="e#74#83#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -149,23 +150,14 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="OperationFrame.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="OperationFrame.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/component/OperationFrame.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="123">
-              <caret line="359" lean-forward="true" selection-start-line="359" selection-end-line="359" />
+            <state relative-caret-position="582">
+              <caret line="709" lean-forward="true" selection-start-line="709" selection-end-line="709" />
               <folding>
                 <element signature="e#75#111#0" expanded="true" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="core.py" pinned="false" current-in-tab="false">
-        <entry file="file://E:/python_env/hupai/Lib/site-packages/wx/core.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="87">
-              <caret line="1349" selection-start-line="1349" selection-end-line="1349" />
             </state>
           </provider>
         </entry>
@@ -185,8 +177,8 @@
       <file leaf-file-name="webframe.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/component/webframe.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="213">
-              <caret line="439" selection-start-line="439" selection-end-line="439" />
+            <state relative-caret-position="18">
+              <caret line="314" column="65" selection-start-line="314" selection-start-column="65" selection-end-line="314" selection-end-column="65" />
               <folding>
                 <element signature="e#92#128#0" expanded="true" />
               </folding>
@@ -205,10 +197,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>timeth</find>
-      <find>pri</find>
-      <find>price_r</find>
-      <find>refresh</find>
       <find>target</find>
       <find>confirm</find>
       <find>findpos_on</find>
@@ -230,11 +218,15 @@
       <find>cut</find>
       <find>version = 4.2</find>
       <find>read</find>
-      <find>init</find>
       <find>init_ui</find>
       <find>strategy_choices</find>
       <find>third</find>
       <find>smart</find>
+      <find>operation</find>
+      <find>等待第二次出价</find>
+      <find>init_stra</find>
+      <find>version =</find>
+      <find>init</find>
     </findStrings>
     <replaceStrings>
       <replace>self</replace>
@@ -315,13 +307,13 @@
         <option value="$PROJECT_DIR$/get_target.py" />
         <option value="$PROJECT_DIR$/target/get_target.py" />
         <option value="$PROJECT_DIR$/component/TopFrame.py" />
-        <option value="$PROJECT_DIR$/component/webframe.py" />
-        <option value="$PROJECT_DIR$/component/app_thread.py" />
         <option value="$PROJECT_DIR$/component/imgcut.py" />
-        <option value="$PROJECT_DIR$/component/LoginFrame.py" />
         <option value="$PROJECT_DIR$/component/variable.py" />
-        <option value="$PROJECT_DIR$/component/staticmethod.py" />
         <option value="$PROJECT_DIR$/component/smartprice_dialog.py" />
+        <option value="$PROJECT_DIR$/component/app_thread.py" />
+        <option value="$PROJECT_DIR$/component/LoginFrame.py" />
+        <option value="$PROJECT_DIR$/component/webframe.py" />
+        <option value="$PROJECT_DIR$/component/staticmethod.py" />
         <option value="$PROJECT_DIR$/component/OperationFrame.py" />
       </list>
     </option>
@@ -361,7 +353,7 @@
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="SearchEverywhereHistoryKey" value="&#9;FILE&#9;file://E:/hupai/component/imgcut.py&#10;dialog&#9;FILE&#9;file://E:/hupai/component/smartprice_dialog.py&#10;login&#9;FILE&#9;file://E:/hupai/component/LoginFrame.py&#10;priceread&#9;null&#9;null&#10;oper&#9;FILE&#9;file://E:/hupai/component/OperationFrame.py&#10;time.png&#9;FILE&#9;file://E:/hupai/time.png&#10;*.log&#9;FILE&#9;file://E:/hupai/mylog.log&#10;timeset&#9;null&#9;null&#10;t&#9;FILE&#9;file://E:/hupai/time.png&#10;findpos&#9;null&#9;null&#10;va&#9;FILE&#9;file://E:/hupai/component/variable.py&#10;hash&#9;null&#9;null&#10;web&#9;FILE&#9;file://E:/hupai/component/webframe.py&#10;app_&#9;FILE&#9;file://E:/hupai/component/app_thread.py&#10;sta&#9;FILE&#9;file://E:/hupai/component/staticmethod.py&#10;v&#9;FILE&#9;file://E:/hupai/component/variable.py&#10;tijiao_ok&#9;null&#9;null&#10;s&#9;FILE&#9;file://E:/hupai/component/staticmethod.py&#10;yanzheng&#9;FILE&#9;file://E:/hupai/component/YanzhengmaFrame.py&#10;webf&#9;FILE&#9;file://E:/hupai/component/webframe.py&#10;logout&#9;null&#9;null&#10;keep&#9;null&#9;null&#10;ogin&#9;FILE&#9;file://E:/hupai/component/LoginFrame.py&#10;operation&#9;FILE&#9;file://E:/hupai/component/OperationFrame.py&#10;top&#9;FILE&#9;file://E:/hupai/component/TopFrame.py&#10;yan&#9;FILE&#9;file://E:/hupai/component/YanzhengmaFrame.py&#10;webfr&#9;null&#9;null&#10;stat&#9;null&#9;null&#10;app&#9;FILE&#9;file://E:/hupai/component/app_thread.py&#10;ap&#9;FILE&#9;file://E:/hupai/component/app_thread.py&#10;childmo&#9;null&#9;null&#10;vai&#9;null&#9;null&#10;4.0&#9;FILE&#9;file://E:/hupai/Newlife4.0.py&#10;testpan&#9;null&#9;null&#10;yAN&#9;FILE&#9;file://E:/hupai/component/YanzhengmaFrame.py&#10;topf&#9;FILE&#9;file://E:/hupai/component/TopFrame.py&#10;loginf&#9;FILE&#9;file://E:/hupai/component/LoginFrame.py&#10;Op&#9;FILE&#9;file://E:/hupai/component/OperationFrame.py&#10;LOGIN&#9;FILE&#9;file://E:/hupai/component/LoginFrame.py&#10;c_sc&#9;FILE&#9;file://E:/hupai/test/c_screenshot.py&#10;cv&#9;null&#9;null&#10;var&#9;FILE&#9;file://E:/hupai/component/variable.py&#10;scree&#9;FILE&#9;file://E:/hupai/test/c_screenshot.py&#10;screen&#9;FILE&#9;file://E:/hupai/test/screenshot.py&#10;screshot&#9;null&#9;null&#10;new&#9;FILE&#9;file://E:/hupai/test/new_screenshot.py&#10;st&#9;FILE&#9;file://E:/hupai/component/staticmethod.py&#10;img&#9;FILE&#9;file://E:/hupai/component/imgcut.py&#10;findPo&#9;null&#9;null&#10;1.p&#9;FILE&#9;file://E:/hupai/test/1.png" />
+    <property name="SearchEverywhereHistoryKey" value="sta&#9;FILE&#9;file://E:/hupai/component/statusbar.py&#10;web&#9;FILE&#9;file://E:/hupai/component/webframe.py&#10;tijiao&#9;null&#9;null&#10;dialog&#9;FILE&#9;file://E:/hupai/component/smartprice_dialog.py&#10;login&#9;FILE&#9;file://E:/hupai/component/LoginFrame.py&#10;priceread&#9;null&#9;null&#10;oper&#9;FILE&#9;file://E:/hupai/component/OperationFrame.py&#10;time.png&#9;FILE&#9;file://E:/hupai/time.png&#10;*.log&#9;FILE&#9;file://E:/hupai/mylog.log&#10;timeset&#9;null&#9;null&#10;t&#9;FILE&#9;file://E:/hupai/time.png&#10;findpos&#9;null&#9;null&#10;va&#9;FILE&#9;file://E:/hupai/component/variable.py&#10;hash&#9;null&#9;null&#10;app_&#9;FILE&#9;file://E:/hupai/component/app_thread.py&#10;v&#9;FILE&#9;file://E:/hupai/component/variable.py&#10;tijiao_ok&#9;null&#9;null&#10;s&#9;FILE&#9;file://E:/hupai/component/staticmethod.py&#10;yanzheng&#9;FILE&#9;file://E:/hupai/component/YanzhengmaFrame.py&#10;webf&#9;FILE&#9;file://E:/hupai/component/webframe.py&#10;logout&#9;null&#9;null&#10;keep&#9;null&#9;null&#10;ogin&#9;FILE&#9;file://E:/hupai/component/LoginFrame.py&#10;operation&#9;FILE&#9;file://E:/hupai/component/OperationFrame.py&#10;top&#9;FILE&#9;file://E:/hupai/component/TopFrame.py&#10;yan&#9;FILE&#9;file://E:/hupai/component/YanzhengmaFrame.py&#10;webfr&#9;null&#9;null&#10;stat&#9;null&#9;null&#10;app&#9;FILE&#9;file://E:/hupai/component/app_thread.py&#10;ap&#9;FILE&#9;file://E:/hupai/component/app_thread.py&#10;childmo&#9;null&#9;null&#10;vai&#9;null&#9;null&#10;4.0&#9;FILE&#9;file://E:/hupai/Newlife4.0.py&#10;testpan&#9;null&#9;null&#10;yAN&#9;FILE&#9;file://E:/hupai/component/YanzhengmaFrame.py&#10;topf&#9;FILE&#9;file://E:/hupai/component/TopFrame.py&#10;loginf&#9;FILE&#9;file://E:/hupai/component/LoginFrame.py&#10;Op&#9;FILE&#9;file://E:/hupai/component/OperationFrame.py&#10;LOGIN&#9;FILE&#9;file://E:/hupai/component/LoginFrame.py&#10;c_sc&#9;FILE&#9;file://E:/hupai/test/c_screenshot.py&#10;cv&#9;null&#9;null&#10;var&#9;FILE&#9;file://E:/hupai/component/variable.py&#10;scree&#9;FILE&#9;file://E:/hupai/test/c_screenshot.py&#10;screen&#9;FILE&#9;file://E:/hupai/test/screenshot.py&#10;screshot&#9;null&#9;null&#10;new&#9;FILE&#9;file://E:/hupai/test/new_screenshot.py&#10;st&#9;FILE&#9;file://E:/hupai/component/staticmethod.py&#10;img&#9;FILE&#9;file://E:/hupai/component/imgcut.py&#10;findPo&#9;null&#9;null&#10;1.p&#9;FILE&#9;file://E:/hupai/test/1.png" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="last_opened_file_path" value="E:/hupai-5-5" />
     <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
@@ -648,7 +640,7 @@
       <breakpoints-dialog>
         <breakpoints-dialog />
       </breakpoints-dialog>
-      <option name="time" value="51" />
+      <option name="time" value="52" />
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
@@ -773,13 +765,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/component/statusbar.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="213">
-          <caret line="18" column="20" lean-forward="true" selection-start-line="18" selection-start-column="20" selection-end-line="18" selection-end-column="20" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/component/login.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="531">
@@ -841,30 +826,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/component/app_thread.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="466">
-          <caret line="1000" column="29" selection-start-line="1000" selection-start-column="29" selection-end-line="1000" selection-end-column="29" />
-          <folding>
-            <element signature="e#74#83#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$USER_HOME$/.PyCharm2018.1/system/python_stubs/-1805817706/wx/_core/ComboBox.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="185">
           <caret line="279" column="8" selection-start-line="279" selection-start-column="8" selection-end-line="279" selection-end-column="8" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/component/LoginFrame.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="195">
-          <caret line="229" column="48" selection-start-line="229" selection-start-column="48" selection-end-line="229" selection-end-column="48" />
-          <folding>
-            <element signature="e#92#132#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -885,32 +850,12 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/component/staticmethod.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="177">
-          <caret line="565" selection-start-line="565" selection-end-line="565" />
-          <folding>
-            <element signature="e#73#88#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/component/variable.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="167">
           <caret line="136" selection-start-line="136" selection-end-line="136" />
           <folding>
             <element signature="e#133#152#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/component/webframe.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="213">
-          <caret line="439" selection-start-line="439" selection-end-line="439" />
-          <folding>
-            <element signature="e#92#128#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -932,12 +877,59 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/component/LoginFrame.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="159">
+          <caret line="237" column="46" selection-start-line="237" selection-start-column="46" selection-end-line="237" selection-end-column="46" />
+          <folding>
+            <element signature="e#92#132#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/component/webframe.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="18">
+          <caret line="314" column="65" selection-start-line="314" selection-start-column="65" selection-end-line="314" selection-end-column="65" />
+          <folding>
+            <element signature="e#92#128#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/component/statusbar.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="213">
+          <caret line="18" column="20" lean-forward="true" selection-start-line="18" selection-start-column="20" selection-end-line="18" selection-end-column="20" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/component/staticmethod.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="324">
+          <caret line="575" column="48" lean-forward="true" selection-start-line="575" selection-start-column="48" selection-end-line="575" selection-end-column="48" />
+          <folding>
+            <element signature="e#73#88#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/component/OperationFrame.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="123">
-          <caret line="359" lean-forward="true" selection-start-line="359" selection-end-line="359" />
+        <state relative-caret-position="582">
+          <caret line="709" lean-forward="true" selection-start-line="709" selection-end-line="709" />
           <folding>
             <element signature="e#75#111#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/component/app_thread.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="213">
+          <caret line="1020" column="22" lean-forward="true" selection-start-line="1020" selection-start-column="22" selection-end-line="1020" selection-end-column="22" />
+          <folding>
+            <element signature="e#74#83#0" expanded="true" />
           </folding>
         </state>
       </provider>

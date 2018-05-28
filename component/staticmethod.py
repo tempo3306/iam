@@ -141,11 +141,9 @@ def Tijiao():
         current_pricestatus = '{0:.1f}秒加{1}'.format(second_time1, second_diff)
         set_val('current_pricestatus', current_pricestatus)
     elif tijiao_num == 0:
-        set_val('current_pricestatus_label', '等待第二次出价')
-        one_time1 = get_val('one_time1')
-        one_diff = get_val('one_diff')
-        current_pricestatus = '{0:.1f}秒加{1}'.format(one_time1, one_diff)
-        set_val('current_pricestatus', current_pricestatus)
+        set_val('current_pricestatus_label', '等待拍牌结果')
+        set_val('current_pricestatus', '请不要关闭页面')
+
     elif tijiao_num == 3:
         print("tijiao_fsdfs")
         set_val('smartprice_chujia', True)  ##开启智能出价， 打开确认查找

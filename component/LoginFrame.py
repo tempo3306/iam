@@ -230,7 +230,7 @@ class LoginFrame(wx.Frame):
                 strategy_dick = json.loads(strategy_dick)
                 if strategy_dick != 'none':
                     print("fdsfsf", strategy_dick)
-                    # set_strategy_dick(strategy_dick) ##初始化策略数据
+                    set_strategy_dick(strategy_dick) ##初始化策略数据
             if Identify_code == '123456':  ##这里作为测试用
                 set_val('test', True)
             else:

@@ -267,12 +267,8 @@ class CurrentStatusPanel(wx.Panel):
         yanzhengma_view = get_val('yanzhengma_view')
         final_stage = get_val('final_stage')  ##判断是不是11点之后
 
-        print("findpos_on=", findpos_on)
-        print("yanzhengma_view=", yanzhengma_view)
-        print("final_stage=", final_stage)
 
-
-        if findpos_on or yanzhengma_view or not final_stage:
+        if findpos_on or yanzhengma_view or not final_stage: ##final_stage 是否处于修改出价阶段
             if self.parent.IsShown():
                 self.parent.Show(False)
             # lowestpricelabel = get_val('lowestpricelabel')

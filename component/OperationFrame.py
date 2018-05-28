@@ -612,6 +612,7 @@ class StatusPanel(wx.Panel):
             set_val('one_time2_smart3', strategy_list[11])
             set_val('one_time2_smart', strategy_list[12])
 
+            set_val('one_real_time1', gettime(strategy_list[1])) ##第一次出价时间戳
             set_val('one_realtime2_smart1', gettime(strategy_list[5]))
             set_val('one_realtime2_smart2', gettime(strategy_list[8]))
             set_val('one_realtime2_smart3', gettime(strategy_list[11]))
@@ -692,8 +693,8 @@ class StatusPanel(wx.Panel):
             set_val('one_real_time2', gettime(one_time2))
             set_val('second_real_time1', gettime(second_time1))
 
-            set_val('one_realtime2_smart1', gettime(strategy_list[11]))
-            set_val('one_realtime2_smart2', gettime(strategy_list[14]))
+            set_val('one_realtime2_smart1', gettime(strategy_list[11]))  ##第一次出价时间戳
+            set_val('one_realtime2_smart2', gettime(strategy_list[14])) ##第二次出价时间戳
             set_val('one_realtime2_smart3', gettime(strategy_list[17]))
             set_val('one_realtime2_smart', gettime(strategy_list[18]))
 
