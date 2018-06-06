@@ -343,7 +343,6 @@ def findpos():
         print("找到的Px_lowestprice", Px_lowestprice)
         print("找到的Py_lowestprice", Py_lowestprice)
 
-        set_val('ghostbutton_pos', [px_lowestprice - 9, py_lowestprice + 84])
 
         for i in range(len(Position_frame)):
             Position_frame[i][0] = Px_lowestprice + P_relative2[i][0]
@@ -515,7 +514,7 @@ def find_yan_confirm():
 
 def Price_read():
     imgpos_lowestprice = get_val('imgpos_lowestprice')
-
+    #
     # avt = get_val('avt')
     # avt += 1
     # if avt == 500 or avt == 501:

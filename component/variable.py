@@ -185,8 +185,6 @@ def init_val():
 
 
 
-
-
 def init_url():
     set_val('remotetime_url', "https://hupai.pro/api/bid/get_remotetime")
     set_val('host_ali', "https://hupai.pro")
@@ -346,13 +344,7 @@ def init_size():
     set_val('imgpos_currenttime', np.array(nptemp))  # 当前时间
 
 
-    ##状态框
-    set_val('CurrentStatusFramePos', (426, 212))   ###相对WEBFRAME位置
-    set_val('CurrentStatusFrameSize', (451,77))
 
-    ##验证码放大框
-    set_val('YanzhengmaFramePos', (450, 175))    ###相对WEBFRAME位置
-    set_val('Yanzhengmasize', (400, 220))
 
 '''
 214 645
@@ -498,6 +490,14 @@ def init_account():
     set_val("test", False)  ##默认关闭测试模式
 
 def init_status():
+    ##状态框
+    set_val('CurrentStatusFramePos', (426, 212))   ###相对WEBFRAME位置
+    set_val('CurrentStatusFrameSize', (451,77))
+
+    ##验证码放大框
+    set_val('YanzhengmaFramePos', (450, 175))    ###相对WEBFRAME位置
+    set_val('Yanzhengmasize', (400, 220))
+
     set_val('register_label', '未激活')
     set_val('netspeed_label', '网速: ')
     set_val('strategy_label', '策略: ')
@@ -511,15 +511,14 @@ def init_status():
     set_val('current_pricestatus', current_pricestatus)
 
     ##状态框三行
-    set_val('status_time', (5, 15))
-    set_val('lowestprice_text', (5, 45))
+    set_val('status_time', (3, 15))
+    set_val('lowestprice_text', (3, 45))
     set_val('pricelabeltext', (192, 15))
-    set_val('pricetext', (348, 15))
+    set_val('pricetext', (345, 15))
     set_val('timestatustext', (192, 45))
-    set_val('pricestatustext', (348, 45))
+    set_val('pricestatustext', (345, 45))
 
-    set_val('px_timerelative', 94)
-    set_val('py_timerelative', 3)
+
 
 
 def init_smart():
@@ -650,7 +649,8 @@ def remote_init():
     ##用于计算 最低成交价位置
     set_val('px_relative', 118)  # 查找出来位置反算相对位置
     set_val('py_relative', 1)
-
+    set_val('px_timerelative', 94)
+    set_val('py_timerelative', 3)
     ## 相对于最低成交价位置
     #   ## 0:加价  1：出价 2：提交  3：刷新按钮   4 ：确认   5：价格输入框    6:验证码输入框     7：取消
     set_val('P_relative2', [[647, -98], [650, 8], [400, 89], [396, 14], [505, 68], [562, 8], [585, 8], [586, 86]])

@@ -14,6 +14,9 @@ from component.TopFrame import TopFrame
 import sys, pickle, json
 from wx.lib.buttons import GenButton as wxButton
 from component.variable import set_strategy_dick
+import logging
+
+logger = logging.getLogger()
 
 
 class AccountPanel(wx.Panel):
@@ -227,7 +230,10 @@ class LoginFrame(wx.Frame):
             set_val('start_time', start_time)
             strategy_dick =login_result['strategy_dick']
             if strategy_dick:
-                strategy_dick = json.loads(strategy_dick)
+                try:
+                    strategy_dick = json.loads(strategy_dick)
+                except:
+                    logger.exception("error message")
                 if strategy_dick != 'none':
                     print("fdsfsf", strategy_dick)
                     set_strategy_dick(strategy_dick) ##初始化策略数据
