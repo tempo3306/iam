@@ -179,11 +179,11 @@ class cutimgThread(Thread):
             time.sleep(0.05)
             self.run_func()
 
-    @calculate_usetime
+    # @calculate_usetime
     def run_func(self):
             try:
 ###################截图
-                # a = time.time()
+                a = time.time()
                 cut_img()
                 # b = time.time()
                 # print('b-a=', b-a)
@@ -222,9 +222,7 @@ class cutimgThread(Thread):
                 try:
                     a = time.time()
                     str_price = Price_read()
-                    print("str_price", str_price)
                     b = time.time()
-                    print('b-a', b-a)
                     if len(str_price) == 5:  ##防止前面有0
                         price = int(str_price)  # 获取当前最低价
                         # print('price=', price)
@@ -240,19 +238,14 @@ class cutimgThread(Thread):
                             set_val('findpos_on', True)
                     else:
                         set_val('findpos_on', True)
-                    # c = time.time()
-                    # print('c-b', c-b)
+
                 except:
-                    print("识别价格失败")
+                    # print("识别价格失败")
                     set_val('findpos_on', True)
                     logger.error("识别价格失败")
                     logger.exception('this is an exception message')
-
                 # e = time.time()
                 # print('e-d', e-d)
-
-
-
             except:
                 logger.error("截图失败")
                 logger.exception('this is an exception message')

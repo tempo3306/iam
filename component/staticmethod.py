@@ -639,7 +639,6 @@ class ListenThread(threading.Thread):
 
 ##时间转化
 ##将当前时间与 价格列表对应起来
-@calculate_usetime
 def trans_time():
     pricelist = get_val('price_list')
     lowest_price = get_val('lowest_price')

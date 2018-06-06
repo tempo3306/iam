@@ -468,7 +468,7 @@ class StatusPanel(wx.Panel):
             guopai = wx.FindWindowById(guopai_webframe)
             if moni_webframe != -1:
                 moni.Show(True)
-                moni.htmlpanel.webview.Reload()
+                # moni.htmlpanel.webview.Reload()
                 moni.currentstatusframe.Show(False)
                 guopai.Show(False)
                 guopai.currentstatusframe.Show(False)
@@ -505,6 +505,7 @@ class StatusPanel(wx.Panel):
 
         strategy_type = get_dick('strategy_type')
         self.update_ui(strategy_type)
+
 
     def update_ui(self, strategy_type):  ##根据不同的出价策略调整界面
         strategy_list = get_dick(strategy_type)
@@ -625,8 +626,8 @@ class StatusPanel(wx.Panel):
         elif strategy_type == '2':  # 单枪动态提交
             init_strategy()
             self.choice_strategy.SetSelection(int(strategy_type))
-            self.second_jiajia_time.SetValue(strategy_list[1])
-            self.second_jiajia_price.SetValue(strategy_list[2])
+            self.secondsmart_jiajia_time.SetValue(strategy_list[1])
+            self.secondsmart_jiajia_price.SetValue(strategy_list[2])
 
             # '''
             #     (3)单枪动态提交  依次为 0: strategy_type 1: one_time1  2: one_diff
@@ -686,8 +687,8 @@ class StatusPanel(wx.Panel):
             else:
                 self.second_tijiao_time.Disable()
 
-            self.third_jiajia_time.SetValue(strategy_list[7])
-            self.third_jiajia_price.SetValue(strategy_list[8])
+            self.thirdsmart_jiajia_time.SetValue(strategy_list[7])
+            self.thirdsmart_jiajia_price.SetValue(strategy_list[8])
 
             # '''
             # (4)双枪动态提交  依次为 0: strategy_type 1: one_time1  2: one_diff  3: one_advance 4: one_delay 5: one_time2
@@ -699,7 +700,7 @@ class StatusPanel(wx.Panel):
             #
             #
             # '''
-
+            print("fdsf", strategy_list[1])
             set_val('one_time1', strategy_list[1])  # 第一次出价加价
             set_val('one_diff', strategy_list[2])  # 第一次加价幅度
             set_val('one_advance', strategy_list[3])  # 第一次提交提前量
@@ -793,12 +794,13 @@ class StatusPanel(wx.Panel):
             templist[4] = self.second_tijiaoyanchi_time.GetValue()
             templist[5] = self.second_tijiao_time.GetValue()
             templist[6] = self.second_forcetijiao_check.IsChecked()
-            templist[7] = self.third_jiajia_time.GetValue()
-            templist[8] = int(self.third_jiajia_price.GetValue())
+            templist[7] = self.thirdsmart_jiajia_time.GetValue()  ##智能出价部分
+            templist[8] = int(self.thirdsmart_jiajia_price.GetValue())  ##智能出价部分
             strategy_choices = get_val('strategy_choices')
             set_dick('strategy_description', strategy_choices[int(strategy_type)])
             set_dick(strategy_type, templist)
-
+            a = get_strategy_dick()
+            print(a)
 
     ##导出跳价
     def priceview(self, event):
@@ -1004,52 +1006,7 @@ class StatusPanel(wx.Panel):
         else:
             self.thirdsmart_jiajia_price.SetValue(second_diff)
 
-    # ----------------------------------------------------------
-    ##提交
-    def Smart_Yanchi_time(self, event):
-        one_delay = get_val('one_delay')
-        templist = ['0.%d' % i for i in range(11)]  # 符点数运算BUG
-        templist.append('1.0')
-        tem = str(self.secondsmart_tijiaoyanchi_time.GetValue())
-        if tem in templist:
-            set_val('one_delay', float(tem))
-            self.update_strategy()
-        else:
-            self.secondsmart_tijiaoyanchi_time.SetValue(one_delay)
-
-    def Smart_Tijiao_time(self, event):
-        one_time2 = get_val('one_time2')
-        tem = self.secondsmart_tijiao_time.GetValue()
-        templist = [53 + i * 0.1 for i in range(51)]
-        if tem in templist:
-            one_time2 = tem
-            set_val('one_time2', float(tem))
-            set_val('one_real_time2', gettime(one_time2))  # 计算得到的时间戳
-            self.update_strategy()
-        else:
-            self.secondsmart_tijiao_time.SetValue(one_time2)
-
-    def Smart_Select_tijiao(self, event):
-        select = self.secondsmart_tijiao_pricediff.GetString(self.secondsmart_tijiao_pricediff.GetSelection())
-        if select == u"提前100":
-            set_val('one_advance', 100)
-        elif select == u"提前200":
-            set_val('one_advance', 200)
-        elif select == u"提前300":
-            set_val('one_advance', 300)
-        else:
-            set_val('one_advance', 0)
-        self.update_strategy()
-
-    def Smart_secondsmart_forcetijiao(self, event):
-        if self.secondsmart_forcetijiao_check.IsChecked():
-            set_val('one_forcetijiao_on', True)
-            self.secondsmart_tijiao_time.Enable()
-        else:
-            set_val('one_forcetijiao_on', False)
-            self.secondsmart_tijiao_time.Disable()
-        self.update_strategy()
-
+   
     # ----------------------------------------------------------
 
     ##智能补枪
