@@ -461,6 +461,16 @@ class WebFrame(wx.Frame):
 
         ##------------------------------
         ###判定验证码放大框
+            ###########
+            ##查找验证码确认
+            # yanzhengma_close = get_val('yanzhengma_close')
+            # yanzhengma_view = get_val('yanzhengma_view')
+            # if not yanzhengma_close:  #发现confirm就打开yanzhengmaview
+            #     find_yan_confirm()
+            find_yan_confirm()
+            # f = time.time()
+            # print('f-e', f-e)
+
             yanzhengma_scale = get_dick('yanzhengma_scale')
             if yanzhengma_scale:
                 yanzhengma_move = get_val('yanzhengma_move')
@@ -477,8 +487,6 @@ class WebFrame(wx.Frame):
                 yanzhengma_count = get_val("yanzhengma_count")
                 yanzhengma_close = get_val("yanzhengma_close")
 
-                if yanzhengma_count >= 4 and not yanzhengma_close:  # 0.4秒之后没有确认触发关闭验证码
-                    find_yan_confirm()
                 yanzhengma_close = get_val("yanzhengma_close")
 
                 if yanzhengma_close:

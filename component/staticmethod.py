@@ -19,6 +19,14 @@ import logging
 logger = logging.getLogger()
 
 
+def calculate_usetime(func):
+    def wrap(*args):
+        a = time.time()
+        func(*args)
+        b = time.time()
+        print("run the func use : ", b-a)
+    return wrap
+
 def cal_time(func):
     def wrapper(*args, **kw):
         local_time = time.time()
@@ -343,7 +351,7 @@ def guopai_chujia(price):
     Click(Position_frame[6][0], Position_frame[6][1])
 
     set_val('yanzhengma_count', 0)  # 计数器，制造延迟
-    set_val('yanzhengma_view', True)  # 打开验证码放大器
+    set_val('yanzhengma_close', False)  # 激活验证码放大  开启查找确认
     set_val('refresh_need', True)  # 激活刷新验证码
 
 
@@ -362,8 +370,7 @@ def Cancel_chujia():
         Click(Position_frame[1][0], Position_frame[1][1])
         Click(Position_frame[6][0], Position_frame[6][1])
         # 验证码放大打开
-        set_val('yanzhengma_count', 0)  # 计数器，制造延迟
-        set_val('yanzhengma_view', True)  # 打开验证码放大器
+        set_val('yanzhengma_close', True)  # 打开验证码放大器 查找确认
         ##提交关闭
         set_val('tijiao_OK', False)
 
@@ -378,7 +385,7 @@ def Smart_ajust_chujia(price):
     Click(Position_frame[6][0], Position_frame[6][1])
     # 验证码放大打开
     set_val('yanzhengma_count', 0)  # 计数器，制造延迟
-    set_val('yanzhengma_view', True)  # 打开验证码放大器
+    set_val('yanzhengma_close', True)  # 打开验证码放大器
     ##提交关闭
     set_val('tijiao_OK', False)
 
@@ -417,8 +424,7 @@ def OnH_chujia():
         Paste_moni(own_price1)
         Click(Position_frame[1][0], Position_frame[1][1])  ##出价
         Click(Position_frame[6][0], Position_frame[6][1])  ##点击验证码框
-        set_val('yanzhengma_view', True)
-        set_val('yanzhengma_count', 0)
+        set_val('yanzhengma_close', True)
     else:
         OnH_guopai_chujia()
 
@@ -633,6 +639,7 @@ class ListenThread(threading.Thread):
 
 ##时间转化
 ##将当前时间与 价格列表对应起来
+@calculate_usetime
 def trans_time():
     pricelist = get_val('price_list')
     lowest_price = get_val('lowest_price')

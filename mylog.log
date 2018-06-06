@@ -1,267 +1,679 @@
-Wed, 06 Jun 2018 10:38:50 imgcut.py[line:447] INFO 截图成功
-Wed, 06 Jun 2018 10:38:50 imgcut.py[line:449] INFO imgpos_yanzhengma 43:153, 358:538
-Wed, 06 Jun 2018 10:38:50 imgcut.py[line:451] INFO imgpos_yanzhengmaconfirm 118:218, 175:535
-Wed, 06 Jun 2018 10:38:50 imgcut.py[line:447] INFO 截图成功
-Wed, 06 Jun 2018 10:38:50 imgcut.py[line:449] INFO imgpos_yanzhengma 43:153, 358:538
-Wed, 06 Jun 2018 10:38:50 imgcut.py[line:451] INFO imgpos_yanzhengmaconfirm 118:218, 175:535
-Wed, 06 Jun 2018 10:38:50 imgcut.py[line:447] INFO 截图成功
-Wed, 06 Jun 2018 10:38:50 imgcut.py[line:449] INFO imgpos_yanzhengma 43:153, 358:538
-Wed, 06 Jun 2018 10:38:50 imgcut.py[line:451] INFO imgpos_yanzhengmaconfirm 118:218, 175:535
-Wed, 06 Jun 2018 10:38:51 imgcut.py[line:447] INFO 截图成功
-Wed, 06 Jun 2018 10:38:51 imgcut.py[line:449] INFO imgpos_yanzhengma 43:153, 358:538
-Wed, 06 Jun 2018 10:38:51 imgcut.py[line:451] INFO imgpos_yanzhengmaconfirm 118:218, 175:535
-Wed, 06 Jun 2018 10:38:51 imgcut.py[line:447] INFO 截图成功
-Wed, 06 Jun 2018 10:38:51 imgcut.py[line:449] INFO imgpos_yanzhengma 43:153, 358:538
-Wed, 06 Jun 2018 10:38:51 imgcut.py[line:451] INFO imgpos_yanzhengmaconfirm 118:218, 175:535
-Wed, 06 Jun 2018 10:38:51 imgcut.py[line:447] INFO 截图成功
-Wed, 06 Jun 2018 10:38:51 imgcut.py[line:449] INFO imgpos_yanzhengma 43:153, 358:538
-Wed, 06 Jun 2018 10:38:51 imgcut.py[line:451] INFO imgpos_yanzhengmaconfirm 118:218, 175:535
-Wed, 06 Jun 2018 10:38:51 imgcut.py[line:447] INFO 截图成功
-Wed, 06 Jun 2018 10:38:51 imgcut.py[line:449] INFO imgpos_yanzhengma 43:153, 358:538
-Wed, 06 Jun 2018 10:38:51 imgcut.py[line:451] INFO imgpos_yanzhengmaconfirm 118:218, 175:535
-Wed, 06 Jun 2018 10:38:51 imgcut.py[line:447] INFO 截图成功
-Wed, 06 Jun 2018 10:38:51 imgcut.py[line:449] INFO imgpos_yanzhengma 43:153, 358:538
-Wed, 06 Jun 2018 10:38:51 imgcut.py[line:451] INFO imgpos_yanzhengmaconfirm 118:218, 175:535
-Wed, 06 Jun 2018 10:38:51 imgcut.py[line:447] INFO 截图成功
-Wed, 06 Jun 2018 10:38:51 imgcut.py[line:449] INFO imgpos_yanzhengma 43:153, 358:538
-Wed, 06 Jun 2018 10:38:51 imgcut.py[line:451] INFO imgpos_yanzhengmaconfirm 118:218, 175:535
-Wed, 06 Jun 2018 10:38:51 imgcut.py[line:447] INFO 截图成功
-Wed, 06 Jun 2018 10:38:51 imgcut.py[line:449] INFO imgpos_yanzhengma 43:153, 358:538
-Wed, 06 Jun 2018 10:38:51 imgcut.py[line:451] INFO imgpos_yanzhengmaconfirm 118:218, 175:535
-Wed, 06 Jun 2018 10:38:52 imgcut.py[line:447] INFO 截图成功
-Wed, 06 Jun 2018 10:38:52 imgcut.py[line:449] INFO imgpos_yanzhengma 43:153, 358:538
-Wed, 06 Jun 2018 10:38:52 imgcut.py[line:451] INFO imgpos_yanzhengmaconfirm 118:218, 175:535
-Wed, 06 Jun 2018 10:38:52 imgcut.py[line:447] INFO 截图成功
-Wed, 06 Jun 2018 10:38:52 imgcut.py[line:449] INFO imgpos_yanzhengma 43:153, 358:538
-Wed, 06 Jun 2018 10:38:52 imgcut.py[line:451] INFO imgpos_yanzhengmaconfirm 118:218, 175:535
-Wed, 06 Jun 2018 10:38:52 imgcut.py[line:222] ERROR error message
+Wed, 06 Jun 2018 11:58:27 imgcut.py[line:447] INFO 截图成功
+Wed, 06 Jun 2018 11:58:27 imgcut.py[line:449] INFO imgpos_yanzhengma 43:153, 358:538
+Wed, 06 Jun 2018 11:58:27 imgcut.py[line:451] INFO imgpos_yanzhengmaconfirm 118:218, 175:535
+Wed, 06 Jun 2018 11:58:27 imgcut.py[line:447] INFO 截图成功
+Wed, 06 Jun 2018 11:58:27 imgcut.py[line:449] INFO imgpos_yanzhengma 43:153, 358:538
+Wed, 06 Jun 2018 11:58:27 imgcut.py[line:451] INFO imgpos_yanzhengmaconfirm 118:218, 175:535
+Wed, 06 Jun 2018 11:58:27 imgcut.py[line:447] INFO 截图成功
+Wed, 06 Jun 2018 11:58:27 imgcut.py[line:449] INFO imgpos_yanzhengma 43:153, 358:538
+Wed, 06 Jun 2018 11:58:27 imgcut.py[line:451] INFO imgpos_yanzhengmaconfirm 118:218, 175:535
+Wed, 06 Jun 2018 11:58:27 app_thread.py[line:257] ERROR 截图失败
+Wed, 06 Jun 2018 11:58:27 app_thread.py[line:258] ERROR this is an exception message
+Traceback (most recent call last):
+  File "E:\hupai\component\app_thread.py", line 187, in run_func
+    cut_img()
+  File "E:\hupai\component\imgcut.py", line 438, in cut_img
+    img = only_screenshot(sc_area)  # 获取得到的截图
+  File "E:\hupai\component\imgcut.py", line 419, in only_screenshot
+    dataBitMap.CreateCompatibleBitmap(dcObj, w - x, h - y)
+win32ui.error: CreateCompatibleDC failed
+Wed, 06 Jun 2018 11:58:27 imgcut.py[line:447] INFO 截图成功
+Wed, 06 Jun 2018 11:58:27 imgcut.py[line:449] INFO imgpos_yanzhengma 43:153, 358:538
+Wed, 06 Jun 2018 11:58:27 imgcut.py[line:451] INFO imgpos_yanzhengmaconfirm 118:218, 175:535
+Wed, 06 Jun 2018 11:58:27 imgcut.py[line:447] INFO 截图成功
+Wed, 06 Jun 2018 11:58:27 imgcut.py[line:449] INFO imgpos_yanzhengma 43:153, 358:538
+Wed, 06 Jun 2018 11:58:27 imgcut.py[line:451] INFO imgpos_yanzhengmaconfirm 118:218, 175:535
+Wed, 06 Jun 2018 11:58:27 imgcut.py[line:447] INFO 截图成功
+Wed, 06 Jun 2018 11:58:27 imgcut.py[line:449] INFO imgpos_yanzhengma 43:153, 358:538
+Wed, 06 Jun 2018 11:58:27 imgcut.py[line:451] INFO imgpos_yanzhengmaconfirm 118:218, 175:535
+Wed, 06 Jun 2018 11:58:27 imgcut.py[line:447] INFO 截图成功
+Wed, 06 Jun 2018 11:58:27 imgcut.py[line:449] INFO imgpos_yanzhengma 43:153, 358:538
+Wed, 06 Jun 2018 11:58:28 imgcut.py[line:451] INFO imgpos_yanzhengmaconfirm 118:218, 175:535
+Wed, 06 Jun 2018 11:58:28 imgcut.py[line:447] INFO 截图成功
+Wed, 06 Jun 2018 11:58:28 imgcut.py[line:449] INFO imgpos_yanzhengma 43:153, 358:538
+Wed, 06 Jun 2018 11:58:28 imgcut.py[line:451] INFO imgpos_yanzhengmaconfirm 118:218, 175:535
+Wed, 06 Jun 2018 11:58:28 imgcut.py[line:222] ERROR error message
 Traceback (most recent call last):
   File "E:\hupai\component\imgcut.py", line 166, in cut
     diff = xy[-1][2]  # 最后一个 图像块
 IndexError: list index out of range
-Wed, 06 Jun 2018 10:38:52 app_thread.py[line:232] ERROR 识别价格失败
-Wed, 06 Jun 2018 10:38:52 app_thread.py[line:233] ERROR this is an exception message
+Wed, 06 Jun 2018 11:58:28 app_thread.py[line:248] ERROR 识别价格失败
+Wed, 06 Jun 2018 11:58:28 app_thread.py[line:249] ERROR this is an exception message
 Traceback (most recent call last):
-  File "E:\hupai\component\app_thread.py", line 212, in run
+  File "E:\hupai\component\app_thread.py", line 224, in run_func
     str_price = Price_read()
-  File "E:\hupai\component\imgcut.py", line 526, in Price_read
+  File "E:\hupai\component\imgcut.py", line 528, in Price_read
     price = readpic(lowest_price_img, 'maindata.xml')
   File "E:\hupai\component\imgcut.py", line 231, in readpic
     result = result[1].reshape(-1).astype(int).astype(str)
 AttributeError: 'NoneType' object has no attribute 'reshape'
-Wed, 06 Jun 2018 10:38:52 imgcut.py[line:447] INFO 截图成功
-Wed, 06 Jun 2018 10:38:52 imgcut.py[line:449] INFO imgpos_yanzhengma 43:153, 358:538
-Wed, 06 Jun 2018 10:38:52 imgcut.py[line:451] INFO imgpos_yanzhengmaconfirm 118:218, 175:535
-Wed, 06 Jun 2018 10:38:52 imgcut.py[line:222] ERROR error message
+Wed, 06 Jun 2018 11:58:28 imgcut.py[line:447] INFO 截图成功
+Wed, 06 Jun 2018 11:58:28 imgcut.py[line:449] INFO imgpos_yanzhengma 43:153, 358:538
+Wed, 06 Jun 2018 11:58:28 imgcut.py[line:451] INFO imgpos_yanzhengmaconfirm 118:218, 175:535
+Wed, 06 Jun 2018 11:58:28 imgcut.py[line:222] ERROR error message
 Traceback (most recent call last):
   File "E:\hupai\component\imgcut.py", line 166, in cut
     diff = xy[-1][2]  # 最后一个 图像块
 IndexError: list index out of range
-Wed, 06 Jun 2018 10:38:52 app_thread.py[line:232] ERROR 识别价格失败
-Wed, 06 Jun 2018 10:38:52 app_thread.py[line:233] ERROR this is an exception message
+Wed, 06 Jun 2018 11:58:28 app_thread.py[line:248] ERROR 识别价格失败
+Wed, 06 Jun 2018 11:58:28 app_thread.py[line:249] ERROR this is an exception message
 Traceback (most recent call last):
-  File "E:\hupai\component\app_thread.py", line 212, in run
+  File "E:\hupai\component\app_thread.py", line 224, in run_func
     str_price = Price_read()
-  File "E:\hupai\component\imgcut.py", line 526, in Price_read
+  File "E:\hupai\component\imgcut.py", line 528, in Price_read
     price = readpic(lowest_price_img, 'maindata.xml')
   File "E:\hupai\component\imgcut.py", line 231, in readpic
     result = result[1].reshape(-1).astype(int).astype(str)
 AttributeError: 'NoneType' object has no attribute 'reshape'
-Wed, 06 Jun 2018 10:38:52 imgcut.py[line:447] INFO 截图成功
-Wed, 06 Jun 2018 10:38:52 imgcut.py[line:449] INFO imgpos_yanzhengma 43:153, 358:538
-Wed, 06 Jun 2018 10:38:52 imgcut.py[line:451] INFO imgpos_yanzhengmaconfirm 118:218, 175:535
-Wed, 06 Jun 2018 10:38:52 imgcut.py[line:222] ERROR error message
+Wed, 06 Jun 2018 11:58:28 imgcut.py[line:447] INFO 截图成功
+Wed, 06 Jun 2018 11:58:28 imgcut.py[line:449] INFO imgpos_yanzhengma 43:153, 358:538
+Wed, 06 Jun 2018 11:58:28 imgcut.py[line:451] INFO imgpos_yanzhengmaconfirm 118:218, 175:535
+Wed, 06 Jun 2018 11:58:28 imgcut.py[line:222] ERROR error message
 Traceback (most recent call last):
   File "E:\hupai\component\imgcut.py", line 166, in cut
     diff = xy[-1][2]  # 最后一个 图像块
 IndexError: list index out of range
-Wed, 06 Jun 2018 10:38:52 app_thread.py[line:232] ERROR 识别价格失败
-Wed, 06 Jun 2018 10:38:52 app_thread.py[line:233] ERROR this is an exception message
+Wed, 06 Jun 2018 11:58:28 app_thread.py[line:248] ERROR 识别价格失败
+Wed, 06 Jun 2018 11:58:28 app_thread.py[line:249] ERROR this is an exception message
 Traceback (most recent call last):
-  File "E:\hupai\component\app_thread.py", line 212, in run
+  File "E:\hupai\component\app_thread.py", line 224, in run_func
     str_price = Price_read()
-  File "E:\hupai\component\imgcut.py", line 526, in Price_read
+  File "E:\hupai\component\imgcut.py", line 528, in Price_read
     price = readpic(lowest_price_img, 'maindata.xml')
   File "E:\hupai\component\imgcut.py", line 231, in readpic
     result = result[1].reshape(-1).astype(int).astype(str)
 AttributeError: 'NoneType' object has no attribute 'reshape'
-Wed, 06 Jun 2018 10:38:52 imgcut.py[line:447] INFO 截图成功
-Wed, 06 Jun 2018 10:38:52 imgcut.py[line:449] INFO imgpos_yanzhengma 43:153, 358:538
-Wed, 06 Jun 2018 10:38:52 imgcut.py[line:451] INFO imgpos_yanzhengmaconfirm 118:218, 175:535
-Wed, 06 Jun 2018 10:38:52 imgcut.py[line:222] ERROR error message
+Wed, 06 Jun 2018 11:58:28 imgcut.py[line:447] INFO 截图成功
+Wed, 06 Jun 2018 11:58:28 imgcut.py[line:449] INFO imgpos_yanzhengma 43:153, 358:538
+Wed, 06 Jun 2018 11:58:28 imgcut.py[line:451] INFO imgpos_yanzhengmaconfirm 118:218, 175:535
+Wed, 06 Jun 2018 11:58:28 imgcut.py[line:222] ERROR error message
 Traceback (most recent call last):
   File "E:\hupai\component\imgcut.py", line 166, in cut
     diff = xy[-1][2]  # 最后一个 图像块
 IndexError: list index out of range
-Wed, 06 Jun 2018 10:38:52 app_thread.py[line:232] ERROR 识别价格失败
-Wed, 06 Jun 2018 10:38:52 app_thread.py[line:233] ERROR this is an exception message
+Wed, 06 Jun 2018 11:58:28 app_thread.py[line:248] ERROR 识别价格失败
+Wed, 06 Jun 2018 11:58:28 app_thread.py[line:249] ERROR this is an exception message
 Traceback (most recent call last):
-  File "E:\hupai\component\app_thread.py", line 212, in run
+  File "E:\hupai\component\app_thread.py", line 224, in run_func
     str_price = Price_read()
-  File "E:\hupai\component\imgcut.py", line 526, in Price_read
+  File "E:\hupai\component\imgcut.py", line 528, in Price_read
     price = readpic(lowest_price_img, 'maindata.xml')
   File "E:\hupai\component\imgcut.py", line 231, in readpic
     result = result[1].reshape(-1).astype(int).astype(str)
 AttributeError: 'NoneType' object has no attribute 'reshape'
-Wed, 06 Jun 2018 10:38:52 imgcut.py[line:447] INFO 截图成功
-Wed, 06 Jun 2018 10:38:52 imgcut.py[line:449] INFO imgpos_yanzhengma 43:153, 358:538
-Wed, 06 Jun 2018 10:38:52 imgcut.py[line:451] INFO imgpos_yanzhengmaconfirm 118:218, 175:535
-Wed, 06 Jun 2018 10:38:52 imgcut.py[line:222] ERROR error message
+Wed, 06 Jun 2018 11:58:28 imgcut.py[line:447] INFO 截图成功
+Wed, 06 Jun 2018 11:58:28 imgcut.py[line:449] INFO imgpos_yanzhengma 43:153, 358:538
+Wed, 06 Jun 2018 11:58:28 imgcut.py[line:451] INFO imgpos_yanzhengmaconfirm 118:218, 175:535
+Wed, 06 Jun 2018 11:58:28 imgcut.py[line:222] ERROR error message
 Traceback (most recent call last):
   File "E:\hupai\component\imgcut.py", line 166, in cut
     diff = xy[-1][2]  # 最后一个 图像块
 IndexError: list index out of range
-Wed, 06 Jun 2018 10:38:52 app_thread.py[line:232] ERROR 识别价格失败
-Wed, 06 Jun 2018 10:38:52 app_thread.py[line:233] ERROR this is an exception message
+Wed, 06 Jun 2018 11:58:28 app_thread.py[line:248] ERROR 识别价格失败
+Wed, 06 Jun 2018 11:58:28 app_thread.py[line:249] ERROR this is an exception message
 Traceback (most recent call last):
-  File "E:\hupai\component\app_thread.py", line 212, in run
+  File "E:\hupai\component\app_thread.py", line 224, in run_func
     str_price = Price_read()
-  File "E:\hupai\component\imgcut.py", line 526, in Price_read
+  File "E:\hupai\component\imgcut.py", line 528, in Price_read
     price = readpic(lowest_price_img, 'maindata.xml')
   File "E:\hupai\component\imgcut.py", line 231, in readpic
     result = result[1].reshape(-1).astype(int).astype(str)
 AttributeError: 'NoneType' object has no attribute 'reshape'
-Wed, 06 Jun 2018 10:38:52 imgcut.py[line:447] INFO 截图成功
-Wed, 06 Jun 2018 10:38:52 imgcut.py[line:449] INFO imgpos_yanzhengma 43:153, 358:538
-Wed, 06 Jun 2018 10:38:52 imgcut.py[line:451] INFO imgpos_yanzhengmaconfirm 118:218, 175:535
-Wed, 06 Jun 2018 10:38:52 imgcut.py[line:222] ERROR error message
+Wed, 06 Jun 2018 11:58:28 imgcut.py[line:447] INFO 截图成功
+Wed, 06 Jun 2018 11:58:28 imgcut.py[line:449] INFO imgpos_yanzhengma 43:153, 358:538
+Wed, 06 Jun 2018 11:58:28 imgcut.py[line:451] INFO imgpos_yanzhengmaconfirm 118:218, 175:535
+Wed, 06 Jun 2018 11:58:28 imgcut.py[line:222] ERROR error message
 Traceback (most recent call last):
   File "E:\hupai\component\imgcut.py", line 166, in cut
     diff = xy[-1][2]  # 最后一个 图像块
 IndexError: list index out of range
-Wed, 06 Jun 2018 10:38:52 app_thread.py[line:232] ERROR 识别价格失败
-Wed, 06 Jun 2018 10:38:52 app_thread.py[line:233] ERROR this is an exception message
+Wed, 06 Jun 2018 11:58:28 app_thread.py[line:248] ERROR 识别价格失败
+Wed, 06 Jun 2018 11:58:28 app_thread.py[line:249] ERROR this is an exception message
 Traceback (most recent call last):
-  File "E:\hupai\component\app_thread.py", line 212, in run
+  File "E:\hupai\component\app_thread.py", line 224, in run_func
     str_price = Price_read()
-  File "E:\hupai\component\imgcut.py", line 526, in Price_read
+  File "E:\hupai\component\imgcut.py", line 528, in Price_read
     price = readpic(lowest_price_img, 'maindata.xml')
   File "E:\hupai\component\imgcut.py", line 231, in readpic
     result = result[1].reshape(-1).astype(int).astype(str)
 AttributeError: 'NoneType' object has no attribute 'reshape'
-Wed, 06 Jun 2018 10:38:53 imgcut.py[line:447] INFO 截图成功
-Wed, 06 Jun 2018 10:38:53 imgcut.py[line:449] INFO imgpos_yanzhengma 43:153, 358:538
-Wed, 06 Jun 2018 10:38:53 imgcut.py[line:451] INFO imgpos_yanzhengmaconfirm 118:218, 175:535
-Wed, 06 Jun 2018 10:38:53 imgcut.py[line:222] ERROR error message
+Wed, 06 Jun 2018 11:58:28 imgcut.py[line:447] INFO 截图成功
+Wed, 06 Jun 2018 11:58:28 imgcut.py[line:449] INFO imgpos_yanzhengma 43:153, 358:538
+Wed, 06 Jun 2018 11:58:28 imgcut.py[line:451] INFO imgpos_yanzhengmaconfirm 118:218, 175:535
+Wed, 06 Jun 2018 11:58:28 imgcut.py[line:222] ERROR error message
 Traceback (most recent call last):
   File "E:\hupai\component\imgcut.py", line 166, in cut
     diff = xy[-1][2]  # 最后一个 图像块
 IndexError: list index out of range
-Wed, 06 Jun 2018 10:38:53 app_thread.py[line:232] ERROR 识别价格失败
-Wed, 06 Jun 2018 10:38:53 app_thread.py[line:233] ERROR this is an exception message
+Wed, 06 Jun 2018 11:58:28 app_thread.py[line:248] ERROR 识别价格失败
+Wed, 06 Jun 2018 11:58:28 app_thread.py[line:249] ERROR this is an exception message
 Traceback (most recent call last):
-  File "E:\hupai\component\app_thread.py", line 212, in run
+  File "E:\hupai\component\app_thread.py", line 224, in run_func
     str_price = Price_read()
-  File "E:\hupai\component\imgcut.py", line 526, in Price_read
+  File "E:\hupai\component\imgcut.py", line 528, in Price_read
     price = readpic(lowest_price_img, 'maindata.xml')
   File "E:\hupai\component\imgcut.py", line 231, in readpic
     result = result[1].reshape(-1).astype(int).astype(str)
 AttributeError: 'NoneType' object has no attribute 'reshape'
-Wed, 06 Jun 2018 10:38:53 imgcut.py[line:447] INFO 截图成功
-Wed, 06 Jun 2018 10:38:53 imgcut.py[line:449] INFO imgpos_yanzhengma 43:153, 358:538
-Wed, 06 Jun 2018 10:38:53 imgcut.py[line:451] INFO imgpos_yanzhengmaconfirm 118:218, 175:535
-Wed, 06 Jun 2018 10:38:53 imgcut.py[line:222] ERROR error message
+Wed, 06 Jun 2018 11:58:28 imgcut.py[line:447] INFO 截图成功
+Wed, 06 Jun 2018 11:58:28 imgcut.py[line:449] INFO imgpos_yanzhengma 43:153, 358:538
+Wed, 06 Jun 2018 11:58:28 imgcut.py[line:451] INFO imgpos_yanzhengmaconfirm 118:218, 175:535
+Wed, 06 Jun 2018 11:58:28 imgcut.py[line:222] ERROR error message
 Traceback (most recent call last):
   File "E:\hupai\component\imgcut.py", line 166, in cut
     diff = xy[-1][2]  # 最后一个 图像块
 IndexError: list index out of range
-Wed, 06 Jun 2018 10:38:53 app_thread.py[line:232] ERROR 识别价格失败
-Wed, 06 Jun 2018 10:38:53 app_thread.py[line:233] ERROR this is an exception message
+Wed, 06 Jun 2018 11:58:28 app_thread.py[line:248] ERROR 识别价格失败
+Wed, 06 Jun 2018 11:58:28 app_thread.py[line:249] ERROR this is an exception message
 Traceback (most recent call last):
-  File "E:\hupai\component\app_thread.py", line 212, in run
+  File "E:\hupai\component\app_thread.py", line 224, in run_func
     str_price = Price_read()
-  File "E:\hupai\component\imgcut.py", line 526, in Price_read
+  File "E:\hupai\component\imgcut.py", line 528, in Price_read
     price = readpic(lowest_price_img, 'maindata.xml')
   File "E:\hupai\component\imgcut.py", line 231, in readpic
     result = result[1].reshape(-1).astype(int).astype(str)
 AttributeError: 'NoneType' object has no attribute 'reshape'
-Wed, 06 Jun 2018 10:38:53 imgcut.py[line:447] INFO 截图成功
-Wed, 06 Jun 2018 10:38:53 imgcut.py[line:449] INFO imgpos_yanzhengma 43:153, 358:538
-Wed, 06 Jun 2018 10:38:53 imgcut.py[line:451] INFO imgpos_yanzhengmaconfirm 118:218, 175:535
-Wed, 06 Jun 2018 10:38:53 imgcut.py[line:222] ERROR error message
+Wed, 06 Jun 2018 11:58:29 imgcut.py[line:447] INFO 截图成功
+Wed, 06 Jun 2018 11:58:29 imgcut.py[line:449] INFO imgpos_yanzhengma 43:153, 358:538
+Wed, 06 Jun 2018 11:58:29 imgcut.py[line:451] INFO imgpos_yanzhengmaconfirm 118:218, 175:535
+Wed, 06 Jun 2018 11:58:29 imgcut.py[line:222] ERROR error message
 Traceback (most recent call last):
   File "E:\hupai\component\imgcut.py", line 166, in cut
     diff = xy[-1][2]  # 最后一个 图像块
 IndexError: list index out of range
-Wed, 06 Jun 2018 10:38:53 app_thread.py[line:232] ERROR 识别价格失败
-Wed, 06 Jun 2018 10:38:53 app_thread.py[line:233] ERROR this is an exception message
+Wed, 06 Jun 2018 11:58:29 app_thread.py[line:248] ERROR 识别价格失败
+Wed, 06 Jun 2018 11:58:29 app_thread.py[line:249] ERROR this is an exception message
 Traceback (most recent call last):
-  File "E:\hupai\component\app_thread.py", line 212, in run
+  File "E:\hupai\component\app_thread.py", line 224, in run_func
     str_price = Price_read()
-  File "E:\hupai\component\imgcut.py", line 526, in Price_read
+  File "E:\hupai\component\imgcut.py", line 528, in Price_read
     price = readpic(lowest_price_img, 'maindata.xml')
   File "E:\hupai\component\imgcut.py", line 231, in readpic
     result = result[1].reshape(-1).astype(int).astype(str)
 AttributeError: 'NoneType' object has no attribute 'reshape'
-Wed, 06 Jun 2018 10:38:53 imgcut.py[line:447] INFO 截图成功
-Wed, 06 Jun 2018 10:38:53 imgcut.py[line:449] INFO imgpos_yanzhengma 43:153, 358:538
-Wed, 06 Jun 2018 10:38:53 imgcut.py[line:451] INFO imgpos_yanzhengmaconfirm 118:218, 175:535
-Wed, 06 Jun 2018 10:38:53 imgcut.py[line:222] ERROR error message
+Wed, 06 Jun 2018 11:58:29 imgcut.py[line:447] INFO 截图成功
+Wed, 06 Jun 2018 11:58:29 imgcut.py[line:449] INFO imgpos_yanzhengma 43:153, 358:538
+Wed, 06 Jun 2018 11:58:29 imgcut.py[line:451] INFO imgpos_yanzhengmaconfirm 118:218, 175:535
+Wed, 06 Jun 2018 11:58:29 imgcut.py[line:222] ERROR error message
 Traceback (most recent call last):
   File "E:\hupai\component\imgcut.py", line 166, in cut
     diff = xy[-1][2]  # 最后一个 图像块
 IndexError: list index out of range
-Wed, 06 Jun 2018 10:38:53 app_thread.py[line:232] ERROR 识别价格失败
-Wed, 06 Jun 2018 10:38:53 app_thread.py[line:233] ERROR this is an exception message
+Wed, 06 Jun 2018 11:58:29 app_thread.py[line:248] ERROR 识别价格失败
+Wed, 06 Jun 2018 11:58:29 app_thread.py[line:249] ERROR this is an exception message
 Traceback (most recent call last):
-  File "E:\hupai\component\app_thread.py", line 212, in run
+  File "E:\hupai\component\app_thread.py", line 224, in run_func
     str_price = Price_read()
-  File "E:\hupai\component\imgcut.py", line 526, in Price_read
+  File "E:\hupai\component\imgcut.py", line 528, in Price_read
     price = readpic(lowest_price_img, 'maindata.xml')
   File "E:\hupai\component\imgcut.py", line 231, in readpic
     result = result[1].reshape(-1).astype(int).astype(str)
 AttributeError: 'NoneType' object has no attribute 'reshape'
-Wed, 06 Jun 2018 10:38:53 imgcut.py[line:447] INFO 截图成功
-Wed, 06 Jun 2018 10:38:53 imgcut.py[line:449] INFO imgpos_yanzhengma 43:153, 358:538
-Wed, 06 Jun 2018 10:38:53 imgcut.py[line:451] INFO imgpos_yanzhengmaconfirm 118:218, 175:535
-Wed, 06 Jun 2018 10:38:53 imgcut.py[line:447] INFO 截图成功
-Wed, 06 Jun 2018 10:38:53 imgcut.py[line:449] INFO imgpos_yanzhengma 43:153, 358:538
-Wed, 06 Jun 2018 10:38:53 imgcut.py[line:451] INFO imgpos_yanzhengmaconfirm 118:218, 175:535
-Wed, 06 Jun 2018 10:38:53 imgcut.py[line:447] INFO 截图成功
-Wed, 06 Jun 2018 10:38:53 imgcut.py[line:449] INFO imgpos_yanzhengma 43:153, 358:538
-Wed, 06 Jun 2018 10:38:53 imgcut.py[line:451] INFO imgpos_yanzhengmaconfirm 118:218, 175:535
-Wed, 06 Jun 2018 10:38:53 imgcut.py[line:447] INFO 截图成功
-Wed, 06 Jun 2018 10:38:53 imgcut.py[line:449] INFO imgpos_yanzhengma 43:153, 358:538
-Wed, 06 Jun 2018 10:38:53 imgcut.py[line:451] INFO imgpos_yanzhengmaconfirm 118:218, 175:535
-Wed, 06 Jun 2018 10:38:53 imgcut.py[line:447] INFO 截图成功
-Wed, 06 Jun 2018 10:38:53 imgcut.py[line:449] INFO imgpos_yanzhengma 43:153, 358:538
-Wed, 06 Jun 2018 10:38:53 imgcut.py[line:451] INFO imgpos_yanzhengmaconfirm 118:218, 175:535
-Wed, 06 Jun 2018 10:38:54 imgcut.py[line:447] INFO 截图成功
-Wed, 06 Jun 2018 10:38:54 imgcut.py[line:449] INFO imgpos_yanzhengma 43:153, 358:538
-Wed, 06 Jun 2018 10:38:54 imgcut.py[line:451] INFO imgpos_yanzhengmaconfirm 118:218, 175:535
-Wed, 06 Jun 2018 10:38:54 imgcut.py[line:447] INFO 截图成功
-Wed, 06 Jun 2018 10:38:54 imgcut.py[line:449] INFO imgpos_yanzhengma 43:153, 358:538
-Wed, 06 Jun 2018 10:38:54 imgcut.py[line:451] INFO imgpos_yanzhengmaconfirm 118:218, 175:535
-Wed, 06 Jun 2018 10:38:54 imgcut.py[line:447] INFO 截图成功
-Wed, 06 Jun 2018 10:38:54 imgcut.py[line:449] INFO imgpos_yanzhengma 43:153, 358:538
-Wed, 06 Jun 2018 10:38:54 imgcut.py[line:451] INFO imgpos_yanzhengmaconfirm 118:218, 175:535
-Wed, 06 Jun 2018 10:38:54 imgcut.py[line:447] INFO 截图成功
-Wed, 06 Jun 2018 10:38:54 imgcut.py[line:449] INFO imgpos_yanzhengma 43:153, 358:538
-Wed, 06 Jun 2018 10:38:54 imgcut.py[line:451] INFO imgpos_yanzhengmaconfirm 118:218, 175:535
-Wed, 06 Jun 2018 10:38:54 imgcut.py[line:447] INFO 截图成功
-Wed, 06 Jun 2018 10:38:54 imgcut.py[line:449] INFO imgpos_yanzhengma 43:153, 358:538
-Wed, 06 Jun 2018 10:38:54 imgcut.py[line:451] INFO imgpos_yanzhengmaconfirm 118:218, 175:535
-Wed, 06 Jun 2018 10:38:54 imgcut.py[line:447] INFO 截图成功
-Wed, 06 Jun 2018 10:38:54 imgcut.py[line:449] INFO imgpos_yanzhengma 43:153, 358:538
-Wed, 06 Jun 2018 10:38:54 imgcut.py[line:451] INFO imgpos_yanzhengmaconfirm 118:218, 175:535
-Wed, 06 Jun 2018 10:38:54 imgcut.py[line:447] INFO 截图成功
-Wed, 06 Jun 2018 10:38:54 imgcut.py[line:449] INFO imgpos_yanzhengma 43:153, 358:538
-Wed, 06 Jun 2018 10:38:54 imgcut.py[line:451] INFO imgpos_yanzhengmaconfirm 118:218, 175:535
-Wed, 06 Jun 2018 10:38:54 imgcut.py[line:447] INFO 截图成功
-Wed, 06 Jun 2018 10:38:54 imgcut.py[line:449] INFO imgpos_yanzhengma 43:153, 358:538
-Wed, 06 Jun 2018 10:38:54 imgcut.py[line:451] INFO imgpos_yanzhengmaconfirm 118:218, 175:535
-Wed, 06 Jun 2018 10:38:55 imgcut.py[line:447] INFO 截图成功
-Wed, 06 Jun 2018 10:38:55 imgcut.py[line:449] INFO imgpos_yanzhengma 43:153, 358:538
-Wed, 06 Jun 2018 10:38:55 imgcut.py[line:451] INFO imgpos_yanzhengmaconfirm 118:218, 175:535
-Wed, 06 Jun 2018 10:38:55 imgcut.py[line:447] INFO 截图成功
-Wed, 06 Jun 2018 10:38:55 imgcut.py[line:449] INFO imgpos_yanzhengma 43:153, 358:538
-Wed, 06 Jun 2018 10:38:55 imgcut.py[line:451] INFO imgpos_yanzhengmaconfirm 118:218, 175:535
-Wed, 06 Jun 2018 10:38:55 imgcut.py[line:447] INFO 截图成功
-Wed, 06 Jun 2018 10:38:55 imgcut.py[line:449] INFO imgpos_yanzhengma 43:153, 358:538
-Wed, 06 Jun 2018 10:38:55 imgcut.py[line:451] INFO imgpos_yanzhengmaconfirm 118:218, 175:535
-Wed, 06 Jun 2018 10:38:55 imgcut.py[line:447] INFO 截图成功
-Wed, 06 Jun 2018 10:38:55 imgcut.py[line:449] INFO imgpos_yanzhengma 43:153, 358:538
-Wed, 06 Jun 2018 10:38:55 imgcut.py[line:451] INFO imgpos_yanzhengmaconfirm 118:218, 175:535
-Wed, 06 Jun 2018 10:38:55 imgcut.py[line:447] INFO 截图成功
-Wed, 06 Jun 2018 10:38:55 imgcut.py[line:449] INFO imgpos_yanzhengma 43:153, 358:538
-Wed, 06 Jun 2018 10:38:55 imgcut.py[line:451] INFO imgpos_yanzhengmaconfirm 118:218, 175:535
+Wed, 06 Jun 2018 11:58:29 imgcut.py[line:447] INFO 截图成功
+Wed, 06 Jun 2018 11:58:29 imgcut.py[line:449] INFO imgpos_yanzhengma 43:153, 358:538
+Wed, 06 Jun 2018 11:58:29 imgcut.py[line:451] INFO imgpos_yanzhengmaconfirm 118:218, 175:535
+Wed, 06 Jun 2018 11:58:29 imgcut.py[line:447] INFO 截图成功
+Wed, 06 Jun 2018 11:58:29 imgcut.py[line:449] INFO imgpos_yanzhengma 43:153, 358:538
+Wed, 06 Jun 2018 11:58:29 imgcut.py[line:451] INFO imgpos_yanzhengmaconfirm 118:218, 175:535
+Wed, 06 Jun 2018 11:58:29 imgcut.py[line:447] INFO 截图成功
+Wed, 06 Jun 2018 11:58:29 imgcut.py[line:449] INFO imgpos_yanzhengma 43:153, 358:538
+Wed, 06 Jun 2018 11:58:29 imgcut.py[line:451] INFO imgpos_yanzhengmaconfirm 118:218, 175:535
+Wed, 06 Jun 2018 11:58:29 imgcut.py[line:447] INFO 截图成功
+Wed, 06 Jun 2018 11:58:29 imgcut.py[line:449] INFO imgpos_yanzhengma 43:153, 358:538
+Wed, 06 Jun 2018 11:58:29 imgcut.py[line:451] INFO imgpos_yanzhengmaconfirm 118:218, 175:535
+Wed, 06 Jun 2018 11:58:29 imgcut.py[line:447] INFO 截图成功
+Wed, 06 Jun 2018 11:58:29 imgcut.py[line:449] INFO imgpos_yanzhengma 43:153, 358:538
+Wed, 06 Jun 2018 11:58:29 imgcut.py[line:451] INFO imgpos_yanzhengmaconfirm 118:218, 175:535
+Wed, 06 Jun 2018 11:58:29 imgcut.py[line:447] INFO 截图成功
+Wed, 06 Jun 2018 11:58:29 imgcut.py[line:449] INFO imgpos_yanzhengma 43:153, 358:538
+Wed, 06 Jun 2018 11:58:29 imgcut.py[line:451] INFO imgpos_yanzhengmaconfirm 118:218, 175:535
+Wed, 06 Jun 2018 11:58:30 imgcut.py[line:447] INFO 截图成功
+Wed, 06 Jun 2018 11:58:30 imgcut.py[line:449] INFO imgpos_yanzhengma 43:153, 358:538
+Wed, 06 Jun 2018 11:58:30 imgcut.py[line:451] INFO imgpos_yanzhengmaconfirm 118:218, 175:535
+Wed, 06 Jun 2018 11:58:30 imgcut.py[line:447] INFO 截图成功
+Wed, 06 Jun 2018 11:58:30 imgcut.py[line:449] INFO imgpos_yanzhengma 43:153, 358:538
+Wed, 06 Jun 2018 11:58:30 imgcut.py[line:451] INFO imgpos_yanzhengmaconfirm 118:218, 175:535
+Wed, 06 Jun 2018 11:58:30 imgcut.py[line:447] INFO 截图成功
+Wed, 06 Jun 2018 11:58:30 imgcut.py[line:449] INFO imgpos_yanzhengma 43:153, 358:538
+Wed, 06 Jun 2018 11:58:30 imgcut.py[line:451] INFO imgpos_yanzhengmaconfirm 118:218, 175:535
+Wed, 06 Jun 2018 11:58:30 imgcut.py[line:447] INFO 截图成功
+Wed, 06 Jun 2018 11:58:30 imgcut.py[line:449] INFO imgpos_yanzhengma 43:153, 358:538
+Wed, 06 Jun 2018 11:58:30 imgcut.py[line:451] INFO imgpos_yanzhengmaconfirm 118:218, 175:535
+Wed, 06 Jun 2018 11:58:30 imgcut.py[line:447] INFO 截图成功
+Wed, 06 Jun 2018 11:58:30 imgcut.py[line:449] INFO imgpos_yanzhengma 43:153, 358:538
+Wed, 06 Jun 2018 11:58:30 imgcut.py[line:451] INFO imgpos_yanzhengmaconfirm 118:218, 175:535
+Wed, 06 Jun 2018 11:58:30 imgcut.py[line:447] INFO 截图成功
+Wed, 06 Jun 2018 11:58:30 imgcut.py[line:449] INFO imgpos_yanzhengma 43:153, 358:538
+Wed, 06 Jun 2018 11:58:30 imgcut.py[line:451] INFO imgpos_yanzhengmaconfirm 118:218, 175:535
+Wed, 06 Jun 2018 11:58:30 imgcut.py[line:447] INFO 截图成功
+Wed, 06 Jun 2018 11:58:30 imgcut.py[line:449] INFO imgpos_yanzhengma 43:153, 358:538
+Wed, 06 Jun 2018 11:58:30 imgcut.py[line:451] INFO imgpos_yanzhengmaconfirm 118:218, 175:535
+Wed, 06 Jun 2018 11:58:30 imgcut.py[line:447] INFO 截图成功
+Wed, 06 Jun 2018 11:58:30 imgcut.py[line:449] INFO imgpos_yanzhengma 43:153, 358:538
+Wed, 06 Jun 2018 11:58:30 imgcut.py[line:451] INFO imgpos_yanzhengmaconfirm 118:218, 175:535
+Wed, 06 Jun 2018 11:58:31 imgcut.py[line:447] INFO 截图成功
+Wed, 06 Jun 2018 11:58:31 imgcut.py[line:449] INFO imgpos_yanzhengma 43:153, 358:538
+Wed, 06 Jun 2018 11:58:31 imgcut.py[line:451] INFO imgpos_yanzhengmaconfirm 118:218, 175:535
+Wed, 06 Jun 2018 11:58:31 imgcut.py[line:447] INFO 截图成功
+Wed, 06 Jun 2018 11:58:31 imgcut.py[line:449] INFO imgpos_yanzhengma 43:153, 358:538
+Wed, 06 Jun 2018 11:58:31 imgcut.py[line:451] INFO imgpos_yanzhengmaconfirm 118:218, 175:535
+Wed, 06 Jun 2018 11:58:31 imgcut.py[line:447] INFO 截图成功
+Wed, 06 Jun 2018 11:58:31 imgcut.py[line:449] INFO imgpos_yanzhengma 43:153, 358:538
+Wed, 06 Jun 2018 11:58:31 imgcut.py[line:451] INFO imgpos_yanzhengmaconfirm 118:218, 175:535
+Wed, 06 Jun 2018 11:58:31 imgcut.py[line:447] INFO 截图成功
+Wed, 06 Jun 2018 11:58:31 imgcut.py[line:449] INFO imgpos_yanzhengma 43:153, 358:538
+Wed, 06 Jun 2018 11:58:31 imgcut.py[line:451] INFO imgpos_yanzhengmaconfirm 118:218, 175:535
+Wed, 06 Jun 2018 11:58:31 imgcut.py[line:447] INFO 截图成功
+Wed, 06 Jun 2018 11:58:31 imgcut.py[line:449] INFO imgpos_yanzhengma 43:153, 358:538
+Wed, 06 Jun 2018 11:58:31 imgcut.py[line:451] INFO imgpos_yanzhengmaconfirm 118:218, 175:535
+Wed, 06 Jun 2018 11:58:31 imgcut.py[line:447] INFO 截图成功
+Wed, 06 Jun 2018 11:58:31 imgcut.py[line:449] INFO imgpos_yanzhengma 43:153, 358:538
+Wed, 06 Jun 2018 11:58:31 imgcut.py[line:451] INFO imgpos_yanzhengmaconfirm 118:218, 175:535
+Wed, 06 Jun 2018 11:58:31 imgcut.py[line:447] INFO 截图成功
+Wed, 06 Jun 2018 11:58:31 imgcut.py[line:449] INFO imgpos_yanzhengma 43:153, 358:538
+Wed, 06 Jun 2018 11:58:31 imgcut.py[line:451] INFO imgpos_yanzhengmaconfirm 118:218, 175:535
+Wed, 06 Jun 2018 11:58:31 imgcut.py[line:447] INFO 截图成功
+Wed, 06 Jun 2018 11:58:31 imgcut.py[line:449] INFO imgpos_yanzhengma 43:153, 358:538
+Wed, 06 Jun 2018 11:58:31 imgcut.py[line:451] INFO imgpos_yanzhengmaconfirm 118:218, 175:535
+Wed, 06 Jun 2018 11:58:31 imgcut.py[line:447] INFO 截图成功
+Wed, 06 Jun 2018 11:58:31 imgcut.py[line:449] INFO imgpos_yanzhengma 43:153, 358:538
+Wed, 06 Jun 2018 11:58:31 imgcut.py[line:451] INFO imgpos_yanzhengmaconfirm 118:218, 175:535
+Wed, 06 Jun 2018 11:58:31 imgcut.py[line:447] INFO 截图成功
+Wed, 06 Jun 2018 11:58:31 imgcut.py[line:449] INFO imgpos_yanzhengma 43:153, 358:538
+Wed, 06 Jun 2018 11:58:31 imgcut.py[line:451] INFO imgpos_yanzhengmaconfirm 118:218, 175:535
+Wed, 06 Jun 2018 11:58:32 imgcut.py[line:447] INFO 截图成功
+Wed, 06 Jun 2018 11:58:32 imgcut.py[line:449] INFO imgpos_yanzhengma 43:153, 358:538
+Wed, 06 Jun 2018 11:58:32 imgcut.py[line:451] INFO imgpos_yanzhengmaconfirm 118:218, 175:535
+Wed, 06 Jun 2018 11:58:32 imgcut.py[line:447] INFO 截图成功
+Wed, 06 Jun 2018 11:58:32 imgcut.py[line:449] INFO imgpos_yanzhengma 43:153, 358:538
+Wed, 06 Jun 2018 11:58:32 imgcut.py[line:451] INFO imgpos_yanzhengmaconfirm 118:218, 175:535
+Wed, 06 Jun 2018 11:58:32 imgcut.py[line:447] INFO 截图成功
+Wed, 06 Jun 2018 11:58:32 imgcut.py[line:449] INFO imgpos_yanzhengma 43:153, 358:538
+Wed, 06 Jun 2018 11:58:32 imgcut.py[line:451] INFO imgpos_yanzhengmaconfirm 118:218, 175:535
+Wed, 06 Jun 2018 11:58:32 imgcut.py[line:447] INFO 截图成功
+Wed, 06 Jun 2018 11:58:32 imgcut.py[line:449] INFO imgpos_yanzhengma 43:153, 358:538
+Wed, 06 Jun 2018 11:58:32 imgcut.py[line:451] INFO imgpos_yanzhengmaconfirm 118:218, 175:535
+Wed, 06 Jun 2018 11:58:32 imgcut.py[line:447] INFO 截图成功
+Wed, 06 Jun 2018 11:58:32 imgcut.py[line:449] INFO imgpos_yanzhengma 43:153, 358:538
+Wed, 06 Jun 2018 11:58:32 imgcut.py[line:451] INFO imgpos_yanzhengmaconfirm 118:218, 175:535
+Wed, 06 Jun 2018 11:58:32 imgcut.py[line:447] INFO 截图成功
+Wed, 06 Jun 2018 11:58:32 imgcut.py[line:449] INFO imgpos_yanzhengma 43:153, 358:538
+Wed, 06 Jun 2018 11:58:32 imgcut.py[line:451] INFO imgpos_yanzhengmaconfirm 118:218, 175:535
+Wed, 06 Jun 2018 11:58:32 imgcut.py[line:447] INFO 截图成功
+Wed, 06 Jun 2018 11:58:32 imgcut.py[line:449] INFO imgpos_yanzhengma 43:153, 358:538
+Wed, 06 Jun 2018 11:58:32 imgcut.py[line:451] INFO imgpos_yanzhengmaconfirm 118:218, 175:535
+Wed, 06 Jun 2018 11:58:32 imgcut.py[line:447] INFO 截图成功
+Wed, 06 Jun 2018 11:58:32 imgcut.py[line:449] INFO imgpos_yanzhengma 43:153, 358:538
+Wed, 06 Jun 2018 11:58:32 imgcut.py[line:451] INFO imgpos_yanzhengmaconfirm 118:218, 175:535
+Wed, 06 Jun 2018 11:58:33 imgcut.py[line:447] INFO 截图成功
+Wed, 06 Jun 2018 11:58:33 imgcut.py[line:449] INFO imgpos_yanzhengma 43:153, 358:538
+Wed, 06 Jun 2018 11:58:33 imgcut.py[line:451] INFO imgpos_yanzhengmaconfirm 118:218, 175:535
+Wed, 06 Jun 2018 11:58:33 imgcut.py[line:447] INFO 截图成功
+Wed, 06 Jun 2018 11:58:33 imgcut.py[line:449] INFO imgpos_yanzhengma 43:153, 358:538
+Wed, 06 Jun 2018 11:58:33 imgcut.py[line:451] INFO imgpos_yanzhengmaconfirm 118:218, 175:535
+Wed, 06 Jun 2018 11:58:33 imgcut.py[line:447] INFO 截图成功
+Wed, 06 Jun 2018 11:58:33 imgcut.py[line:449] INFO imgpos_yanzhengma 43:153, 358:538
+Wed, 06 Jun 2018 11:58:33 imgcut.py[line:451] INFO imgpos_yanzhengmaconfirm 118:218, 175:535
+Wed, 06 Jun 2018 11:58:33 imgcut.py[line:447] INFO 截图成功
+Wed, 06 Jun 2018 11:58:33 imgcut.py[line:449] INFO imgpos_yanzhengma 43:153, 358:538
+Wed, 06 Jun 2018 11:58:33 imgcut.py[line:451] INFO imgpos_yanzhengmaconfirm 118:218, 175:535
+Wed, 06 Jun 2018 11:58:33 imgcut.py[line:447] INFO 截图成功
+Wed, 06 Jun 2018 11:58:33 imgcut.py[line:449] INFO imgpos_yanzhengma 43:153, 358:538
+Wed, 06 Jun 2018 11:58:33 imgcut.py[line:451] INFO imgpos_yanzhengmaconfirm 118:218, 175:535
+Wed, 06 Jun 2018 11:58:33 imgcut.py[line:447] INFO 截图成功
+Wed, 06 Jun 2018 11:58:33 imgcut.py[line:449] INFO imgpos_yanzhengma 43:153, 358:538
+Wed, 06 Jun 2018 11:58:33 imgcut.py[line:451] INFO imgpos_yanzhengmaconfirm 118:218, 175:535
+Wed, 06 Jun 2018 11:58:33 imgcut.py[line:447] INFO 截图成功
+Wed, 06 Jun 2018 11:58:33 imgcut.py[line:449] INFO imgpos_yanzhengma 43:153, 358:538
+Wed, 06 Jun 2018 11:58:33 imgcut.py[line:451] INFO imgpos_yanzhengmaconfirm 118:218, 175:535
+Wed, 06 Jun 2018 11:58:33 imgcut.py[line:447] INFO 截图成功
+Wed, 06 Jun 2018 11:58:33 imgcut.py[line:449] INFO imgpos_yanzhengma 43:153, 358:538
+Wed, 06 Jun 2018 11:58:33 imgcut.py[line:451] INFO imgpos_yanzhengmaconfirm 118:218, 175:535
+Wed, 06 Jun 2018 11:58:33 imgcut.py[line:447] INFO 截图成功
+Wed, 06 Jun 2018 11:58:33 imgcut.py[line:449] INFO imgpos_yanzhengma 43:153, 358:538
+Wed, 06 Jun 2018 11:58:33 imgcut.py[line:451] INFO imgpos_yanzhengmaconfirm 118:218, 175:535
+Wed, 06 Jun 2018 11:58:34 imgcut.py[line:447] INFO 截图成功
+Wed, 06 Jun 2018 11:58:34 imgcut.py[line:449] INFO imgpos_yanzhengma 43:153, 358:538
+Wed, 06 Jun 2018 11:58:34 imgcut.py[line:451] INFO imgpos_yanzhengmaconfirm 118:218, 175:535
+Wed, 06 Jun 2018 11:58:34 imgcut.py[line:447] INFO 截图成功
+Wed, 06 Jun 2018 11:58:34 imgcut.py[line:449] INFO imgpos_yanzhengma 43:153, 358:538
+Wed, 06 Jun 2018 11:58:34 imgcut.py[line:451] INFO imgpos_yanzhengmaconfirm 118:218, 175:535
+Wed, 06 Jun 2018 11:58:34 imgcut.py[line:447] INFO 截图成功
+Wed, 06 Jun 2018 11:58:34 imgcut.py[line:449] INFO imgpos_yanzhengma 43:153, 358:538
+Wed, 06 Jun 2018 11:58:34 imgcut.py[line:451] INFO imgpos_yanzhengmaconfirm 118:218, 175:535
+Wed, 06 Jun 2018 11:58:34 imgcut.py[line:447] INFO 截图成功
+Wed, 06 Jun 2018 11:58:34 imgcut.py[line:449] INFO imgpos_yanzhengma 43:153, 358:538
+Wed, 06 Jun 2018 11:58:34 imgcut.py[line:451] INFO imgpos_yanzhengmaconfirm 118:218, 175:535
+Wed, 06 Jun 2018 11:58:34 imgcut.py[line:447] INFO 截图成功
+Wed, 06 Jun 2018 11:58:34 imgcut.py[line:449] INFO imgpos_yanzhengma 43:153, 358:538
+Wed, 06 Jun 2018 11:58:34 imgcut.py[line:451] INFO imgpos_yanzhengmaconfirm 118:218, 175:535
+Wed, 06 Jun 2018 11:58:34 imgcut.py[line:447] INFO 截图成功
+Wed, 06 Jun 2018 11:58:34 imgcut.py[line:449] INFO imgpos_yanzhengma 43:153, 358:538
+Wed, 06 Jun 2018 11:58:34 imgcut.py[line:451] INFO imgpos_yanzhengmaconfirm 118:218, 175:535
+Wed, 06 Jun 2018 11:58:34 imgcut.py[line:447] INFO 截图成功
+Wed, 06 Jun 2018 11:58:34 imgcut.py[line:449] INFO imgpos_yanzhengma 43:153, 358:538
+Wed, 06 Jun 2018 11:58:34 imgcut.py[line:451] INFO imgpos_yanzhengmaconfirm 118:218, 175:535
+Wed, 06 Jun 2018 11:58:34 imgcut.py[line:447] INFO 截图成功
+Wed, 06 Jun 2018 11:58:34 imgcut.py[line:449] INFO imgpos_yanzhengma 43:153, 358:538
+Wed, 06 Jun 2018 11:58:34 imgcut.py[line:451] INFO imgpos_yanzhengmaconfirm 118:218, 175:535
+Wed, 06 Jun 2018 11:58:35 imgcut.py[line:447] INFO 截图成功
+Wed, 06 Jun 2018 11:58:35 imgcut.py[line:449] INFO imgpos_yanzhengma 43:153, 358:538
+Wed, 06 Jun 2018 11:58:35 imgcut.py[line:451] INFO imgpos_yanzhengmaconfirm 118:218, 175:535
+Wed, 06 Jun 2018 11:58:35 imgcut.py[line:447] INFO 截图成功
+Wed, 06 Jun 2018 11:58:35 imgcut.py[line:449] INFO imgpos_yanzhengma 43:153, 358:538
+Wed, 06 Jun 2018 11:58:35 imgcut.py[line:451] INFO imgpos_yanzhengmaconfirm 118:218, 175:535
+Wed, 06 Jun 2018 11:58:35 imgcut.py[line:447] INFO 截图成功
+Wed, 06 Jun 2018 11:58:35 imgcut.py[line:449] INFO imgpos_yanzhengma 43:153, 358:538
+Wed, 06 Jun 2018 11:58:35 imgcut.py[line:451] INFO imgpos_yanzhengmaconfirm 118:218, 175:535
+Wed, 06 Jun 2018 11:58:35 imgcut.py[line:447] INFO 截图成功
+Wed, 06 Jun 2018 11:58:35 imgcut.py[line:449] INFO imgpos_yanzhengma 43:153, 358:538
+Wed, 06 Jun 2018 11:58:35 imgcut.py[line:451] INFO imgpos_yanzhengmaconfirm 118:218, 175:535
+Wed, 06 Jun 2018 11:58:35 imgcut.py[line:447] INFO 截图成功
+Wed, 06 Jun 2018 11:58:35 imgcut.py[line:449] INFO imgpos_yanzhengma 43:153, 358:538
+Wed, 06 Jun 2018 11:58:35 imgcut.py[line:451] INFO imgpos_yanzhengmaconfirm 118:218, 175:535
+Wed, 06 Jun 2018 11:58:35 imgcut.py[line:447] INFO 截图成功
+Wed, 06 Jun 2018 11:58:35 imgcut.py[line:449] INFO imgpos_yanzhengma 43:153, 358:538
+Wed, 06 Jun 2018 11:58:35 imgcut.py[line:451] INFO imgpos_yanzhengmaconfirm 118:218, 175:535
+Wed, 06 Jun 2018 11:58:35 imgcut.py[line:447] INFO 截图成功
+Wed, 06 Jun 2018 11:58:35 imgcut.py[line:449] INFO imgpos_yanzhengma 43:153, 358:538
+Wed, 06 Jun 2018 11:58:35 imgcut.py[line:451] INFO imgpos_yanzhengmaconfirm 118:218, 175:535
+Wed, 06 Jun 2018 11:58:35 imgcut.py[line:447] INFO 截图成功
+Wed, 06 Jun 2018 11:58:35 imgcut.py[line:449] INFO imgpos_yanzhengma 43:153, 358:538
+Wed, 06 Jun 2018 11:58:35 imgcut.py[line:451] INFO imgpos_yanzhengmaconfirm 118:218, 175:535
+Wed, 06 Jun 2018 11:58:35 imgcut.py[line:447] INFO 截图成功
+Wed, 06 Jun 2018 11:58:35 imgcut.py[line:449] INFO imgpos_yanzhengma 43:153, 358:538
+Wed, 06 Jun 2018 11:58:35 imgcut.py[line:451] INFO imgpos_yanzhengmaconfirm 118:218, 175:535
+Wed, 06 Jun 2018 11:58:36 imgcut.py[line:447] INFO 截图成功
+Wed, 06 Jun 2018 11:58:36 imgcut.py[line:449] INFO imgpos_yanzhengma 43:153, 358:538
+Wed, 06 Jun 2018 11:58:36 imgcut.py[line:451] INFO imgpos_yanzhengmaconfirm 118:218, 175:535
+Wed, 06 Jun 2018 11:58:36 imgcut.py[line:447] INFO 截图成功
+Wed, 06 Jun 2018 11:58:36 imgcut.py[line:449] INFO imgpos_yanzhengma 43:153, 358:538
+Wed, 06 Jun 2018 11:58:36 imgcut.py[line:451] INFO imgpos_yanzhengmaconfirm 118:218, 175:535
+Wed, 06 Jun 2018 11:58:36 imgcut.py[line:447] INFO 截图成功
+Wed, 06 Jun 2018 11:58:36 imgcut.py[line:449] INFO imgpos_yanzhengma 43:153, 358:538
+Wed, 06 Jun 2018 11:58:36 imgcut.py[line:451] INFO imgpos_yanzhengmaconfirm 118:218, 175:535
+Wed, 06 Jun 2018 11:58:36 imgcut.py[line:447] INFO 截图成功
+Wed, 06 Jun 2018 11:58:36 imgcut.py[line:449] INFO imgpos_yanzhengma 43:153, 358:538
+Wed, 06 Jun 2018 11:58:36 imgcut.py[line:451] INFO imgpos_yanzhengmaconfirm 118:218, 175:535
+Wed, 06 Jun 2018 11:58:36 imgcut.py[line:447] INFO 截图成功
+Wed, 06 Jun 2018 11:58:36 imgcut.py[line:449] INFO imgpos_yanzhengma 43:153, 358:538
+Wed, 06 Jun 2018 11:58:36 imgcut.py[line:451] INFO imgpos_yanzhengmaconfirm 118:218, 175:535
+Wed, 06 Jun 2018 11:58:36 imgcut.py[line:447] INFO 截图成功
+Wed, 06 Jun 2018 11:58:36 imgcut.py[line:449] INFO imgpos_yanzhengma 43:153, 358:538
+Wed, 06 Jun 2018 11:58:36 imgcut.py[line:451] INFO imgpos_yanzhengmaconfirm 118:218, 175:535
+Wed, 06 Jun 2018 11:58:36 imgcut.py[line:447] INFO 截图成功
+Wed, 06 Jun 2018 11:58:36 imgcut.py[line:449] INFO imgpos_yanzhengma 43:153, 358:538
+Wed, 06 Jun 2018 11:58:36 imgcut.py[line:451] INFO imgpos_yanzhengmaconfirm 118:218, 175:535
+Wed, 06 Jun 2018 11:58:36 imgcut.py[line:447] INFO 截图成功
+Wed, 06 Jun 2018 11:58:36 imgcut.py[line:449] INFO imgpos_yanzhengma 43:153, 358:538
+Wed, 06 Jun 2018 11:58:36 imgcut.py[line:451] INFO imgpos_yanzhengmaconfirm 118:218, 175:535
+Wed, 06 Jun 2018 11:58:37 imgcut.py[line:447] INFO 截图成功
+Wed, 06 Jun 2018 11:58:37 imgcut.py[line:449] INFO imgpos_yanzhengma 43:153, 358:538
+Wed, 06 Jun 2018 11:58:37 imgcut.py[line:451] INFO imgpos_yanzhengmaconfirm 118:218, 175:535
+Wed, 06 Jun 2018 11:58:37 imgcut.py[line:447] INFO 截图成功
+Wed, 06 Jun 2018 11:58:37 imgcut.py[line:449] INFO imgpos_yanzhengma 43:153, 358:538
+Wed, 06 Jun 2018 11:58:37 imgcut.py[line:451] INFO imgpos_yanzhengmaconfirm 118:218, 175:535
+Wed, 06 Jun 2018 11:58:37 imgcut.py[line:447] INFO 截图成功
+Wed, 06 Jun 2018 11:58:37 imgcut.py[line:449] INFO imgpos_yanzhengma 43:153, 358:538
+Wed, 06 Jun 2018 11:58:37 imgcut.py[line:451] INFO imgpos_yanzhengmaconfirm 118:218, 175:535
+Wed, 06 Jun 2018 11:58:37 imgcut.py[line:447] INFO 截图成功
+Wed, 06 Jun 2018 11:58:37 imgcut.py[line:449] INFO imgpos_yanzhengma 43:153, 358:538
+Wed, 06 Jun 2018 11:58:37 imgcut.py[line:451] INFO imgpos_yanzhengmaconfirm 118:218, 175:535
+Wed, 06 Jun 2018 11:58:37 imgcut.py[line:447] INFO 截图成功
+Wed, 06 Jun 2018 11:58:37 imgcut.py[line:449] INFO imgpos_yanzhengma 43:153, 358:538
+Wed, 06 Jun 2018 11:58:37 imgcut.py[line:451] INFO imgpos_yanzhengmaconfirm 118:218, 175:535
+Wed, 06 Jun 2018 11:58:37 imgcut.py[line:447] INFO 截图成功
+Wed, 06 Jun 2018 11:58:37 imgcut.py[line:449] INFO imgpos_yanzhengma 43:153, 358:538
+Wed, 06 Jun 2018 11:58:37 imgcut.py[line:451] INFO imgpos_yanzhengmaconfirm 118:218, 175:535
+Wed, 06 Jun 2018 11:58:37 imgcut.py[line:447] INFO 截图成功
+Wed, 06 Jun 2018 11:58:37 imgcut.py[line:449] INFO imgpos_yanzhengma 43:153, 358:538
+Wed, 06 Jun 2018 11:58:37 imgcut.py[line:451] INFO imgpos_yanzhengmaconfirm 118:218, 175:535
+Wed, 06 Jun 2018 11:58:37 imgcut.py[line:447] INFO 截图成功
+Wed, 06 Jun 2018 11:58:37 imgcut.py[line:449] INFO imgpos_yanzhengma 43:153, 358:538
+Wed, 06 Jun 2018 11:58:37 imgcut.py[line:451] INFO imgpos_yanzhengmaconfirm 118:218, 175:535
+Wed, 06 Jun 2018 11:58:38 imgcut.py[line:447] INFO 截图成功
+Wed, 06 Jun 2018 11:58:38 imgcut.py[line:449] INFO imgpos_yanzhengma 43:153, 358:538
+Wed, 06 Jun 2018 11:58:38 imgcut.py[line:451] INFO imgpos_yanzhengmaconfirm 118:218, 175:535
+Wed, 06 Jun 2018 11:58:38 imgcut.py[line:447] INFO 截图成功
+Wed, 06 Jun 2018 11:58:38 imgcut.py[line:449] INFO imgpos_yanzhengma 43:153, 358:538
+Wed, 06 Jun 2018 11:58:38 imgcut.py[line:451] INFO imgpos_yanzhengmaconfirm 118:218, 175:535
+Wed, 06 Jun 2018 11:58:38 imgcut.py[line:447] INFO 截图成功
+Wed, 06 Jun 2018 11:58:38 imgcut.py[line:449] INFO imgpos_yanzhengma 43:153, 358:538
+Wed, 06 Jun 2018 11:58:38 imgcut.py[line:451] INFO imgpos_yanzhengmaconfirm 118:218, 175:535
+Wed, 06 Jun 2018 11:58:38 imgcut.py[line:447] INFO 截图成功
+Wed, 06 Jun 2018 11:58:38 imgcut.py[line:449] INFO imgpos_yanzhengma 43:153, 358:538
+Wed, 06 Jun 2018 11:58:38 imgcut.py[line:451] INFO imgpos_yanzhengmaconfirm 118:218, 175:535
+Wed, 06 Jun 2018 11:58:38 imgcut.py[line:447] INFO 截图成功
+Wed, 06 Jun 2018 11:58:38 imgcut.py[line:449] INFO imgpos_yanzhengma 43:153, 358:538
+Wed, 06 Jun 2018 11:58:38 imgcut.py[line:451] INFO imgpos_yanzhengmaconfirm 118:218, 175:535
+Wed, 06 Jun 2018 11:58:38 imgcut.py[line:447] INFO 截图成功
+Wed, 06 Jun 2018 11:58:38 imgcut.py[line:449] INFO imgpos_yanzhengma 43:153, 358:538
+Wed, 06 Jun 2018 11:58:38 imgcut.py[line:451] INFO imgpos_yanzhengmaconfirm 118:218, 175:535
+Wed, 06 Jun 2018 11:58:38 imgcut.py[line:447] INFO 截图成功
+Wed, 06 Jun 2018 11:58:38 imgcut.py[line:449] INFO imgpos_yanzhengma 43:153, 358:538
+Wed, 06 Jun 2018 11:58:38 imgcut.py[line:451] INFO imgpos_yanzhengmaconfirm 118:218, 175:535
+Wed, 06 Jun 2018 11:58:38 imgcut.py[line:447] INFO 截图成功
+Wed, 06 Jun 2018 11:58:38 imgcut.py[line:449] INFO imgpos_yanzhengma 43:153, 358:538
+Wed, 06 Jun 2018 11:58:38 imgcut.py[line:451] INFO imgpos_yanzhengmaconfirm 118:218, 175:535
+Wed, 06 Jun 2018 11:58:38 imgcut.py[line:447] INFO 截图成功
+Wed, 06 Jun 2018 11:58:38 imgcut.py[line:449] INFO imgpos_yanzhengma 43:153, 358:538
+Wed, 06 Jun 2018 11:58:38 imgcut.py[line:451] INFO imgpos_yanzhengmaconfirm 118:218, 175:535
+Wed, 06 Jun 2018 11:58:39 imgcut.py[line:447] INFO 截图成功
+Wed, 06 Jun 2018 11:58:39 imgcut.py[line:449] INFO imgpos_yanzhengma 43:153, 358:538
+Wed, 06 Jun 2018 11:58:39 imgcut.py[line:451] INFO imgpos_yanzhengmaconfirm 118:218, 175:535
+Wed, 06 Jun 2018 11:58:39 imgcut.py[line:447] INFO 截图成功
+Wed, 06 Jun 2018 11:58:39 imgcut.py[line:449] INFO imgpos_yanzhengma 43:153, 358:538
+Wed, 06 Jun 2018 11:58:39 imgcut.py[line:451] INFO imgpos_yanzhengmaconfirm 118:218, 175:535
+Wed, 06 Jun 2018 11:58:39 imgcut.py[line:447] INFO 截图成功
+Wed, 06 Jun 2018 11:58:39 imgcut.py[line:449] INFO imgpos_yanzhengma 43:153, 358:538
+Wed, 06 Jun 2018 11:58:39 imgcut.py[line:451] INFO imgpos_yanzhengmaconfirm 118:218, 175:535
+Wed, 06 Jun 2018 11:58:39 imgcut.py[line:447] INFO 截图成功
+Wed, 06 Jun 2018 11:58:39 imgcut.py[line:449] INFO imgpos_yanzhengma 43:153, 358:538
+Wed, 06 Jun 2018 11:58:39 imgcut.py[line:451] INFO imgpos_yanzhengmaconfirm 118:218, 175:535
+Wed, 06 Jun 2018 11:58:39 imgcut.py[line:447] INFO 截图成功
+Wed, 06 Jun 2018 11:58:39 imgcut.py[line:449] INFO imgpos_yanzhengma 43:153, 358:538
+Wed, 06 Jun 2018 11:58:39 imgcut.py[line:451] INFO imgpos_yanzhengmaconfirm 118:218, 175:535
+Wed, 06 Jun 2018 11:58:39 imgcut.py[line:447] INFO 截图成功
+Wed, 06 Jun 2018 11:58:39 imgcut.py[line:449] INFO imgpos_yanzhengma 43:153, 358:538
+Wed, 06 Jun 2018 11:58:39 imgcut.py[line:451] INFO imgpos_yanzhengmaconfirm 118:218, 175:535
+Wed, 06 Jun 2018 11:58:39 imgcut.py[line:447] INFO 截图成功
+Wed, 06 Jun 2018 11:58:39 imgcut.py[line:449] INFO imgpos_yanzhengma 43:153, 358:538
+Wed, 06 Jun 2018 11:58:39 imgcut.py[line:451] INFO imgpos_yanzhengmaconfirm 118:218, 175:535
+Wed, 06 Jun 2018 11:58:39 imgcut.py[line:447] INFO 截图成功
+Wed, 06 Jun 2018 11:58:39 imgcut.py[line:449] INFO imgpos_yanzhengma 43:153, 358:538
+Wed, 06 Jun 2018 11:58:39 imgcut.py[line:451] INFO imgpos_yanzhengmaconfirm 118:218, 175:535
+Wed, 06 Jun 2018 11:58:39 imgcut.py[line:447] INFO 截图成功
+Wed, 06 Jun 2018 11:58:39 imgcut.py[line:449] INFO imgpos_yanzhengma 43:153, 358:538
+Wed, 06 Jun 2018 11:58:39 imgcut.py[line:451] INFO imgpos_yanzhengmaconfirm 118:218, 175:535
+Wed, 06 Jun 2018 11:58:40 imgcut.py[line:447] INFO 截图成功
+Wed, 06 Jun 2018 11:58:40 imgcut.py[line:449] INFO imgpos_yanzhengma 43:153, 358:538
+Wed, 06 Jun 2018 11:58:40 imgcut.py[line:451] INFO imgpos_yanzhengmaconfirm 118:218, 175:535
+Wed, 06 Jun 2018 11:58:40 imgcut.py[line:447] INFO 截图成功
+Wed, 06 Jun 2018 11:58:40 imgcut.py[line:449] INFO imgpos_yanzhengma 43:153, 358:538
+Wed, 06 Jun 2018 11:58:40 imgcut.py[line:451] INFO imgpos_yanzhengmaconfirm 118:218, 175:535
+Wed, 06 Jun 2018 11:58:40 imgcut.py[line:447] INFO 截图成功
+Wed, 06 Jun 2018 11:58:40 imgcut.py[line:449] INFO imgpos_yanzhengma 43:153, 358:538
+Wed, 06 Jun 2018 11:58:40 imgcut.py[line:451] INFO imgpos_yanzhengmaconfirm 118:218, 175:535
+Wed, 06 Jun 2018 11:58:40 imgcut.py[line:447] INFO 截图成功
+Wed, 06 Jun 2018 11:58:40 imgcut.py[line:449] INFO imgpos_yanzhengma 43:153, 358:538
+Wed, 06 Jun 2018 11:58:40 imgcut.py[line:451] INFO imgpos_yanzhengmaconfirm 118:218, 175:535
+Wed, 06 Jun 2018 11:58:40 imgcut.py[line:447] INFO 截图成功
+Wed, 06 Jun 2018 11:58:40 imgcut.py[line:449] INFO imgpos_yanzhengma 43:153, 358:538
+Wed, 06 Jun 2018 11:58:40 imgcut.py[line:451] INFO imgpos_yanzhengmaconfirm 118:218, 175:535
+Wed, 06 Jun 2018 11:58:40 imgcut.py[line:447] INFO 截图成功
+Wed, 06 Jun 2018 11:58:40 imgcut.py[line:449] INFO imgpos_yanzhengma 43:153, 358:538
+Wed, 06 Jun 2018 11:58:40 imgcut.py[line:451] INFO imgpos_yanzhengmaconfirm 118:218, 175:535
+Wed, 06 Jun 2018 11:58:40 imgcut.py[line:447] INFO 截图成功
+Wed, 06 Jun 2018 11:58:40 imgcut.py[line:449] INFO imgpos_yanzhengma 43:153, 358:538
+Wed, 06 Jun 2018 11:58:40 imgcut.py[line:451] INFO imgpos_yanzhengmaconfirm 118:218, 175:535
+Wed, 06 Jun 2018 11:58:40 imgcut.py[line:447] INFO 截图成功
+Wed, 06 Jun 2018 11:58:40 imgcut.py[line:449] INFO imgpos_yanzhengma 43:153, 358:538
+Wed, 06 Jun 2018 11:58:40 imgcut.py[line:451] INFO imgpos_yanzhengmaconfirm 118:218, 175:535
+Wed, 06 Jun 2018 11:58:41 imgcut.py[line:447] INFO 截图成功
+Wed, 06 Jun 2018 11:58:41 imgcut.py[line:449] INFO imgpos_yanzhengma 43:153, 358:538
+Wed, 06 Jun 2018 11:58:41 imgcut.py[line:451] INFO imgpos_yanzhengmaconfirm 118:218, 175:535
+Wed, 06 Jun 2018 11:58:41 imgcut.py[line:447] INFO 截图成功
+Wed, 06 Jun 2018 11:58:41 imgcut.py[line:449] INFO imgpos_yanzhengma 43:153, 358:538
+Wed, 06 Jun 2018 11:58:41 imgcut.py[line:451] INFO imgpos_yanzhengmaconfirm 118:218, 175:535
+Wed, 06 Jun 2018 11:58:41 imgcut.py[line:447] INFO 截图成功
+Wed, 06 Jun 2018 11:58:41 imgcut.py[line:449] INFO imgpos_yanzhengma 43:153, 358:538
+Wed, 06 Jun 2018 11:58:41 imgcut.py[line:451] INFO imgpos_yanzhengmaconfirm 118:218, 175:535
+Wed, 06 Jun 2018 11:58:41 imgcut.py[line:447] INFO 截图成功
+Wed, 06 Jun 2018 11:58:41 imgcut.py[line:449] INFO imgpos_yanzhengma 43:153, 358:538
+Wed, 06 Jun 2018 11:58:41 imgcut.py[line:451] INFO imgpos_yanzhengmaconfirm 118:218, 175:535
+Wed, 06 Jun 2018 11:58:41 imgcut.py[line:447] INFO 截图成功
+Wed, 06 Jun 2018 11:58:41 imgcut.py[line:449] INFO imgpos_yanzhengma 43:153, 358:538
+Wed, 06 Jun 2018 11:58:41 imgcut.py[line:451] INFO imgpos_yanzhengmaconfirm 118:218, 175:535
+Wed, 06 Jun 2018 11:58:41 imgcut.py[line:447] INFO 截图成功
+Wed, 06 Jun 2018 11:58:41 imgcut.py[line:449] INFO imgpos_yanzhengma 43:153, 358:538
+Wed, 06 Jun 2018 11:58:41 imgcut.py[line:451] INFO imgpos_yanzhengmaconfirm 118:218, 175:535
+Wed, 06 Jun 2018 11:58:41 imgcut.py[line:447] INFO 截图成功
+Wed, 06 Jun 2018 11:58:41 imgcut.py[line:449] INFO imgpos_yanzhengma 43:153, 358:538
+Wed, 06 Jun 2018 11:58:41 imgcut.py[line:451] INFO imgpos_yanzhengmaconfirm 118:218, 175:535
+Wed, 06 Jun 2018 11:58:41 imgcut.py[line:447] INFO 截图成功
+Wed, 06 Jun 2018 11:58:41 imgcut.py[line:449] INFO imgpos_yanzhengma 43:153, 358:538
+Wed, 06 Jun 2018 11:58:41 imgcut.py[line:451] INFO imgpos_yanzhengmaconfirm 118:218, 175:535
+Wed, 06 Jun 2018 11:58:42 imgcut.py[line:447] INFO 截图成功
+Wed, 06 Jun 2018 11:58:42 imgcut.py[line:449] INFO imgpos_yanzhengma 43:153, 358:538
+Wed, 06 Jun 2018 11:58:42 imgcut.py[line:451] INFO imgpos_yanzhengmaconfirm 118:218, 175:535
+Wed, 06 Jun 2018 11:58:42 imgcut.py[line:447] INFO 截图成功
+Wed, 06 Jun 2018 11:58:42 imgcut.py[line:449] INFO imgpos_yanzhengma 43:153, 358:538
+Wed, 06 Jun 2018 11:58:42 imgcut.py[line:451] INFO imgpos_yanzhengmaconfirm 118:218, 175:535
+Wed, 06 Jun 2018 11:58:42 imgcut.py[line:447] INFO 截图成功
+Wed, 06 Jun 2018 11:58:42 imgcut.py[line:449] INFO imgpos_yanzhengma 43:153, 358:538
+Wed, 06 Jun 2018 11:58:42 imgcut.py[line:451] INFO imgpos_yanzhengmaconfirm 118:218, 175:535
+Wed, 06 Jun 2018 11:58:42 imgcut.py[line:447] INFO 截图成功
+Wed, 06 Jun 2018 11:58:42 imgcut.py[line:449] INFO imgpos_yanzhengma 43:153, 358:538
+Wed, 06 Jun 2018 11:58:42 imgcut.py[line:451] INFO imgpos_yanzhengmaconfirm 118:218, 175:535
+Wed, 06 Jun 2018 11:58:42 imgcut.py[line:447] INFO 截图成功
+Wed, 06 Jun 2018 11:58:42 imgcut.py[line:449] INFO imgpos_yanzhengma 43:153, 358:538
+Wed, 06 Jun 2018 11:58:42 imgcut.py[line:451] INFO imgpos_yanzhengmaconfirm 118:218, 175:535
+Wed, 06 Jun 2018 11:58:42 imgcut.py[line:447] INFO 截图成功
+Wed, 06 Jun 2018 11:58:42 imgcut.py[line:449] INFO imgpos_yanzhengma 43:153, 358:538
+Wed, 06 Jun 2018 11:58:42 imgcut.py[line:451] INFO imgpos_yanzhengmaconfirm 118:218, 175:535
+Wed, 06 Jun 2018 11:58:42 imgcut.py[line:447] INFO 截图成功
+Wed, 06 Jun 2018 11:58:42 imgcut.py[line:449] INFO imgpos_yanzhengma 43:153, 358:538
+Wed, 06 Jun 2018 11:58:42 imgcut.py[line:451] INFO imgpos_yanzhengmaconfirm 118:218, 175:535
+Wed, 06 Jun 2018 11:58:42 imgcut.py[line:447] INFO 截图成功
+Wed, 06 Jun 2018 11:58:42 imgcut.py[line:449] INFO imgpos_yanzhengma 43:153, 358:538
+Wed, 06 Jun 2018 11:58:42 imgcut.py[line:451] INFO imgpos_yanzhengmaconfirm 118:218, 175:535
+Wed, 06 Jun 2018 11:58:43 imgcut.py[line:447] INFO 截图成功
+Wed, 06 Jun 2018 11:58:43 imgcut.py[line:449] INFO imgpos_yanzhengma 43:153, 358:538
+Wed, 06 Jun 2018 11:58:43 imgcut.py[line:451] INFO imgpos_yanzhengmaconfirm 118:218, 175:535
+Wed, 06 Jun 2018 11:58:43 imgcut.py[line:447] INFO 截图成功
+Wed, 06 Jun 2018 11:58:43 imgcut.py[line:449] INFO imgpos_yanzhengma 43:153, 358:538
+Wed, 06 Jun 2018 11:58:43 imgcut.py[line:451] INFO imgpos_yanzhengmaconfirm 118:218, 175:535
+Wed, 06 Jun 2018 11:58:43 imgcut.py[line:447] INFO 截图成功
+Wed, 06 Jun 2018 11:58:43 imgcut.py[line:449] INFO imgpos_yanzhengma 43:153, 358:538
+Wed, 06 Jun 2018 11:58:43 imgcut.py[line:451] INFO imgpos_yanzhengmaconfirm 118:218, 175:535
+Wed, 06 Jun 2018 11:58:43 imgcut.py[line:447] INFO 截图成功
+Wed, 06 Jun 2018 11:58:43 imgcut.py[line:449] INFO imgpos_yanzhengma 43:153, 358:538
+Wed, 06 Jun 2018 11:58:43 imgcut.py[line:451] INFO imgpos_yanzhengmaconfirm 118:218, 175:535
+Wed, 06 Jun 2018 11:58:43 imgcut.py[line:447] INFO 截图成功
+Wed, 06 Jun 2018 11:58:43 imgcut.py[line:449] INFO imgpos_yanzhengma 43:153, 358:538
+Wed, 06 Jun 2018 11:58:43 imgcut.py[line:451] INFO imgpos_yanzhengmaconfirm 118:218, 175:535
+Wed, 06 Jun 2018 11:58:43 imgcut.py[line:447] INFO 截图成功
+Wed, 06 Jun 2018 11:58:43 imgcut.py[line:449] INFO imgpos_yanzhengma 43:153, 358:538
+Wed, 06 Jun 2018 11:58:43 imgcut.py[line:451] INFO imgpos_yanzhengmaconfirm 118:218, 175:535
+Wed, 06 Jun 2018 11:58:43 imgcut.py[line:447] INFO 截图成功
+Wed, 06 Jun 2018 11:58:43 imgcut.py[line:449] INFO imgpos_yanzhengma 43:153, 358:538
+Wed, 06 Jun 2018 11:58:43 imgcut.py[line:451] INFO imgpos_yanzhengmaconfirm 118:218, 175:535
+Wed, 06 Jun 2018 11:58:43 imgcut.py[line:447] INFO 截图成功
+Wed, 06 Jun 2018 11:58:43 imgcut.py[line:449] INFO imgpos_yanzhengma 43:153, 358:538
+Wed, 06 Jun 2018 11:58:43 imgcut.py[line:451] INFO imgpos_yanzhengmaconfirm 118:218, 175:535
+Wed, 06 Jun 2018 11:58:43 imgcut.py[line:447] INFO 截图成功
+Wed, 06 Jun 2018 11:58:43 imgcut.py[line:449] INFO imgpos_yanzhengma 43:153, 358:538
+Wed, 06 Jun 2018 11:58:43 imgcut.py[line:451] INFO imgpos_yanzhengmaconfirm 118:218, 175:535
+Wed, 06 Jun 2018 11:58:44 imgcut.py[line:447] INFO 截图成功
+Wed, 06 Jun 2018 11:58:44 imgcut.py[line:449] INFO imgpos_yanzhengma 43:153, 358:538
+Wed, 06 Jun 2018 11:58:44 imgcut.py[line:451] INFO imgpos_yanzhengmaconfirm 118:218, 175:535
+Wed, 06 Jun 2018 11:58:44 imgcut.py[line:447] INFO 截图成功
+Wed, 06 Jun 2018 11:58:44 imgcut.py[line:449] INFO imgpos_yanzhengma 43:153, 358:538
+Wed, 06 Jun 2018 11:58:44 imgcut.py[line:451] INFO imgpos_yanzhengmaconfirm 118:218, 175:535
+Wed, 06 Jun 2018 11:58:44 imgcut.py[line:447] INFO 截图成功
+Wed, 06 Jun 2018 11:58:44 imgcut.py[line:449] INFO imgpos_yanzhengma 43:153, 358:538
+Wed, 06 Jun 2018 11:58:44 imgcut.py[line:451] INFO imgpos_yanzhengmaconfirm 118:218, 175:535
+Wed, 06 Jun 2018 11:58:44 imgcut.py[line:447] INFO 截图成功
+Wed, 06 Jun 2018 11:58:44 imgcut.py[line:449] INFO imgpos_yanzhengma 43:153, 358:538
+Wed, 06 Jun 2018 11:58:44 imgcut.py[line:451] INFO imgpos_yanzhengmaconfirm 118:218, 175:535
+Wed, 06 Jun 2018 11:58:44 imgcut.py[line:447] INFO 截图成功
+Wed, 06 Jun 2018 11:58:44 imgcut.py[line:449] INFO imgpos_yanzhengma 43:153, 358:538
+Wed, 06 Jun 2018 11:58:44 imgcut.py[line:451] INFO imgpos_yanzhengmaconfirm 118:218, 175:535
+Wed, 06 Jun 2018 11:58:44 imgcut.py[line:447] INFO 截图成功
+Wed, 06 Jun 2018 11:58:44 imgcut.py[line:449] INFO imgpos_yanzhengma 43:153, 358:538
+Wed, 06 Jun 2018 11:58:44 imgcut.py[line:451] INFO imgpos_yanzhengmaconfirm 118:218, 175:535
+Wed, 06 Jun 2018 11:58:44 imgcut.py[line:447] INFO 截图成功
+Wed, 06 Jun 2018 11:58:44 imgcut.py[line:449] INFO imgpos_yanzhengma 43:153, 358:538
+Wed, 06 Jun 2018 11:58:44 imgcut.py[line:451] INFO imgpos_yanzhengmaconfirm 118:218, 175:535
+Wed, 06 Jun 2018 11:58:44 imgcut.py[line:447] INFO 截图成功
+Wed, 06 Jun 2018 11:58:44 imgcut.py[line:449] INFO imgpos_yanzhengma 43:153, 358:538
+Wed, 06 Jun 2018 11:58:44 imgcut.py[line:451] INFO imgpos_yanzhengmaconfirm 118:218, 175:535
+Wed, 06 Jun 2018 11:58:44 imgcut.py[line:447] INFO 截图成功
+Wed, 06 Jun 2018 11:58:44 imgcut.py[line:449] INFO imgpos_yanzhengma 43:153, 358:538
+Wed, 06 Jun 2018 11:58:44 imgcut.py[line:451] INFO imgpos_yanzhengmaconfirm 118:218, 175:535
+Wed, 06 Jun 2018 11:58:45 imgcut.py[line:447] INFO 截图成功
+Wed, 06 Jun 2018 11:58:45 imgcut.py[line:449] INFO imgpos_yanzhengma 43:153, 358:538
+Wed, 06 Jun 2018 11:58:45 imgcut.py[line:451] INFO imgpos_yanzhengmaconfirm 118:218, 175:535
+Wed, 06 Jun 2018 11:58:45 imgcut.py[line:447] INFO 截图成功
+Wed, 06 Jun 2018 11:58:45 imgcut.py[line:449] INFO imgpos_yanzhengma 43:153, 358:538
+Wed, 06 Jun 2018 11:58:45 imgcut.py[line:451] INFO imgpos_yanzhengmaconfirm 118:218, 175:535
+Wed, 06 Jun 2018 11:58:45 imgcut.py[line:447] INFO 截图成功
+Wed, 06 Jun 2018 11:58:45 imgcut.py[line:449] INFO imgpos_yanzhengma 43:153, 358:538
+Wed, 06 Jun 2018 11:58:45 imgcut.py[line:451] INFO imgpos_yanzhengmaconfirm 118:218, 175:535
+Wed, 06 Jun 2018 11:58:45 imgcut.py[line:447] INFO 截图成功
+Wed, 06 Jun 2018 11:58:45 imgcut.py[line:449] INFO imgpos_yanzhengma 43:153, 358:538
+Wed, 06 Jun 2018 11:58:45 imgcut.py[line:451] INFO imgpos_yanzhengmaconfirm 118:218, 175:535
+Wed, 06 Jun 2018 11:58:45 imgcut.py[line:447] INFO 截图成功
+Wed, 06 Jun 2018 11:58:45 imgcut.py[line:449] INFO imgpos_yanzhengma 43:153, 358:538
+Wed, 06 Jun 2018 11:58:45 imgcut.py[line:451] INFO imgpos_yanzhengmaconfirm 118:218, 175:535
+Wed, 06 Jun 2018 11:58:45 imgcut.py[line:447] INFO 截图成功
+Wed, 06 Jun 2018 11:58:45 imgcut.py[line:449] INFO imgpos_yanzhengma 43:153, 358:538
+Wed, 06 Jun 2018 11:58:45 imgcut.py[line:451] INFO imgpos_yanzhengmaconfirm 118:218, 175:535
+Wed, 06 Jun 2018 11:58:45 imgcut.py[line:447] INFO 截图成功
+Wed, 06 Jun 2018 11:58:45 imgcut.py[line:449] INFO imgpos_yanzhengma 43:153, 358:538
+Wed, 06 Jun 2018 11:58:45 imgcut.py[line:451] INFO imgpos_yanzhengmaconfirm 118:218, 175:535
+Wed, 06 Jun 2018 11:58:45 imgcut.py[line:447] INFO 截图成功
+Wed, 06 Jun 2018 11:58:45 imgcut.py[line:449] INFO imgpos_yanzhengma 43:153, 358:538
+Wed, 06 Jun 2018 11:58:45 imgcut.py[line:451] INFO imgpos_yanzhengmaconfirm 118:218, 175:535
+Wed, 06 Jun 2018 11:58:46 imgcut.py[line:447] INFO 截图成功
+Wed, 06 Jun 2018 11:58:46 imgcut.py[line:449] INFO imgpos_yanzhengma 43:153, 358:538
+Wed, 06 Jun 2018 11:58:46 imgcut.py[line:451] INFO imgpos_yanzhengmaconfirm 118:218, 175:535
+Wed, 06 Jun 2018 11:58:46 imgcut.py[line:447] INFO 截图成功
+Wed, 06 Jun 2018 11:58:46 imgcut.py[line:449] INFO imgpos_yanzhengma 43:153, 358:538
+Wed, 06 Jun 2018 11:58:46 imgcut.py[line:451] INFO imgpos_yanzhengmaconfirm 118:218, 175:535
+Wed, 06 Jun 2018 11:58:46 imgcut.py[line:447] INFO 截图成功
+Wed, 06 Jun 2018 11:58:46 imgcut.py[line:449] INFO imgpos_yanzhengma 43:153, 358:538
+Wed, 06 Jun 2018 11:58:46 imgcut.py[line:451] INFO imgpos_yanzhengmaconfirm 118:218, 175:535
+Wed, 06 Jun 2018 11:58:46 imgcut.py[line:447] INFO 截图成功
+Wed, 06 Jun 2018 11:58:46 imgcut.py[line:449] INFO imgpos_yanzhengma 43:153, 358:538
+Wed, 06 Jun 2018 11:58:46 imgcut.py[line:451] INFO imgpos_yanzhengmaconfirm 118:218, 175:535
+Wed, 06 Jun 2018 11:58:46 imgcut.py[line:447] INFO 截图成功
+Wed, 06 Jun 2018 11:58:46 imgcut.py[line:449] INFO imgpos_yanzhengma 43:153, 358:538
+Wed, 06 Jun 2018 11:58:46 imgcut.py[line:451] INFO imgpos_yanzhengmaconfirm 118:218, 175:535
+Wed, 06 Jun 2018 11:58:46 imgcut.py[line:447] INFO 截图成功
+Wed, 06 Jun 2018 11:58:46 imgcut.py[line:449] INFO imgpos_yanzhengma 43:153, 358:538
+Wed, 06 Jun 2018 11:58:46 imgcut.py[line:451] INFO imgpos_yanzhengmaconfirm 118:218, 175:535
+Wed, 06 Jun 2018 11:58:46 imgcut.py[line:447] INFO 截图成功
+Wed, 06 Jun 2018 11:58:46 imgcut.py[line:449] INFO imgpos_yanzhengma 43:153, 358:538
+Wed, 06 Jun 2018 11:58:46 imgcut.py[line:451] INFO imgpos_yanzhengmaconfirm 118:218, 175:535
+Wed, 06 Jun 2018 11:58:46 imgcut.py[line:447] INFO 截图成功
+Wed, 06 Jun 2018 11:58:46 imgcut.py[line:449] INFO imgpos_yanzhengma 43:153, 358:538
+Wed, 06 Jun 2018 11:58:46 imgcut.py[line:451] INFO imgpos_yanzhengmaconfirm 118:218, 175:535
+Wed, 06 Jun 2018 11:58:46 imgcut.py[line:447] INFO 截图成功
+Wed, 06 Jun 2018 11:58:46 imgcut.py[line:449] INFO imgpos_yanzhengma 43:153, 358:538
+Wed, 06 Jun 2018 11:58:46 imgcut.py[line:451] INFO imgpos_yanzhengmaconfirm 118:218, 175:535
+Wed, 06 Jun 2018 11:58:47 imgcut.py[line:447] INFO 截图成功
+Wed, 06 Jun 2018 11:58:47 imgcut.py[line:449] INFO imgpos_yanzhengma 43:153, 358:538
+Wed, 06 Jun 2018 11:58:47 imgcut.py[line:451] INFO imgpos_yanzhengmaconfirm 118:218, 175:535
+Wed, 06 Jun 2018 11:58:47 imgcut.py[line:447] INFO 截图成功
+Wed, 06 Jun 2018 11:58:47 imgcut.py[line:449] INFO imgpos_yanzhengma 43:153, 358:538
+Wed, 06 Jun 2018 11:58:47 imgcut.py[line:451] INFO imgpos_yanzhengmaconfirm 118:218, 175:535
+Wed, 06 Jun 2018 11:58:47 imgcut.py[line:447] INFO 截图成功
+Wed, 06 Jun 2018 11:58:47 imgcut.py[line:449] INFO imgpos_yanzhengma 43:153, 358:538
+Wed, 06 Jun 2018 11:58:47 imgcut.py[line:451] INFO imgpos_yanzhengmaconfirm 118:218, 175:535
+Wed, 06 Jun 2018 11:58:47 imgcut.py[line:447] INFO 截图成功
+Wed, 06 Jun 2018 11:58:47 imgcut.py[line:449] INFO imgpos_yanzhengma 43:153, 358:538
+Wed, 06 Jun 2018 11:58:47 imgcut.py[line:451] INFO imgpos_yanzhengmaconfirm 118:218, 175:535
+Wed, 06 Jun 2018 11:58:47 imgcut.py[line:447] INFO 截图成功
+Wed, 06 Jun 2018 11:58:47 imgcut.py[line:449] INFO imgpos_yanzhengma 43:153, 358:538
+Wed, 06 Jun 2018 11:58:47 imgcut.py[line:451] INFO imgpos_yanzhengmaconfirm 118:218, 175:535

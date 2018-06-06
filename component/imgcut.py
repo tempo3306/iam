@@ -10,7 +10,7 @@ import win32con
 import win32api
 import numpy as np
 import time
-from component.staticmethod import OnClick_Shuaxin, OnClick_confirm, Smart_chujia
+from component.staticmethod import OnClick_Shuaxin, OnClick_confirm, Smart_chujia, calculate_usetime
 from component.variable import set_val, get_val
 import logging
 
@@ -507,7 +507,9 @@ def find_yan_confirm():
     w, h = template.shape[::-1]
     res = cv2.matchTemplate(img, template, cv2.TM_CCOEFF_NORMED)
     min_val, max_val, min_loc, max_loc = cv2.minMaxLoc(res)
-    if max_val < 0.9:
+    if max_val > 0.9:
+        set_val('yanzhengma_view', True)
+    else:
         set_val('yanzhengma_view', False)
         set_val('yanzhengma_close', True)
 
