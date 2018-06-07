@@ -145,8 +145,8 @@ class Smart_tijiaoDialog(wx.Dialog):
     def Second_tijiao_time_smart1(self, event):
         one_time2_smart1 = get_val('one_time2_smart1')
         tem = self.second_tijiao_time_smart1.GetValue()
-        templist = [40 + i * 0.1 for i in range(200)]
-        if tem in templist:
+        timelist = get_val('timelist')
+        if int(tem * 10) in timelist:
             one_time2_smart1 = tem
             set_val('one_time2_smart1', float(tem))
             set_val('one_realtime2_smart1', gettime(one_time2_smart1))  # 计算得到的时间戳
@@ -168,10 +168,9 @@ class Smart_tijiaoDialog(wx.Dialog):
 
     def Second_tijiaoyanchi_time_smart1(self, event):
         one_delay_smart1 = get_val('one_delay_smart1')
-        templist = ['0.%d' % i for i in range(11)]  # 符点数运算BUG
-        templist.append('1.0')
         tem = str(self.second_tijiaoyanchi_time_smart1.GetValue())
-        if tem in templist:
+        yanchilist = get_val('yanchilist')
+        if int(tem * 10) in yanchilist:
             set_val('one_delay_smart1', float(tem))
             self.update_strategy()
         else:
@@ -180,8 +179,8 @@ class Smart_tijiaoDialog(wx.Dialog):
     def Second_tijiao_time_smart2(self, event):
         one_time2_smart2 = get_val('one_time2_smart2')
         tem = self.second_tijiao_time_smart2.GetValue()
-        templist = [40 + i * 0.1 for i in range(200)]
-        if tem in templist:
+        timelist = get_val('timelist')
+        if int(tem * 10) in timelist:
             one_time2_smart2 = tem
             set_val('one_time2_smart2', float(tem))
             set_val('one_realtime2_smart2', gettime(one_time2_smart2))  # 计算得到的时间戳
@@ -204,10 +203,9 @@ class Smart_tijiaoDialog(wx.Dialog):
 
     def Second_tijiaoyanchi_time_smart2(self, event):
         one_delay_smart2 = get_val('one_delay_smart2')
-        templist = ['0.%d' % i for i in range(11)]  # 符点数运算BUG
-        templist.append('1.0')
         tem = str(self.second_tijiaoyanchi_time_smart2.GetValue())
-        if tem in templist:
+        yanchilist = get_val('yanchilist')
+        if int(tem * 10) in yanchilist:
             set_val('one_delay_smart2', float(tem))
             self.update_strategy()
         else:
@@ -216,8 +214,8 @@ class Smart_tijiaoDialog(wx.Dialog):
     def Second_tijiao_time_smart3(self, event):
         one_time2_smart3 = get_val('one_time2_smart3')
         tem = self.second_tijiao_time_smart3.GetValue()
-        templist = [40 + i * 0.1 for i in range(200)]
-        if tem in templist:
+        timelist = get_val('timelist')
+        if int(tem * 10) in timelist:
             one_time2_smart3 = tem
             set_val('one_time2_smart3', float(tem))
             set_val('one_realtime2_smart3', gettime(one_time2_smart3))  # 计算得到的时间戳
@@ -239,10 +237,9 @@ class Smart_tijiaoDialog(wx.Dialog):
 
     def Second_tijiaoyanchi_time_smart3(self, event):
         one_delay_smart3 = get_val('one_delay_smart3')
-        templist = ['0.%d' % i for i in range(11)]  # 符点数运算BUG
-        templist.append('1.0')
         tem = str(self.second_tijiaoyanchi_time_smart3.GetValue())
-        if tem in templist:
+        yanchilist = get_val('yanchilist')
+        if int(tem * 10) in yanchilist:
             set_val('one_delay_smart3', float(tem))
             self.update_strategy()
         else:
@@ -251,8 +248,8 @@ class Smart_tijiaoDialog(wx.Dialog):
     def Second_tijiao_time_smart(self, event):
         one_time2_smart = get_val('one_time2_smart')
         tem = self.second_tijiao_time_smart.GetValue()
-        templist = [53 + i * 0.1 for i in range(51)]
-        if tem in templist:
+        timelist = get_val('timelist')
+        if int(tem * 10) in timelist:
             one_time2_smart = tem
             set_val('one_time2_smart', float(tem))
             set_val('one_realtime2_smart', gettime(one_time2_smart))  # 计算得到的时间戳

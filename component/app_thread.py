@@ -8,7 +8,7 @@ from wx.lib.pubsub import pub
 import threading, time
 from threading import Thread
 import sys, os
-from component.imgcut import cut_img, findconfirm, findrefresh, findpos, Price_read, find_yan_confirm
+from component.imgcut import cut_img, findconfirm, findrefresh, findpos, Price_read
 from component.login import ConfirmUser, Keeplogin, ConfirmCode
 from component.staticmethod import OnClick_chujia, OnClick_Tijiao, calculate_usetime
 from component.staticmethod import Smart_ajust_chujia
@@ -185,73 +185,76 @@ class cutimgThread(Thread):
 ###################截图
                 a = time.time()
                 cut_img()
-                # b = time.time()
-                # print('b-a=', b-a)
-##################查找确认
-                tijiao_num = get_val('tijiao_num')
-                twice = get_val('twice')
-                # print('tijiao_num', tijiao_num)
-                smartprice_chujia = get_val('smartprice_chujia')
-                if tijiao_num == 2 and twice:
-                    try:
-                        findconfirm()
-                    except:
-                        logger.error("查找确认出错")
-                        logger.exception('this is an exception message')
-                elif smartprice_chujia:
-                    try:
-                        findconfirm()
-                    except:
-                        logger.error("智能补枪失败")
-                        logger.exception('this is an exception message')
-                # c = time.time()
-                # print('c-b', c-b)
-###################查找刷新
-                try:
-                    findrefresh()
-                except:
-                    logger.error("刷新失败")
-                    logger.exception('this is an exception message')
-                # d = time.time()
-                # print('d-c', d-c)
-
-###################lowestprice
-                lowest_price = get_val('lowest_price')
-                pricelist = get_val('pricelist')
-                a_time = get_val('a_time')
-                try:
-                    a = time.time()
-                    str_price = Price_read()
-                    b = time.time()
-                    if len(str_price) == 5:  ##防止前面有0
-                        price = int(str_price)  # 获取当前最低价
-                        # print('price=', price)
-                        if price in pricelist:  # 字典查找
-                            set_val('findpos_on', False)
-                            if lowest_price == price:
-                                trans_time()  # 保存价格
-                            else:
-                                set_val('lowest_price', price)
-                                trans_time()  # 保存价格
-                                set_val('changetime', a_time)
-                        else:
-                            set_val('findpos_on', True)
-                    else:
-                        set_val('findpos_on', True)
-
-                except:
-                    # print("识别价格失败")
-                    set_val('findpos_on', True)
-                    logger.error("识别价格失败")
-                    logger.exception('this is an exception message')
-                # e = time.time()
-                # print('e-d', e-d)
+                self.find_confirm()
+                self.find_refresh()
+                self.read_lowest_price()
             except:
                 logger.error("截图失败")
                 logger.exception('this is an exception message')
 
+    # @calculate_usetime
+    def find_confirm(self):
+##################查找确认
+        tijiao_num = get_val('tijiao_num')
+        twice = get_val('twice')
+        # print('tijiao_num', tijiao_num)
+        smartprice_chujia = get_val('smartprice_chujia')
+        if tijiao_num == 2 and twice:
+            try:
+                findconfirm()
+            except:
+                logger.error("查找确认出错")
+                logger.exception('this is an exception message')
+        elif smartprice_chujia:
+            try:
+                findconfirm()
+            except:
+                logger.error("智能补枪失败")
+                logger.exception('this is an exception message')
+        # c = time.time()
+        # print('c-b', c-b)
 
+    ###################查找刷新
+    # @calculate_usetime
+    def find_refresh(self):
+        try:
+            findrefresh()
+        except:
+            logger.error("刷新失败")
+            logger.exception('this is an exception message')
+        # d = time.time()
+        # print('d-c', d-c)
 
+    ###################lowestprice
+    # @calculate_usetime
+    def read_lowest_price(self):
+        lowest_price = get_val('lowest_price')
+        pricelist = get_val('pricelist')
+        a_time = get_val('a_time')
+        try:
+            str_price = Price_read()
+            if len(str_price) == 5:  ##防止前面
+                # 0
+                price = int(str_price)  # 获取当前最低价
+                # print('price=', price)
+                if price in pricelist:  # 字典查找
+                    set_val('findpos_on', False)
+                    if lowest_price == price:
+                        trans_time()  # 保存价格
+                    else:
+                        set_val('lowest_price', price)
+                        trans_time()  # 保存价格
+                        set_val('changetime', a_time)
+                else:
+                    set_val('findpos_on', True)
+            else:
+                set_val('findpos_on', True)
+
+        except:
+            # print("识别价格失败")
+            set_val('findpos_on', True)
+            logger.error("识别价格失败")
+            logger.exception('this is an exception message')
 
     def pause(self):
         self.__flag.clear()  # 设置为False, 让线程阻塞
@@ -712,9 +715,6 @@ class TimeThread(Thread):
                     set_val("final_stage", True)
                 else:
                     set_val("final_stage", False)
-                ##计数，保证间隔
-                yanzhengma_count = get_val('yanzhengma_count')
-                set_val('yanzhengma_count', 1 + yanzhengma_count)
             except:
                 logger.exception("error message")
 

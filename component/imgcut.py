@@ -258,7 +258,6 @@ def timeset( imgpos_currenttime, maindata):
 
 
 
-
 def grab_screen(region=None, title=None):
     hwin = win32gui.GetDesktopWindow()
     if region:
@@ -404,6 +403,20 @@ def findpos():
 
 
 
+def new_screenshot(area):
+    hwin = win32gui.GetDesktopWindow()
+    width = win32api.GetSystemMetrics(win32con.SM_CXVIRTUALSCREEN)
+    height = win32api.GetSystemMetrics(win32con.SM_CYVIRTUALSCREEN)
+    left = win32api.GetSystemMetrics(win32con.SM_XVIRTUALSCREEN)
+    top = win32api.GetSystemMetrics(win32con.SM_YVIRTUALSCREEN)
+    hwindc = win32gui.GetWindowDC(hwin)
+    srcdc = win32ui.CreateDCFromHandle(hwindc)
+    memdc = srcdc.CreateCompatibleDC()
+    bmp = win32ui.CreateBitmap()
+    bmp.CreateCompatibleBitmap(srcdc, width, height)
+    memdc.SelectObject(bmp)
+    memdc.BitBlt((0, 0), (width, height), srcdc, (left, top), win32con.SRCCOPY)
+    bmp.SaveBitmapFile(memdc, 'screenshot.bmp')
 
 
 
@@ -431,7 +444,7 @@ def only_screenshot(area):  # x,y  pos      w,h size
     b = time.time()
     return img
 
-
+# @calculate_usetime
 def cut_img():  # 将所得的img 处理成  lowestprice_img   confirm_img  yanzhengma_confirm_img  refresh_img
     use_area = get_val('use_area')
     sc_area = get_val('sc_area')
@@ -444,13 +457,6 @@ def cut_img():  # 将所得的img 处理成  lowestprice_img   confirm_img  yanz
         set_val('imgpos_yanzhengma', img[use_area[3][1]:use_area[3][3], use_area[3][0]:use_area[3][2]])  # ok
         set_val('imgpos_yanzhengmaconfirm', img[use_area[4][1]:use_area[4][3], use_area[4][0]:use_area[4][2]])  # ok
         set_val('imgpos_currenttime', img[use_area[5][1]:use_area[5][3], use_area[5][0]:use_area[5][2]])
-        logger.info("截图成功")
-        logger.info("imgpos_yanzhengma {0}:{1}, {2}:{3}".format(
-            use_area[3][1], use_area[3][3], use_area[3][0], use_area[3][2]))
-        logger.info("imgpos_yanzhengmaconfirm {0}:{1}, {2}:{3}".format(
-            use_area[4][1], use_area[4][3], use_area[4][0], use_area[4][2]))
-        imgpos_yanzhengma = get_val('imgpos_yanzhengma')
-        cv2.imwrite('yan.png', imgpos_yanzhengma)
     except:
         logger.error("cut_img 这里出错")
         logger.exception('this is an exception message')
@@ -465,7 +471,6 @@ def findrefresh():
     w, h = template.shape[::-1]
     res = cv2.matchTemplate(img, template, cv2.TM_CCOEFF_NORMED)
     min_val, max_val, min_loc, max_loc = cv2.minMaxLoc(res)
-    yanzhengma_find = get_val('yanzhengma_find')
 
     # print(max_val)
 
@@ -473,7 +478,6 @@ def findrefresh():
         print("refresh")
         OnClick_Shuaxin()  # 刷新验证码
         set_val('yanzhengma_view', True)  # 激活放大器
-        set_val('yanzhengma_count', 0)  # 归零
         set_val('yanzhengma_find', False)  # 表示需要确认是否找到验证码
     else:
         set_val('yanzhengma_find', True)
@@ -499,24 +503,29 @@ def findconfirm():
 
 
 def find_yan_confirm():
-    dick_target = get_val('dick_target')
-    template = dick_target[1]
-    imgpos_yanzhengmaconfirm = get_val('imgpos_yanzhengmaconfirm')
-    sc = imgpos_yanzhengmaconfirm
-    img = cv2.cvtColor(sc, cv2.COLOR_BGR2GRAY)  # 转灰度图
-    w, h = template.shape[::-1]
-    res = cv2.matchTemplate(img, template, cv2.TM_CCOEFF_NORMED)
-    min_val, max_val, min_loc, max_loc = cv2.minMaxLoc(res)
-    if max_val > 0.9:
-        set_val('yanzhengma_view', True)
-    else:
-        set_val('yanzhengma_view', False)
-        set_val('yanzhengma_close', True)
+    try:
+        dick_target = get_val('dick_target')
+        template = dick_target[1]
+        imgpos_yanzhengmaconfirm = get_val('imgpos_yanzhengmaconfirm')
+        sc = imgpos_yanzhengmaconfirm
+        img = cv2.cvtColor(sc, cv2.COLOR_BGR2GRAY)  # 转灰度图
+        w, h = template.shape[::-1]
+        res = cv2.matchTemplate(img, template, cv2.TM_CCOEFF_NORMED)
+        min_val, max_val, min_loc, max_loc = cv2.minMaxLoc(res)
+        yanzhengma_control = get_val('yanzhengma_control')
+        if max_val > 0.9 and yanzhengma_control:
+            set_val('yanzhengma_view', True)
+        elif max_val <= 0.9:
+            set_val('yanzhengma_view', False)
+            set_val('yanzhengma_close', True)
+            set_val('yanzhengma_control', True)
+    except:
+        logger.exception("error message")
 
-
+# @calculate_usetime
 def Price_read():
     imgpos_lowestprice = get_val('imgpos_lowestprice')
-    #
+
     # avt = get_val('avt')
     # avt += 1
     # if avt == 500 or avt == 501:

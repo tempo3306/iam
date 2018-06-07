@@ -4,6 +4,7 @@
 @contact: 810909753@q.com
 @time: 2018/1/22 13:58
 '''
+
 from component.staticmethod import *
 from component.OperationFrame import OperationPanel
 import wx.html2 as webview
@@ -267,7 +268,6 @@ class CurrentStatusPanel(wx.Panel):
         yanzhengma_view = get_val('yanzhengma_view')
         final_stage = get_val('final_stage')  ##判断是不是11点之后
 
-
         if findpos_on or yanzhengma_view or not final_stage: ##final_stage 是否处于修改出价阶段
             if self.parent.IsShown():
                 self.parent.Show(False)
@@ -459,230 +459,25 @@ class WebFrame(wx.Frame):
             self.bottomstatusbarpanel.Modify()
             self.currentstatusframe.currentstatuspanel.Modify()
 
-        ##------------------------------
-        ###判定验证码放大框
-            ###########
-            ##查找验证码确认
-            # yanzhengma_close = get_val('yanzhengma_close')
-            # yanzhengma_view = get_val('yanzhengma_view')
-            # if not yanzhengma_close:  #发现confirm就打开yanzhengmaview
-            #     find_yan_confirm()
-            find_yan_confirm()
-            # f = time.time()
-            # print('f-e', f-e)
-
-            yanzhengma_scale = get_dick('yanzhengma_scale')
-            if yanzhengma_scale:
-                yanzhengma_move = get_val('yanzhengma_move')
-                Pos_yanzhengmaframe = get_val('Pos_yanzhengmaframe')
-                # if yanzhengma_move:
-                #     yan = self.yanzhengmaframe
-                #     if yan:
-                #         try:
-                #             yan.Move(Pos_yanzhengmaframe)  # 移动到新位置
-                #             set_val('yanzhengma_move', False)  # 无需动作
-                #         except:
-                #             logger.exception('this is an exception message')
-
-                yanzhengma_count = get_val("yanzhengma_count")
-                yanzhengma_close = get_val("yanzhengma_close")
-
-                yanzhengma_close = get_val("yanzhengma_close")
-
-                if yanzhengma_close:
-                    try:
-                        if self.yanzhengmaframe.IsShown():
-                            self.yanzhengmaframe.Show(False)
-                            self.currentstatusframe.Show(True)
-                    except:
-                        logger.exception('this is an exception message')
-
-                yanzhengma_view = get_val('yanzhengma_view')
-                imgpos_yanzhengma = get_val('imgpos_yanzhengma')
-                Yanzhengmasize = get_val('Yanzhengmasize')
-                #验证码放大是否需要刷新
-                if yanzhengma_view:
-                    set_val('yanzhengma_close', False)
-                    path = get_val('path')
-                    yanpath = path + "\\yanzhengma.png"
-                    cut_pic(imgpos_yanzhengma, Yanzhengmasize, yanpath)  # 直接调用得到 png 保存图片
-                    try:
-                        yanpath = get_val('yanpath')
-                        yan = self.yanzhengmaframe
-                        yan.Show()
-                        yan.ShowImage(yanpath)
-                        self.currentstatusframe.Show(False)
-                    except:  # 找不到的情况下也要重新创建
-                        logger.exception('this is an exception message')
-
-                    finally:
-                        pass
-            ##------------------------------
-
-            # 根据当前句柄判断是否需要激活快捷键
-            hwnd = win32gui.GetForegroundWindow()
-            currenthwnd = self.Handle
-            hotkey_on = get_val('hotkey_on')
-            yanhwnd = self.yanzhengmaframe.Handle
-            statushwnd = self.currentstatusframe.Handle
-            if hwnd == currenthwnd or hwnd == yanhwnd or hwnd == statushwnd:
-                if not hotkey_on:
-                    self.hotkey_open(event)
-            elif hotkey_on and hwnd != currenthwnd or hwnd != yanhwnd or hwnd != statushwnd:
-                self.hotkey_close(event)
-
+            self.Yanzhengma_scale() #判定验证码放大
+            self.hotkey_control()  #热键激活与否
         else:
+            print("fffff")
             self.currentstatusframe.Show(False)
             self.yanzhengmaframe.Show(False)
 
-
-
-    def hotkey_open2(self):
-        ###热键控制
-        hotkey_on = get_val('hotkey_on')
-        if not hotkey_on:
-            set_val('hotkey_on', True)
-            print("获得焦点")
-            Hotkey_open()
-
-    def hotkey_open(self, event):
-        ###热键控制
-        hotkey_on = get_val('hotkey_on')
-        if not hotkey_on:
-            set_val('hotkey_on', True)
-            print("获得焦点")
-            Hotkey_open()
-
-    def hotkey_close(self, event):
-        hwnd = win32gui.GetForegroundWindow()
-        currenthwnd = self.Handle
-        hotkey_on = get_val('hotkey_on')
-        if hotkey_on:
-            print("失去焦点")
-            set_val('hotkey_on', False)
-            Hotkey_close()
-
-
-    def OnClose(self, event):
-        set_val('web_on', False)
-        set_val('view_time', False)
-        set_val('moni_on', False)
-        set_val('guopai_on', False)
-        self.yanzhengmaframe.Show(False)
-        self.currentstatusframe.Show(False)
-        event.Skip()
-        id = get_val('topframe')
-        topframe = wx.FindWindowById(id)
-        topframe.Show(True)
-
-
-## moni  51    国拍52
-'''
-class WebFrame(wx.Frame):
-    def __init__(self, px, py, id, name, tablabel, moni):  # name:窗口显示名称
-        websize = get_val('websize')
-
-        wx.Frame.__init__(self, None, id, name, size=(websize[0], websize[1]), pos=[px, py - 10],
-                          style=wx.CAPTION | wx.CLOSE_BOX)
-        ##LOGO
-        mainicon = get_val('mainicon')
-        self.icon = wx.Icon(mainicon, wx.BITMAP_TYPE_ICO)
-        self.SetIcon(self.icon)
-
-        ##状态栏
-        # self.createStatusBar()
-
-        guopai_dianxin = get_val('guopai_dianxin')
-        if guopai_dianxin:
-            webstatus_label = get_val('dianxin_webstatus_label')
-        else:
-            webstatus_label = get_val('nodianxin_webstatus_label')
-        self.Bind(wx.EVT_CLOSE, self.OnClose)
-        self.htmlpanel = HtmlPanel(self, False)
-        self.buttonpanel = ButtonPanel(self, webstatus_label, False)
-        self.buttonpanel = ButtonPanel(self, webstatus_label, False)
-        self.operationpanel = OperationPanel(self, tablabel)
-        # pub.subscribe(self.Close2, "close guopai")  # 打开非电信
-        self.bottomstatusbarpanel = BottomeStatusbarPanel(self, False)
-        self.currentstatusframe = CurrentStatusFrame(self)
-        self.currentstatusframe.Show(False)
-        # self.currentstatuspanel = CurrentStatusPanel(self)
-        Yanzhengmasize = get_val('Yanzhengmasize')
-        self.yanzhengmaframe = YanzhengmaFrame(self, Yanzhengmasize)
-
-        self.hotkey_open2()
-
-
-        self.Bind(wx.EVT_MOVE, self.childmove)
-
-        self.timer1 = wx.Timer(self)
-        self.Bind(wx.EVT_TIMER, self.Price_view, self.timer1)  # 绑定一个定时器事件，主判断
-        self.timer1.Start(35)  # 设定时间间隔
-
-        pub.subscribe(self.refresh_web, 'guopai refresh_web')  # 刷新页面
-
-
-    def childmove(self, event):
-        x, y = self.Position
-        x0, y0 = get_val('CurrentStatusFramePos')
-        self.currentstatusframe.Move(x+x0, y+y0)
-        x1, y1 = get_val('YanzhengmaFramePos')
-        try:
-            self.yanzhengmaframe.Move(x+x1, y+y1)  # 移动到新位置
-        except:
-            logger.exception('this is an exception message')
-
-        #位置重新计算
-        Px, Py = self.Position
-        import time
-        a = time.time()
-        init_pos(Px, Py)
-        b = time.time()
-        print('b-a', b-a)
-
-    def refresh_web(self):
-        self.htmlpanel.webview.Reload()
-        strategy_type = get_dick("strategy_type")
-        if strategy_type == 0:
-            init_strategy()
-        elif strategy_type == 1:
-            init_strategy()
-
-
-    def Price_view(self, event):
-        guopai_on = get_val('guopai_on')
-        if guopai_on and self.IsShown() and not self.IsIconized() :
-            ###子面板刷新
-            self.buttonpanel.Modify()
-            self.bottomstatusbarpanel.Modify()
-            self.currentstatusframe.currentstatuspanel.Modify()
-
-            ###判定验证码放大框
-            Pos_yanzhengmaframe = get_val('Pos_yanzhengmaframe')
-            x, y = self.Position
-            Pricesize = get_val('Pricesize')
-            yanzhengma_move = get_val('yanzhengma_move')
-            Pos_price = get_val('Pos_price')
-            Pos_yanzhengmaframe = get_val('Pos_yanzhengmaframe')
-            if yanzhengma_move:
-                yan = self.yanzhengmaframe
-                if yan:
-                    try:
-                        yan.Move(Pos_yanzhengmaframe)  # 移动到新位置
-                        set_val('yanzhengma_move', False)  # 无需动作
-                    except:
-                        logger.exception('this is an exception message')
-
-            yanzhengma_count = get_val("yanzhengma_count")
+    def Yanzhengma_scale(self):
+        ##------------------------------
+        ###判定验证码放大框
+        find_yan_confirm()
+        yanzhengma_scale = get_dick('yanzhengma_scale')
+        if yanzhengma_scale:
             yanzhengma_close = get_val("yanzhengma_close")
-
-            if yanzhengma_count >= 5 and not yanzhengma_close:  # 0.5秒之后没有确认触发关闭验证码
-                find_yan_confirm()
-            yanzhengma_close = get_val("yanzhengma_close")
-
             if yanzhengma_close:
                 try:
-                    self.yanzhengmaframe.Show(False)
+                    if self.yanzhengmaframe.IsShown():
+                        self.yanzhengmaframe.Show(False)
+                        self.currentstatusframe.Show(True)
                 except:
                     logger.exception('this is an exception message')
 
@@ -700,42 +495,26 @@ class WebFrame(wx.Frame):
                     yan = self.yanzhengmaframe
                     yan.Show()
                     yan.ShowImage(yanpath)
+                    print("fdsfsfsf")
+                    self.currentstatusframe.Show(False)
                 except:  # 找不到的情况下也要重新创建
                     logger.exception('this is an exception message')
 
                 finally:
                     pass
 
-            hwnd = win32gui.GetForegroundWindow()
-            currenthwnd = self.Handle
-            hotkey_on = get_val('hotkey_on')
-            yanhwnd = self.yanzhengmaframe.Handle
-            statushwnd = self.currentstatusframe.Handle
-            if hwnd == currenthwnd or hwnd == yanhwnd or hwnd == statushwnd:
-                if not hotkey_on:
-                    self.hotkey_open(event)
-            elif hotkey_on and hwnd != currenthwnd or hwnd != yanhwnd or hwnd != statushwnd:
-                self.hotkey_close(event)
-        else:
-            self.currentstatusframe.Show(False)
-            self.yanzhengmaframe.Show(False)
-
-    def hotkey_open(self, event):
-        ###热键控制
-        hotkey_on = get_val('hotkey_on')
-        if not hotkey_on:
-            set_val('hotkey_on', True)
-            print("获得焦点")
-            Hotkey_open()
-
-    def hotkey_close(self, event):
+    def hotkey_control(self):
+        # 根据当前句柄判断是否需要激活快捷键
         hwnd = win32gui.GetForegroundWindow()
         currenthwnd = self.Handle
         hotkey_on = get_val('hotkey_on')
-        if hotkey_on:
-            print("失去焦点")
-            set_val('hotkey_on', False)
-            Hotkey_close()
+        yanhwnd = self.yanzhengmaframe.Handle
+        statushwnd = self.currentstatusframe.Handle
+        if hwnd == currenthwnd or hwnd == yanhwnd or hwnd == statushwnd:
+            if not hotkey_on:
+                self.hotkey_open()
+        elif hotkey_on and hwnd != currenthwnd or hwnd != yanhwnd or hwnd != statushwnd:
+            self.hotkey_close()
 
     def hotkey_open2(self):
         ###热键控制
@@ -745,10 +524,23 @@ class WebFrame(wx.Frame):
             print("获得焦点")
             Hotkey_open()
 
+    def hotkey_open(self):
+        ###热键控制
+        hotkey_on = get_val('hotkey_on')
+        if not hotkey_on:
+            set_val('hotkey_on', True)
+            print("获得焦点")
+            Hotkey_open()
 
-    def createStatusBar(self):
-        self.statusbar = IcStatusBar(self)
-        self.SetStatusBar(self.statusbar)
+    def hotkey_close(self):
+        hwnd = win32gui.GetForegroundWindow()
+        currenthwnd = self.Handle
+        hotkey_on = get_val('hotkey_on')
+        if hotkey_on:
+            print("失去焦点")
+            set_val('hotkey_on', False)
+            Hotkey_close()
+
 
     def OnClose(self, event):
         set_val('web_on', False)
@@ -761,40 +553,4 @@ class WebFrame(wx.Frame):
         id = get_val('topframe')
         topframe = wx.FindWindowById(id)
         topframe.Show(True)
-        # print("关闭web")
-        # guopai_on = get_val('guopai_on')
-        # current_moni = get_val('current_moni')
-        # moni_on = get_val('moni_on')
-        #
-        # print(guopai_on, 'guopai_on')
-        # print(current_moni, 'current_moni')
-        # print(moni_on, 'moni_on')
-        # if current_moni:
-        #     set_val('web_on', False)
-        #     set_val('view_time', False)
-        #     set_val('moni_on', False)
-        #     set_val('guopai_on', False)
-        #     print("ssssssdfsf")
-        #     topframe = wx.FindWindowById(1)
-        #     topframe.Show(True)
-        #     Close()
-        #     self.Destroy()
-        #     event.Skip()  # 绑在同一事件上的两个函数，如果 没有这个，就只执行后绑定的。
-        # else:
-        #     dlg = wx.MessageDialog(None, "确认要关闭国拍吗?",
-        #                            '关闭国拍页面',
-        #                            wx.YES_NO | wx.ICON_WARNING | wx.STAY_ON_TOP)
-        #     ret = dlg.ShowModal()
-        #     if ret == wx.ID_YES:
-        #         set_val('web_on', False)
-        #         set_val('view_time', False)
-        #         set_val('moni_on', False)
-        #         set_val('guopai_on', False)
-        #         print("ssssssdfsf")
-        #         topframe = wx.FindWindowById(1)
-        #         topframe.Show(True)
-        #         Close()
-        #         dlg.Destroy()
-        #         self.Destroy()
-        #         event.Skip()  # 绑在同一事件上的两个函数，如果 没有这个，就只执行后绑定的。
-'''
+

@@ -20,20 +20,14 @@ logger = logging.getLogger()
 
 
 def calculate_usetime(func):
-    def wrap(*args):
-        a = time.time()
-        func(*args)
-        b = time.time()
-        print("run the func use : ", b-a)
-    return wrap
-
-def cal_time(func):
     def wrapper(*args, **kw):
         local_time = time.time()
         func(*args, **kw)
-        print('current Function [%s] run time is %.2f' % (func.__name__, time.time() - local_time))
+        print('current Function [%s] run time is %.5f' % (func.__name__, time.time() - local_time))
 
     return wrapper
+
+
 
 
 def Click(x, y):  # 鼠标点击
@@ -480,10 +474,12 @@ def tijiao_ok():
         set_val('tijiao_OK', True)
         set_val('yanzhengma_view', False)
         set_val('yanzhengma_close', True)
+        set_val('yanzhengma_control', False)
     elif not enter_on and smartprice_chujia:
         set_val('tijiao_OK', True)
         set_val('yanzhengma_view', False)
         set_val('yanzhengma_close', True)
+        set_val('yanzhengma_control', False)
 
 
 def tijiao_ok2():
@@ -494,10 +490,13 @@ def tijiao_ok2():
         set_val('tijiao_OK', True)
         set_val('yanzhengma_close', True)
         set_val('yanzhengma_view', False)
+        set_val('yanzhengma_control', False)
     elif enter_on and smartprice_chujia:
         set_val('tijiao_OK', True)
         set_val('yanzhengma_view', False)
         set_val('yanzhengma_close', True)
+        set_val('yanzhengma_control', False)
+
 
 
 

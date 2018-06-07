@@ -834,8 +834,8 @@ class StatusPanel(wx.Panel):
     def Jiajia_time(self, event):
         one_time1 = get_val('one_time1')
         tem = self.second_jiajia_time.GetValue()
-        templist = [40 + i * 0.1 for i in range(151)]
-        if tem in templist:
+        timelist = get_val('timelist')
+        if int(tem * 10) in timelist:
             one_time1 = tem
             set_val('one_time1', float(one_time1))
             set_val('one_real_time1', gettime(one_time1))  # 计算得到的时间戳
@@ -846,8 +846,8 @@ class StatusPanel(wx.Panel):
     def Jiajia_time2(self, event):
         second_time1 = get_val('second_time1')
         tem = self.third_jiajia_time.GetValue()
-        templist = [400 + i * 1 for i in range(191)]
-        if int(tem * 10) in templist:
+        timelist = get_val('timelist')
+        if int(tem * 10) in timelist:
             second_time1 = tem
             set_val('second_time1', float(tem))
             set_val('second_real_time1', gettime(second_time1))  # 计算得到的时间戳
@@ -857,9 +857,9 @@ class StatusPanel(wx.Panel):
 
     def Jiajia_price(self, event):
         one_diff = get_val('one_diff')
-        templist = [300 + i * 100 for i in range(13)]
         tem = int(self.second_jiajia_price.GetValue())
-        if tem in templist:
+        pricelist = get_val('pricelist')
+        if tem in pricelist:
             set_val('one_diff', int(tem))
             self.update_strategy()
         else:
@@ -867,9 +867,9 @@ class StatusPanel(wx.Panel):
 
     def Jiajia_price2(self, event):
         second_diff = get_val('second_diff')
-        templist = [300 + i * 100 for i in range(13)]
         tem = int(self.third_jiajia_price.GetValue())
-        if tem in templist:
+        pricelist = get_val('pricelist')
+        if tem in pricelist:
             set_val('second_diff', int(tem))
             self.update_strategy()
         else:
@@ -901,9 +901,9 @@ class StatusPanel(wx.Panel):
 
     def Yanchi_time(self, event):
         one_delay = get_val('one_delay')
-        templist = ['%.1f' %(float(i/10)) for i in range(0, 20)]
-        tem = str(self.second_tijiaoyanchi_time.GetValue())
-        if tem in templist:
+        tem = self.second_tijiaoyanchi_time.GetValue()
+        yanchilist = get_val('yanchilist')
+        if int(tem * 10) in yanchilist:
             set_val('one_delay', float(tem))
             self.update_strategy()
         else:
@@ -911,9 +911,9 @@ class StatusPanel(wx.Panel):
 
     def Yanchi_time2(self, event):
         second_delay = get_val('second_delay')
-        templist = ['%.1f' %(float(i/10)) for i in range(0, 20)]
-        tem = str(self.third_tijiaoyanchi_time.GetValue())
-        if tem in templist:
+        tem = self.third_tijiaoyanchi_time.GetValue()
+        yanchilist = get_val('yanchilist')
+        if int(tem * 10) in yanchilist:
             set_val('second_delay', float(tem))
             self.update_strategy()
         else:
@@ -922,8 +922,8 @@ class StatusPanel(wx.Panel):
     def Tijiao_time(self, event):
         one_time2 = get_val('one_time2')
         tem = self.second_tijiao_time.GetValue()
-        templist = [400 + i * 1 for i in range(191)]
-        if int(tem * 10) in templist:
+        timelist = get_val('timelist')
+        if int(tem * 10) in timelist:
             one_time2 = tem
             set_val('one_time2', float(one_time2))
             set_val('one_real_time2', gettime(one_time2))  # 计算得到的时间戳
@@ -934,8 +934,8 @@ class StatusPanel(wx.Panel):
     def Tijiao_time2(self, event):
         second_time2 = get_val('second_time2')
         tem = self.third_tijiao_time.GetValue()
-        templist = [53 + i * 0.1 for i in range(51)]
-        if tem in templist:
+        timelist = get_val('timelist')
+        if int(tem * 10) in timelist:
             second_time2 = tem
             set_val('second_time2', float(tem))
             set_val('second_real_time2', gettime(second_time2))  # 计算得到的时间戳
@@ -965,8 +965,8 @@ class StatusPanel(wx.Panel):
     def Smart_Jiajia_time(self, event):
         one_time1 = get_val('one_time1')
         tem = self.secondsmart_jiajia_time.GetValue()
-        templist = [40 + i * 0.1 for i in range(151)]
-        if tem in templist:
+        timelist = get_val('timelist')
+        if int(tem * 10) in timelist:
             one_time1 = tem
             set_val('one_time1', float(one_time1))
             set_val('one_real_time1', gettime(one_time1))  # 计算得到的时间戳
@@ -977,10 +977,10 @@ class StatusPanel(wx.Panel):
     def Smart_Jiajia_time2(self, event):
         second_time1 = get_val('second_time1')
         tem = self.thirdsmart_jiajia_time.GetValue()
-        templist = [400 + i * 1 for i in range(191)]
-        if int(tem * 10) in templist:
+        timelist = get_val('timelist')
+        if int(tem * 10) in timelist:
             second_time1 = tem
-            set_val('second_time1', float(tem))
+            set_val('second_time1', float(second_time1))
             set_val('second_real_time1', gettime(second_time1))  # 计算得到的时间戳
             self.update_strategy()
         else:
@@ -988,27 +988,25 @@ class StatusPanel(wx.Panel):
 
     def Smart_Jiajia_price(self, event):
         one_diff = get_val('one_diff')
-        templist = [300 + i * 100 for i in range(13)]
         tem = int(self.secondsmart_jiajia_price.GetValue())
-        if tem in templist:
-            set_val('one_diff', int(tem))
+        pricelist = get_val('pricelist')
+        if tem in pricelist:
+            set_val('one_diff', tem)
             self.update_strategy()
         else:
             self.secondsmart_jiajia_price.SetValue(one_diff)
 
     def Smart_Jiajia_price2(self, event):
         second_diff = get_val('second_diff')
-        templist = [300 + i * 100 for i in range(13)]
         tem = int(self.thirdsmart_jiajia_price.GetValue())
-        if tem in templist:
-            set_val('second_diff', int(tem))
+        pricelist = get_val('pricelist')
+        if tem in pricelist:
+            set_val('second_diff', tem)
             self.update_strategy()
         else:
             self.thirdsmart_jiajia_price.SetValue(second_diff)
 
-   
     # ----------------------------------------------------------
-
     ##智能补枪
     def Smart_autoprice(self, event):
         if self.buqiang_checkbox.IsChecked():

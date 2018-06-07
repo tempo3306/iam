@@ -240,6 +240,10 @@ def init_size():
     Px = get_val('Px')
     set_val('Py', int((Pxy[1] - websize[1]) / 2) - 10)
     Py = get_val('Py')
+
+    ####定一个截图位置
+    # sc_region = (Px, Py, Px +  )
+
     set_val('P_relative',
             [[343, -66], [346, 40], [96, 121], [92, 43], [201, 100], [281, 40], [261, 37], [282, 118]])  # 各按钮相对于WEB位置
     P_relative = get_val('P_relative')
@@ -367,6 +371,7 @@ def init_strategy():
     set_val('price_view', False)  # 显示价格,控制截图
     set_val('yanzhengma_view', False)  # 验证码放大,控制截图+-
     set_val('yanzhengma_close', True)  # 关闭验证码放大窗
+    set_val('yanzhengma_control', True)  # 判定是否需要查找验证码确认
     set_val('yanzhengma_find', True)  # 验证码是否找到 默认True 发现需要查找 之后变为False
     set_val('yanzhengma_move', True)  # 是否需要移动
     set_val('yanzhengma_hash', 0)  # 前一个验证码截图  如果变化就刷新 ，不变化就不动作
@@ -474,6 +479,14 @@ def init_strategy():
     set_val('autotime_on', False)  #是否处理自动时间同步状态
 
 
+    ##调整策略范围
+    timelist = [400 + i * 1 for i in range(191)]
+    yanchilist = [0 + i * 1 for i in range(20)]
+    pricelist = [300 + i * 100 for i in range(13)]
+
+    set_val('timelist', timelist)
+    set_val('yanchilist', yanchilist)
+    set_val('pricelist', pricelist)
 
 def init_account():
     set_val('activate_status', 0)   ##0: 未激活
@@ -683,3 +696,4 @@ def remote_init():
     set_val('bidnumber_js', bidnumber_js)
     set_val('bidpassword_js', bidpassword_js)
     set_val('idcard_js', idcard_js)
+
