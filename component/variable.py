@@ -402,7 +402,7 @@ def init_strategy():
     set_val('delay_time', 0.5)  # 延迟大小设置
     set_val('login_result', False)  # 登录成功与否
     set_val('findpos_on', True)  # 控制是否找位置
-    set_val('pricelist', [80000 + i * 100 for i in range(400)])  # 用于验证识别
+    set_val('lowestpricelist', [80000 + i * 100 for i in range(400)])  # 用于验证识别
     set_val('IDnumber', 0)  # 身份证号
     set_val('account', 0)  # 标书号
     set_val('passwd', 0)  # 密码

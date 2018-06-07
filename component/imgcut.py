@@ -317,6 +317,8 @@ def findpos():
     res2 = cv2.matchTemplate(img, time_template, cv2.TM_CCOEFF_NORMED)
     time_min_val, time_max_val, time_min_loc, time_max_loc = cv2.minMaxLoc(res2)
 
+    print('findpos_on', max_val)
+
     if max_val > 0.75:  # 找不到不动作
         ##计算位置
         set_val('px_lowestprice', max_loc[0] + px_relative)
@@ -535,5 +537,4 @@ def Price_read():
 
     lowest_price_img = cv2.cvtColor(imgpos_lowestprice, cv2.COLOR_BGR2GRAY)
     price = readpic(lowest_price_img, 'maindata.xml')
-    # print(price, 'price=')
     return price

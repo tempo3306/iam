@@ -229,15 +229,14 @@ class cutimgThread(Thread):
     # @calculate_usetime
     def read_lowest_price(self):
         lowest_price = get_val('lowest_price')
-        pricelist = get_val('pricelist')
+        lowestpricelist = get_val('lowestpricelist')
         a_time = get_val('a_time')
         try:
             str_price = Price_read()
             if len(str_price) == 5:  ##防止前面
-                # 0
                 price = int(str_price)  # 获取当前最低价
-                # print('price=', price)
-                if price in pricelist:  # 字典查找
+                print('price=', price)
+                if price in lowestpricelist:  # 字典查找
                     set_val('findpos_on', False)
                     if lowest_price == price:
                         trans_time()  # 保存价格
@@ -884,7 +883,7 @@ class Start_thread(Thread):
 
     def run(self):
         import logging, time
-        version = 4.5
+        version = 4.6
         timenow = time.time()
         # 转换成localtime
         time_local = time.localtime(timenow)

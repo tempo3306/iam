@@ -13,7 +13,7 @@ from component.imgcut import  timeset
 from component.YanzhengmaFrame import YanzhengmaFrame
 from component.imgcut import cut_pic, find_yan_confirm
 
-from component.variable import init_pos, get_val, set_val, get_dick, set_dick
+from component.variable import init_pos, get_val, set_val, get_dick
 import logging
 logger = logging.getLogger()
 
