@@ -14,7 +14,7 @@ class Smart_tijiaoDialog(wx.Dialog):
         # 第一行
         self.second_tijiao_sizer_smart1 = wx.BoxSizer(wx.HORIZONTAL)
         self.second_tijiao_time_smart1 = wx.SpinCtrlDouble(self, -1, "", size=(52, 20))
-        self.second_tijiao_time_smart1.SetRange(50.0, 55.0)
+        self.second_tijiao_time_smart1.SetRange(1.0, 59.0)
         self.second_tijiao_time_smart1.SetValue(52.0)
         self.second_tijiao_time_smart1.SetIncrement(0.1)
         tijiao_choices = get_val('tijiao_choices')
@@ -44,7 +44,7 @@ class Smart_tijiaoDialog(wx.Dialog):
         # 第二行
         self.second_tijiao_sizer_smart2 = wx.BoxSizer(wx.HORIZONTAL)
         self.second_tijiao_time_smart2 = wx.SpinCtrlDouble(self, -1, "", size=(52, 20))
-        self.second_tijiao_time_smart2.SetRange(50.0, 55.0)
+        self.second_tijiao_time_smart2.SetRange(1.0, 59.0)
         self.second_tijiao_time_smart2.SetValue(52.0)
         self.second_tijiao_time_smart2.SetIncrement(0.1)
         tijiao_choices = get_val('tijiao_choices')
@@ -74,7 +74,7 @@ class Smart_tijiaoDialog(wx.Dialog):
         # 第三行
         self.second_tijiao_sizer_smart3 = wx.BoxSizer(wx.HORIZONTAL)
         self.second_tijiao_time_smart3 = wx.SpinCtrlDouble(self, -1, "", size=(52, 20))
-        self.second_tijiao_time_smart3.SetRange(50.0, 55.0)
+        self.second_tijiao_time_smart3.SetRange(1.0, 59.0)
         self.second_tijiao_time_smart3.SetValue(52.0)
         self.second_tijiao_time_smart3.SetIncrement(0.1)
         tijiao_choices = get_val('tijiao_choices')
@@ -105,7 +105,7 @@ class Smart_tijiaoDialog(wx.Dialog):
         ##强制提交时间
         self.second_tijiao_time_sizer = wx.BoxSizer(wx.HORIZONTAL)
         self.second_tijiao_time_smart = wx.SpinCtrlDouble(self, -1, "", size=(52, 20))
-        self.second_tijiao_time_smart.SetRange(50.0, 58.0)
+        self.second_tijiao_time_smart.SetRange(1.0, 59.0)
         self.second_tijiao_time_smart.SetValue(52.0)
         self.second_tijiao_time_smart.SetIncrement(0.1)
         self.second_tijiao_time_smart_label = wx.StaticText(self, label=" 强制提交")
@@ -168,7 +168,7 @@ class Smart_tijiaoDialog(wx.Dialog):
 
     def Second_tijiaoyanchi_time_smart1(self, event):
         one_delay_smart1 = get_val('one_delay_smart1')
-        tem = str(self.second_tijiaoyanchi_time_smart1.GetValue())
+        tem = self.second_tijiaoyanchi_time_smart1.GetValue()
         yanchilist = get_val('yanchilist')
         if int(tem * 10) in yanchilist:
             set_val('one_delay_smart1', float(tem))
@@ -203,7 +203,7 @@ class Smart_tijiaoDialog(wx.Dialog):
 
     def Second_tijiaoyanchi_time_smart2(self, event):
         one_delay_smart2 = get_val('one_delay_smart2')
-        tem = str(self.second_tijiaoyanchi_time_smart2.GetValue())
+        tem = self.second_tijiaoyanchi_time_smart2.GetValue()
         yanchilist = get_val('yanchilist')
         if int(tem * 10) in yanchilist:
             set_val('one_delay_smart2', float(tem))
@@ -215,6 +215,8 @@ class Smart_tijiaoDialog(wx.Dialog):
         one_time2_smart3 = get_val('one_time2_smart3')
         tem = self.second_tijiao_time_smart3.GetValue()
         timelist = get_val('timelist')
+        print(tem)
+        print(timelist)
         if int(tem * 10) in timelist:
             one_time2_smart3 = tem
             set_val('one_time2_smart3', float(tem))
@@ -237,7 +239,7 @@ class Smart_tijiaoDialog(wx.Dialog):
 
     def Second_tijiaoyanchi_time_smart3(self, event):
         one_delay_smart3 = get_val('one_delay_smart3')
-        tem = str(self.second_tijiaoyanchi_time_smart3.GetValue())
+        tem = self.second_tijiaoyanchi_time_smart3.GetValue()
         yanchilist = get_val('yanchilist')
         if int(tem * 10) in yanchilist:
             set_val('one_delay_smart3', float(tem))
@@ -264,8 +266,8 @@ class Smart_tijiaoDialog(wx.Dialog):
         if strategy_type == '2':
             advance_list = [100, 200, 300, 0]
             templist = [0] * 20
-            templist[0] = get_val('strategy_type')
-            templist[1] = get_val('one_time')
+            templist[0] = get_dick('strategy_type')
+            templist[1] = get_val('one_time1')
             templist[2] = get_val('one_diff')
             templist[3] = advance_list[self.second_tijiao_pricediff_smart1.GetSelection()]
             templist[4] = self.second_tijiaoyanchi_time_smart1.GetValue()
@@ -279,12 +281,13 @@ class Smart_tijiaoDialog(wx.Dialog):
             templist[12] = self.second_tijiao_time_smart.GetValue()
             strategy_choices = get_val('strategy_choices')
             set_dick('strategy_description', strategy_choices[int(strategy_type)])
+            print(templist)
             set_dick(strategy_type, templist)
         elif strategy_type == '3':
             advance_list = [100, 200, 300, 0]
             templist = [0] * 20
-            templist[0] = get_val('strategy_type')
-            templist[1] = get_val('one_time')
+            templist[0] = get_dick('strategy_type')
+            templist[1] = get_val('one_time1')
             templist[2] = get_val('one_diff')
             templist[3] = get_val('one_advance')
             templist[4] = get_val('one_delay')
@@ -306,6 +309,7 @@ class Smart_tijiaoDialog(wx.Dialog):
             strategy_choices = get_val('strategy_choices')
             set_dick('strategy_description', strategy_choices[int(strategy_type)])
             set_dick(strategy_type, templist)
+            print(templist)
 
 
 

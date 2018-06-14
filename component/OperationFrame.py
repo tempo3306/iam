@@ -282,7 +282,7 @@ class StatusPanel(wx.Panel):
         self.secondsmart_jiajia_sizer = wx.BoxSizer(wx.HORIZONTAL)
         self.secondsmart_jiajia_time = wx.SpinCtrlDouble(self, -1, "", size=(52, 20),
                                                          style=wx.ALIGN_CENTER | wx.TEXT_ALIGNMENT_CENTER)
-        self.secondsmart_jiajia_time.SetRange(0, 55)
+        self.secondsmart_jiajia_time.SetRange(0, 57)
         self.secondsmart_jiajia_time.SetValue(48)
         self.secondsmart_jiajia_time.SetIncrement(0.1)
         # self.secondsmart_jiajia_time.SetFont(self.numberfont)
@@ -778,7 +778,7 @@ class StatusPanel(wx.Panel):
             set_dick('strategy_description', strategy_choices[int(strategy_type)])
             set_dick(strategy_type, templist)
         elif strategy_type == '2':
-            templist = [0] * 20
+            templist = get_dick(strategy_type)
             templist[0] = strategy_type
             templist[1] = self.second_jiajia_time.GetValue()
             templist[2] = int(self.second_jiajia_price.GetValue())
@@ -786,7 +786,7 @@ class StatusPanel(wx.Panel):
             set_dick('strategy_description', strategy_choices[int(strategy_type)])
             set_dick(strategy_type, templist)
         elif strategy_type == '3':
-            templist = [0] * 20
+            templist = get_dick(strategy_type)
             templist[0] = strategy_type
             templist[1] = self.second_jiajia_time.GetValue()
             templist[2] = int(self.second_jiajia_price.GetValue())

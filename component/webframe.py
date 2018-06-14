@@ -462,7 +462,6 @@ class WebFrame(wx.Frame):
             self.Yanzhengma_scale() #判定验证码放大
             self.hotkey_control()  #热键激活与否
         else:
-            print("fffff")
             self.currentstatusframe.Show(False)
             self.yanzhengmaframe.Show(False)
 
@@ -495,7 +494,6 @@ class WebFrame(wx.Frame):
                     yan = self.yanzhengmaframe
                     yan.Show()
                     yan.ShowImage(yanpath)
-                    print("fdsfsfsf")
                     self.currentstatusframe.Show(False)
                 except:  # 找不到的情况下也要重新创建
                     logger.exception('this is an exception message')
