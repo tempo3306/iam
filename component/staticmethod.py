@@ -732,8 +732,6 @@ def init_strategy3():
 
 
 def init_label():
-    print("init_label")
-
     set_val('current_pricestatus_label', '等待第二次出价')
     one_time1 = get_val('one_time1')
     one_diff = get_val('one_diff')

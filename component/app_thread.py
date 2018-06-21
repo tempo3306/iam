@@ -362,7 +362,7 @@ class KeepThread(Thread):
     def run(self):
         for i in range(1000000):
             time.sleep(90)
-            Keeplogin()
+            # Keeplogin()
 
     def pause(self):
         self.__flag.clear()  # 设置为False, 让线程阻塞

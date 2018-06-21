@@ -325,17 +325,16 @@ class Smart_tijiaoDialog(wx.Dialog):
             templist[6] = get_val('one_forcetijiao_on')
             templist[7] = get_val('second_time1')
             templist[8] = get_val('second_diff')
-
             templist[9] = advance_list[self.second_tijiao_pricediff_smart1.GetSelection()]
             templist[10] = self.second_tijiaoyanchi_time_smart1.GetValue()
-            templist[1] = self.second_tijiao_time_smart1.GetValue()
-            templist[6] = advance_list[self.second_tijiao_pricediff_smart2.GetSelection()]
-            templist[7] = self.second_tijiaoyanchi_time_smart2.GetValue()
-            templist[8] = self.second_tijiao_time_smart2.GetValue()
-            templist[9] = advance_list[self.second_tijiao_pricediff_smart3.GetSelection()]
-            templist[10] = self.second_tijiaoyanchi_time_smart3.GetValue()
-            templist[11] = self.second_tijiao_time_smart3.GetValue()
-            templist[12] = self.second_tijiao_time_smart.GetValue()
+            templist[11] = self.second_tijiao_time_smart1.GetValue()
+            templist[12] = advance_list[self.second_tijiao_pricediff_smart2.GetSelection()]
+            templist[13] = self.second_tijiaoyanchi_time_smart2.GetValue()
+            templist[14] = self.second_tijiao_time_smart2.GetValue()
+            templist[15] = advance_list[self.second_tijiao_pricediff_smart3.GetSelection()]
+            templist[16] = self.second_tijiaoyanchi_time_smart3.GetValue()
+            templist[17] = self.second_tijiao_time_smart3.GetValue()
+            templist[18] = self.second_tijiao_time_smart.GetValue()
             strategy_choices = get_val('strategy_choices')
             set_dick('strategy_description', strategy_choices[int(strategy_type)])
             set_dick(strategy_type, templist)
