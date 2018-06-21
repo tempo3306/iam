@@ -1,12 +1,27 @@
 import wx
+from wx.lib.pubsub import pub
+
 from component.variable import get_val, set_val, get_dick, set_dick
 from component.staticmethod import gettime
+
+
+# class Smart_tijiaoDialog2(wx.Dialog):
+#     def __init__(self):
+#         wx.Dialog.__init__(self, parent=None)
+#         self.Bind(wx.EVT_CLOSE, self.on_close)
+#         self.SetSizerAndFit(self.CreateButtonSizer(wx.OK | wx.CANCEL))
+#
+#     def on_close(self, event):
+#         print('hello from on_close!')
+#         self.Destroy()
 
 class Smart_tijiaoDialog(wx.Dialog):
     def __init__(self, parent, title):
         self.parent = parent
-        x, y = parent.Position
-        super(Smart_tijiaoDialog, self).__init__(parent, title=title, size=(280, 160), pos=(x+980, y+180))
+        x = get_val('Px')
+        y = get_val('Py')
+        print(x, y)
+        super(Smart_tijiaoDialog, self).__init__(parent, title=title, size=(280, 160), pos=(x+890, y+200))
         self.panel = wx.Panel(self)
         # self.okbtn = wx.Button(self.panel, wx.ID_OK, label="关闭", size=(50, 20))
         self.wordfont = wx.Font(12, wx.FONTFAMILY_ROMAN, wx.FONTSTYLE_NORMAL, wx.FONTWEIGHT_NORMAL)
@@ -123,10 +138,25 @@ class Smart_tijiaoDialog(wx.Dialog):
         self.sizer.Add(self.vsizer, flag=wx.ALL, border=3)
         self.SetSizer(self.sizer)
 
-        #移动事件
+        ## 移动事件
         self.Bind(wx.EVT_MOVE, self.move)
 
         self.init_dlg()
+
+        pub.subscribe(self.close, 'dialog close')
+
+    def close(self):
+        self.Destroy()
+        moni_on = get_val('moni_on')
+        moni_webframe = get_val('moni_webframe')
+        guopai_webframe = get_val('guopai_webframe')
+        if moni_on:
+            moni = wx.FindWindowById(moni_webframe)
+            moni.SetFocus()
+        else:
+            guopai = wx.FindWindowById(guopai_webframe)
+            guopai.SetFocus()
+
 
     def move(self, event):
         self.Destroy()
@@ -392,39 +422,3 @@ class Smart_tijiaoDialog(wx.Dialog):
             set_val('one_realtime2_smart3', gettime(strategy_list[17]))
             set_val('one_realtime2_smart', gettime(strategy_list[18]))
 
-
-class Mywin(wx.Frame):
-
-    def __init__(self, parent, title):
-        super(Mywin, self).__init__(parent, title=title, size=(250, 150))
-        self.InitUI()
-
-    def InitUI(self):
-        panel = wx.Panel(self)
-        btn = wx.Button(panel, label="Modal Dialog", pos=(75, 10))
-        btn1 = wx.Button(panel, label="Modeless Dialog", pos=(75, 40))
-        btn2 = wx.Button(panel, label="MessageBox", pos=(75, 70))
-        btn.Bind(wx.EVT_BUTTON, self.OnModal)
-
-        a = btn1.Bind(wx.EVT_BUTTON, self.OnModeless)
-        print(a)
-
-        btn2.Bind(wx.EVT_BUTTON, self.Onmsgbox)
-        self.Centre()
-        self.Show(True)
-
-    def OnModal(self, event):
-        a = Smart_tijiaoDialog(self, "Dialog").ShowModal()
-        print(a)
-
-    def OnModeless(self, event):
-        a = Smart_tijiaoDialog(self, "Dialog").Show()
-
-    def Onmsgbox(self, event):
-        wx.MessageBox("This is a Message Box", "Message", wx.OK | wx.ICON_INFORMATION)
-
-
-if __name__ == '__main__':
-    ex = wx.App()
-    Mywin(None, 'Dialog Demo - www.yiibai.com')
-    ex.MainLoop()

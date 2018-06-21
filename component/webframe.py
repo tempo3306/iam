@@ -406,11 +406,8 @@ class WebFrame(wx.Frame):
         #位置重新计算
         Px, Py = self.Position
         init_pos(Px, Py)
-
         set_val('Px', Px)
         set_val('Py', Py)
-
-
         x, y = self.Position
         x0, y0 = get_val('CurrentStatusFramePos')
         self.currentstatusframe.Move(x+x0, y+y0)
@@ -419,8 +416,7 @@ class WebFrame(wx.Frame):
             self.yanzhengmaframe.Move(x+x1, y+y1)  # 移动到新位置
         except:
             logger.exception('this is an exception message')
-
-
+        wx.CallAfter(pub.sendMessage, 'dialog close')
 
     def refresh_web(self):
         self.htmlpanel.webview.Reload()
@@ -511,6 +507,11 @@ class WebFrame(wx.Frame):
         if hwnd == currenthwnd or hwnd == yanhwnd or hwnd == statushwnd:
             if not hotkey_on:
                 self.hotkey_open()
+                try:
+                    wx.CallAfter(pub.sendMessage, 'dialog close')
+                except:
+                    logger.exception("error message")
+
         elif hotkey_on and hwnd != currenthwnd or hwnd != yanhwnd or hwnd != statushwnd:
             self.hotkey_close()
 

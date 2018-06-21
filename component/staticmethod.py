@@ -314,8 +314,12 @@ def OnClick_chujia():
             set_val('current_pricestatus_label', '等待第二次提交')
             one_time2 = get_val('one_time2')
             one_advance = get_val('one_advance')
-            current_pricestatus = '{0:.1f}秒提前{1}'.format(one_time2, one_advance)
-            set_val('current_pricestatus', current_pricestatus)
+            strategy_type = get_dick('strategy_type')
+            if strategy_type == '2':
+                set_val('current_pricestatus', '动态提交中')
+            else:
+                current_pricestatus = '{0:.1f}秒提前{1}'.format(one_time2, one_advance)
+                set_val('current_pricestatus', current_pricestatus)
             ##5.1秒后调用取消出
             timer = threading.Timer(5.1, Cancel_chujia)
             timer.start()
@@ -326,8 +330,12 @@ def OnClick_chujia():
             set_val('current_pricestatus_label', '等待第三次提交')
             second_time2 = get_val('second_time2')
             second_advance = get_val('second_advance')
-            current_pricestatus = '{0:.1f}秒提前{1}'.format(second_time2, second_advance)
-            set_val('current_pricestatus', current_pricestatus)
+            strategy_type = get_dick('strategy_type')
+            if strategy_type == '2':
+                set_val('current_pricestatus', '动态提交中')
+            else:
+                current_pricestatus = '{0:.1f}秒提前{1}'.format(second_time2, second_advance)
+                set_val('current_pricestatus', current_pricestatus)
             ##提交关闭
             set_val('tijiao_OK', False)
     else:
@@ -724,6 +732,8 @@ def init_strategy3():
 
 
 def init_label():
+    print("init_label")
+
     set_val('current_pricestatus_label', '等待第二次出价')
     one_time1 = get_val('one_time1')
     one_diff = get_val('one_diff')

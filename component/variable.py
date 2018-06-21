@@ -505,7 +505,7 @@ def init_account():
 def init_status():
     ##状态框
     set_val('CurrentStatusFramePos', (426, 212))   ###相对WEBFRAME位置
-    set_val('CurrentStatusFrameSize', (451,77))
+    set_val('CurrentStatusFrameSize', (464,77))
 
     ##验证码放大框
     set_val('YanzhengmaFramePos', (450, 175))    ###相对WEBFRAME位置

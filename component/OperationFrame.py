@@ -1018,8 +1018,10 @@ class StatusPanel(wx.Panel):
     ##单枪动态提交
     def Smart_tijiao_button(self, event):
         from component.smartprice_dialog import Smart_tijiaoDialog
-        dlg = Smart_tijiaoDialog(self, "动态提交设置")
-        dlg.ShowModal()
+        self.dlg = Smart_tijiaoDialog(self, "动态提交设置")
+        # dlg = Smart_tijiaoDialog()
+        self.dlg.Show()
+        # dlg.ShowModal()
 
 
 ##-------------------------------------------------------------------------
