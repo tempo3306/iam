@@ -439,6 +439,7 @@ class WebFrame(wx.Frame):
             print(bidnumber_js)
             browser.RunScript(bidnumber_js)
             browser.RunScript(bidpassword_js)
+            print(bidpassword_js)
             browser.RunScript(idcard_js)
         except:
             logger.exception("error message")

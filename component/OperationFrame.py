@@ -1107,10 +1107,39 @@ class TestPanel(wx.Panel):
 class AdvancePanel(wx.Panel):
     def __init__(self, parent):
         wx.Panel.__init__(self, parent=parent)
-        self.titlefont = wx.Font(16, wx.FONTFAMILY_MODERN, wx.FONTSTYLE_NORMAL, wx.FONTWEIGHT_NORMAL, False)
+        self.titlefont = wx.Font(13, wx.FONTFAMILY_MODERN, wx.FONTSTYLE_NORMAL, wx.FONTWEIGHT_NORMAL, False)
 
-        self.confirm_label = wx.StaticText(self, label=u"仅限拍牌团队使用", pos=(15, 50))
-        self.confirm_label.SetFont(self.titlefont)
+        self.confirm_label = wx.StaticText(self, label=u"登录界面按F7可以一键登录", pos=(25, 50))
+
+        self.account = wx.StaticText(self, label=u"标书号", pos=(25, 100), size=(25,50))
+        self.password = wx.StaticText(self, label=u"标书密码", pos=(25, 150), size=(25,50))
+        self.idnumber = wx.StaticText(self, label=u"身份证号", pos=(25, 200), size=(25,50))
+
+        self.accountText = wx.TextCtrl(self, -1, size=(150, 25), pos = (60, 100),
+                                    style=wx.TE_CENTER | wx.TE_PROCESS_ENTER)
+
+        self.passwordText = wx.TextCtrl(self, -1, size=(150, 25), pos = (60, 150),
+                                    style=wx.TE_CENTER | wx.TE_PROCESS_ENTER)
+
+        self.idnumberText = wx.TextCtrl(self, -1, size=(150, 25), pos = (60, 200),
+                                    style=wx.TE_CENTER | wx.TE_PROCESS_ENTER)
+
+        self.savebtn = wx.Button(self, label='保存', pos=(140, 240))
+
+        self.savebtn.Bind(wx.EVT_BUTTON, self.Save)
+
+
+    def Save(self, event):
+        bidnumber = self.accountText.GetValue()
+        bidpassword = self.passwordText.GetValue()
+        idcard = self.idnumberText.GetValue()
+
+        bidnumber_js = "document.getElementById('bidnumber').value = '{0}';".format(bidnumber)
+        bidpassword_js = "document.getElementById('bidpassword').value = '{0}';".format(bidpassword)
+        idcard_js = "document.getElementById('idcard').value = '{0}';".format(idcard)
+        set_val('bidnumber_js', bidnumber_js)
+        set_val('bidpassword_js', bidpassword_js)
+        set_val('idcard_js', idcard_js)
 
 
 class OperationPanel(wx.Panel):
