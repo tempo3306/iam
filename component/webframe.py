@@ -183,7 +183,7 @@ class BottomeStatusbarPanel(wx.Panel):
         self.unregistered_bitmap = wx.Bitmap('icons/unregistered.png')
         # self.slow_bitmap = wx.Bitmap('icons/slow.png')
         self.medium_bitmap = wx.Bitmap('icons/medium.png')
-        # self.quick_bitmap = wx.Bitmap('icons/quick.png')
+        self.quick_bitmap = wx.Bitmap('icons/quick.png')
         # self.veryquick_bitmap = wx.Bitmap('icons/veryquick.png')
 
 
@@ -197,13 +197,13 @@ class BottomeStatusbarPanel(wx.Panel):
         dc.SetFont(self.textfont)
         tw, th = dc.GetTextExtent(register_label)
         dc.DrawText(register_label, 35, (h) / 2 - th / 2)
-        dc.DrawBitmap(self.registered_bitmap, 2, 0, True)
+        dc.DrawBitmap(self.unregistered_bitmap, 2, 0, True)
 
         netspeed_label = get_val("netspeed_label")
         dc.SetFont(self.textfont)
         tw, th = dc.GetTextExtent(netspeed_label)
         dc.DrawText(netspeed_label, 806, (h) / 2 - th / 2)
-        dc.DrawBitmap(self.medium_bitmap, 850, -3, True)
+        dc.DrawBitmap(self.quick_bitmap, 850, -3, True)
 
         strategy_label = get_val('strategy_label')
         strategy_name = get_val('strategy_name')

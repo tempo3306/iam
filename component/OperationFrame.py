@@ -1107,6 +1107,10 @@ class TestPanel(wx.Panel):
 class AdvancePanel(wx.Panel):
     def __init__(self, parent):
         wx.Panel.__init__(self, parent=parent)
+        self.titlefont = wx.Font(16, wx.FONTFAMILY_MODERN, wx.FONTSTYLE_NORMAL, wx.FONTWEIGHT_NORMAL, False)
+
+        self.confirm_label = wx.StaticText(self, label=u"仅限拍牌团队使用", pos=(15, 50))
+        self.confirm_label.SetFont(self.titlefont)
 
 
 class OperationPanel(wx.Panel):

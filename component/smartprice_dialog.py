@@ -125,8 +125,11 @@ class Smart_tijiaoDialog(wx.Dialog):
         self.second_tijiao_time_smart.SetIncrement(0.1)
         self.second_tijiao_time_smart_label = wx.StaticText(self, label=" 强制提交")
         self.second_tijiao_time_smart_label.SetFont(self.wordfont)
+        self.second_tijiao_time_smart.Bind(wx.EVT_TEXT, self.Second_tijiao_time_smart)
         self.second_tijiao_time_sizer.Add(self.second_tijiao_time_smart, flag=wx.LEFT, border=3)
         self.second_tijiao_time_sizer.Add(self.second_tijiao_time_smart_label)
+
+
 
         self.vsizer = wx.BoxSizer(wx.VERTICAL)
         self.vsizer.Add(self.second_tijiao_sizer_smart1, flag=wx.LEFT | wx.TOP, border=3)

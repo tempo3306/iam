@@ -18,6 +18,7 @@ from component.remote_control import getip_dianxin
 from component.staticmethod import init_strategy
 
 import logging
+
 logger = logging.getLogger()
 
 ##初始化打开PNG
@@ -119,8 +120,6 @@ class confirmThread(threading.Thread):
                     logger.error("智能补枪失败")
                     logger.exception('this is an exception message')
 
-
-
     def pause(self):
         self.__flag.clear()  # 设置为False, 让线程阻塞
 
@@ -181,20 +180,20 @@ class cutimgThread(Thread):
 
     # @calculate_usetime
     def run_func(self):
-            try:
-###################截图
-                a = time.time()
-                cut_img()
-                self.find_confirm()
-                self.find_refresh()
-                self.read_lowest_price()
-            except:
-                logger.error("截图失败")
-                logger.exception('this is an exception message')
+        try:
+            ###################截图
+            a = time.time()
+            cut_img()
+            self.find_confirm()
+            self.find_refresh()
+            self.read_lowest_price()
+        except:
+            logger.error("截图失败")
+            logger.exception('this is an exception message')
 
     # @calculate_usetime
     def find_confirm(self):
-##################查找确认
+        ##################查找确认
         tijiao_num = get_val('tijiao_num')
         twice = get_val('twice')
         # print('tijiao_num', tijiao_num)
@@ -428,42 +427,50 @@ class TijiaoThread(Thread):
                 one_realtime2_smart3 = get_val('one_realtime2_smart3')
                 one_realtime2_smart = get_val('one_realtime2_smart')
 
-                #-------------------------------------------------------
+                # -------------------------------------------------------
                 ##提交
-                if strategy_type == '2': ##单枪动态提交
+                if strategy_type == '2':  ##单枪动态提交
                     if tijiao_on and strategy_on and tijiao_OK:  # 判断是否需要提交,国拍开启状态方可触发
                         if lowest_price >= own_price1 - 300 - one_advance_smart1 and a_time <= one_realtime2_smart1 + 0.1:  # 判断是否满足条件
                             OnClick_Tijiao(one_delay_smart1)
                         elif lowest_price >= own_price1 - 300 - one_advance_smart2 \
-                                and  one_realtime2_smart1 + 0.1 <= a_time <= one_realtime2_smart2 + 0.1:  # 判断是否满足条件
+                                and one_realtime2_smart1 + 0.1 <= a_time <= one_realtime2_smart2 + 0.1:  # 判断是否满足条件
                             OnClick_Tijiao(one_delay_smart2)
                         elif lowest_price >= own_price1 - 300 - one_advance_smart3 \
-                                and one_realtime2_smart2 + 0.1 <= a_time <= one_realtime2_smart3 + 0.1:  # 判断是否满足条件
+                                and one_realtime2_smart2 + 0.1 <= a_time <= one_realtime2_smart3 + 0.1 - one_delay_smart3:  # 判断是否满足条件
                             OnClick_Tijiao(one_delay_smart3)
-                        elif a_time >= one_realtime2_smart: #截止时间
+                        elif lowest_price >= own_price1 - 300 - one_advance_smart3 \
+                                 and a_time > one_realtime2_smart3 + 0.1:  # 判断是否满足条件
+                            OnClick_Tijiao()
+                        elif a_time >= one_realtime2_smart:  # 截止时间
                             OnClick_Tijiao()
 
                 elif strategy_type == '3':  ##双枪动态提交
                     if tijiao_on and strategy_on and tijiao_OK:  # 判断是否需要提交,国拍开启状态方可触发
                         if tijiao_num == 1:
                             if a_time >= one_real_time2 and one_forcetijiao_on:  # 判断是否满足条件
-                                OnClick_Tijiao(one_delay)
+                                OnClick_Tijiao()
                             elif lowest_price >= own_price1 - 300 - one_advance and a_time <= one_real_time2 - one_delay:  # 价格判断
                                 OnClick_Tijiao(one_delay)
+                            elif lowest_price >= own_price1 - 300 - one_advance and a_time > one_real_time2:  # 价格判断
+                                OnClick_Tijiao()  ##价格到了，同时时间也到了
                         elif tijiao_num == 2:
-                            if lowest_price >= own_price1 - 300 - one_advance_smart1 and a_time <= one_realtime2_smart1 + 0.1:  # 判断是否满足条件
+                            if lowest_price >= own_price2 - 300 - one_advance_smart1 and a_time <= one_realtime2_smart1 + 0.1:  # 判断是否满足条件
                                 OnClick_Tijiao(one_delay_smart1)
-                            elif lowest_price >= own_price1 - 300 - one_advance_smart2 \
-                                    and one_realtime2_smart1 + 0.1 <= a_time <= one_realtime2_smart2 + 0.1:  # 判断是否满足条件
+                            elif lowest_price >= own_price2 - 300 - one_advance_smart2 \
+                                    and one_realtime2_smart1 + 0.1 <= a_time <= one_realtime2_smart2 + 0.1:  # 55.1时间会有点超出
                                 OnClick_Tijiao(one_delay_smart2)
-                            elif lowest_price >= own_price1 - 300 - one_advance_smart3 \
-                                    and one_realtime2_smart2 + 0.1 <= a_time <= one_realtime2_smart3 + 0.1:  # 判断是否满足条件
-                                OnClick_Tijiao(one_delay_smart3)
+                            elif lowest_price >= own_price2 - 300 - one_advance_smart3 \
+                                    and one_realtime2_smart2 + 0.1 <= a_time <= one_realtime2_smart3 + 0.1 - one_delay_smart3:  # 判断是否满足条件
+                                OnClick_Tijiao(one_delay_smart3)   # 考虑延迟时间
+                            elif lowest_price >= own_price2 - 300 - one_advance_smart3 \
+                                    and  a_time > one_realtime2_smart3 + 0.1:  # 考虑延迟时间
+                                OnClick_Tijiao()
                             elif a_time >= one_realtime2_smart:  # 截止时间
                                 OnClick_Tijiao()
 
                 else:
-                    if tijiao_on and strategy_on  and tijiao_OK:  # 判断是否需要提交,国拍开启状态方可触发
+                    if tijiao_on and strategy_on and tijiao_OK:  # 判断是否需要提交,国拍开启状态方可触发
                         if tijiao_num == 1 and a_time >= one_real_time2 and one_forcetijiao_on:  # 判断是否满足条件
                             OnClick_Tijiao(one_delay)
                             # SmartTijiao()
@@ -475,7 +482,7 @@ class TijiaoThread(Thread):
                         elif tijiao_num == 2 and lowest_price >= own_price2 - 300 - second_advance and a_time <= second_real_time2 - second_delay:  # 价格判断
                             OnClick_Tijiao(second_delay)
 
-                #-------------------------------------------------------
+                # -------------------------------------------------------
                 ##出价
                 if strategy_type == '2':  ##如果为动态提交
                     if strategy_on and chujia_on:  # 判断是否需要提交,国拍开启状态方可触发
@@ -484,8 +491,22 @@ class TijiaoThread(Thread):
                             set_val('userprice', lowest_price + one_diff)
                             set_val('usertime', one_realtime2_smart)
                             OnClick_chujia()  # 调用出价
+                if strategy_type == '3':
+                    if strategy_on and chujia_on:  # 判断是否需要提交,国拍开启状态方可触发
+                        if tijiao_num == 1 and one_real_time1 <= a_time <= one_real_time1 + 0.6:  # 判断是否满足条件
+                            set_val('own_price1', lowest_price + one_diff)
+                            set_val('userprice', lowest_price + one_diff)
+                            set_val('usertime', one_real_time2)  # 设定当前的截止时间
+                            OnClick_chujia()  # 调用出价
+                        elif tijiao_num == 2 and twice and second_real_time1 <= a_time:  # 判断是否满足条件
+                            set_val('own_price2', lowest_price + second_diff)
+                            set_val('userprice', lowest_price + second_diff)
+                            set_val('usertime', one_realtime2_smart)  # 设定当前的截止时间
+                            set_val('tijiao_on', True)
+                            ##国拍与模拟触发方式不一样
+                            OnClick_chujia()  # 调用出价
                 else:
-                    if strategy_on  and chujia_on:  # 判断是否需要提交,国拍开启状态方可触发
+                    if strategy_on and chujia_on:  # 判断是否需要提交,国拍开启状态方可触发
                         if tijiao_num == 1 and one_real_time1 <= a_time <= one_real_time1 + 0.6:  # 判断是否满足条件
                             set_val('own_price1', lowest_price + one_diff)
                             set_val('userprice', lowest_price + one_diff)
@@ -498,6 +519,7 @@ class TijiaoThread(Thread):
                             set_val('tijiao_on', True)
                             ##国拍与模拟触发方式不一样
                             OnClick_chujia()  # 调用出价
+
 
 
                 ###-----------------------------------------------------------------------------
@@ -711,13 +733,12 @@ class TimeThread(Thread):
                 start_time = get_val('start_time')
                 target_time = get_val('target_time')
 
-                if   start_time  <  a_time  <   target_time:  ##11点到11点半之间
+                if start_time < a_time < target_time:  ##11点到11点半之间
                     set_val("final_stage", True)
                 else:
                     set_val("final_stage", False)
             except:
                 logger.exception("error message")
-
 
     def pause(self):
         self.__flag.clear()  # 设置为False, 让线程阻塞
@@ -740,6 +761,7 @@ iepath = r'C:\Program Files (x86)\Internet Explorer\iexplore.exe'
 path1 = 'C:\Program Files (x86)'
 path2 = 'C:\Program Files'
 import wx
+
 
 def getwebpath():
     global needpath
@@ -788,6 +810,7 @@ class OpenwebThread(Thread):
         # This is the code executing in the new thread.
         openweb(self.url)
 
+
 class Getip_dianxinThread(Thread):
     def __init__(self, ip):
         """Init Worker Thread Class."""
@@ -801,7 +824,6 @@ class Getip_dianxinThread(Thread):
         """Run Worker Thread."""
         # This is the code executing in the new thread.
         getip_dianxin(self.ip)
-
 
 
 class GetremotetimeThread(Thread):
@@ -864,7 +886,6 @@ class LowestpfriceThread(Thread):
             except:
                 set_val('findpos_on', True)
 
-
     def pause(self):
         self.__flag.clear()  # 设置为False, 让线程阻塞
 
@@ -875,6 +896,7 @@ class LowestpfriceThread(Thread):
         self.__flag.set()  # 将线程从暂停状态恢复, 如何已经暂停的话
         self.__running.clear()  # 设置为False
 
+
 ###软件启动后后台初始化，加速软件启动
 class Start_thread(Thread):
     def __init__(self, *args, **kwargs):
@@ -884,7 +906,7 @@ class Start_thread(Thread):
 
     def run(self):
         import logging, time
-        version = 4.7
+        version = '4.8s'
         timenow = time.time()
         # 转换成localtime
         time_local = time.localtime(timenow)

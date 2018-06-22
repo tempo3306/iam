@@ -249,17 +249,18 @@ class LoginFrame(wx.Frame):
             init_pos(Px, Py)
             self.Destroy()  ##关闭窗口
             Hotkey_listen()
-
-        elif login_result['result'] == 'net error' or login_result['result'] == 'timeout':
-            wx.MessageBox('连接服务器失败', '用户登录', wx.OK | wx.ICON_ERROR)
-        elif login_result['result'] == 'repeat':
-            wx.MessageBox('重复登录，稍后再试', '用户登录', wx.OK | wx.ICON_ERROR)
-        elif login_result['result'] == 'wrong version':
-            wx.MessageBox('软件版本过低', '用户登录', wx.OK | wx.ICON_ERROR)
-        elif login_result['result'] == 'expired date':
-            wx.MessageBox('激活码过期', '用户登录', wx.OK | wx.ICON_ERROR)
         else:
-            wx.MessageBox('激活码错误', '用户登录', wx.OK | wx.ICON_ERROR)
+            self.panel.code_loginbtn.Enable()
+            if login_result['result'] == 'net error' or login_result['result'] == 'timeout':
+                wx.MessageBox('连接服务器失败', '用户登录', wx.OK | wx.ICON_ERROR)
+            elif login_result['result'] == 'repeat':
+                wx.MessageBox('重复登录，稍后再试', '用户登录', wx.OK | wx.ICON_ERROR)
+            elif login_result['result'] == 'wrong version':
+                wx.MessageBox('软件版本过低', '用户登录', wx.OK | wx.ICON_ERROR)
+            elif login_result['result'] == 'expired date':
+                wx.MessageBox('激活码过期', '用户登录', wx.OK | wx.ICON_ERROR)
+            else:
+                wx.MessageBox('激活码错误', '用户登录', wx.OK | wx.ICON_ERROR)
 
     def Purchase(self, event):
         print("购买")

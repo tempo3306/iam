@@ -31,7 +31,7 @@ class SketchApp(wx.App):
             user = 'shooter'  # 关闭
             psd = 0
             code = ''
-        loginframe = LoginFrame('小鲜肉拍牌', code)
+        loginframe = LoginFrame('沪牌一号', code)
         loginframe.Show(True)
         start_thread = Start_thread()  ##初始化线程， 加速启动
         return True

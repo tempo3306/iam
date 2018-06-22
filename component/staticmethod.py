@@ -331,11 +331,7 @@ def OnClick_chujia():
             second_time2 = get_val('second_time2')
             second_advance = get_val('second_advance')
             strategy_type = get_dick('strategy_type')
-            if strategy_type == '2':
-                set_val('current_pricestatus', '动态提交中')
-            else:
-                current_pricestatus = '{0:.1f}秒提前{1}'.format(second_time2, second_advance)
-                set_val('current_pricestatus', current_pricestatus)
+
             ##提交关闭
             set_val('tijiao_OK', False)
     else:
@@ -470,8 +466,9 @@ def selfTijiao():
 
 
 def OnClick_Backspace():
-    win32api.keybd_event(8, 0, 0, 0)  # v的键位码是86
-    win32api.keybd_event(8, 0, win32con.KEYEVENTF_KEYUP, 0)  # 释放按键
+    for i in range(6):
+        win32api.keybd_event(8, 0, 0, 0)  #
+        win32api.keybd_event(8, 0, win32con.KEYEVENTF_KEYUP, 0)  # 释放按键
 
 
 def tijiao_ok():

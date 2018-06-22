@@ -312,18 +312,20 @@ class TopFrame(wx.Frame):
  啊
  啊"""
         aboutInfo = wx.adv.AboutDialogInfo()
-        aboutInfo.SetName("小鲜肉拍牌")
+        aboutInfo.SetName("沪牌一号")
         aboutInfo.SetVersion(licence)
         aboutInfo.AddDeveloper("ZS")
         wx.adv.AboutBox(aboutInfo)
 
     def rule(self, event):
-        url = "http://hupai.pro/rules"
-        OpenwebThread(url)
+        pass
+        # url = "http://hupai.pro/rules"
+        # OpenwebThread(url)
 
     def help(self, event):
-        url = "http://hupai.pro/coursestudy"
-        OpenwebThread(url)
+        pass
+        # url = "http://hupai.pro/coursestudy"
+        # OpenwebThread(url)
 
     def Yan_practice(self, event):
         pass
@@ -407,7 +409,7 @@ class TopFrame(wx.Frame):
                 user = 'shooter'  # 关闭
                 psd = 0
                 code = ''
-            loginframe = LoginFrame('小鲜肉拍牌', code)
+            loginframe = LoginFrame('沪牌一号', code)
             loginframe.Show(True)
 
             moni_id = get_val('moni_webframe')
