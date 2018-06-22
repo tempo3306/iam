@@ -15,7 +15,7 @@ if sys.platform != 'win32':
 import pickle
 from component.LoginFrame import LoginFrame
 from component.app_thread import *
-
+from component.variable import V_global
 # --------------------------------------------------------------
 # 创建app
 class SketchApp(wx.App):

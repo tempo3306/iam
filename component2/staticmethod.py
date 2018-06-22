@@ -9,7 +9,7 @@ import win32api
 import win32clipboard
 import time
 import threading
-from component.variable import set_val, get_val, get_dick, set_dick
+from component.variable import V_global, get_dick
 import ctypes
 from ctypes import wintypes
 from wx.lib.pubsub import pub
@@ -61,7 +61,7 @@ import wx
 
 
 def Paste_moni(price):
-    id = get_val('moni_webframe')
+    id = V_global.moni_webframe
     moni = wx.FindWindowById(id)
     browser = moni.htmlpanel.webview
     script = "$('#selfwrite').val('{0}')".format(price)
@@ -96,145 +96,145 @@ tijiao_num
 
 
 def OnClick_Tijiao(delay=0):
-    one_delay = get_val('one_delay')
-    second_delay = get_val('second_delay')
-    tijiao_num = get_val('tijiao_num')
-    twice = get_val('twice')
-    smart_autoprice = get_val('smart_autoprice')
-    set_val('confirm_need', True)
+    one_delay = V_global.one_delay
+    second_delay = V_global.second_delay
+    tijiao_num = V_global.tijiao_num
+    twice = V_global.twice
+    smart_autoprice = V_global.smart_autoprice
+    V_global.confirm_need = True
     print("tijiao_num", tijiao_num)
     print("smart_autoprice", smart_autoprice)
     print("twice", twice)
     if tijiao_num == 1:
         if twice:
-            set_val('tijiao_num', 2)
+            V_global.tijiao_num = 2
         elif smart_autoprice:
-            set_val('tijiao_num', 3)
+            V_global.tijiao_num = 3
         else:
-            set_val('tijiao_num', 0)
+            V_global.tijiao_num = 0
         timer = threading.Timer(delay, Tijiao)
         timer.start()
-        set_val('tijiao_on', False)
+        V_global.tijiao_on = False
     elif tijiao_num == 2:
-        set_val('tijiao_num', 0)
+        V_global.tijiao_num = 0
         timer = threading.Timer(delay, Tijiao)
         timer.start()
-        set_val('tijiao_on', False)
+        V_global.tijiao_on = False
     elif tijiao_num == 3:
-        set_val('tijiao_num', 0)
+        V_global.tijiao_num = 0
         Tijiao()
     else:
         Tijiao()
 
 
 def Tijiao():
-    Position_frame = get_val('Position_frame')
+    Position_frame = V_global.Position_frame
     Click(Position_frame[2][0], Position_frame[2][1])
-    set_val('tijiao_OK', False)  # 需要按E解锁，自动提交
-    set_val('chujia_on', True)  # 激活自动
-    smart_autoprice = get_val('smart_autoprice')
-    tijiao_num = get_val('tijiao_num')
+    V_global.tijiao_OK = False ## 需要按E解锁，自动提交
+    V_global.chujia_on = True ## 激活自动
+    smart_autoprice = V_global.smart_autoprice
+    tijiao_num = V_global.tijiao_num
     # print("tijiao_num", tijiao_num)
     # print("smart_autoprice", smart_autoprice)
     if tijiao_num == 2:
-        set_val('current_pricestatus_label', '等待第三次出价')
-        second_time1 = get_val('second_time1')
-        second_diff = get_val('second_diff')
+        V_global.current_pricestatus_label = '等待第三次出价'
+        second_time1 = V_global.second_time1
+        second_diff = V_global.second_diff
         current_pricestatus = '{0:.1f}秒加{1}'.format(second_time1, second_diff)
-        set_val('current_pricestatus', current_pricestatus)
+        V_global.current_pricestatus = current_pricestatus
     elif tijiao_num == 0:
-        set_val('current_pricestatus_label', '等待拍牌结果')
-        set_val('current_pricestatus', '请不要关闭页面')
+        V_global.current_pricestatus_label = '等待拍牌结果'
+        V_global.current_pricestatus = '请不要关闭页面'
 
     elif tijiao_num == 3:
         print("tijiao_fsdfs")
-        set_val('smartprice_chujia', True)  ##开启智能出价， 打开确认查找
-        set_val('current_pricestatus_label', '智能补枪')
-        set_val('current_pricestatus', '智能出价')
+        V_global.smartprice_chujia = True ##开启智能出价， 打开确认查找
+        V_global.current_pricestatus_label = '智能补枪'
+        V_global.current_pricestatus = '智能出价'
         print("开启智能出价")
 
 
 def SmartTijiao():
-    tijiao_on = get_val('tijiao_on')
-    tijiao_OK = get_val('tijiao_OK')
-    tijiao_num = get_val('tijiao_num')
-    confirm_need = get_val('confirm_need')
-    own_price1 = get_val('own_price1')
-    own_price2 = get_val('own_price2')
-    moni_on = get_val('moni_on')
-    changetime = get_val('changetime')
-    a_time = get_val('a_time')
-    lowest_price = get_val('lowest_price')
-    twice = get_val('twice')
-    set_val('confirm_need', True)
+    tijiao_on = V_global.tijiao_on
+    tijiao_OK = V_global.tijiao_OK
+    tijiao_num = V_global.tijiao_num
+    confirm_need = V_global.confirm_need
+    own_price1 = V_global.own_price1
+    own_price2 = V_global.own_price2
+    moni_on = V_global.moni_on
+    changetime = V_global.changetime
+    a_time = V_global.a_time
+    lowest_price = V_global.lowest_price
+    twice = V_global.twice
+    V_global.confirm_need = True
 
     interval = a_time - changetime
     if tijiao_num == 2:  # 说明是第二枪出价
         if lowest_price <= own_price2 - 600:
             print("触发延迟")
-            set_val('tijiao_num', 0)
+            V_global.tijiao_num = 0
             timer = threading.Timer(0.5, Tijiao)
             timer.start()
-            set_val('tijiao_on', False)
+            V_global.tijiao_on = False
         elif lowest_price == own_price2 - 500 and interval < 0.95:
-            set_val('tijiao_num', 0)
+            V_global.tijiao_num = 0
             timesleep = (1 - interval) / 3 + 0.25
             timer = threading.Timer(timesleep, Tijiao)
             timer.start()
-            set_val('tijiao_on', False)
+            V_global.tijiao_on = False
         else:
-            set_val('tijiao_num', 0)
+            V_global.tijiao_num = 0
             Tijiao()
-            set_val('tijiao_on', False)
+            V_global.tijiao_on = False
     elif tijiao_num == 1:
         if lowest_price <= own_price1 - 600:
-            set_val('tijiao_on', False)
+            V_global.tijiao_on = False
             if twice:
-                set_val('tijiao_num', 2)
+                V_global.tijiao_num = 2
             else:
-                set_val('tijiao_num', 0)
+                V_global.tijiao_num = 0
             timer = threading.Timer(0.5, Tijiao)
             timer.start()
         elif lowest_price == own_price1 - 500 and interval < 0.95:
-            set_val('tijiao_on', False)
+            V_global.tijiao_on = False
             if twice:
-                set_val('tijiao_num', 2)
+                V_global.tijiao_num = 2
             else:
-                set_val('tijiao_num', 0)
+                V_global.tijiao_num = 0
             timesleep = (1 - interval) / 3 + 0.25
             timer = threading.Timer(timesleep, Tijiao)
             timer.start()
         else:
-            set_val('tijiao_on', False)
+            V_global.tijiao_on = False
             if twice:
-                set_val('tijiao_num', 2)
+                V_global.tijiao_num = 2
             else:
-                set_val('tijiao_num', 0)
+                V_global.tijiao_num = 0
             Tijiao()
 
 
 def OnClick_Shuaxin():
-    Position_frame = get_val('Position_frame')
+    Position_frame = V_global.Position_frame
     Click(Position_frame[3][0], Position_frame[3][1])
     Click(Position_frame[6][0], Position_frame[6][1])
-    set_val('yanzhengma_view', True)  # 激活放大器
-    set_val('yanzhengma_count', 0)  # 归零
+    V_global.yanzhengma_view = True ## 激活放大器
+    V_global.yanzhengma_count = 0 ## 归零
 
 
 def OnClick_confirm():
-    Position_frame = get_val('Position_frame')
+    Position_frame = V_global.Position_frame
     Click(Position_frame[4][0], Position_frame[4][1])
 
 
 def Refresh_web():
-    moni_on = get_val('moni_on')
+    moni_on = V_global.moni_on
     if moni_on:
         wx.CallAfter(pub.sendMessage, "moni refresh_web")
     else:
         wx.CallAfter(pub.sendMessage, "guopai refresh_web")
 
 def Onekey_login():
-    guopai_on = get_val('guopai_on')
+    guopai_on = V_global.guopai_on
     if guopai_on:
         print("fdssfs")
         wx.CallAfter(pub.sendMessage, "onekey_login")
@@ -243,11 +243,11 @@ def Onekey_login():
 ##-------------------------------------------------------------------------------------
 ##智能出价
 def Smart_chujia():
-    Position_frame = get_val('Position_frame')
-    moni_on = get_val('moni_on')
+    Position_frame = V_global.Position_frame
+    moni_on = V_global.moni_on
     Click(Position_frame[4][0], Position_frame[4][1])  ##确认
     price = smart_price()  ##智能计算出价
-    set_val('userprice', price)  ##保存用户出价
+    V_global.userprice = price ##保存用户出价
     if moni_on:
         wx.CallAfter(pub.sendMessage, 'moni smartchujia', price=price)
         # wx.CallAfter(self.call, 1, ‘abc’, name=”ccc”, help=”test”)
@@ -258,12 +258,12 @@ def Smart_chujia():
 
 
 def esc_chujia():
-    Position_frame = get_val('Position_frame')
-    moni_on = get_val('moni_on')
+    Position_frame = V_global.Position_frame
+    moni_on = V_global.moni_on
     Click(Position_frame[7][0], Position_frame[7][1])  # 取消
     Click(Position_frame[4][0], Position_frame[4][1])  ##确认
     price = smart_price()  ##智能计算出价
-    set_val('userprice', price)  ##保存用户出价
+    V_global.userprice = price ##保存用户出价
     if moni_on:
         wx.CallAfter(pub.sendMessage, 'moni smartchujia', price=price)
         # wx.CallAfter(self.call, 1, ‘abc’, name=”ccc”, help=”test”)
@@ -282,8 +282,8 @@ time_price = {'35': 1200,
 
 
 def smart_price():
-    lowest_price = get_val('lowest_price')
-    a_time = get_val('a_time')
+    lowest_price = V_global.lowest_price
+    a_time = V_global.a_time
     structtime = time.localtime(a_time)
     timestr = time.strftime("%H-%M-%S", structtime)
     hour, minute, second = timestr.split('-')
@@ -298,94 +298,94 @@ def smart_price():
 
 
 def OnClick_chujia():
-    guopai_on = get_val('guopai_on')
+    guopai_on = V_global.guopai_on
     if guopai_on:
-        lowest_price = get_val('lowest_price')
-        tijiao_num = get_val('tijiao_num')
-        one_diff = get_val('one_diff')
-        second_diff = get_val('second_diff')
-        twice = get_val('twice')
+        lowest_price = V_global.lowest_price
+        tijiao_num = V_global.tijiao_num
+        one_diff = V_global.one_diff
+        second_diff = V_global.second_diff
+        twice = V_global.twice
 
         if tijiao_num == 1:
             own_price1 = lowest_price + one_diff
-            set_val('own_price1', own_price1)
+            V_global.own_price1 = own_price1
             setText(str(own_price1))
             guopai_chujia(own_price1)
-            set_val('current_pricestatus_label', '等待第二次提交')
-            one_time2 = get_val('one_time2')
-            one_advance = get_val('one_advance')
+            V_global.current_pricestatus_label = '等待第二次提交'
+            one_time2 = V_global.one_time2
+            one_advance = V_global.one_advance
             strategy_type = get_dick('strategy_type')
             if strategy_type == '2':
-                set_val('current_pricestatus', '动态提交中')
+                V_global.current_pricestatus = '动态提交中'
             else:
                 current_pricestatus = '{0:.1f}秒提前{1}'.format(one_time2, one_advance)
-                set_val('current_pricestatus', current_pricestatus)
+                V_global.current_pricestatus = current_pricestatus
             ##5.1秒后调用取消出
             timer = threading.Timer(5.1, Cancel_chujia)
             timer.start()
         elif tijiao_num == 2 and twice:
             own_price2 = lowest_price + second_diff
-            set_val('own_price2', own_price2)
+            V_global.own_price2 = own_price2
             guopai_chujia(own_price2)
-            set_val('current_pricestatus_label', '等待第三次提交')
-            second_time2 = get_val('second_time2')
-            second_advance = get_val('second_advance')
+            V_global.current_pricestatus_label = '等待第三次提交'
+            second_time2 = V_global.second_time2
+            second_advance = V_global.second_advance
             strategy_type = get_dick('strategy_type')
 
             ##提交关闭
-            set_val('tijiao_OK', False)
+            V_global.tijiao_OK = False
     else:
         wx.CallAfter(pub.sendMessage, 'moni chujia')  # 调用方法
-    set_val('tijiao_on', True)
-    set_val('chujia_on', False)
-    set_val('chujia_interval', False)  # 间隔结束
+    V_global.tijiao_on = True
+    V_global.chujia_on = False
+    V_global.chujia_interval = False ## 间隔结束
 
 
 def guopai_chujia(price):
-    Position_frame = get_val('Position_frame')
+    Position_frame = V_global.Position_frame
     setText(str(price))
     selfdelete()
     Click(Position_frame[1][0], Position_frame[1][1])
     Click(Position_frame[6][0], Position_frame[6][1])
 
-    set_val('yanzhengma_count', 0)  # 计数器，制造延迟
-    set_val('yanzhengma_close', False)  # 激活验证码放大  开启查找确认
-    set_val('refresh_need', True)  # 激活刷新验证码
+    V_global.yanzhengma_count = 0 ## 计数器，制造延迟
+    V_global.yanzhengma_close = False ## 激活验证码放大  开启查找确认
+    V_global.refresh_need = True ## 激活刷新验证码
 
 
 ##如果一直处理提交状态和查找验证码阶段，取消后重新出价
 def Cancel_chujia():
-    tijiao_on = get_val('tijiao_on')
-    yanzhengma_find = get_val('yanzhengma_find')
-    tijiao_ok = get_val('tijiao_ok')
+    tijiao_on = V_global.tijiao_on
+    yanzhengma_find = V_global.yanzhengma_find
+    tijiao_ok = V_global.tijiao_ok
     if tijiao_on and not yanzhengma_find and not tijiao_ok:
         print("触发2")
-        Position_frame = get_val('Position_frame')
+        Position_frame = V_global.Position_frame
         Click(Position_frame[7][0], Position_frame[7][1])  # 取消
-        userprice = get_val('userprice')
+        userprice = V_global.userprice
         setText(str(userprice))
         selfdelete()
         Click(Position_frame[1][0], Position_frame[1][1])
         Click(Position_frame[6][0], Position_frame[6][1])
         # 验证码放大打开
-        set_val('yanzhengma_close', True)  # 打开验证码放大器 查找确认
+        V_global.yanzhengma_close = True ## 打开验证码放大器 查找确认
         ##提交关闭
-        set_val('tijiao_OK', False)
+        V_global.tijiao_OK = False
 
 
 ##智能调整
 def Smart_ajust_chujia(price):
-    Position_frame = get_val('Position_frame')
+    Position_frame = V_global.Position_frame
     Click(Position_frame[7][0], Position_frame[7][1])  # 取消
     setText(str(price))
     selfdelete()
     Click(Position_frame[1][0], Position_frame[1][1])
     Click(Position_frame[6][0], Position_frame[6][1])
     # 验证码放大打开
-    set_val('yanzhengma_count', 0)  # 计数器，制造延迟
-    set_val('yanzhengma_close', True)  # 打开验证码放大器
+    V_global.yanzhengma_count = 0 ## 计数器，制造延迟
+    V_global.yanzhengma_close = True ## 打开验证码放大器
     ##提交关闭
-    set_val('tijiao_OK', False)
+    V_global.tijiao_OK = False
 
 
 ##测试用
@@ -395,7 +395,7 @@ def Cancel_chujia_test():
 
 
     px, py = win32api.GetCursorPos()
-    Position_frame = get_val('Position_frame')
+    Position_frame = V_global.Position_frame
     # Position_frame = get_val('Position_frame')
     # Click(Position_frame[7][0], Position_frame[7][1])  # 取消
     # own_price = get_val('own_price1')
@@ -411,35 +411,35 @@ def Cancel_chujia_test():
 
 
 def OnH_chujia():
-    moni_on = get_val('moni_on')
+    moni_on = V_global.moni_on
 
     from component.globalvals import   Varible
     a = Varible.a
     Varible.a = a + 10
     print(a)
     if moni_on:
-        Position_frame = get_val('Position_frame')
-        lowest_price = get_val('lowest_price')
-        one_diff = get_val('one_diff')
-        set_val('own_price1', lowest_price + one_diff)
-        own_price1 = get_val('own_price1')
+        Position_frame = V_global.Position_frame
+        lowest_price = V_global.lowest_price
+        one_diff = V_global.one_diff
+        V_global.own_price1 = lowest_price+one_diff
+        own_price1 = V_global.own_price1
         setText(str(own_price1))
         Paste_moni(own_price1)
         Click(Position_frame[1][0], Position_frame[1][1])  ##出价
         Click(Position_frame[6][0], Position_frame[6][1])  ##点击验证码框
-        set_val('yanzhengma_close', True)
+        V_global.yanzhengma_close = True
     else:
         OnH_guopai_chujia()
 
 
 def OnH_guopai_chujia():
-    Position_frame = get_val('Position_frame')
-    lowest_price = get_val('lowest_price')
-    one_diff = get_val('one_diff')
-    set_val('yanzhengma_view', True)
-    set_val('yanzhengma_count', 0)
-    set_val('own_price1', lowest_price + one_diff)
-    own_price1 = get_val('own_price1')
+    Position_frame = V_global.Position_frame
+    lowest_price = V_global.lowest_price
+    one_diff = V_global.one_diff
+    V_global.yanzhengma_view = True
+    V_global.yanzhengma_count = 0
+    V_global.own_price1 = lowest_price+one_diff
+    own_price1 = V_global.own_price1
     setText(str(own_price1))
     selfdelete()
     Click(Position_frame[1][0], Position_frame[1][1])
@@ -447,26 +447,26 @@ def OnH_guopai_chujia():
 
 
 def selfdelete():
-    Position_frame = get_val('Position_frame')
+    Position_frame = V_global.Position_frame
     Click(Position_frame[5][0], Position_frame[5][1])
     many_delete()
     Paste()  # 真粘贴
 
 
 def selfChujia():
-    Position_frame = get_val('Position_frame')
+    Position_frame = V_global.Position_frame
     Click(Position_frame[4][0], Position_frame[4][1])
     Click(Position_frame[0][0], Position_frame[0][1])
     Click(Position_frame[1][0], Position_frame[1][1])
     Click(Position_frame[6][0], Position_frame[6][1])
-    set_val('price_view', True)
-    set_val('price_count', 0)
-    set_val('yanzhengma_count', 0)
-    set_val('yanzhengma_view', True)
+    V_global.price_view = True
+    V_global.price_count = 0
+    V_global.yanzhengma_count = 0
+    V_global.yanzhengma_view = True
 
 
 def selfTijiao():
-    Position_frame = get_val('Position_frame')
+    Position_frame = V_global.Position_frame
     Click(Position_frame[2][0], Position_frame[2][1])
 
 
@@ -477,47 +477,47 @@ def OnClick_Backspace():
 
 
 def tijiao_ok():
-    tijiao_on = get_val('tijiao_on')
+    tijiao_on = V_global.tijiao_on
     enter_on = get_dick('enter_on')
-    smartprice_chujia = get_val('smartprice_chujia')
+    smartprice_chujia = V_global.smartprice_chujia
     if not enter_on:
-        set_val('tijiao_OK', True)
-        set_val('yanzhengma_view', False)
-        set_val('yanzhengma_close', True)
-        set_val('yanzhengma_control', False)
+        V_global.tijiao_OK = True
+        V_global.yanzhengma_view = False
+        V_global.yanzhengma_close = True
+        V_global.yanzhengma_control = False
     elif not enter_on and smartprice_chujia:
-        set_val('tijiao_OK', True)
-        set_val('yanzhengma_view', False)
-        set_val('yanzhengma_close', True)
-        set_val('yanzhengma_control', False)
+        V_global.tijiao_OK = True
+        V_global.yanzhengma_view = False
+        V_global.yanzhengma_close = True
+        V_global.yanzhengma_control = False
 
 
 def tijiao_ok2():
     enter_on = get_dick('enter_on')
-    tijiao_on = get_val('tijiao_on')
-    smartprice_chujia = get_val('smartprice_chujia')
+    tijiao_on = V_global.tijiao_on
+    smartprice_chujia = V_global.smartprice_chujia
     if enter_on :
-        set_val('tijiao_OK', True)
-        set_val('yanzhengma_close', True)
-        set_val('yanzhengma_view', False)
-        set_val('yanzhengma_control', False)
+        V_global.tijiao_OK = True
+        V_global.yanzhengma_close = True
+        V_global.yanzhengma_view = False
+        V_global.yanzhengma_control = False
     elif enter_on and smartprice_chujia:
-        set_val('tijiao_OK', True)
-        set_val('yanzhengma_view', False)
-        set_val('yanzhengma_close', True)
-        set_val('yanzhengma_control', False)
+        V_global.tijiao_OK = True
+        V_global.yanzhengma_view = False
+        V_global.yanzhengma_close = True
+        V_global.yanzhengma_control = False
 
 
 
 
 def query():
-    query_interval = get_val('query_interval')
-    query_on = get_val('query_on')
-    Position_frame = get_val('Position_frame')
+    query_interval = V_global.query_interval
+    query_on = V_global.query_on
+    Position_frame = V_global.Position_frame
     if not query_interval and not query_on:
-        set_val('query_on', True)
-        set_val('query_interval', True)
-        moni_on = get_val('moni_on')
+        V_global.query_on = True
+        V_global.query_interval = True
+        moni_on = V_global.moni_on
         if not moni_on:
             setText(str(1000000))  # 出一定超出的价格
             selfdelete()
@@ -530,19 +530,19 @@ def query():
         timer2.start()
     elif query_interval and query_on:
         Click(Position_frame[7][0], Position_frame[7][1])
-        set_val('query_on', False)
+        V_global.query_on = False
 
 
 def query_sleep4():
-    query_on = get_val('query_on')
-    Position_frame = get_val('Position_frame')
+    query_on = V_global.query_on
+    Position_frame = V_global.Position_frame
     if query_on:
         Click(Position_frame[7][0], Position_frame[7][1])
-        set_val('query_on', False)
+        V_global.query_on = False
 
 
 def query_sleep6():
-    set_val('query_interval', False)
+    V_global.query_interval = False
 
 
 def nothing():
@@ -588,7 +588,7 @@ def Hotkey_listen():
             # print("listening")
             if msg.message == win32con.WM_HOTKEY:
                 action_to_take = HOTKEY_ACTIONS.get(msg.wParam)
-                hotkey_on = get_val('hotkey_on')
+                hotkey_on = V_global.hotkey_on
                 # if action_to_take:
                 if action_to_take and hotkey_on:
                     action_to_take()
@@ -602,7 +602,7 @@ def Hotkey_listen():
             user32.UnregisterHotKey(None, id)
         for id in HOTKEYS2.keys():
             user32.UnregisterHotKey(None, id)
-        set_val('hotkey_on', False)
+        V_global.hotkey_on = False
 
 
 ##开启
@@ -649,9 +649,9 @@ class ListenThread(threading.Thread):
 ##时间转化
 ##将当前时间与 价格列表对应起来
 def trans_time():
-    pricelist = get_val('price_list')
-    lowest_price = get_val('lowest_price')
-    a_time = get_val('a_time')
+    pricelist = V_global.price_list
+    lowest_price = V_global.lowest_price
+    a_time = V_global.a_time
     structtime = time.localtime(a_time)
     timestr = time.strftime("%H-%M-%S", structtime)
     hour, minute, second = timestr.split('-')
@@ -667,7 +667,7 @@ def changetime(a):  # 换算成时间戳
 def get_nowtime():
     # tem1 = time.time()
     # a = time.strftime('%Y-%m-%d', time.localtime(tem1))
-    a = get_val('timebase_str')
+    a = V_global.timebase_str
     return a  # 输出时间格式字符串
 
 
@@ -691,51 +691,51 @@ def init_strategy():
         init_strategy3()
 
 def init_strategy0():
-    set_val('twice', False)
-    set_val('strategy_on', True)
-    set_val('chujia_on', True)
-    set_val('tijiao_on', False)
-    set_val('tijiao_num', 1)  # 初始化
-    set_val('tijiao_OK', False)
-    set_val('tijiao_one', False)  # 单枪未开
+    V_global.twice = False
+    V_global.strategy_on = True
+    V_global.chujia_on = True
+    V_global.tijiao_on = False
+    V_global.tijiao_num = 1 ## 初始化
+    V_global.tijiao_OK = False
+    V_global.tijiao_one = False ## 单枪未开
     init_label()
 
 
 def init_strategy1():
-    set_val('strategy_on', True)
-    set_val('twice', True)
-    set_val('chujia_on', True)
-    set_val('tijiao_on', False)
-    set_val('tijiao_num', 1)  # 初始化
-    set_val('tijiao_OK', False)
-    set_val('tijiao_one', False)  # 单枪未开
+    V_global.strategy_on = True
+    V_global.twice = True
+    V_global.chujia_on = True
+    V_global.tijiao_on = False
+    V_global.tijiao_num = 1 ## 初始化
+    V_global.tijiao_OK = False
+    V_global.tijiao_one = False ## 单枪未开
     init_label()
 
 def init_strategy2():
-    set_val('twice', False)
-    set_val('strategy_on', True)
-    set_val('chujia_on', True)
-    set_val('tijiao_on', False)
-    set_val('tijiao_num', 1)  # 初始化
-    set_val('tijiao_OK', False)
-    set_val('tijiao_one', False)  # 单枪未开
+    V_global.twice = False
+    V_global.strategy_on = True
+    V_global.chujia_on = True
+    V_global.tijiao_on = False
+    V_global.tijiao_num = 1 ## 初始化
+    V_global.tijiao_OK = False
+    V_global.tijiao_one = False ## 单枪未开
     init_label()
 
 def init_strategy3():
-    set_val('strategy_on', True)
-    set_val('twice', True)
-    set_val('chujia_on', True)
-    set_val('tijiao_on', False)
-    set_val('tijiao_num', 1)  # 初始化
-    set_val('tijiao_OK', False)
-    set_val('tijiao_one', False)  # 单枪未开
+    V_global.strategy_on = True
+    V_global.twice = True
+    V_global.chujia_on = True
+    V_global.tijiao_on = False
+    V_global.tijiao_num = 1 ## 初始化
+    V_global.tijiao_OK = False
+    V_global.tijiao_one = False ## 单枪未开
     init_label()
 
 
 
 def init_label():
-    set_val('current_pricestatus_label', '等待第二次出价')
-    one_time1 = get_val('one_time1')
-    one_diff = get_val('one_diff')
+    V_global.current_pricestatus_label = '等待第二次出价'
+    one_time1 = V_global.one_time1
+    one_diff = V_global.one_diff
     current_pricestatus = '{0:.1f}秒加{1}'.format(one_time1, one_diff)
-    set_val('current_pricestatus', current_pricestatus)
+    V_global.current_pricestatus = current_pricestatus
