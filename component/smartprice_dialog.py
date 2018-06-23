@@ -177,15 +177,31 @@ class Smart_tijiaoDialog(wx.Dialog):
 
     def Second_tijiao_time_smart1(self, event):
         one_time2_smart1 = get_val('one_time2_smart1')
+        one_time2_smart2 = get_val('one_time2_smart2')
         tem = self.second_tijiao_time_smart1.GetValue()
         timelist = get_val('timelist')
-        if int(tem * 10) in timelist:
-            one_time2_smart1 = tem
-            set_val('one_time2_smart1', float(tem))
-            set_val('one_realtime2_smart1', gettime(one_time2_smart1))  # 计算得到的时间戳
-            self.update_strategy()
-        else:
-            self.second_tijiao_time_smart1.SetValue(one_time2_smart1)
+        strategy_type = get_dick('strategy_type')
+        one_time1 = get_val('one_time1')
+        second_time1 = get_val('second_time1')
+        if strategy_type == '2':
+            if int(tem * 10) in timelist and tem <= one_time2_smart2 - 1 and tem >= one_time1 + 1:
+                print(one_time2_smart2, tem)
+                one_time2_smart1 = tem
+                set_val('one_time2_smart1', float(tem))
+                set_val('one_realtime2_smart1', gettime(one_time2_smart1))  # 计算得到的时间戳
+                self.update_strategy()
+            else:
+                self.second_tijiao_time_smart1.SetValue(one_time2_smart1)
+        elif strategy_type == '3':
+            if int(tem * 10) in timelist and tem <= one_time2_smart2 - 1 and tem >= second_time1 + 1:
+                one_time2_smart1 = tem
+                set_val('one_time2_smart1', float(tem))
+                set_val('one_realtime2_smart1', gettime(one_time2_smart1))  # 计算得到的时间戳
+                self.update_strategy()
+            else:
+                self.second_tijiao_time_smart1.SetValue(one_time2_smart1)
+
+
 
     def Second_tijiao_pricediff_smart1(self, event):
         select = self.second_tijiao_pricediff_smart1.GetString(self.second_tijiao_pricediff_smart1.GetSelection())
@@ -210,10 +226,13 @@ class Smart_tijiaoDialog(wx.Dialog):
             self.second_tijiaoyanchi_time_smart1.SetValue(one_delay_smart1)
 
     def Second_tijiao_time_smart2(self, event):
+        one_time2_smart1 = get_val('one_time2_smart1')
         one_time2_smart2 = get_val('one_time2_smart2')
+        one_time2_smart3 = get_val('one_time2_smart3')
         tem = self.second_tijiao_time_smart2.GetValue()
         timelist = get_val('timelist')
-        if int(tem * 10) in timelist:
+        if int(tem * 10) in timelist and tem <= one_time2_smart3 - 1 and tem >= one_time2_smart1 + 1:
+            print(one_time2_smart1, one_time2_smart2, one_time2_smart3)
             one_time2_smart2 = tem
             set_val('one_time2_smart2', float(tem))
             set_val('one_realtime2_smart2', gettime(one_time2_smart2))  # 计算得到的时间戳
@@ -245,12 +264,13 @@ class Smart_tijiaoDialog(wx.Dialog):
             self.second_tijiaoyanchi_time_smart2.SetValue(one_delay_smart2)
 
     def Second_tijiao_time_smart3(self, event):
+        one_time2_smart2 = get_val('one_time2_smart2')
         one_time2_smart3 = get_val('one_time2_smart3')
         tem = self.second_tijiao_time_smart3.GetValue()
         timelist = get_val('timelist')
         print(tem)
         print(timelist)
-        if int(tem * 10) in timelist:
+        if int(tem * 10) in timelist and tem >=  one_time2_smart2 + 1:
             one_time2_smart3 = tem
             set_val('one_time2_smart3', float(tem))
             set_val('one_realtime2_smart3', gettime(one_time2_smart3))  # 计算得到的时间戳
@@ -284,7 +304,8 @@ class Smart_tijiaoDialog(wx.Dialog):
         one_time2_smart = get_val('one_time2_smart')
         tem = self.second_tijiao_time_smart.GetValue()
         timelist = get_val('timelist')
-        if int(tem * 10) in timelist:
+        one_time2_smart3 = get_val('one_time2_smart3')
+        if int(tem * 10) in timelist and tem >= one_time2_smart3:
             one_time2_smart = tem
             set_val('one_time2_smart', float(tem))
             set_val('one_realtime2_smart', gettime(one_time2_smart))  # 计算得到的时间戳

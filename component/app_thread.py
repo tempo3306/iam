@@ -389,253 +389,266 @@ class TijiaoThread(Thread):
     def run(self):
         for i in range(10000000):
             try:
-                time.sleep(0.05)  # 间隔0.05秒判断一次
-                lowest_price = get_val('lowest_price')
-                own_price1 = get_val('own_price1')
-                own_price2 = get_val('own_price2')
-                strategy_on = get_val('strategy_on')
-                second_real_time1 = get_val('second_real_time1')
-                second_real_time2 = get_val('second_real_time2')
-                one_advance = get_val('one_advance')
-                second_advance = get_val('second_advance')
-                tijiao_num = get_val('tijiao_num')
-                tijiao_OK = get_val('tijiao_OK')
-                chujia_on = get_val('chujia_on')
-                tijiao_on = get_val('tijiao_on')
-                tijiao_one = get_val('tijiao_one')
-                a_time = get_val('a_time')
-                one_real_time1 = get_val('one_real_time1')
-                one_real_time2 = get_val('one_real_time2')
-                guopai_on = get_val('guopai_on')
-                moni_on = get_val('moni_on')
-                twice = get_val('twice')
-                one_delay = get_val('one_delay')
-                second_delay = get_val('second_delay')
-                one_diff = get_val('one_diff')
-                second_diff = get_val('second_diff')
-                smartprice_chujia = get_val('smartprice_chujia')  ##智能出价
-                one_forcetijiao_on = get_val('one_forcetijiao_on')
-                second_forcetijiao_on = get_val('second_forcetijiao_on')
-                strategy_type = get_dick('strategy_type')
-                ##提交
-                one_advance_smart1 = get_val('one_advance_smart1')
-                one_delay_smart1 = get_val('one_delay_smart1')
-                one_realtime2_smart1 = get_val('one_realtime2_smart1')
-                one_advance_smart2 = get_val('one_advance_smart2')
-                one_delay_smart2 = get_val('one_delay_smart2')
-                one_realtime2_smart2 = get_val('one_realtime2_smart2')
-                one_advance_smart3 = get_val('one_advance_smart3')
-                one_delay_smart3 = get_val('one_delay_smart3')
-                one_realtime2_smart3 = get_val('one_realtime2_smart3')
-                one_realtime2_smart = get_val('one_realtime2_smart')
-
-                # -------------------------------------------------------
-                ##提交
-                if strategy_type == '2':  ##单枪动态提交
-                    if tijiao_on and strategy_on and tijiao_OK:  # 判断是否需要提交,国拍开启状态方可触发
-                        if lowest_price >= own_price1 - 300 - one_advance_smart1 and a_time <= one_realtime2_smart1 + 0.1:  # 判断是否满足条件
-                            OnClick_Tijiao(one_delay_smart1)
-                        elif lowest_price >= own_price1 - 300 - one_advance_smart2 \
-                                and one_realtime2_smart1 + 0.1 <= a_time <= one_realtime2_smart2 + 0.1:  # 判断是否满足条件
-                            OnClick_Tijiao(one_delay_smart2)
-                        elif lowest_price >= own_price1 - 300 - one_advance_smart3 \
-                                and one_realtime2_smart2 + 0.1 <= a_time <= one_realtime2_smart3 + 0.1 - one_delay_smart3:  # 判断是否满足条件
-                            OnClick_Tijiao(one_delay_smart3)
-                        elif lowest_price >= own_price1 - 300 - one_advance_smart3 \
-                                 and a_time > one_realtime2_smart3 + 0.1:  # 判断是否满足条件
-                            OnClick_Tijiao()
-                        elif a_time >= one_realtime2_smart:  # 截止时间
-                            OnClick_Tijiao()
-
-                elif strategy_type == '3':  ##双枪动态提交
-                    if tijiao_on and strategy_on and tijiao_OK:  # 判断是否需要提交,国拍开启状态方可触发
-                        if tijiao_num == 1:
-                            if a_time >= one_real_time2 and one_forcetijiao_on:  # 判断是否满足条件
-                                OnClick_Tijiao()
-                            elif lowest_price >= own_price1 - 300 - one_advance and a_time <= one_real_time2 - one_delay:  # 价格判断
-                                OnClick_Tijiao(one_delay)
-                            elif lowest_price >= own_price1 - 300 - one_advance and a_time > one_real_time2:  # 价格判断
-                                OnClick_Tijiao()  ##价格到了，同时时间也到了
-                        elif tijiao_num == 2:
-                            if lowest_price >= own_price2 - 300 - one_advance_smart1 and a_time <= one_realtime2_smart1 + 0.1:  # 判断是否满足条件
-                                OnClick_Tijiao(one_delay_smart1)
-                            elif lowest_price >= own_price2 - 300 - one_advance_smart2 \
-                                    and one_realtime2_smart1 + 0.1 <= a_time <= one_realtime2_smart2 + 0.1:  # 55.1时间会有点超出
-                                OnClick_Tijiao(one_delay_smart2)
-                            elif lowest_price >= own_price2 - 300 - one_advance_smart3 \
-                                    and one_realtime2_smart2 + 0.1 <= a_time <= one_realtime2_smart3 + 0.1 - one_delay_smart3:  # 判断是否满足条件
-                                OnClick_Tijiao(one_delay_smart3)   # 考虑延迟时间
-                            elif lowest_price >= own_price2 - 300 - one_advance_smart3 \
-                                    and  a_time > one_realtime2_smart3 + 0.1:  # 考虑延迟时间
-                                OnClick_Tijiao()
-                            elif a_time >= one_realtime2_smart:  # 截止时间
-                                OnClick_Tijiao()
-
-                else:
-                    if tijiao_on and strategy_on and tijiao_OK:  # 判断是否需要提交,国拍开启状态方可触发
-                        if tijiao_num == 1 and a_time >= one_real_time2 and one_forcetijiao_on:  # 判断是否满足条件
-                            OnClick_Tijiao(one_delay)
-                            # SmartTijiao()
-                        elif tijiao_num == 2 and a_time >= second_real_time2 and second_forcetijiao_on:  # 判断是否满足条件
-                            OnClick_Tijiao(second_delay)
-                            # SmartTijiao()
-                        elif tijiao_num == 1 and lowest_price >= own_price1 - 300 - one_advance and a_time <= one_real_time2 - one_delay:  # 价格判断
-                            OnClick_Tijiao(one_delay)
-                        elif tijiao_num == 2 and lowest_price >= own_price2 - 300 - second_advance and a_time <= second_real_time2 - second_delay:  # 价格判断
-                            OnClick_Tijiao(second_delay)
-
-                # -------------------------------------------------------
-                ##出价
-                if strategy_type == '2':  ##如果为动态提交
-                    if strategy_on and chujia_on:  # 判断是否需要提交,国拍开启状态方可触发
-                        if tijiao_num == 1 and one_real_time1 <= a_time <= one_real_time1 + 0.6:  # 判断是否满足条件
-                            set_val('own_price1', lowest_price + one_diff)
-                            set_val('userprice', lowest_price + one_diff)
-                            set_val('usertime', one_realtime2_smart)
-                            OnClick_chujia()  # 调用出价
-                if strategy_type == '3':
-                    if strategy_on and chujia_on:  # 判断是否需要提交,国拍开启状态方可触发
-                        if tijiao_num == 1 and one_real_time1 <= a_time <= one_real_time1 + 0.6:  # 判断是否满足条件
-                            set_val('own_price1', lowest_price + one_diff)
-                            set_val('userprice', lowest_price + one_diff)
-                            set_val('usertime', one_real_time2)  # 设定当前的截止时间
-                            OnClick_chujia()  # 调用出价
-                        elif tijiao_num == 2 and twice and second_real_time1 <= a_time:  # 判断是否满足条件
-                            set_val('own_price2', lowest_price + second_diff)
-                            set_val('userprice', lowest_price + second_diff)
-                            set_val('usertime', one_realtime2_smart)  # 设定当前的截止时间
-                            set_val('tijiao_on', True)
-                            ##国拍与模拟触发方式不一样
-                            OnClick_chujia()  # 调用出价
-                else:
-                    if strategy_on and chujia_on:  # 判断是否需要提交,国拍开启状态方可触发
-                        if tijiao_num == 1 and one_real_time1 <= a_time <= one_real_time1 + 0.6:  # 判断是否满足条件
-                            set_val('own_price1', lowest_price + one_diff)
-                            set_val('userprice', lowest_price + one_diff)
-                            set_val('usertime', one_real_time2)  # 设定当前的截止时间
-                            OnClick_chujia()  # 调用出价
-                        elif tijiao_num == 2 and twice and second_real_time1 <= a_time:  # 判断是否满足条件
-                            set_val('own_price2', lowest_price + second_diff)
-                            set_val('userprice', lowest_price + second_diff)
-                            set_val('usertime', second_real_time2)  # 设定当前的截止时间
-                            set_val('tijiao_on', True)
-                            ##国拍与模拟触发方式不一样
-                            OnClick_chujia()  # 调用出价
-
-
-
-                ###-----------------------------------------------------------------------------
-                ##智能出价之后提交判定
-                userprice = get_val('userprice')
-                final_time = get_val('final_time')
-                # print('smartprice_chujia', smartprice_chujia)
-                # print('tijiao_OK', tijiao_OK)
-                if smartprice_chujia and tijiao_OK:
-                    if lowest_price >= userprice - 300 or a_time >= final_time:
-                        set_val('smartprice_chujia', False)  ##关闭确认查找，停止智能出价
-                        print("智能提交ffffffffffffff")
-                        OnClick_Tijiao()  # 调用方法
-
-                ###-----------------------------------------------------------------------------
-                ##智能判断价格是否合理
-                # 以50秒为参考   1100  600   1200  700   1300   800
-                smart_ajust = get_val('smart_ajust')
-                userprice = get_val('userprice')
-                one_diff = get_val('one_diff')
-                smart_ajust_time = get_val('smart_ajust_time')
-                smart_ajust_time_guopai = get_val('smart_ajust_time_guopai')
-                smart_ajust_time_moni = get_val('smart_ajust_time_moni')
-                if strategy_on and guopai_on and tijiao_on and smart_ajust:
-                    if smart_ajust_time_guopai <= a_time <= smart_ajust_time_guopai + 0.6:
-                        if one_diff == 1000:
-                            userprice2 = lowest_price + 500
-                            diff = userprice2 - userprice
-                            if diff == 0 or diff == -100 or diff == -200 or diff == -300:
-                                pass
-                            elif diff < -300 or diff > 300:
-                                userprice = lowest_price + 500
-                                set_val('userprice', lowest_price + 500)
-                                Smart_ajust_chujia(userprice)
-                            elif diff == 300:
-                                userprice = lowest_price + 600
-                                set_val('userprice', lowest_price + 600)
-                                Smart_ajust_chujia(userprice)
-                            elif diff == 200:
-                                userprice = lowest_price + 700
-                                set_val('userprice', lowest_price + 700)
-                                Smart_ajust_chujia(userprice)
-                            elif diff == 100:
-                                userprice = lowest_price + 800
-                                set_val('userprice', lowest_price + 800)
-                                Smart_ajust_chujia(userprice)
-
-                        elif one_diff == 1100:
-                            userprice2 = lowest_price + 600
-                            diff = userprice2 - userprice
-                            if diff == 0 or diff == 100 or diff == -100 or diff == -200:
-                                pass
-                            elif diff == -300:
-                                userprice = lowest_price + 500
-                                set_val('userprice', lowest_price + 500)
-                                Smart_ajust_chujia(userprice)
-                            elif diff < -300 or diff > 300:
-                                userprice = lowest_price + 600
-                                set_val('userprice', lowest_price + 600)
-                                Smart_ajust_chujia(userprice)
-                            elif diff == 300:
-                                userprice = lowest_price + 700
-                                set_val('userprice', lowest_price + 700)
-                                Smart_ajust_chujia(userprice)
-                            elif diff == 200:
-                                userprice = lowest_price + 800
-                                set_val('userprice', lowest_price + 800)
-                                Smart_ajust_chujia(userprice)
-                        elif one_diff == 1200:
-                            userprice2 = lowest_price + 700
-                            diff = userprice2 - userprice
-                            if diff == 0 or diff == 100 or diff == 200 or diff == -100:
-                                pass
-                            elif diff == -200:
-                                userprice = lowest_price + 500
-                                set_val('userprice', lowest_price + 500)
-                                Smart_ajust_chujia(userprice)
-                            elif diff == -300:
-                                userprice = lowest_price + 600
-                                set_val('userprice', lowest_price + 600)
-                                Smart_ajust_chujia(userprice)
-                            elif diff < -300 or diff > 300:
-                                userprice = lowest_price + 700
-                                set_val('userprice', lowest_price + 700)
-                                Smart_ajust_chujia(userprice)
-                            elif diff == 300:
-                                userprice = lowest_price + 800
-                                set_val('userprice', lowest_price + 800)
-                                Smart_ajust_chujia(userprice)
-                        elif one_diff == 1300:
-                            userprice2 = lowest_price + 800
-                            diff = userprice2 - userprice
-                            if diff == 0 or diff == 100 or diff == 200 or diff == 300:
-                                pass
-                            elif diff == -100:
-                                userprice = lowest_price + 500
-                                set_val('userprice', lowest_price + 500)
-                                Smart_ajust_chujia(userprice)
-                            elif diff == -200:
-                                userprice = lowest_price + 600
-                                set_val('userprice', lowest_price + 600)
-                                Smart_ajust_chujia(userprice)
-                            elif diff == -300:
-                                userprice = lowest_price + 700
-                                set_val('userprice', lowest_price + 700)
-                                Smart_ajust_chujia(userprice)
-                            elif diff < -300 or diff > 300:
-                                userprice = lowest_price + 800
-                                set_val('userprice', lowest_price + 800)
-                                Smart_ajust_chujia(userprice)
-
+                time.sleep(0.025)  # 间隔0.025秒判断一次
+                self.chujia()
+                self.tijiao()
+                self.smart_chujia()
             except:
                 logger.error("提交出错")
                 logger.exception('this is an exception message')
+
+
+    def tijiao(self):
+        # -------------------------------------------------------
+        lowest_price = get_val('lowest_price')
+        own_price1 = get_val('own_price1')
+        own_price2 = get_val('own_price2')
+        strategy_on = get_val('strategy_on')
+        second_real_time2 = get_val('second_real_time2')
+        one_advance = get_val('one_advance')
+        second_advance = get_val('second_advance')
+        tijiao_num = get_val('tijiao_num')
+        tijiao_OK = get_val('tijiao_OK')
+        tijiao_on = get_val('tijiao_on')
+        a_time = get_val('a_time')
+        one_real_time2 = get_val('one_real_time2')
+        one_delay = get_val('one_delay')
+        second_delay = get_val('second_delay')
+        smartprice_chujia = get_val('smartprice_chujia')  ##智能出价
+        one_forcetijiao_on = get_val('one_forcetijiao_on')
+        second_forcetijiao_on = get_val('second_forcetijiao_on')
+        strategy_type = get_dick('strategy_type')
+        ##提交
+        one_advance_smart1 = get_val('one_advance_smart1')
+        one_delay_smart1 = get_val('one_delay_smart1')
+        one_realtime2_smart1 = get_val('one_realtime2_smart1')
+        one_advance_smart2 = get_val('one_advance_smart2')
+        one_delay_smart2 = get_val('one_delay_smart2')
+        one_realtime2_smart2 = get_val('one_realtime2_smart2')
+        one_advance_smart3 = get_val('one_advance_smart3')
+        one_delay_smart3 = get_val('one_delay_smart3')
+        one_realtime2_smart3 = get_val('one_realtime2_smart3')
+        one_realtime2_smart = get_val('one_realtime2_smart')
+        ##提交
+        if strategy_type == '2':  ##单枪动态提交
+            if tijiao_on and strategy_on and tijiao_OK:  # 判断是否需要提交,国拍开启状态方可触发
+                if lowest_price >= own_price1 - 300 - one_advance_smart1 and a_time <= one_realtime2_smart1 + 0.1:  # 判断是否满足条件
+                    OnClick_Tijiao(one_delay_smart1)
+                elif lowest_price >= own_price1 - 300 - one_advance_smart2 \
+                        and one_realtime2_smart1 + 0.1 <= a_time <= one_realtime2_smart2 + 0.1:  # 判断是否满足条件
+                    OnClick_Tijiao(one_delay_smart2)
+                elif lowest_price >= own_price1 - 300 - one_advance_smart3 \
+                        and one_realtime2_smart2 + 0.1 <= a_time \
+                        <= min(one_realtime2_smart3 + 0.1, one_realtime2_smart - one_delay_smart3):  # 判断是否满足条件
+                    OnClick_Tijiao(one_delay_smart3)
+                elif a_time >= one_realtime2_smart:  # 截止时间
+                    OnClick_Tijiao()
+        elif strategy_type == '3':  ##双枪动态提交
+            if tijiao_on and strategy_on and tijiao_OK:  # 判断是否需要提交,国拍开启状态方可触发
+                if tijiao_num == 1:
+                    if a_time >= one_real_time2 and one_forcetijiao_on:  # 判断是否满足条件
+                        OnClick_Tijiao()
+                    elif lowest_price >= own_price1 - 300 - one_advance and a_time <= one_real_time2 - one_delay:  # 价格判断
+                        OnClick_Tijiao(one_delay)
+                    elif lowest_price >= own_price1 - 300 - one_advance and a_time > one_real_time2:  # 价格判断
+                        OnClick_Tijiao()  ##价格到了，同时时间也到了
+                elif tijiao_num == 2:
+                    if lowest_price >= own_price2 - 300 - one_advance_smart1 and a_time <= one_realtime2_smart1 + 0.1:  # 判断是否满足条件
+                        OnClick_Tijiao(one_delay_smart1)
+                    elif lowest_price >= own_price2 - 300 - one_advance_smart2 \
+                            and one_realtime2_smart1 + 0.1 <= a_time <= one_realtime2_smart2 + 0.1:  # 55.1时间会有点超出
+                        OnClick_Tijiao(one_delay_smart2)
+                    elif lowest_price >= own_price2 - 300 - one_advance_smart3 \
+                            and one_realtime2_smart2 + 0.1 <= a_time \
+                            <= min(one_realtime2_smart3 + 0.1, one_realtime2_smart - one_delay_smart3):  # 判断是否满足条件
+                        OnClick_Tijiao(one_delay_smart3)  # 考虑延迟时间
+                    elif a_time >= one_realtime2_smart:  # 截止时间
+                        OnClick_Tijiao()
+        else:
+            if tijiao_on and strategy_on and tijiao_OK:  # 判断是否需要提交,国拍开启状态方可触发
+                if tijiao_num == 1 and a_time >= one_real_time2 and one_forcetijiao_on:  # 判断是否满足条件
+                    OnClick_Tijiao(one_delay)
+                    # SmartTijiao()
+                elif tijiao_num == 2 and a_time >= second_real_time2 and second_forcetijiao_on:  # 判断是否满足条件
+                    OnClick_Tijiao(second_delay)
+                    # SmartTijiao()
+                elif tijiao_num == 1 and lowest_price >= own_price1 - 300 - one_advance and a_time <= one_real_time2 - one_delay:  # 价格判断
+                    OnClick_Tijiao(one_delay)
+                elif tijiao_num == 2 and lowest_price >= own_price2 - 300 - second_advance and a_time <= second_real_time2 - second_delay:  # 价格判断
+                    OnClick_Tijiao(second_delay)
+
+        ###-----------------------------------------------------------------------------
+        ##智能出价之后提交判定
+        userprice = get_val('userprice')
+        final_time = get_val('final_time')
+        # print('smartprice_chujia', smartprice_chujia)
+        # print('tijiao_OK', tijiao_OK)
+        if smartprice_chujia and tijiao_OK:
+            if lowest_price >= userprice - 300 or a_time >= final_time:
+                set_val('smartprice_chujia', False)  ##关闭确认查找，停止智能出价
+                print("智能提交ffffffffffffff")
+                OnClick_Tijiao()  # 调用方法
+
+
+
+
+    def chujia(self):
+        # -------------------------------------------------------
+        lowest_price = get_val('lowest_price')
+        strategy_on = get_val('strategy_on')
+        second_real_time1 = get_val('second_real_time1')
+        second_real_time2 = get_val('second_real_time2')
+        tijiao_num = get_val('tijiao_num')
+        chujia_on = get_val('chujia_on')
+        a_time = get_val('a_time')
+        one_real_time1 = get_val('one_real_time1')
+        one_real_time2 = get_val('one_real_time2')
+        twice = get_val('twice')
+        one_diff = get_val('one_diff')
+        second_diff = get_val('second_diff')
+        strategy_type = get_dick('strategy_type')
+        one_realtime2_smart = get_val('one_realtime2_smart')
+        ##出价
+        if strategy_type == '2':  ##如果为动态提交
+            if strategy_on and chujia_on:  # 判断是否需要提交,国拍开启状态方可触发
+                if tijiao_num == 1 and one_real_time1 <= a_time <= one_real_time1 + 0.6:  # 判断是否满足条件
+                    set_val('own_price1', lowest_price + one_diff)
+                    set_val('userprice', lowest_price + one_diff)
+                    set_val('usertime', one_realtime2_smart)
+                    OnClick_chujia()  # 调用出价
+        if strategy_type == '3':
+            if strategy_on and chujia_on:  # 判断是否需要提交,国拍开启状态方可触发
+                if tijiao_num == 1 and one_real_time1 <= a_time <= one_real_time1 + 0.6:  # 判断是否满足条件
+                    set_val('own_price1', lowest_price + one_diff)
+                    set_val('userprice', lowest_price + one_diff)
+                    set_val('usertime', one_real_time2)  # 设定当前的截止时间
+                    OnClick_chujia()  # 调用出价
+                elif tijiao_num == 2 and twice and second_real_time1 <= a_time:  # 判断是否满足条件
+                    set_val('own_price2', lowest_price + second_diff)
+                    set_val('userprice', lowest_price + second_diff)
+                    set_val('usertime', one_realtime2_smart)  # 设定当前的截止时间
+                    set_val('tijiao_on', True)
+                    ##国拍与模拟触发方式不一样
+                    OnClick_chujia()  # 调用出价
+        else:
+            if strategy_on and chujia_on:  # 判断是否需要提交,国拍开启状态方可触发
+                if tijiao_num == 1 and one_real_time1 <= a_time <= one_real_time1 + 0.6:  # 判断是否满足条件
+                    set_val('own_price1', lowest_price + one_diff)
+                    set_val('userprice', lowest_price + one_diff)
+                    set_val('usertime', one_real_time2)  # 设定当前的截止时间
+                    OnClick_chujia()  # 调用出价
+                elif tijiao_num == 2 and twice and second_real_time1 <= a_time:  # 判断是否满足条件
+                    set_val('own_price2', lowest_price + second_diff)
+                    set_val('userprice', lowest_price + second_diff)
+                    set_val('usertime', second_real_time2)  # 设定当前的截止时间
+                    set_val('tijiao_on', True)
+                    ##国拍与模拟触发方式不一样
+                    OnClick_chujia()  # 调用出价
+
+
+
+    def smart_chujia(self):
+        ###-----------------------------------------------------------------------------
+        lowest_price = get_val('lowest_price')
+        strategy_on = get_val('strategy_on')
+        tijiao_on = get_val('tijiao_on')
+        a_time = get_val('a_time')
+        guopai_on = get_val('guopai_on')
+        ##智能判断价格是否合理
+        # 以50秒为参考   1100  600   1200  700   1300   800
+        smart_ajust = get_val('smart_ajust')
+        userprice = get_val('userprice')
+        one_diff = get_val('one_diff')
+        smart_ajust_time_guopai = get_val('smart_ajust_time_guopai')
+        if strategy_on and guopai_on and tijiao_on and smart_ajust:
+            if smart_ajust_time_guopai <= a_time <= smart_ajust_time_guopai + 0.6:
+                if one_diff == 1000:
+                    userprice2 = lowest_price + 500
+                    diff = userprice2 - userprice
+                    if diff == 0 or diff == -100 or diff == -200 or diff == -300:
+                        pass
+                    elif diff < -300 or diff > 300:
+                        userprice = lowest_price + 500
+                        set_val('userprice', lowest_price + 500)
+                        Smart_ajust_chujia(userprice)
+                    elif diff == 300:
+                        userprice = lowest_price + 600
+                        set_val('userprice', lowest_price + 600)
+                        Smart_ajust_chujia(userprice)
+                    elif diff == 200:
+                        userprice = lowest_price + 700
+                        set_val('userprice', lowest_price + 700)
+                        Smart_ajust_chujia(userprice)
+                    elif diff == 100:
+                        userprice = lowest_price + 800
+                        set_val('userprice', lowest_price + 800)
+                        Smart_ajust_chujia(userprice)
+
+                elif one_diff == 1100:
+                    userprice2 = lowest_price + 600
+                    diff = userprice2 - userprice
+                    if diff == 0 or diff == 100 or diff == -100 or diff == -200:
+                        pass
+                    elif diff == -300:
+                        userprice = lowest_price + 500
+                        set_val('userprice', lowest_price + 500)
+                        Smart_ajust_chujia(userprice)
+                    elif diff < -300 or diff > 300:
+                        userprice = lowest_price + 600
+                        set_val('userprice', lowest_price + 600)
+                        Smart_ajust_chujia(userprice)
+                    elif diff == 300:
+                        userprice = lowest_price + 700
+                        set_val('userprice', lowest_price + 700)
+                        Smart_ajust_chujia(userprice)
+                    elif diff == 200:
+                        userprice = lowest_price + 800
+                        set_val('userprice', lowest_price + 800)
+                        Smart_ajust_chujia(userprice)
+                elif one_diff == 1200:
+                    userprice2 = lowest_price + 700
+                    diff = userprice2 - userprice
+                    if diff == 0 or diff == 100 or diff == 200 or diff == -100:
+                        pass
+                    elif diff == -200:
+                        userprice = lowest_price + 500
+                        set_val('userprice', lowest_price + 500)
+                        Smart_ajust_chujia(userprice)
+                    elif diff == -300:
+                        userprice = lowest_price + 600
+                        set_val('userprice', lowest_price + 600)
+                        Smart_ajust_chujia(userprice)
+                    elif diff < -300 or diff > 300:
+                        userprice = lowest_price + 700
+                        set_val('userprice', lowest_price + 700)
+                        Smart_ajust_chujia(userprice)
+                    elif diff == 300:
+                        userprice = lowest_price + 800
+                        set_val('userprice', lowest_price + 800)
+                        Smart_ajust_chujia(userprice)
+                elif one_diff == 1300:
+                    userprice2 = lowest_price + 800
+                    diff = userprice2 - userprice
+                    if diff == 0 or diff == 100 or diff == 200 or diff == 300:
+                        pass
+                    elif diff == -100:
+                        userprice = lowest_price + 500
+                        set_val('userprice', lowest_price + 500)
+                        Smart_ajust_chujia(userprice)
+                    elif diff == -200:
+                        userprice = lowest_price + 600
+                        set_val('userprice', lowest_price + 600)
+                        Smart_ajust_chujia(userprice)
+                    elif diff == -300:
+                        userprice = lowest_price + 700
+                        set_val('userprice', lowest_price + 700)
+                        Smart_ajust_chujia(userprice)
+                    elif diff < -300 or diff > 300:
+                        userprice = lowest_price + 800
+                        set_val('userprice', lowest_price + 800)
+                        Smart_ajust_chujia(userprice)
+
+
 
     def pause(self):
         self.__flag.clear()  # 设置为False, 让线程阻塞
@@ -731,8 +744,6 @@ class TimeThread(Thread):
             one_real_time1 = get_val('one_real_time1')
             try:
                 if one_real_time1 > a_time + 0.2:  ##只要出现时间小于第一次出价就触发还原
-                    print(a_time - one_real_time1)
-                    print("触发还原")
                     init_strategy()
                 start_time = get_val('start_time')
                 target_time = get_val('target_time')

@@ -1,5 +1,5 @@
-Sat, 23 Jun 2018 15:53:18 app_thread.py[line:193] ERROR 截图失败
-Sat, 23 Jun 2018 15:53:18 app_thread.py[line:194] ERROR this is an exception message
+Sat, 23 Jun 2018 20:45:54 app_thread.py[line:193] ERROR 截图失败
+Sat, 23 Jun 2018 20:45:54 app_thread.py[line:194] ERROR this is an exception message
 Traceback (most recent call last):
   File "E:\hupai\component\app_thread.py", line 188, in run_func
     cut_img()
@@ -8,13 +8,13 @@ Traceback (most recent call last):
   File "E:\hupai\component\imgcut.py", line 434, in only_screenshot
     dataBitMap.CreateCompatibleBitmap(dcObj, w - x, h - y)
 win32ui.error: CreateCompatibleDC failed
-Sat, 23 Jun 2018 15:53:19 imgcut.py[line:222] ERROR error message
+Sat, 23 Jun 2018 20:45:55 imgcut.py[line:222] ERROR error message
 Traceback (most recent call last):
   File "E:\hupai\component\imgcut.py", line 166, in cut
     diff = xy[-1][2]  # 最后一个 图像块
 IndexError: list index out of range
-Sat, 23 Jun 2018 15:53:19 app_thread.py[line:256] ERROR 识别价格失败
-Sat, 23 Jun 2018 15:53:19 app_thread.py[line:257] ERROR this is an exception message
+Sat, 23 Jun 2018 20:45:55 app_thread.py[line:256] ERROR 识别价格失败
+Sat, 23 Jun 2018 20:45:55 app_thread.py[line:257] ERROR this is an exception message
 Traceback (most recent call last):
   File "E:\hupai\component\app_thread.py", line 236, in read_lowest_price
     str_price = Price_read()
@@ -23,13 +23,13 @@ Traceback (most recent call last):
   File "E:\hupai\component\imgcut.py", line 231, in readpic
     result = result[1].reshape(-1).astype(int).astype(str)
 AttributeError: 'NoneType' object has no attribute 'reshape'
-Sat, 23 Jun 2018 15:53:19 imgcut.py[line:222] ERROR error message
+Sat, 23 Jun 2018 20:45:55 imgcut.py[line:222] ERROR error message
 Traceback (most recent call last):
   File "E:\hupai\component\imgcut.py", line 166, in cut
     diff = xy[-1][2]  # 最后一个 图像块
 IndexError: list index out of range
-Sat, 23 Jun 2018 15:53:19 app_thread.py[line:256] ERROR 识别价格失败
-Sat, 23 Jun 2018 15:53:19 app_thread.py[line:257] ERROR this is an exception message
+Sat, 23 Jun 2018 20:45:55 app_thread.py[line:256] ERROR 识别价格失败
+Sat, 23 Jun 2018 20:45:55 app_thread.py[line:257] ERROR this is an exception message
 Traceback (most recent call last):
   File "E:\hupai\component\app_thread.py", line 236, in read_lowest_price
     str_price = Price_read()
@@ -38,13 +38,13 @@ Traceback (most recent call last):
   File "E:\hupai\component\imgcut.py", line 231, in readpic
     result = result[1].reshape(-1).astype(int).astype(str)
 AttributeError: 'NoneType' object has no attribute 'reshape'
-Sat, 23 Jun 2018 15:53:19 imgcut.py[line:222] ERROR error message
+Sat, 23 Jun 2018 20:45:55 imgcut.py[line:222] ERROR error message
 Traceback (most recent call last):
   File "E:\hupai\component\imgcut.py", line 166, in cut
     diff = xy[-1][2]  # 最后一个 图像块
 IndexError: list index out of range
-Sat, 23 Jun 2018 15:53:19 app_thread.py[line:256] ERROR 识别价格失败
-Sat, 23 Jun 2018 15:53:19 app_thread.py[line:257] ERROR this is an exception message
+Sat, 23 Jun 2018 20:45:55 app_thread.py[line:256] ERROR 识别价格失败
+Sat, 23 Jun 2018 20:45:55 app_thread.py[line:257] ERROR this is an exception message
 Traceback (most recent call last):
   File "E:\hupai\component\app_thread.py", line 236, in read_lowest_price
     str_price = Price_read()
@@ -53,13 +53,13 @@ Traceback (most recent call last):
   File "E:\hupai\component\imgcut.py", line 231, in readpic
     result = result[1].reshape(-1).astype(int).astype(str)
 AttributeError: 'NoneType' object has no attribute 'reshape'
-Sat, 23 Jun 2018 15:53:19 imgcut.py[line:222] ERROR error message
+Sat, 23 Jun 2018 20:45:55 imgcut.py[line:222] ERROR error message
 Traceback (most recent call last):
   File "E:\hupai\component\imgcut.py", line 166, in cut
     diff = xy[-1][2]  # 最后一个 图像块
 IndexError: list index out of range
-Sat, 23 Jun 2018 15:53:19 app_thread.py[line:256] ERROR 识别价格失败
-Sat, 23 Jun 2018 15:53:19 app_thread.py[line:257] ERROR this is an exception message
+Sat, 23 Jun 2018 20:45:55 app_thread.py[line:256] ERROR 识别价格失败
+Sat, 23 Jun 2018 20:45:55 app_thread.py[line:257] ERROR this is an exception message
 Traceback (most recent call last):
   File "E:\hupai\component\app_thread.py", line 236, in read_lowest_price
     str_price = Price_read()
@@ -68,13 +68,13 @@ Traceback (most recent call last):
   File "E:\hupai\component\imgcut.py", line 231, in readpic
     result = result[1].reshape(-1).astype(int).astype(str)
 AttributeError: 'NoneType' object has no attribute 'reshape'
-Sat, 23 Jun 2018 15:53:19 imgcut.py[line:222] ERROR error message
+Sat, 23 Jun 2018 20:45:55 imgcut.py[line:222] ERROR error message
 Traceback (most recent call last):
   File "E:\hupai\component\imgcut.py", line 166, in cut
     diff = xy[-1][2]  # 最后一个 图像块
 IndexError: list index out of range
-Sat, 23 Jun 2018 15:53:19 app_thread.py[line:256] ERROR 识别价格失败
-Sat, 23 Jun 2018 15:53:19 app_thread.py[line:257] ERROR this is an exception message
+Sat, 23 Jun 2018 20:45:55 app_thread.py[line:256] ERROR 识别价格失败
+Sat, 23 Jun 2018 20:45:55 app_thread.py[line:257] ERROR this is an exception message
 Traceback (most recent call last):
   File "E:\hupai\component\app_thread.py", line 236, in read_lowest_price
     str_price = Price_read()
@@ -83,13 +83,13 @@ Traceback (most recent call last):
   File "E:\hupai\component\imgcut.py", line 231, in readpic
     result = result[1].reshape(-1).astype(int).astype(str)
 AttributeError: 'NoneType' object has no attribute 'reshape'
-Sat, 23 Jun 2018 15:53:19 imgcut.py[line:222] ERROR error message
+Sat, 23 Jun 2018 20:45:55 imgcut.py[line:222] ERROR error message
 Traceback (most recent call last):
   File "E:\hupai\component\imgcut.py", line 166, in cut
     diff = xy[-1][2]  # 最后一个 图像块
 IndexError: list index out of range
-Sat, 23 Jun 2018 15:53:19 app_thread.py[line:256] ERROR 识别价格失败
-Sat, 23 Jun 2018 15:53:19 app_thread.py[line:257] ERROR this is an exception message
+Sat, 23 Jun 2018 20:45:55 app_thread.py[line:256] ERROR 识别价格失败
+Sat, 23 Jun 2018 20:45:55 app_thread.py[line:257] ERROR this is an exception message
 Traceback (most recent call last):
   File "E:\hupai\component\app_thread.py", line 236, in read_lowest_price
     str_price = Price_read()
@@ -98,13 +98,13 @@ Traceback (most recent call last):
   File "E:\hupai\component\imgcut.py", line 231, in readpic
     result = result[1].reshape(-1).astype(int).astype(str)
 AttributeError: 'NoneType' object has no attribute 'reshape'
-Sat, 23 Jun 2018 15:53:19 imgcut.py[line:222] ERROR error message
+Sat, 23 Jun 2018 20:45:55 imgcut.py[line:222] ERROR error message
 Traceback (most recent call last):
   File "E:\hupai\component\imgcut.py", line 166, in cut
     diff = xy[-1][2]  # 最后一个 图像块
 IndexError: list index out of range
-Sat, 23 Jun 2018 15:53:19 app_thread.py[line:256] ERROR 识别价格失败
-Sat, 23 Jun 2018 15:53:19 app_thread.py[line:257] ERROR this is an exception message
+Sat, 23 Jun 2018 20:45:55 app_thread.py[line:256] ERROR 识别价格失败
+Sat, 23 Jun 2018 20:45:55 app_thread.py[line:257] ERROR this is an exception message
 Traceback (most recent call last):
   File "E:\hupai\component\app_thread.py", line 236, in read_lowest_price
     str_price = Price_read()
@@ -113,13 +113,13 @@ Traceback (most recent call last):
   File "E:\hupai\component\imgcut.py", line 231, in readpic
     result = result[1].reshape(-1).astype(int).astype(str)
 AttributeError: 'NoneType' object has no attribute 'reshape'
-Sat, 23 Jun 2018 15:53:19 imgcut.py[line:222] ERROR error message
+Sat, 23 Jun 2018 20:45:55 imgcut.py[line:222] ERROR error message
 Traceback (most recent call last):
   File "E:\hupai\component\imgcut.py", line 166, in cut
     diff = xy[-1][2]  # 最后一个 图像块
 IndexError: list index out of range
-Sat, 23 Jun 2018 15:53:19 app_thread.py[line:256] ERROR 识别价格失败
-Sat, 23 Jun 2018 15:53:19 app_thread.py[line:257] ERROR this is an exception message
+Sat, 23 Jun 2018 20:45:55 app_thread.py[line:256] ERROR 识别价格失败
+Sat, 23 Jun 2018 20:45:55 app_thread.py[line:257] ERROR this is an exception message
 Traceback (most recent call last):
   File "E:\hupai\component\app_thread.py", line 236, in read_lowest_price
     str_price = Price_read()
@@ -128,13 +128,13 @@ Traceback (most recent call last):
   File "E:\hupai\component\imgcut.py", line 231, in readpic
     result = result[1].reshape(-1).astype(int).astype(str)
 AttributeError: 'NoneType' object has no attribute 'reshape'
-Sat, 23 Jun 2018 15:53:19 imgcut.py[line:222] ERROR error message
+Sat, 23 Jun 2018 20:45:55 imgcut.py[line:222] ERROR error message
 Traceback (most recent call last):
   File "E:\hupai\component\imgcut.py", line 166, in cut
     diff = xy[-1][2]  # 最后一个 图像块
 IndexError: list index out of range
-Sat, 23 Jun 2018 15:53:19 app_thread.py[line:256] ERROR 识别价格失败
-Sat, 23 Jun 2018 15:53:19 app_thread.py[line:257] ERROR this is an exception message
+Sat, 23 Jun 2018 20:45:55 app_thread.py[line:256] ERROR 识别价格失败
+Sat, 23 Jun 2018 20:45:55 app_thread.py[line:257] ERROR this is an exception message
 Traceback (most recent call last):
   File "E:\hupai\component\app_thread.py", line 236, in read_lowest_price
     str_price = Price_read()
@@ -143,13 +143,13 @@ Traceback (most recent call last):
   File "E:\hupai\component\imgcut.py", line 231, in readpic
     result = result[1].reshape(-1).astype(int).astype(str)
 AttributeError: 'NoneType' object has no attribute 'reshape'
-Sat, 23 Jun 2018 15:53:19 imgcut.py[line:222] ERROR error message
+Sat, 23 Jun 2018 20:45:56 imgcut.py[line:222] ERROR error message
 Traceback (most recent call last):
   File "E:\hupai\component\imgcut.py", line 166, in cut
     diff = xy[-1][2]  # 最后一个 图像块
 IndexError: list index out of range
-Sat, 23 Jun 2018 15:53:19 app_thread.py[line:256] ERROR 识别价格失败
-Sat, 23 Jun 2018 15:53:19 app_thread.py[line:257] ERROR this is an exception message
+Sat, 23 Jun 2018 20:45:56 app_thread.py[line:256] ERROR 识别价格失败
+Sat, 23 Jun 2018 20:45:56 app_thread.py[line:257] ERROR this is an exception message
 Traceback (most recent call last):
   File "E:\hupai\component\app_thread.py", line 236, in read_lowest_price
     str_price = Price_read()
@@ -158,13 +158,13 @@ Traceback (most recent call last):
   File "E:\hupai\component\imgcut.py", line 231, in readpic
     result = result[1].reshape(-1).astype(int).astype(str)
 AttributeError: 'NoneType' object has no attribute 'reshape'
-Sat, 23 Jun 2018 15:53:19 imgcut.py[line:222] ERROR error message
+Sat, 23 Jun 2018 20:45:56 imgcut.py[line:222] ERROR error message
 Traceback (most recent call last):
   File "E:\hupai\component\imgcut.py", line 166, in cut
     diff = xy[-1][2]  # 最后一个 图像块
 IndexError: list index out of range
-Sat, 23 Jun 2018 15:53:19 app_thread.py[line:256] ERROR 识别价格失败
-Sat, 23 Jun 2018 15:53:19 app_thread.py[line:257] ERROR this is an exception message
+Sat, 23 Jun 2018 20:45:56 app_thread.py[line:256] ERROR 识别价格失败
+Sat, 23 Jun 2018 20:45:56 app_thread.py[line:257] ERROR this is an exception message
 Traceback (most recent call last):
   File "E:\hupai\component\app_thread.py", line 236, in read_lowest_price
     str_price = Price_read()
@@ -173,78 +173,12 @@ Traceback (most recent call last):
   File "E:\hupai\component\imgcut.py", line 231, in readpic
     result = result[1].reshape(-1).astype(int).astype(str)
 AttributeError: 'NoneType' object has no attribute 'reshape'
-Sat, 23 Jun 2018 15:53:20 imgcut.py[line:222] ERROR error message
+Sat, 23 Jun 2018 20:46:17 app_thread.py[line:79] ERROR this is an exception message
 Traceback (most recent call last):
-  File "E:\hupai\component\imgcut.py", line 166, in cut
-    diff = xy[-1][2]  # 最后一个 图像块
-IndexError: list index out of range
-Sat, 23 Jun 2018 15:53:20 app_thread.py[line:256] ERROR 识别价格失败
-Sat, 23 Jun 2018 15:53:20 app_thread.py[line:257] ERROR this is an exception message
-Traceback (most recent call last):
-  File "E:\hupai\component\app_thread.py", line 236, in read_lowest_price
-    str_price = Price_read()
-  File "E:\hupai\component\imgcut.py", line 539, in Price_read
-    price = readpic(lowest_price_img, 'maindata.xml')
-  File "E:\hupai\component\imgcut.py", line 231, in readpic
-    result = result[1].reshape(-1).astype(int).astype(str)
-AttributeError: 'NoneType' object has no attribute 'reshape'
-Sat, 23 Jun 2018 15:53:20 imgcut.py[line:222] ERROR error message
-Traceback (most recent call last):
-  File "E:\hupai\component\imgcut.py", line 166, in cut
-    diff = xy[-1][2]  # 最后一个 图像块
-IndexError: list index out of range
-Sat, 23 Jun 2018 15:53:20 app_thread.py[line:256] ERROR 识别价格失败
-Sat, 23 Jun 2018 15:53:20 app_thread.py[line:257] ERROR this is an exception message
-Traceback (most recent call last):
-  File "E:\hupai\component\app_thread.py", line 236, in read_lowest_price
-    str_price = Price_read()
-  File "E:\hupai\component\imgcut.py", line 539, in Price_read
-    price = readpic(lowest_price_img, 'maindata.xml')
-  File "E:\hupai\component\imgcut.py", line 231, in readpic
-    result = result[1].reshape(-1).astype(int).astype(str)
-AttributeError: 'NoneType' object has no attribute 'reshape'
-Sat, 23 Jun 2018 15:53:20 imgcut.py[line:222] ERROR error message
-Traceback (most recent call last):
-  File "E:\hupai\component\imgcut.py", line 166, in cut
-    diff = xy[-1][2]  # 最后一个 图像块
-IndexError: list index out of range
-Sat, 23 Jun 2018 15:53:20 app_thread.py[line:256] ERROR 识别价格失败
-Sat, 23 Jun 2018 15:53:20 app_thread.py[line:257] ERROR this is an exception message
-Traceback (most recent call last):
-  File "E:\hupai\component\app_thread.py", line 236, in read_lowest_price
-    str_price = Price_read()
-  File "E:\hupai\component\imgcut.py", line 539, in Price_read
-    price = readpic(lowest_price_img, 'maindata.xml')
-  File "E:\hupai\component\imgcut.py", line 231, in readpic
-    result = result[1].reshape(-1).astype(int).astype(str)
-AttributeError: 'NoneType' object has no attribute 'reshape'
-Sat, 23 Jun 2018 15:53:20 imgcut.py[line:222] ERROR error message
-Traceback (most recent call last):
-  File "E:\hupai\component\imgcut.py", line 166, in cut
-    diff = xy[-1][2]  # 最后一个 图像块
-IndexError: list index out of range
-Sat, 23 Jun 2018 15:53:20 app_thread.py[line:256] ERROR 识别价格失败
-Sat, 23 Jun 2018 15:53:20 app_thread.py[line:257] ERROR this is an exception message
-Traceback (most recent call last):
-  File "E:\hupai\component\app_thread.py", line 236, in read_lowest_price
-    str_price = Price_read()
-  File "E:\hupai\component\imgcut.py", line 539, in Price_read
-    price = readpic(lowest_price_img, 'maindata.xml')
-  File "E:\hupai\component\imgcut.py", line 231, in readpic
-    result = result[1].reshape(-1).astype(int).astype(str)
-AttributeError: 'NoneType' object has no attribute 'reshape'
-Sat, 23 Jun 2018 15:53:20 imgcut.py[line:222] ERROR error message
-Traceback (most recent call last):
-  File "E:\hupai\component\imgcut.py", line 166, in cut
-    diff = xy[-1][2]  # 最后一个 图像块
-IndexError: list index out of range
-Sat, 23 Jun 2018 15:53:20 app_thread.py[line:256] ERROR 识别价格失败
-Sat, 23 Jun 2018 15:53:20 app_thread.py[line:257] ERROR this is an exception message
-Traceback (most recent call last):
-  File "E:\hupai\component\app_thread.py", line 236, in read_lowest_price
-    str_price = Price_read()
-  File "E:\hupai\component\imgcut.py", line 539, in Price_read
-    price = readpic(lowest_price_img, 'maindata.xml')
-  File "E:\hupai\component\imgcut.py", line 231, in readpic
-    result = result[1].reshape(-1).astype(int).astype(str)
-AttributeError: 'NoneType' object has no attribute 'reshape'
+  File "E:\hupai\component\app_thread.py", line 77, in run
+    findpos()
+  File "E:\hupai\component\imgcut.py", line 302, in findpos
+    sc = grab_screen()
+  File "E:\hupai\component\imgcut.py", line 285, in grab_screen
+    bmp.CreateCompatibleBitmap(srcdc, width, height)
+win32ui.error: CreateCompatibleDC failed
