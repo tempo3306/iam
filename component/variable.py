@@ -480,7 +480,7 @@ def init_strategy():
 
 
     ##调整策略范围
-    timelist = [400 + i * 1 for i in range(191)]
+    timelist = [100 + i * 1 for i in range(491)]
     yanchilist = [0 + i * 1 for i in range(20)]
     pricelist = [300 + i * 100 for i in range(13)]
 

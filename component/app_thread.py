@@ -146,7 +146,9 @@ class refreshThread(Thread):
             self.__flag.wait()  # 为True时立即返回, 为False时阻塞直到内部的标识位为True后返回
             time.sleep(0.05)
             try:
-                findrefresh()
+                final_stage = get_val('final_stage')
+                if final_stage:
+                    findrefresh()
             except:
                 logger.error("刷新失败")
                 logger.exception('this is an exception message')
@@ -724,11 +726,13 @@ class TimeThread(Thread):
             time.sleep(0.05)
             b = time.clock()
             a_time = get_val('a_time')
-            a_time += b - a  # 实际运行时间作为真实间隔
+            a_time += b - a  # 实际运行时间作为真实间隔f
             set_val('a_time', a_time)
             one_real_time1 = get_val('one_real_time1')
             try:
-                if one_real_time1 > a_time:  ##只要出现时间小于第一次出价就触发还原
+                if one_real_time1 > a_time + 0.2:  ##只要出现时间小于第一次出价就触发还原
+                    print(a_time - one_real_time1)
+                    print("触发还原")
                     init_strategy()
                 start_time = get_val('start_time')
                 target_time = get_val('target_time')

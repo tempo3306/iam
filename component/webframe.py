@@ -119,6 +119,7 @@ class ButtonPanel(wx.Panel):
             self.parent.htmlpanel.webview.LoadURL(url_nodianxin)
             nodianxin_webstatus_label = get_val('nodianxin_webstatus_label')
             self.webstatus.SetLabel(nodianxin_webstatus_label)
+
         else:
             self.urlchange_button.SetLabel(urlchange_nodianxin_label)
             set_val('guopai_dianxin', True)
@@ -467,38 +468,40 @@ class WebFrame(wx.Frame):
     def Yanzhengma_scale(self):
         ##------------------------------
         ###判定验证码放大框
-        find_yan_confirm()
-        yanzhengma_scale = get_dick('yanzhengma_scale')
-        if yanzhengma_scale:
-            yanzhengma_close = get_val("yanzhengma_close")
-            if yanzhengma_close:
-                try:
-                    if self.yanzhengmaframe.IsShown():
-                        self.yanzhengmaframe.Show(False)
-                        self.currentstatusframe.Show(True)
-                except:
-                    logger.exception('this is an exception message')
+        final_stage = get_val('final_stage')
+        if final_stage:
+            find_yan_confirm()
+            yanzhengma_scale = get_dick('yanzhengma_scale')
+            if yanzhengma_scale:
+                yanzhengma_close = get_val("yanzhengma_close")
+                if yanzhengma_close:
+                    try:
+                        if self.yanzhengmaframe.IsShown():
+                            self.yanzhengmaframe.Show(False)
+                            self.currentstatusframe.Show(True)
+                    except:
+                        logger.exception('this is an exception message')
 
-            yanzhengma_view = get_val('yanzhengma_view')
-            imgpos_yanzhengma = get_val('imgpos_yanzhengma')
-            Yanzhengmasize = get_val('Yanzhengmasize')
-            #验证码放大是否需要刷新
-            if yanzhengma_view:
-                set_val('yanzhengma_close', False)
-                path = get_val('path')
-                yanpath = path + "\\yanzhengma.png"
-                cut_pic(imgpos_yanzhengma, Yanzhengmasize, yanpath)  # 直接调用得到 png 保存图片
-                try:
-                    yanpath = get_val('yanpath')
-                    yan = self.yanzhengmaframe
-                    yan.Show()
-                    yan.ShowImage(yanpath)
-                    self.currentstatusframe.Show(False)
-                except:  # 找不到的情况下也要重新创建
-                    logger.exception('this is an exception message')
+                yanzhengma_view = get_val('yanzhengma_view')
+                imgpos_yanzhengma = get_val('imgpos_yanzhengma')
+                Yanzhengmasize = get_val('Yanzhengmasize')
+                #验证码放大是否需要刷新
+                if yanzhengma_view:
+                    set_val('yanzhengma_close', False)
+                    path = get_val('path')
+                    yanpath = path + "\\yanzhengma.png"
+                    cut_pic(imgpos_yanzhengma, Yanzhengmasize, yanpath)  # 直接调用得到 png 保存图片
+                    try:
+                        yanpath = get_val('yanpath')
+                        yan = self.yanzhengmaframe
+                        yan.Show()
+                        yan.ShowImage(yanpath)
+                        self.currentstatusframe.Show(False)
+                    except:  # 找不到的情况下也要重新创建
+                        logger.exception('this is an exception message')
 
-                finally:
-                    pass
+                    finally:
+                        pass
 
     def hotkey_control(self):
         # 根据当前句柄判断是否需要激活快捷键

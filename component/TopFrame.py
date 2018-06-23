@@ -94,7 +94,7 @@ class TopFrame(wx.Frame):
         self.SetIcon(self.icon)
         self.statusbar.SetStatusText(u"版本号", 0)
         self.statusbar.SetStatusText(u"%s" % rev, 1)
-        self.statusbar.SetStatusText(u"软件作者：ZS ", 2)
+        self.statusbar.SetStatusText(u"球加网络", 2)
 
     def create_thread(self):
         # self.confirmthread = confirmThread()  # 确认线程
@@ -247,6 +247,8 @@ class TopFrame(wx.Frame):
         set_val('moni_on', False)
         guopai_id = get_val('guopai_webframe')
         guopai= wx.FindWindowById(guopai_id)
+        from component.app_thread import GetremotetimeThread
+        getremotetimethread = GetremotetimeThread()  ##同步时间
         if guopai_id != -1:
             guopai.operationpanel.init_ui()
             guopai.Center()

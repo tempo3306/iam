@@ -24,9 +24,9 @@ class StatusPanel(wx.Panel):
         self.webtabButton = wx.Button(self, label=tablabel, size=(95, 30))  # 未来扩展
         # self.priceviewButton = wx.Button(self, label='导出跳价', size=(105,30))  # 未来扩展
 
-        self.remotetimeButton = wx.Button(self, label='同步服务器时间', size=(95, 30))  # 时间
+        self.remotetimeButton = wx.Button(self, label='留空', size=(95, 30))  # 时间
         self.posajustButton = wx.Button(self, label='刷新定位', size=(95, 30))  # 位置调整
-        self.localtimeButton = wx.Button(self, label='同步网页时间', size=(95, 30))  # 时间同步
+        self.localtimeButton = wx.Button(self, label='留空', size=(95, 30))  # 时间同步
 
         ##绑定
         self.webtabButton.Bind(wx.EVT_BUTTON, self.webtab)
@@ -443,6 +443,8 @@ class StatusPanel(wx.Panel):
     def webtab(self, event):
         moni_on = get_val('moni_on')
         if moni_on:
+            from component.app_thread import GetremotetimeThread
+            getremotetimethread = GetremotetimeThread()  ##同步国拍时间
             moni_webframe = get_val('moni_webframe')
             guopai_webframe = get_val('guopai_webframe')
             moni = wx.FindWindowById(moni_webframe)
@@ -838,7 +840,10 @@ class StatusPanel(wx.Panel):
         if int(tem * 10) in timelist:
             one_time1 = tem
             set_val('one_time1', float(one_time1))
-            set_val('one_real_time1', gettime(one_time1))  # 计算得到的时间戳
+            set_val('one_real_time1', gettime(float(one_time1)))  # 计算得到的时间戳
+            one_real_time1 = get_val('one_real_time1')
+            print(one_time1, one_real_time1)
+
             self.update_strategy()
         else:
             self.second_jiajia_time.SetValue(one_time1)

@@ -259,7 +259,7 @@ def hog(img):
     return hist
 
 
-def read_pic(img):
+def readpic(img):
     img2 = cv2.imread(img, 0)
     testData = cut(img2)
     testData = list(map(hog, testData))
