@@ -1,12 +1,20 @@
+import win32api
+import win32gui
+import win32ui
+
 import cv2
 import numpy as np
 from functools import reduce
+
+import win32con
+
 SZ=20
 bin_n = 16 # Number of bins
 
 svm = cv2.ml.SVM_load('maindata.xml')
 
 
+# 二值化，切割
 def cut(img):
     # ret, thresh1 = cv2.threshold(img, 100, 255, cv2.THRESH_BINARY)
     ret, thresh1 = cv2.threshold(img, 127, 255, cv2.THRESH_BINARY_INV)
@@ -245,7 +253,7 @@ def cut(img):
     return imgn
 
 
-#hog特征
+# hog特征
 def hog(img):
     gx = cv2.Sobel(img, cv2.CV_32F, 1, 0)
     gy = cv2.Sobel(img, cv2.CV_32F, 0, 1)
@@ -260,8 +268,7 @@ def hog(img):
 
 
 def readpic(img):
-    img2 = cv2.imread(img, 0)
-    testData = cut(img2)
+    testData = cut(img)
     testData = list(map(hog, testData))
     testData = np.float32(testData).reshape(-1, bin_n * 4)
     result = svm.predict(testData)
@@ -271,5 +278,45 @@ def readpic(img):
             result[i] = ':'
     price = "".join(list(result))
     print(price)
+
     return price
 
+
+def grab_screen(region=None, title=None):
+    hwin = win32gui.GetDesktopWindow()
+    if region:
+        left, top, x2, y2 = region
+        width = x2 - left + 1
+        height = y2 - top + 1
+    elif title:
+        gtawin = win32gui.FindWindow(None, title)
+        if not gtawin:
+            raise Exception('window title not found')
+        # get the bounding box of the window
+        left, top, x2, y2 = win32gui.GetWindowRect(gtawin)
+        width = x2 - left + 1
+        height = y2 - top + 1
+    else:
+        width = win32api.GetSystemMetrics(win32con.SM_CXVIRTUALSCREEN)
+        height = win32api.GetSystemMetrics(win32con.SM_CYVIRTUALSCREEN)
+        left = win32api.GetSystemMetrics(win32con.SM_XVIRTUALSCREEN)
+        top = win32api.GetSystemMetrics(win32con.SM_YVIRTUALSCREEN)
+
+    hwindc = win32gui.GetWindowDC(hwin)
+    srcdc = win32ui.CreateDCFromHandle(hwindc)
+    memdc = srcdc.CreateCompatibleDC()
+    bmp = win32ui.CreateBitmap()
+    bmp.CreateCompatibleBitmap(srcdc, width, height)
+    memdc.SelectObject(bmp)
+    memdc.BitBlt((0, 0), (width, height), srcdc, (left, top), win32con.SRCCOPY)
+
+    signedIntsArray = bmp.GetBitmapBits(True)
+    img = np.frombuffer(signedIntsArray, dtype='uint8')
+    img.shape = (height, width, 4)
+
+    srcdc.DeleteDC()
+    memdc.DeleteDC()
+    win32gui.ReleaseDC(hwin, hwindc)
+    win32gui.DeleteObject(bmp.GetHandle())
+    img = cv2.cvtColor(img, cv2.COLOR_BGRA2GRAY)
+    return img

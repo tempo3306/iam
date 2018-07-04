@@ -12,7 +12,7 @@ import win32clipboard
 import time
 import threading
 
-from component.imgcut import grab_screen
+from component.read_pic import grab_screen
 from component.variable import set_val, get_val, get_dick, set_dick
 import ctypes
 from ctypes import wintypes

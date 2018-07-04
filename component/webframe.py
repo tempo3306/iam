@@ -105,7 +105,7 @@ class ButtonPanel(wx.Panel):
     ## 同步本地时间
     def timeautoajust(self, event):
         imgpos_currenttime = get_val('imgpos_currenttime')
-        timeset(imgpos_currenttime, 'maindata.xml')  # 调用时间同步
+        timeset(imgpos_currenttime)  # 调用时间同步
 
     def urlchange(self, event):
         guopai_dianxin = get_val('guopai_dianxin')
