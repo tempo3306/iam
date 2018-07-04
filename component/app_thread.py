@@ -920,7 +920,7 @@ class Start_thread(Thread):
 
     def run(self):
         import logging, time
-        version = '4.8s'
+        version = '5.0'
         timenow = time.time()
         # 转换成localtime
         time_local = time.localtime(timenow)

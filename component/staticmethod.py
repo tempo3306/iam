@@ -4,11 +4,15 @@
 @time: 2018/1/22 9:33
 '''
 import win32gui
+
+import cv2
 import win32con
 import win32api
 import win32clipboard
 import time
 import threading
+
+from component.imgcut import grab_screen
 from component.variable import set_val, get_val, get_dick, set_dick
 import ctypes
 from ctypes import wintypes
@@ -238,7 +242,11 @@ def Onekey_login():
     if guopai_on:
         print("fdssfs")
         wx.CallAfter(pub.sendMessage, "onekey_login")
+    ##截图
+    login_yanzhengma = get_val('login_yanzhengma')
 
+    img = grab_screen(region=login_yanzhengma)
+    cv2.imwrite('login.png')
 
 ##-------------------------------------------------------------------------------------
 ##智能出价

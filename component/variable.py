@@ -181,6 +181,9 @@ class Hotkey_label():
 
 
 def init_val():
+    ##test
+    test_init()
+
     ##封装
     init_id()
     init_size()
@@ -605,6 +608,8 @@ def init_pos(Px, Py):
     Pos_controlframe_relative = get_val('Pos_controlframe_relative')
     Pos_yanzhengma_relative = get_val('Pos_yanzhengma_relative')  # 验证码所在位置
     Pos_yanzhengmaframe_relative = get_val('Pos_yanzhengmaframe_relative')  # 验证码框放置位置
+    login_yanzhengma_relative = get_val('login_yanzhengma_relative')  # 登录界面验证码位置
+
     set_val('refresh_area', (refresh_area_relative[0] + Px_lowestprice, refresh_area_relative[1] + Py_lowestprice,
                              refresh_area_relative[2] + Px_lowestprice, refresh_area_relative[3] + Py_lowestprice))
     set_val('confirm_area', (confirm_area_relative[0] + Px_lowestprice, confirm_area_relative[1] + Py_lowestprice,
@@ -625,6 +630,12 @@ def init_pos(Px, Py):
     set_val('Pos_timeframe', (245 - 344 + Px_lowestprice, 399 - 183 + Py_lowestprice))
 
     # set_val('Findpos_area', (Px + 100 , Py + 400, Px + 200, Py + 550))
+
+    ##登录验证码区域
+    set_val('login_yanzhengma', (login_yanzhengma_relative[0] + Px_lowestprice,
+                                 login_yanzhengma_relative[1] + Py_lowestprice,
+                                 login_yanzhengma_relative[2] + Px_lowestprice,
+                                 login_yanzhengma_relative[3] + Py_lowestprice))
 
 
     lowestprice_sizex = get_val('lowestprice_sizex')
@@ -681,6 +692,11 @@ def remote_variables(**kwargs):
         set_val(key, value)
 
 
+def test_init():
+    set_val('login_yanzhengma_relative', (396 - 150, 11 - 100, 396 + 150, 11 + 100))
+
+
+
 
 ####
 def remote_init():
@@ -695,12 +711,14 @@ def remote_init():
     P_relative2 = get_val('P_relative2')
     set_val('Position_frame', [[0, 0] for i in range(len(P_relative2))])
     ## 限定截图位置
-    set_val('refresh_area_relative', [396 - 150, 11 - 100, 396 + 150, 11 + 100])
-    set_val('confirm_area_relative', [505 - 60, 68 - 40, 505 + 60, 68 + 40])
-    set_val('yan_confirm_area_relative', [205 - 60, 68 - 40, 405 + 60, 68 + 40])
-    set_val('Pos_controlframe_relative', [192 - 344, 514 - 183])
-    set_val('Pos_yanzhengma_relative', [-277, - 65, - 97, + 45])  # 验证码所在位置
-    set_val('Pos_yanzhengmaframe_relative', [297, - 283])  # 验证码框放置位置
+    set_val('refresh_area_relative', (396 - 150, 11 - 100, 396 + 150, 11 + 100))
+    set_val('confirm_area_relative', (505 - 60, 68 - 40, 505 + 60, 68 + 40))
+    set_val('yan_confirm_area_relative', (205 - 60, 68 - 40, 405 + 60, 68 + 40))
+    set_val('Pos_controlframe_relative', (192 - 344, 514 - 183))
+    set_val('Pos_yanzhengma_relative', (-277, - 65, - 97, + 45))  # 验证码所在位置
+    set_val('Pos_yanzhengmaframe_relative', (297, - 283))  # 验证码框放置位置
+
+    set_val('login_yanzhengma_relative', (396 - 150, 11 - 100, 396 + 150, 11 + 100))
 
     ##计算当天的时间
     set_val('timebase_str', '')  ##时间基数，避免重复计算
@@ -721,4 +739,5 @@ def remote_init():
     set_val('bidnumber_js', bidnumber_js)
     set_val('bidpassword_js', bidpassword_js)
     set_val('idcard_js', idcard_js)
+
 
