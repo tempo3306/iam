@@ -240,13 +240,14 @@ def Refresh_web():
 def Onekey_login():
     guopai_on = get_val('guopai_on')
     if guopai_on:
-        print("fdssfs")
         wx.CallAfter(pub.sendMessage, "onekey_login")
     ##截图
     login_yanzhengma = get_val('login_yanzhengma')
 
     img = grab_screen(region=login_yanzhengma)
-    cv2.imwrite('login.png')
+    num = get_val('num')
+    set_val('num', num+1)
+    cv2.imwrite('login_%d.png' %num, img)
 
 ##-------------------------------------------------------------------------------------
 ##智能出价

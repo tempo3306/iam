@@ -24,13 +24,10 @@ def cut(img):
     image, contours, hierarchy = cv2.findContours(thresh1, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_NONE)
     imgn = []
     xy = []
-    cv2.imwrite("thresh1.png", thresh1)
     for i in range(len(contours)):
         cnt = contours[i]
         x, y, w, h = cv2.boundingRect(cnt)
         xy.append([x, y, w, h])
-    print(img)
-    print('xy----', xy)
     xy = sorted(xy)
 
     for i in range(len(xy)):
@@ -47,7 +44,6 @@ def cut(img):
     ##前n-1个块
     for i in range(len(xy) - 1):
         diff = xy[i + 1][0] - xy[i][0]
-        print(diff)
         if diff < 5:
             t0 = min(xy[i][0], xy[i + 1][0])
             t1 = min(xy[i][1], xy[i + 1][1])
@@ -277,9 +273,8 @@ def readpic(img):
         if result[i] == '11':
             result[i] = ':'
     price = "".join(list(result))
-    print(price)
-
     return price
+
 
 
 def grab_screen(region=None, title=None):

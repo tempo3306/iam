@@ -341,5 +341,4 @@ def Price_read():
 
     lowest_price_img = cv2.cvtColor(imgpos_lowestprice, cv2.COLOR_BGR2GRAY)
     price = readpic(lowest_price_img)
-    print(price)
     return price

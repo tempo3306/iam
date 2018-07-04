@@ -693,9 +693,9 @@ def remote_variables(**kwargs):
 
 
 def test_init():
-    set_val('login_yanzhengma_relative', (396 - 150, 11 - 100, 396 + 150, 11 + 100))
+    set_val('login_yanzhengma_relative', (553, 11 - 120, 396 + 259, -84))
 
-
+    set_val('num', 0)
 
 
 ####
@@ -718,7 +718,7 @@ def remote_init():
     set_val('Pos_yanzhengma_relative', (-277, - 65, - 97, + 45))  # 验证码所在位置
     set_val('Pos_yanzhengmaframe_relative', (297, - 283))  # 验证码框放置位置
 
-    set_val('login_yanzhengma_relative', (396 - 150, 11 - 100, 396 + 150, 11 + 100))
+    set_val('login_yanzhengma_relative', (396 - 100, 11 - 20, 396 + 255, 11 + 20))
 
     ##计算当天的时间
     set_val('timebase_str', '')  ##时间基数，避免重复计算
@@ -731,7 +731,6 @@ def remote_init():
     ##一键登录
     bidnumber = '12345678'
     bidpassword = '12345678'
-    idcard = '1'
 
     bidnumber_js  = "document.getElementById('bidnumber').value = '{0}';".format(bidnumber)
     bidpassword_js = "document.getElementById('bidpassword').value = '{0}';".format(bidpassword)

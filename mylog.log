@@ -1,162 +1,58 @@
-Wed, 04 Jul 2018 13:21:59 connectionpool.py[line:824] DEBUG Starting new HTTPS connection (1): hupai.pro
-Wed, 04 Jul 2018 13:22:00 connectionpool.py[line:396] DEBUG https://hupai.pro:443 "GET /api/bid/get_guopaiurl/?format=json&type=identify_code&debug=True&version=5.0&identify_code=123456&diskid=dca984ffb6ff32225862a03946345c2c073097c1 HTTP/1.1" 200 None
-Wed, 04 Jul 2018 13:22:00 connectionpool.py[line:208] DEBUG Starting new HTTP connection (1): ip.taobao.com
-Wed, 04 Jul 2018 13:22:00 connectionpool.py[line:396] DEBUG http://ip.taobao.com:80 "GET /service/getIpInfo.php?ip=101.87.250.19 HTTP/1.1" 200 None
-Wed, 04 Jul 2018 13:22:00 app_thread.py[line:256] ERROR 识别价格失败
-Wed, 04 Jul 2018 13:22:00 app_thread.py[line:257] ERROR this is an exception message
+Wed, 04 Jul 2018 19:36:04 connectionpool.py[line:824] DEBUG Starting new HTTPS connection (1): hupai.pro
+Wed, 04 Jul 2018 19:36:05 connectionpool.py[line:396] DEBUG https://hupai.pro:443 "GET /api/bid/get_guopaiurl/?format=json&type=identify_code&debug=True&version=5.0&identify_code=123456&diskid=dca984ffb6ff32225862a03946345c2c073097c1 HTTP/1.1" 200 None
+Wed, 04 Jul 2018 19:36:05 connectionpool.py[line:208] DEBUG Starting new HTTP connection (1): 127.0.0.1
+Wed, 04 Jul 2018 19:36:05 connectionpool.py[line:396] DEBUG http://127.0.0.1:61980 "GET http://ip.taobao.com/service/getIpInfo.php?ip=101.87.250.19 HTTP/1.1" 200 None
+Wed, 04 Jul 2018 19:36:05 app_thread.py[line:256] ERROR 识别价格失败
+Wed, 04 Jul 2018 19:36:05 app_thread.py[line:257] ERROR this is an exception message
 Traceback (most recent call last):
   File "E:\hupai\component\app_thread.py", line 236, in read_lowest_price
     str_price = Price_read()
   File "E:\hupai\component\imgcut.py", line 343, in Price_read
     price = readpic(lowest_price_img)
-  File "E:\hupai\component\read_pic.py", line 271, in readpic
+  File "E:\hupai\component\read_pic.py", line 267, in readpic
     testData = cut(img)
-  File "E:\hupai\component\read_pic.py", line 249, in cut
+  File "E:\hupai\component\read_pic.py", line 245, in cut
     imgn[i] = cv2.resize(imgn[i], (8, 8))
 cv2.error: C:\projects\opencv-python\opencv\modules\imgproc\src\resize.cpp:4044: error: (-215) ssize.width > 0 && ssize.height > 0 in function cv::resize
 
-Wed, 04 Jul 2018 13:22:00 app_thread.py[line:256] ERROR 识别价格失败
-Wed, 04 Jul 2018 13:22:00 app_thread.py[line:257] ERROR this is an exception message
+Wed, 04 Jul 2018 19:36:05 app_thread.py[line:256] ERROR 识别价格失败
+Wed, 04 Jul 2018 19:36:05 app_thread.py[line:257] ERROR this is an exception message
 Traceback (most recent call last):
   File "E:\hupai\component\app_thread.py", line 236, in read_lowest_price
     str_price = Price_read()
   File "E:\hupai\component\imgcut.py", line 343, in Price_read
     price = readpic(lowest_price_img)
-  File "E:\hupai\component\read_pic.py", line 271, in readpic
+  File "E:\hupai\component\read_pic.py", line 267, in readpic
     testData = cut(img)
-  File "E:\hupai\component\read_pic.py", line 249, in cut
+  File "E:\hupai\component\read_pic.py", line 245, in cut
     imgn[i] = cv2.resize(imgn[i], (8, 8))
 cv2.error: C:\projects\opencv-python\opencv\modules\imgproc\src\resize.cpp:4044: error: (-215) ssize.width > 0 && ssize.height > 0 in function cv::resize
 
-Wed, 04 Jul 2018 13:22:01 app_thread.py[line:256] ERROR 识别价格失败
-Wed, 04 Jul 2018 13:22:01 app_thread.py[line:257] ERROR this is an exception message
+Wed, 04 Jul 2018 19:36:05 app_thread.py[line:256] ERROR 识别价格失败
+Wed, 04 Jul 2018 19:36:05 app_thread.py[line:257] ERROR this is an exception message
 Traceback (most recent call last):
   File "E:\hupai\component\app_thread.py", line 236, in read_lowest_price
     str_price = Price_read()
   File "E:\hupai\component\imgcut.py", line 343, in Price_read
     price = readpic(lowest_price_img)
-  File "E:\hupai\component\read_pic.py", line 271, in readpic
+  File "E:\hupai\component\read_pic.py", line 267, in readpic
     testData = cut(img)
-  File "E:\hupai\component\read_pic.py", line 103, in cut
-    diff = xy[-1][2]  # 最后一个 图像块
-IndexError: list index out of range
-Wed, 04 Jul 2018 13:22:01 app_thread.py[line:256] ERROR 识别价格失败
-Wed, 04 Jul 2018 13:22:01 app_thread.py[line:257] ERROR this is an exception message
+  File "E:\hupai\component\read_pic.py", line 245, in cut
+    imgn[i] = cv2.resize(imgn[i], (8, 8))
+cv2.error: C:\projects\opencv-python\opencv\modules\imgproc\src\resize.cpp:4044: error: (-215) ssize.width > 0 && ssize.height > 0 in function cv::resize
+
+Wed, 04 Jul 2018 19:36:08 connectionpool.py[line:824] DEBUG Starting new HTTPS connection (1): hupai.pro
+Wed, 04 Jul 2018 19:36:08 app_thread.py[line:256] ERROR 识别价格失败
+Wed, 04 Jul 2018 19:36:08 app_thread.py[line:257] ERROR this is an exception message
 Traceback (most recent call last):
   File "E:\hupai\component\app_thread.py", line 236, in read_lowest_price
     str_price = Price_read()
   File "E:\hupai\component\imgcut.py", line 343, in Price_read
     price = readpic(lowest_price_img)
-  File "E:\hupai\component\read_pic.py", line 271, in readpic
+  File "E:\hupai\component\read_pic.py", line 267, in readpic
     testData = cut(img)
-  File "E:\hupai\component\read_pic.py", line 103, in cut
-    diff = xy[-1][2]  # 最后一个 图像块
-IndexError: list index out of range
-Wed, 04 Jul 2018 13:22:01 app_thread.py[line:256] ERROR 识别价格失败
-Wed, 04 Jul 2018 13:22:01 app_thread.py[line:257] ERROR this is an exception message
-Traceback (most recent call last):
-  File "E:\hupai\component\app_thread.py", line 236, in read_lowest_price
-    str_price = Price_read()
-  File "E:\hupai\component\imgcut.py", line 343, in Price_read
-    price = readpic(lowest_price_img)
-  File "E:\hupai\component\read_pic.py", line 271, in readpic
-    testData = cut(img)
-  File "E:\hupai\component\read_pic.py", line 103, in cut
-    diff = xy[-1][2]  # 最后一个 图像块
-IndexError: list index out of range
-Wed, 04 Jul 2018 13:22:01 app_thread.py[line:256] ERROR 识别价格失败
-Wed, 04 Jul 2018 13:22:01 app_thread.py[line:257] ERROR this is an exception message
-Traceback (most recent call last):
-  File "E:\hupai\component\app_thread.py", line 236, in read_lowest_price
-    str_price = Price_read()
-  File "E:\hupai\component\imgcut.py", line 343, in Price_read
-    price = readpic(lowest_price_img)
-  File "E:\hupai\component\read_pic.py", line 271, in readpic
-    testData = cut(img)
-  File "E:\hupai\component\read_pic.py", line 103, in cut
-    diff = xy[-1][2]  # 最后一个 图像块
-IndexError: list index out of range
-Wed, 04 Jul 2018 13:22:02 app_thread.py[line:256] ERROR 识别价格失败
-Wed, 04 Jul 2018 13:22:02 app_thread.py[line:257] ERROR this is an exception message
-Traceback (most recent call last):
-  File "E:\hupai\component\app_thread.py", line 236, in read_lowest_price
-    str_price = Price_read()
-  File "E:\hupai\component\imgcut.py", line 343, in Price_read
-    price = readpic(lowest_price_img)
-  File "E:\hupai\component\read_pic.py", line 271, in readpic
-    testData = cut(img)
-  File "E:\hupai\component\read_pic.py", line 103, in cut
-    diff = xy[-1][2]  # 最后一个 图像块
-IndexError: list index out of range
-Wed, 04 Jul 2018 13:22:02 app_thread.py[line:256] ERROR 识别价格失败
-Wed, 04 Jul 2018 13:22:02 app_thread.py[line:257] ERROR this is an exception message
-Traceback (most recent call last):
-  File "E:\hupai\component\app_thread.py", line 236, in read_lowest_price
-    str_price = Price_read()
-  File "E:\hupai\component\imgcut.py", line 343, in Price_read
-    price = readpic(lowest_price_img)
-  File "E:\hupai\component\read_pic.py", line 271, in readpic
-    testData = cut(img)
-  File "E:\hupai\component\read_pic.py", line 103, in cut
-    diff = xy[-1][2]  # 最后一个 图像块
-IndexError: list index out of range
-Wed, 04 Jul 2018 13:22:02 app_thread.py[line:256] ERROR 识别价格失败
-Wed, 04 Jul 2018 13:22:02 app_thread.py[line:257] ERROR this is an exception message
-Traceback (most recent call last):
-  File "E:\hupai\component\app_thread.py", line 236, in read_lowest_price
-    str_price = Price_read()
-  File "E:\hupai\component\imgcut.py", line 343, in Price_read
-    price = readpic(lowest_price_img)
-  File "E:\hupai\component\read_pic.py", line 271, in readpic
-    testData = cut(img)
-  File "E:\hupai\component\read_pic.py", line 103, in cut
-    diff = xy[-1][2]  # 最后一个 图像块
-IndexError: list index out of range
-Wed, 04 Jul 2018 13:22:02 app_thread.py[line:256] ERROR 识别价格失败
-Wed, 04 Jul 2018 13:22:02 app_thread.py[line:257] ERROR this is an exception message
-Traceback (most recent call last):
-  File "E:\hupai\component\app_thread.py", line 236, in read_lowest_price
-    str_price = Price_read()
-  File "E:\hupai\component\imgcut.py", line 343, in Price_read
-    price = readpic(lowest_price_img)
-  File "E:\hupai\component\read_pic.py", line 271, in readpic
-    testData = cut(img)
-  File "E:\hupai\component\read_pic.py", line 103, in cut
-    diff = xy[-1][2]  # 最后一个 图像块
-IndexError: list index out of range
-Wed, 04 Jul 2018 13:22:02 app_thread.py[line:256] ERROR 识别价格失败
-Wed, 04 Jul 2018 13:22:02 app_thread.py[line:257] ERROR this is an exception message
-Traceback (most recent call last):
-  File "E:\hupai\component\app_thread.py", line 236, in read_lowest_price
-    str_price = Price_read()
-  File "E:\hupai\component\imgcut.py", line 343, in Price_read
-    price = readpic(lowest_price_img)
-  File "E:\hupai\component\read_pic.py", line 271, in readpic
-    testData = cut(img)
-  File "E:\hupai\component\read_pic.py", line 103, in cut
-    diff = xy[-1][2]  # 最后一个 图像块
-IndexError: list index out of range
-Wed, 04 Jul 2018 13:22:02 app_thread.py[line:256] ERROR 识别价格失败
-Wed, 04 Jul 2018 13:22:02 app_thread.py[line:257] ERROR this is an exception message
-Traceback (most recent call last):
-  File "E:\hupai\component\app_thread.py", line 236, in read_lowest_price
-    str_price = Price_read()
-  File "E:\hupai\component\imgcut.py", line 343, in Price_read
-    price = readpic(lowest_price_img)
-  File "E:\hupai\component\read_pic.py", line 271, in readpic
-    testData = cut(img)
-  File "E:\hupai\component\read_pic.py", line 103, in cut
-    diff = xy[-1][2]  # 最后一个 图像块
-IndexError: list index out of range
-Wed, 04 Jul 2018 13:22:02 app_thread.py[line:256] ERROR 识别价格失败
-Wed, 04 Jul 2018 13:22:02 app_thread.py[line:257] ERROR this is an exception message
-Traceback (most recent call last):
-  File "E:\hupai\component\app_thread.py", line 236, in read_lowest_price
-    str_price = Price_read()
-  File "E:\hupai\component\imgcut.py", line 343, in Price_read
-    price = readpic(lowest_price_img)
-  File "E:\hupai\component\read_pic.py", line 271, in readpic
-    testData = cut(img)
-  File "E:\hupai\component\read_pic.py", line 103, in cut
-    diff = xy[-1][2]  # 最后一个 图像块
-IndexError: list index out of range
+  File "E:\hupai\component\read_pic.py", line 245, in cut
+    imgn[i] = cv2.resize(imgn[i], (8, 8))
+cv2.error: C:\projects\opencv-python\opencv\modules\imgproc\src\resize.cpp:4044: error: (-215) ssize.width > 0 && ssize.height > 0 in function cv::resize
+
+Wed, 04 Jul 2018 19:36:08 connectionpool.py[line:396] DEBUG https://hupai.pro:443 "GET /api/bid/bid_logout/?type=identify_code&identify_code=123456&diskid=dca984ffb6ff32225862a03946345c2c073097c1&strategy_dick=%7B%220%22:%20[1,%2040.0,%20500,%200,%200.5,%2048,%20true,%20true,%2050,%20700,%20100,%200.5,%2056,%20true,%200,%200,%2054,%20100,%200.6,%2055,%20200,%200.5,%2056,%2056.5],%20%221%22:%20[%221%22,%2040.0,%20500,%200,%200.5,%2048.0,%20true,%20true,%2050.0,%20700,%20100,%200.5,%2056.0,%20true,%200,%200,%2054,%20100,%200.6,%2055,%20200,%200.5,%2056,%2056.5],%20%222%22:%20[1,%2040.0,%20500,%200,%200.5,%2048,%20true,%20true,%2050,%20700,%20100,%200.5,%2056,%20true,%200,%200,%2054,%20100,%200.6,%2055,%20200,%200.5,%2056,%2056.5],%20%223%22:%20[%223%22,%2040.0,%20500,%200,%200.5,%2048,%20true,%2050,%20700,%200,%200.0,%2054.0,%20100,%200.6,%2055.0,%20200,%200.5,%2056.0,%2056.5,%200],%20%224%22:%20[4,%2048.0,%20700],%20%22yanzhengma_scale%22:%20true,%20%22strategy_description%22:%20%22%5Cu53cc%5Cu67aa%5Cu7b56%5Cu7565(%5Cu4e00%5Cu4f0f%5Cu4e8c%5Cu8865)%22,%20%22strategy_type%22:%20%221%22,%20%22enter_on%22:%20true%7D&account=%7B%22account%22:%20123,%20%22password%22:%20123,%20%22idcard%22:%20123%7D HTTP/1.1" 200 27
