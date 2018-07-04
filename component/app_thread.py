@@ -743,7 +743,7 @@ class TimeThread(Thread):
             set_val('a_time', a_time)
             one_real_time1 = get_val('one_real_time1')
             try:
-                if one_real_time1 > a_time + 0.2:  ##只要出现时间小于第一次出价就触发还原
+                if one_real_time1 > a_time + 0.5:  ##只要出现时间小于第一次出价就触发还原
                     init_strategy()
                 start_time = get_val('start_time')
                 target_time = get_val('target_time')
@@ -776,10 +776,9 @@ iepath = r'C:\Program Files (x86)\Internet Explorer\iexplore.exe'
 path1 = 'C:\Program Files (x86)'
 path2 = 'C:\Program Files'
 import wx
-
+set_val('neddpath', needpath)
 
 def getwebpath():
-    global needpath
     # 查找注册表键值
     try:
         key = winreg.OpenKey(winreg.HKEY_CLASSES_ROOT, r"http\shell\open\command")
@@ -788,6 +787,7 @@ def getwebpath():
         result = re.findall(pattern, value)
         if result:
             needpath = result[0]
+            set_val('needpath', needpath)
             # needpath='"'+result[0]+'"'
     except:
         logger.exception('this is an exception message')
@@ -797,9 +797,8 @@ def getwebpath():
             pass
             # os.walk()
 
-
 def openweb(url):
-    global needpath
+    needpath = get_val('needpath')
     # command="\""+needpath+"\"" +" "+url  #需要加个空格
     # path=r'C:\Program Files (x86)\Internet Explorer\iexplore.exe www.baidu.com'
     subprocess.Popen([needpath, url])
@@ -807,7 +806,7 @@ def openweb(url):
 
 
 def openIE(url):
-    global iepath
+    needpath = get_val('needpath')
     subprocess.Popen([iepath, url])
 
 
@@ -949,3 +948,6 @@ class Start_thread(Thread):
         path = get_val('path')
         iconpath = path + 'logo.ico'  # 图标路径
         set_val('mainicon', iconpath)
+        #获取默认浏览器位置
+        getwebpath()
+

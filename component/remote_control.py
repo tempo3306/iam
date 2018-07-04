@@ -17,38 +17,61 @@ import wmi
 import logging
 from urllib import request
 logger = logging.getLogger()  #返回根目录的logger
+import requests
 
 
 def web_request(url):
     import ssl, json
+    ssl._create_default_https_context = ssl._create_unverified_context  # 关闭证书验证
+    response = requests.get(url, timeout=5)
+    print(response)
+    if response.status_code == 404:
+        result = {'result': 'wrong account'}
+        return result
+    else:
+        result = response.content
+        result = str(result, encoding='utf-8')
+        result = json.loads(result)
+        return result
     # ssl._create_default_https_context = ssl._create_unverified_context  # 关闭证书验证
-    # response = requests.get(url, timeout=5)
-    # print(response)
-    # if response.status_code == 404:
+    # response = request.urlopen(url)
+    # print(url)
+    # if response.status == 404:
     #     result = {'result': 'wrong account'}
     #     return result
     # else:
-    #     result = response.content
+    #     result = response.read()
     #     result = str(result, encoding='utf-8')
     #     result = json.loads(result)
     #     return result
 
-    try:
-        ssl._create_default_https_context = ssl._create_unverified_context  # 关闭证书验证
-        response = request.urlopen(url)
-        if response.status == 404:
-            result = {'result': 'wrong account'}
-            return result
-        else:
-            result = response.read()
-            result = str(result, encoding='utf-8')
-            result = json.loads(result)
-            return result
-    except Exception as e:
-        print(e)
-        logger.exception('this is an exception message')
-        result = {'result': 'timeout'}
-        return result
+    # ssl._create_default_https_context = ssl._create_unverified_context  # 关闭证书验证
+    # response = request.urlopen(url)
+    # if response.status == 404:
+    #     result = {'result': 'wrong account'}
+    #     return result
+    # else:
+    #     result = response.read()
+    #     result = str(result, encoding='utf-8')
+    #     result = json.loads(result)
+    #     return result
+
+    # try:
+    #     ssl._create_default_https_context = ssl._create_unverified_context  # 关闭证书验证
+    #     response = request.urlopen(url)
+    #     if response.status == 404:
+    #         result = {'result': 'wrong account'}
+    #         return result
+    #     else:
+    #         result = response.read()
+    #         result = str(result, encoding='utf-8')
+    #         result = json.loads(result)
+    #         return result
+    # except Exception as e:
+    #     print('fdfdfdsfdasf')
+    #     logger.exception('this is an exception message')
+    #     result = {'result': 'timeout'}
+    #     return result
 
 
 def get_unique_id():
@@ -87,7 +110,7 @@ import ctypes
 import os
 
 
-# 获取计算机名
+# 获取计算机名e
 def getname():
     pcName = ctypes.c_char_p(''.encode('utf-8'))
     pcSize = 16

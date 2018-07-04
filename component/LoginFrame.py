@@ -9,7 +9,7 @@ from wx.lib.pubsub import pub
 import wx
 from component.app_thread import HashThread, LoginThread, Login_codeThread, Getip_dianxinThread
 from component.remote_control import get_unique_id
-from component.variable import get_val, set_val, remote_variables, get_id_hash
+from component.variable import get_val, set_val, remote_variables, get_id_hash, get_dick, get_strategy_dick
 from component.TopFrame import TopFrame
 import sys, pickle, json
 from wx.lib.buttons import GenButton as wxButton
@@ -229,6 +229,7 @@ class LoginFrame(wx.Frame):
             start_time = target_time - 30 * 60
             set_val('start_time', start_time)
             strategy_dick =login_result['strategy_dick']
+
             if strategy_dick:
                 try:
                     strategy_dick = json.loads(strategy_dick)
@@ -242,6 +243,20 @@ class LoginFrame(wx.Frame):
             else:
                 set_val('url_dianxin', login_result['url_dianxin'])
                 set_val('url_nodianxin', login_result['url_nodianxin'])
+
+            ##初始化账号
+            account = login_result['account']
+            if account:
+                bidnumber = account['account']
+                bidpassword = account['password']
+                idcard = account['idcard']
+                bidnumber_js = "document.getElementById('bidnumber').value = '{0}';".format(bidnumber)
+                bidpassword_js = "document.getElementById('bidpassword').value = '{0}';".format(bidpassword)
+                idcard_js = "document.getElementById('idcard').value = '{0}';".format(idcard)
+                set_val('bidnumber_js', bidnumber_js)
+                set_val('bidpassword_js', bidpassword_js)
+                set_val('idcard_js', idcard_js)
+
             from component.staticmethod import Hotkey_listen
             from component.variable import init_pos
             Px = get_val('Px')

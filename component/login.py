@@ -64,11 +64,8 @@ def ConfirmCode(identify_code, version):  # 修改为参数传递
         logger.exception('this is an exception message')
         return {'result': 'net error'}
 
-
-
-
 # 登出
-def Logout():  # 修改为参数传递
+def Logout():  # 修改为参数传递        host_ali = get_val('host_ali')
     try:
         # debug 模式
         host_ali = get_val('host_ali')
@@ -78,10 +75,16 @@ def Logout():  # 修改为参数传递
         from component.variable import get_strategy_dick
         strategy_dick = get_strategy_dick()
         strategy_dick = json.dumps(strategy_dick)
-        print(strategy_dick)
-        target_url = '{0}/api/bid/bid_logout/?type={1}&identify_code={2}&diskid={3}&strategy_dick={4}'.format(
-            host_ali, type, Identify_code, diskid, strategy_dick
+        account = {'account': get_val('bidnumber'),
+                   'password': get_val('bidpassword'),
+                   'idcard': get_val('idcard')}
+        account = json.dumps(account)
+        target_url = '{0}/api/bid/bid_logout/?type={1}&identify_code={2}&diskid={3}&strategy_dick={4}' \
+                     '&account={5}'.format(
+            host_ali, type, Identify_code, diskid, strategy_dick, account
         )
+
+
         # target_url = host_ali + r'/main_api/userconfirm/info?' + 'username=%s' % Username + '&' + 'passwd=%s' % Password
         print(target_url)
         result = web_request(target_url)
@@ -114,9 +117,15 @@ def Keeplogin():
         import json
         strategy_dick = get_strategy_dick()
         strategy_dick = json.dumps(strategy_dick)
-        target_url = '{0}/api/bid/bid_keeplogin/?type={1}&identify_code={2}&diskid={3}&strategy_dick={4}'.format(
-            host_ali, type, Identify_code, diskid, strategy_dick
+        account = {'account': get_val('bidnumber'),
+                   'password': get_val('bidpassword'),
+                   'idcard': get_val('idcard')}
+        account = json.dumps(account)
+        target_url = '{0}/api/bid/bid_keeplogin/?type={1}&identify_code={2}&diskid={3}&strategy_dick={4}' \
+                     '&account={5}'.format(
+            host_ali, type, Identify_code, diskid, strategy_dick, account
         )
+        print(target_url)
         # target_url = host_ali + r'/main_api/userconfirm/info?' + 'username=%s' % Username + '&' + 'passwd=%s' % Password
         result = web_request(target_url)
     except:

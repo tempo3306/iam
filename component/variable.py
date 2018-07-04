@@ -27,24 +27,28 @@ for i in range(65, 91):
 
 # --------------------------------------------------
 
+
 '''
 (1)单枪  依次为 0: strategy_type 1: one_time1  2: one_diff  3: one_advance 4: one_delay 5: one_time2 
-                                6: one_forcetijiao_on
+                                6: one_forcetijiao_on, 7: smart_autoprice
 (2)双枪  依次为 0: strategy_type 1: one_time1  2: one_diff  3: one_advance 4: one_delay 5: one_time2
-                                6: one_forcetijiao_on   
-                                7: second_time1  8: second_diff  9: second_advance  10: second_delay 
-                                11: second_time2  12: second_forcetijiao_on
-(3)单枪动态提交  依次为 0: strategy_type 1: one_time1  2: one_diff  
-                                       3: one_advance_smart1  4: one_delay_smart1   5: one_time2_smart1
-                                       6: one_advance_smart2  7: one_delay_smart2   8: one_time2_smart2
-                                       9: one_advance_smart3  10: one_delay_smart3  11: one_time2_smart3
-                                       12: one_time2_smart
+                                6: one_forcetijiao_on   7: 空
+                                8: second_time1  9: second_diff  10: second_advance  11: second_delay 
+                                12: second_time2  13: second_forcetijiao_on
+(3)单枪动态提交  依次为 0: strategy_type 1: one_time1  2: one_diff  3~6  空
+                                       7: smart_autoprice  8~13 空
+                                       14: one_advance_smart1  15: one_delay_smart1   16: one_time2_smart1
+                                       17: one_advance_smart2  18: one_delay_smart2   19: one_time2_smart2
+                                       20: one_advance_smart3  21: one_delay_smart3  22: one_time2_smart3
+                                       23: one_time2_smart    
 (4)双枪动态提交  依次为 0: strategy_type 1: one_time1  2: one_diff  3: one_advance 4: one_delay 5: one_time2
-                                       6: one_forcetijiao_on   7: second_time1  8: second_diff 
-                                       9: one_advance_smart1  10: one_delay_smart1   11: one_time2_smart1
-                                       12: one_advance_smart2  13: one_delay_smart2   14: one_time2_smart2
-                                       15: one_advance_smart3  16: one_delay_smart3  17: one_time2_smart3
-                                       18: one_time2_smart
+                                       6: one_forcetijiao_on  7: smart_autoprice
+                                       8: second_time1  9: second_diff 
+                                       10~13 空
+                                       14: one_advance_smart1  15: one_delay_smart1   16: one_time2_smart1
+                                       17: one_advance_smart2  18: one_delay_smart2   19: one_time2_smart2
+                                       20: one_advance_smart3  21: one_delay_smart3  22: one_time2_smart3
+                                       23: one_time2_smart  
 
 
 (5)智能出价提交   依次为 0: strategy_type  1: one_time1  2: one_diff
@@ -54,35 +58,53 @@ for i in range(65, 91):
 
 strategy_dick = {
 
-    '0': [0, 48.0, 700, 100, 0.5, 55,
-        1],
-
-    '1': [1, 40.0, 500, 0, 0.5, 48,
-        1,
+    '0': [1, 40.0, 500, 0, 0.5, 48,
+        True, True,
         50, 700, 100, 0.5,
-        56, 1],
-
-    '2': [2, 50.0, 700,
+        56, True,
         0, 0, 54,
         100, 0.6, 55,
         200, 0.5, 56,
         56.5],
 
-    '3': [3, 40.0, 500, 0, 0.5, 48,
-         1,
-         50, 700,
-         0, 0, 54,
-         100, 0.6, 55,
-         200, 0.5, 56,
-         56.5
-          ],
+    '1': [1, 40.0, 500, 0, 0.5, 48,
+        True, True,
+        50, 700, 100, 0.5,
+        56, True,
+        0, 0, 54,
+        100, 0.6, 55,
+        200, 0.5, 56,
+        56.5],
+
+    '2': [1, 40.0, 500, 0, 0.5, 48,
+        True, True,
+        50, 700, 100, 0.5,
+        56, True,
+        0, 0, 54,
+        100, 0.6, 55,
+        200, 0.5, 56,
+        56.5],
+
+    '3': [1, 40.0, 500, 0, 0.5, 48,
+        True, True,
+        50, 700, 100, 0.5,
+        56, True,
+        0, 0, 54,
+        100, 0.6, 55,
+        200, 0.5, 56,
+        56.5],
+
+
     '4':[4, 48.0, 700],
 
     'yanzhengma_scale': True,
     'strategy_description': '单枪   48秒加700截止56秒提前100',  #策略名称
     'strategy_type': '0',
     'enter_on': True,
+
 }
+
+
 
 # 初始化变量
 # --------------------------------------------------
@@ -175,7 +197,6 @@ def init_val():
     set_val('userprice', 0) #当前出价 如果为0则表示未出价
     set_val('usertime', -1) #当前截止时间 如果为 -1表示未出价
 
-    # set_val('host_ali', "http://192.168.3.20:3000")
     set_val('debug', True)
     set_val('now_ping', 0)  #实时网速
     set_val('version', '1.0')
@@ -646,6 +667,10 @@ def init_pos(Px, Py):
     bidnumber_js  = "document.getElementById('bidnumber').value = '{0}';".format(bidnumber)
     bidpassword_js = "document.getElementById('bidpassword').value = '{0}';".format(bidpassword)
     idcard_js = "document.getElementById('idcard').value = '{0}';".format(idcard)
+
+    set_val('bidnumber', 123)
+    set_val('bidpassword', 123)
+    set_val('idcard', 123)
     set_val('bidnumber_js', bidnumber_js)
     set_val('bidpassword_js', bidpassword_js)
     set_val('idcard_js', idcard_js)

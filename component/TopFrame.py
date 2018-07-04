@@ -40,17 +40,17 @@ class TopFrame(wx.Frame):
 
         self.helpbutton = wx.Button(panel, label='查看帮助')
         self.Bind(wx.EVT_BUTTON, self.help, self.helpbutton)
-        self.rulebutton = wx.Button(panel, label='查看规定')
-        self.Bind(wx.EVT_BUTTON, self.rule, self.rulebutton)
+        self.homebutton = wx.Button(panel, label='进入官网')
+        self.Bind(wx.EVT_BUTTON, self.gohome, self.homebutton)
         self.hbox2 = wx.BoxSizer(wx.HORIZONTAL)
         self.hbox2.Add(self.helpbutton, 0, wx.ALL | wx.CENTER, 5)
-        self.hbox2.Add(self.rulebutton, 0, wx.ALL | wx.CENTER, 5)
+        self.hbox2.Add(self.homebutton, 0, wx.ALL | wx.CENTER, 5)
         self.operationareasizer.Add(self.hbox2)
 
         self.yanzhengmabutton = wx.Button(panel, label='验证码练习')
-        self.Bind(wx.EVT_BUTTON, self.yanzhengma, self.yanzhengmabutton)
+        self.Bind(wx.EVT_BUTTON, self.Yan_practice, self.yanzhengmabutton)
         self.contactusbutton = wx.Button(panel, label='联系我们')
-        self.Bind(wx.EVT_BUTTON, self.contactus, self.contactusbutton)
+        self.Bind(wx.EVT_BUTTON, self.Contactus, self.contactusbutton)
         self.hbox3 = wx.BoxSizer(wx.HORIZONTAL)
         self.hbox3.Add(self.yanzhengmabutton, 0, wx.ALL | wx.CENTER, 5)
         self.hbox3.Add(self.contactusbutton, 0, wx.ALL | wx.CENTER, 5)
@@ -298,13 +298,7 @@ class TopFrame(wx.Frame):
             # 关闭主界面，打开策略设置
             self.webopen()
 
-    ## 验证码练习
-    def yanzhengma(self, event):
-        pass
 
-    ## 联系我们
-    def contactus(self, event):
-        pass
 
     ########################
     def Help(self, event):
@@ -319,18 +313,21 @@ class TopFrame(wx.Frame):
         aboutInfo.AddDeveloper("ZS")
         wx.adv.AboutBox(aboutInfo)
 
-    def rule(self, event):
-        pass
-        # url = "http://hupai.pro/rules"
-        # OpenwebThread(url)
+    def gohome(self, event):
+        url = "http://hupai.pro/"
+        OpenwebThread(url)
 
     def help(self, event):
-        pass
-        # url = "http://hupai.pro/coursestudy"
-        # OpenwebThread(url)
+        url = "http://hupai.pro/coursestudy"
+        OpenwebThread(url)
 
     def Yan_practice(self, event):
+        url = "http://hupai.pro/static/main/practice.html"
+        OpenwebThread(url)
+
+    def Contactus(self, event):
         pass
+
 
     def Yan_test(self, event):
         pass
@@ -394,7 +391,6 @@ class TopFrame(wx.Frame):
     def keeplogin(self, event):
         result = Keeplogin()
         print(result)
-
         res = result['result']
         if res == 'keep failure':  ##在其它电脑上登录过，并且未注销
             set_val('userconfirm_on', True)
