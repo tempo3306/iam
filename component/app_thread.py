@@ -516,7 +516,7 @@ class TijiaoThread(Thread):
                     set_val('userprice', lowest_price + one_diff)
                     set_val('usertime', one_realtime2_smart)
                     OnClick_chujia()  # 调用出价
-        if strategy_type == '3':
+        elif strategy_type == '3':
             if strategy_on and chujia_on:  # 判断是否需要提交,国拍开启状态方可触发
                 if tijiao_num == 1 and one_real_time1 <= a_time <= one_real_time1 + 0.6:  # 判断是否满足条件
                     set_val('own_price1', lowest_price + one_diff)
@@ -920,7 +920,7 @@ class Start_thread(Thread):
 
     def run(self):
         import logging, time
-        version = '5.0'
+        version = '5.1'
         timenow = time.time()
         # 转换成localtime
         time_local = time.localtime(timenow)

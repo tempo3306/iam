@@ -532,8 +532,8 @@ def init_status():
     set_val('CurrentStatusFrameSize', (464,77))
 
     ##验证码放大框
-    set_val('YanzhengmaFramePos', (450, 175))    ###相对WEBFRAME位置
-    set_val('Yanzhengmasize', (400, 220))
+    set_val('YanzhengmaFramePos', (438, 175))    ###相对WEBFRAME位置
+    set_val('Yanzhengmasize', (430, 220))
 
     set_val('register_label', '未激活')
     set_val('netspeed_label', '网速: ')

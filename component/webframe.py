@@ -290,6 +290,8 @@ class CurrentStatusPanel(wx.Panel):
             smartprice_chujia = get_val('smartprice_chujia')
             strategy_type = get_dick('strategy_type')
 
+            print('usertime=', usertime)
+
             if userprice and tijiao_on:  ##提交状态
                 current_pricestatus_label = get_val('current_pricestatus_label')
                 current_pricestatus = get_val('current_pricestatus')
@@ -302,6 +304,9 @@ class CurrentStatusPanel(wx.Panel):
                 # 显示截止时间与当前时间相差
                 currenttime = get_val('a_time')
                 timediff = float(usertime) - float(currenttime)
+
+                print('currenttime=', currenttime)
+
                 timestatustext = "提交倒计时{0:.1f}秒".format(timediff)
                 pricestatustext = "差价{0}".format(diff_price)
                 dc.DrawText(pricelabeltext, x3, y3)

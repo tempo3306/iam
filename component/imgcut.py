@@ -20,17 +20,26 @@ logger = logging.getLogger()
 
 def cut_pic(img, size, name):
     img = np.asarray(img)
-    i1 = img[0:24, :150]
-    i2 = img[48:110, 30:]
+    ##对空白裁剪
+    # shape  (110, 180, 3)
+    i1 = img[2:26, :]
+    print(i1.shape)
+    i2 = img[48:105, 30:]
+    # i2 = cv2.resize(i2, (180, 62))
+
+    i1 = cv2.resize(i1, (430, 57))
+    i2 = cv2.resize(i2, (430, 163))
+
+
     im = np.concatenate([i2, i1])
-    im = cv2.resize(im, tuple(size))
+    # im = cv2.resize(im, tuple(size))0
     cv2.imwrite(name, im)
 
 
-# def new_screenshot(area):  # x,y  pos      w,h size
+# def new_screenshot(area):  # x,y  pos       w,h size
 #     x, y = area[0], area[1]
 #     w, h = area[2], area[3]
-#     hwnd = win32gui.FindWindow(None, "win32")
+#     hwnd = win32gui.Fin`dWindow(None, "win32")
 #     wDC = win32gui.GetWindowDC(hwnd)
 #     dcObj = win32ui.CreateDCFromHandle(wDC)
 #     cDC = dcObj.CreateCompatibleDC()
@@ -121,7 +130,6 @@ def findpos():
     res2 = cv2.matchTemplate(img, time_template, cv2.TM_CCOEFF_NORMED)
     time_min_val, time_max_val, time_min_loc, time_max_loc = cv2.minMaxLoc(res2)
 
-    print('findpos_on', max_val)
 
     if max_val > 0.75:  # 找不到不动作
         ##计算位置
