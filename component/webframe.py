@@ -384,6 +384,8 @@ class WebFrame(wx.Frame):
         webstatus_label = get_val('moni_webstatus_label')
         self.buttonpanel = ButtonPanel(self, webstatus_label, moni)  ##moni: True
         self.operationpanel = OperationPanel(self, tablabel)
+
+
         self.bottomstatusbarpanel = BottomeStatusbarPanel(self, moni)
 
         self.currentstatusframe = CurrentStatusFrame(self)

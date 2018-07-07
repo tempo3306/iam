@@ -525,6 +525,7 @@ def init_account():
     set_val('ip_address', '')  # 客户端ip
 
     set_val("test", False)  ##默认关闭测试模式
+    set_val("paishou", False) ##默认非拍手模式
 
 def init_status():
     ##状态框

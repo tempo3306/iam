@@ -5,6 +5,7 @@
 '''
 
 from component.imgcut import findpos
+from component.paishou_panel import PaishouPanel
 from component.staticmethod import *
 import logging
 
@@ -477,6 +478,9 @@ class StatusPanel(wx.Panel):
         else:
             self.yanzhengma_scale.SetValue(False)
 
+        self.init_strategy()
+
+    def  init_strategy(self):
         strategy_type = get_dick('strategy_type')
         self.update_ui(strategy_type)
 
@@ -1160,25 +1164,37 @@ class OperationPanel(wx.Panel):
         operationpanel_pos = get_val('operationpanel_pos')
         operationpanel_size = get_val('operationpanel_size')
         wx.Panel.__init__(self, parent=parent, size=operationpanel_size, pos=operationpanel_pos)
-        self.notebook = wx.Notebook(self)
-        self.status_tab = StatusPanel(self.notebook, tablabel)  # notebook作为父类
-        self.advance_tab = AdvancePanel(self.notebook)
-        self.notebook.AddPage(self.status_tab, "常规功能")
-        self.notebook.AddPage(self.advance_tab, "高级功能")
-        if get_val('test'):
-            self.test_tab = TestPanel(self.notebook)
-            self.notebook.AddPage(self.test_tab, "测试功能")
-        # self.strategy_tab = StrategyPanel(self.notebook)
-        # self.notebook.AddPage(self.strategy_tab, "策略设置")
-        # self.account_tab = AccountPanel(self.notebook)
-        # self.notebook.AddPage(self.account_tab, "账号设置")
+
+        paishou = get_val('paishou')  #拍手模式
+        test = get_val('test')  #测试模式
         sizer = wx.BoxSizer(wx.VERTICAL)
-        sizer.Add(self.notebook, 1)
+
+        if not paishou:
+            self.notebook = wx.Notebook(self)
+            self.status_tab = StatusPanel(self.notebook, tablabel)  # notebook作为父类
+            self.advance_tab = AdvancePanel(self.notebook)
+            if not test:
+                self.notebook.AddPage(self.status_tab, "常规功能")
+                self.notebook.AddPage(self.advance_tab, "高级功能")
+            else:
+                self.notebook.AddPage(self.status_tab, "常规功能")
+                self.notebook.AddPage(self.advance_tab, "高级功能")
+                self.test_tab = TestPanel(self.notebook)
+                self.notebook.AddPage(self.test_tab, "测试功能")
+            sizer.Add(self.notebook, 1)
+        else:
+            self.paishou_panel = PaishouPanel(self, tablabel)
+            sizer.Add(self.paishou_panel, 1)
+
+
         self.SetSizer(sizer)
         self.Layout()
         self.init_ui()  ## 读取配置文件后初始化
 
     def init_ui(self):
-        self.status_tab.init_ui()
+        if not get_val('paishou'):
+            self.status_tab.init_ui()
+        else:
+            self.paishou_panel.init_ui()
         if get_val('test'):
             self.test_tab.init_ui()
