@@ -237,6 +237,7 @@ def init_id():
     set_val('moni_webframe', -1)
     set_val('guopai_webframe', -1)
 
+
 def init_size():
     ##webframe相关
     set_val('websize', (1148, 715))  # webframe大小
@@ -513,7 +514,7 @@ def init_strategy():
     set_val('pricelist', pricelist)
 
 def init_account():
-    set_val('activate_status', 0)   ##0: 未激活
+    set_val('activate_status', False)   ##0: 未激活
     set_val('strategy_name', '默认策略') #策略名称
 
     set_val('current_strategy_name', '') #当前策略
@@ -523,6 +524,7 @@ def init_account():
     set_val('Password', 0)  # 密码
     set_val('Identify_code', 0)  # 密码
     set_val('ip_address', '')  # 客户端ip
+
 
     set_val("test", False)  ##默认关闭测试模式
     set_val("paishou", False) ##默认非拍手模式

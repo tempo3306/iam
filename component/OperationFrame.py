@@ -373,7 +373,7 @@ class StatusPanel(wx.Panel):
         self.reminderhbox = wx.BoxSizer(wx.HORIZONTAL)
         self.hotkey_bmp = wx.StaticBitmap(self, -1)
         self.hotkey_bmp.SetBitmap(wx.Bitmap('hotkey.png'))
-        self.reminderhbox.Add(self.hotkey_bmp, flag=wx.RIGHT, border=37)
+        self.reminderhbox.Add(self.hotkey_bmp, flag=wx.RIGHT, border=40)
 
         self.reminderbox.Add(self.reminderhbox, flag=wx.ALL, border=10)
         ##-------------------------------------------------------------------------------------

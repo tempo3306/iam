@@ -67,7 +67,10 @@ class AccountPanel(wx.Panel):
         self.btnSizer.Add(self.monibtn, flag=wx.ALIGN_LEFT | wx.ALL, border=3)
         self.btnSizer.Add(self.loginbtn, flag=wx.ALIGN_RIGHT | wx.ALL, border=3)
         self.sizer_v1.Add(self.btnSizer, flag=wx.ALIGN_CENTER | wx.ALL, border=5)
+
         self.loginbtn.Bind(wx.EVT_BUTTON, self.OnLogin, self.loginbtn)
+        self.monibtn.Bind(wx.EVT_BUTTON, self.OnMoni, self.loginbtn)
+
 
         self.SetSizer(self.sizer_v1)
 
@@ -90,6 +93,9 @@ class AccountPanel(wx.Panel):
                 pickle.dump(namepsd, userfile)
             # self.loginBtn.setlabel(u"登录中")
             event.GetEventObject().Disable()
+
+    def OnMoni(self, event):
+        pass
 
 
 class Identify_codePanel(wx.Panel):
@@ -213,6 +219,9 @@ class LoginFrame(wx.Frame):
         Identify_code = get_val('Identify_code')
 
         if login_result['result'] == 'login success':
+            set_val('activate_status', True)  ##激活成功
+            set_val('register_label', '已激活')
+
             self.topframe = TopFrame('沪牌一号', version)
             self.topframe.Show(True)
             print(login_result)
@@ -235,11 +244,10 @@ class LoginFrame(wx.Frame):
                 except:
                     logger.exception("error message")
                 if strategy_dick != 'none':
-                    print("fdsfsf", strategy_dick)
                     set_strategy_dick(strategy_dick) ##初始化策略数据
             if Identify_code == '123456':  ##这里作为测试用
                 set_val('test', True)
-            elif Identify_code[0] == 'h':
+            elif Identify_code[0]== 'h':
                 set_val('paishou', True)
             else:
                 set_val('url_dianxin', login_result['url_dianxin'])

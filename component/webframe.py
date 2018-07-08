@@ -198,7 +198,13 @@ class BottomeStatusbarPanel(wx.Panel):
         dc.SetFont(self.textfont)
         tw, th = dc.GetTextExtent(register_label)
         dc.DrawText(register_label, 35, (h) / 2 - th / 2)
-        dc.DrawBitmap(self.unregistered_bitmap, 2, 0, True)
+
+        ##更改激活状态
+        activate_status = get_val('activate_status')
+        if activate_status:
+            dc.DrawBitmap(self.registered_bitmap, 2, 0, True)
+        else:
+            dc.DrawBitmap(self.unregistered_bitmap, 2, 0, True)
 
         netspeed_label = get_val("netspeed_label")
         dc.SetFont(self.textfont)
