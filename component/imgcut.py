@@ -91,7 +91,6 @@ def timeset( imgpos_currenttime):
         currenttime = cv2.cvtColor(imgpos_currenttime, cv2.COLOR_BGR2GRAY)
         # cv2.imwrite('time.png', currenttime)
         currenttime = readpic(currenttime)  # 识别出来的时间
-        print(currenttime)
         a_time = get_val('a_time')
         tem1 = time.time()
         a = time.strftime('%Y-%m-%d', time.localtime(tem1))

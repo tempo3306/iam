@@ -1,6 +1,12 @@
 from PIL import Image
 
-img = Image.open('login.png')
-img = img.resize((136, 40),Image.ANTIALIAS)
+img = Image.open('HK.png')
+img = img.resize((144, 120))
 
-img.save('login2.png')
+img.save('hotkey.png')
+
+# import cv2
+#
+# img = cv2.imread('HK.png', -1)
+# img = cv2.resize(img, (144,120))
+# cv2.imwrite('hotkey.png', img)

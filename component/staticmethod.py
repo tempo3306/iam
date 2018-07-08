@@ -707,6 +707,7 @@ def init_strategy0():
     set_val('tijiao_num', 1)  # 初始化
     set_val('tijiao_OK', False)
     set_val('tijiao_one', False)  # 单枪未开
+    set_val('smartprice_chujia', False)
     init_label()
 
 
@@ -718,6 +719,7 @@ def init_strategy1():
     set_val('tijiao_num', 1)  # 初始化
     set_val('tijiao_OK', False)
     set_val('tijiao_one', False)  # 单枪未开
+    set_val('smartprice_chujia', False)
     init_label()
 
 def init_strategy2():
@@ -728,6 +730,7 @@ def init_strategy2():
     set_val('tijiao_num', 1)  # 初始化
     set_val('tijiao_OK', False)
     set_val('tijiao_one', False)  # 单枪未开
+    set_val('smartprice_chujia', False)
     init_label()
 
 def init_strategy3():
@@ -738,6 +741,7 @@ def init_strategy3():
     set_val('tijiao_num', 1)  # 初始化
     set_val('tijiao_OK', False)
     set_val('tijiao_one', False)  # 单枪未开
+    set_val('smartprice_chujia', False)
     init_label()
 
 

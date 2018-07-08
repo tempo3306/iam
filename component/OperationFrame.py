@@ -375,7 +375,7 @@ class StatusPanel(wx.Panel):
         self.hotkey_bmp.SetBitmap(wx.Bitmap('hotkey.png'))
         self.reminderhbox.Add(self.hotkey_bmp, flag=wx.RIGHT, border=37)
 
-        self.reminderbox.Add(self.reminderhbox, flag=wx.ALL, border=20)
+        self.reminderbox.Add(self.reminderhbox, flag=wx.ALL, border=10)
         ##-------------------------------------------------------------------------------------
         ##将所有sizer组合
         # self.reminderbox.Add(self.remindergrid)

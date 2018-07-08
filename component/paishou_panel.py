@@ -70,16 +70,18 @@ class PaishouPanel(wx.Panel):
         self.reminderhbox = wx.BoxSizer(wx.HORIZONTAL)
         self.hotkey_bmp = wx.StaticBitmap(self, -1)
         self.hotkey_bmp.SetBitmap(wx.Bitmap('hotkey.png'))
-        self.reminderhbox.Add(self.hotkey_bmp, flag=wx.RIGHT, border=37)
+        self.reminderhbox.Add(self.hotkey_bmp, flag=wx.RIGHT, border=32)
 
-        self.reminderbox.Add(self.reminderhbox, flag=wx.ALL, border=20)
+        self.reminderbox.Add(self.reminderhbox, flag=wx.ALL, border=5)
         ##-------------------------------------------------------------------------------------
         ##将所有sizer组合
         # self.reminderbox.Add(self.remindergrid)
         self.vbox = wx.BoxSizer(wx.VERTICAL)
         self.vbox.Add(self.controlbox, flag=wx.BOTTOM, border=10)
         self.vbox.Add(self.reminderbox, flag=wx.BOTTOM, border=10)
-        self.SetSizer(self.vbox)
+        self.hbox = wx.BoxSizer(wx.HORIZONTAL)
+        self.hbox.Add(self.vbox, flag=wx.LEFT, border=10)
+        self.SetSizer(self.hbox)
 
         ###初始化sizer
 

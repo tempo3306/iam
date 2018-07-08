@@ -35,8 +35,6 @@ def cut(img):
         imgn.append(image[y:y + h, x:x + w])
     for i in range(len(imgn)):
         imgn[i] = cv2.resize(imgn[i], (8, 8))
-    for i in range(len(xy)):
-        cv2.imwrite("ST%d.png" % i, imgn[i])
 
 
     xy0 = []  ##存放切块
