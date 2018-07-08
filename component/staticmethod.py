@@ -597,9 +597,8 @@ def Hotkey_listen():
             # print("listening")
             if msg.message == win32con.WM_HOTKEY:
                 action_to_take = HOTKEY_ACTIONS.get(msg.wParam)
-                hotkey_on = get_val('hotkey_on')
                 # if action_to_take:
-                if action_to_take and hotkey_on:
+                if action_to_take:
                     action_to_take()
             user32.TranslateMessage(byref(msg))
             user32.DispatchMessageA(byref(msg))
@@ -611,7 +610,7 @@ def Hotkey_listen():
             user32.UnregisterHotKey(None, id)
         for id in HOTKEYS2.keys():
             user32.UnregisterHotKey(None, id)
-        set_val('hotkey_on', False)
+        set_val('listening', False)
 
 
 ##开启

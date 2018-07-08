@@ -3,7 +3,10 @@
 @contact: 810909753@q.com
 @time: 2018/1/25 14:37
 '''
+import pickle
+
 import wx.html2
+
 from component.staticmethod import *
 from component.imgcut import findpos, timeset, Price_read
 from component.webframe import WebFrame
@@ -32,7 +35,11 @@ class TopFrame(wx.Frame):
         self.hbox1 = wx.BoxSizer(wx.HORIZONTAL)
         self.monibutton = wx.Button(panel, label='打开模拟')
         self.Bind(wx.EVT_BUTTON, self.Openmoni, self.monibutton)
-        self.guopaibutton = wx.Button(panel, label='打开国拍')
+        activate_status = get_val('activate_status')
+        if activate_status:
+            self.guopaibutton = wx.Button(panel, label='打开国拍')
+        else:
+            self.guopaibutton = wx.Button(panel, label='激活账号')
         self.Bind(wx.EVT_BUTTON, self.Openurlchoice, self.guopaibutton)
         self.hbox1.Add(self.monibutton, 0, wx.ALL | wx.CENTER, 5)
         self.hbox1.Add(self.guopaibutton, 0, wx.ALL | wx.CENTER, 5)
@@ -233,37 +240,55 @@ class TopFrame(wx.Frame):
             self.webopen()
 
     def Openurlchoice(self, event):
-        htmlsize = get_val('htmlsize')
-        timer0 = threading.Timer(5, findpos)
-        webview_pos = get_val('webview_pos')
+        activate_status = get_val('activate_status')
 
-        Px = get_val('Px')
-        Py = get_val('Py')
+        if activate_status:
+            Px = get_val('Px')
+            Py = get_val('Py')
 
-        set_val('ad_view', True)
-        set_val('guopai_on', True)
-        set_val('web_on', True)
-        set_val('strategy_on', True)
-        set_val('moni_on', False)
-        guopai_id = get_val('guopai_webframe')
-        guopai= wx.FindWindowById(guopai_id)
-        from component.app_thread import GetremotetimeThread
-        getremotetimethread = GetremotetimeThread()  ##同步时间
-        if guopai_id != -1:
-            guopai.operationpanel.init_ui()
-            guopai.Center()
-            guopai.htmlpanel.webview.Reload()
-            guopai.Show(True)
-            guopai.currentstatusframe.Show(False)
-            self.webopen()
+            set_val('ad_view', True)
+            set_val('guopai_on', True)
+            set_val('web_on', True)
+            set_val('strategy_on', True)
+            set_val('moni_on', False)
+            guopai_id = get_val('guopai_webframe')
+            guopai= wx.FindWindowById(guopai_id)
+            from component.app_thread import GetremotetimeThread
+            getremotetimethread = GetremotetimeThread()  ##同步时间
+            if guopai_id != -1:
+                guopai.operationpanel.init_ui()
+                guopai.Center()
+                guopai.htmlpanel.webview.Reload()
+                guopai.Show(True)
+                guopai.currentstatusframe.Show(False)
+                self.webopen()
+            else:
+                self.fr = WebFrame(Px, Py, -1, '沪牌一号 国拍', '切换模拟', False)  ## 国拍52
+                set_val('guopai_webframe', self.fr.GetId())
+                self.fr.Show(True)
+                self.fr.currentstatusframe.Show(False)
+                self.fr.operationpanel.init_ui()
+                # 关闭主界面，打开策略设置
+                self.webopen()
         else:
-            self.fr = WebFrame(Px, Py, -1, '沪牌一号 国拍', '切换模拟', False)  ## 国拍52
-            set_val('guopai_webframe', self.fr.GetId())
-            self.fr.Show(True)
-            self.fr.currentstatusframe.Show(False)
-            self.fr.operationpanel.init_ui()
-            # 关闭主界面，打开策略设置
-            self.webopen()
+            loginframeid = get_val('loginframe')
+            print(loginframeid)
+            loginframe = wx.FindWindowById(loginframeid)
+            loginframe.Show(True)
+            moni_id = get_val('moni_webframe')
+            guopai_id = get_val('guopai_webframe')
+            moni = wx.FindWindowById(moni_id)
+            guopai = wx.FindWindowById(guopai_id)
+            self.Show(False)
+            try:
+                moni.Show(False)
+            except:
+                pass
+            try:
+                guopai.Show(False)
+            except:
+                pass
+
 
         # mainicon = get_val('mainicon')
         # self.Show(False)
@@ -393,27 +418,14 @@ class TopFrame(wx.Frame):
         print(result)
         res = result['result']
         if res == 'keep failure':  ##在其它电脑上登录过，并且未注销
-            set_val('userconfirm_on', True)
-            self.Close()
-            from component.LoginFrame import LoginFrame
-            import pickle
-            try:
-                with open("your.name", 'rb') as name:
-                    namepsd = pickle.load(name)
-                    code = namepsd[0]
-                    # user = namepsd[0]
-                    # psd = namepsd[1]
-            except:
-                user = 'shooter'  # 关闭
-                psd = 0
-                code = ''
-            loginframe = LoginFrame('沪牌一号', code)
+            loginframe = get_val('loginframe')
+            loginframe = wx.FindWindowById(loginframe)
             loginframe.Show(True)
-
             moni_id = get_val('moni_webframe')
             guopai_id = get_val('guopai_webframe')
             moni = wx.FindWindowById(moni_id)
             guopai = wx.FindWindowById(guopai_id)
+            self.Show(False)
             try:
                 moni.Show(False)
             except:

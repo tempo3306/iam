@@ -233,7 +233,7 @@ def init_label():
 def init_id():
     set_val('userconfirm_on', False)
     set_val('topframe', -1)
-    set_val('loginframe', -1)
+    # set_val('loginframe', -1)
     set_val('moni_webframe', -1)
     set_val('guopai_webframe', -1)
 
@@ -525,6 +525,7 @@ def init_account():
     set_val('Identify_code', 0)  # 密码
     set_val('ip_address', '')  # 客户端ip
 
+    set_val('listening', False)
 
     set_val("test", False)  ##默认关闭测试模式
     set_val("paishou", False) ##默认非拍手模式

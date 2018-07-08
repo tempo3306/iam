@@ -24,7 +24,7 @@ def web_request(url):
     import ssl, json
     ssl._create_default_https_context = ssl._create_unverified_context  # 关闭证书验证
     response = requests.get(url, timeout=5)
-    print(response)
+    print(response.text)
     if response.status_code == 404:
         result = {'result': 'wrong account'}
         return result

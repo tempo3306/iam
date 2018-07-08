@@ -41,6 +41,10 @@ def ConfirmUser(Username, Password, version):  # 修改为参数传递
         return {'result': 'net error'}
     return result
 
+
+
+
+
 def ConfirmCode(identify_code, version):  # 修改为参数传递
     try:
         from component.remote_control import get_unique_id  ##获取硬盘ID
@@ -63,6 +67,24 @@ def ConfirmCode(identify_code, version):  # 修改为参数传递
         logger.error("登录出现异常")
         logger.exception('this is an exception message')
         return {'result': 'net error'}
+
+def MoniTest():  # 修改为参数传递
+    try:
+        from component.remote_control import get_unique_id  ##获取硬盘ID
+        host_ali = get_val('host_ali')
+        # debug 模式
+        target_url = '{0}/api/bid/monitest/?format=json'.format(host_ali)
+        # target_url = host_ali + r'/main_api/userconfirm/info?' + 'username=%s' % Username + '&' + 'passwd=%s' % Password
+        result = web_request(target_url)
+        return result
+    except:
+        logger.error("登录出现异常")
+        logger.exception('this is an exception message')
+        return {'result': 'net error'}
+
+
+
+
 
 # 登出
 def Logout():  # 修改为参数传递        host_ali = get_val('host_ali')

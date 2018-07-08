@@ -1192,9 +1192,9 @@ class OperationPanel(wx.Panel):
         self.init_ui()  ## 读取配置文件后初始化
 
     def init_ui(self):
-        if not get_val('paishou'):
-            self.status_tab.init_ui()
-        else:
+        if  get_val('paishou'):
             self.paishou_panel.init_ui()
+        else:
+            self.status_tab.init_ui()
         if get_val('test'):
             self.test_tab.init_ui()

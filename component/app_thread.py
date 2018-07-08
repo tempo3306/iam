@@ -9,7 +9,7 @@ import threading, time
 from threading import Thread
 import sys, os
 from component.imgcut import cut_img, findconfirm, findrefresh, findpos, Price_read
-from component.login import ConfirmUser, Keeplogin, ConfirmCode
+from component.login import ConfirmUser, Keeplogin, ConfirmCode, MoniTest
 from component.staticmethod import OnClick_chujia, OnClick_Tijiao, calculate_usetime
 from component.staticmethod import Smart_ajust_chujia
 from component.staticmethod import trans_time
@@ -267,9 +267,39 @@ class cutimgThread(Thread):
         self.__running.clear()  # 设置为False
 
 
-class LoginThread(Thread):
+# class LoginThread(Thread):
+#     def __init__(self, *args, **kwargs):
+#         super(LoginThread, self).__init__(*args, **kwargs)
+#         self.__flag = threading.Event()  # 用于暂停线程的标识
+#         self.__flag.set()  # 设置为True
+#         self.__running = threading.Event()  # 用于停止线程的标识
+#         self.__running.set()  # 将running设置为True
+#         self.setDaemon(True)
+#         self.start()  # start the thread
+#
+#     def run(self):
+#         Username = get_val('Username')
+#         Password = get_val('Password')
+#         login_result = get_val('login_result')
+#         version = get_val('version')
+#         print(version, "version")
+#         set_val('login_result', ConfirmUser(Username, Password, version))
+#         print(login_result)
+#         wx.CallAfter(pub.sendMessage, "connect")
+#
+#     def pause(self):
+#         self.__flag.clear()  # 设置为False, 让线程阻塞
+#
+#     def resume(self):
+#         self.__flag.set()  # 设置为True, 让线程停止阻塞
+#
+#     def stop(self):
+#         self.__flag.set()  # 将线程从暂停状态恢复, 如何已经暂停的话
+#         self.__running.clear()  # 设置为False
+
+class MoniThread(Thread):
     def __init__(self, *args, **kwargs):
-        super(LoginThread, self).__init__(*args, **kwargs)
+        super(MoniThread, self).__init__(*args, **kwargs)
         self.__flag = threading.Event()  # 用于暂停线程的标识
         self.__flag.set()  # 设置为True
         self.__running = threading.Event()  # 用于停止线程的标识
@@ -278,14 +308,8 @@ class LoginThread(Thread):
         self.start()  # start the thread
 
     def run(self):
-        Username = get_val('Username')
-        Password = get_val('Password')
-        login_result = get_val('login_result')
-        version = get_val('version')
-        print(version, "version")
-        set_val('login_result', ConfirmUser(Username, Password, version))
-        print(login_result)
-        wx.CallAfter(pub.sendMessage, "connect")
+        set_val('login_result', MoniTest())
+        wx.CallAfter(pub.sendMessage, "monitest")
 
     def pause(self):
         self.__flag.clear()  # 设置为False, 让线程阻塞
@@ -296,6 +320,8 @@ class LoginThread(Thread):
     def stop(self):
         self.__flag.set()  # 将线程从暂停状态恢复, 如何已经暂停的话
         self.__running.clear()  # 设置为False
+
+
 
 
 class Login_codeThread(Thread):

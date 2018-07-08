@@ -4,10 +4,12 @@
 @contact: 810909753@q.com
 @time: 2018/1/25 16:30
 '''
+import threading
+
 import wx.lib.agw.hyperlink as hyperlink
 from wx.lib.pubsub import pub
 import wx
-from component.app_thread import HashThread, LoginThread, Login_codeThread, Getip_dianxinThread
+from component.app_thread import Login_codeThread, Getip_dianxinThread, MoniThread
 from component.remote_control import get_unique_id
 from component.variable import get_val, set_val, remote_variables, get_id_hash, get_dick, get_strategy_dick
 from component.TopFrame import TopFrame
@@ -16,86 +18,89 @@ from wx.lib.buttons import GenButton as wxButton
 from component.variable import set_strategy_dick
 import logging
 
+from component.webframe import WebFrame
+
 logger = logging.getLogger()
 
 
-class AccountPanel(wx.Panel):
-    def __init__(self, parent, user, psd):  ##########版本号
-        wx.Panel.__init__(self, parent=parent, id=30)
-        # 主sizer
-        self.sizer_v1 = wx.BoxSizer(wx.VERTICAL)
-        self.welcomelabel = wx.StaticText(self, -1, label="沪牌一号", style=wx.ALIGN_CENTER)
-        self.sizer_v1.Add(self.welcomelabel, flag=wx.ALIGN_CENTER | wx.ALL, border=10)
+# class AccountPanel(wx.Panel):
+#     def __init__(self, parent, user, psd):  ##########版本号
+#         wx.Panel.__init__(self, parent=parent, id=30)
+#         # 主sizer
+#         self.sizer_v1 = wx.BoxSizer(wx.VERTICAL)
+#         self.welcomelabel = wx.StaticText(self, -1, label="沪牌一号", style=wx.ALIGN_CENTER)
+#         self.sizer_v1.Add(self.welcomelabel, flag=wx.ALIGN_CENTER | wx.ALL, border=10)
+#
+#         self.userbox = wx.BoxSizer(wx.HORIZONTAL)
+#         ##登录图标
+#         self.bmp_account = wx.StaticBitmap(self, -1)
+#         # self.bmp_account.SetBitmap(wx.Bitmap('login.png'))
+#         self.userlabel = wx.StaticText(self, -1, label="账号")
+#         self.userText = wx.TextCtrl(self, -1, size=(150, -1),
+#                                     style=wx.TE_CENTER | wx.TE_PROCESS_ENTER)
+#         # self.userbox.Add(self.bmp_account)
+#         self.userbox.Add(self.userlabel, flag=wx.ALIGN_CENTER | wx.ALL, border=5)
+#         self.userbox.Add(self.userText, flag=wx.ALIGN_CENTER_HORIZONTAL | wx.ALL, border=5)
+#
+#         self.passbox = wx.BoxSizer(wx.HORIZONTAL)
+#         self.bmp_password = wx.StaticBitmap(self, -1)
+#         # self.bmp_password.SetBitmap(wx.Bitmap('password.png'))
+#         self.passlabel = wx.StaticText(self, -1, label="密码")
+#         self.passText = wx.TextCtrl(self, -1, size=(150, -1),
+#                                     style=wx.TE_CENTER | wx.TE_PROCESS_ENTER | wx.TE_PASSWORD)
+#         # self.passbox.Add(self.bmp_password, flag=wx.ALIGN_CENTER | wx.ALL, border=5)
+#         self.passbox.Add(self.passlabel, flag=wx.ALIGN_CENTER | wx.ALL, border=5)
+#         self.passbox.Add(self.passText, flag=wx.ALIGN_CENTER_HORIZONTAL | wx.ALL, border=5)
+#         if user:
+#             self.userText.SetValue(user)
+#         if psd:
+#             self.passText.SetValue(psd)
+#         self.sizer_v1.Add(self.userbox, flag=wx.ALIGN_CENTER | wx.ALL, border=5)
+#         self.sizer_v1.Add(self.passbox, flag=wx.ALIGN_CENTER | wx.ALL, border=5)
+#
+#         self.Bind(wx.EVT_TEXT_ENTER, self.OnLogin, self.userText)
+#         self.Bind(wx.EVT_TEXT_ENTER, self.OnLogin, self.passText)
+#
+#
+#         self.monibtn = wx.Button(self, label="免费模拟", size=(90, 30))
+#         self.monibtn.SetBackgroundColour("#ACD6FF")
+#         self.loginbtn = wx.Button(self, label="登录", size=(90, 30))
+#         self.loginbtn.SetBackgroundColour("#ACD6FF")
+#
+#         self.btnSizer = wx.BoxSizer(wx.HORIZONTAL)
+#         self.btnSizer.Add(self.monibtn, flag=wx.ALIGN_LEFT | wx.ALL, border=3)
+#         self.btnSizer.Add(self.loginbtn, flag=wx.ALIGN_RIGHT | wx.ALL, border=3)
+#         self.sizer_v1.Add(self.btnSizer, flag=wx.ALIGN_CENTER | wx.ALL, border=5)
+#
+#         self.loginbtn.Bind(wx.EVT_BUTTON, self.OnLogin, self.loginbtn)
+#         self.monibtn.Bind(wx.EVT_BUTTON, self.OnMoni, self.loginbtn)
+#
+#
+#         self.SetSizer(self.sizer_v1)
+#
+#     def OnLogin(self, event):
+#         username = self.userText.GetValue()
+#         password = self.passText.GetValue()
+#         if username == "":
+#             wx.MessageBox('请输入用户名！')
+#             self.userText.SetFocus()
+#         elif password == "":
+#             wx.MessageBox('请输入密码！')
+#             self.passText.SetFocus()
+#             # loginthread=TestThread()
+#         else:
+#             set_val('Username', username)  # 保存用户输入的账号密码
+#             set_val('Password', password)
+#             self.loginthread = LoginThread()
+#             namepsd = [username, password]
+#             with open('your.name', 'wb') as userfile:
+#                 pickle.dump(namepsd, userfile)
+#             # self.loginBtn.setlabel(u"登录中")
+#             event.GetEventObject().Disable()
 
-        self.userbox = wx.BoxSizer(wx.HORIZONTAL)
-        ##登录图标
-        self.bmp_account = wx.StaticBitmap(self, -1)
-        # self.bmp_account.SetBitmap(wx.Bitmap('login.png'))
-        self.userlabel = wx.StaticText(self, -1, label="账号")
-        self.userText = wx.TextCtrl(self, -1, size=(150, -1),
-                                    style=wx.TE_CENTER | wx.TE_PROCESS_ENTER)
-        # self.userbox.Add(self.bmp_account)
-        self.userbox.Add(self.userlabel, flag=wx.ALIGN_CENTER | wx.ALL, border=5)
-        self.userbox.Add(self.userText, flag=wx.ALIGN_CENTER_HORIZONTAL | wx.ALL, border=5)
-
-        self.passbox = wx.BoxSizer(wx.HORIZONTAL)
-        self.bmp_password = wx.StaticBitmap(self, -1)
-        # self.bmp_password.SetBitmap(wx.Bitmap('password.png'))
-        self.passlabel = wx.StaticText(self, -1, label="密码")
-        self.passText = wx.TextCtrl(self, -1, size=(150, -1),
-                                    style=wx.TE_CENTER | wx.TE_PROCESS_ENTER | wx.TE_PASSWORD)
-        # self.passbox.Add(self.bmp_password, flag=wx.ALIGN_CENTER | wx.ALL, border=5)
-        self.passbox.Add(self.passlabel, flag=wx.ALIGN_CENTER | wx.ALL, border=5)
-        self.passbox.Add(self.passText, flag=wx.ALIGN_CENTER_HORIZONTAL | wx.ALL, border=5)
-        if user:
-            self.userText.SetValue(user)
-        if psd:
-            self.passText.SetValue(psd)
-        self.sizer_v1.Add(self.userbox, flag=wx.ALIGN_CENTER | wx.ALL, border=5)
-        self.sizer_v1.Add(self.passbox, flag=wx.ALIGN_CENTER | wx.ALL, border=5)
-
-        self.Bind(wx.EVT_TEXT_ENTER, self.OnLogin, self.userText)
-        self.Bind(wx.EVT_TEXT_ENTER, self.OnLogin, self.passText)
 
 
-        self.monibtn = wx.Button(self, label="免费模拟", size=(90, 30))
-        self.monibtn.SetBackgroundColour("#ACD6FF")
-        self.loginbtn = wx.Button(self, label="登录", size=(90, 30))
-        self.loginbtn.SetBackgroundColour("#ACD6FF")
 
-        self.btnSizer = wx.BoxSizer(wx.HORIZONTAL)
-        self.btnSizer.Add(self.monibtn, flag=wx.ALIGN_LEFT | wx.ALL, border=3)
-        self.btnSizer.Add(self.loginbtn, flag=wx.ALIGN_RIGHT | wx.ALL, border=3)
-        self.sizer_v1.Add(self.btnSizer, flag=wx.ALIGN_CENTER | wx.ALL, border=5)
-
-        self.loginbtn.Bind(wx.EVT_BUTTON, self.OnLogin, self.loginbtn)
-        self.monibtn.Bind(wx.EVT_BUTTON, self.OnMoni, self.loginbtn)
-
-
-        self.SetSizer(self.sizer_v1)
-
-    def OnLogin(self, event):
-        username = self.userText.GetValue()
-        password = self.passText.GetValue()
-        if username == "":
-            wx.MessageBox('请输入用户名！')
-            self.userText.SetFocus()
-        elif password == "":
-            wx.MessageBox('请输入密码！')
-            self.passText.SetFocus()
-            # loginthread=TestThread()
-        else:
-            set_val('Username', username)  # 保存用户输入的账号密码
-            set_val('Password', password)
-            self.loginthread = LoginThread()
-            namepsd = [username, password]
-            with open('your.name', 'wb') as userfile:
-                pickle.dump(namepsd, userfile)
-            # self.loginBtn.setlabel(u"登录中")
-            event.GetEventObject().Disable()
-
-    def OnMoni(self, event):
-        pass
 
 
 class Identify_codePanel(wx.Panel):
@@ -130,7 +135,8 @@ class Identify_codePanel(wx.Panel):
         self.code_btnSizer.Add(self.code_monibtn, flag=wx.ALIGN_LEFT | wx.ALL, border=3)
         self.code_btnSizer.Add(self.code_loginbtn, flag=wx.ALIGN_RIGHT | wx.ALL, border=3)
         self.code_sizer_v1.Add(self.code_btnSizer, flag=wx.ALIGN_CENTER | wx.ALL, border=5)
-        self.code_loginbtn.Bind(wx.EVT_BUTTON, self.OnLogin, self.code_loginbtn)
+        self.code_loginbtn.Bind(wx.EVT_BUTTON, self.OnLogin)
+        self.code_monibtn.Bind(wx.EVT_BUTTON, self.OnMoni)
         ##初始化
         if code:
             self.code_userText.SetValue(code)
@@ -159,6 +165,7 @@ class Identify_codePanel(wx.Panel):
         self.SetSizer(self.code_sizer_v1)
 
     def OnLogin(self, event):
+        print("登录")
         diskid = get_unique_id()
         set_val('diskid', get_id_hash(diskid))  ##sha1 hash化
         Identify_code = self.code_userText.GetValue()
@@ -178,6 +185,11 @@ class Identify_codePanel(wx.Panel):
             # self.loginBtn.setlabel(u"登录中")
             event.GetEventObject().Disable()
 
+    def OnMoni(self, event):
+        print('免费模拟')
+        self.loginthread = MoniThread()
+        event.GetEventObject().Disable()
+
     def Purchase(self, event):
         print("购买")
 
@@ -189,6 +201,8 @@ class LoginFrame(wx.Frame):
         id = self.GetId()
         set_val('loginframe', id)
 
+        id = get_val('loginframe')
+        print(id)
         self.Bind(wx.EVT_CLOSE, self.OnClose)
         self.icon = wx.Icon(mainicon, wx.BITMAP_TYPE_ICO)
         self.SetIcon(self.icon)
@@ -208,6 +222,7 @@ class LoginFrame(wx.Frame):
         self.Center()
 
         pub.subscribe(self.connect_success, "connect")
+        pub.subscribe(self.monitest, "monitest")
         # pub.subscribe(self.connect_failure, "connect failure")
 
         # self.hashthread = HashThread()
@@ -222,8 +237,13 @@ class LoginFrame(wx.Frame):
             set_val('activate_status', True)  ##激活成功
             set_val('register_label', '已激活')
 
-            self.topframe = TopFrame('沪牌一号', version)
-            self.topframe.Show(True)
+            topframeid = get_val('topframe')
+            if topframeid == -1:
+                self.topframe = TopFrame('沪牌一号', version)
+                self.topframe.Show(True)
+            else:
+                topframe = wx.FindWindowById(topframeid)
+                topframe.Show(True)
             print(login_result)
             ip_address = login_result['ip_address']
             set_val('ip_address', ip_address)  ##设置IP
@@ -271,8 +291,10 @@ class LoginFrame(wx.Frame):
             Px = get_val('Px')
             Py = get_val('Py')
             init_pos(Px, Py)
-            self.Destroy()  ##关闭窗口
-            Hotkey_listen()
+            self.Show(False)  ##关闭窗口
+            listening = get_val('listening')
+            if not listening:
+                Hotkey_listen()
         else:
             self.panel.code_loginbtn.Enable()
             if login_result['result'] == 'net error' or login_result['result'] == 'timeout':
@@ -285,6 +307,46 @@ class LoginFrame(wx.Frame):
                 wx.MessageBox('激活码过期', '用户登录', wx.OK | wx.ICON_ERROR)
             else:
                 wx.MessageBox('激活码错误', '用户登录', wx.OK | wx.ICON_ERROR)
+
+    def monitest(self):
+        self.panel.code_monibtn.Enable()
+        login_result = get_val('login_result')
+        version = get_val('version')
+        if login_result['result'] == 'moni success':
+            topframeid = get_val('topframe')
+            if topframeid == -1:
+                self.topframe = TopFrame('沪牌一号', version)
+                self.topframe.Show(True)
+            else:
+                topframe = wx.FindWindowById(topframeid)
+                topframe.Show(True)
+
+            ip_address = login_result['ip_address']
+            set_val('ip_address', ip_address)  ##设置IP
+            Getip_dianxinThread(ip_address) ##判定是否电信网址的功能
+            ##初始化结果
+            print(login_result)
+            data = login_result['data']
+            remote_variables(**data)
+            target_time = get_val('target_time')
+            start_time = target_time - 30 * 60
+            set_val('start_time', start_time)
+            ##初始化账号
+            from component.staticmethod import Hotkey_listen
+            from component.variable import init_pos
+            Px = get_val('Px')
+            Py = get_val('Py')
+            init_pos(Px, Py)
+            self.Show(False)  ##关闭窗口
+            listening = get_val('listening')
+            if not listening:
+                Hotkey_listen()
+        else:
+            self.panel.code_monibtn.Enable()
+            wx.MessageBox('连接服务器失败', '用户登录', wx.OK | wx.ICON_ERROR)
+
+
+
 
     def Purchase(self, event):
         print("购买")
