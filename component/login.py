@@ -20,7 +20,9 @@ socket.setdefaulttimeout(timeout)  # 设定截止时间
 
 from urllib import request
 import json
-logger = logging.getLogger()  #返回根目录的logger
+
+logger = logging.getLogger()  # 返回根目录的logger
+
 
 # 用户登录
 def ConfirmUser(Username, Password, version):  # 修改为参数传递
@@ -40,9 +42,6 @@ def ConfirmUser(Username, Password, version):  # 修改为参数传递
         logger.exception('this is an exception message')
         return {'result': 'net error'}
     return result
-
-
-
 
 
 def ConfirmCode(identify_code, version):  # 修改为参数传递
@@ -68,6 +67,7 @@ def ConfirmCode(identify_code, version):  # 修改为参数传递
         logger.exception('this is an exception message')
         return {'result': 'net error'}
 
+
 def MoniTest():  # 修改为参数传递
     try:
         from component.remote_control import get_unique_id  ##获取硬盘ID
@@ -81,9 +81,6 @@ def MoniTest():  # 修改为参数传递
         logger.error("登录出现异常")
         logger.exception('this is an exception message')
         return {'result': 'net error'}
-
-
-
 
 
 # 登出
@@ -105,7 +102,6 @@ def Logout():  # 修改为参数传递        host_ali = get_val('host_ali')
                      '&account={5}'.format(
             host_ali, type, Identify_code, diskid, strategy_dick, account
         )
-
 
         # target_url = host_ali + r'/main_api/userconfirm/info?' + 'username=%s' % Username + '&' + 'passwd=%s' % Password
         print(target_url)
@@ -155,6 +151,28 @@ def Keeplogin():
         logger.exception('this is an exception message')
         return {'result': 'net error'}
     return result
+
+
+def Confirm_firstprice():
+    try:
+        # debug 模式
+        host_ali = get_val('host_ali')
+        bid_number = get_val('bid_number')
+        type = get_val('type')
+        target_url = '{0}/api/bid/bid_firstprice/?type={1}&bid_number={2}'.format(
+            host_ali, type, bid_number
+        )
+
+        # target_url = host_ali + r'/main_api/userconfirm/info?' + 'username=%s' % Username + '&' + 'passwd=%s' % Password
+        print(target_url)
+        result = web_request(target_url)
+        print(result)
+    except:
+        logger.error("登录出现异常")
+        logger.exception('this is an exception message')
+        return {'result': 'net error'}
+    return result
+
 
 # --------------------------------------------------------------------------------
 def send_mail(subject, to_list, file_name):

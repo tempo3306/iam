@@ -156,6 +156,7 @@ def Create_hash():
     with open("target.tkl", 'rb')  as tar:
         global dick_target
         dick_target = pickle.load(tar)  # 要寻找对象的对象
+        print(len(dick_target))
         set_val('dick_target', dick_target)
 
 ##price_list 价格对应时间的表
@@ -530,6 +531,10 @@ def init_account():
     set_val("test", False)  ##默认关闭测试模式
     set_val("paishou", False) ##默认非拍手模式
 
+
+    set_val("firstprice_done", False)
+
+
 def init_status():
     ##状态框
     set_val('CurrentStatusFramePos', (426, 212))   ###相对WEBFRAME位置
@@ -641,6 +646,9 @@ def init_pos(Px, Py):
                                  login_yanzhengma_relative[2] + Px_lowestprice,
                                  login_yanzhengma_relative[3] + Py_lowestprice))
 
+    ##第一次出价区域  615 546
+    ##              689 559
+
 
     lowestprice_sizex = get_val('lowestprice_sizex')
     lowestprice_sizey = get_val('lowestprice_sizey')
@@ -717,6 +725,10 @@ def remote_init():
     ## 限定截图位置
     set_val('refresh_area_relative', (396 - 150, 11 - 100, 396 + 150, 11 + 100))
     set_val('confirm_area_relative', (505 - 60, 68 - 40, 505 + 60, 68 + 40))
+    # 237
+    # 452
+    # 601
+    # 529
     set_val('yan_confirm_area_relative', (205 - 60, 68 - 40, 405 + 60, 68 + 40))
     set_val('Pos_controlframe_relative', (192 - 344, 514 - 183))
     set_val('Pos_yanzhengma_relative', (-277, - 65, - 97, + 45))  # 验证码所在位置

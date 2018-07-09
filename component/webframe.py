@@ -461,9 +461,6 @@ class WebFrame(wx.Frame):
         on1 = moni_on and self.moni
         on2 = guopai_on and not self.moni
         on = on1 or on2
-
-
-
         if on and self.IsShown() and not self.IsIconized():
             ###子面板刷新
             self.buttonpanel.Modify()
@@ -513,6 +510,19 @@ class WebFrame(wx.Frame):
 
                     finally:
                         pass
+        else:
+            set_val('yanzhengma_view', False)
+            set_val('yanzhengma_close', True)
+            yanzhengma_close = get_val("yanzhengma_close")
+            if yanzhengma_close:
+                try:
+                    if self.yanzhengmaframe.IsShown():
+                        self.yanzhengmaframe.Show(False)
+                        self.currentstatusframe.Show(True)
+                except:
+                    logger.exception('this is an exception message')
+
+
 
     def hotkey_control(self):
         # 根据当前句柄判断是否需要激活快捷键

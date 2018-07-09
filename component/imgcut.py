@@ -23,13 +23,11 @@ def cut_pic(img, size, name):
     ##对空白裁剪
     # shape  (110, 180, 3)
     i1 = img[2:26, :]
-    print(i1.shape)
     i2 = img[48:105, 30:]
     # i2 = cv2.resize(i2, (180, 62))
 
     i1 = cv2.resize(i1, (430, 57))
     i2 = cv2.resize(i2, (430, 163))
-
 
     im = np.concatenate([i2, i1])
     # im = cv2.resize(im, tuple(size))0
@@ -102,11 +100,6 @@ def timeset( imgpos_currenttime):
             set_val('a_time', a_time_temp)
     except:
         logger.exception('this is an exception message')
-
-
-
-
-
 
 
 
@@ -314,6 +307,22 @@ def findconfirm():
             print("max_val", max_val)
             Smart_chujia()
 
+def findfirstprice():
+    dick_target = get_val('dick_target')
+    template = dick_target[4]
+    template2 = dick_target[5]
+    sc = grab_screen()
+    img = np.asarray(sc)
+    w, h = template.shape[::-1]
+    res = cv2.matchTemplate(img, template, cv2.TM_CCOEFF_NORMED)
+    min_val, max_val, min_loc, max_loc = cv2.minMaxLoc(res)
+    res2 = cv2.matchTemplate(img, template2, cv2.TM_CCOEFF_NORMED)
+    min_val, max_val2, min_loc, max_loc = cv2.minMaxLoc(res2)
+    if max_val >= 0.9 or max_val2 >= 0.9:
+        return True
+    else:
+        return False
+
 
 def find_yan_confirm():
     try:
@@ -328,7 +337,11 @@ def find_yan_confirm():
         yanzhengma_control = get_val('yanzhengma_control')
         if max_val > 0.9 and yanzhengma_control:
             set_val('yanzhengma_view', True)
+            print('max_val', max_val)
         elif max_val <= 0.9:
+            yanzhengma_view = get_val('yanzhengma_view')
+            print('yanzhengma_view', yanzhengma_view)
+            print('max_val', max_val)
             set_val('yanzhengma_view', False)
             set_val('yanzhengma_close', True)
             set_val('yanzhengma_control', True)

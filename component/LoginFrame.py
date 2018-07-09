@@ -243,7 +243,9 @@ class LoginFrame(wx.Frame):
                 self.topframe.Show(True)
             else:
                 topframe = wx.FindWindowById(topframeid)
+                topframe.guopaibutton.SetLabel('打开国拍')
                 topframe.Show(True)
+
             print(login_result)
             ip_address = login_result['ip_address']
             set_val('ip_address', ip_address)  ##设置IP
@@ -265,7 +267,7 @@ class LoginFrame(wx.Frame):
                     logger.exception("error message")
                 if strategy_dick != 'none':
                     set_strategy_dick(strategy_dick) ##初始化策略数据
-            if Identify_code == '123456':  ##这里作为测试用
+            if Identify_code == '12345678':  ##这里作为测试用
                 set_val('test', True)
             elif Identify_code[0]== 'h':
                 set_val('paishou', True)
@@ -276,10 +278,11 @@ class LoginFrame(wx.Frame):
             ##初始化账号
             account = login_result['account']
             if account:
-                bidnumber = account['account']
+                bid_number = account['account']
                 bidpassword = account['password']
                 idcard = account['idcard']
-                bidnumber_js = "document.getElementById('bidnumber').value = '{0}';".format(bidnumber)
+                set_val('bid_number', bid_number)
+                bidnumber_js = "document.getElementById('bidnumber').value = '{0}';".format(bid_number)
                 bidpassword_js = "document.getElementById('bidpassword').value = '{0}';".format(bidpassword)
                 idcard_js = "document.getElementById('idcard').value = '{0}';".format(idcard)
                 set_val('bidnumber_js', bidnumber_js)

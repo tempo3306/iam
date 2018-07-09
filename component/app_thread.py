@@ -9,7 +9,7 @@ import threading, time
 from threading import Thread
 import sys, os
 from component.imgcut import cut_img, findconfirm, findrefresh, findpos, Price_read
-from component.login import ConfirmUser, Keeplogin, ConfirmCode, MoniTest
+from component.login import ConfirmUser, Keeplogin, ConfirmCode, MoniTest, Confirm_firstprice
 from component.staticmethod import OnClick_chujia, OnClick_Tijiao, calculate_usetime
 from component.staticmethod import Smart_ajust_chujia
 from component.staticmethod import trans_time
@@ -349,6 +349,35 @@ class Login_codeThread(Thread):
     def stop(self):
         self.__flag.set()  # 将线程从暂停状态恢复, 如何已经暂停的话
         self.__running.clear()  # 设置为False
+
+
+class Confirmfirstprice_thread(Thread):
+    def __init__(self, *args, **kwargs):
+        super(Confirmfirstprice_thread, self).__init__(*args, **kwargs)
+        self.__flag = threading.Event()  # 用于暂停线程的标识
+        self.__flag.set()  # 设置为True
+        self.__running = threading.Event()  # 用于停止线程的标识
+        self.__running.set()  # 将running设置为True
+        self.setDaemon(True)
+        self.start()  # start the thread
+
+    def run(self):
+        identify_code = get_val('Identify_code')
+        version = get_val('version')
+        result = Confirm_firstprice()
+        print(result)
+        wx.CallAfter(pub.sendMessage, "firstprice", result=result)
+
+    def pause(self):
+        self.__flag.clear()  # 设置为False, 让线程阻塞
+
+    def resume(self):
+        self.__flag.set()  # 设置为True, 让线程停止阻塞
+
+    def stop(self):
+        self.__flag.set()  # 将线程从暂停状态恢复, 如何已经暂停的话
+        self.__running.clear()  # 设置为False
+
 
 
 class controlThread(Thread):

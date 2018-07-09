@@ -477,7 +477,13 @@ class StatusPanel(wx.Panel):
             self.yanzhengma_scale.SetValue(True)
         else:
             self.yanzhengma_scale.SetValue(False)
+        
+        if  not get_val('activate_status'):
+            self.webtabButton.Disable()
+        else:
+            self.webtabButton.Enable()
 
+        
         self.init_strategy()
 
     def  init_strategy(self):

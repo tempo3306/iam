@@ -401,7 +401,13 @@ def Smart_ajust_chujia(price):
 def Cancel_chujia_test():
     x, y = win32api.GetCursorPos()
     print(x, y)
+    # 615 546
+    # 689 559
+    from component.read_pic import grab_screen2
+    imgpos_yanzhengmaconfirm = get_val('imgpos_yanzhengmaconfirm')
 
+    # img = grab_screen2(region=(x, y, x + 76, y + 16))
+    cv2.imwrite('yan_confirm.png', imgpos_yanzhengmaconfirm)
 
     px, py = win32api.GetCursorPos()
     Position_frame = get_val('Position_frame')

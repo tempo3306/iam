@@ -1,3 +1,4 @@
+from component.app_thread import Confirmfirstprice_thread
 from component.imgcut import findpos
 from component.staticmethod import *
 import logging
@@ -74,11 +75,86 @@ class PaishouPanel(wx.Panel):
 
         self.reminderbox.Add(self.reminderhbox, flag=wx.ALL, border=5)
         ##-------------------------------------------------------------------------------------
+        ##拍手功能框
+        # 工作
+        self.paishoubox = wx.BoxSizer(wx.VERTICAL)
+
+        self.firstprice_box = wx.BoxSizer(wx.HORIZONTAL)
+        self.timefont = wx.Font(14, wx.FONTFAMILY_ROMAN, wx.FONTSTYLE_NORMAL, wx.FONTWEIGHT_NORMAL, False)
+        self.textfont = wx.Font(12, wx.FONTFAMILY_MODERN, wx.FONTSTYLE_NORMAL, wx.FONTWEIGHT_NORMAL, False)
+
+        self.time1box = wx.BoxSizer(wx.HORIZONTAL)
+        self.timelabel1 = wx.StaticText(self, -1, "10：30 ~ 10：45")
+        self.timelabel1.SetFont(self.timefont)
+        self.time1box.Add(self.timelabel1, flag=wx.LEFT, border=30)
+
+
+        self.firstprice_label = wx.StaticText(self, -1, "第一次出价: ")
+        self.firstprice_status = wx.StaticText(self, -1, "未完成")
+        self.firstprice_label.SetFont(self.textfont)
+        self.firstprice_status.SetFont(self.textfont)
+        self.confirmfirstprice_button = wx.Button(self, -1, "确认完成", size=(60, 25))
+        self.confirmfirstprice_button.Bind(wx.EVT_BUTTON, self.confirm_firstprice)
+        self.firstprice_box.Add(self.firstprice_label, flag=wx.TOP | wx.LEFT, border=5)
+        self.firstprice_box.Add(self.firstprice_status, flag=wx.TOP, border=5)
+        self.firstprice_box.Add(self.confirmfirstprice_button)
+
+        self.time2box = wx.BoxSizer(wx.HORIZONTAL)
+        self.timelabel2 = wx.StaticText(self, -1, "10：45 ~ 11：25")
+        self.timelabel2.SetFont(self.timefont)
+        self.time2box.Add(self.timelabel2, flag=wx.LEFT, border=30)
+
+        self.practice_box = wx.BoxSizer(wx.HORIZONTAL)
+        self.practice_label = wx.StaticText(self, -1, "模拟练习，验证码练习")
+        self.practice_label.SetFont(self.textfont)
+        self.practice_box.Add(self.practice_label, flag=wx.LEFT, border=15)
+
+        self.time3box = wx.BoxSizer(wx.HORIZONTAL)
+        self.timelabel3 = wx.StaticText(self, -1, "11：27 ~ 11：30")
+        self.timelabel3.SetFont(self.timefont)
+        self.time3box.Add(self.timelabel3, flag=wx.LEFT, border=30)
+
+        self.wait_box = wx.BoxSizer(wx.HORIZONTAL)
+        self.wait_label = wx.StaticText(self, -1, "开始录像，等待29分后的出价")
+        self.wait_label.SetFont(self.textfont)
+        self.wait_box.Add(self.wait_label, flag=wx.LEFT, border=6)
+
+        self.time4box = wx.BoxSizer(wx.HORIZONTAL)
+        self.timelabel4 = wx.StaticText(self, -1, "11：25 ~ 11：30")
+        self.timelabel4.SetFont(self.timefont)
+        self.time4box.Add(self.timelabel4, flag=wx.LEFT, border=30)
+
+        self.result_box = wx.BoxSizer(wx.VERTICAL)
+        self.waitresult_label = wx.StaticText(self, -1, "等待拍牌结果，继续录像")
+        self.waitresult_label.SetFont(self.textfont)
+        self.record_label = wx.StaticText(self, -1, "结果拍照，保存录像")
+        self.record_label.SetFont(self.textfont)
+        self.complete_label = wx.StaticText(self, -1, "将录像、照片发送邮箱")
+        self.complete_label.SetFont(self.textfont)
+        self.mail_label = wx.StaticText(self, -1, "810909753@qq.com")
+        self.mail_label.SetFont(self.textfont)
+
+        self.result_box.Add(self.waitresult_label, flag=wx.LEFT, border=15)
+        self.result_box.Add(self.record_label, flag=wx.LEFT, border=15)
+        self.result_box.Add(self.complete_label, flag=wx.LEFT, border=15)
+        self.result_box.Add(self.mail_label, flag=wx.LEFT, border=15)
+
+        self.paishoubox.Add(self.time1box, flag=wx.TOP, border=20)
+        self.paishoubox.Add(self.firstprice_box, flag=wx.TOP, border=5)
+        self.paishoubox.Add(self.time2box, flag=wx.TOP, border=20)
+        self.paishoubox.Add(self.practice_box, flag=wx.TOP, border=5)
+        self.paishoubox.Add(self.time3box, flag=wx.TOP, border=20)
+        self.paishoubox.Add(self.wait_box, flag=wx.TOP, border=5)
+        self.paishoubox.Add(self.time4box, flag=wx.TOP, border=20)
+        self.paishoubox.Add(self.result_box, flag=wx.TOP, border=5)
+
+        ##-------------------------------------------------------------------------------------
         ##将所有sizer组合
         # self.reminderbox.Add(self.remindergrid)
         self.vbox = wx.BoxSizer(wx.VERTICAL)
         self.vbox.Add(self.controlbox, flag=wx.BOTTOM, border=10)
         self.vbox.Add(self.reminderbox, flag=wx.BOTTOM, border=10)
+        self.vbox.Add(self.paishoubox, flag=wx.BOTTOM, border=10)
         self.hbox = wx.BoxSizer(wx.HORIZONTAL)
         self.hbox.Add(self.vbox, flag=wx.LEFT, border=10)
         self.SetSizer(self.hbox)
@@ -88,6 +164,7 @@ class PaishouPanel(wx.Panel):
         #############消息区域
         pub.subscribe(self.change_strategy, 'change strategy')
         pub.subscribe(self.change_userprice, 'change userprice')  # 修改当前用户出价
+        pub.subscribe(self.firstprice_OK, 'firstprice')  # 第一次出价成功
 
     ## 验证码放大
     def Yanzhengma_scale(self, event):
@@ -174,15 +251,24 @@ class PaishouPanel(wx.Panel):
         strategy_type = get_dick('strategy_type')
         self.update_ui(strategy_type)
 
+        moni_on = get_val('moni_on')
+        guopai_on = get_val('guopai_on')
+        if moni_on:
+            self.confirmfirstprice_button.Disable()
+        elif guopai_on:
+            self.confirmfirstprice_button.Enable()
+
+        firstprice_done = get_val('firstprice_done')
+        if firstprice_done:
+            self.firstprice_status.SetLabel("已完成")
+        else:
+            self.firstprice_status.SetLabel("未完成")
+
 
     def update_ui(self, strategy_type):  ##根据不同的出价策略调整界面
         strategy_list = get_dick(strategy_type)
-
-        print('strategy_list', strategy_list)
-
         if strategy_type == '0':  # 单次
             init_strategy()
-
             set_val('one_time1', strategy_list[1])  # 第一次出价加价
             set_val('one_diff', strategy_list[2])  # 第一次加价幅度
             set_val('one_advance', strategy_list[3])  # 第一次提交提前量
@@ -225,8 +311,6 @@ class PaishouPanel(wx.Panel):
             set_val('one_real_time2', gettime(one_time2))
             set_val('second_real_time1', gettime(second_time1))
             set_val('second_real_time2', gettime(second_time2))
-
-
 
         elif strategy_type == '2':  # 单枪动态提交
             init_strategy()
@@ -288,6 +372,27 @@ class PaishouPanel(wx.Panel):
             set_val('one_realtime2_smart', gettime(strategy_list[23]))
 
             self.Layout()
+
+    def confirm_firstprice(self, event):
+        from component.imgcut import findfirstprice
+        self.confirmfirstprice_button.Disable()
+
+        res = findfirstprice()
+        print(res)
+        if not res:
+            self.confirmfirstprice_button.Enable()
+        else:
+            from component.login import Confirm_firstprice
+            Confirmfirstprice_thread()
+
+    def firstprice_OK(self, result):
+        set_val("firstprice_done", True)
+        if result['result'] == 'firstprice success':
+            self.firstprice_status.SetLabel("已完成")
+        else:
+            self.confirmfirstprice_button.Enable()
+
+
 
     ##导出跳价
     def priceview(self, event):
