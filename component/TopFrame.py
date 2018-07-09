@@ -296,7 +296,6 @@ class TopFrame(wx.Frame):
 
     def Open_call_guopai(self):
         htmlsize = get_val('htmlsize')
-        timer0 = threading.Timer(5, findpos)
         webview_pos = get_val('webview_pos')
 
         Px = get_val('Px')

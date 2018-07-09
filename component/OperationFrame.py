@@ -402,6 +402,8 @@ class StatusPanel(wx.Panel):
     def webtab(self, event):
         moni_on = get_val('moni_on')
         if moni_on:
+            set_val('guopai_on', True)
+            set_val('moni_on', False)
             from component.app_thread import GetremotetimeThread
             getremotetimethread = GetremotetimeThread()  ##同步国拍时间
             moni_webframe = get_val('moni_webframe')
@@ -415,14 +417,15 @@ class StatusPanel(wx.Panel):
                 moni.Show(False)
                 moni.currentstatusframe.Show(False)
                 moni.yanzhengmaframe.Show(False)
-                set_val('guopai_on', True)
-                set_val('moni_on', False)
+
             else:
                 moni.Show(False)
                 moni.currentstatusframe.Show(False)
                 moni.yanzhengmaframe.Show(False)
                 wx.CallAfter(pub.sendMessage, "open dianxin")
         else:
+            set_val('moni_on', True)
+            set_val('guopai_on', False)
             moni_webframe = get_val('moni_webframe')
             guopai_webframe = get_val('guopai_webframe')
             moni = wx.FindWindowById(moni_webframe)
@@ -435,8 +438,6 @@ class StatusPanel(wx.Panel):
                 guopai.currentstatusframe.Show(False)
                 guopai.yanzhengmaframe.Show(False)
                 moni.operationpanel.init_ui()
-                set_val('moni_on', True)
-                set_val('guopai_on', False)
             else:
                 guopai.Show(False)
                 guopai.currentstatusframe.Show(False)

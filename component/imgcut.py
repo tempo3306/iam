@@ -132,7 +132,6 @@ def findpos():
         set_val('px_calculate_relative', max_loc[0] + px_relative - Px) ##计算得到相差
         set_val('py_calculate_relative', max_loc[1] + py_relative - Py)
         ##计算时间位置
-        print('time_max_val', time_max_val)
         set_val('Px_currenttime', time_max_loc[0] + px_timerelative)    #时间的位置
         set_val('Py_currenttime', time_max_loc[1] + py_timerelative)
 
@@ -304,7 +303,6 @@ def findconfirm():
         if not smartprice_chujia:
             OnClick_confirm()
         else:
-            print("max_val", max_val)
             Smart_chujia()
 
 def findfirstprice():
@@ -337,11 +335,8 @@ def find_yan_confirm():
         yanzhengma_control = get_val('yanzhengma_control')
         if max_val > 0.9 and yanzhengma_control:
             set_val('yanzhengma_view', True)
-            print('max_val', max_val)
         elif max_val <= 0.9:
             yanzhengma_view = get_val('yanzhengma_view')
-            print('yanzhengma_view', yanzhengma_view)
-            print('max_val', max_val)
             set_val('yanzhengma_view', False)
             set_val('yanzhengma_close', True)
             set_val('yanzhengma_control', True)
