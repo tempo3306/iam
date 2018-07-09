@@ -87,13 +87,15 @@ def cut_pic(img, size, name):
 def timeset( imgpos_currenttime):
     try:
         currenttime = cv2.cvtColor(imgpos_currenttime, cv2.COLOR_BGR2GRAY)
-        # cv2.imwrite('time.png', currenttime)
+        cv2.imwrite('time.png', currenttime)
         currenttime = readpic(currenttime)  # 识别出来的时间
+        print(currenttime)
         a_time = get_val('a_time')
         tem1 = time.time()
         a = time.strftime('%Y-%m-%d', time.localtime(tem1))
         b = a + ' ' + currenttime
         a_time_temp = time.mktime(time.strptime(b, '%Y-%m-%d %H:%M:%S')) + 0.6  # 转时间戳   补个平均时差
+
         if a_time_temp - 0.9 <= a_time <= a_time_temp + 0.9:
             pass
         else:

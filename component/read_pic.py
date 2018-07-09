@@ -45,13 +45,13 @@ def cut(img):
     ##前n-1个块
     for i in range(len(xy) - 1):
         diff = xy[i + 1][0] - xy[i][0]
-        if diff < 5:
+        if diff < 2:
             t0 = min(xy[i][0], xy[i + 1][0])
             t1 = min(xy[i][1], xy[i + 1][1])
             t2 = max(xy[i][2] + xy[i][0], xy[i + 1][2] + xy[i + 1][0]) - t0
             t3 = max(xy[i][3] + xy[i][1], xy[i + 1][3] + xy[i + 1][1]) - t1
             xy[i + 1] = [t0, t1, t2, t3]
-        elif 5 <= diff < 12:
+        elif 2 <= diff < 12:
             xy0.append(xy[i])
         else:
             if 12 <= diff <= 16:
