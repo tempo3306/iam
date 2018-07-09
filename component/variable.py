@@ -682,21 +682,6 @@ def init_pos(Px, Py):
     set_val('use_area', use_area)
 
 
-    ##一键登录
-    bidnumber = '12345678'
-    bidpassword = '12345678'
-    idcard = '1'
-
-    bidnumber_js  = "document.getElementById('bidnumber').value = '{0}';".format(bidnumber)
-    bidpassword_js = "document.getElementById('bidpassword').value = '{0}';".format(bidpassword)
-    idcard_js = "document.getElementById('idcard').value = '{0}';".format(idcard)
-
-    set_val('bidnumber', 123)
-    set_val('bidpassword', 123)
-    set_val('idcard', 123)
-    set_val('bidnumber_js', bidnumber_js)
-    set_val('bidpassword_js', bidpassword_js)
-    set_val('idcard_js', idcard_js)
 
 ##初始化变量, 由服务器给定
 def remote_variables(**kwargs):
@@ -708,7 +693,22 @@ def test_init():
     set_val('login_yanzhengma_relative', (553, 11 - 120, 396 + 259, -84))
 
     set_val('num', 0)
+    ##一键登录
+    bidnumber = ''
+    bidpassword = ''
+    idcard = ''
 
+    bidnumber_js  = "document.getElementById('bidnumber').value = '{0}';".format(bidnumber)
+    bidpassword_js = "document.getElementById('bidpassword').value = '{0}';".format(bidpassword)
+    idcard_js = "document.getElementById('idcard').value = '{0}';".format(idcard)
+
+
+    set_val('bidnumber', '')
+    set_val('bidpassword', '')
+    set_val('idcard', '')
+    set_val('bidnumber_js', bidnumber_js)
+    set_val('bidpassword_js', bidpassword_js)
+    set_val('idcard_js', idcard_js)
 
 ####
 def remote_init():

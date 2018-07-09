@@ -279,15 +279,19 @@ class LoginFrame(wx.Frame):
             account = login_result['account']
             if account:
                 bid_number = account['account']
-                bidpassword = account['password']
+                bid_password = account['password']
                 idcard = account['idcard']
                 set_val('bid_number', bid_number)
+                set_val('bid_password', bid_password)
+                set_val('idcard', idcard)
                 bidnumber_js = "document.getElementById('bidnumber').value = '{0}';".format(bid_number)
-                bidpassword_js = "document.getElementById('bidpassword').value = '{0}';".format(bidpassword)
+                bidpassword_js = "document.getElementById('bidpassword').value = '{0}';".format(bid_password)
                 idcard_js = "document.getElementById('idcard').value = '{0}';".format(idcard)
                 set_val('bidnumber_js', bidnumber_js)
                 set_val('bidpassword_js', bidpassword_js)
                 set_val('idcard_js', idcard_js)
+
+                print('bidnumber_js', bidnumber_js)
 
             from component.staticmethod import Hotkey_listen
             from component.variable import init_pos

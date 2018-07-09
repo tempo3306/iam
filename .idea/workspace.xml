@@ -10,33 +10,21 @@
     <bookmark url="file://$PROJECT_DIR$/component" />
     <bookmark url="file://$PROJECT_DIR$/component/OperationFrame.py" line="752" mnemonic="9" />
     <bookmark url="file://$PROJECT_DIR$/component/LoginFrame.py" line="101" mnemonic="7" />
-    <bookmark url="file://$PROJECT_DIR$/component/app_thread.py" line="310" mnemonic="8" />
     <bookmark url="file://$PROJECT_DIR$/component/paishou_panel.py" line="256" mnemonic="6" />
   </component>
   <component name="ChangeListManager">
     <list default="true" id="8cc8c298-bf99-4eca-8018-53239952b6ea" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/get_target.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/firstprice.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/firstprice_moni.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/component/LoginFrame.py" beforeDir="false" afterPath="$PROJECT_DIR$/component/LoginFrame.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/component/OperationFrame.py" beforeDir="false" afterPath="$PROJECT_DIR$/component/OperationFrame.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/component/app_thread.py" beforeDir="false" afterPath="$PROJECT_DIR$/component/app_thread.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/component/imgcut.py" beforeDir="false" afterPath="$PROJECT_DIR$/component/imgcut.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/component/login.py" beforeDir="false" afterPath="$PROJECT_DIR$/component/login.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/component/paishou_panel.py" beforeDir="false" afterPath="$PROJECT_DIR$/component/paishou_panel.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/component/read_pic.py" beforeDir="false" afterPath="$PROJECT_DIR$/component/read_pic.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/component/staticmethod.py" beforeDir="false" afterPath="$PROJECT_DIR$/component/staticmethod.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/component/variable.py" beforeDir="false" afterPath="$PROJECT_DIR$/component/variable.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/component/webframe.py" beforeDir="false" afterPath="$PROJECT_DIR$/component/webframe.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/login_0.png" beforeDir="false" afterPath="$PROJECT_DIR$/login_0.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/maindata.xml" beforeDir="false" afterPath="$PROJECT_DIR$/maindata.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/mylog.log" beforeDir="false" afterPath="$PROJECT_DIR$/mylog.log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target.tkl" beforeDir="false" afterPath="$PROJECT_DIR$/target.tkl" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/get_target.py" beforeDir="false" afterPath="$PROJECT_DIR$/target/get_target.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/target.tkl" beforeDir="false" afterPath="$PROJECT_DIR$/target/target.tkl" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/yanzhengma.png" beforeDir="false" afterPath="$PROJECT_DIR$/yanzhengma.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/thresh1.png" beforeDir="false" afterPath="$PROJECT_DIR$/thresh1.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/your.name" beforeDir="false" afterPath="$PROJECT_DIR$/your.name" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/测试需求.xlsx" beforeDir="false" afterPath="$PROJECT_DIR$/测试需求.xlsx" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -69,7 +57,7 @@
     <SUITE FILE_PATH="coverage/hupai$login.coverage" NAME="login Coverage Results" MODIFIED="1524127684488" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/component" />
     <SUITE FILE_PATH="coverage/hupai$global.coverage" NAME="global Coverage Results" MODIFIED="1529647000739" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/component" />
     <SUITE FILE_PATH="coverage/BestAssistant$.coverage" NAME="发布处理 Coverage Results" MODIFIED="1520835625477" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="F:/COMPRESS" />
-    <SUITE FILE_PATH="coverage/hupai$Newlife4_3.coverage" NAME="Newlife4.3 Coverage Results" MODIFIED="1531116997932" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/hupai$Newlife4_3.coverage" NAME="Newlife4.3 Coverage Results" MODIFIED="1531130158758" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/hupai$imgcut__1_.coverage" NAME="imgcut (1) Coverage Results" MODIFIED="1522156088672" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/BestAssistant$test1__1_.coverage" NAME="test1 (1) Coverage Results" MODIFIED="1520298346949" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="F:/COMPRESS" />
     <SUITE FILE_PATH="coverage/hupai$test__1_.coverage" NAME="test (1) Coverage Results" MODIFIED="1525184244688" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/test" />
@@ -89,9 +77,9 @@
     <SUITE FILE_PATH="coverage/hupai$resize_pic.coverage" NAME="resize_pic Coverage Results" MODIFIED="1530971127676" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/BestAssistant$test1.coverage" NAME="test1 Coverage Results" MODIFIED="1520296491838" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/component" />
     <SUITE FILE_PATH="coverage/hupai$test.coverage" NAME="test Coverage Results" MODIFIED="1524970473353" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/hupai$read_pic.coverage" NAME="read_pic Coverage Results" MODIFIED="1522155284852" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/hupai$gtk_sc.coverage" NAME="gtk_sc Coverage Results" MODIFIED="1526007639163" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/test" />
     <SUITE FILE_PATH="coverage/hupai$resize.coverage" NAME="resize Coverage Results" MODIFIED="1530973268962" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/test" />
+    <SUITE FILE_PATH="coverage/hupai$read_pic.coverage" NAME="read_pic Coverage Results" MODIFIED="1531126130411" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/component" />
     <SUITE FILE_PATH="coverage/hupai$cv_cut_pic.coverage" NAME="cv_cut_pic Coverage Results" MODIFIED="1526023143834" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/test" />
   </component>
   <component name="DatabaseView">
@@ -113,59 +101,23 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="375">
+      <file leaf-file-name="read_pic.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/component/read_pic.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="316">
+              <caret line="350" lean-forward="true" selection-start-line="350" selection-end-line="350" />
+              <folding>
+                <element signature="e#0#15#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file leaf-file-name="login.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/component/login.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="252">
-              <caret line="168" column="21" lean-forward="true" selection-start-line="168" selection-start-column="21" selection-end-line="168" selection-end-column="21" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="staticmethod.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/component/staticmethod.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="759">
-              <caret line="528" column="46" lean-forward="true" selection-start-line="528" selection-start-column="46" selection-end-line="528" selection-end-column="46" />
-              <folding>
-                <element signature="e#73#88#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="LoginFrame.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/component/LoginFrame.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="180">
-              <caret line="311" column="32" lean-forward="true" selection-start-line="311" selection-start-column="32" selection-end-line="311" selection-end-column="32" />
-              <folding>
-                <element signature="e#92#108#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="imgcut.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/component/imgcut.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="225">
-              <caret line="353" lean-forward="true" selection-start-line="353" selection-end-line="353" />
-              <folding>
-                <element signature="e#74#84#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="webframe.py" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/component/webframe.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="723">
-              <caret line="537" column="65" selection-start-line="537" selection-start-column="65" selection-end-line="537" selection-end-column="65" />
-              <folding>
-                <element signature="e#93#129#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="75">
+              <caret line="96" column="52" lean-forward="true" selection-start-line="96" selection-start-column="52" selection-end-line="96" selection-end-column="52" />
             </state>
           </provider>
         </entry>
@@ -173,10 +125,46 @@
       <file leaf-file-name="variable.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/component/variable.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="66">
-              <caret line="628" column="80" lean-forward="true" selection-start-line="628" selection-start-column="80" selection-end-line="628" selection-end-column="80" />
+            <state relative-caret-position="364">
+              <caret line="726" column="53" lean-forward="true" selection-start-line="726" selection-start-column="53" selection-end-line="726" selection-end-column="53" />
               <folding>
                 <element signature="e#133#152#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="LoginFrame.py" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/component/LoginFrame.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="322">
+              <caret line="302" column="29" lean-forward="true" selection-start-line="302" selection-start-column="29" selection-end-line="302" selection-end-column="29" />
+              <folding>
+                <element signature="e#92#108#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="staticmethod.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/component/staticmethod.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="221">
+              <caret line="242" column="51" selection-start-line="242" selection-start-column="39" selection-end-line="242" selection-end-column="51" />
+              <folding>
+                <element signature="e#73#88#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="webframe.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/component/webframe.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="167">
+              <caret line="442" column="26" selection-start-line="442" selection-start-column="14" selection-end-line="442" selection-end-column="26" />
+              <folding>
+                <element signature="e#93#129#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -193,12 +181,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>monitest</find>
-      <find>init_</find>
-      <find>child</find>
-      <find>listen</find>
-      <find>operation</find>
-      <find>findpos</find>
       <find>findre</find>
       <find>dick</find>
       <find>web_requ</find>
@@ -214,15 +196,21 @@
       <find>font</find>
       <find>flag</find>
       <find>init</find>
-      <find>account</find>
-      <find>print</find>
       <find>print(</find>
       <find>180,</find>
       <find>shape</find>
-      <find>yan_confirm_area_relative</find>
       <find>set_val('yanzhengma_view', False)</find>
       <find>yanzhengma_control</find>
       <find>find_</find>
+      <find>yan_confirm_area_relative</find>
+      <find>read</find>
+      <find>print</find>
+      <find>account</find>
+      <find>logout</find>
+      <find>onekey_login</find>
+      <find>init_pos</find>
+      <find>bidnumber_js</find>
+      <find>F7</find>
     </findStrings>
     <replaceStrings>
       <replace>self</replace>
@@ -306,16 +294,16 @@
         <option value="$PROJECT_DIR$/component/TopFrame.py" />
         <option value="$PROJECT_DIR$/component/OperationFrame.py" />
         <option value="$PROJECT_DIR$/component/remote_control.py" />
-        <option value="$PROJECT_DIR$/component/read_pic.py" />
         <option value="$PROJECT_DIR$/component/app_thread.py" />
         <option value="$PROJECT_DIR$/target/get_target.py" />
         <option value="$PROJECT_DIR$/component/paishou_panel.py" />
-        <option value="$PROJECT_DIR$/component/login.py" />
-        <option value="$PROJECT_DIR$/component/LoginFrame.py" />
-        <option value="$PROJECT_DIR$/component/variable.py" />
         <option value="$PROJECT_DIR$/component/staticmethod.py" />
         <option value="$PROJECT_DIR$/component/imgcut.py" />
+        <option value="$PROJECT_DIR$/component/read_pic.py" />
+        <option value="$PROJECT_DIR$/component/login.py" />
         <option value="$PROJECT_DIR$/component/webframe.py" />
+        <option value="$PROJECT_DIR$/component/LoginFrame.py" />
+        <option value="$PROJECT_DIR$/component/variable.py" />
       </list>
     </option>
   </component>
@@ -325,7 +313,7 @@
     <detection-done>true</detection-done>
     <sorting>DEFINITION_ORDER</sorting>
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
+  <component name="ProjectFrameBounds" extendedState="7">
     <option name="x" value="83" />
     <option name="y" value="19" />
     <option name="width" value="1024" />
@@ -347,11 +335,6 @@
               <item name="hupai" type="b2602c69:ProjectViewProjectNode" />
               <item name="hupai" type="462c0819:PsiDirectoryNode" />
             </path>
-            <path>
-              <item name="hupai" type="b2602c69:ProjectViewProjectNode" />
-              <item name="hupai" type="462c0819:PsiDirectoryNode" />
-              <item name="target" type="462c0819:PsiDirectoryNode" />
-            </path>
           </expand>
           <select />
         </subPane>
@@ -360,7 +343,7 @@
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="SearchEverywhereHistoryKey" value="yan&#9;FILE&#9;file://E:/hupai/yan_confirm.png&#10;fin&#9;FILE&#9;file://E:/hupai/find_yan.png&#10;yan_co&#9;FILE&#9;file://E:/hupai/yan_confirm.png&#10;find_&#9;FILE&#9;file://E:/hupai/find_yan.png&#10;sta&#9;FILE&#9;file://E:/hupai/component/staticmethod.py&#10;webf&#9;FILE&#9;file://E:/hupai/component/webframe.py&#10;find&#9;FILE&#9;file://E:/hupai/find_yan.png&#10;va&#9;FILE&#9;file://E:/hupai/component/variable.py&#10;IMG&#9;FILE&#9;file://E:/hupai/component/imgcut.py&#10;login&#9;FILE&#9;file://E:/hupai/component/LoginFrame.py&#10;web&#9;FILE&#9;file://E:/hupai/component/webframe.py&#10;fir&#9;FILE&#9;file://E:/hupai/first.png&#10;paish&#9;FILE&#9;file://E:/hupai/component/paishou_panel.py&#10;app_&#9;FILE&#9;file://E:/hupai/component/app_thread.py&#10;img&#9;FILE&#9;file://E:/hupai/component/imgcut.py&#10;first.png&#9;FILE&#9;file://E:/hupai/first.png&#10;paisho&#9;FILE&#9;file://E:/hupai/component/paishou_panel.py&#10;webfr&#9;FILE&#9;file://E:/hupai/component/webframe.py&#10;Login&#9;FILE&#9;file://E:/hupai/component/LoginFrame.py&#10;4.3&#9;FILE&#9;file://E:/hupai/Newlife4.3.py&#10;top&#9;FILE&#9;file://E:/hupai/component/TopFrame.py&#10;log&#9;FILE&#9;file://E:/hupai/component/login.py&#10;Top&#9;FILE&#9;file://E:/hupai/component/TopFrame.py&#10;hotk&#9;FILE&#9;file://E:/hupai/hotkey.py&#10;resi&#9;null&#9;null&#10;res&#9;null&#9;null&#10;oper&#9;null&#9;null&#10;l&#9;FILE&#9;file://E:/hupai/login_yan.png&#10;y&#9;FILE&#9;file://E:/hupai/login_yan.png&#10;lo&#9;FILE&#9;file://E:/hupai/login_yan.png&#10;login_ya&#9;FILE&#9;file://E:/hupai/login_yan.png&#10;fsdfs&#9;FILE&#9;file://E:/hupai/fsdfs.png&#10;OPERA&#9;FILE&#9;file://E:/hupai/component/OperationFrame.py&#10;login.png&#9;FILE&#9;file://E:/hupai/login.png&#10;*.lo&#9;FILE&#9;file://E:/hupai/mylog.log&#10;st&#9;FILE&#9;file://E:/hupai/component/staticmethod.py&#10;app&#9;FILE&#9;file://E:/hupai/component/app_thread.py&#10;keep&#9;null&#9;null&#10;var&#9;FILE&#9;file://E:/OUTPUT/component/variable.py&#10;smartdi&#9;null&#9;null&#10;\&#9;FILE&#9;file://E:/hupai/component/OperationFrame.py&#10;timeth&#9;null&#9;null&#10;topf&#9;null&#9;null&#10;operation&#9;FILE&#9;file://E:/hupai/component/need_change/OperationFrame.py&#10;readpic&#9;null&#9;null&#10;loginfr&#9;FILE&#9;file://E:/hupai/component/LoginFrame.py&#10;VA&#9;FILE&#9;file://E:/hupai/component/variable.py&#10;vari&#9;FILE&#9;file://E:/hupai/need_change/variable.py&#10;dia&#9;FILE&#9;file://E:/hupai/component/smartprice_dialog.py&#10;thre&#9;FILE&#9;file://E:/hupai/component/app_thread.py" />
+    <property name="SearchEverywhereHistoryKey" value="va&#9;FILE&#9;file://E:/hupai/component/variable.py&#10;ST&#9;FILE&#9;file://E:/hupai/component/staticmethod.py&#10;login&#9;FILE&#9;file://E:/hupai/component/LoginFrame.py&#10;read_pic&#9;FILE&#9;file://E:/hupai/component/read_pic.py&#10;yan&#9;FILE&#9;file://E:/hupai/yan_confirm.png&#10;fin&#9;FILE&#9;file://E:/hupai/find_yan.png&#10;yan_co&#9;FILE&#9;file://E:/hupai/yan_confirm.png&#10;find_&#9;FILE&#9;file://E:/hupai/find_yan.png&#10;sta&#9;FILE&#9;file://E:/hupai/component/staticmethod.py&#10;webf&#9;FILE&#9;file://E:/hupai/component/webframe.py&#10;find&#9;FILE&#9;file://E:/hupai/find_yan.png&#10;IMG&#9;FILE&#9;file://E:/hupai/component/imgcut.py&#10;web&#9;FILE&#9;file://E:/hupai/component/webframe.py&#10;fir&#9;FILE&#9;file://E:/hupai/first.png&#10;paish&#9;FILE&#9;file://E:/hupai/component/paishou_panel.py&#10;app_&#9;FILE&#9;file://E:/hupai/component/app_thread.py&#10;img&#9;FILE&#9;file://E:/hupai/component/imgcut.py&#10;first.png&#9;FILE&#9;file://E:/hupai/first.png&#10;paisho&#9;FILE&#9;file://E:/hupai/component/paishou_panel.py&#10;webfr&#9;FILE&#9;file://E:/hupai/component/webframe.py&#10;Login&#9;FILE&#9;file://E:/hupai/component/LoginFrame.py&#10;4.3&#9;FILE&#9;file://E:/hupai/Newlife4.3.py&#10;top&#9;FILE&#9;file://E:/hupai/component/TopFrame.py&#10;log&#9;FILE&#9;file://E:/hupai/component/login.py&#10;Top&#9;FILE&#9;file://E:/hupai/component/TopFrame.py&#10;hotk&#9;FILE&#9;file://E:/hupai/hotkey.py&#10;resi&#9;null&#9;null&#10;res&#9;null&#9;null&#10;oper&#9;null&#9;null&#10;l&#9;FILE&#9;file://E:/hupai/login_yan.png&#10;y&#9;FILE&#9;file://E:/hupai/login_yan.png&#10;lo&#9;FILE&#9;file://E:/hupai/login_yan.png&#10;login_ya&#9;FILE&#9;file://E:/hupai/login_yan.png&#10;fsdfs&#9;FILE&#9;file://E:/hupai/fsdfs.png&#10;OPERA&#9;FILE&#9;file://E:/hupai/component/OperationFrame.py&#10;login.png&#9;FILE&#9;file://E:/hupai/login.png&#10;*.lo&#9;FILE&#9;file://E:/hupai/mylog.log&#10;st&#9;FILE&#9;file://E:/hupai/component/staticmethod.py&#10;app&#9;FILE&#9;file://E:/hupai/component/app_thread.py&#10;keep&#9;null&#9;null&#10;var&#9;FILE&#9;file://E:/OUTPUT/component/variable.py&#10;smartdi&#9;null&#9;null&#10;\&#9;FILE&#9;file://E:/hupai/component/OperationFrame.py&#10;timeth&#9;null&#9;null&#10;topf&#9;null&#9;null&#10;operation&#9;FILE&#9;file://E:/hupai/component/need_change/OperationFrame.py&#10;readpic&#9;null&#9;null&#10;loginfr&#9;FILE&#9;file://E:/hupai/component/LoginFrame.py&#10;VA&#9;FILE&#9;file://E:/hupai/component/variable.py&#10;vari&#9;FILE&#9;file://E:/hupai/need_change/variable.py" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="last_opened_file_path" value="E:/hupai-5-5" />
     <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
@@ -430,6 +413,25 @@
       <option name="EMULATE_TERMINAL" value="false" />
       <option name="MODULE_MODE" value="false" />
     </configuration>
+    <configuration name="read_pic" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="BestAssistant" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/component" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/component/read_pic.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+    </configuration>
     <configuration name="resize" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="BestAssistant" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -463,25 +465,6 @@
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/resize_pic.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-    </configuration>
-    <configuration name="variable" type="PythonConfigurationType" factoryName="Python" temporary="true">
-      <module name="BestAssistant" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/need_change" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/need_change/variable.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -547,18 +530,18 @@
     </configuration>
     <list>
       <item itemvalue="Python.Newlife4.3" />
-      <item itemvalue="Python.variable" />
       <item itemvalue="Python.resize_pic" />
       <item itemvalue="Python.resize" />
       <item itemvalue="Python.get_target" />
+      <item itemvalue="Python.read_pic" />
     </list>
     <recent_temporary>
       <list>
         <item itemvalue="Python.Newlife4.3" />
+        <item itemvalue="Python.read_pic" />
         <item itemvalue="Python.get_target" />
         <item itemvalue="Python.resize" />
         <item itemvalue="Python.resize_pic" />
-        <item itemvalue="Python.variable" />
       </list>
     </recent_temporary>
   </component>
@@ -585,7 +568,8 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
+    <frame x="-8" y="-8" width="1382" height="744" extended-state="7" />
+    <editor active="true" />
     <layout>
       <window_info anchor="bottom" id="TODO" order="6" weight="0.32781458" />
       <window_info anchor="bottom" id="Event Log" order="13" sideWeight="0.4107413" side_tool="true" weight="0.5903614" />
@@ -593,30 +577,30 @@
       <window_info anchor="bottom" id="Version Control" order="8" weight="0.32874355" />
       <window_info anchor="bottom" id="Python Console" order="9" sideWeight="0.4969743" weight="0.7900172" />
       <window_info anchor="bottom" id="Run" order="2" weight="0.383821" />
-      <window_info active="true" anchor="bottom" id="Terminal" order="11" sideWeight="0.65733737" visible="true" weight="0.80206543" />
-      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.49342105" visible="true" weight="0.25113463" />
+      <window_info anchor="bottom" id="Terminal" order="11" sideWeight="0.65733737" weight="0.80206543" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.49342105" visible="true" weight="0.2549168" />
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info anchor="right" id="Database" order="5" weight="0.32980332" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32702237" />
       <window_info anchor="right" id="SciView" order="4" sideWeight="0.49913943" weight="0.32980332" />
       <window_info id="Structure" order="1" sideWeight="0.5131579" side_tool="true" weight="0.23373677" />
       <window_info id="Favorites" order="2" sideWeight="0.5065789" side_tool="true" weight="0.23373677" />
-      <window_info anchor="bottom" id="Debug" order="3" sideWeight="0.5892587" weight="0.5232358" />
-      <window_info active="true" anchor="bottom" id="Concurrent Activities Diagram" order="12" visible="true" weight="0.8807947" />
+      <window_info anchor="bottom" id="Debug" order="3" sideWeight="0.5892587" weight="0.5283993" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+      <window_info anchor="right" id="Coverage" order="3" sideWeight="0.5008606" side_tool="true" weight="0.32980332" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="right" id="Commander" order="0" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
-      <window_info anchor="right" id="Coverage" order="3" sideWeight="0.5008606" side_tool="true" weight="0.32980332" />
+      <window_info active="true" anchor="bottom" id="Concurrent Activities Diagram" order="12" visible="true" weight="0.8807947" />
     </layout>
     <layout-to-restore>
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info id="Favorites" order="2" sideWeight="0.5065789" side_tool="true" weight="0.23373677" />
-      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.49342105" visible="true" weight="0.21331316" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.49342105" visible="true" weight="0.25113463" />
       <window_info id="Structure" order="1" sideWeight="0.5131579" side_tool="true" weight="0.23373677" />
       <window_info anchor="right" id="Commander" order="0" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
@@ -625,14 +609,14 @@
       <window_info anchor="bottom" id="Run" order="2" weight="0.383821" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32702237" />
       <window_info anchor="right" id="Database" order="5" weight="0.32980332" />
-      <window_info anchor="bottom" id="Terminal" order="11" sideWeight="0.65733737" weight="0.51979345" />
+      <window_info anchor="bottom" id="Terminal" order="11" sideWeight="0.65733737" weight="0.80206543" />
       <window_info anchor="bottom" id="Event Log" order="13" sideWeight="0.4107413" side_tool="true" weight="0.5903614" />
       <window_info anchor="bottom" id="Database Changes" order="10" show_stripe_button="false" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info active="true" anchor="bottom" id="Concurrent Activities Diagram" order="12" visible="true" weight="0.8807947" />
       <window_info anchor="right" id="SciView" order="4" sideWeight="0.49913943" weight="0.32980332" />
       <window_info anchor="bottom" id="Message" order="0" />
-      <window_info anchor="bottom" id="Debug" order="3" sideWeight="0.5892587" weight="0.83476764" />
+      <window_info anchor="bottom" id="Debug" order="3" sideWeight="0.5892587" weight="0.5232358" />
       <window_info anchor="right" id="Coverage" order="3" sideWeight="0.5008606" side_tool="true" weight="0.32980332" />
       <window_info anchor="bottom" id="Python Console" order="9" sideWeight="0.4969743" weight="0.7900172" />
     </layout-to-restore>
@@ -652,6 +636,16 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/component/read_pic.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="6246">
+          <caret line="347" column="19" selection-start-line="347" selection-start-column="19" selection-end-line="347" selection-end-column="19" />
+          <folding>
+            <element signature="e#0#15#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/component/paishou_panel.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="2250">
@@ -723,9 +717,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="375">
           <caret line="335" column="27" lean-forward="true" selection-start-line="335" selection-start-column="27" selection-end-line="335" selection-end-column="27" />
-          <folding>
-            <element signature="e#0#9#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -751,13 +742,7 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/component/useful_tools/hotkey.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <folding>
-            <element signature="e#0#15#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
+      <provider selected="true" editor-type-id="text-editor" />
     </entry>
     <entry file="file://$PROJECT_DIR$/component/test/use_class.py">
       <provider selected="true" editor-type-id="text-editor">
@@ -774,13 +759,7 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/test/c_screenshot.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <folding>
-            <element signature="e#0#16#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
+      <provider selected="true" editor-type-id="text-editor" />
     </entry>
     <entry file="file://$PROJECT_DIR$/test/cv_cut_pic.py">
       <provider selected="true" editor-type-id="text-editor">
@@ -790,22 +769,10 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/test/new_screenshot.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <folding>
-            <element signature="e#0#11#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
+      <provider selected="true" editor-type-id="text-editor" />
     </entry>
     <entry file="file://$PROJECT_DIR$/test/test.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <folding>
-            <element signature="e#0#18#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
+      <provider selected="true" editor-type-id="text-editor" />
     </entry>
     <entry file="file://$PROJECT_DIR$/test/resize_pick.py">
       <provider selected="true" editor-type-id="text-editor">
@@ -822,13 +789,7 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/test/screenshot.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <folding>
-            <element signature="e#0#18#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
+      <provider selected="true" editor-type-id="text-editor" />
     </entry>
     <entry file="file://$PROJECT_DIR$/test/sendinput_test.py">
       <provider selected="true" editor-type-id="text-editor">
@@ -892,16 +853,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/component/read_pic.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="36">
-          <caret line="285" column="22" lean-forward="true" selection-start-line="285" selection-start-column="22" selection-end-line="285" selection-end-column="22" />
-          <folding>
-            <element signature="e#0#15#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/component/app_thread.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="234">
@@ -916,9 +867,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="207">
           <caret line="16" column="40" selection-start-line="16" selection-start-column="40" selection-end-line="16" selection-end-column="40" />
-          <folding>
-            <element signature="e#0#10#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -929,9 +877,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/first.png">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
     <entry file="file://$USER_HOME$/.PyCharm2018.1/system/python_stubs/-1805817706/wx/_core/__init__.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="177">
@@ -939,58 +884,12 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/target/firstprice.png">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
     <entry file="file://$PROJECT_DIR$/component/paishou_panel.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="234">
           <caret line="320" column="55" selection-start-line="320" selection-start-column="54" selection-end-line="320" selection-end-column="55" />
           <folding>
             <element signature="e#0#57#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/component/variable.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="66">
-          <caret line="628" column="80" lean-forward="true" selection-start-line="628" selection-start-column="80" selection-end-line="628" selection-end-column="80" />
-          <folding>
-            <element signature="e#133#152#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/component/login.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="252">
-          <caret line="168" column="21" lean-forward="true" selection-start-line="168" selection-start-column="21" selection-end-line="168" selection-end-column="21" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/find_yan.png">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/yan_confirm.png">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/component/LoginFrame.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="180">
-          <caret line="311" column="32" lean-forward="true" selection-start-line="311" selection-start-column="32" selection-end-line="311" selection-end-column="32" />
-          <folding>
-            <element signature="e#92#108#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/component/staticmethod.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="759">
-          <caret line="528" column="46" lean-forward="true" selection-start-line="528" selection-start-column="46" selection-end-line="528" selection-end-column="46" />
-          <folding>
-            <element signature="e#73#88#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1005,12 +904,66 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://E:/OCR/IE7/ocr_ie7_623.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-6565">
+          <caret line="15" lean-forward="true" selection-start-line="15" selection-end-line="15" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/component/read_pic.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="316">
+          <caret line="350" lean-forward="true" selection-start-line="350" selection-end-line="350" />
+          <folding>
+            <element signature="e#0#15#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/component/login.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="75">
+          <caret line="96" column="52" lean-forward="true" selection-start-line="96" selection-start-column="52" selection-end-line="96" selection-end-column="52" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/component/variable.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="364">
+          <caret line="726" column="53" lean-forward="true" selection-start-line="726" selection-start-column="53" selection-end-line="726" selection-end-column="53" />
+          <folding>
+            <element signature="e#133#152#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/component/webframe.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="723">
-          <caret line="537" column="65" selection-start-line="537" selection-start-column="65" selection-end-line="537" selection-end-column="65" />
+        <state relative-caret-position="167">
+          <caret line="442" column="26" selection-start-line="442" selection-start-column="14" selection-end-line="442" selection-end-column="26" />
           <folding>
             <element signature="e#93#129#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/component/staticmethod.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="221">
+          <caret line="242" column="51" selection-start-line="242" selection-start-column="39" selection-end-line="242" selection-end-column="51" />
+          <folding>
+            <element signature="e#73#88#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/component/LoginFrame.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="322">
+          <caret line="302" column="29" lean-forward="true" selection-start-line="302" selection-start-column="29" selection-end-line="302" selection-end-column="29" />
+          <folding>
+            <element signature="e#92#108#0" expanded="true" />
           </folding>
         </state>
       </provider>

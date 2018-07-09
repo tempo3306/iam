@@ -440,6 +440,7 @@ class WebFrame(wx.Frame):
 
     def onekey_login(self):
         bidnumber_js = get_val('bidnumber_js')
+        print(bidnumber_js)
         bidpassword_js = get_val('bidpassword_js')
         idcard_js = get_val('idcard_js')
         self.htmlpanel.webview.RunScript(bidnumber_js)
