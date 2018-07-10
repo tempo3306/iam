@@ -207,6 +207,7 @@ class TopFrame(wx.Frame):
             self.fr.operationpanel.init_ui()
             self.webopen()
             # 关闭主界面，打开策略设置
+        set_val('findpos_on', True) ##每次切换都需要重新定位
 
 
     def Open_call_moni(self):
@@ -238,6 +239,7 @@ class TopFrame(wx.Frame):
             self.fr.operationpanel.init_ui()
             # 关闭主界面，打开策略设置
             self.webopen()
+        set_val('findpos_on', True)
 
     def Openurlchoice(self, event):
         activate_status = get_val('activate_status')
@@ -279,15 +281,19 @@ class TopFrame(wx.Frame):
             guopai_id = get_val('guopai_webframe')
             moni = wx.FindWindowById(moni_id)
             guopai = wx.FindWindowById(guopai_id)
+
             self.Show(False)
             try:
-                moni.Show(False)
+                moni.Destroy()
             except:
                 pass
             try:
-                guopai.Show(False)
+                guopai.Destroy()
             except:
                 pass
+            set_val('moni_webframe', -1)
+            set_val('guopai_webframe', -1)
+        set_val('findpos_on', True)
 
 
         # mainicon = get_val('mainicon')
@@ -321,7 +327,7 @@ class TopFrame(wx.Frame):
             self.fr.operationpanel.init_ui()
             # 关闭主界面，打开策略设置
             self.webopen()
-
+        set_val('findpos_on', True)
 
 
     ########################

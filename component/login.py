@@ -94,9 +94,16 @@ def Logout():  # 修改为参数传递        host_ali = get_val('host_ali')
         from component.variable import get_strategy_dick
         strategy_dick = get_strategy_dick()
         strategy_dick = json.dumps(strategy_dick)
-        account = {'account': get_val('bid_number'),
-                   'password': get_val('bid_password'),
-                   'idcard': get_val('idcard')}
+        account = get_val('bid_number')
+        password = get_val('bid_password')
+        idcard = get_val('idcard')
+        if account and password and idcard:
+            account = {'account': account,
+                       'password': password,
+                       'idcard': idcard}
+        else:
+            account = None
+
         account = json.dumps(account)
         target_url = '{0}/api/bid/bid_logout/?type={1}&identify_code={2}&diskid={3}&strategy_dick={4}' \
                      '&account={5}'.format(

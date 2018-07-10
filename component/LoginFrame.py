@@ -271,8 +271,7 @@ class LoginFrame(wx.Frame):
                 set_val('test', True)
 
             elif Identify_code[0]== 'h':
-                pass
-                # set_val('paishou', True)
+                set_val('paishou', True)
             else:
                 set_val('url_dianxin', login_result['url_dianxin'])
                 set_val('url_nodianxin', login_result['url_nodianxin'])

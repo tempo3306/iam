@@ -718,7 +718,7 @@ def remote_init():
     set_val('px_timerelative', 94)
     set_val('py_timerelative', 3)
     ## 相对于最低成交价位置
-    #   ## 0:加价  1：出价 2：提交  3：刷新按钮   4 ：确认   5：价格输入框    6:验证码输入框     7：取消
+    #   ## 0:加价  1：出价 2：提交  3：刷新按钮   4 ：确`认   5：价格输入框    6:验证码输入框     7：取消
     set_val('P_relative2', [[647, -98], [650, 8], [400, 89], [396, 14], [505, 68], [562, 8], [585, 8], [586, 86]])
     P_relative2 = get_val('P_relative2')
     set_val('Position_frame', [[0, 0] for i in range(len(P_relative2))])
