@@ -269,8 +269,10 @@ class LoginFrame(wx.Frame):
                     set_strategy_dick(strategy_dick) ##初始化策略数据
             if Identify_code == '12345678':  ##这里作为测试用
                 set_val('test', True)
+
             elif Identify_code[0]== 'h':
-                set_val('paishou', True)
+                pass
+                # set_val('paishou', True)
             else:
                 set_val('url_dianxin', login_result['url_dianxin'])
                 set_val('url_nodianxin', login_result['url_nodianxin'])
