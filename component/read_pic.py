@@ -24,7 +24,6 @@ def cut(img):
     image, contours, hierarchy = cv2.findContours(thresh1, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_NONE)
     imgn = []
     xy = []
-    cv2.imwrite("thresh1.png", thresh1)
     for i in range(len(contours)):
         cnt = contours[i]
         x, y, w, h = cv2.boundingRect(cnt)
@@ -36,8 +35,8 @@ def cut(img):
         imgn.append(image[y:y + h, x:x + w])
     for i in range(len(imgn)):
         imgn[i] = cv2.resize(imgn[i], (8, 8))
-    for i in range(len(xy)):
-        cv2.imwrite("ST%d.png" % i, imgn[i])
+    # for i in range(len(xy)):
+    #     cv2.imwrite("ST%d.png" % i, imgn[i])
 
 
     xy0 = []  ##存放切块

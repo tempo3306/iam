@@ -180,9 +180,8 @@ class TopFrame(wx.Frame):
         self.Show(False)
 
     def Openmoni(self, event):
-        timer0 = threading.Timer(5, findpos)
-        Px = get_val('Px')
-        Py = get_val('Py')
+        Px = get_val('Px_webframe')
+        Py = get_val('Py_webframe')
 
         set_val('moni_on', True)  # 模拟打开
         set_val('ad_view', True)
@@ -195,7 +194,6 @@ class TopFrame(wx.Frame):
             moni.Show(True)
             moni.currentstatusframe.Show(False)
             moni.htmlpanel.webview.Reload()
-            moni.Move((Px, Py))
             moni.operationpanel.init_ui()
             moni.Show(True)
             self.webopen()
@@ -211,11 +209,8 @@ class TopFrame(wx.Frame):
 
 
     def Open_call_moni(self):
-        htmlsize = get_val('htmlsize')
-        webview_pos = get_val('webview_pos')
-        timer0 = threading.Timer(5, findpos)
-        Px = get_val('Px')
-        Py = get_val('Py')
+        Px = get_val('Px_webframe')
+        Py = get_val('Py_webframe')
 
         set_val('moni_on', True)  # 模拟打开
         set_val('ad_view', True)
@@ -228,7 +223,6 @@ class TopFrame(wx.Frame):
             moni.htmlpanel.webview.Reload()
             moni.operationpanel.init_ui()
             self.webopen()
-            moni.Move((Px, Py))
             moni.Show(True)
             moni.currentstatusframe.Show(False)
         else:
@@ -245,8 +239,8 @@ class TopFrame(wx.Frame):
         activate_status = get_val('activate_status')
 
         if activate_status:
-            Px = get_val('Px')
-            Py = get_val('Py')
+            Px = get_val('Px_webframe')
+            Py = get_val('Py_webframe')
 
             set_val('ad_view', True)
             set_val('guopai_on', True)
@@ -301,11 +295,9 @@ class TopFrame(wx.Frame):
         # guopai = GuopaiFrame(self, "国拍", mainicon)
 
     def Open_call_guopai(self):
-        htmlsize = get_val('htmlsize')
-        webview_pos = get_val('webview_pos')
+        Px = get_val('Px_webframe')
+        Py = get_val('Py_webframe')
 
-        Px = get_val('Px')
-        Py = get_val('Py')
         set_val('ad_view', True)
         set_val('guopai_on', True)
         set_val('web_on', True)

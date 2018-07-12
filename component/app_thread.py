@@ -975,7 +975,7 @@ class Start_thread(Thread):
 
     def run(self):
         import logging, time
-        version = '5.2'
+        version = '5.3'
         timenow = time.time()
         # 转换成localtime
         time_local = time.localtime(timenow)
@@ -986,10 +986,8 @@ class Start_thread(Thread):
                             datefmt='%a, %d %b %Y %H:%M:%S',
                             filename='%s.log' % myapplog,
                             filemode='w')
-
         root = logging.getLogger()
         print(root.name, type(root), root.parent, id(root))
-
         ## getwebpath()  # 初始化浏览器地址
         # 图片打开提速
         # yanzhengma_img = Image.open("yanzhengma.png")  # 打开图片的全局变量 ,提升第一次打开的速度

@@ -695,6 +695,7 @@ def gettime(choice):  # choice1:55, choice2:0.5
 ##初始化 还原
 def init_strategy():
     strategy_type = get_dick('strategy_type')
+    init_description()
     if strategy_type == '0':
         init_strategy0()
     elif strategy_type == '1':
@@ -757,3 +758,36 @@ def init_label():
     one_diff = get_val('one_diff')
     current_pricestatus = '{0:.1f}秒加{1}'.format(one_time1, one_diff)
     set_val('current_pricestatus', current_pricestatus)
+
+
+
+
+
+
+#set_dick('strategy_description', '')
+def init_description():
+    strategy_type = get_dick('strategy_type')
+    if strategy_type == '0': #单枪     'strategy_description': '单枪   48秒加700截止56秒提前100’
+        one_time1 = get_val('one_time1')
+        one_diff = get_val('one_diff')
+        description = f'单枪  {one_time1}秒加{one_diff} 出价'
+        set_dick('strategy_description', description)
+    elif strategy_type == '1':
+        one_time1 = get_val('one_time1')
+        second_time1 = get_val('second_time1')
+        one_diff = get_val('one_diff')
+        second_diff = get_val('second_diff')
+        description = f'双枪  {one_time1}秒加{one_diff}出价  {second_time1}秒加{second_diff}出价'
+        set_dick('strategy_description', description)
+    elif strategy_type == '2': #单枪     'strategy_description': '单枪   48秒加700截止56秒提前100’
+        one_time1 = get_val('one_time1')
+        one_diff = get_val('one_diff')
+        description = f'单枪动态  {one_time1}秒加{one_diff}出价'
+        set_dick('strategy_description', description)
+    elif strategy_type == '3':
+        one_time1 = get_val('one_time1')
+        second_time1 = get_val('second_time1')
+        one_diff = get_val('one_diff')
+        second_diff = get_val('second_diff')
+        description = f'双枪动态  {one_time1}秒加{one_diff}出价  {second_time1}秒加{second_diff}出价'
+        set_dick('strategy_description', description)

@@ -294,6 +294,10 @@ class LoginFrame(wx.Frame):
 
                 print('bidnumber_js', bidnumber_js)
 
+
+
+
+
             from component.staticmethod import Hotkey_listen
             from component.variable import init_pos
             Px = get_val('Px')

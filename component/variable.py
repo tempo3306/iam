@@ -262,10 +262,15 @@ def init_size():
     Pxy = get_val('Pxy')
     set_val('Px1', Pxy[0] / 2)  # 屏幕中心位置
     set_val('Py2', Pxy[1] / 2)
+    ##Px, Py  webframe窗口左上角位置  getpos得到
     set_val('Px', int((Pxy[0] - websize[0]) / 2))
     Px = get_val('Px')
     set_val('Py', int((Pxy[1] - websize[1]) / 2) - 10)
     Py = get_val('Py')
+
+    ##webframe位置
+    set_val('Px_webframe', int((Pxy[0] - websize[0]) / 2))
+    set_val('Py_webframe', int((Pxy[1] - websize[1]) / 2) - 10)
 
     ####定一个截图位置
     # sc_region = (Px, Py, Px +  )

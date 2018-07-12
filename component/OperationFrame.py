@@ -755,7 +755,7 @@ class StatusPanel(wx.Panel):
             print(templist)
             set_dick(strategy_type, templist)
             strategy_choices = get_val('strategy_choices')
-            set_dick('strategy_description', strategy_choices[int(strategy_type)])
+            init_description()
             # '{0}秒加{1} 提前{2}延迟{3}秒 强制{4}秒'.format(templist[1], templist[2], templist[3], templist[4], templist[5]))
         elif strategy_type == '1':
             templist = get_dick(strategy_type)
@@ -773,7 +773,7 @@ class StatusPanel(wx.Panel):
             templist[12] = self.third_tijiao_time.GetValue()
             templist[13] = self.third_forcetijiao_check.IsChecked()
             strategy_choices = get_val('strategy_choices')
-            set_dick('strategy_description', strategy_choices[int(strategy_type)])
+            init_description()
             set_dick(strategy_type, templist)
         elif strategy_type == '2':
             templist = get_dick(strategy_type)
@@ -782,7 +782,7 @@ class StatusPanel(wx.Panel):
             templist[2] = int(self.second_jiajia_price.GetValue())
             templist[7] = self.buqiang_checkbox.IsChecked()  #补枪
             strategy_choices = get_val('strategy_choices')
-            set_dick('strategy_description', strategy_choices[int(strategy_type)])
+            init_description()
             set_dick(strategy_type, templist)
         elif strategy_type == '3':
             templist = get_dick(strategy_type)
@@ -796,7 +796,7 @@ class StatusPanel(wx.Panel):
             templist[8] = self.thirdsmart_jiajia_time.GetValue()  ##智能出价部分
             templist[9] = int(self.thirdsmart_jiajia_price.GetValue())  ##智能出价部分
             strategy_choices = get_val('strategy_choices')
-            set_dick('strategy_description', strategy_choices[int(strategy_type)])
+            init_description()
             set_dick(strategy_type, templist)
             a = get_strategy_dick()
             print(a)
