@@ -53,6 +53,20 @@ class Account_dialog(wx.Dialog):
 
         self.init_account()
 
+        pub.subscribe(self.close, 'account close')
+
+    def close(self):
+        self.Destroy()
+        moni_on = get_val('moni_on')
+        moni_webframe = get_val('moni_webframe')
+        guopai_webframe = get_val('guopai_webframe')
+        if moni_on:
+            moni = wx.FindWindowById(moni_webframe)
+            moni.SetFocus()
+        else:
+            guopai = wx.FindWindowById(guopai_webframe)
+            guopai.SetFocus()
+
     def Save(self, event):
         bid_number = self.accountText.GetValue()
         bid_password = self.passwordText.GetValue()

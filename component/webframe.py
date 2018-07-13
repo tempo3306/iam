@@ -537,6 +537,7 @@ class WebFrame(wx.Frame):
                 self.hotkey_open()
                 try:
                     wx.CallAfter(pub.sendMessage, 'dialog close')
+                    wx.CallAfter(pub.sendMessage, 'account close')
                 except:
                     logger.exception("error message")
 
