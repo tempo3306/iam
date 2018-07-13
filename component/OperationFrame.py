@@ -385,6 +385,8 @@ class StatusPanel(wx.Panel):
         self.vbox.Add(self.reminderbox, flag=wx.BOTTOM, border=10)
         self.SetSizer(self.vbox)
 
+
+
         ###初始化sizer
 
         #############消息区域
@@ -452,10 +454,16 @@ class StatusPanel(wx.Panel):
             wx.CallAfter(pub.sendMessage, "guopai refresh_web")
 
     def onkeylogin(self, event):
-        guopai_on = get_val('guopai_on')
-        if guopai_on:
-            print("fdssfs")
-            wx.CallAfter(pub.sendMessage, "onekey_login")
+        # guopai_on = get_val('guopai_on')
+        # if guopai_on:
+        #     print("fdssfs")
+        #     wx.CallAfter(pub.sendMessage, "onekey_login")
+        from component.account_dialog import Account_dialog
+        self.dlg = Account_dialog(self, "登录设置")
+        # dlg = Smart_tijiaoDialog()
+        self.dlg.Show()
+        # dlg.ShowModal()
+    
 
 
     ###策略设置
@@ -1179,13 +1187,13 @@ class OperationPanel(wx.Panel):
         if not paishou:
             self.notebook = wx.Notebook(self)
             self.status_tab = StatusPanel(self.notebook, tablabel)  # notebook作为父类
-            self.advance_tab = AdvancePanel(self.notebook)
+            # self.advance_tab = AdvancePanel(self.notebook)
             if not test:
                 self.notebook.AddPage(self.status_tab, "常规功能")
-                self.notebook.AddPage(self.advance_tab, "高级功能")
+                # self.notebook.AddPage(self.advance_tab, "高级功能")
             else:
                 self.notebook.AddPage(self.status_tab, "常规功能")
-                self.notebook.AddPage(self.advance_tab, "高级功能")
+                # self.notebook.AddPage(self.advance_tab, "高级功能")
                 self.test_tab = TestPanel(self.notebook)
                 self.notebook.AddPage(self.test_tab, "测试功能")
             sizer.Add(self.notebook, 1)

@@ -296,8 +296,6 @@ class LoginFrame(wx.Frame):
 
 
 
-
-
             from component.staticmethod import Hotkey_listen
             from component.variable import init_pos
             Px = get_val('Px')

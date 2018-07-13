@@ -21,7 +21,7 @@ class Smart_tijiaoDialog(wx.Dialog):
         x = get_val('Px')
         y = get_val('Py')
         print(x, y)
-        super(Smart_tijiaoDialog, self).__init__(parent, title=title, size=(280, 160), pos=(x+890, y+200))
+        super(Smart_tijiaoDialog, self).__init__(parent, title=title, size=(280, 160), pos=(x+884, y+200))
         self.panel = wx.Panel(self)
         # self.okbtn = wx.Button(self.panel, wx.ID_OK, label="关闭", size=(50, 20))
         self.wordfont = wx.Font(12, wx.FONTFAMILY_ROMAN, wx.FONTSTYLE_NORMAL, wx.FONTWEIGHT_NORMAL)
