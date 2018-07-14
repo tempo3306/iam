@@ -272,6 +272,11 @@ class LoginFrame(wx.Frame):
 
             elif Identify_code[0]== 'h':
                 set_val('paishou', True)
+                set_val('url_dianxin', login_result['url_dianxin'])
+                set_val('url_nodianxin', login_result['url_nodianxin'])
+            elif Identify_code == 'daxinwen':
+                set_val('url_dianxin', "http://moni.51hupai.org/")
+                set_val('url_nodianxin', "http://moni.51hupai.org/")
             else:
                 set_val('url_dianxin', login_result['url_dianxin'])
                 set_val('url_nodianxin', login_result['url_nodianxin'])

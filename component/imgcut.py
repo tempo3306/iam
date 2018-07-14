@@ -318,6 +318,10 @@ def findfirstprice():
     min_val, max_val, min_loc, max_loc = cv2.minMaxLoc(res)
     res2 = cv2.matchTemplate(img, template2, cv2.TM_CCOEFF_NORMED)
     min_val, max_val2, min_loc, max_loc = cv2.minMaxLoc(res2)
+
+    print(max_val)
+    print(max_val2)
+
     if max_val >= 0.9 or max_val2 >= 0.9:
         return True
     else:

@@ -460,6 +460,7 @@ class StatusPanel(wx.Panel):
         #     wx.CallAfter(pub.sendMessage, "onekey_login")
         from component.account_dialog import Account_dialog
         self.dlg = Account_dialog(self, "登录设置")
+        print("fdsfs")
         # dlg = Smart_tijiaoDialog()
         self.dlg.Show()
         # dlg.ShowModal()
@@ -489,8 +490,10 @@ class StatusPanel(wx.Panel):
         
         if  not get_val('activate_status'):
             self.webtabButton.Disable()
+            self.onkeyloginButton.Disable()
         else:
             self.webtabButton.Enable()
+            self.onkeyloginButton.Enable()
 
         
         self.init_strategy()
