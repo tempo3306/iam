@@ -74,6 +74,7 @@ class findposThread(Thread):
             try:
                 findpos_on = get_val('findpos_on')
                 if findpos_on:
+
                     findpos()
             except:
                 logger.exception('this is an exception message')

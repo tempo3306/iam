@@ -106,7 +106,10 @@ def timeset( imgpos_currenttime):
 
 
 def findpos():
-    sc = grab_screen()
+    Px = get_val('Px')
+    Py = get_val('Py')
+    region = (Px, Py, Px + 900, Py + 700)
+    sc = grab_screen(region=region)
     img = np.asarray(sc)
     dick_target = get_val('dick_target')
     template = dick_target[2]
@@ -124,18 +127,19 @@ def findpos():
     res2 = cv2.matchTemplate(img, time_template, cv2.TM_CCOEFF_NORMED)
     time_min_val, time_max_val, time_min_loc, time_max_loc = cv2.minMaxLoc(res2)
 
+    print(max_val)
 
     if max_val > 0.75:  # 找不到不动作
         ##计算位置
-        set_val('px_lowestprice', max_loc[0] + px_relative)
-        set_val('py_lowestprice', max_loc[1] + py_relative)
+        set_val('px_lowestprice', max_loc[0] + px_relative + Px)
+        set_val('py_lowestprice', max_loc[1] + py_relative + Py)
         Px = get_val('Px')
         Py = get_val('Py')
         set_val('px_calculate_relative', max_loc[0] + px_relative - Px) ##计算得到相差
         set_val('py_calculate_relative', max_loc[1] + py_relative - Py)
         ##计算时间位置
-        set_val('Px_currenttime', time_max_loc[0] + px_timerelative)    #时间的位置
-        set_val('Py_currenttime', time_max_loc[1] + py_timerelative)
+        set_val('Px_currenttime', time_max_loc[0] + px_timerelative + Px)    #时间的位置
+        set_val('Py_currenttime', time_max_loc[1] + py_timerelative + Py)
 
 
 

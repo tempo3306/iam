@@ -99,10 +99,6 @@ logger = logging.getLogger()
 #             event.GetEventObject().Disable()
 
 
-
-
-
-
 class Identify_codePanel(wx.Panel):
     def __init__(self, parent, code):  ##########版本号
         wx.Panel.__init__(self, parent, -1)
@@ -299,8 +295,6 @@ class LoginFrame(wx.Frame):
 
                 print('bidnumber_js', bidnumber_js)
 
-
-
             from component.staticmethod import Hotkey_listen
             from component.variable import init_pos
             Px = get_val('Px')
@@ -359,9 +353,6 @@ class LoginFrame(wx.Frame):
         else:
             self.panel.code_monibtn.Enable()
             wx.MessageBox('连接服务器失败', '用户登录', wx.OK | wx.ICON_ERROR)
-
-
-
 
     def Purchase(self, event):
         print("购买")

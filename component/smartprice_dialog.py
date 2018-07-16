@@ -173,8 +173,6 @@ class Smart_tijiaoDialog(wx.Dialog):
             guopai = wx.FindWindowById(guopai_webframe)
             guopai.SetFocus()
 
-
-
     def Second_tijiao_time_smart1(self, event):
         one_time2_smart1 = get_val('one_time2_smart1')
         one_time2_smart2 = get_val('one_time2_smart2')
