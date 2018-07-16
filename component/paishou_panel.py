@@ -219,11 +219,25 @@ class PaishouPanel(wx.Panel):
                 wx.CallAfter(pub.sendMessage, "open moni")
 
     def refreshweb(self, event):
-        moni_on = get_val('moni_on')
-        if moni_on:
-            wx.CallAfter(pub.sendMessage, "moni refresh_web")
-        else:
-            wx.CallAfter(pub.sendMessage, "guopai refresh_web")
+        tijiao_on = get_val('tijiao_on')
+        enter_on = get_dick('enter_on')
+        smartprice_chujia = get_val('smartprice_chujia')
+        if not enter_on:
+            set_val('tijiao_OK', True)
+            set_val('yanzhengma_view', False)
+            set_val('yanzhengma_close', True)
+            set_val('yanzhengma_control', False)
+        elif not enter_on and smartprice_chujia:
+            set_val('tijiao_OK', True)
+            set_val('yanzhengma_view', False)
+            set_val('yanzhengma_close', True)
+            set_val('yanzhengma_control', False)
+
+        # moni_on = get_val('moni_on')
+        # if moni_on:
+        #     wx.CallAfter(pub.sendMessage, "moni refresh_web")
+        # else:
+        #     wx.CallAfter(pub.sendMessage, "guopai refresh_web")
 
     def onkeylogin(self, event):
         guopai_on = get_val('guopai_on')
