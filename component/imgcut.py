@@ -108,7 +108,7 @@ def timeset( imgpos_currenttime):
 def findpos():
     Px = get_val('Px')
     Py = get_val('Py')
-    region = (Px, Py, Px + 900, Py + 700)
+    region = (Px, Py, Px + 500, Py + 500)
     sc = grab_screen(region=region)
     img = np.asarray(sc)
     dick_target = get_val('dick_target')
@@ -135,8 +135,8 @@ def findpos():
         set_val('py_lowestprice', max_loc[1] + py_relative + Py)
         Px = get_val('Px')
         Py = get_val('Py')
-        set_val('px_calculate_relative', max_loc[0] + px_relative - Px) ##计算得到相差
-        set_val('py_calculate_relative', max_loc[1] + py_relative - Py)
+        set_val('px_calculate_relative', max_loc[0] + px_relative) ##计算得到相差
+        set_val('py_calculate_relative', max_loc[1] + py_relative)
         ##计算时间位置
         set_val('Px_currenttime', time_max_loc[0] + px_timerelative + Px)    #时间的位置
         set_val('Py_currenttime', time_max_loc[1] + py_timerelative + Py)
