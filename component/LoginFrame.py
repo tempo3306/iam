@@ -267,9 +267,11 @@ class LoginFrame(wx.Frame):
                 set_val('test', True)
 
             elif Identify_code[0]== 'h':
+                # set_val('test', True)
+
                 set_val('paishou', True)
-                set_val('url_dianxin', login_result['url_dianxin'])
-                set_val('url_nodianxin', login_result['url_nodianxin'])
+                # set_val('url_dianxin', login_result['url_dianxin'])
+                # set_val('url_nodianxin', login_result['url_nodianxin'])
             elif Identify_code == 'daxinwen':
                 set_val('url_dianxin', "http://moni.51hupai.org/")
                 set_val('url_nodianxin', "http://moni.51hupai.org/")
@@ -289,6 +291,11 @@ class LoginFrame(wx.Frame):
                 bidnumber_js = "document.getElementById('bidnumber').value = '{0}';".format(bid_number)
                 bidpassword_js = "document.getElementById('bidpassword').value = '{0}';".format(bid_password)
                 idcard_js = "document.getElementById('idcard').value = '{0}';".format(idcard)
+                print(idcard_js)
+
+
+
+
                 set_val('bidnumber_js', bidnumber_js)
                 set_val('bidpassword_js', bidpassword_js)
                 set_val('idcard_js', idcard_js)

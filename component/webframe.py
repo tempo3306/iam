@@ -443,9 +443,11 @@ class WebFrame(wx.Frame):
         print(bidnumber_js)
         bidpassword_js = get_val('bidpassword_js')
         idcard_js = get_val('idcard_js')
-        self.htmlpanel.webview.RunScript(bidnumber_js)
-        self.htmlpanel.webview.RunScript(bidpassword_js)
-        self.htmlpanel.webview.RunScript(idcard_js)
+        # self.htmlpanel.webview.RunScript(bidnumber_js)
+        # self.htmlpanel.webview.RunScript(bidpassword_js)
+        # self.htmlpanel.webview.RunScript("var a = document.getElementById('dtidcard')")
+        # self.htmlpanel.webview.RunScript("a.setAttribute('style', 'display: block');")
+        # self.htmlpanel.webview.RunScript(idcard_js)
         try:
             browser = self.htmlpanel.webview
             print(browser)
