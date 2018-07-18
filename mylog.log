@@ -1,19 +1,19 @@
-Tue, 17 Jul 2018 09:12:27 connectionpool.py[line:824] DEBUG Starting new HTTPS connection (1): hupai.pro
-Tue, 17 Jul 2018 09:12:28 connectionpool.py[line:396] DEBUG https://hupai.pro:443 "GET /api/bid/get_guopaiurl/?format=json&type=identify_code&debug=True&version=5.4&identify_code=h54988437&diskid=dca984ffb6ff32225862a03946345c2c073097c1 HTTP/1.1" 200 None
-Tue, 17 Jul 2018 09:12:29 app_thread.py[line:812] ERROR error message
+Thu, 19 Jul 2018 02:05:45 connectionpool.py[line:824] DEBUG Starting new HTTPS connection (1): hupai.pro
+Thu, 19 Jul 2018 02:05:47 connectionpool.py[line:396] DEBUG https://hupai.pro:443 "GET /api/bid/get_guopaiurl/?format=json&type=identify_code&debug=True&version=5.4&identify_code=h54988437&diskid=dca984ffb6ff32225862a03946345c2c073097c1 HTTP/1.1" 200 None
+Thu, 19 Jul 2018 02:05:47 app_thread.py[line:812] ERROR error message
 Traceback (most recent call last):
   File "E:\hupai\component\app_thread.py", line 807, in run
     if start_time < a_time < target_time:  ##11点到11点半之间
 TypeError: '<' not supported between instances of 'str' and 'float'
-Tue, 17 Jul 2018 09:12:29 connectionpool.py[line:208] DEBUG Starting new HTTP connection (1): ip.taobao.com
-Tue, 17 Jul 2018 09:12:29 imgcut.py[line:272] ERROR cut_img 这里出错
-Tue, 17 Jul 2018 09:12:29 imgcut.py[line:273] ERROR this is an exception message
+Thu, 19 Jul 2018 02:05:47 imgcut.py[line:272] ERROR cut_img 这里出错
+Thu, 19 Jul 2018 02:05:47 imgcut.py[line:273] ERROR this is an exception message
 Traceback (most recent call last):
   File "E:\hupai\component\imgcut.py", line 265, in cut_img
     set_val('imgpos_lowestprice', img[use_area[0][1]:use_area[0][3], use_area[0][0]:use_area[0][2]])  # ok
 IndexError: list index out of range
-Tue, 17 Jul 2018 09:12:29 app_thread.py[line:225] ERROR 刷新失败
-Tue, 17 Jul 2018 09:12:29 app_thread.py[line:226] ERROR this is an exception message
+Thu, 19 Jul 2018 02:05:47 connectionpool.py[line:208] DEBUG Starting new HTTP connection (1): ip.taobao.com
+Thu, 19 Jul 2018 02:05:47 app_thread.py[line:225] ERROR 刷新失败
+Thu, 19 Jul 2018 02:05:47 app_thread.py[line:226] ERROR this is an exception message
 Traceback (most recent call last):
   File "E:\hupai\component\app_thread.py", line 223, in find_refresh
     findrefresh()
@@ -21,8 +21,8 @@ Traceback (most recent call last):
     img = cv2.cvtColor(sc, cv2.COLOR_BGR2GRAY)  # 转灰度图
 cv2.error: C:\projects\opencv-python\opencv\modules\imgproc\src\color.cpp:11073: error: (-215) depth == 0 || depth == 2 || depth == 5 in function cv::cvtColor
 
-Tue, 17 Jul 2018 09:12:29 app_thread.py[line:257] ERROR 识别价格失败
-Tue, 17 Jul 2018 09:12:29 app_thread.py[line:258] ERROR this is an exception message
+Thu, 19 Jul 2018 02:05:47 app_thread.py[line:257] ERROR 识别价格失败
+Thu, 19 Jul 2018 02:05:47 app_thread.py[line:258] ERROR this is an exception message
 Traceback (most recent call last):
   File "E:\hupai\component\app_thread.py", line 237, in read_lowest_price
     str_price = Price_read()
@@ -30,9 +30,9 @@ Traceback (most recent call last):
     lowest_price_img = cv2.cvtColor(imgpos_lowestprice, cv2.COLOR_BGR2GRAY)
 cv2.error: C:\projects\opencv-python\opencv\modules\imgproc\src\color.cpp:11073: error: (-215) depth == 0 || depth == 2 || depth == 5 in function cv::cvtColor
 
-Tue, 17 Jul 2018 09:12:29 connectionpool.py[line:396] DEBUG http://ip.taobao.com:80 "GET /service/getIpInfo.php?ip=101.87.221.219 HTTP/1.1" 200 None
-Tue, 17 Jul 2018 09:12:29 app_thread.py[line:257] ERROR 识别价格失败
-Tue, 17 Jul 2018 09:12:29 app_thread.py[line:258] ERROR this is an exception message
+Thu, 19 Jul 2018 02:05:47 connectionpool.py[line:396] DEBUG http://ip.taobao.com:80 "GET /service/getIpInfo.php?ip=101.87.221.219 HTTP/1.1" 200 None
+Thu, 19 Jul 2018 02:05:47 app_thread.py[line:257] ERROR 识别价格失败
+Thu, 19 Jul 2018 02:05:47 app_thread.py[line:258] ERROR this is an exception message
 Traceback (most recent call last):
   File "E:\hupai\component\app_thread.py", line 237, in read_lowest_price
     str_price = Price_read()
@@ -44,8 +44,8 @@ Traceback (most recent call last):
     imgn[i] = cv2.resize(imgn[i], (8, 8))
 cv2.error: C:\projects\opencv-python\opencv\modules\imgproc\src\resize.cpp:4044: error: (-215) ssize.width > 0 && ssize.height > 0 in function cv::resize
 
-Tue, 17 Jul 2018 09:12:31 app_thread.py[line:257] ERROR 识别价格失败
-Tue, 17 Jul 2018 09:12:31 app_thread.py[line:258] ERROR this is an exception message
+Thu, 19 Jul 2018 02:05:48 app_thread.py[line:257] ERROR 识别价格失败
+Thu, 19 Jul 2018 02:05:48 app_thread.py[line:258] ERROR this is an exception message
 Traceback (most recent call last):
   File "E:\hupai\component\app_thread.py", line 237, in read_lowest_price
     str_price = Price_read()
@@ -56,8 +56,8 @@ Traceback (most recent call last):
   File "E:\hupai\component\read_pic.py", line 99, in cut
     diff = xy[-1][2]  # 最后一个 图像块
 IndexError: list index out of range
-Tue, 17 Jul 2018 09:12:31 app_thread.py[line:257] ERROR 识别价格失败
-Tue, 17 Jul 2018 09:12:31 app_thread.py[line:258] ERROR this is an exception message
+Thu, 19 Jul 2018 02:05:48 app_thread.py[line:257] ERROR 识别价格失败
+Thu, 19 Jul 2018 02:05:48 app_thread.py[line:258] ERROR this is an exception message
 Traceback (most recent call last):
   File "E:\hupai\component\app_thread.py", line 237, in read_lowest_price
     str_price = Price_read()
@@ -68,8 +68,8 @@ Traceback (most recent call last):
   File "E:\hupai\component\read_pic.py", line 99, in cut
     diff = xy[-1][2]  # 最后一个 图像块
 IndexError: list index out of range
-Tue, 17 Jul 2018 09:12:31 app_thread.py[line:257] ERROR 识别价格失败
-Tue, 17 Jul 2018 09:12:31 app_thread.py[line:258] ERROR this is an exception message
+Thu, 19 Jul 2018 02:05:49 app_thread.py[line:257] ERROR 识别价格失败
+Thu, 19 Jul 2018 02:05:49 app_thread.py[line:258] ERROR this is an exception message
 Traceback (most recent call last):
   File "E:\hupai\component\app_thread.py", line 237, in read_lowest_price
     str_price = Price_read()
@@ -80,8 +80,8 @@ Traceback (most recent call last):
   File "E:\hupai\component\read_pic.py", line 99, in cut
     diff = xy[-1][2]  # 最后一个 图像块
 IndexError: list index out of range
-Tue, 17 Jul 2018 09:12:31 app_thread.py[line:257] ERROR 识别价格失败
-Tue, 17 Jul 2018 09:12:31 app_thread.py[line:258] ERROR this is an exception message
+Thu, 19 Jul 2018 02:05:49 app_thread.py[line:257] ERROR 识别价格失败
+Thu, 19 Jul 2018 02:05:49 app_thread.py[line:258] ERROR this is an exception message
 Traceback (most recent call last):
   File "E:\hupai\component\app_thread.py", line 237, in read_lowest_price
     str_price = Price_read()
@@ -92,8 +92,8 @@ Traceback (most recent call last):
   File "E:\hupai\component\read_pic.py", line 99, in cut
     diff = xy[-1][2]  # 最后一个 图像块
 IndexError: list index out of range
-Tue, 17 Jul 2018 09:12:32 app_thread.py[line:257] ERROR 识别价格失败
-Tue, 17 Jul 2018 09:12:32 app_thread.py[line:258] ERROR this is an exception message
+Thu, 19 Jul 2018 02:05:49 app_thread.py[line:257] ERROR 识别价格失败
+Thu, 19 Jul 2018 02:05:49 app_thread.py[line:258] ERROR this is an exception message
 Traceback (most recent call last):
   File "E:\hupai\component\app_thread.py", line 237, in read_lowest_price
     str_price = Price_read()
@@ -104,8 +104,8 @@ Traceback (most recent call last):
   File "E:\hupai\component\read_pic.py", line 99, in cut
     diff = xy[-1][2]  # 最后一个 图像块
 IndexError: list index out of range
-Tue, 17 Jul 2018 09:12:32 app_thread.py[line:257] ERROR 识别价格失败
-Tue, 17 Jul 2018 09:12:32 app_thread.py[line:258] ERROR this is an exception message
+Thu, 19 Jul 2018 02:05:49 app_thread.py[line:257] ERROR 识别价格失败
+Thu, 19 Jul 2018 02:05:49 app_thread.py[line:258] ERROR this is an exception message
 Traceback (most recent call last):
   File "E:\hupai\component\app_thread.py", line 237, in read_lowest_price
     str_price = Price_read()
@@ -116,8 +116,8 @@ Traceback (most recent call last):
   File "E:\hupai\component\read_pic.py", line 99, in cut
     diff = xy[-1][2]  # 最后一个 图像块
 IndexError: list index out of range
-Tue, 17 Jul 2018 09:12:32 app_thread.py[line:257] ERROR 识别价格失败
-Tue, 17 Jul 2018 09:12:32 app_thread.py[line:258] ERROR this is an exception message
+Thu, 19 Jul 2018 02:05:49 app_thread.py[line:257] ERROR 识别价格失败
+Thu, 19 Jul 2018 02:05:49 app_thread.py[line:258] ERROR this is an exception message
 Traceback (most recent call last):
   File "E:\hupai\component\app_thread.py", line 237, in read_lowest_price
     str_price = Price_read()
@@ -128,8 +128,8 @@ Traceback (most recent call last):
   File "E:\hupai\component\read_pic.py", line 99, in cut
     diff = xy[-1][2]  # 最后一个 图像块
 IndexError: list index out of range
-Tue, 17 Jul 2018 09:12:32 app_thread.py[line:257] ERROR 识别价格失败
-Tue, 17 Jul 2018 09:12:32 app_thread.py[line:258] ERROR this is an exception message
+Thu, 19 Jul 2018 02:05:49 app_thread.py[line:257] ERROR 识别价格失败
+Thu, 19 Jul 2018 02:05:49 app_thread.py[line:258] ERROR this is an exception message
 Traceback (most recent call last):
   File "E:\hupai\component\app_thread.py", line 237, in read_lowest_price
     str_price = Price_read()
@@ -140,8 +140,8 @@ Traceback (most recent call last):
   File "E:\hupai\component\read_pic.py", line 99, in cut
     diff = xy[-1][2]  # 最后一个 图像块
 IndexError: list index out of range
-Tue, 17 Jul 2018 09:12:32 app_thread.py[line:257] ERROR 识别价格失败
-Tue, 17 Jul 2018 09:12:32 app_thread.py[line:258] ERROR this is an exception message
+Thu, 19 Jul 2018 02:05:49 app_thread.py[line:257] ERROR 识别价格失败
+Thu, 19 Jul 2018 02:05:49 app_thread.py[line:258] ERROR this is an exception message
 Traceback (most recent call last):
   File "E:\hupai\component\app_thread.py", line 237, in read_lowest_price
     str_price = Price_read()
@@ -152,8 +152,8 @@ Traceback (most recent call last):
   File "E:\hupai\component\read_pic.py", line 99, in cut
     diff = xy[-1][2]  # 最后一个 图像块
 IndexError: list index out of range
-Tue, 17 Jul 2018 09:12:32 app_thread.py[line:257] ERROR 识别价格失败
-Tue, 17 Jul 2018 09:12:32 app_thread.py[line:258] ERROR this is an exception message
+Thu, 19 Jul 2018 02:05:49 app_thread.py[line:257] ERROR 识别价格失败
+Thu, 19 Jul 2018 02:05:49 app_thread.py[line:258] ERROR this is an exception message
 Traceback (most recent call last):
   File "E:\hupai\component\app_thread.py", line 237, in read_lowest_price
     str_price = Price_read()
@@ -164,8 +164,8 @@ Traceback (most recent call last):
   File "E:\hupai\component\read_pic.py", line 99, in cut
     diff = xy[-1][2]  # 最后一个 图像块
 IndexError: list index out of range
-Tue, 17 Jul 2018 09:12:32 app_thread.py[line:257] ERROR 识别价格失败
-Tue, 17 Jul 2018 09:12:32 app_thread.py[line:258] ERROR this is an exception message
+Thu, 19 Jul 2018 02:05:49 app_thread.py[line:257] ERROR 识别价格失败
+Thu, 19 Jul 2018 02:05:49 app_thread.py[line:258] ERROR this is an exception message
 Traceback (most recent call last):
   File "E:\hupai\component\app_thread.py", line 237, in read_lowest_price
     str_price = Price_read()
@@ -176,29 +176,26 @@ Traceback (most recent call last):
   File "E:\hupai\component\read_pic.py", line 99, in cut
     diff = xy[-1][2]  # 最后一个 图像块
 IndexError: list index out of range
-Tue, 17 Jul 2018 09:12:33 imgcut.py[line:104] ERROR this is an exception message
+Thu, 19 Jul 2018 02:06:11 imgcut.py[line:104] ERROR this is an exception message
 Traceback (most recent call last):
-  File "E:\hupai\component\imgcut.py", line 91, in timeset
-    currenttime = readpic(currenttime)  # 识别出来的时间
-  File "E:\hupai\component\read_pic.py", line 267, in readpic
-    testData = cut(img)
-  File "E:\hupai\component\read_pic.py", line 99, in cut
-    diff = xy[-1][2]  # 最后一个 图像块
-IndexError: list index out of range
-Tue, 17 Jul 2018 09:12:33 app_thread.py[line:257] ERROR 识别价格失败
-Tue, 17 Jul 2018 09:12:33 app_thread.py[line:258] ERROR this is an exception message
+  File "E:\hupai\component\imgcut.py", line 97, in timeset
+    a_time_temp = time.mktime(time.strptime(b, '%Y-%m-%d %H:%M:%S')) + 0.6  # 转时间戳   补个平均时差
+  File "C:\Users\Administrator\Python\Python36\Lib\_strptime.py", line 559, in _strptime_time
+    tt = _strptime(data_string, format)[0]
+  File "C:\Users\Administrator\Python\Python36\Lib\_strptime.py", line 362, in _strptime
+    (data_string, format))
+ValueError: time data '2018-07-19 000000000' does not match format '%Y-%m-%d %H:%M:%S'
+Thu, 19 Jul 2018 02:06:12 imgcut.py[line:104] ERROR this is an exception message
 Traceback (most recent call last):
-  File "E:\hupai\component\app_thread.py", line 237, in read_lowest_price
-    str_price = Price_read()
-  File "E:\hupai\component\imgcut.py", line 368, in Price_read
-    price = readpic(lowest_price_img)
-  File "E:\hupai\component\read_pic.py", line 267, in readpic
-    testData = cut(img)
-  File "E:\hupai\component\read_pic.py", line 99, in cut
-    diff = xy[-1][2]  # 最后一个 图像块
-IndexError: list index out of range
-Tue, 17 Jul 2018 09:12:33 app_thread.py[line:257] ERROR 识别价格失败
-Tue, 17 Jul 2018 09:12:33 app_thread.py[line:258] ERROR this is an exception message
+  File "E:\hupai\component\imgcut.py", line 97, in timeset
+    a_time_temp = time.mktime(time.strptime(b, '%Y-%m-%d %H:%M:%S')) + 0.6  # 转时间戳   补个平均时差
+  File "C:\Users\Administrator\Python\Python36\Lib\_strptime.py", line 559, in _strptime_time
+    tt = _strptime(data_string, format)[0]
+  File "C:\Users\Administrator\Python\Python36\Lib\_strptime.py", line 362, in _strptime
+    (data_string, format))
+ValueError: time data '2018-07-19 095598' does not match format '%Y-%m-%d %H:%M:%S'
+Thu, 19 Jul 2018 02:06:48 app_thread.py[line:257] ERROR 识别价格失败
+Thu, 19 Jul 2018 02:06:48 app_thread.py[line:258] ERROR this is an exception message
 Traceback (most recent call last):
   File "E:\hupai\component\app_thread.py", line 237, in read_lowest_price
     str_price = Price_read()
@@ -209,8 +206,8 @@ Traceback (most recent call last):
   File "E:\hupai\component\read_pic.py", line 99, in cut
     diff = xy[-1][2]  # 最后一个 图像块
 IndexError: list index out of range
-Tue, 17 Jul 2018 09:12:45 app_thread.py[line:257] ERROR 识别价格失败
-Tue, 17 Jul 2018 09:12:45 app_thread.py[line:258] ERROR this is an exception message
+Thu, 19 Jul 2018 02:06:49 app_thread.py[line:257] ERROR 识别价格失败
+Thu, 19 Jul 2018 02:06:49 app_thread.py[line:258] ERROR this is an exception message
 Traceback (most recent call last):
   File "E:\hupai\component\app_thread.py", line 237, in read_lowest_price
     str_price = Price_read()
@@ -221,8 +218,8 @@ Traceback (most recent call last):
   File "E:\hupai\component\read_pic.py", line 99, in cut
     diff = xy[-1][2]  # 最后一个 图像块
 IndexError: list index out of range
-Tue, 17 Jul 2018 09:12:45 app_thread.py[line:257] ERROR 识别价格失败
-Tue, 17 Jul 2018 09:12:45 app_thread.py[line:258] ERROR this is an exception message
+Thu, 19 Jul 2018 02:06:49 app_thread.py[line:257] ERROR 识别价格失败
+Thu, 19 Jul 2018 02:06:49 app_thread.py[line:258] ERROR this is an exception message
 Traceback (most recent call last):
   File "E:\hupai\component\app_thread.py", line 237, in read_lowest_price
     str_price = Price_read()
@@ -233,8 +230,8 @@ Traceback (most recent call last):
   File "E:\hupai\component\read_pic.py", line 99, in cut
     diff = xy[-1][2]  # 最后一个 图像块
 IndexError: list index out of range
-Tue, 17 Jul 2018 09:12:45 app_thread.py[line:257] ERROR 识别价格失败
-Tue, 17 Jul 2018 09:12:45 app_thread.py[line:258] ERROR this is an exception message
+Thu, 19 Jul 2018 02:06:49 app_thread.py[line:257] ERROR 识别价格失败
+Thu, 19 Jul 2018 02:06:49 app_thread.py[line:258] ERROR this is an exception message
 Traceback (most recent call last):
   File "E:\hupai\component\app_thread.py", line 237, in read_lowest_price
     str_price = Price_read()
@@ -245,8 +242,8 @@ Traceback (most recent call last):
   File "E:\hupai\component\read_pic.py", line 99, in cut
     diff = xy[-1][2]  # 最后一个 图像块
 IndexError: list index out of range
-Tue, 17 Jul 2018 09:12:45 app_thread.py[line:257] ERROR 识别价格失败
-Tue, 17 Jul 2018 09:12:45 app_thread.py[line:258] ERROR this is an exception message
+Thu, 19 Jul 2018 02:06:49 app_thread.py[line:257] ERROR 识别价格失败
+Thu, 19 Jul 2018 02:06:49 app_thread.py[line:258] ERROR this is an exception message
 Traceback (most recent call last):
   File "E:\hupai\component\app_thread.py", line 237, in read_lowest_price
     str_price = Price_read()
@@ -257,7 +254,7 @@ Traceback (most recent call last):
   File "E:\hupai\component\read_pic.py", line 99, in cut
     diff = xy[-1][2]  # 最后一个 图像块
 IndexError: list index out of range
-Tue, 17 Jul 2018 09:12:45 imgcut.py[line:104] ERROR this is an exception message
+Thu, 19 Jul 2018 02:06:49 imgcut.py[line:104] ERROR this is an exception message
 Traceback (most recent call last):
   File "E:\hupai\component\imgcut.py", line 91, in timeset
     currenttime = readpic(currenttime)  # 识别出来的时间
@@ -266,263 +263,20 @@ Traceback (most recent call last):
   File "E:\hupai\component\read_pic.py", line 99, in cut
     diff = xy[-1][2]  # 最后一个 图像块
 IndexError: list index out of range
-Tue, 17 Jul 2018 09:12:45 app_thread.py[line:257] ERROR 识别价格失败
-Tue, 17 Jul 2018 09:12:45 app_thread.py[line:258] ERROR this is an exception message
+Thu, 19 Jul 2018 02:06:49 app_thread.py[line:257] ERROR 识别价格失败
+Thu, 19 Jul 2018 02:06:49 app_thread.py[line:258] ERROR this is an exception message
 Traceback (most recent call last):
   File "E:\hupai\component\app_thread.py", line 237, in read_lowest_price
     str_price = Price_read()
   File "E:\hupai\component\imgcut.py", line 368, in Price_read
     price = readpic(lowest_price_img)
-  File "E:\hupai\component\read_pic.py", line 271, in readpic
-    result = result[1].reshape(-1).astype(int).astype(str)
-AttributeError: 'NoneType' object has no attribute 'reshape'
-Tue, 17 Jul 2018 09:12:46 app_thread.py[line:257] ERROR 识别价格失败
-Tue, 17 Jul 2018 09:12:46 app_thread.py[line:258] ERROR this is an exception message
-Traceback (most recent call last):
-  File "E:\hupai\component\app_thread.py", line 237, in read_lowest_price
-    str_price = Price_read()
-  File "E:\hupai\component\imgcut.py", line 368, in Price_read
-    price = readpic(lowest_price_img)
-  File "E:\hupai\component\read_pic.py", line 271, in readpic
-    result = result[1].reshape(-1).astype(int).astype(str)
-AttributeError: 'NoneType' object has no attribute 'reshape'
-Tue, 17 Jul 2018 09:12:46 app_thread.py[line:257] ERROR 识别价格失败
-Tue, 17 Jul 2018 09:12:46 app_thread.py[line:258] ERROR this is an exception message
-Traceback (most recent call last):
-  File "E:\hupai\component\app_thread.py", line 237, in read_lowest_price
-    str_price = Price_read()
-  File "E:\hupai\component\imgcut.py", line 368, in Price_read
-    price = readpic(lowest_price_img)
-  File "E:\hupai\component\read_pic.py", line 271, in readpic
-    result = result[1].reshape(-1).astype(int).astype(str)
-AttributeError: 'NoneType' object has no attribute 'reshape'
-Tue, 17 Jul 2018 09:12:46 app_thread.py[line:257] ERROR 识别价格失败
-Tue, 17 Jul 2018 09:12:46 app_thread.py[line:258] ERROR this is an exception message
-Traceback (most recent call last):
-  File "E:\hupai\component\app_thread.py", line 237, in read_lowest_price
-    str_price = Price_read()
-  File "E:\hupai\component\imgcut.py", line 368, in Price_read
-    price = readpic(lowest_price_img)
-  File "E:\hupai\component\read_pic.py", line 271, in readpic
-    result = result[1].reshape(-1).astype(int).astype(str)
-AttributeError: 'NoneType' object has no attribute 'reshape'
-Tue, 17 Jul 2018 09:12:46 app_thread.py[line:257] ERROR 识别价格失败
-Tue, 17 Jul 2018 09:12:46 app_thread.py[line:258] ERROR this is an exception message
-Traceback (most recent call last):
-  File "E:\hupai\component\app_thread.py", line 237, in read_lowest_price
-    str_price = Price_read()
-  File "E:\hupai\component\imgcut.py", line 368, in Price_read
-    price = readpic(lowest_price_img)
-  File "E:\hupai\component\read_pic.py", line 271, in readpic
-    result = result[1].reshape(-1).astype(int).astype(str)
-AttributeError: 'NoneType' object has no attribute 'reshape'
-Tue, 17 Jul 2018 09:12:46 app_thread.py[line:257] ERROR 识别价格失败
-Tue, 17 Jul 2018 09:12:46 app_thread.py[line:258] ERROR this is an exception message
-Traceback (most recent call last):
-  File "E:\hupai\component\app_thread.py", line 237, in read_lowest_price
-    str_price = Price_read()
-  File "E:\hupai\component\imgcut.py", line 368, in Price_read
-    price = readpic(lowest_price_img)
-  File "E:\hupai\component\read_pic.py", line 271, in readpic
-    result = result[1].reshape(-1).astype(int).astype(str)
-AttributeError: 'NoneType' object has no attribute 'reshape'
-Tue, 17 Jul 2018 09:12:49 connectionpool.py[line:824] DEBUG Starting new HTTPS connection (1): hupai.pro
-Tue, 17 Jul 2018 09:12:49 connectionpool.py[line:396] DEBUG https://hupai.pro:443 "GET /api/bid/get_remotetime HTTP/1.1" 301 0
-Tue, 17 Jul 2018 09:12:49 connectionpool.py[line:396] DEBUG https://hupai.pro:443 "GET /api/bid/get_remotetime/ HTTP/1.1" 200 33
-Tue, 17 Jul 2018 09:12:50 app_thread.py[line:257] ERROR 识别价格失败
-Tue, 17 Jul 2018 09:12:50 app_thread.py[line:258] ERROR this is an exception message
-Traceback (most recent call last):
-  File "E:\hupai\component\app_thread.py", line 237, in read_lowest_price
-    str_price = Price_read()
-  File "E:\hupai\component\imgcut.py", line 368, in Price_read
-    price = readpic(lowest_price_img)
-  File "E:\hupai\component\read_pic.py", line 267, in readpic
-    testData = cut(img)
-  File "E:\hupai\component\read_pic.py", line 99, in cut
-    diff = xy[-1][2]  # 最后一个 图像块
-IndexError: list index out of range
-Tue, 17 Jul 2018 09:12:51 app_thread.py[line:257] ERROR 识别价格失败
-Tue, 17 Jul 2018 09:12:51 app_thread.py[line:258] ERROR this is an exception message
-Traceback (most recent call last):
-  File "E:\hupai\component\app_thread.py", line 237, in read_lowest_price
-    str_price = Price_read()
-  File "E:\hupai\component\imgcut.py", line 368, in Price_read
-    price = readpic(lowest_price_img)
-  File "E:\hupai\component\read_pic.py", line 267, in readpic
-    testData = cut(img)
-  File "E:\hupai\component\read_pic.py", line 99, in cut
-    diff = xy[-1][2]  # 最后一个 图像块
-IndexError: list index out of range
-Tue, 17 Jul 2018 09:12:51 app_thread.py[line:257] ERROR 识别价格失败
-Tue, 17 Jul 2018 09:12:51 app_thread.py[line:258] ERROR this is an exception message
-Traceback (most recent call last):
-  File "E:\hupai\component\app_thread.py", line 237, in read_lowest_price
-    str_price = Price_read()
-  File "E:\hupai\component\imgcut.py", line 368, in Price_read
-    price = readpic(lowest_price_img)
-  File "E:\hupai\component\read_pic.py", line 267, in readpic
-    testData = cut(img)
-  File "E:\hupai\component\read_pic.py", line 99, in cut
-    diff = xy[-1][2]  # 最后一个 图像块
-IndexError: list index out of range
-Tue, 17 Jul 2018 09:12:51 app_thread.py[line:257] ERROR 识别价格失败
-Tue, 17 Jul 2018 09:12:51 app_thread.py[line:258] ERROR this is an exception message
-Traceback (most recent call last):
-  File "E:\hupai\component\app_thread.py", line 237, in read_lowest_price
-    str_price = Price_read()
-  File "E:\hupai\component\imgcut.py", line 368, in Price_read
-    price = readpic(lowest_price_img)
-  File "E:\hupai\component\read_pic.py", line 267, in readpic
-    testData = cut(img)
-  File "E:\hupai\component\read_pic.py", line 99, in cut
-    diff = xy[-1][2]  # 最后一个 图像块
-IndexError: list index out of range
-Tue, 17 Jul 2018 09:12:51 app_thread.py[line:257] ERROR 识别价格失败
-Tue, 17 Jul 2018 09:12:51 app_thread.py[line:258] ERROR this is an exception message
-Traceback (most recent call last):
-  File "E:\hupai\component\app_thread.py", line 237, in read_lowest_price
-    str_price = Price_read()
-  File "E:\hupai\component\imgcut.py", line 368, in Price_read
-    price = readpic(lowest_price_img)
-  File "E:\hupai\component\read_pic.py", line 267, in readpic
-    testData = cut(img)
-  File "E:\hupai\component\read_pic.py", line 99, in cut
-    diff = xy[-1][2]  # 最后一个 图像块
-IndexError: list index out of range
-Tue, 17 Jul 2018 09:12:51 app_thread.py[line:257] ERROR 识别价格失败
-Tue, 17 Jul 2018 09:12:51 app_thread.py[line:258] ERROR this is an exception message
-Traceback (most recent call last):
-  File "E:\hupai\component\app_thread.py", line 237, in read_lowest_price
-    str_price = Price_read()
-  File "E:\hupai\component\imgcut.py", line 368, in Price_read
-    price = readpic(lowest_price_img)
-  File "E:\hupai\component\read_pic.py", line 267, in readpic
-    testData = cut(img)
-  File "E:\hupai\component\read_pic.py", line 99, in cut
-    diff = xy[-1][2]  # 最后一个 图像块
-IndexError: list index out of range
-Tue, 17 Jul 2018 09:12:51 app_thread.py[line:257] ERROR 识别价格失败
-Tue, 17 Jul 2018 09:12:51 app_thread.py[line:258] ERROR this is an exception message
-Traceback (most recent call last):
-  File "E:\hupai\component\app_thread.py", line 237, in read_lowest_price
-    str_price = Price_read()
-  File "E:\hupai\component\imgcut.py", line 368, in Price_read
-    price = readpic(lowest_price_img)
-  File "E:\hupai\component\read_pic.py", line 267, in readpic
-    testData = cut(img)
-  File "E:\hupai\component\read_pic.py", line 99, in cut
-    diff = xy[-1][2]  # 最后一个 图像块
-IndexError: list index out of range
-Tue, 17 Jul 2018 09:12:52 app_thread.py[line:257] ERROR 识别价格失败
-Tue, 17 Jul 2018 09:12:52 app_thread.py[line:258] ERROR this is an exception message
-Traceback (most recent call last):
-  File "E:\hupai\component\app_thread.py", line 237, in read_lowest_price
-    str_price = Price_read()
-  File "E:\hupai\component\imgcut.py", line 368, in Price_read
-    price = readpic(lowest_price_img)
-  File "E:\hupai\component\read_pic.py", line 267, in readpic
-    testData = cut(img)
-  File "E:\hupai\component\read_pic.py", line 99, in cut
-    diff = xy[-1][2]  # 最后一个 图像块
-IndexError: list index out of range
-Tue, 17 Jul 2018 09:12:52 app_thread.py[line:257] ERROR 识别价格失败
-Tue, 17 Jul 2018 09:12:52 app_thread.py[line:258] ERROR this is an exception message
-Traceback (most recent call last):
-  File "E:\hupai\component\app_thread.py", line 237, in read_lowest_price
-    str_price = Price_read()
-  File "E:\hupai\component\imgcut.py", line 368, in Price_read
-    price = readpic(lowest_price_img)
-  File "E:\hupai\component\read_pic.py", line 267, in readpic
-    testData = cut(img)
-  File "E:\hupai\component\read_pic.py", line 99, in cut
-    diff = xy[-1][2]  # 最后一个 图像块
-IndexError: list index out of range
-Tue, 17 Jul 2018 09:12:52 app_thread.py[line:257] ERROR 识别价格失败
-Tue, 17 Jul 2018 09:12:52 app_thread.py[line:258] ERROR this is an exception message
-Traceback (most recent call last):
-  File "E:\hupai\component\app_thread.py", line 237, in read_lowest_price
-    str_price = Price_read()
-  File "E:\hupai\component\imgcut.py", line 368, in Price_read
-    price = readpic(lowest_price_img)
-  File "E:\hupai\component\read_pic.py", line 267, in readpic
-    testData = cut(img)
-  File "E:\hupai\component\read_pic.py", line 99, in cut
-    diff = xy[-1][2]  # 最后一个 图像块
-IndexError: list index out of range
-Tue, 17 Jul 2018 09:12:52 app_thread.py[line:257] ERROR 识别价格失败
-Tue, 17 Jul 2018 09:12:52 app_thread.py[line:258] ERROR this is an exception message
-Traceback (most recent call last):
-  File "E:\hupai\component\app_thread.py", line 237, in read_lowest_price
-    str_price = Price_read()
-  File "E:\hupai\component\imgcut.py", line 368, in Price_read
-    price = readpic(lowest_price_img)
-  File "E:\hupai\component\read_pic.py", line 267, in readpic
-    testData = cut(img)
-  File "E:\hupai\component\read_pic.py", line 99, in cut
-    diff = xy[-1][2]  # 最后一个 图像块
-IndexError: list index out of range
-Tue, 17 Jul 2018 09:12:52 app_thread.py[line:257] ERROR 识别价格失败
-Tue, 17 Jul 2018 09:12:52 app_thread.py[line:258] ERROR this is an exception message
-Traceback (most recent call last):
-  File "E:\hupai\component\app_thread.py", line 237, in read_lowest_price
-    str_price = Price_read()
-  File "E:\hupai\component\imgcut.py", line 368, in Price_read
-    price = readpic(lowest_price_img)
-  File "E:\hupai\component\read_pic.py", line 267, in readpic
-    testData = cut(img)
-  File "E:\hupai\component\read_pic.py", line 99, in cut
-    diff = xy[-1][2]  # 最后一个 图像块
-IndexError: list index out of range
-Tue, 17 Jul 2018 09:12:52 app_thread.py[line:257] ERROR 识别价格失败
-Tue, 17 Jul 2018 09:12:52 app_thread.py[line:258] ERROR this is an exception message
-Traceback (most recent call last):
-  File "E:\hupai\component\app_thread.py", line 237, in read_lowest_price
-    str_price = Price_read()
-  File "E:\hupai\component\imgcut.py", line 368, in Price_read
-    price = readpic(lowest_price_img)
-  File "E:\hupai\component\read_pic.py", line 267, in readpic
-    testData = cut(img)
-  File "E:\hupai\component\read_pic.py", line 99, in cut
-    diff = xy[-1][2]  # 最后一个 图像块
-IndexError: list index out of range
-Tue, 17 Jul 2018 09:12:53 app_thread.py[line:257] ERROR 识别价格失败
-Tue, 17 Jul 2018 09:12:53 app_thread.py[line:258] ERROR this is an exception message
-Traceback (most recent call last):
-  File "E:\hupai\component\app_thread.py", line 237, in read_lowest_price
-    str_price = Price_read()
-  File "E:\hupai\component\imgcut.py", line 368, in Price_read
-    price = readpic(lowest_price_img)
-  File "E:\hupai\component\read_pic.py", line 267, in readpic
-    testData = cut(img)
-  File "E:\hupai\component\read_pic.py", line 99, in cut
-    diff = xy[-1][2]  # 最后一个 图像块
-IndexError: list index out of range
-Tue, 17 Jul 2018 09:12:53 app_thread.py[line:257] ERROR 识别价格失败
-Tue, 17 Jul 2018 09:12:53 app_thread.py[line:258] ERROR this is an exception message
-Traceback (most recent call last):
-  File "E:\hupai\component\app_thread.py", line 237, in read_lowest_price
-    str_price = Price_read()
-  File "E:\hupai\component\imgcut.py", line 368, in Price_read
-    price = readpic(lowest_price_img)
-  File "E:\hupai\component\read_pic.py", line 267, in readpic
-    testData = cut(img)
-  File "E:\hupai\component\read_pic.py", line 99, in cut
-    diff = xy[-1][2]  # 最后一个 图像块
-IndexError: list index out of range
-Tue, 17 Jul 2018 09:12:53 app_thread.py[line:257] ERROR 识别价格失败
-Tue, 17 Jul 2018 09:12:53 app_thread.py[line:258] ERROR this is an exception message
-Traceback (most recent call last):
-  File "E:\hupai\component\app_thread.py", line 237, in read_lowest_price
-    str_price = Price_read()
-  File "E:\hupai\component\imgcut.py", line 368, in Price_read
-    price = readpic(lowest_price_img)
   File "E:\hupai\component\read_pic.py", line 267, in readpic
     testData = cut(img)
   File "E:\hupai\component\read_pic.py", line 99, in cut
     diff = xy[-1][2]  # 最后一个 图像块
 IndexError: list index out of range
-Tue, 17 Jul 2018 09:12:53 app_thread.py[line:257] ERROR 识别价格失败
-Tue, 17 Jul 2018 09:12:53 app_thread.py[line:258] ERROR this is an exception message
+Thu, 19 Jul 2018 02:06:49 app_thread.py[line:257] ERROR 识别价格失败
+Thu, 19 Jul 2018 02:06:49 app_thread.py[line:258] ERROR this is an exception message
 Traceback (most recent call last):
   File "E:\hupai\component\app_thread.py", line 237, in read_lowest_price
     str_price = Price_read()
@@ -533,8 +287,8 @@ Traceback (most recent call last):
   File "E:\hupai\component\read_pic.py", line 99, in cut
     diff = xy[-1][2]  # 最后一个 图像块
 IndexError: list index out of range
-Tue, 17 Jul 2018 09:12:53 app_thread.py[line:257] ERROR 识别价格失败
-Tue, 17 Jul 2018 09:12:53 app_thread.py[line:258] ERROR this is an exception message
+Thu, 19 Jul 2018 02:06:49 app_thread.py[line:257] ERROR 识别价格失败
+Thu, 19 Jul 2018 02:06:49 app_thread.py[line:258] ERROR this is an exception message
 Traceback (most recent call last):
   File "E:\hupai\component\app_thread.py", line 237, in read_lowest_price
     str_price = Price_read()
@@ -545,8 +299,8 @@ Traceback (most recent call last):
   File "E:\hupai\component\read_pic.py", line 99, in cut
     diff = xy[-1][2]  # 最后一个 图像块
 IndexError: list index out of range
-Tue, 17 Jul 2018 09:12:53 app_thread.py[line:257] ERROR 识别价格失败
-Tue, 17 Jul 2018 09:12:53 app_thread.py[line:258] ERROR this is an exception message
+Thu, 19 Jul 2018 02:06:49 app_thread.py[line:257] ERROR 识别价格失败
+Thu, 19 Jul 2018 02:06:49 app_thread.py[line:258] ERROR this is an exception message
 Traceback (most recent call last):
   File "E:\hupai\component\app_thread.py", line 237, in read_lowest_price
     str_price = Price_read()
@@ -557,8 +311,8 @@ Traceback (most recent call last):
   File "E:\hupai\component\read_pic.py", line 99, in cut
     diff = xy[-1][2]  # 最后一个 图像块
 IndexError: list index out of range
-Tue, 17 Jul 2018 09:12:54 app_thread.py[line:257] ERROR 识别价格失败
-Tue, 17 Jul 2018 09:12:54 app_thread.py[line:258] ERROR this is an exception message
+Thu, 19 Jul 2018 02:06:50 app_thread.py[line:257] ERROR 识别价格失败
+Thu, 19 Jul 2018 02:06:50 app_thread.py[line:258] ERROR this is an exception message
 Traceback (most recent call last):
   File "E:\hupai\component\app_thread.py", line 237, in read_lowest_price
     str_price = Price_read()
@@ -569,8 +323,8 @@ Traceback (most recent call last):
   File "E:\hupai\component\read_pic.py", line 99, in cut
     diff = xy[-1][2]  # 最后一个 图像块
 IndexError: list index out of range
-Tue, 17 Jul 2018 09:12:54 app_thread.py[line:257] ERROR 识别价格失败
-Tue, 17 Jul 2018 09:12:54 app_thread.py[line:258] ERROR this is an exception message
+Thu, 19 Jul 2018 02:06:50 app_thread.py[line:257] ERROR 识别价格失败
+Thu, 19 Jul 2018 02:06:50 app_thread.py[line:258] ERROR this is an exception message
 Traceback (most recent call last):
   File "E:\hupai\component\app_thread.py", line 237, in read_lowest_price
     str_price = Price_read()
@@ -581,8 +335,8 @@ Traceback (most recent call last):
   File "E:\hupai\component\read_pic.py", line 99, in cut
     diff = xy[-1][2]  # 最后一个 图像块
 IndexError: list index out of range
-Tue, 17 Jul 2018 09:12:54 app_thread.py[line:257] ERROR 识别价格失败
-Tue, 17 Jul 2018 09:12:54 app_thread.py[line:258] ERROR this is an exception message
+Thu, 19 Jul 2018 02:06:50 app_thread.py[line:257] ERROR 识别价格失败
+Thu, 19 Jul 2018 02:06:50 app_thread.py[line:258] ERROR this is an exception message
 Traceback (most recent call last):
   File "E:\hupai\component\app_thread.py", line 237, in read_lowest_price
     str_price = Price_read()
@@ -593,8 +347,8 @@ Traceback (most recent call last):
   File "E:\hupai\component\read_pic.py", line 99, in cut
     diff = xy[-1][2]  # 最后一个 图像块
 IndexError: list index out of range
-Tue, 17 Jul 2018 09:12:54 app_thread.py[line:257] ERROR 识别价格失败
-Tue, 17 Jul 2018 09:12:54 app_thread.py[line:258] ERROR this is an exception message
+Thu, 19 Jul 2018 02:06:50 app_thread.py[line:257] ERROR 识别价格失败
+Thu, 19 Jul 2018 02:06:50 app_thread.py[line:258] ERROR this is an exception message
 Traceback (most recent call last):
   File "E:\hupai\component\app_thread.py", line 237, in read_lowest_price
     str_price = Price_read()
@@ -605,20 +359,17 @@ Traceback (most recent call last):
   File "E:\hupai\component\read_pic.py", line 99, in cut
     diff = xy[-1][2]  # 最后一个 图像块
 IndexError: list index out of range
-Tue, 17 Jul 2018 09:12:54 app_thread.py[line:257] ERROR 识别价格失败
-Tue, 17 Jul 2018 09:12:54 app_thread.py[line:258] ERROR this is an exception message
+Thu, 19 Jul 2018 02:06:50 imgcut.py[line:104] ERROR this is an exception message
 Traceback (most recent call last):
-  File "E:\hupai\component\app_thread.py", line 237, in read_lowest_price
-    str_price = Price_read()
-  File "E:\hupai\component\imgcut.py", line 368, in Price_read
-    price = readpic(lowest_price_img)
+  File "E:\hupai\component\imgcut.py", line 91, in timeset
+    currenttime = readpic(currenttime)  # 识别出来的时间
   File "E:\hupai\component\read_pic.py", line 267, in readpic
     testData = cut(img)
   File "E:\hupai\component\read_pic.py", line 99, in cut
     diff = xy[-1][2]  # 最后一个 图像块
 IndexError: list index out of range
-Tue, 17 Jul 2018 09:12:55 app_thread.py[line:257] ERROR 识别价格失败
-Tue, 17 Jul 2018 09:12:55 app_thread.py[line:258] ERROR this is an exception message
+Thu, 19 Jul 2018 02:06:50 app_thread.py[line:257] ERROR 识别价格失败
+Thu, 19 Jul 2018 02:06:50 app_thread.py[line:258] ERROR this is an exception message
 Traceback (most recent call last):
   File "E:\hupai\component\app_thread.py", line 237, in read_lowest_price
     str_price = Price_read()
@@ -629,8 +380,8 @@ Traceback (most recent call last):
   File "E:\hupai\component\read_pic.py", line 99, in cut
     diff = xy[-1][2]  # 最后一个 图像块
 IndexError: list index out of range
-Tue, 17 Jul 2018 09:12:55 app_thread.py[line:257] ERROR 识别价格失败
-Tue, 17 Jul 2018 09:12:55 app_thread.py[line:258] ERROR this is an exception message
+Thu, 19 Jul 2018 02:06:50 app_thread.py[line:257] ERROR 识别价格失败
+Thu, 19 Jul 2018 02:06:50 app_thread.py[line:258] ERROR this is an exception message
 Traceback (most recent call last):
   File "E:\hupai\component\app_thread.py", line 237, in read_lowest_price
     str_price = Price_read()
@@ -641,8 +392,8 @@ Traceback (most recent call last):
   File "E:\hupai\component\read_pic.py", line 99, in cut
     diff = xy[-1][2]  # 最后一个 图像块
 IndexError: list index out of range
-Tue, 17 Jul 2018 09:12:55 app_thread.py[line:257] ERROR 识别价格失败
-Tue, 17 Jul 2018 09:12:55 app_thread.py[line:258] ERROR this is an exception message
+Thu, 19 Jul 2018 02:06:50 app_thread.py[line:257] ERROR 识别价格失败
+Thu, 19 Jul 2018 02:06:50 app_thread.py[line:258] ERROR this is an exception message
 Traceback (most recent call last):
   File "E:\hupai\component\app_thread.py", line 237, in read_lowest_price
     str_price = Price_read()
@@ -653,8 +404,8 @@ Traceback (most recent call last):
   File "E:\hupai\component\read_pic.py", line 99, in cut
     diff = xy[-1][2]  # 最后一个 图像块
 IndexError: list index out of range
-Tue, 17 Jul 2018 09:12:55 app_thread.py[line:257] ERROR 识别价格失败
-Tue, 17 Jul 2018 09:12:55 app_thread.py[line:258] ERROR this is an exception message
+Thu, 19 Jul 2018 02:06:50 app_thread.py[line:257] ERROR 识别价格失败
+Thu, 19 Jul 2018 02:06:50 app_thread.py[line:258] ERROR this is an exception message
 Traceback (most recent call last):
   File "E:\hupai\component\app_thread.py", line 237, in read_lowest_price
     str_price = Price_read()
@@ -665,8 +416,8 @@ Traceback (most recent call last):
   File "E:\hupai\component\read_pic.py", line 99, in cut
     diff = xy[-1][2]  # 最后一个 图像块
 IndexError: list index out of range
-Tue, 17 Jul 2018 09:12:55 app_thread.py[line:257] ERROR 识别价格失败
-Tue, 17 Jul 2018 09:12:55 app_thread.py[line:258] ERROR this is an exception message
+Thu, 19 Jul 2018 02:06:50 app_thread.py[line:257] ERROR 识别价格失败
+Thu, 19 Jul 2018 02:06:50 app_thread.py[line:258] ERROR this is an exception message
 Traceback (most recent call last):
   File "E:\hupai\component\app_thread.py", line 237, in read_lowest_price
     str_price = Price_read()
@@ -677,8 +428,8 @@ Traceback (most recent call last):
   File "E:\hupai\component\read_pic.py", line 99, in cut
     diff = xy[-1][2]  # 最后一个 图像块
 IndexError: list index out of range
-Tue, 17 Jul 2018 09:12:55 app_thread.py[line:257] ERROR 识别价格失败
-Tue, 17 Jul 2018 09:12:55 app_thread.py[line:258] ERROR this is an exception message
+Thu, 19 Jul 2018 02:06:50 app_thread.py[line:257] ERROR 识别价格失败
+Thu, 19 Jul 2018 02:06:50 app_thread.py[line:258] ERROR this is an exception message
 Traceback (most recent call last):
   File "E:\hupai\component\app_thread.py", line 237, in read_lowest_price
     str_price = Price_read()
@@ -689,8 +440,8 @@ Traceback (most recent call last):
   File "E:\hupai\component\read_pic.py", line 99, in cut
     diff = xy[-1][2]  # 最后一个 图像块
 IndexError: list index out of range
-Tue, 17 Jul 2018 09:12:56 app_thread.py[line:257] ERROR 识别价格失败
-Tue, 17 Jul 2018 09:12:56 app_thread.py[line:258] ERROR this is an exception message
+Thu, 19 Jul 2018 02:06:51 app_thread.py[line:257] ERROR 识别价格失败
+Thu, 19 Jul 2018 02:06:51 app_thread.py[line:258] ERROR this is an exception message
 Traceback (most recent call last):
   File "E:\hupai\component\app_thread.py", line 237, in read_lowest_price
     str_price = Price_read()
@@ -701,8 +452,8 @@ Traceback (most recent call last):
   File "E:\hupai\component\read_pic.py", line 99, in cut
     diff = xy[-1][2]  # 最后一个 图像块
 IndexError: list index out of range
-Tue, 17 Jul 2018 09:12:56 app_thread.py[line:257] ERROR 识别价格失败
-Tue, 17 Jul 2018 09:12:56 app_thread.py[line:258] ERROR this is an exception message
+Thu, 19 Jul 2018 02:06:51 app_thread.py[line:257] ERROR 识别价格失败
+Thu, 19 Jul 2018 02:06:51 app_thread.py[line:258] ERROR this is an exception message
 Traceback (most recent call last):
   File "E:\hupai\component\app_thread.py", line 237, in read_lowest_price
     str_price = Price_read()
@@ -713,8 +464,8 @@ Traceback (most recent call last):
   File "E:\hupai\component\read_pic.py", line 99, in cut
     diff = xy[-1][2]  # 最后一个 图像块
 IndexError: list index out of range
-Tue, 17 Jul 2018 09:12:56 app_thread.py[line:257] ERROR 识别价格失败
-Tue, 17 Jul 2018 09:12:56 app_thread.py[line:258] ERROR this is an exception message
+Thu, 19 Jul 2018 02:06:51 app_thread.py[line:257] ERROR 识别价格失败
+Thu, 19 Jul 2018 02:06:51 app_thread.py[line:258] ERROR this is an exception message
 Traceback (most recent call last):
   File "E:\hupai\component\app_thread.py", line 237, in read_lowest_price
     str_price = Price_read()
@@ -725,8 +476,8 @@ Traceback (most recent call last):
   File "E:\hupai\component\read_pic.py", line 99, in cut
     diff = xy[-1][2]  # 最后一个 图像块
 IndexError: list index out of range
-Tue, 17 Jul 2018 09:12:56 app_thread.py[line:257] ERROR 识别价格失败
-Tue, 17 Jul 2018 09:12:56 app_thread.py[line:258] ERROR this is an exception message
+Thu, 19 Jul 2018 02:06:51 app_thread.py[line:257] ERROR 识别价格失败
+Thu, 19 Jul 2018 02:06:51 app_thread.py[line:258] ERROR this is an exception message
 Traceback (most recent call last):
   File "E:\hupai\component\app_thread.py", line 237, in read_lowest_price
     str_price = Price_read()
@@ -737,20 +488,17 @@ Traceback (most recent call last):
   File "E:\hupai\component\read_pic.py", line 99, in cut
     diff = xy[-1][2]  # 最后一个 图像块
 IndexError: list index out of range
-Tue, 17 Jul 2018 09:12:56 app_thread.py[line:257] ERROR 识别价格失败
-Tue, 17 Jul 2018 09:12:56 app_thread.py[line:258] ERROR this is an exception message
+Thu, 19 Jul 2018 02:06:51 imgcut.py[line:104] ERROR this is an exception message
 Traceback (most recent call last):
-  File "E:\hupai\component\app_thread.py", line 237, in read_lowest_price
-    str_price = Price_read()
-  File "E:\hupai\component\imgcut.py", line 368, in Price_read
-    price = readpic(lowest_price_img)
+  File "E:\hupai\component\imgcut.py", line 91, in timeset
+    currenttime = readpic(currenttime)  # 识别出来的时间
   File "E:\hupai\component\read_pic.py", line 267, in readpic
     testData = cut(img)
   File "E:\hupai\component\read_pic.py", line 99, in cut
     diff = xy[-1][2]  # 最后一个 图像块
 IndexError: list index out of range
-Tue, 17 Jul 2018 09:12:56 app_thread.py[line:257] ERROR 识别价格失败
-Tue, 17 Jul 2018 09:12:56 app_thread.py[line:258] ERROR this is an exception message
+Thu, 19 Jul 2018 02:06:51 app_thread.py[line:257] ERROR 识别价格失败
+Thu, 19 Jul 2018 02:06:51 app_thread.py[line:258] ERROR this is an exception message
 Traceback (most recent call last):
   File "E:\hupai\component\app_thread.py", line 237, in read_lowest_price
     str_price = Price_read()
@@ -761,8 +509,8 @@ Traceback (most recent call last):
   File "E:\hupai\component\read_pic.py", line 99, in cut
     diff = xy[-1][2]  # 最后一个 图像块
 IndexError: list index out of range
-Tue, 17 Jul 2018 09:12:57 app_thread.py[line:257] ERROR 识别价格失败
-Tue, 17 Jul 2018 09:12:57 app_thread.py[line:258] ERROR this is an exception message
+Thu, 19 Jul 2018 02:06:51 app_thread.py[line:257] ERROR 识别价格失败
+Thu, 19 Jul 2018 02:06:51 app_thread.py[line:258] ERROR this is an exception message
 Traceback (most recent call last):
   File "E:\hupai\component\app_thread.py", line 237, in read_lowest_price
     str_price = Price_read()
@@ -773,8 +521,8 @@ Traceback (most recent call last):
   File "E:\hupai\component\read_pic.py", line 99, in cut
     diff = xy[-1][2]  # 最后一个 图像块
 IndexError: list index out of range
-Tue, 17 Jul 2018 09:12:57 app_thread.py[line:257] ERROR 识别价格失败
-Tue, 17 Jul 2018 09:12:57 app_thread.py[line:258] ERROR this is an exception message
+Thu, 19 Jul 2018 02:06:51 app_thread.py[line:257] ERROR 识别价格失败
+Thu, 19 Jul 2018 02:06:51 app_thread.py[line:258] ERROR this is an exception message
 Traceback (most recent call last):
   File "E:\hupai\component\app_thread.py", line 237, in read_lowest_price
     str_price = Price_read()
@@ -785,8 +533,8 @@ Traceback (most recent call last):
   File "E:\hupai\component\read_pic.py", line 99, in cut
     diff = xy[-1][2]  # 最后一个 图像块
 IndexError: list index out of range
-Tue, 17 Jul 2018 09:12:57 app_thread.py[line:257] ERROR 识别价格失败
-Tue, 17 Jul 2018 09:12:57 app_thread.py[line:258] ERROR this is an exception message
+Thu, 19 Jul 2018 02:06:51 app_thread.py[line:257] ERROR 识别价格失败
+Thu, 19 Jul 2018 02:06:51 app_thread.py[line:258] ERROR this is an exception message
 Traceback (most recent call last):
   File "E:\hupai\component\app_thread.py", line 237, in read_lowest_price
     str_price = Price_read()
@@ -797,8 +545,8 @@ Traceback (most recent call last):
   File "E:\hupai\component\read_pic.py", line 99, in cut
     diff = xy[-1][2]  # 最后一个 图像块
 IndexError: list index out of range
-Tue, 17 Jul 2018 09:12:57 app_thread.py[line:257] ERROR 识别价格失败
-Tue, 17 Jul 2018 09:12:57 app_thread.py[line:258] ERROR this is an exception message
+Thu, 19 Jul 2018 02:06:51 app_thread.py[line:257] ERROR 识别价格失败
+Thu, 19 Jul 2018 02:06:51 app_thread.py[line:258] ERROR this is an exception message
 Traceback (most recent call last):
   File "E:\hupai\component\app_thread.py", line 237, in read_lowest_price
     str_price = Price_read()
@@ -809,8 +557,8 @@ Traceback (most recent call last):
   File "E:\hupai\component\read_pic.py", line 99, in cut
     diff = xy[-1][2]  # 最后一个 图像块
 IndexError: list index out of range
-Tue, 17 Jul 2018 09:12:57 app_thread.py[line:257] ERROR 识别价格失败
-Tue, 17 Jul 2018 09:12:57 app_thread.py[line:258] ERROR this is an exception message
+Thu, 19 Jul 2018 02:06:52 app_thread.py[line:257] ERROR 识别价格失败
+Thu, 19 Jul 2018 02:06:52 app_thread.py[line:258] ERROR this is an exception message
 Traceback (most recent call last):
   File "E:\hupai\component\app_thread.py", line 237, in read_lowest_price
     str_price = Price_read()
@@ -821,8 +569,8 @@ Traceback (most recent call last):
   File "E:\hupai\component\read_pic.py", line 99, in cut
     diff = xy[-1][2]  # 最后一个 图像块
 IndexError: list index out of range
-Tue, 17 Jul 2018 09:12:57 app_thread.py[line:257] ERROR 识别价格失败
-Tue, 17 Jul 2018 09:12:57 app_thread.py[line:258] ERROR this is an exception message
+Thu, 19 Jul 2018 02:06:52 app_thread.py[line:257] ERROR 识别价格失败
+Thu, 19 Jul 2018 02:06:52 app_thread.py[line:258] ERROR this is an exception message
 Traceback (most recent call last):
   File "E:\hupai\component\app_thread.py", line 237, in read_lowest_price
     str_price = Price_read()
@@ -833,8 +581,8 @@ Traceback (most recent call last):
   File "E:\hupai\component\read_pic.py", line 99, in cut
     diff = xy[-1][2]  # 最后一个 图像块
 IndexError: list index out of range
-Tue, 17 Jul 2018 09:12:58 app_thread.py[line:257] ERROR 识别价格失败
-Tue, 17 Jul 2018 09:12:58 app_thread.py[line:258] ERROR this is an exception message
+Thu, 19 Jul 2018 02:06:52 app_thread.py[line:257] ERROR 识别价格失败
+Thu, 19 Jul 2018 02:06:52 app_thread.py[line:258] ERROR this is an exception message
 Traceback (most recent call last):
   File "E:\hupai\component\app_thread.py", line 237, in read_lowest_price
     str_price = Price_read()
@@ -845,8 +593,8 @@ Traceback (most recent call last):
   File "E:\hupai\component\read_pic.py", line 99, in cut
     diff = xy[-1][2]  # 最后一个 图像块
 IndexError: list index out of range
-Tue, 17 Jul 2018 09:12:58 app_thread.py[line:257] ERROR 识别价格失败
-Tue, 17 Jul 2018 09:12:58 app_thread.py[line:258] ERROR this is an exception message
+Thu, 19 Jul 2018 02:06:52 app_thread.py[line:257] ERROR 识别价格失败
+Thu, 19 Jul 2018 02:06:52 app_thread.py[line:258] ERROR this is an exception message
 Traceback (most recent call last):
   File "E:\hupai\component\app_thread.py", line 237, in read_lowest_price
     str_price = Price_read()
@@ -857,20 +605,17 @@ Traceback (most recent call last):
   File "E:\hupai\component\read_pic.py", line 99, in cut
     diff = xy[-1][2]  # 最后一个 图像块
 IndexError: list index out of range
-Tue, 17 Jul 2018 09:12:58 app_thread.py[line:257] ERROR 识别价格失败
-Tue, 17 Jul 2018 09:12:58 app_thread.py[line:258] ERROR this is an exception message
+Thu, 19 Jul 2018 02:06:52 imgcut.py[line:104] ERROR this is an exception message
 Traceback (most recent call last):
-  File "E:\hupai\component\app_thread.py", line 237, in read_lowest_price
-    str_price = Price_read()
-  File "E:\hupai\component\imgcut.py", line 368, in Price_read
-    price = readpic(lowest_price_img)
+  File "E:\hupai\component\imgcut.py", line 91, in timeset
+    currenttime = readpic(currenttime)  # 识别出来的时间
   File "E:\hupai\component\read_pic.py", line 267, in readpic
     testData = cut(img)
   File "E:\hupai\component\read_pic.py", line 99, in cut
     diff = xy[-1][2]  # 最后一个 图像块
 IndexError: list index out of range
-Tue, 17 Jul 2018 09:12:58 app_thread.py[line:257] ERROR 识别价格失败
-Tue, 17 Jul 2018 09:12:58 app_thread.py[line:258] ERROR this is an exception message
+Thu, 19 Jul 2018 02:06:52 app_thread.py[line:257] ERROR 识别价格失败
+Thu, 19 Jul 2018 02:06:52 app_thread.py[line:258] ERROR this is an exception message
 Traceback (most recent call last):
   File "E:\hupai\component\app_thread.py", line 237, in read_lowest_price
     str_price = Price_read()
@@ -881,8 +626,8 @@ Traceback (most recent call last):
   File "E:\hupai\component\read_pic.py", line 99, in cut
     diff = xy[-1][2]  # 最后一个 图像块
 IndexError: list index out of range
-Tue, 17 Jul 2018 09:12:58 app_thread.py[line:257] ERROR 识别价格失败
-Tue, 17 Jul 2018 09:12:58 app_thread.py[line:258] ERROR this is an exception message
+Thu, 19 Jul 2018 02:06:52 app_thread.py[line:257] ERROR 识别价格失败
+Thu, 19 Jul 2018 02:06:52 app_thread.py[line:258] ERROR this is an exception message
 Traceback (most recent call last):
   File "E:\hupai\component\app_thread.py", line 237, in read_lowest_price
     str_price = Price_read()
@@ -893,8 +638,8 @@ Traceback (most recent call last):
   File "E:\hupai\component\read_pic.py", line 99, in cut
     diff = xy[-1][2]  # 最后一个 图像块
 IndexError: list index out of range
-Tue, 17 Jul 2018 09:12:58 app_thread.py[line:257] ERROR 识别价格失败
-Tue, 17 Jul 2018 09:12:58 app_thread.py[line:258] ERROR this is an exception message
+Thu, 19 Jul 2018 02:06:52 app_thread.py[line:257] ERROR 识别价格失败
+Thu, 19 Jul 2018 02:06:52 app_thread.py[line:258] ERROR this is an exception message
 Traceback (most recent call last):
   File "E:\hupai\component\app_thread.py", line 237, in read_lowest_price
     str_price = Price_read()
@@ -905,8 +650,8 @@ Traceback (most recent call last):
   File "E:\hupai\component\read_pic.py", line 99, in cut
     diff = xy[-1][2]  # 最后一个 图像块
 IndexError: list index out of range
-Tue, 17 Jul 2018 09:12:59 app_thread.py[line:257] ERROR 识别价格失败
-Tue, 17 Jul 2018 09:12:59 app_thread.py[line:258] ERROR this is an exception message
+Thu, 19 Jul 2018 02:06:52 app_thread.py[line:257] ERROR 识别价格失败
+Thu, 19 Jul 2018 02:06:52 app_thread.py[line:258] ERROR this is an exception message
 Traceback (most recent call last):
   File "E:\hupai\component\app_thread.py", line 237, in read_lowest_price
     str_price = Price_read()
@@ -917,8 +662,8 @@ Traceback (most recent call last):
   File "E:\hupai\component\read_pic.py", line 99, in cut
     diff = xy[-1][2]  # 最后一个 图像块
 IndexError: list index out of range
-Tue, 17 Jul 2018 09:12:59 app_thread.py[line:257] ERROR 识别价格失败
-Tue, 17 Jul 2018 09:12:59 app_thread.py[line:258] ERROR this is an exception message
+Thu, 19 Jul 2018 02:06:53 app_thread.py[line:257] ERROR 识别价格失败
+Thu, 19 Jul 2018 02:06:53 app_thread.py[line:258] ERROR this is an exception message
 Traceback (most recent call last):
   File "E:\hupai\component\app_thread.py", line 237, in read_lowest_price
     str_price = Price_read()
@@ -929,8 +674,8 @@ Traceback (most recent call last):
   File "E:\hupai\component\read_pic.py", line 99, in cut
     diff = xy[-1][2]  # 最后一个 图像块
 IndexError: list index out of range
-Tue, 17 Jul 2018 09:12:59 app_thread.py[line:257] ERROR 识别价格失败
-Tue, 17 Jul 2018 09:12:59 app_thread.py[line:258] ERROR this is an exception message
+Thu, 19 Jul 2018 02:06:53 app_thread.py[line:257] ERROR 识别价格失败
+Thu, 19 Jul 2018 02:06:53 app_thread.py[line:258] ERROR this is an exception message
 Traceback (most recent call last):
   File "E:\hupai\component\app_thread.py", line 237, in read_lowest_price
     str_price = Price_read()
@@ -941,8 +686,8 @@ Traceback (most recent call last):
   File "E:\hupai\component\read_pic.py", line 99, in cut
     diff = xy[-1][2]  # 最后一个 图像块
 IndexError: list index out of range
-Tue, 17 Jul 2018 09:12:59 app_thread.py[line:257] ERROR 识别价格失败
-Tue, 17 Jul 2018 09:12:59 app_thread.py[line:258] ERROR this is an exception message
+Thu, 19 Jul 2018 02:06:53 app_thread.py[line:257] ERROR 识别价格失败
+Thu, 19 Jul 2018 02:06:53 app_thread.py[line:258] ERROR this is an exception message
 Traceback (most recent call last):
   File "E:\hupai\component\app_thread.py", line 237, in read_lowest_price
     str_price = Price_read()
@@ -953,8 +698,8 @@ Traceback (most recent call last):
   File "E:\hupai\component\read_pic.py", line 99, in cut
     diff = xy[-1][2]  # 最后一个 图像块
 IndexError: list index out of range
-Tue, 17 Jul 2018 09:12:59 app_thread.py[line:257] ERROR 识别价格失败
-Tue, 17 Jul 2018 09:12:59 app_thread.py[line:258] ERROR this is an exception message
+Thu, 19 Jul 2018 02:06:53 app_thread.py[line:257] ERROR 识别价格失败
+Thu, 19 Jul 2018 02:06:53 app_thread.py[line:258] ERROR this is an exception message
 Traceback (most recent call last):
   File "E:\hupai\component\app_thread.py", line 237, in read_lowest_price
     str_price = Price_read()
@@ -965,20 +710,17 @@ Traceback (most recent call last):
   File "E:\hupai\component\read_pic.py", line 99, in cut
     diff = xy[-1][2]  # 最后一个 图像块
 IndexError: list index out of range
-Tue, 17 Jul 2018 09:12:59 app_thread.py[line:257] ERROR 识别价格失败
-Tue, 17 Jul 2018 09:12:59 app_thread.py[line:258] ERROR this is an exception message
+Thu, 19 Jul 2018 02:06:53 imgcut.py[line:104] ERROR this is an exception message
 Traceback (most recent call last):
-  File "E:\hupai\component\app_thread.py", line 237, in read_lowest_price
-    str_price = Price_read()
-  File "E:\hupai\component\imgcut.py", line 368, in Price_read
-    price = readpic(lowest_price_img)
+  File "E:\hupai\component\imgcut.py", line 91, in timeset
+    currenttime = readpic(currenttime)  # 识别出来的时间
   File "E:\hupai\component\read_pic.py", line 267, in readpic
     testData = cut(img)
   File "E:\hupai\component\read_pic.py", line 99, in cut
     diff = xy[-1][2]  # 最后一个 图像块
 IndexError: list index out of range
-Tue, 17 Jul 2018 09:12:59 app_thread.py[line:257] ERROR 识别价格失败
-Tue, 17 Jul 2018 09:12:59 app_thread.py[line:258] ERROR this is an exception message
+Thu, 19 Jul 2018 02:06:53 app_thread.py[line:257] ERROR 识别价格失败
+Thu, 19 Jul 2018 02:06:53 app_thread.py[line:258] ERROR this is an exception message
 Traceback (most recent call last):
   File "E:\hupai\component\app_thread.py", line 237, in read_lowest_price
     str_price = Price_read()
@@ -989,8 +731,8 @@ Traceback (most recent call last):
   File "E:\hupai\component\read_pic.py", line 99, in cut
     diff = xy[-1][2]  # 最后一个 图像块
 IndexError: list index out of range
-Tue, 17 Jul 2018 09:13:00 app_thread.py[line:257] ERROR 识别价格失败
-Tue, 17 Jul 2018 09:13:00 app_thread.py[line:258] ERROR this is an exception message
+Thu, 19 Jul 2018 02:06:53 app_thread.py[line:257] ERROR 识别价格失败
+Thu, 19 Jul 2018 02:06:53 app_thread.py[line:258] ERROR this is an exception message
 Traceback (most recent call last):
   File "E:\hupai\component\app_thread.py", line 237, in read_lowest_price
     str_price = Price_read()
@@ -1001,8 +743,8 @@ Traceback (most recent call last):
   File "E:\hupai\component\read_pic.py", line 99, in cut
     diff = xy[-1][2]  # 最后一个 图像块
 IndexError: list index out of range
-Tue, 17 Jul 2018 09:13:00 app_thread.py[line:257] ERROR 识别价格失败
-Tue, 17 Jul 2018 09:13:00 app_thread.py[line:258] ERROR this is an exception message
+Thu, 19 Jul 2018 02:06:53 app_thread.py[line:257] ERROR 识别价格失败
+Thu, 19 Jul 2018 02:06:53 app_thread.py[line:258] ERROR this is an exception message
 Traceback (most recent call last):
   File "E:\hupai\component\app_thread.py", line 237, in read_lowest_price
     str_price = Price_read()
@@ -1013,8 +755,8 @@ Traceback (most recent call last):
   File "E:\hupai\component\read_pic.py", line 99, in cut
     diff = xy[-1][2]  # 最后一个 图像块
 IndexError: list index out of range
-Tue, 17 Jul 2018 09:13:00 app_thread.py[line:257] ERROR 识别价格失败
-Tue, 17 Jul 2018 09:13:00 app_thread.py[line:258] ERROR this is an exception message
+Thu, 19 Jul 2018 02:06:53 app_thread.py[line:257] ERROR 识别价格失败
+Thu, 19 Jul 2018 02:06:53 app_thread.py[line:258] ERROR this is an exception message
 Traceback (most recent call last):
   File "E:\hupai\component\app_thread.py", line 237, in read_lowest_price
     str_price = Price_read()
@@ -1025,8 +767,8 @@ Traceback (most recent call last):
   File "E:\hupai\component\read_pic.py", line 99, in cut
     diff = xy[-1][2]  # 最后一个 图像块
 IndexError: list index out of range
-Tue, 17 Jul 2018 09:13:00 app_thread.py[line:257] ERROR 识别价格失败
-Tue, 17 Jul 2018 09:13:00 app_thread.py[line:258] ERROR this is an exception message
+Thu, 19 Jul 2018 02:06:53 app_thread.py[line:257] ERROR 识别价格失败
+Thu, 19 Jul 2018 02:06:53 app_thread.py[line:258] ERROR this is an exception message
 Traceback (most recent call last):
   File "E:\hupai\component\app_thread.py", line 237, in read_lowest_price
     str_price = Price_read()
@@ -1037,8 +779,8 @@ Traceback (most recent call last):
   File "E:\hupai\component\read_pic.py", line 99, in cut
     diff = xy[-1][2]  # 最后一个 图像块
 IndexError: list index out of range
-Tue, 17 Jul 2018 09:13:00 app_thread.py[line:257] ERROR 识别价格失败
-Tue, 17 Jul 2018 09:13:00 app_thread.py[line:258] ERROR this is an exception message
+Thu, 19 Jul 2018 02:06:54 app_thread.py[line:257] ERROR 识别价格失败
+Thu, 19 Jul 2018 02:06:54 app_thread.py[line:258] ERROR this is an exception message
 Traceback (most recent call last):
   File "E:\hupai\component\app_thread.py", line 237, in read_lowest_price
     str_price = Price_read()
@@ -1049,8 +791,8 @@ Traceback (most recent call last):
   File "E:\hupai\component\read_pic.py", line 99, in cut
     diff = xy[-1][2]  # 最后一个 图像块
 IndexError: list index out of range
-Tue, 17 Jul 2018 09:13:00 app_thread.py[line:257] ERROR 识别价格失败
-Tue, 17 Jul 2018 09:13:00 app_thread.py[line:258] ERROR this is an exception message
+Thu, 19 Jul 2018 02:06:54 app_thread.py[line:257] ERROR 识别价格失败
+Thu, 19 Jul 2018 02:06:54 app_thread.py[line:258] ERROR this is an exception message
 Traceback (most recent call last):
   File "E:\hupai\component\app_thread.py", line 237, in read_lowest_price
     str_price = Price_read()
@@ -1061,8 +803,8 @@ Traceback (most recent call last):
   File "E:\hupai\component\read_pic.py", line 99, in cut
     diff = xy[-1][2]  # 最后一个 图像块
 IndexError: list index out of range
-Tue, 17 Jul 2018 09:13:01 app_thread.py[line:257] ERROR 识别价格失败
-Tue, 17 Jul 2018 09:13:01 app_thread.py[line:258] ERROR this is an exception message
+Thu, 19 Jul 2018 02:06:54 app_thread.py[line:257] ERROR 识别价格失败
+Thu, 19 Jul 2018 02:06:54 app_thread.py[line:258] ERROR this is an exception message
 Traceback (most recent call last):
   File "E:\hupai\component\app_thread.py", line 237, in read_lowest_price
     str_price = Price_read()
@@ -1073,8 +815,8 @@ Traceback (most recent call last):
   File "E:\hupai\component\read_pic.py", line 99, in cut
     diff = xy[-1][2]  # 最后一个 图像块
 IndexError: list index out of range
-Tue, 17 Jul 2018 09:13:01 app_thread.py[line:257] ERROR 识别价格失败
-Tue, 17 Jul 2018 09:13:01 app_thread.py[line:258] ERROR this is an exception message
+Thu, 19 Jul 2018 02:06:54 app_thread.py[line:257] ERROR 识别价格失败
+Thu, 19 Jul 2018 02:06:54 app_thread.py[line:258] ERROR this is an exception message
 Traceback (most recent call last):
   File "E:\hupai\component\app_thread.py", line 237, in read_lowest_price
     str_price = Price_read()
@@ -1085,8 +827,8 @@ Traceback (most recent call last):
   File "E:\hupai\component\read_pic.py", line 99, in cut
     diff = xy[-1][2]  # 最后一个 图像块
 IndexError: list index out of range
-Tue, 17 Jul 2018 09:13:01 app_thread.py[line:257] ERROR 识别价格失败
-Tue, 17 Jul 2018 09:13:01 app_thread.py[line:258] ERROR this is an exception message
+Thu, 19 Jul 2018 02:06:54 app_thread.py[line:257] ERROR 识别价格失败
+Thu, 19 Jul 2018 02:06:54 app_thread.py[line:258] ERROR this is an exception message
 Traceback (most recent call last):
   File "E:\hupai\component\app_thread.py", line 237, in read_lowest_price
     str_price = Price_read()
@@ -1097,5 +839,5 @@ Traceback (most recent call last):
   File "E:\hupai\component\read_pic.py", line 99, in cut
     diff = xy[-1][2]  # 最后一个 图像块
 IndexError: list index out of range
-Tue, 17 Jul 2018 09:13:03 connectionpool.py[line:824] DEBUG Starting new HTTPS connection (1): hupai.pro
-Tue, 17 Jul 2018 09:13:03 connectionpool.py[line:396] DEBUG https://hupai.pro:443 "GET /api/bid/bid_logout/?type=identify_code&identify_code=h54988437&diskid=dca984ffb6ff32225862a03946345c2c073097c1&strategy_dick=%7B%220%22:%20[%220%22,%2050.0,%20700,%200,%200.5,%2055.0,%20true,%20true,%2050.0,%20700,%20100,%200.5,%2056.0,%20true,%200,%200,%2054.0,%20100,%200.6,%2055,%20200,%200.5,%2056.0,%2056.5],%20%221%22:%20[%221%22,%2040.0,%20500,%200,%200.5,%2048.0,%20true,%20true,%2050.0,%20700,%20100,%200.5,%2056.0,%20true,%200,%200,%2054.0,%20100,%200.6,%2055,%20200,%200.5,%2056.0,%2056.5],%20%222%22:%20[%222%22,%2050.0,%20700,%200,%200.5,%2055.0,%20true,%20true,%2050.0,%20700,%20100,%200.5,%2056.0,%20true,%200,%200,%2054.0,%20100,%200.6,%2055,%20200,%200.5,%2056.0,%2056.5],%20%223%22:%20[%223%22,%2035.0,%20400,%200,%200.0,%2043.0,%20true,%20true,%2045.0,%201100,%20100,%200.5,%2056.0,%20true,%200.0,%200.0,%2053.0,%20100.0,%200.5,%2054.0,%20100.0,%200.1,%2055.0,%2055.6],%20%224%22:%20[%224%22,%2040.0,%20500,%200,%200.5,%2048.0,%20true,%20true,%2050.0,%20700,%20100,%200.5,%2056.0,%20true,%200,%200,%2054.0,%20100,%200.6,%2055,%20200,%200.5,%2056.0,%2056.5],%20%22yanzhengma_scale%22:%20true,%20%22strategy_description%22:%20%22%5Cu53cc%5Cu67aa%5Cu52a8%5Cu6001%20%2035.0%5Cu79d2%5Cu52a0400%5Cu51fa%5Cu4ef7%20%2045.0%5Cu79d2%5Cu52a01100%5Cu51fa%5Cu4ef7%22,%20%22strategy_type%22:%20%223%22,%20%22enter_on%22:%20true%7D&account=%7B%22account%22:%20%2254988437%22,%20%22password%22:%20%221554%22,%20%22idcard%22:%20%22310225197904010037%22%7D HTTP/1.1" 200 27
+Thu, 19 Jul 2018 02:06:56 connectionpool.py[line:824] DEBUG Starting new HTTPS connection (1): hupai.pro
+Thu, 19 Jul 2018 02:06:56 connectionpool.py[line:396] DEBUG https://hupai.pro:443 "GET /api/bid/bid_logout/?type=identify_code&identify_code=h54988437&diskid=dca984ffb6ff32225862a03946345c2c073097c1&strategy_dick=%7B%220%22:%20[%220%22,%2050.0,%20700,%200,%200.5,%2055.0,%20true,%20true,%2050.0,%20700,%20100,%200.5,%2056.0,%20true,%200,%200,%2054.0,%20100,%200.6,%2055,%20200,%200.5,%2056.0,%2056.5],%20%221%22:%20[%221%22,%2040.0,%20500,%200,%200.5,%2048.0,%20true,%20true,%2050.0,%20700,%20100,%200.5,%2056.0,%20true,%200,%200,%2054.0,%20100,%200.6,%2055,%20200,%200.5,%2056.0,%2056.5],%20%222%22:%20[%222%22,%2050.0,%20700,%200,%200.5,%2055.0,%20true,%20true,%2050.0,%20700,%20100,%200.5,%2056.0,%20true,%200,%200,%2054.0,%20100,%200.6,%2055,%20200,%200.5,%2056.0,%2056.5],%20%223%22:%20[%223%22,%2035.0,%20500,%200,%200.0,%2043.0,%20true,%20true,%2045.0,%20900,%20100,%200.5,%2056.0,%20true,%200.0,%200.0,%2053.0,%20100.0,%200.9,%2054.0,%20100.0,%200.5,%2055.0,%2056.0],%20%224%22:%20[%224%22,%2040.0,%20500,%200,%200.5,%2048.0,%20true,%20true,%2050.0,%20700,%20100,%200.5,%2056.0,%20true,%200,%200,%2054.0,%20100,%200.6,%2055,%20200,%200.5,%2056.0,%2056.5],%20%22yanzhengma_scale%22:%20true,%20%22strategy_description%22:%20%22%5Cu53cc%5Cu67aa%5Cu52a8%5Cu6001%20%2035.0%5Cu79d2%5Cu52a0500%5Cu51fa%5Cu4ef7%20%2045.0%5Cu79d2%5Cu52a0900%5Cu51fa%5Cu4ef7%22,%20%22strategy_type%22:%20%223%22,%20%22enter_on%22:%20true%7D&account=%7B%22account%22:%20%2254988437%22,%20%22password%22:%20%221554%22,%20%22idcard%22:%20%22310225197904010037%22%7D HTTP/1.1" 200 27

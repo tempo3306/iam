@@ -27,14 +27,19 @@ class ButtonPanel(wx.Panel):
         self.statusfont = wx.Font(18, wx.FONTFAMILY_ROMAN, wx.FONTSTYLE_NORMAL, wx.FONTWEIGHT_BOLD, False)
         ##时间同步功能
         if not moni:
-            self.remotetime_button = wxButton(self, label='同步服务器时间', size=(90, 25), pos=(698, 2))
+            self.remotetime_button = wxButton(self, label='同步服务器时间', size=(90, 25), pos=(693, 2))
             self.remotetime_button.SetBackgroundColour("#ACD6ff")
             self.remotetime_button.Bind(wx.EVT_BUTTON, self.getremotetime)
 
-        self.webtime_button = wxButton(self, label='同步网页时间', size=(90, 25), pos=(790, 2))
+        self.webtime_button = wxButton(self, label='同步网页时间', size=(90, 25), pos=(785, 2))
         self.webtime_button.SetBackgroundColour("#ACD6ff")
         self.SetBackgroundColour("#ACD6ff")
         self.webtime_button.Bind(wx.EVT_BUTTON, self.timeautoajust)
+
+        self.smallbutton = wxButton(self, label='>', size=(15, 25), pos=(875, 2))
+        self.smallbutton.SetBackgroundColour("#ACD6ff")
+        self.SetBackgroundColour("#ACD6ff")
+        self.smallbutton.Bind(wx.EVT_BUTTON, self.changewebsize)
 
         if not moni:
             guopai_dianxin = get_val('guopai_dianxin')
@@ -49,8 +54,7 @@ class ButtonPanel(wx.Panel):
                 self.urlchange_button.Bind(wx.EVT_BUTTON, self.urlchange)
                 self.urlchange_button.SetBackgroundColour("#ACD6ff")
 
-        self.webstatus = wx.StaticText(self, label=webstatus_label, pos=(10, 2), size=(120, 30),
-                                       )
+        self.webstatus = wx.StaticText(self, label=webstatus_label, pos=(10, 2), size=(120, 30),)
         self.webstatus.SetFont(self.statusfont)
         # self.webstatus.SetBackgroundColour((0, 0, 150))
         self.webstatus.SetForegroundColour((255, 255, 255))
@@ -68,7 +72,14 @@ class ButtonPanel(wx.Panel):
         # tmpButton.SetBackgroundColour("#ff0000")
         # tmpButton.SetForegroundColour("#ffffff")
 
-
+    def changewebsize(self, event):
+        x, y = self.parent.GetSize()
+        if x >950:
+            smallwebsize = get_val('smallwebsize')
+            self.parent.SetSize(smallwebsize)
+        else:
+            websize = get_val('websize')
+            self.parent.SetSize(websize)
 
     def Modify(self):  # 更新
         dc = wx.BufferedDC(wx.ClientDC(self))  # ClientDC客户区  ，BufferedDC双缓冲绘图设备
@@ -550,7 +561,6 @@ class WebFrame(wx.Frame):
         ###热键控制
         hotkey_on = get_val('hotkey_on')
         if not hotkey_on:
-            set_val('hotkey_on', True)
             print("获得焦点")
             Hotkey_open()
 
@@ -558,7 +568,6 @@ class WebFrame(wx.Frame):
         ###热键控制
         hotkey_on = get_val('hotkey_on')
         if not hotkey_on:
-            set_val('hotkey_on', True)
             print("获得焦点")
             Hotkey_open()
 

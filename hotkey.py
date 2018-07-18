@@ -14,6 +14,20 @@ for i in range(65,91):
 print(keycodes)
 
 
+##################
+##注册系统级热键
+
+self.RegisterHotKey(1, wx.ACCEL_NORMAL, wx.WXK_RETURN)
+
+self.Bind(wx.EVT_HOTKEY, self.confirmprice, id=1)
+self.confirmButton = wx.Button(self, label='提交确认', size=(95, 30))
+
+accelTbl = wx.AcceleratorTable([(wx.ACCEL_NORMAL, wx.WXK_RETURN, self.confirmButton.GetId())])
+self.SetAcceleratorTable(accelTbl)
+self.confirmButton.Bind(wx.EVT_BUTTON, self.confirmprice)
+
+
+
 class MyForm(wx.Frame):
 
     # ----------------------------------------------------------------------

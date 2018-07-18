@@ -623,14 +623,19 @@ def Hotkey_listen():
 def Hotkey_open():
     try:
         # 注册快捷键
+        set_val('hotkey_on', True)
         for id, (vk, modifiers) in HOTKEYS1.items():
             if not user32.RegisterHotKey(None, id, modifiers, vk):
                 print("Unable to register id", id)
+                set_val('hotkey_on', False)
+
         for id, (vk, modifiers) in HOTKEYS2.items():
             if not user32.RegisterHotKey(None, id, modifiers, vk):
                 print("Unable to register id", id)
+                set_val('hotkey_on', False)
+
     except:
-        pass
+        print("绑定失败")
     finally:
         pass
 
