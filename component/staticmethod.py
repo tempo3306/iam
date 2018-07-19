@@ -628,12 +628,15 @@ def Hotkey_open():
             if not user32.RegisterHotKey(None, id, modifiers, vk):
                 print("Unable to register id", id)
                 set_val('hotkey_on', False)
+            else:
+                print("成功了1")
 
         for id, (vk, modifiers) in HOTKEYS2.items():
             if not user32.RegisterHotKey(None, id, modifiers, vk):
                 print("Unable to register id", id)
                 set_val('hotkey_on', False)
-
+            else:
+                print("成功了2")
     except:
         print("绑定失败")
     finally:
@@ -646,8 +649,9 @@ def Hotkey_close():
             user32.UnregisterHotKey(None, id)
         for id in HOTKEYS2.keys():
             user32.UnregisterHotKey(None, id)
+        set_val('hotkey_on', False)
     except:
-        pass
+        set_val('hotkey_on', True)
     finally:
         pass
 

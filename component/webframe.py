@@ -36,7 +36,7 @@ class ButtonPanel(wx.Panel):
         self.SetBackgroundColour("#ACD6ff")
         self.webtime_button.Bind(wx.EVT_BUTTON, self.timeautoajust)
 
-        self.smallbutton = wxButton(self, label='>', size=(15, 25), pos=(875, 2))
+        self.smallbutton = wxButton(self, label='>', size=(16, 25), pos=(875, 2))
         self.smallbutton.SetBackgroundColour("#ACD6ff")
         self.SetBackgroundColour("#ACD6ff")
         self.smallbutton.Bind(wx.EVT_BUTTON, self.changewebsize)
@@ -396,10 +396,18 @@ class WebFrame(wx.Frame):
         self.moni = moni
         self.Bind(wx.EVT_CLOSE, self.OnClose)
         self.htmlpanel = HtmlPanel(self, moni)  ## moni: True
-        webstatus_label = get_val('moni_webstatus_label')
-        self.buttonpanel = ButtonPanel(self, webstatus_label, moni)  ##moni: True
+        if moni:
+            webstatus_label = get_val('moni_webstatus_label')
+            self.buttonpanel = ButtonPanel(self, webstatus_label, moni)  ##moni: True
+        else:
+            guopai_dianxin = get_val('guopai_dianxin')
+            if guopai_dianxin:
+                webstatus_label = get_val('dianxin_webstatus_label')
+                self.buttonpanel = ButtonPanel(self, webstatus_label, moni)  ##moni: True
+            else:
+                webstatus_label = get_val('nodianxin_webstatus_label')
+                self.buttonpanel = ButtonPanel(self, webstatus_label, moni)  ##moni: True
         self.operationpanel = OperationPanel(self, tablabel)
-
 
         self.bottomstatusbarpanel = BottomeStatusbarPanel(self, moni)
 
@@ -577,7 +585,6 @@ class WebFrame(wx.Frame):
         hotkey_on = get_val('hotkey_on')
         if hotkey_on:
             print("失去焦点")
-            set_val('hotkey_on', False)
             Hotkey_close()
 
 

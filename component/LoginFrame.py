@@ -169,6 +169,10 @@ class Identify_codePanel(wx.Panel):
             wx.MessageBox('请输入激活码！')
             self.code_userText.SetFocus()
         else:
+            if Identify_code[0:3] == 'dxw':
+                Identify_code = Identify_code[3: ]
+                set_val('manage', True)
+                print("fdsfdsfdsfsd")
             set_val('Identify_code', Identify_code)  # 保存用户输入的账号密码
             self.loginthread = Login_codeThread()
             namepsd = [Identify_code]
@@ -179,7 +183,7 @@ class Identify_codePanel(wx.Panel):
             #     pickle.dump(namepsd, userfile)
 
             # self.loginBtn.setlabel(u"登录中")
-            event.GetEventObject().Disable()
+        event.GetEventObject().Disable()
 
     def OnMoni(self, event):
         print('免费模拟')
@@ -268,8 +272,9 @@ class LoginFrame(wx.Frame):
 
             elif Identify_code[0]== 'h':
                 # set_val('test', True)
-
-                set_val('paishou', True)
+                manage = get_val("manage")
+                if not manage:
+                    set_val('paishou', True)
                 # set_val('url_dianxin', login_result['url_dianxin'])
                 # set_val('url_nodianxin', login_result['url_nodianxin'])
             elif Identify_code == 'daxinwen':
@@ -292,8 +297,6 @@ class LoginFrame(wx.Frame):
                 bidpassword_js = "document.getElementById('bidpassword').value = '{0}';".format(bid_password)
                 idcard_js = "document.getElementById('idcard').value = '{0}';".format(idcard)
                 print(idcard_js)
-
-
 
 
                 set_val('bidnumber_js', bidnumber_js)

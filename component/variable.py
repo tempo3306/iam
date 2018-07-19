@@ -242,7 +242,7 @@ def init_id():
 def init_size():
     ##webframe相关
     set_val('websize', (1148, 715))  # webframe大小
-    set_val('smallwebsize', (908, 715))  # webframe大小
+    set_val('smallwebsize', (896, 715))  # webframe大小
     set_val('webview_pos', (-5, -16))  # WEB在 WEBVIEW里的相对位置
     set_val('buttonpanel_size', (892, 30))
     set_val('buttonpanel_pos', (0, 0))
@@ -530,6 +530,7 @@ def init_account():
     set_val('Username', 0)  # 用户名
     set_val('Password', 0)  # 密码
     set_val('Identify_code', 0)  # 密码
+    set_val('manage', False)
     set_val('ip_address', '')  # 客户端ip
 
     set_val('listening', False)

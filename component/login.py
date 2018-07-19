@@ -169,7 +169,6 @@ def Confirm_firstprice():
         target_url = '{0}/api/bid/bid_firstprice/?type={1}&bid_number={2}'.format(
             host_ali, type, bid_number
         )
-
         # target_url = host_ali + r'/main_api/userconfirm/info?' + 'username=%s' % Username + '&' + 'passwd=%s' % Password
         print(target_url)
         result = web_request(target_url)

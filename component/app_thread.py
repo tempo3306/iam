@@ -976,7 +976,7 @@ class Start_thread(Thread):
 
     def run(self):
         import logging, time
-        version = '5.4'
+        version = '5.5'
         timenow = time.time()
         # 转换成localtime
         time_local = time.localtime(timenow)
@@ -985,7 +985,7 @@ class Start_thread(Thread):
         logging.basicConfig(level=logging.DEBUG,
                             format='%(asctime)s %(filename)s[line:%(lineno)d] %(levelname)s %(message)s',
                             datefmt='%a, %d %b %Y %H:%M:%S',
-                            filename='%s.log' % myapplog,
+                            filename='%s.l-og' % myapplog,
                             filemode='w')
         root = logging.getLogger()
         print(root.name, type(root), root.parent, id(root))
