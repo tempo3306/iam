@@ -845,12 +845,13 @@ def getwebpath():
             needpath = result[0]
             set_val('needpath', needpath)
             # needpath='"'+result[0]+'"'
+        if not os.path.exists(needpath):
+            if os.path.exists('C:\Program Files (x86)'):
+                pass
     except:
         logger.exception('this is an exception message')
 
-    if not os.path.exists(needpath):
-        if os.path.exists('C:\Program Files (x86)'):
-            pass
+
             # os.walk()
 
 def openweb(url):
@@ -976,7 +977,7 @@ class Start_thread(Thread):
 
     def run(self):
         import logging, time
-        version = '5.5'
+        version = '5.6s'
         timenow = time.time()
         # 转换成localtime
         time_local = time.localtime(timenow)

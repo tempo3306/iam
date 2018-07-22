@@ -9,7 +9,7 @@ import threading
 import wx.lib.agw.hyperlink as hyperlink
 from wx.lib.pubsub import pub
 import wx
-from component.app_thread import Login_codeThread, Getip_dianxinThread, MoniThread
+from component.app_thread import Login_codeThread, Getip_dianxinThread, MoniThread, OpenwebThread
 from component.remote_control import get_unique_id
 from component.variable import get_val, set_val, remote_variables, get_id_hash, get_dick, get_strategy_dick
 from component.TopFrame import TopFrame
@@ -122,21 +122,21 @@ class Identify_codePanel(wx.Panel):
 
         self.Bind(wx.EVT_TEXT_ENTER, self.OnLogin, self.code_userText)
 
-        self.code_monibtn = wx.Button(self, -1, label="免费模拟", size=(90, 30))
+        self.code_purchasebtn = wx.Button(self, -1, label="购买激活码", size=(90, 30))
         self.code_loginbtn = wx.Button(self, -1, label="登录", size=(90, 30))
         # self.code_monibtn.SetBackgroundColour('#ff6b3b')
         # self.code_loginbtn.SetBackgroundColour('#ff6b3b')
 
         self.code_btnSizer = wx.BoxSizer(wx.HORIZONTAL)
-        self.code_btnSizer.Add(self.code_monibtn, flag=wx.ALIGN_LEFT | wx.ALL, border=3)
+        self.code_btnSizer.Add(self.code_purchasebtn, flag=wx.ALIGN_LEFT | wx.ALL, border=3)
         self.code_btnSizer.Add(self.code_loginbtn, flag=wx.ALIGN_RIGHT | wx.ALL, border=3)
         self.code_sizer_v1.Add(self.code_btnSizer, flag=wx.ALIGN_CENTER | wx.ALL, border=5)
         self.code_loginbtn.Bind(wx.EVT_BUTTON, self.OnLogin)
-        self.code_monibtn.Bind(wx.EVT_BUTTON, self.OnMoni)
+        self.code_purchasebtn.Bind(wx.EVT_BUTTON, self.OnPurchase)
         ##初始化
         if code:
             self.code_userText.SetValue(code)
-        self.purchaselink = hyperlink.HyperLinkCtrl(self, -1, u"购买激活码", URL="https://hupai.pro/purchase_software")
+        self.purchaselink = hyperlink.HyperLinkCtrl(self, -1, u"查看教程", URL="https://hupai.pro/purchase_software")
         self.purchaselink.UnsetToolTip()
         self.purchaselink.Bind(hyperlink.EVT_HYPERLINK_LEFT, self.Purchase)
         self.purchaselink.AutoBrowse(False)
@@ -145,7 +145,7 @@ class Identify_codePanel(wx.Panel):
         self.purchaselink.OpenInSameWindow(True)
         self.purchaselink.UpdateLink()
 
-        self.helplink = hyperlink.HyperLinkCtrl(self, -1, u"找回激活码", URL="https://hupai.pro/purchase_software")
+        self.helplink = hyperlink.HyperLinkCtrl(self, -1, u"联系我们", URL="https://hupai.pro/purchase_software")
         self.helplink.UnsetToolTip()
         self.helplink.Bind(hyperlink.EVT_HYPERLINK_LEFT, self.Purchase)
         self.helplink.AutoBrowse(False)
@@ -185,10 +185,12 @@ class Identify_codePanel(wx.Panel):
             # self.loginBtn.setlabel(u"登录中")
         event.GetEventObject().Disable()
 
-    def OnMoni(self, event):
-        print('免费模拟')
-        self.loginthread = MoniThread()
-        event.GetEventObject().Disable()
+    def OnPurchase(self, event):
+        # print('免费模拟')
+        # self.loginthread = MoniThread()
+        # event.GetEventObject().Disable()
+        url = "http://hupai.pro/coursestudy"
+        OpenwebThread(url)
 
     def Purchase(self, event):
         print("购买")
@@ -275,8 +277,8 @@ class LoginFrame(wx.Frame):
                 manage = get_val("manage")
                 if not manage:
                     set_val('paishou', True)
-                # set_val('url_dianxin', login_result['url_dianxin'])
-                # set_val('url_nodianxin', login_result['url_nodianxin'])
+                set_val('url_dianxin', login_result['url_dianxin'])
+                set_val('url_nodianxin', login_result['url_nodianxin'])
             elif Identify_code == 'daxinwen':
                 set_val('url_dianxin', "http://moni.51hupai.org/")
                 set_val('url_nodianxin', "http://moni.51hupai.org/")
