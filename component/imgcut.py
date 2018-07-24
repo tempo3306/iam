@@ -18,16 +18,37 @@ from component.read_pic import readpic, grab_screen
 logger = logging.getLogger()
 
 
-def cut_pic(img, size, name):
-    img = np.asarray(img)
+def cut_pic(size, name):
+    imgpos_yanzhengma = get_val('imgpos_yanzhengma')
+    imgpos_question = get_val('imgpos_question')
+    imgpos_yanzhengma = np.asarray(imgpos_yanzhengma)
+    imgpos_question = np.asarray(imgpos_question)
     ##对空白裁剪
-    # shape  (110, 180, 3)
-    i1 = img[2:26, :]
-    i2 = img[48:105, 30:]
+    # shape  (110, 210, 3)
+    #(70, 210, 3)
+    #(24, 251, 3)
+    # (54, 180, 3)
+    # (24, 253, 3)
+    # (430, 220)
+
+    print(imgpos_yanzhengma.shape)
+    print(imgpos_question.shape)
+    i1 = imgpos_yanzhengma[:, :]
+    i2 = imgpos_question[:, :]
     # i2 = cv2.resize(i2, (180, 62))
 
-    i1 = cv2.resize(i1, (430, 57))
-    i2 = cv2.resize(i2, (430, 163))
+    # i1 = cv2.resize(i1, (360, 108), interpolation=cv2.INTER_LANCZOS4)
+    # i2 = cv2.resize(i2, (360, 34), interpolation=cv2.INTER_LANCZOS4)
+
+    # set_val('Pos_yanzhengma_relative', (-247, - 12, - 67, + 43))  # 验证码所在位置
+    # set_val('Pos_question_relative', (-280, - 65, - 23, -41))  ##问题所在位置
+
+    #(55, 180, 3)
+# (24, 257, 3)
+
+    i1 = cv2.resize(i1, (430, 131), interpolation=cv2.INTER_AREA)
+    i2 = cv2.resize(i2, (430, 40), interpolation=cv2.INTER_AREA)
+
 
     im = np.concatenate([i2, i1])
     # im = cv2.resize(im, tuple(size))0
@@ -127,8 +148,6 @@ def findpos():
     res2 = cv2.matchTemplate(img, time_template, cv2.TM_CCOEFF_NORMED)
     time_min_val, time_max_val, time_min_loc, time_max_loc = cv2.minMaxLoc(res2)
 
-    print(max_val)
-
     if max_val > 0.75:  # 找不到不动作
         ##计算位置
         set_val('px_lowestprice', max_loc[0] + px_relative + Px)
@@ -140,8 +159,6 @@ def findpos():
         ##计算时间位置
         set_val('Px_currenttime', time_max_loc[0] + px_timerelative + Px)    #时间的位置
         set_val('Py_currenttime', time_max_loc[1] + py_timerelative + Py)
-
-
 
         px_lowestprice = get_val('px_lowestprice')
         py_lowestprice = get_val('py_lowestprice')
@@ -164,6 +181,7 @@ def findpos():
         yan_confirm_area_relative = get_val('yan_confirm_area_relative')
         Pos_controlframe_relative = get_val('Pos_controlframe_relative')
         Pos_yanzhengma_relative = get_val('Pos_yanzhengma_relative')  # 验证码所在位置
+        Pos_question_relative = get_val('Pos_question_relative')  # 问题所在位置
         Pos_yanzhengmaframe_relative = get_val('Pos_yanzhengmaframe_relative')  # 验证码框放置位置
         set_val('refresh_area', [refresh_area_relative[0] + Px_lowestprice, refresh_area_relative[1] + Py_lowestprice,
                                  refresh_area_relative[2] + Px_lowestprice, refresh_area_relative[3] + Py_lowestprice])
@@ -179,6 +197,10 @@ def findpos():
                                    Position_frame[6][1] + Pos_yanzhengma_relative[1],
                                    Position_frame[6][0] + Pos_yanzhengma_relative[2],
                                    Position_frame[6][1] + Pos_yanzhengma_relative[3]])  # 验证码所在位置
+        set_val('Pos_question', [Position_frame[6][0] + Pos_question_relative[0],
+                                   Position_frame[6][1] + Pos_question_relative[1],
+                                   Position_frame[6][0] + Pos_question_relative[2],
+                                   Position_frame[6][1] + Pos_question_relative[3]])  # 问题所在位置
         set_val('Pos_yanzhengmaframe', [Px_lowestprice + Pos_yanzhengmaframe_relative[0],
                                         Py_lowestprice + Pos_yanzhengmaframe_relative[1]])  # 验证码框放置位置
         set_val('Pos_timeframe', [245 - 344 + Px_lowestprice, 399 - 183 + Py_lowestprice])
@@ -203,8 +225,9 @@ def findpos():
         Pos_yanzhengma = get_val('Pos_yanzhengma')
         yan_confirm_area = get_val('yan_confirm_area')
         currenttime = get_val('currenttime')
+        Pos_question = get_val('Pos_question')  ##验证码问题所在位置
 
-        cal_area = [lowest, refresh_area, confirm_area, Pos_yanzhengma, yan_confirm_area, currenttime]  # 构建截图区域
+        cal_area = [lowest, refresh_area, confirm_area, Pos_yanzhengma, yan_confirm_area, currenttime, Pos_question]  # 构建截图区域
         use_area = []
         set_val('sc_area', [Px_lowestprice - dis_x, Py_lowestprice - dis_y, Px_lowestprice + 600, Py_lowestprice + 120])
         for i in range(len(cal_area)):
@@ -268,6 +291,7 @@ def cut_img():  # 将所得的img 处理成  lowestprice_img   confirm_img  yanz
         set_val('imgpos_yanzhengma', img[use_area[3][1]:use_area[3][3], use_area[3][0]:use_area[3][2]])  # ok
         set_val('imgpos_yanzhengmaconfirm', img[use_area[4][1]:use_area[4][3], use_area[4][0]:use_area[4][2]])  # ok
         set_val('imgpos_currenttime', img[use_area[5][1]:use_area[5][3], use_area[5][0]:use_area[5][2]])
+        set_val('imgpos_question', img[use_area[6][1]:use_area[6][3], use_area[6][0]:use_area[6][2]])
     except:
         logger.error("cut_img 这里出错")
         logger.exception('this is an exception message')

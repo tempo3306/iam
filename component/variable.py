@@ -23,8 +23,6 @@ keycode = {}
 for i in range(65, 91):
     keycode[chr(i)] = i
 
-
-
 # --------------------------------------------------
 
 
@@ -59,51 +57,49 @@ for i in range(65, 91):
 strategy_dick = {
 
     '0': [1, 40.0, 500, 0, 0.5, 48,
-        True, True,
-        50, 700, 100, 0.5,
-        56, True,
-        0, 0, 54,
-        100, 0.6, 55,
-        200, 0.5, 56,
-        56.5],
+          True, True,
+          50, 700, 100, 0.5,
+          56, True,
+          0, 0, 54,
+          100, 0.6, 55,
+          200, 0.5, 56,
+          56.5],
 
     '1': [1, 40.0, 500, 0, 0.5, 48,
-        True, True,
-        50, 700, 100, 0.5,
-        56, True,
-        0, 0, 54,
-        100, 0.6, 55,
-        200, 0.5, 56,
-        56.5],
+          True, True,
+          50, 700, 100, 0.5,
+          56, True,
+          0, 0, 54,
+          100, 0.6, 55,
+          200, 0.5, 56,
+          56.5],
 
     '2': [1, 40.0, 500, 0, 0.5, 48,
-        True, True,
-        50, 700, 100, 0.5,
-        56, True,
-        0, 0, 54,
-        100, 0.6, 55,
-        200, 0.5, 56,
-        56.5],
+          True, True,
+          50, 700, 100, 0.5,
+          56, True,
+          0, 0, 54,
+          100, 0.6, 55,
+          200, 0.5, 56,
+          56.5],
 
     '3': [1, 40.0, 500, 0, 0.5, 48,
-        True, True,
-        50, 700, 100, 0.5,
-        56, True,
-        0, 0, 54,
-        100, 0.6, 55,
-        200, 0.5, 56,
-        56.5],
+          True, True,
+          50, 700, 100, 0.5,
+          56, True,
+          0, 0, 54,
+          100, 0.6, 55,
+          200, 0.5, 56,
+          56.5],
 
-
-    '4':[4, 48.0, 700],
+    '4': [4, 48.0, 700],
 
     'yanzhengma_scale': True,
-    'strategy_description': '单枪   48秒加700截止56秒提前100',  #策略名称
+    'strategy_description': '单枪   48秒加700截止56秒提前100',  # 策略名称
     'strategy_type': '0',
     'enter_on': True,
 
 }
-
 
 
 # 初始化变量
@@ -133,6 +129,7 @@ def set_dick(key, value):
     except:
         logger.exception('this is an exception message')
 
+
 # 获取 策略字典
 def get_dick(key):
     try:
@@ -141,13 +138,16 @@ def get_dick(key):
     except KeyError:
         return 'Null'
 
+
 def get_strategy_dick():
     return strategy_dick
+
 
 def set_strategy_dick(dick):
     global strategy_dick
     print(dick)
     strategy_dick = dick
+
 
 # --------------------------------------------------
 # 变量初始化
@@ -159,15 +159,16 @@ def Create_hash():
         print(len(dick_target))
         set_val('dick_target', dick_target)
 
+
 ##price_list 价格对应时间的表
-price_list = [80000 for i in range(60)]  #0-59
+price_list = [80000 for i in range(60)]  # 0-59
+
 
 def get_id_hash(id):
     import hashlib
     sha1 = hashlib.sha1()
     sha1.update(id.encode('utf-8'))
     return sha1.hexdigest()
-
 
 
 class Hotkey_label():
@@ -197,17 +198,15 @@ def init_val():
     # remote_init()
     set_val('price_list', price_list)
 
-
-    set_val('userprice', 0) #当前出价 如果为0则表示未出价
-    set_val('usertime', -1) #当前截止时间 如果为 -1表示未出价
+    set_val('userprice', 0)  # 当前出价 如果为0则表示未出价
+    set_val('usertime', -1)  # 当前截止时间 如果为 -1表示未出价
 
     set_val('debug', True)
-    set_val('now_ping', 0)  #实时网速
+    set_val('now_ping', 0)  # 实时网速
     set_val('version', '1.0')
     set_val('num', 0)
     set_val('avt', 0)
     set_val('test', False)
-
 
 
 def init_url():
@@ -230,6 +229,7 @@ def init_label():
     set_val('nodianxin_webstatus_label', '国拍非电信')
     set_val('urlchange_dianxin_label', '切换线路')
     set_val('urlchange_nodianxin_label', '切换线路')
+
 
 def init_id():
     set_val('userconfirm_on', False)
@@ -259,7 +259,7 @@ def init_size():
     set_val('operationpanel_pos', (htmlpanel_size[0], 0))
 
     websize = get_val('websize')
-    set_val('Pxy', (win32api.GetSystemMetrics(0), win32api.GetSystemMetrics(1))) # 分辨率
+    set_val('Pxy', (win32api.GetSystemMetrics(0), win32api.GetSystemMetrics(1)))  # 分辨率
     Pxy = get_val('Pxy')
     set_val('Px1', Pxy[0] / 2)  # 屏幕中心位置
     set_val('Py2', Pxy[1] / 2)
@@ -279,7 +279,6 @@ def init_size():
     set_val('P_relative',
             [[343, -66], [346, 40], [96, 121], [92, 43], [201, 100], [281, 40], [261, 37], [282, 118]])  # 各按钮相对于WEB位置
     P_relative = get_val('P_relative')
-
 
     set_val('px_ajust', 0)
     set_val('py_ajust', 0)
@@ -380,8 +379,6 @@ def init_size():
     set_val('imgpos_currenttime', np.array(nptemp))  # 当前时间
 
 
-
-
 '''
 214 645
 215 224
@@ -391,7 +388,6 @@ def init_size():
 def init_strategy():
     strategy_choices = ['单枪策略(专注一次出价)', '双枪策略(一伏二补)', '单枪策略 智能提交', '双枪策略 智能提交']
     set_val('strategy_choices', strategy_choices)
-
 
     tijiao_choices = [u"提前100", u"提前200", u"提前300", u"踩点"]
     set_val('tijiao_choices', tijiao_choices)
@@ -407,7 +403,7 @@ def init_strategy():
     set_val('yanzhengma_find', True)  # 验证码是否找到 默认True 发现需要查找 之后变为False
     set_val('yanzhengma_move', True)  # 是否需要移动
     set_val('yanzhengma_hash', 0)  # 前一个验证码截图  如果变化就刷新 ，不变化就不动作
-    set_val('yanzhengma_change', True) #判定是否变化
+    set_val('yanzhengma_change', True)  # 判定是否变化
 
     set_val('price_on', False)  # 价格是否显示
     set_val('price_count', 0)  # 辅助计时，正确显示价格
@@ -423,9 +419,9 @@ def init_strategy():
 
     set_val('moni_on', False)  # 判断开启的是哪个窗口 ，限制同时只能开启一个
     set_val('guopai_on', False)
-    set_val('listen_on', False)  #f是否开启监听
+    set_val('listen_on', False)  # f是否开启监听
 
-    set_val('current_moni', True) ##当前哪个WEB激活状态
+    set_val('current_moni', True)  ##当前哪个WEB激活状态
     set_val('strategy1', 53)  # 策略整数时间
     set_val('strategy2', 0.0)  # 策略小数时间
     set_val('strategy_on', True)  # 策略是否开启
@@ -508,8 +504,7 @@ def init_strategy():
     set_val('query_interval', False)  # 间隔
     set_val('query_on', False)  # 是否处于查询状态
 
-    set_val('autotime_on', False)  #是否处理自动时间同步状态
-
+    set_val('autotime_on', False)  # 是否处理自动时间同步状态
 
     ##调整策略范围
     timelist = [100 + i * 1 for i in range(491)]
@@ -520,12 +515,13 @@ def init_strategy():
     set_val('yanchilist', yanchilist)
     set_val('pricelist', pricelist)
 
-def init_account():
-    set_val('activate_status', False)   ##0: 未激活
-    set_val('strategy_name', '默认策略') #策略名称
 
-    set_val('current_strategy_name', '') #当前策略
-    set_val('current_strategy_status', 0)    ##当前所处状态
+def init_account():
+    set_val('activate_status', False)  ##0: 未激活
+    set_val('strategy_name', '默认策略')  # 策略名称
+
+    set_val('current_strategy_name', '')  # 当前策略
+    set_val('current_strategy_status', 0)  ##当前所处状态
 
     set_val('Username', 0)  # 用户名
     set_val('Password', 0)  # 密码
@@ -536,20 +532,27 @@ def init_account():
     set_val('listening', False)
 
     set_val("test", False)  ##默认关闭测试模式
-    set_val("paishou", False) ##默认非拍手模式
-
+    set_val("paishou", False)  ##默认非拍手模式
 
     set_val("firstprice_done", False)
 
 
 def init_status():
     ##状态框
-    set_val('CurrentStatusFramePos', (426, 212))   ###相对WEBFRAME位置
-    set_val('CurrentStatusFrameSize', (464,77))
+    set_val('CurrentStatusFramePos', (426, 212))  ###相对WEBFRAME位置
+    set_val('CurrentStatusFrameSize', (464, 77))
 
     ##验证码放大框
-    set_val('YanzhengmaFramePos', (438, 175))    ###相对WEBFRAME位置
-    set_val('Yanzhengmasize', (430, 220))
+    set_val('YanzhengmaFramePos', (438, 228))  ###相对WEBFRAME位置
+    set_val('Yanzhengmasize', (430, 171))
+
+    ##验证码查看提示框
+    set_val('TipFramePos', (432, 575))
+    set_val('TipFrameSize', (452, 80))
+
+    ##验证码提交确认提示
+    set_val('EnterFramePos', (438, 475))
+    set_val('EnterFrameSize', (500, 70))
 
     set_val('register_label', '未激活')
     set_val('netspeed_label', '网速: ')
@@ -572,8 +575,6 @@ def init_status():
     set_val('pricestatustext', (345, 45))
 
 
-
-
 def init_smart():
     ##智能出价服务
     set_val('smart_ajust', False)  # 智能调整出价，默认关闭
@@ -586,8 +587,9 @@ def init_smart():
 
     ## 完成智能出价
     set_val('smart_autoprice', False)  ##智能补枪
-    set_val('smartprice_chujia', False) ##智能出价 出价启动状态
-    set_val('smartprice_tijiao', False) ##智能出价 提交启动状态
+    set_val('smartprice_chujia', False)  ##智能出价 出价启动状态
+    set_val('smartprice_tijiao', False)  ##智能出价 提交启动状态
+
 
 ##------------------------------------------------------------------------------------------
 ### 窗口左上角位置计算对应位置
@@ -597,7 +599,7 @@ def init_pos(Px, Py):
     px, py   262  474
     '''
 
-    Position_frame =  get_val('Position_frame')
+    Position_frame = get_val('Position_frame')
     # set_val('px_lowestprice', 153)
     # set_val('py_lowestprice', 458)
     '''
@@ -623,52 +625,40 @@ def init_pos(Px, Py):
     yan_confirm_area_relative = get_val('yan_confirm_area_relative')
     Pos_controlframe_relative = get_val('Pos_controlframe_relative')
     Pos_yanzhengma_relative = get_val('Pos_yanzhengma_relative')  # 验证码所在位置
+    Pos_question_relative = get_val('Pos_question_relative')  # 问题所在位置
     Pos_yanzhengmaframe_relative = get_val('Pos_yanzhengmaframe_relative')  # 验证码框放置位置
-    login_yanzhengma_relative = get_val('login_yanzhengma_relative')  # 登录界面验证码位置
-
-    set_val('refresh_area', (refresh_area_relative[0] + Px_lowestprice, refresh_area_relative[1] + Py_lowestprice,
-                             refresh_area_relative[2] + Px_lowestprice, refresh_area_relative[3] + Py_lowestprice))
-    set_val('confirm_area', (confirm_area_relative[0] + Px_lowestprice, confirm_area_relative[1] + Py_lowestprice,
-                             confirm_area_relative[2] + Px_lowestprice, confirm_area_relative[3] + Py_lowestprice))
-    set_val('yan_confirm_area', (yan_confirm_area_relative[0] + Px_lowestprice,
+    set_val('refresh_area', [refresh_area_relative[0] + Px_lowestprice, refresh_area_relative[1] + Py_lowestprice,
+                             refresh_area_relative[2] + Px_lowestprice, refresh_area_relative[3] + Py_lowestprice])
+    set_val('confirm_area', [confirm_area_relative[0] + Px_lowestprice, confirm_area_relative[1] + Py_lowestprice,
+                             confirm_area_relative[2] + Px_lowestprice, confirm_area_relative[3] + Py_lowestprice])
+    set_val('yan_confirm_area', [yan_confirm_area_relative[0] + Px_lowestprice,
                                  yan_confirm_area_relative[1] + Py_lowestprice,
                                  yan_confirm_area_relative[2] + Px_lowestprice,
-                                 yan_confirm_area_relative[3] + Py_lowestprice))
-    set_val('Pos_controlframe', (Pos_controlframe_relative[0] + Px_lowestprice,
-                                 Pos_controlframe_relative[1] + Py_lowestprice))
-    set_val('Pos_yanzhengma', (Position_frame[6][0] + Pos_yanzhengma_relative[0],
+                                 yan_confirm_area_relative[3] + Py_lowestprice])
+    set_val('Pos_controlframe', [Pos_controlframe_relative[0] + Px_lowestprice,
+                                 Pos_controlframe_relative[1] + Py_lowestprice])
+    set_val('Pos_yanzhengma', [Position_frame[6][0] + Pos_yanzhengma_relative[0],
                                Position_frame[6][1] + Pos_yanzhengma_relative[1],
                                Position_frame[6][0] + Pos_yanzhengma_relative[2],
-                               Position_frame[6][1] + Pos_yanzhengma_relative[3]))  # 验证码所在位置
-    set_val('Pos_yanzhengmaframe', (Px_lowestprice + Pos_yanzhengmaframe_relative[0],
-                                    Py_lowestprice + Pos_yanzhengmaframe_relative[1]))  # 验证码框放置位置
-
-    set_val('Pos_timeframe', (245 - 344 + Px_lowestprice, 399 - 183 + Py_lowestprice))
-
-    # set_val('Findpos_area', (Px + 100 , Py + 400, Px + 200, Py + 550))
-
-    ##登录验证码区域
-    set_val('login_yanzhengma', (login_yanzhengma_relative[0] + Px_lowestprice,
-                                 login_yanzhengma_relative[1] + Py_lowestprice,
-                                 login_yanzhengma_relative[2] + Px_lowestprice,
-                                 login_yanzhengma_relative[3] + Py_lowestprice))
-
-    ##第一次出价区域  615 546
-    ##              689 559
-
+                               Position_frame[6][1] + Pos_yanzhengma_relative[3]])  # 验证码所在位置
+    set_val('Pos_question', [Position_frame[6][0] + Pos_question_relative[0],
+                             Position_frame[6][1] + Pos_question_relative[1],
+                             Position_frame[6][0] + Pos_question_relative[2],
+                             Position_frame[6][1] + Pos_question_relative[3]])  # 问题所在位置
+    set_val('Pos_yanzhengmaframe', [Px_lowestprice + Pos_yanzhengmaframe_relative[0],
+                                    Py_lowestprice + Pos_yanzhengmaframe_relative[1]])  # 验证码框放置位置
+    set_val('Pos_timeframe', [245 - 344 + Px_lowestprice, 399 - 183 + Py_lowestprice])
 
     lowestprice_sizex = get_val('lowestprice_sizex')
     lowestprice_sizey = get_val('lowestprice_sizey')
     currenttime_sizex = get_val('currenttime_sizex')
     currenttime_sizey = get_val('currenttime_sizey')
-    set_val('findpos_on', False)  # 无需定位
-    set_val('yanzhengma_move', True)  # 需要定位
-    set_val('lowest', (Px_lowestprice, Py_lowestprice, lowestprice_sizex + Px_lowestprice,
-                       lowestprice_sizey + Py_lowestprice))
+    set_val('lowest', [Px_lowestprice, Py_lowestprice, lowestprice_sizex + Px_lowestprice,
+                       lowestprice_sizey + Py_lowestprice])
     Px_currenttime = get_val("Px_currenttime")
     Py_currenttime = get_val("Py_currenttime")
-    set_val('currenttime', (Px_currenttime, Py_currenttime, Px_currenttime + currenttime_sizex,
-                            Py_currenttime + currenttime_sizey))
+    set_val('currenttime', [Px_currenttime, Py_currenttime, Px_currenttime + currenttime_sizex,
+                            Py_currenttime + currenttime_sizey])
     dis_x = 50
     dis_y = 100
     x1 = Px_lowestprice - dis_x  # 截图起始点
@@ -679,15 +669,16 @@ def init_pos(Px, Py):
     Pos_yanzhengma = get_val('Pos_yanzhengma')
     yan_confirm_area = get_val('yan_confirm_area')
     currenttime = get_val('currenttime')
+    Pos_question = get_val('Pos_question')  ##验证码问题所在位置
 
-    cal_area = (lowest, refresh_area, confirm_area, Pos_yanzhengma, yan_confirm_area, currenttime)  ## 构建截图区域
+    cal_area = [lowest, refresh_area, confirm_area, Pos_yanzhengma, yan_confirm_area, currenttime,
+                Pos_question]  # 构建截图区域
     use_area = []
-    set_val('sc_area', (Px_lowestprice - dis_x, Py_lowestprice - dis_y, Px_lowestprice + 600, Py_lowestprice + 120))
+    set_val('sc_area', [Px_lowestprice - dis_x, Py_lowestprice - dis_y, Px_lowestprice + 600, Py_lowestprice + 120])
     for i in range(len(cal_area)):
         temp = [cal_area[i][0] - x1, cal_area[i][1] - y1, cal_area[i][2] - x1, cal_area[i][3] - y1]
         use_area.append(temp)
     set_val('use_area', use_area)
-
 
 
 ##初始化变量, 由服务器给定
@@ -705,10 +696,9 @@ def test_init():
     bidpassword = ''
     idcard = ''
 
-    bidnumber_js  = "document.getElementById('bidnumber').value = '{0}';".format(bidnumber)
+    bidnumber_js = "document.getElementById('bidnumber').value = '{0}';".format(bidnumber)
     bidpassword_js = "document.getElementById('bidpassword').value = '{0}';".format(bidpassword)
     idcard_js = "document.getElementById('idcard').value = '{0}';".format(idcard)
-
 
     set_val('bidnumber', '')
     set_val('bidpassword', '')
@@ -716,6 +706,7 @@ def test_init():
     set_val('bidnumber_js', bidnumber_js)
     set_val('bidpassword_js', bidpassword_js)
     set_val('idcard_js', idcard_js)
+
 
 ####
 def remote_init():
@@ -725,7 +716,7 @@ def remote_init():
     set_val('px_timerelative', 94)
     set_val('py_timerelative', 3)
     ## 相对于最低成交价位置
-    #   ## 0:加价  1：出价 2：提交  3：刷新按钮   4 ：确`认   5：价格输入框    6:验证码输入框     7：取消
+    #   ## 0:加价  1：出价 2：提交  3：刷新按钮   4 ：确认   5：价格输入框    6:验证码输入框     7：取消
     set_val('P_relative2', [[647, -98], [650, 8], [400, 89], [396, 14], [505, 68], [562, 8], [585, 8], [586, 86]])
     P_relative2 = get_val('P_relative2')
     set_val('Position_frame', [[0, 0] for i in range(len(P_relative2))])
@@ -735,27 +726,28 @@ def remote_init():
     # 237
     # 452
     # 601
+    #     i1 = img[2:26, :]
+    #     i2 = img[48:105, 30:]
     # 529
     set_val('yan_confirm_area_relative', (205 - 60, 68 - 40, 405 + 60, 68 + 40))
     set_val('Pos_controlframe_relative', (192 - 344, 514 - 183))
-    set_val('Pos_yanzhengma_relative', (-277, - 65, - 97, + 45))  # 验证码所在位置
-    set_val('Pos_yanzhengmaframe_relative', (297, - 283))  # 验证码框放置位置
+    set_val('Pos_yanzhengma_relative', (-247, - 12, - 67, + 43))  # 验证码所在位置
+    set_val('Pos_question_relative', (-280, - 65, - 23, -41))  ##问题所在位置
+
+    #  set_val('Pos_yanzhengma_relative', (-277, - 65, - 97, + 45))  # 验证码所在位置
+
+    set_val('Pos_yanzhengmaframe_relative', (297, - 284))  # 验证码框放置位置
 
     set_val('login_yanzhengma_relative', (396 - 100, 11 - 20, 396 + 255, 11 + 20))
 
-    ##计算当天的时间
-    set_val('timebase_str', '')  ##时间基数，避免重复计算
-    set_val('target_time', 11111111111111111)  ##时间基数，避免重复计算  11:30:1 分的时间戳
-    set_val('start_time', 111111111111111)  ## 11点之后的时间
-    set_val('final_time', 111111111111)
+    set_val('auto_yanzhengma_on', False)
+    set_val('auto_query_on', True)
 
-    set_val('final_stage', True)  ##判断是不是处理最终状态
-
-    ##一键登录
+    set_val('final_stage', True)  ##判断是不是处理最终状1000092600
     bidnumber = '12345678'
     bidpassword = '12345678'
-
-    bidnumber_js  = "document.getElementById('bidnumber').value = '{0}';".format(bidnumber)
+    idcard = '12345'
+    bidnumber_js = "document.getElementById('bidnumber').value = '{0}';".format(bidnumber)
     bidpassword_js = "document.getElementById('bidpassword').value = '{0}';".format(bidpassword)
     idcard_js = "document.getElementById('idcard').value = '{0}';".format(idcard)
     set_val('bidnumber_js', bidnumber_js)
@@ -763,3 +755,10 @@ def remote_init():
     set_val('idcard_js', idcard_js)
 
 
+def remote_timeset():
+    ##计算当天的时间
+    set_val('timebase_str', '')  ##时间基数，避免重复计算
+    set_val('target_time', 11111111111111111)  ##时间基数，避免重复计算  11:30:1 分的时间戳
+    set_val('start_time', 111111111111111)  ## 11点之后的时间
+    set_val('final_time', 111111111111)
+    set_val('auto_yanzhengma_time', 1111111111111)  ##自动验证码的跳出时间

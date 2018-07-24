@@ -10,7 +10,8 @@ from threading import Thread
 import sys, os
 from component.imgcut import cut_img, findconfirm, findrefresh, findpos, Price_read
 from component.login import ConfirmUser, Keeplogin, ConfirmCode, MoniTest, Confirm_firstprice
-from component.staticmethod import OnClick_chujia, OnClick_Tijiao, calculate_usetime
+from component.staticmethod import OnClick_chujia, OnClick_Tijiao, calculate_usetime, setText, selfdelete, Paste_moni, \
+    Click
 from component.staticmethod import Smart_ajust_chujia
 from component.staticmethod import trans_time
 from component.variable import get_val, set_val, get_dick
@@ -810,6 +811,8 @@ class TimeThread(Thread):
                     set_val("final_stage", False)
             except:
                 logger.exception("error message")
+
+
 
     def pause(self):
         self.__flag.clear()  # 设置为False, 让线程阻塞

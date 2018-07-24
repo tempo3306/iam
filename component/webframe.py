@@ -10,7 +10,7 @@ from component.OperationFrame import OperationPanel
 import wx.html2 as webview
 from wx.lib.buttons import GenButton as wxButton
 from component.imgcut import  timeset
-from component.YanzhengmaFrame import YanzhengmaFrame
+from component.YanzhengmaFrame import YanzhengmaFrame, TipFrame, EnterFrame
 from component.imgcut import cut_pic, find_yan_confirm
 
 from component.variable import init_pos, get_val, set_val, get_dick
@@ -45,12 +45,12 @@ class ButtonPanel(wx.Panel):
             guopai_dianxin = get_val('guopai_dianxin')
             if guopai_dianxin:
                 urlchange_dianxin_label = get_val('urlchange_dianxin_label')
-                self.urlchange_button = wxButton(self, label=urlchange_dianxin_label, pos=(606, 2), size=(90, 25))
+                self.urlchange_button = wxButton(self, label=urlchange_dianxin_label, pos=(600, 2), size=(90, 25))
                 self.urlchange_button.Bind(wx.EVT_BUTTON, self.urlchange)
                 self.urlchange_button.SetBackgroundColour("#ACD6ff")
             else:
                 urlchange_nodianxin_label = get_val('urlchange_nodianxin_label')
-                self.urlchange_button = wxButton(self, label=urlchange_nodianxin_label, pos=(606, 2), size=(90, 25))
+                self.urlchange_button = wxButton(self, label=urlchange_nodianxin_label, pos=(600, 2), size=(90, 25))
                 self.urlchange_button.Bind(wx.EVT_BUTTON, self.urlchange)
                 self.urlchange_button.SetBackgroundColour("#ACD6ff")
 
@@ -415,6 +415,8 @@ class WebFrame(wx.Frame):
         self.currentstatusframe.Show(False)
         Yanzhengmasize = get_val('Yanzhengmasize')
         self.yanzhengmaframe = YanzhengmaFrame(self, Yanzhengmasize)
+        self.tipframe = TipFrame(self)
+        self.enterframe = EnterFrame(self, Yanzhengmasize)
 
         self.Bind(wx.EVT_MOVE, self.childmove)
 
@@ -445,6 +447,11 @@ class WebFrame(wx.Frame):
         x1, y1 = get_val('YanzhengmaFramePos')
         try:
             self.yanzhengmaframe.Move(x+x1, y+y1)  # 移动到新位置
+        except:
+            logger.exception('this is an exception message')
+        x2, y2 = get_val('TipFramePos')
+        try:
+            self.tipframe.Move(x+x2, y+y2)  # 移动到新位置
         except:
             logger.exception('this is an exception message')
         wx.CallAfter(pub.sendMessage, 'dialog close')
@@ -495,6 +502,46 @@ class WebFrame(wx.Frame):
             self.currentstatusframe.Show(False)
             self.yanzhengmaframe.Show(False)
 
+        ##自动验证码查看
+        self.auto_yanzhengma()
+
+    #打开验证码查看
+    def auto_yanzhengma(self):
+        ###自动验证码打开
+        a_time = get_val('a_time')
+        Position_frame = get_val('Position_frame')
+        auto_yanzhengma_time = get_val('auto_yanzhengma_time')
+        auto_query_on = get_val('auto_query_on')
+        auto_yanzhengma_on = get_val('auto_yanzhengma_on')
+        if auto_query_on and not auto_yanzhengma_on and a_time > auto_yanzhengma_time:
+            self.tipframe.Show(True)
+            self.tipframe.ShowImage('icons/tip2.png')
+            set_val('query_on', True)
+            set_val('query_interval', True)
+            moni_on = get_val('moni_on')
+            if not moni_on:
+                setText(str(1000000))  # 出一定超出的价格
+                selfdelete()
+            else:
+                Paste_moni(1000000)
+            Click(Position_frame[1][0], Position_frame[1][1])
+            set_val('auto_yanzhengma_on', True)
+            timer1 = threading.Timer(8, self.close_yanzhengma) ##8秒后关闭
+            timer1.start()
+        elif a_time < auto_yanzhengma_time:
+            set_val('auto_yanzhengma_on', False)  ##设置成查看状态
+
+    #关闭验证码查看
+    def close_yanzhengma(self):
+        Position_frame = get_val('Position_frame')
+        auto_yanzhengma_on = get_val('auto_yanzhengma_on')
+        print(auto_yanzhengma_on)
+        if auto_yanzhengma_on:
+            Click(Position_frame[7][0], Position_frame[7][1])
+            print("fsdfsdsfs")
+            set_val('query_on', False)
+            self.tipframe.Show(False)
+
     def Yanzhengma_scale(self):
         ##------------------------------
         ###判定验证码放大框
@@ -508,19 +555,21 @@ class WebFrame(wx.Frame):
                     try:
                         if self.yanzhengmaframe.IsShown():
                             self.yanzhengmaframe.Show(False)
+                            self.tipframe.Show(False)  ##关闭提交提示
                             self.currentstatusframe.Show(True)
                     except:
                         logger.exception('this is an exception message')
 
                 yanzhengma_view = get_val('yanzhengma_view')
-                imgpos_yanzhengma = get_val('imgpos_yanzhengma')
                 Yanzhengmasize = get_val('Yanzhengmasize')
                 #验证码放大是否需要刷新
                 if yanzhengma_view:
+                    self.tipframe.Show(True)
+                    self.tipframe.ShowImage('icons/tip1.png')
                     set_val('yanzhengma_close', False)
                     path = get_val('path')
                     yanpath = path + "\\yanzhengma.png"
-                    cut_pic(imgpos_yanzhengma, Yanzhengmasize, yanpath)  # 直接调用得到 png 保存图片
+                    cut_pic(Yanzhengmasize, yanpath)  # 直接调用得到 png 保存图片
                     try:
                         yanpath = get_val('yanpath')
                         yan = self.yanzhengmaframe

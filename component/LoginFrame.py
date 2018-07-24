@@ -11,7 +11,7 @@ from wx.lib.pubsub import pub
 import wx
 from component.app_thread import Login_codeThread, Getip_dianxinThread, MoniThread, OpenwebThread
 from component.remote_control import get_unique_id
-from component.variable import get_val, set_val, remote_variables, get_id_hash, get_dick, get_strategy_dick
+from component.variable import get_val, set_val, remote_variables, get_id_hash, get_dick, get_strategy_dick, remote_init
 from component.TopFrame import TopFrame
 import sys, pickle, json
 from wx.lib.buttons import GenButton as wxButton
@@ -224,7 +224,7 @@ class LoginFrame(wx.Frame):
         self.Center()
 
         pub.subscribe(self.connect_success, "connect")
-        pub.subscribe(self.monitest, "monitest")
+        # pub.subscribe(self.monitest, "monitest")
         # pub.subscribe(self.connect_failure, "connect failure")
 
         # self.hashthread = HashThread()
@@ -256,7 +256,11 @@ class LoginFrame(wx.Frame):
             ##初始化结果
             print(login_result)
             data = login_result['data']
+
             remote_variables(**data)
+            if Identify_code == '12345678':  ##这里作为测试用
+                set_val('test', True)
+                remote_init()
             target_time = get_val('target_time')
             start_time = target_time - 30 * 60
             set_val('start_time', start_time)
@@ -269,8 +273,8 @@ class LoginFrame(wx.Frame):
                     logger.exception("error message")
                 if strategy_dick != 'none':
                     set_strategy_dick(strategy_dick) ##初始化策略数据
-            if Identify_code == '12345678':  ##这里作为测试用
-                set_val('test', True)
+
+
 
             elif Identify_code[0]== 'h':
                 # set_val('test', True)
@@ -329,42 +333,42 @@ class LoginFrame(wx.Frame):
             else:
                 wx.MessageBox('激活码错误', '用户登录', wx.OK | wx.ICON_ERROR)
 
-    def monitest(self):
-        self.panel.code_monibtn.Enable()
-        login_result = get_val('login_result')
-        version = get_val('version')
-        if login_result['result'] == 'moni success':
-            topframeid = get_val('topframe')
-            if topframeid == -1:
-                self.topframe = TopFrame('沪牌一号', version)
-                self.topframe.Show(True)
-            else:
-                topframe = wx.FindWindowById(topframeid)
-                topframe.Show(True)
-
-            ip_address = login_result['ip_address']
-            set_val('ip_address', ip_address)  ##设置IP
-            Getip_dianxinThread(ip_address) ##判定是否电信网址的功能
-            ##初始化结果
-            print(login_result)
-            data = login_result['data']
-            remote_variables(**data)
-            target_time = get_val('target_time')
-            start_time = target_time - 30 * 60
-            set_val('start_time', start_time)
-            ##初始化账号
-            from component.staticmethod import Hotkey_listen
-            from component.variable import init_pos
-            Px = get_val('Px')
-            Py = get_val('Py')
-            init_pos(Px, Py)
-            self.Show(False)  ##关闭窗口
-            listening = get_val('listening')
-            if not listening:
-                Hotkey_listen()
-        else:
-            self.panel.code_monibtn.Enable()
-            wx.MessageBox('连接服务器失败', '用户登录', wx.OK | wx.ICON_ERROR)
+    # def monitest(self):
+    #     self.panel.code_monibtn.Enable()
+    #     login_result = get_val('login_result')
+    #     version = get_val('version')
+    #     if login_result['result'] == 'moni success':
+    #         topframeid = get_val('topframe')
+    #         if topframeid == -1:
+    #             self.topframe = TopFrame('沪牌一号', version)
+    #             self.topframe.Show(True)
+    #         else:
+    #             topframe = wx.FindWindowById(topframeid)
+    #             topframe.Show(True)
+    #
+    #         ip_address = login_result['ip_address']
+    #         set_val('ip_address', ip_address)  ##设置IP
+    #         Getip_dianxinThread(ip_address) ##判定是否电信网址的功能
+    #         ##初始化结果
+    #         print(login_result)
+    #         data = login_result['data']
+    #         remote_variables(**data)
+    #         target_time = get_val('target_time')
+    #         start_time = target_time - 30 * 60
+    #         set_val('start_time', start_time)
+    #         ##初始化账号
+    #         from component.staticmethod import Hotkey_listen
+    #         from component.variable import init_pos
+    #         Px = get_val('Px')
+    #         Py = get_val('Py')
+    #         init_pos(Px, Py)
+    #         self.Show(False)  ##关闭窗口
+    #         listening = get_val('listening')
+    #         if not listening:
+    #             Hotkey_listen()
+    #     else:
+    #         self.panel.code_monibtn.Enable()
+    #         wx.MessageBox('连接服务器失败', '用户登录', wx.OK | wx.ICON_ERROR)
 
     def Purchase(self, event):
         print("购买")
