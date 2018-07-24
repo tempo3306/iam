@@ -97,7 +97,7 @@ strategy_dick = {
     'yanzhengma_scale': True,
     'strategy_description': '单枪   48秒加700截止56秒提前100',  # 策略名称
     'strategy_type': '0',
-    'enter_on': True,
+    'auto_yanzhengma_on': False,  ##默认关闭自动查看验证码
 
 }
 
@@ -740,7 +740,7 @@ def remote_init():
 
     set_val('login_yanzhengma_relative', (396 - 100, 11 - 20, 396 + 255, 11 + 20))
 
-    set_val('auto_yanzhengma_on', False)
+    # set_val('auto_yanzhengma_on', False)  ## strategy 里替换 ENTER_ON
     set_val('auto_query_on', True)
 
     set_val('final_stage', True)  ##判断是不是处理最终状1000092600

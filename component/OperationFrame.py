@@ -47,7 +47,12 @@ class StatusPanel(wx.Panel):
         self.yanzhengma_scale = wx.CheckBox(self, -1, label=u'验证码放大')  # 开启时间显示
         self.Bind(wx.EVT_CHECKBOX, self.Yanzhengma_scale, self.yanzhengma_scale)
         hbox1 = wx.BoxSizer(wx.HORIZONTAL)
+        # # 验证码自动预览
+        self.yanzhengma_autoview = wx.CheckBox(self, -1, label=u'验证码自动预览')  # 开启时间显示
+        self.Bind(wx.EVT_CHECKBOX, self.Yanzhengma_autoview, self.yanzhengma_autoview)
         hbox1.Add(self.yanzhengma_scale)
+        hbox1.Add(self.yanzhengma_autoview)
+
 
         # # 时间区
         # self.autotime = wx.CheckBox(self, -1, label=u'自动时间同步')  # 开启时间显示
@@ -55,20 +60,20 @@ class StatusPanel(wx.Panel):
         # hbox1 = wx.BoxSizer(wx.HORIZONTAL)
         # hbox1.Add(self.autotime)
 
-        ##确认方式
-        confirm_choice = ["E键", "回车"]
-        self.confirm_choice = wx.Choice(self, -1, choices=confirm_choice)
-        self.confirm_choice.SetSelection(0)
-        self.Bind(wx.EVT_CHOICE, self.Confirmchoice, self.confirm_choice)
-
-        self.confirm_label = wx.StaticText(self, label=u"确认提交方式")
-        hbox2 = wx.BoxSizer(wx.HORIZONTAL)
-        hbox2.Add(self.confirm_label, flag=wx.TOP, border=4)
-        hbox2.Add(self.confirm_choice)
+        # ##确认方式
+        # confirm_choice = ["E键", "回车"]
+        # self.confirm_choice = wx.Choice(self, -1, choices=confirm_choice)
+        # self.confirm_choice.SetSelection(0)
+        # self.Bind(wx.EVT_CHOICE, self.Confirmchoice, self.confirm_choice)
+        #
+        # self.confirm_label = wx.StaticText(self, label=u"确认提交方式")
+        # hbox2 = wx.BoxSizer(wx.HORIZONTAL)
+        # hbox2.Add(self.confirm_label, flag=wx.TOP, border=4)
+        # hbox2.Add(self.confirm_choice)
 
         self.controlbox.Add(self.controlgrid)  # 把网格组加到 功能框内
-        self.controlbox.Add(hbox1)
-        self.controlbox.Add(hbox2)
+        self.controlbox.Add(hbox1,flag=wx.ALL, border=6)
+        # self.controlbox.Add(hbox2)
         ##----------------------------------------------------------------------
         ###策略设置区域
         self.strategy_area_label = wx.StaticBox(self, -1, "策略设置")
@@ -400,6 +405,15 @@ class StatusPanel(wx.Panel):
         else:
             set_dick("yanzhengma_scale", False)
 
+    ## 验证码自动预览
+    def Yanzhengma_autoview(self, event):
+        if self.yanzhengma_autoview.IsChecked():
+            set_dick("auto_yanzhengma_on", True)
+        else:
+            set_dick("auto_yanzhengma_on", False)
+
+
+
     ## 国拍与模拟切换
     def webtab(self, event):
         moni_on = get_val('moni_on')
@@ -476,11 +490,11 @@ class StatusPanel(wx.Panel):
 
     ##初始化
     def init_ui(self):
-        enter_on = get_dick('enter_on')
-        if enter_on:
-            self.confirm_choice.SetSelection(1)
+        auto_yanzhengma_on = get_dick('auto_yanzhengma_on')
+        if auto_yanzhengma_on:
+            self.yanzhengma_autoview.SetValue(True)
         else:
-            self.confirm_choice.SetSelection(0)
+            self.yanzhengma_autoview.SetValue(False)
 
         yanzhengma_scale = get_dick('yanzhengma_scale')
         if yanzhengma_scale:
