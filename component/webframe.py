@@ -520,10 +520,10 @@ class WebFrame(wx.Frame):
             set_val('query_interval', True)
             moni_on = get_val('moni_on')
             if not moni_on:
-                setText(str(1000000))  # 出一定超出的价格
+                setText(str(100000))  # 出一定超出的价格
                 selfdelete()
             else:
-                Paste_moni(1000000)
+                Paste_moni(100000)
             Click(Position_frame[1][0], Position_frame[1][1])
             set_val('auto_yanzhengma_on', True)
             timer1 = threading.Timer(8, self.close_yanzhengma) ##8秒后关闭

@@ -31,8 +31,6 @@ def cut_pic(size, name):
     # (24, 253, 3)
     # (430, 220)
 
-    print(imgpos_yanzhengma.shape)
-    print(imgpos_question.shape)
     i1 = imgpos_yanzhengma[:, :]
     i2 = imgpos_question[:, :]
     # i2 = cv2.resize(i2, (180, 62))
@@ -183,6 +181,8 @@ def findpos():
         Pos_yanzhengma_relative = get_val('Pos_yanzhengma_relative')  # 验证码所在位置
         Pos_question_relative = get_val('Pos_question_relative')  # 问题所在位置
         Pos_yanzhengmaframe_relative = get_val('Pos_yanzhengmaframe_relative')  # 验证码框放置位置
+        Pos_result_relative = get_val('Pos_result_relative')  # 出价结果
+
         set_val('refresh_area', [refresh_area_relative[0] + Px_lowestprice, refresh_area_relative[1] + Py_lowestprice,
                                  refresh_area_relative[2] + Px_lowestprice, refresh_area_relative[3] + Py_lowestprice])
         set_val('confirm_area', [confirm_area_relative[0] + Px_lowestprice, confirm_area_relative[1] + Py_lowestprice,
@@ -203,7 +203,9 @@ def findpos():
                                    Position_frame[6][1] + Pos_question_relative[3]])  # 问题所在位置
         set_val('Pos_yanzhengmaframe', [Px_lowestprice + Pos_yanzhengmaframe_relative[0],
                                         Py_lowestprice + Pos_yanzhengmaframe_relative[1]])  # 验证码框放置位置
-        set_val('Pos_timeframe', [245 - 344 + Px_lowestprice, 399 - 183 + Py_lowestprice])
+        set_val('Pos_timeframe', (245 - 344 + Px_lowestprice, 399 - 183 + Py_lowestprice))
+        set_val('Pos_result', [Pos_result_relative[0] + Px_lowestprice, Pos_result_relative[1] + Py_lowestprice,
+                                 Pos_result_relative[2] + Px_lowestprice, Pos_result_relative[3] + Py_lowestprice])
 
         lowestprice_sizex = get_val('lowestprice_sizex')
         lowestprice_sizey = get_val('lowestprice_sizey')
@@ -226,8 +228,9 @@ def findpos():
         yan_confirm_area = get_val('yan_confirm_area')
         currenttime = get_val('currenttime')
         Pos_question = get_val('Pos_question')  ##验证码问题所在位置
-
-        cal_area = [lowest, refresh_area, confirm_area, Pos_yanzhengma, yan_confirm_area, currenttime, Pos_question]  # 构建截图区域
+        Pos_result = get_val('Pos_result') #拍牌结果位置
+        cal_area = [lowest, refresh_area, confirm_area, Pos_yanzhengma,
+                    yan_confirm_area, currenttime, Pos_question, Pos_result]  # 构建截图区域
         use_area = []
         set_val('sc_area', [Px_lowestprice - dis_x, Py_lowestprice - dis_y, Px_lowestprice + 600, Py_lowestprice + 120])
         for i in range(len(cal_area)):
@@ -292,6 +295,7 @@ def cut_img():  # 将所得的img 处理成  lowestprice_img   confirm_img  yanz
         set_val('imgpos_yanzhengmaconfirm', img[use_area[4][1]:use_area[4][3], use_area[4][0]:use_area[4][2]])  # ok
         set_val('imgpos_currenttime', img[use_area[5][1]:use_area[5][3], use_area[5][0]:use_area[5][2]])
         set_val('imgpos_question', img[use_area[6][1]:use_area[6][3], use_area[6][0]:use_area[6][2]])
+        set_val('imgpos_result', img[use_area[7][1]:use_area[7][3], use_area[7][0]:use_area[7][2]])
     except:
         logger.error("cut_img 这里出错")
         logger.exception('this is an exception message')
@@ -331,9 +335,22 @@ def findconfirm():
     if max_val >= 0.9:
         print(max_val, 'max_val')
         if not smartprice_chujia:
-            OnClick_confirm()
+            get_result() ##确认结果
+            OnClick_confirm()  #点击确认
         else:
             Smart_chujia()
+
+def get_result():
+    result_dick =  get_val('result_dick')
+    imgpos_result = get_val('imgpos_result')
+    for result, img in result_dick.items():
+        res = cv2.matchTemplate(img, imgpos_result, cv2.TM_CCOEFF_NORMED)
+        min_val, max_val, min_loc, max_loc = cv2.minMaxLoc(res)
+        if max_val >= 0.9:
+            print(result)
+            return result
+    return '未知结果'
+
 
 def findfirstprice():
     dick_target = get_val('dick_target')

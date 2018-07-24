@@ -88,7 +88,8 @@ def Delete():
 def many_delete():
     for i in range(10):
         Delete()
-
+    imgpos_result = get_val('imgpos_result')
+    cv2.imwrite('1.png', imgpos_result)
 
 '''
 tijiao_num  
@@ -629,14 +630,13 @@ def Hotkey_open():
                 print("Unable to register id", id)
                 set_val('hotkey_on', False)
             else:
-                print("成功了1")
-
+                pass
         for id, (vk, modifiers) in HOTKEYS2.items():
             if not user32.RegisterHotKey(None, id, modifiers, vk):
                 print("Unable to register id", id)
                 set_val('hotkey_on', False)
             else:
-                print("成功了2")
+                pass
     except:
         print("绑定失败")
     finally:

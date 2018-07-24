@@ -158,7 +158,7 @@ def Create_hash():
         dick_target = pickle.load(tar)  # 要寻找对象的对象
         print(len(dick_target))
         set_val('dick_target', dick_target)
-
+        set_val('result_dick', dick_target[-1])
 
 ##price_list 价格对应时间的表
 price_list = [80000 for i in range(60)]  # 0-59
@@ -723,17 +723,16 @@ def remote_init():
     ## 限定截图位置
     set_val('refresh_area_relative', (396 - 150, 11 - 100, 396 + 150, 11 + 100))
     set_val('confirm_area_relative', (505 - 60, 68 - 40, 505 + 60, 68 + 40))
-    # 237
-    # 452
-    # 601
-    #     i1 = img[2:26, :]
-    #     i2 = img[48:105, 30:]
-    # 529
+# '''
+# 262 467
+# 566 377
+# 761 399
+# '''
     set_val('yan_confirm_area_relative', (205 - 60, 68 - 40, 405 + 60, 68 + 40))
     set_val('Pos_controlframe_relative', (192 - 344, 514 - 183))
     set_val('Pos_yanzhengma_relative', (-247, - 12, - 67, + 43))  # 验证码所在位置
     set_val('Pos_question_relative', (-280, - 65, - 23, -41))  ##问题所在位置
-
+    set_val('Pos_result_relative', (295, -89, 530, -63))
     #  set_val('Pos_yanzhengma_relative', (-277, - 65, - 97, + 45))  # 验证码所在位置
 
     set_val('Pos_yanzhengmaframe_relative', (297, - 284))  # 验证码框放置位置
@@ -762,3 +761,5 @@ def remote_timeset():
     set_val('start_time', 111111111111111)  ## 11点之后的时间
     set_val('final_time', 111111111111)
     set_val('auto_yanzhengma_time', 1111111111111)  ##自动验证码的跳出时间
+
+
