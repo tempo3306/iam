@@ -513,23 +513,24 @@ class WebFrame(wx.Frame):
         auto_yanzhengma_time = get_val('auto_yanzhengma_time')
         auto_query_on = get_val('auto_query_on')
         auto_yanzhengma_on = get_val('auto_yanzhengma_on')
-        if auto_query_on and not auto_yanzhengma_on and a_time > auto_yanzhengma_time:
-            self.tipframe.Show(True)
-            self.tipframe.ShowImage('icons/tip2.png')
-            set_val('query_on', True)
-            set_val('query_interval', True)
-            moni_on = get_val('moni_on')
-            if not moni_on:
-                setText(str(100000))  # 出一定超出的价格
-                selfdelete()
-            else:
-                Paste_moni(100000)
-            Click(Position_frame[1][0], Position_frame[1][1])
-            set_val('auto_yanzhengma_on', True)
-            timer1 = threading.Timer(8, self.close_yanzhengma) ##8秒后关闭
-            timer1.start()
-        elif a_time < auto_yanzhengma_time:
-            set_val('auto_yanzhengma_on', False)  ##设置成查看状态
+
+        yanzhengma_view = get_val('yanzhengma_view')
+        if  not yanzhengma_view:
+            if auto_query_on and not auto_yanzhengma_on and  auto_yanzhengma_time < a_time < auto_yanzhengma_time + 0.5:
+                moni_on = get_val('moni_on')
+                if not moni_on:
+                    setText(str(100000))  # 出一定超出的价格
+                    selfdelete()
+                else:
+                    Paste_moni(100000)
+                Click(Position_frame[1][0], Position_frame[1][1])
+                set_val('auto_yanzhengma_on', True)
+                self.tipframe.Show(True)
+                self.tipframe.ShowImage('icons/tip2.png')
+                timer1 = threading.Timer(8, self.close_yanzhengma) ##8秒后关闭
+                timer1.start()
+            elif a_time < auto_yanzhengma_time:
+                set_val('auto_yanzhengma_on', False)  ##设置成查看状态
 
     #关闭验证码查看
     def close_yanzhengma(self):
@@ -557,6 +558,7 @@ class WebFrame(wx.Frame):
                             self.yanzhengmaframe.Show(False)
                             self.tipframe.Show(False)  ##关闭提交提示
                             self.currentstatusframe.Show(True)
+                            set_val('yanzhengma_view', False)  #开关与动作在一起
                     except:
                         logger.exception('this is an exception message')
 
@@ -564,8 +566,10 @@ class WebFrame(wx.Frame):
                 Yanzhengmasize = get_val('Yanzhengmasize')
                 #验证码放大是否需要刷新
                 if yanzhengma_view:
-                    self.tipframe.Show(True)
-                    self.tipframe.ShowImage('icons/tip1.png')
+                    auto_yanzhengma_on = get_val("auto_yanzhengma_on")
+                    if not auto_yanzhengma_on:
+                        self.tipframe.Show(True)
+                        self.tipframe.ShowImage('icons/tip1.png')
                     set_val('yanzhengma_close', False)
                     path = get_val('path')
                     yanpath = path + "\\yanzhengma.png"
@@ -578,7 +582,6 @@ class WebFrame(wx.Frame):
                         self.currentstatusframe.Show(False)
                     except:  # 找不到的情况下也要重新创建
                         logger.exception('this is an exception message')
-
                     finally:
                         pass
         else:

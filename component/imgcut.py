@@ -388,7 +388,6 @@ def find_yan_confirm():
             set_val('yanzhengma_view', True)
         elif max_val <= 0.9:
             yanzhengma_view = get_val('yanzhengma_view')
-            set_val('yanzhengma_view', False)
             set_val('yanzhengma_close', True)
             set_val('yanzhengma_control', True)
     except:

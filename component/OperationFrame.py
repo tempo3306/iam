@@ -408,9 +408,9 @@ class StatusPanel(wx.Panel):
     ## 验证码自动预览
     def Yanzhengma_autoview(self, event):
         if self.yanzhengma_autoview.IsChecked():
-            set_dick("auto_yanzhengma_on", True)
+            set_dick("auto_query_on", True) #控制开关
         else:
-            set_dick("auto_yanzhengma_on", False)
+            set_dick("auto_query_on", False)
 
 
 

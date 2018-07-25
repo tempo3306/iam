@@ -428,7 +428,6 @@ def Cancel_chujia_test():
 
 def OnH_chujia():
     moni_on = get_val('moni_on')
-
     from component.globalvals import   Varible
     a = Varible.a
     Varible.a = a + 10
@@ -442,6 +441,8 @@ def OnH_chujia():
         setText(str(own_price1))
         Paste_moni(own_price1)
         Click(Position_frame[1][0], Position_frame[1][1])  ##出价
+        Click(Position_frame[1][0], Position_frame[1][1])  ##出价
+        Click(Position_frame[6][0], Position_frame[6][1])  ##点击验证码框
         Click(Position_frame[6][0], Position_frame[6][1])  ##点击验证码框
         set_val('yanzhengma_close', True)
     else:
@@ -459,11 +460,14 @@ def OnH_guopai_chujia():
     setText(str(own_price1))
     selfdelete()
     Click(Position_frame[1][0], Position_frame[1][1])
+    Click(Position_frame[1][0], Position_frame[1][1])
+    Click(Position_frame[6][0], Position_frame[6][1])
     Click(Position_frame[6][0], Position_frame[6][1])
 
 
 def selfdelete():
     Position_frame = get_val('Position_frame')
+    Click(Position_frame[5][0], Position_frame[5][1])
     Click(Position_frame[5][0], Position_frame[5][1])
     many_delete()
     Paste()  # 真粘贴
