@@ -540,8 +540,8 @@ class WebFrame(wx.Frame):
         if auto_yanzhengma_on:
             Click(Position_frame[7][0], Position_frame[7][1])
             print("fsdfsdsfs")
-            set_val('query_on', False)
             self.tipframe.Show(False)
+            set_val('auto_yanzhengma_on', False)  ##设置成查看状态
 
     def Yanzhengma_scale(self):
         ##------------------------------
@@ -557,6 +557,7 @@ class WebFrame(wx.Frame):
                         if self.yanzhengmaframe.IsShown():
                             self.yanzhengmaframe.Show(False)
                             self.tipframe.Show(False)  ##关闭提交提示
+                            set_val('auto_yanzhengma_on', False) ##关闭自动关闭验证码的触发
                             self.currentstatusframe.Show(True)
                             set_val('yanzhengma_view', False)  #开关与动作在一起
                     except:

@@ -413,7 +413,6 @@ class StatusPanel(wx.Panel):
             set_dick("auto_query_on", False)
 
 
-
     ## 国拍与模拟切换
     def webtab(self, event):
         moni_on = get_val('moni_on')
@@ -433,7 +432,6 @@ class StatusPanel(wx.Panel):
                 moni.Show(False)
                 moni.currentstatusframe.Show(False)
                 moni.yanzhengmaframe.Show(False)
-
             else:
                 moni.Show(False)
                 moni.currentstatusframe.Show(False)
@@ -490,8 +488,8 @@ class StatusPanel(wx.Panel):
 
     ##初始化
     def init_ui(self):
-        auto_yanzhengma_on = get_dick('auto_yanzhengma_on')
-        if auto_yanzhengma_on:
+        auto_query_on = get_dick('auto_query_on')
+        if auto_query_on:
             self.yanzhengma_autoview.SetValue(True)
         else:
             self.yanzhengma_autoview.SetValue(False)
@@ -509,7 +507,6 @@ class StatusPanel(wx.Panel):
             self.webtabButton.Enable()
             self.onkeyloginButton.Enable()
 
-        
         self.init_strategy()
 
     def  init_strategy(self):
@@ -519,7 +516,6 @@ class StatusPanel(wx.Panel):
 
     def update_ui(self, strategy_type):  ##根据不同的出价策略调整界面
         strategy_list = get_dick(strategy_type)
-
         print('strategy_list', strategy_list)
 
         if strategy_type == '0':  # 单次

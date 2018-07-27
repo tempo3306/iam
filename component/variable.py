@@ -97,7 +97,7 @@ strategy_dick = {
     'yanzhengma_scale': True,
     'strategy_description': '单枪   48秒加700截止56秒提前100',  # 策略名称
     'strategy_type': '0',
-    'auto_yanzhengma_on': False,  ##默认关闭自动查看验证码
+    'auto_query_on': False,  ##默认关闭自动查看验证码
 
 }
 
