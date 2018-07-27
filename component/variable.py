@@ -159,6 +159,7 @@ def Create_hash():
         print(len(dick_target))
         set_val('dick_target', dick_target)
         set_val('result_dick', dick_target[-1])
+        print(dick_target[-1])
 
 ##price_list 价格对应时间的表
 price_list = [80000 for i in range(60)]  # 0-59
@@ -367,7 +368,7 @@ def init_size():
     set_val('Py_refresh', Py + py_refresh)
     set_val('refresh_sizex', 108)
     set_val('refresh_sizey', 21)
-    set_val('sc_area', [Px_lowestprice - 10, Py_lowestprice - 100, Px_lowestprice + 600, Py_lowestprice + 120])
+    set_val('sc_area', [Px_lowestprice - 10, Py_lowestprice - 150, Px_lowestprice + 600, Py_lowestprice + 150])
     set_val('use_area', [])
     set_val('nptemp', [])
     nptemp = get_val('nptemp')
@@ -627,6 +628,8 @@ def init_pos(Px, Py):
     Pos_yanzhengma_relative = get_val('Pos_yanzhengma_relative')  # 验证码所在位置
     Pos_question_relative = get_val('Pos_question_relative')  # 问题所在位置
     Pos_yanzhengmaframe_relative = get_val('Pos_yanzhengmaframe_relative')  # 验证码框放置位置
+    Pos_result_relative = get_val('Pos_result_relative')  # 出价结果
+
     set_val('refresh_area', [refresh_area_relative[0] + Px_lowestprice, refresh_area_relative[1] + Py_lowestprice,
                              refresh_area_relative[2] + Px_lowestprice, refresh_area_relative[3] + Py_lowestprice])
     set_val('confirm_area', [confirm_area_relative[0] + Px_lowestprice, confirm_area_relative[1] + Py_lowestprice,
@@ -647,7 +650,9 @@ def init_pos(Px, Py):
                              Position_frame[6][1] + Pos_question_relative[3]])  # 问题所在位置
     set_val('Pos_yanzhengmaframe', [Px_lowestprice + Pos_yanzhengmaframe_relative[0],
                                     Py_lowestprice + Pos_yanzhengmaframe_relative[1]])  # 验证码框放置位置
-    set_val('Pos_timeframe', [245 - 344 + Px_lowestprice, 399 - 183 + Py_lowestprice])
+    set_val('Pos_timeframe', (245 - 344 + Px_lowestprice, 399 - 183 + Py_lowestprice))
+    set_val('Pos_result', [Pos_result_relative[0] + Px_lowestprice, Pos_result_relative[1] + Py_lowestprice,
+                           Pos_result_relative[2] + Px_lowestprice, Pos_result_relative[3] + Py_lowestprice])
 
     lowestprice_sizex = get_val('lowestprice_sizex')
     lowestprice_sizey = get_val('lowestprice_sizey')
@@ -659,8 +664,8 @@ def init_pos(Px, Py):
     Py_currenttime = get_val("Py_currenttime")
     set_val('currenttime', [Px_currenttime, Py_currenttime, Px_currenttime + currenttime_sizex,
                             Py_currenttime + currenttime_sizey])
-    dis_x = 50
-    dis_y = 100
+    dis_x = 100
+    dis_y = 150
     x1 = Px_lowestprice - dis_x  # 截图起始点
     y1 = Py_lowestprice - dis_y
     lowest = get_val('lowest')
@@ -670,9 +675,9 @@ def init_pos(Px, Py):
     yan_confirm_area = get_val('yan_confirm_area')
     currenttime = get_val('currenttime')
     Pos_question = get_val('Pos_question')  ##验证码问题所在位置
-
-    cal_area = [lowest, refresh_area, confirm_area, Pos_yanzhengma, yan_confirm_area, currenttime,
-                Pos_question]  # 构建截图区域
+    Pos_result = get_val('Pos_result')  # 拍牌结果位置
+    cal_area = [lowest, refresh_area, confirm_area, Pos_yanzhengma,
+                yan_confirm_area, currenttime, Pos_question, Pos_result]  # 构建截图区域
     use_area = []
     set_val('sc_area', [Px_lowestprice - dis_x, Py_lowestprice - dis_y, Px_lowestprice + 600, Py_lowestprice + 120])
     for i in range(len(cal_area)):
@@ -732,7 +737,7 @@ def remote_init():
     set_val('Pos_controlframe_relative', (192 - 344, 514 - 183))
     set_val('Pos_yanzhengma_relative', (-247, - 12, - 67, + 43))  # 验证码所在位置
     set_val('Pos_question_relative', (-280, - 65, - 23, -41))  ##问题所在位置
-    set_val('Pos_result_relative', (295, -89, 530, -63))
+    set_val('Pos_result_relative', (255, -129, 570, -23)) ##结果所在位置
     #  set_val('Pos_yanzhengma_relative', (-277, - 65, - 97, + 45))  # 验证码所在位置
 
     set_val('Pos_yanzhengmaframe_relative', (297, - 284))  # 验证码框放置位置

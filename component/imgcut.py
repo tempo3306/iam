@@ -130,6 +130,7 @@ def findpos():
     region = (Px, Py, Px + 500, Py + 500)
     sc = grab_screen(region=region)
     img = np.asarray(sc)
+    print("fdsf", img.shape)
     dick_target = get_val('dick_target')
     template = dick_target[2]
     time_template = dick_target[3]
@@ -217,8 +218,8 @@ def findpos():
         Py_currenttime = get_val("Py_currenttime")
         set_val('currenttime', [Px_currenttime, Py_currenttime, Px_currenttime + currenttime_sizex,
                                 Py_currenttime + currenttime_sizey])
-        dis_x = 50
-        dis_y = 100
+        dis_x = 100
+        dis_y = 150
         x1 = Px_lowestprice - dis_x  # 截图起始点
         y1 = Py_lowestprice - dis_y
         lowest = get_val('lowest')
@@ -236,6 +237,7 @@ def findpos():
         for i in range(len(cal_area)):
             temp = [cal_area[i][0] - x1, cal_area[i][1] - y1, cal_area[i][2] - x1, cal_area[i][3] - y1]
             use_area.append(temp)
+        print(use_area)
         set_val('use_area', use_area)
 
 
@@ -288,6 +290,7 @@ def cut_img():  # 将所得的img 处理成  lowestprice_img   confirm_img  yanz
     img = only_screenshot(sc_area)  # 获取得到的截图
     img = np.asarray(img)  # 转化为numpy数组
     try:
+        print(use_area[7][1], use_area[7][3], use_area[7][0], use_area[7][2])
         set_val('imgpos_lowestprice', img[use_area[0][1]:use_area[0][3], use_area[0][0]:use_area[0][2]])  # ok
         set_val('imgpos_refresh', img[use_area[1][1]:use_area[1][3], use_area[1][0]:use_area[1][2]])  # ok
         set_val('imgpos_confirm', img[use_area[2][1]:use_area[2][3], use_area[2][0]:use_area[2][2]])
@@ -332,23 +335,36 @@ def findconfirm():
     w, h = template.shape[::-1]
     res = cv2.matchTemplate(img, template, cv2.TM_CCOEFF_NORMED)
     min_val, max_val, min_loc, max_loc = cv2.minMaxLoc(res)
-    if max_val >= 0.9:
+    print(max_val, 'max_val')
+    if max_val >= 0.7:
         print(max_val, 'max_val')
         if not smartprice_chujia:
+            print("寻找结果")
             get_result() ##确认结果
             OnClick_confirm()  #点击确认
         else:
+            print("寻找结果2")
+            get_result() ##确认结果
             Smart_chujia()
 
 def get_result():
+    print("fsdfsfsfsf")
     result_dick =  get_val('result_dick')
     imgpos_result = get_val('imgpos_result')
+    print(imgpos_result)
+    imgpos_result = cv2.cvtColor(imgpos_result, cv2.COLOR_BGR2GRAY)
     for result, img in result_dick.items():
+        print(result)
+        print(img.shape)
+        print(imgpos_result.shape)
         res = cv2.matchTemplate(img, imgpos_result, cv2.TM_CCOEFF_NORMED)
         min_val, max_val, min_loc, max_loc = cv2.minMaxLoc(res)
+        print('max_val', max_val)
         if max_val >= 0.9:
+            print('max_val  34', max_val)
             print(result)
             return result
+    print('未知')
     return '未知结果'
 
 

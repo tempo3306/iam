@@ -9,6 +9,8 @@ time :  3
 '''
 
 def get_target(filename):
+    a = cv2.imread(filename, 0)
+    print(a.shape)
     return cv2.imread(filename,0)  ##灰度模式打开
 
 
@@ -30,15 +32,17 @@ result_dick = {}
 不得修改同样同价
 超过最大出价次数
 '''
-result_dick['出价成功'] = get_target('出价成功.png')
-result_dick['出价不在区间'] = get_target('出价不在区间.png')
-result_dick['请输入正确的校验码'] = get_target('请输入正确的校验码.png')
-result_dick['超过截止时间'] = get_target('超过截止时间.png')
-result_dick['不得修改同样同价'] = get_target('不得修改同样同价.png')
-result_dick['超过最大出价次数'] = get_target('超过最大出价次数.png')
+result_dick['出价成功'] = get_target('price_success.png')
+result_dick['出价不在区间'] = get_target('not_in_area.png')
+result_dick['请输入正确的校验码'] = get_target('wrong_code.png')
+result_dick['超过截止时间'] = get_target('outoftime.png')
+result_dick['不得修改同样同价'] = get_target('same_price.png')
+result_dick['超过最大出价次数'] = get_target('out_of_number.png')
 
 
 target = [refresh, confirm, lowestprice, time, firstprice, firstprice_moni, result_dick]
+
+print(target)
 
 
 with  open("target.tkl", 'wb') as t:

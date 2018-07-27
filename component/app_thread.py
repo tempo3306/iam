@@ -91,79 +91,6 @@ class findposThread(Thread):
         self.__running.clear()  # 设置为False
 
 
-class confirmThread(threading.Thread):
-    def __init__(self, *args, **kwargs):
-        super(confirmThread, self).__init__(*args, **kwargs)
-        self.__flag = threading.Event()  # 用于暂停线程的标识
-        self.__flag.set()  # 设置为True
-        self.__running = threading.Event()  # 用于停止线程的标识
-        self.__running.set()  # 将running设置为True
-        self.setDaemon(True)
-        self.start()
-
-    def run(self):
-        while self.__running.isSet():
-            self.__flag.wait()  # 为True时立即返回, 为False时阻塞直到内部的标识位为True后返回
-            time.sleep(0.035)
-            tijiao_num = get_val('tijiao_num')
-            twice = get_val('twice')
-            # print('tijiao_num', tijiao_num)
-            smartprice_chujia = get_val('smartprice_chujia')
-            if tijiao_num == 2 and twice:
-                try:
-                    findconfirm()
-                except:
-                    logger.error("查找确认出错")
-                    logger.exception('this is an exception message')
-            elif smartprice_chujia:
-                try:
-                    findconfirm()
-                except:
-                    logger.error("智能补枪失败")
-                    logger.exception('this is an exception message')
-
-    def pause(self):
-        self.__flag.clear()  # 设置为False, 让线程阻塞
-
-    def resume(self):
-        self.__flag.set()  # 设置为True, 让线程停止阻塞
-
-    def stop(self):
-        self.__flag.set()  # 将线程从暂停状态恢复, 如何已经暂停的话
-        self.__running.clear()  # 设置为False
-
-
-class refreshThread(Thread):
-    def __init__(self, *args, **kwargs):
-        super(refreshThread, self).__init__(*args, **kwargs)
-        self.__flag = threading.Event()  # 用于暂停线程的标识
-        self.__flag.set()  # 设置为True
-        self.__running = threading.Event()  # 用于停止线程的标识
-        self.__running.set()  # 将running设置为True
-        self.setDaemon(True)
-        self.start()
-
-    def run(self):
-        while self.__running.isSet():
-            self.__flag.wait()  # 为True时立即返回, 为False时阻塞直到内部的标识位为True后返回
-            time.sleep(0.05)
-            try:
-                final_stage = get_val('final_stage')
-                if final_stage:
-                    findrefresh()
-            except:
-                logger.error("刷新失败")
-                logger.exception('this is an exception message')
-
-    def pause(self):
-        self.__flag.clear()  # 设置为False, 让线程阻塞
-
-    def resume(self):
-        self.__flag.set()  # 设置为True, 让线程停止阻塞
-
-    def stop(self):
-        self.__flag.set()  # 将线程从暂停状态恢复, 如何已经暂停的话
-        self.__running.clear()  # 设置为False
 
 
 class cutimgThread(Thread):
@@ -197,23 +124,13 @@ class cutimgThread(Thread):
 
     # @calculate_usetime
     def find_confirm(self):
-        ##################查找确认
-        tijiao_num = get_val('tijiao_num')
-        twice = get_val('twice')
-        # print('tijiao_num', tijiao_num)
-        smartprice_chujia = get_val('smartprice_chujia')
-        if tijiao_num == 2 and twice:
-            try:
-                findconfirm()
-            except:
-                logger.error("查找确认出错")
-                logger.exception('this is an exception message')
-        elif smartprice_chujia:
-            try:
-                findconfirm()
-            except:
-                logger.error("智能补枪失败")
-                logger.exception('this is an exception message')
+        try:
+            findconfirm()
+        except:
+            logger.error("查找确认出错")
+            logger.exception('this is an exception message')
+
+
         # c = time.time()
         # print('c-b', c-b)
 

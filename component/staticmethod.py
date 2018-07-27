@@ -227,8 +227,24 @@ def OnClick_Shuaxin():
 
 
 def OnClick_confirm():
-    Position_frame = get_val('Position_frame')
-    Click(Position_frame[4][0], Position_frame[4][1])
+    tijiao_num = get_val('tijiao_num')
+    twice = get_val('twice')
+    smartprice_chujia = get_val('smartprice_chujia')
+    if tijiao_num == 2 and twice:
+        try:
+            Position_frame = get_val('Position_frame')
+            Click(Position_frame[4][0], Position_frame[4][1])
+        except:
+            logger.error("查找确认出错")
+            logger.exception('this is an exception message')
+    elif smartprice_chujia:
+        try:
+            Position_frame = get_val('Position_frame')
+            Click(Position_frame[4][0], Position_frame[4][1])
+        except:
+            logger.error("智能补枪失败")
+            logger.exception('this is an exception message')
+
 
 
 def Refresh_web():
