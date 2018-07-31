@@ -272,6 +272,8 @@ class CurrentStatusPanel(wx.Panel):
         temp = int((a_time - int(a_time)) * 10)
         time_local = time.localtime(a_time)
         st = time.strftime("%H:%M:%S", time_local)  # + '.' + str(b_time)
+        set_val('a_time_str', st)
+
         # st="%s:%s:%s"%(b_time[0],b_time[1],b_time[2])
         st = '{0}{1}.{2}'.format(currenttime_label, st, temp)
         w, h = self.GetClientSize()
@@ -307,7 +309,6 @@ class CurrentStatusPanel(wx.Panel):
             smartprice_chujia = get_val('smartprice_chujia')
             strategy_type = get_dick('strategy_type')
 
-
             if userprice and tijiao_on:  ##提交状态
                 current_pricestatus_label = get_val('current_pricestatus_label')
                 current_pricestatus = get_val('current_pricestatus')
@@ -320,8 +321,6 @@ class CurrentStatusPanel(wx.Panel):
                 # 显示截止时间与当前时间相差
                 currenttime = get_val('a_time')
                 timediff = float(usertime) - float(currenttime)
-
-
                 timestatustext = "提交倒计时{0:.1f}秒".format(timediff)
                 pricestatustext = "差价{0}".format(diff_price)
                 dc.DrawText(pricelabeltext, x3, y3)
@@ -376,7 +375,8 @@ class CurrentStatusPanel(wx.Panel):
                     else:
                         timestatustext = "出价倒计时{0:.1f}秒".format(timediff)
 
-                pricestatustext = "差价{0}".format('-')
+                # pricestatustext = "差价{0}".format('-')
+                pricestatustext = "请勿操作，耐心等待"
                 dc.DrawText(pricelabeltext, x3, y3)
                 dc.DrawText(pricetext, x4, y4)
                 dc.DrawText(timestatustext, x5, y5)
@@ -431,7 +431,6 @@ class WebFrame(wx.Frame):
         else:
             pub.subscribe(self.refresh_web, 'guopai refresh_web')
             pub.subscribe(self.onekey_login, 'onekey_login')  # 登录
-
 
 
     ##移动跟随
@@ -501,7 +500,7 @@ class WebFrame(wx.Frame):
         else:
             self.currentstatusframe.Show(False)
             self.yanzhengmaframe.Show(False)
-
+            self.tipframe.Show(False)
         ##自动验证码查看
         self.auto_yanzhengma()
 
@@ -525,8 +524,6 @@ class WebFrame(wx.Frame):
                     Paste_moni(100000)
                 Click(Position_frame[1][0], Position_frame[1][1])
                 set_val('auto_yanzhengma_on', True)
-                self.tipframe.Show(True)
-                self.tipframe.ShowImage('icons/tip2.png')
                 timer1 = threading.Timer(8, self.close_yanzhengma) ##8秒后关闭
                 timer1.start()
             elif a_time < auto_yanzhengma_time:
@@ -568,9 +565,6 @@ class WebFrame(wx.Frame):
                 #验证码放大是否需要刷新
                 if yanzhengma_view:
                     auto_yanzhengma_on = get_val("auto_yanzhengma_on")
-                    if not auto_yanzhengma_on:
-                        self.tipframe.Show(True)
-                        self.tipframe.ShowImage('icons/tip1.png')
                     set_val('yanzhengma_close', False)
                     path = get_val('path')
                     yanpath = path + "\\yanzhengma.png"
@@ -581,6 +575,13 @@ class WebFrame(wx.Frame):
                         yan.Show()
                         yan.ShowImage(yanpath)
                         self.currentstatusframe.Show(False)
+                        ##打开提示
+                        if not auto_yanzhengma_on:
+                            self.tipframe.Show(True)
+                            self.tipframe.ShowImage('icons/tip1.png')
+                        else:
+                            self.tipframe.Show(True)
+                            self.tipframe.ShowImage('icons/tip2.png')
                     except:  # 找不到的情况下也要重新创建
                         logger.exception('this is an exception message')
                     finally:
@@ -593,6 +594,7 @@ class WebFrame(wx.Frame):
                 try:
                     if self.yanzhengmaframe.IsShown():
                         self.yanzhengmaframe.Show(False)
+                        self.tipframe.Show(False)
                         self.currentstatusframe.Show(True)
                 except:
                     logger.exception('this is an exception message')
@@ -647,6 +649,7 @@ class WebFrame(wx.Frame):
         set_val('moni_on', False)
         set_val('guopai_on', False)
         self.yanzhengmaframe.Show(False)
+        self.tipframe.Show(False)
         self.currentstatusframe.Show(False)
         event.Skip()
         id = get_val('topframe')

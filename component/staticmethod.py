@@ -12,7 +12,7 @@ import win32clipboard
 import time
 import threading
 
-from component.read_pic import grab_screen
+from component.read_pic import grab_screen, grab_screen2
 from component.variable import set_val, get_val, get_dick, set_dick
 import ctypes
 from ctypes import wintypes
@@ -259,12 +259,14 @@ def Onekey_login():
     if guopai_on:
         wx.CallAfter(pub.sendMessage, "onekey_login")
     ##截图
-    login_yanzhengma = get_val('login_yanzhengma')
+    Pos_login = get_val('Pos_login')
 
-    img = grab_screen(region=login_yanzhengma)
+    img = grab_screen2(region=Pos_login)
     num = get_val('num')
+    num = 100
     set_val('num', num+1)
     cv2.imwrite('login_%d.png' %num, img)
+    print("fdsfsdfsfsfdsf")
 
 ##-------------------------------------------------------------------------------------
 ##智能出价
@@ -512,23 +514,8 @@ def OnClick_Backspace():
         win32api.keybd_event(8, 0, win32con.KEYEVENTF_KEYUP, 0)  # 释放按键
 
 
-def tijiao_ok():
-    # tijiao_on = get_val('tijiao_on')
-    # enter_on = get_dick('enter_on')
-    # smartprice_chujia = get_val('smartprice_chujia')
-    # if not enter_on:
-    #     set_val('tijiao_OK', True)
-    #     set_val('yanzhengma_view', False)
-    #     set_val('yanzhengma_close', True)
-    #     set_val('yanzhengma_control', False)
-    # elif not enter_on and smartprice_chujia:
-    #     set_val('tijiao_OK', True)
-    #     set_val('yanzhengma_view', False)
-    #     set_val('yanzhengma_close', True)
-    #     set_val('yanzhengma_control', False)
-    pass
 
-def tijiao_ok2():
+def tijiao_ok():
     enter_on = get_dick('enter_on')
     tijiao_on = get_val('tijiao_on')
     smartprice_chujia = get_val('smartprice_chujia')
@@ -542,7 +529,10 @@ def tijiao_ok2():
         set_val('yanzhengma_view', False)
         set_val('yanzhengma_close', True)
         set_val('yanzhengma_control', False)
+    wx.CallAfter(pub.SendMessage, 'update info', action='按下回车【enter】确认')
 
+def do_temp():
+    pass
 
 
 
@@ -593,26 +583,26 @@ VK_CODE = {'0': 0x30, '1': 0x31, '2': 0x32, '3': 0x33, '4': 0x34, '5': 0x35, '6'
            'q': 0x51, 'h': 0x48,
            }
 user32 = ctypes.windll.user32
-HOTKEYS1 = {1: (VK_CODE['2'], win32con.MOD_ALT), 2: (VK_CODE['3'], win32con.MOD_ALT),
-            3: (VK_CODE['4'], win32con.MOD_ALT), 4: (VK_CODE['5'], win32con.MOD_ALT),
-            5: (VK_CODE['6'], win32con.MOD_ALT), 6: (VK_CODE['7'], win32con.MOD_ALT),
+HOTKEYS1 = {1: (VK_CODE['3'], win32con.MOD_ALT),
+            2: (VK_CODE['4'], win32con.MOD_ALT), 3: (VK_CODE['5'], win32con.MOD_ALT),
+            4: (VK_CODE['6'], win32con.MOD_ALT)
             }
-HOTKEYS2 = {7: (VK_CODE['s'], 0x4000), 8: (VK_CODE['f'], 0x4000), 9: (VK_CODE['d'], 0x4000),
-            10: (win32con.VK_SPACE, 0x4000), 11: (VK_CODE['e'], 0x4000), 12: (win32con.VK_RETURN, 0x4000),
-            13: (VK_CODE['q'], 0x4000), 14: (VK_CODE['h'], 0x4000),
-            15: (win32con.VK_ESCAPE, 0x4000),
-            16: (win32con.VK_F1, 0x4000), 17: (win32con.VK_F5, 0x4000),
-            18: (win32con.VK_F7, 0x4000),}
+HOTKEYS2 = {
+    10: (win32con.VK_SPACE, 0x4000),  11: (win32con.VK_RETURN, 0x4000),
+    12: (win32con.VK_ESCAPE, 0x4000),
+    13: (win32con.VK_F1, 0x4000), 14: (win32con.VK_F5, 0x4000),
+    15: (win32con.VK_F7, 0x4000),}
 
 HOTKEY_ACTIONS = {
-    1: Cancel_chujia_test, 2: OnClick_chujia, 3: many_delete,
-    4: nothing, 5: nothing,
-    6: nothing, 7: OnClick_Shuaxin, 8: selfTijiao,
-    9: selfChujia, 10: OnClick_Backspace, 11: tijiao_ok,
-    12: tijiao_ok2,
-    13: query, 14: OnH_chujia,
-    15: esc_chujia,
-    16: OnClick_Tijiao, 17: Refresh_web, 18: Onekey_login}
+    1: OnClick_chujia, 2: many_delete,
+    3: do_temp, 4: nothing,
+
+    10: OnClick_Backspace,
+    11: tijiao_ok,
+    12: esc_chujia,
+    13: OnClick_Tijiao,
+    14: Refresh_web,
+    15: Onekey_login}
 
 
 # 启动监听

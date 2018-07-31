@@ -870,7 +870,6 @@ class LowestpfriceThread(Thread):
                     else:
                         set_val('lowest_price', price)
                         trans_time()  # 保存价格
-
                         set_val('changetime', a_time)
                 else:
                     set_val('findpos_on', True)
@@ -897,7 +896,7 @@ class Start_thread(Thread):
 
     def run(self):
         import logging, time
-        version = '5.6s'
+        version = '6.0'
         timenow = time.time()
         # 转换成localtime
         time_local = time.localtime(timenow)

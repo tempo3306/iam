@@ -382,21 +382,34 @@ class StatusPanel(wx.Panel):
 
         self.reminderbox.Add(self.reminderhbox, flag=wx.ALL, border=10)
         ##-------------------------------------------------------------------------------------
+        #日志框
+        self.info = wx.StaticBox(self, -1, "操作日志")
+        self.infobox = wx.StaticBoxSizer(self.reminder, wx.VERTICAL)
+        self.infohbox = wx.BoxSizer(wx.HORIZONTAL)
+        self.iniotext1 = wx.StaticText(self, label='')
+        self.iniotext2 = wx.StaticText(self, label='')
+        self.iniotext3 = wx.StaticText(self, label='')
+        self.infohbox.Add(self.infohbox, flag=wx.ALL, border=10)
+        self.infos = []
+
+        ##-------------------------------------------------------------------------------------
         ##将所有sizer组合
         # self.reminderbox.Add(self.remindergrid)
         self.vbox = wx.BoxSizer(wx.VERTICAL)
         self.vbox.Add(self.controlbox, flag=wx.BOTTOM, border=10)
         self.vbox.Add(self.strategy_area_sizer, flag=wx.BOTTOM, border=10)
         self.vbox.Add(self.reminderbox, flag=wx.BOTTOM, border=10)
+        # self.vbox.Add(self.infohbox, flag=wx.BOTTOM, border=10)
         self.SetSizer(self.vbox)
 
 
 
         ###初始化sizer
-
         #############消息区域
         pub.subscribe(self.change_strategy, 'change strategy')
         pub.subscribe(self.change_userprice, 'change userprice')  # 修改当前用户出价
+        #更新日志
+        # pub.subscribe(self.update_info, 'update info')
 
     ## 验证码放大
     def Yanzhengma_scale(self, event):
@@ -477,12 +490,26 @@ class StatusPanel(wx.Panel):
         self.dlg.Show()
         # dlg.ShowModal()
     
+        guopai_on = get_val('guopai_on')
+        if guopai_on:
+            wx.CallAfter(pub.sendMessage, "onekey_login")
+        ##截图
+        login_yanzhengma = get_val('login_yanzhengma_relative')
 
+        print("fdsfsdfsfsfdsf")
+
+        img = grab_screen2(region=login_yanzhengma)
+        num = get_val('num')
+        num = 100
+        set_val('num', num+1)
+        cv2.imwrite('login_%d.png' %num, img)
+        print("fdsfsdfsfsfdsf")
 
     ###策略设置
     def Choice_strategy(self, event):
         strategy_type = str(self.choice_strategy.GetSelection())
         print('strategy_type', strategy_type)
+
         self.update_ui(strategy_type)
         set_dick('strategy_type', strategy_type)  ##保存当前用户选择的策略
 
@@ -514,6 +541,33 @@ class StatusPanel(wx.Panel):
         self.update_ui(strategy_type)
 
 
+    #--------------------------------------------
+    #日志管理
+    def update_info(self, action):
+        info = self.create_info(action)
+        self.infos.append(info)
+        action_infos = get_val('action_infos')
+        action_infos.append(info)
+        set_val('action_infos', action_infos)
+
+        if len(self.infos) > 3:
+            self.infos.pop(0) ##维持3个元素
+
+        ##修改info
+        self.iniotext1.SetLabel(self.infos[0])
+        self.iniotext2.SetLabel(self.infos[1])
+        self.iniotext3.SetLabel(self.infos[2])
+
+
+    def create_info(self, action):
+        a_time_str = get_val('a_time_str')
+        info = f'{a_time_str}: {action}'
+        return info
+
+
+
+    #--------------------------------------------
+    #策略调整
     def update_ui(self, strategy_type):  ##根据不同的出价策略调整界面
         strategy_list = get_dick(strategy_type)
         print('strategy_list', strategy_list)

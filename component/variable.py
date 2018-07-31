@@ -417,6 +417,8 @@ def init_strategy():
     set_val('b_time', 0)  # 制作0.1秒
     set_val('moni_minute', 29)
     set_val('chujia_time', 0)  # 出价时间
+    set_val('a_time_str', '')  # 当前时间的显示状态
+
 
     set_val('moni_on', False)  # 判断开启的是哪个窗口 ，限制同时只能开启一个
     set_val('guopai_on', False)
@@ -537,6 +539,8 @@ def init_account():
 
     set_val("firstprice_done", False)
 
+    set_val('action_infos', [])  ##记录拍手所有的动作
+
 
 def init_status():
     ##状态框
@@ -629,6 +633,7 @@ def init_pos(Px, Py):
     Pos_question_relative = get_val('Pos_question_relative')  # 问题所在位置
     Pos_yanzhengmaframe_relative = get_val('Pos_yanzhengmaframe_relative')  # 验证码框放置位置
     Pos_result_relative = get_val('Pos_result_relative')  # 出价结果
+    Pos_login_relative = get_val('Pos_login_relative')  # 出价结果
 
     set_val('refresh_area', [refresh_area_relative[0] + Px_lowestprice, refresh_area_relative[1] + Py_lowestprice,
                              refresh_area_relative[2] + Px_lowestprice, refresh_area_relative[3] + Py_lowestprice])
@@ -653,6 +658,9 @@ def init_pos(Px, Py):
     set_val('Pos_timeframe', (245 - 344 + Px_lowestprice, 399 - 183 + Py_lowestprice))
     set_val('Pos_result', [Pos_result_relative[0] + Px_lowestprice, Pos_result_relative[1] + Py_lowestprice,
                            Pos_result_relative[2] + Px_lowestprice, Pos_result_relative[3] + Py_lowestprice])
+
+    set_val('Pos_login', [Pos_login_relative[0] + Px_lowestprice, Pos_login_relative[1] + Py_lowestprice,
+                          Pos_login_relative[2] + Px_lowestprice, Pos_login_relative[3] + Py_lowestprice])
 
     lowestprice_sizex = get_val('lowestprice_sizex')
     lowestprice_sizey = get_val('lowestprice_sizey')
@@ -742,7 +750,11 @@ def remote_init():
 
     set_val('Pos_yanzhengmaframe_relative', (297, - 284))  # 验证码框放置位置
 
-    set_val('login_yanzhengma_relative', (396 - 100, 11 - 20, 396 + 255, 11 + 20))
+    set_val('Pos_login_relative', (550, -108, 656, -86))
+
+    # 268    467
+    # 814   355    924    377
+
 
     # set_val('auto_yanzhengma_on', False)  ## strategy 里替换 ENTER_ON
     set_val('auto_query_on', True)

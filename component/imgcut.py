@@ -130,7 +130,6 @@ def findpos():
     region = (Px, Py, Px + 500, Py + 500)
     sc = grab_screen(region=region)
     img = np.asarray(sc)
-    print("fdsf", img.shape)
     dick_target = get_val('dick_target')
     template = dick_target[2]
     time_template = dick_target[3]
@@ -183,6 +182,7 @@ def findpos():
         Pos_question_relative = get_val('Pos_question_relative')  # 问题所在位置
         Pos_yanzhengmaframe_relative = get_val('Pos_yanzhengmaframe_relative')  # 验证码框放置位置
         Pos_result_relative = get_val('Pos_result_relative')  # 出价结果
+        Pos_login_relative = get_val('Pos_login_relative')  # 出价结果
 
         set_val('refresh_area', [refresh_area_relative[0] + Px_lowestprice, refresh_area_relative[1] + Py_lowestprice,
                                  refresh_area_relative[2] + Px_lowestprice, refresh_area_relative[3] + Py_lowestprice])
@@ -207,6 +207,9 @@ def findpos():
         set_val('Pos_timeframe', (245 - 344 + Px_lowestprice, 399 - 183 + Py_lowestprice))
         set_val('Pos_result', [Pos_result_relative[0] + Px_lowestprice, Pos_result_relative[1] + Py_lowestprice,
                                  Pos_result_relative[2] + Px_lowestprice, Pos_result_relative[3] + Py_lowestprice])
+
+        set_val('Pos_login', [Pos_login_relative[0] + Px_lowestprice, Pos_login_relative[1] + Py_lowestprice,
+                              Pos_login_relative[2] + Px_lowestprice, Pos_login_relative[3] + Py_lowestprice])
 
         lowestprice_sizex = get_val('lowestprice_sizex')
         lowestprice_sizey = get_val('lowestprice_sizey')
@@ -237,7 +240,6 @@ def findpos():
         for i in range(len(cal_area)):
             temp = [cal_area[i][0] - x1, cal_area[i][1] - y1, cal_area[i][2] - x1, cal_area[i][3] - y1]
             use_area.append(temp)
-        print(use_area)
         set_val('use_area', use_area)
 
 
@@ -290,7 +292,6 @@ def cut_img():  # 将所得的img 处理成  lowestprice_img   confirm_img  yanz
     img = only_screenshot(sc_area)  # 获取得到的截图
     img = np.asarray(img)  # 转化为numpy数组
     try:
-        print(use_area[7][1], use_area[7][3], use_area[7][0], use_area[7][2])
         set_val('imgpos_lowestprice', img[use_area[0][1]:use_area[0][3], use_area[0][0]:use_area[0][2]])  # ok
         set_val('imgpos_refresh', img[use_area[1][1]:use_area[1][3], use_area[1][0]:use_area[1][2]])  # ok
         set_val('imgpos_confirm', img[use_area[2][1]:use_area[2][3], use_area[2][0]:use_area[2][2]])
@@ -335,9 +336,7 @@ def findconfirm():
     w, h = template.shape[::-1]
     res = cv2.matchTemplate(img, template, cv2.TM_CCOEFF_NORMED)
     min_val, max_val, min_loc, max_loc = cv2.minMaxLoc(res)
-    print(max_val, 'max_val')
     if max_val >= 0.7:
-        print(max_val, 'max_val')
         if not smartprice_chujia:
             print("寻找结果")
             get_result() ##确认结果
@@ -348,7 +347,6 @@ def findconfirm():
             Smart_chujia()
 
 def get_result():
-    print("fsdfsfsfsf")
     result_dick =  get_val('result_dick')
     imgpos_result = get_val('imgpos_result')
     print(imgpos_result)
@@ -361,8 +359,6 @@ def get_result():
         min_val, max_val, min_loc, max_loc = cv2.minMaxLoc(res)
         print('max_val', max_val)
         if max_val >= 0.9:
-            print('max_val  34', max_val)
-            print(result)
             return result
     print('未知')
     return '未知结果'
@@ -380,8 +376,6 @@ def findfirstprice():
     res2 = cv2.matchTemplate(img, template2, cv2.TM_CCOEFF_NORMED)
     min_val, max_val2, min_loc, max_loc = cv2.minMaxLoc(res2)
 
-    print(max_val)
-    print(max_val2)
 
     if max_val >= 0.9 or max_val2 >= 0.9:
         return True

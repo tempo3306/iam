@@ -353,3 +353,4 @@ def grab_screen2(region=None, title=None):
     win32gui.ReleaseDC(hwin, hwindc)
     win32gui.DeleteObject(bmp.GetHandle())
     return img
+
