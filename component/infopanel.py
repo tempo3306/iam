@@ -13,13 +13,15 @@ class InfoPanel(wx.Panel):
         super(InfoPanel, self).__init__(parent, size=infopanel_size, pos=infopanel_pos)
         self.infomationfont = wx.Font(14, wx.FONTFAMILY_DEFAULT, wx.FONTSTYLE_NORMAL, wx.FONTWEIGHT_NORMAL, False)
         self.infofont = wx.Font(10, wx.FONTFAMILY_DEFAULT, wx.FONTSTYLE_NORMAL, wx.FONTWEIGHT_NORMAL, False)
+        self.areafont = wx.Font(12, wx.FONTFAMILY_DEFAULT, wx.FONTSTYLE_NORMAL, wx.FONTWEIGHT_NORMAL, False)
         self.infos = []
         self.init_info()
 
         self.hbox = wx.BoxSizer(wx.HORIZONTAL)
-        self.infomation = wx.StaticText(self, label='沪牌一号7月31号模拟拍牌会', pos=(15, 5))
-        self.infoarea = wx.StaticText(self, label='操作日志', pos=(15, 35))
-
+        self.infomation = wx.StaticText(self, label='沪牌一号模拟拍牌会', pos=(30, 5))
+        self.infoarea = wx.StaticText(self, label='操作日志:', pos=(15, 40))
+        self.infomation.SetFont(self.infomationfont)
+        self.infoarea.SetFont(self.areafont)
         self.SetBackgroundColour('white')
         # self.SetForegroundColour('white')
 
