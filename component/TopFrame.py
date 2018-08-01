@@ -180,6 +180,14 @@ class TopFrame(wx.Frame):
         self.Show(False)
 
     def Openmoni(self, event):
+        ##初始化日志信息
+        auto_query_on = get_val('auto_query_on')
+        if auto_query_on:
+            new_actions = ['打开模拟', '同步服务器策略', '同步网页时间', '策略初始化', '等待验证码预览']
+        else:
+            new_actions = ['打开模拟', '同步服务器策略', '同步网页时间', '策略初始化', '等待第二次出价']
+        set_val('new_actions', new_actions)
+
         Px = get_val('Px_webframe')
         Py = get_val('Py_webframe')
 
@@ -194,7 +202,7 @@ class TopFrame(wx.Frame):
             moni.Show(True)
             moni.currentstatusframe.Show(False)
             moni.htmlpanel.webview.Reload()
-            moni.operationpanel.init_ui()
+            moni.init_frame()
             moni.Show(True)
             self.webopen()
         else:
@@ -202,13 +210,18 @@ class TopFrame(wx.Frame):
             set_val('moni_webframe', self.fr.GetId())
             self.fr.Show(True)
             self.fr.currentstatusframe.Show(False)
-            self.fr.operationpanel.init_ui()
+            self.fr.init_frame()
             self.webopen()
             # 关闭主界面，打开策略设置
         set_val('findpos_on', True) ##每次切换都需要重新定位
 
 
+
+
+
     def Open_call_moni(self):
+        ##初始化日志信息
+        auto_query_on = get_val('auto_query_on')
         Px = get_val('Px_webframe')
         Py = get_val('Py_webframe')
 
@@ -221,7 +234,7 @@ class TopFrame(wx.Frame):
         moni = wx.FindWindowById(moni_id)
         if moni_id != -1:
             moni.htmlpanel.webview.Reload()
-            moni.operationpanel.init_ui()
+            moni.init_frame()
             self.webopen()
             moni.Show(True)
             moni.currentstatusframe.Show(False)
@@ -230,15 +243,25 @@ class TopFrame(wx.Frame):
             self.fr.Show(True)
             set_val('moni_webframe', self.fr.GetId())
             self.fr.currentstatusframe.Show(False)
-            self.fr.operationpanel.init_ui()
+            self.fr.init_frame()
             # 关闭主界面，打开策略设置
             self.webopen()
         set_val('findpos_on', True)
+
+
 
     def Openurlchoice(self, event):
         activate_status = get_val('activate_status')
 
         if activate_status:
+            ##初始化日志信息
+            auto_query_on = get_val('auto_query_on')
+            if auto_query_on:
+                new_actions = ['打开国拍', '同步服务器策略', '同步服务器时间', '策略初始化', '等待验证码预览', '']
+            else:
+                new_actions = ['打开国拍', '同步服务器策略', '同步服务器时间', '策略初始化', '等待第二次出价', '']
+            set_val('new_actions', new_actions)
+
             Px = get_val('Px_webframe')
             Py = get_val('Py_webframe')
 
@@ -252,7 +275,7 @@ class TopFrame(wx.Frame):
             from component.app_thread import GetremotetimeThread
             getremotetimethread = GetremotetimeThread()  ##同步时间
             if guopai_id != -1:
-                guopai.operationpanel.init_ui()
+                guopai.init_frame()
                 guopai.Center()
                 guopai.htmlpanel.webview.Reload()
                 guopai.Show(True)
@@ -263,10 +286,18 @@ class TopFrame(wx.Frame):
                 set_val('guopai_webframe', self.fr.GetId())
                 self.fr.Show(True)
                 self.fr.currentstatusframe.Show(False)
-                self.fr.operationpanel.init_ui()
+                self.fr.init_frame()
                 # 关闭主界面，打开策略设置
                 self.webopen()
         else:
+            ##初始化日志信息
+            auto_query_on = get_val('auto_query_on')
+            if auto_query_on:
+                new_actions = ['打开国拍', '策略初始化', '等待验证码预览']
+            else:
+                new_actions = ['打开国拍', '策略初始化', '等待第二次出价']
+            set_val('new_actions', new_actions)
+
             loginframeid = get_val('loginframe')
             print(loginframeid)
             loginframe = wx.FindWindowById(loginframeid)
@@ -290,11 +321,14 @@ class TopFrame(wx.Frame):
         set_val('findpos_on', True)
 
 
+
         # mainicon = get_val('mainicon')
         # self.Show(False)
         # guopai = GuopaiFrame(self, "国拍", mainicon)
 
     def Open_call_guopai(self):
+        ##初始化日志信息
+
         Px = get_val('Px_webframe')
         Py = get_val('Py_webframe')
 
@@ -306,7 +340,7 @@ class TopFrame(wx.Frame):
         guopai_id = get_val('guopai_webframe')
         guopai= wx.FindWindowById(guopai_id)
         if guopai_id != -1:
-            guopai.operationpanel.init_ui()
+            guopai.init_frame()
             guopai.htmlpanel.webview.Reload()
             guopai.Show(True)
             guopai.currentstatusframe.Show(False)
@@ -316,7 +350,7 @@ class TopFrame(wx.Frame):
             set_val('guopai_webframe', self.fr.GetId())
             self.fr.Show(True)
             self.fr.currentstatusframe.Show(False)
-            self.fr.operationpanel.init_ui()
+            self.fr.init_frame()
             # 关闭主界面，打开策略设置
             self.webopen()
         set_val('findpos_on', True)

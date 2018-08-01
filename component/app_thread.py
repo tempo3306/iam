@@ -408,48 +408,65 @@ class TijiaoThread(Thread):
             if tijiao_on and strategy_on and tijiao_OK:  # 判断是否需要提交,国拍开启状态方可触发
                 if lowest_price >= own_price1 - 300 - one_advance_smart1 and a_time <= one_realtime2_smart1 + 0.1:  # 判断是否满足条件
                     OnClick_Tijiao(one_delay_smart1)
+                    wx.CallAfter(pub.sendMessage, 'update info', action=f'触发动态提交')
                 elif lowest_price >= own_price1 - 300 - one_advance_smart2 \
                         and one_realtime2_smart1 + 0.1 <= a_time <= one_realtime2_smart2 + 0.1:  # 判断是否满足条件
                     OnClick_Tijiao(one_delay_smart2)
+                    wx.CallAfter(pub.sendMessage, 'update info', action=f'触发动态提交')
                 elif lowest_price >= own_price1 - 300 - one_advance_smart3 \
                         and one_realtime2_smart2 + 0.1 <= a_time \
                         <= min(one_realtime2_smart3 + 0.1, one_realtime2_smart - one_delay_smart3):  # 判断是否满足条件
                     OnClick_Tijiao(one_delay_smart3)
+                    wx.CallAfter(pub.sendMessage, 'update info', action=f'触发动态提交')
                 elif a_time >= one_realtime2_smart:  # 截止时间
                     OnClick_Tijiao()
+                    wx.CallAfter(pub.sendMessage, 'update info', action=f'触发动态提交')
+
         elif strategy_type == '3':  ##双枪动态提交
             if tijiao_on and strategy_on and tijiao_OK:  # 判断是否需要提交,国拍开启状态方可触发
                 if tijiao_num == 1:
                     if a_time >= one_real_time2 and one_forcetijiao_on:  # 判断是否满足条件
                         OnClick_Tijiao()
+                        wx.CallAfter(pub.sendMessage, 'update info', action=f'触发第二次出价提交')
                     elif lowest_price >= own_price1 - 300 - one_advance and a_time <= one_real_time2 - one_delay:  # 价格判断
                         OnClick_Tijiao(one_delay)
+                        wx.CallAfter(pub.sendMessage, 'update info', action=f'触发第二次出价提交')
                     elif lowest_price >= own_price1 - 300 - one_advance and a_time > one_real_time2:  # 价格判断
                         OnClick_Tijiao()  ##价格到了，同时时间也到了
+                        wx.CallAfter(pub.sendMessage, 'update info', action=f'触发第二次出价提交')
                 elif tijiao_num == 2:
                     if lowest_price >= own_price2 - 300 - one_advance_smart1 and a_time <= one_realtime2_smart1 + 0.1:  # 判断是否满足条件
                         OnClick_Tijiao(one_delay_smart1)
+                        wx.CallAfter(pub.sendMessage, 'update info', action=f'触发第三次出价提交')
                     elif lowest_price >= own_price2 - 300 - one_advance_smart2 \
                             and one_realtime2_smart1 + 0.1 <= a_time <= one_realtime2_smart2 + 0.1:  # 55.1时间会有点超出
                         OnClick_Tijiao(one_delay_smart2)
+                        wx.CallAfter(pub.sendMessage, 'update info', action=f'触发第三次出价提交')
                     elif lowest_price >= own_price2 - 300 - one_advance_smart3 \
                             and one_realtime2_smart2 + 0.1 <= a_time \
                             <= min(one_realtime2_smart3 + 0.1, one_realtime2_smart - one_delay_smart3):  # 判断是否满足条件
                         OnClick_Tijiao(one_delay_smart3)  # 考虑延迟时间
+                        wx.CallAfter(pub.sendMessage, 'update info', action=f'触发第三次出价提交')
                     elif a_time >= one_realtime2_smart:  # 截止时间
                         OnClick_Tijiao()
+                        wx.CallAfter(pub.sendMessage, 'update info', action=f'触发第三次出价提交')
         else:
             if tijiao_on and strategy_on and tijiao_OK:  # 判断是否需要提交,国拍开启状态方可触发
                 if tijiao_num == 1 and a_time >= one_real_time2 and one_forcetijiao_on:  # 判断是否满足条件
                     OnClick_Tijiao(one_delay)
+                    wx.CallAfter(pub.sendMessage, 'update info', action=f'触发第二次出价提交')
                     # SmartTijiao()
                 elif tijiao_num == 2 and a_time >= second_real_time2 and second_forcetijiao_on:  # 判断是否满足条件
                     OnClick_Tijiao(second_delay)
+                    wx.CallAfter(pub.sendMessage, 'update info', action=f'触发第三次出价提交')
                     # SmartTijiao()
                 elif tijiao_num == 1 and lowest_price >= own_price1 - 300 - one_advance and a_time <= one_real_time2 - one_delay:  # 价格判断
                     OnClick_Tijiao(one_delay)
+                    wx.CallAfter(pub.sendMessage, 'update info', action=f'触发第二次出价提交')
                 elif tijiao_num == 2 and lowest_price >= own_price2 - 300 - second_advance and a_time <= second_real_time2 - second_delay:  # 价格判断
                     OnClick_Tijiao(second_delay)
+                    wx.CallAfter(pub.sendMessage, 'update info', action=f'触发第三次出价提交')
+
 
         ###-----------------------------------------------------------------------------
         ##智能出价之后提交判定
@@ -490,6 +507,8 @@ class TijiaoThread(Thread):
                     set_val('userprice', lowest_price + one_diff)
                     set_val('usertime', one_realtime2_smart)
                     OnClick_chujia()  # 调用出价
+                    userprice = get_val('userprice')
+                    wx.CallAfter(pub.sendMessage, 'update info', action=f'第二次出价{userprice}')
         elif strategy_type == '3':
             if strategy_on and chujia_on:  # 判断是否需要提交,国拍开启状态方可触发
                 if tijiao_num == 1 and one_real_time1 <= a_time <= one_real_time1 + 0.6:  # 判断是否满足条件
@@ -497,6 +516,8 @@ class TijiaoThread(Thread):
                     set_val('userprice', lowest_price + one_diff)
                     set_val('usertime', one_real_time2)  # 设定当前的截止时间
                     OnClick_chujia()  # 调用出价
+                    userprice = get_val('userprice')
+                    wx.CallAfter(pub.sendMessage, 'update info', action=f'第二次出价{userprice}')
                 elif tijiao_num == 2 and twice and second_real_time1 <= a_time:  # 判断是否满足条件
                     set_val('own_price2', lowest_price + second_diff)
                     set_val('userprice', lowest_price + second_diff)
@@ -504,6 +525,8 @@ class TijiaoThread(Thread):
                     set_val('tijiao_on', True)
                     ##国拍与模拟触发方式不一样
                     OnClick_chujia()  # 调用出价
+                    userprice = get_val('userprice')
+                    wx.CallAfter(pub.sendMessage, 'update info', action=f'第三次出价{userprice}')
         else:
             if strategy_on and chujia_on:  # 判断是否需要提交,国拍开启状态方可触发
                 if tijiao_num == 1 and one_real_time1 <= a_time <= one_real_time1 + 0.6:  # 判断是否满足条件
@@ -511,6 +534,8 @@ class TijiaoThread(Thread):
                     set_val('userprice', lowest_price + one_diff)
                     set_val('usertime', one_real_time2)  # 设定当前的截止时间
                     OnClick_chujia()  # 调用出价
+                    userprice = get_val('userprice')
+                    wx.CallAfter(pub.sendMessage, 'update info', action=f'第二次出价{userprice}')
                 elif tijiao_num == 2 and twice and second_real_time1 <= a_time:  # 判断是否满足条件
                     set_val('own_price2', lowest_price + second_diff)
                     set_val('userprice', lowest_price + second_diff)
@@ -518,7 +543,8 @@ class TijiaoThread(Thread):
                     set_val('tijiao_on', True)
                     ##国拍与模拟触发方式不一样
                     OnClick_chujia()  # 调用出价
-
+                    userprice = get_val('userprice')
+                    wx.CallAfter(pub.sendMessage, 'update info', action=f'第三次出价{userprice}')
 
 
     def smart_chujia(self):

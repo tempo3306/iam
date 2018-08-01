@@ -212,8 +212,6 @@ class LoginFrame(wx.Frame):
                 if strategy_dick != 'none':
                     set_strategy_dick(strategy_dick) ##初始化策略数据
 
-
-
             elif Identify_code[0]== 'h':
                 # set_val('test', True)
                 manage = get_val("manage")

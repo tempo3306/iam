@@ -253,6 +253,8 @@ def Refresh_web():
         wx.CallAfter(pub.sendMessage, "moni refresh_web")
     else:
         wx.CallAfter(pub.sendMessage, "guopai refresh_web")
+    wx.CallAfter(pub.sendMessage, 'update info', action='刷新页面')
+
 
 def Onekey_login():
     guopai_on = get_val('guopai_on')
@@ -260,6 +262,7 @@ def Onekey_login():
         wx.CallAfter(pub.sendMessage, "onekey_login")
     ##截图
     Pos_login = get_val('Pos_login')
+    wx.CallAfter(pub.sendMessage, 'update info', action='一键登录')
 
     img = grab_screen2(region=Pos_login)
     num = get_val('num')
@@ -283,6 +286,8 @@ def Smart_chujia():
     else:
         print("国拍智能出价")
         guopai_chujia(price)
+    userprice = get_val('userprice')
+    wx.CallAfter(pub.sendMessage, 'update info', action=f'触发自动补枪出价{userprice}')
 
 
 def esc_chujia():
@@ -298,6 +303,7 @@ def esc_chujia():
         # wx.FutureCall(5000, self.call, ‘call after 100ms’, name=”test”)
     else:
         guopai_chujia(price)
+    wx.CallAfter(pub.sendMessage, 'update info', action='智能出价')
 
 
 ##智能出价
@@ -516,20 +522,25 @@ def OnClick_Backspace():
 
 
 def tijiao_ok():
-    enter_on = get_dick('enter_on')
-    tijiao_on = get_val('tijiao_on')
-    smartprice_chujia = get_val('smartprice_chujia')
-    if enter_on :
-        set_val('tijiao_OK', True)
-        set_val('yanzhengma_close', True)
-        set_val('yanzhengma_view', False)
-        set_val('yanzhengma_control', False)
-    elif enter_on and smartprice_chujia:
-        set_val('tijiao_OK', True)
-        set_val('yanzhengma_view', False)
-        set_val('yanzhengma_close', True)
-        set_val('yanzhengma_control', False)
-    wx.CallAfter(pub.SendMessage, 'update info', action='按下回车【enter】确认')
+    try:
+        enter_on = get_dick('enter_on')
+        tijiao_on = get_val('tijiao_on')
+        smartprice_chujia = get_val('smartprice_chujia')
+        if enter_on :
+            set_val('tijiao_OK', True)
+            set_val('yanzhengma_close', True)
+            set_val('yanzhengma_view', False)
+            set_val('yanzhengma_control', False)
+        elif enter_on and smartprice_chujia:
+            set_val('tijiao_OK', True)
+            set_val('yanzhengma_view', False)
+            set_val('yanzhengma_close', True)
+            set_val('yanzhengma_control', False)
+        wx.CallAfter(pub.sendMessage, 'update info', action='按下回车【enter】确认')
+    except:
+        print("tijiao_ok error")
+        logger.exception("ERROR")
+
 
 def do_temp():
     pass

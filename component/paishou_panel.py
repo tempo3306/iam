@@ -188,7 +188,7 @@ class PaishouPanel(wx.Panel):
             if guopai_webframe != -1:
                 guopai.Show(True)
                 guopai.currentstatusframe.Show(False)
-                guopai.operationpanel.init_ui()
+                guopai.init_frame()
                 moni.Show(False)
                 moni.currentstatusframe.Show(False)
                 moni.yanzhengmaframe.Show(False)
@@ -211,7 +211,7 @@ class PaishouPanel(wx.Panel):
                 guopai.Show(False)
                 guopai.currentstatusframe.Show(False)
                 guopai.yanzhengmaframe.Show(False)
-                moni.operationpanel.init_ui()
+                moni.init_frame()
             else:
                 guopai.Show(False)
                 guopai.currentstatusframe.Show(False)

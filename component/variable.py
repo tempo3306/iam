@@ -256,8 +256,17 @@ def init_size():
     websize = get_val('websize')
     htmlpanel_size = get_val('htmlpanel_size')
     x0 = websize[0] - htmlpanel_size[0]
-    set_val('operationpanel_size', (x0, websize[1]))
+    set_val('operationpanel_size', (x0, websize[1] - 225))
     set_val('operationpanel_pos', (htmlpanel_size[0], 0))
+    set_val('infopanel_size', (x0, 225))
+    set_val('infopanel_pos', (htmlpanel_size[0], websize[1] - 225))
+    infotext_pos = [(15, 60),
+                    (15, 80),
+                    (15, 100),
+                    (15, 120),
+                    (15, 140),
+                    (15, 160)]
+    set_val('infotext_pos', infotext_pos)
 
     websize = get_val('websize')
     set_val('Pxy', (win32api.GetSystemMetrics(0), win32api.GetSystemMetrics(1)))  # 分辨率
@@ -540,6 +549,7 @@ def init_account():
     set_val("firstprice_done", False)
 
     set_val('action_infos', [])  ##记录拍手所有的动作
+    set_val('new_actions', [])  ##记录拍手所有的动作
 
 
 def init_status():

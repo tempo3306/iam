@@ -4,7 +4,7 @@
 @contact: 810909753@q.com
 @time: 2018/1/22 13:58
 '''
-
+from component.infopanel import InfoPanel
 from component.staticmethod import *
 from component.OperationFrame import OperationPanel
 import wx.html2 as webview
@@ -112,11 +112,13 @@ class ButtonPanel(wx.Panel):
     def getremotetime(self, event):
         from component.app_thread import GetremotetimeThread
         getremotetimethread = GetremotetimeThread()
+        wx.CallAfter(pub.sendMessage, 'update info', action='同步服务器时间')
 
     ## 同步本地时间
     def timeautoajust(self, event):
         imgpos_currenttime = get_val('imgpos_currenttime')
         timeset(imgpos_currenttime)  # 调用时间同步
+        wx.CallAfter(pub.sendMessage, 'update info', action='同步网页时间')
 
     def urlchange(self, event):
         guopai_dianxin = get_val('guopai_dianxin')
@@ -376,7 +378,7 @@ class CurrentStatusPanel(wx.Panel):
                         timestatustext = "出价倒计时{0:.1f}秒".format(timediff)
 
                 # pricestatustext = "差价{0}".format('-')
-                pricestatustext = "请勿操作，耐心等待"
+                pricestatustext = "请勿操作"
                 dc.DrawText(pricelabeltext, x3, y3)
                 dc.DrawText(pricetext, x4, y4)
                 dc.DrawText(timestatustext, x5, y5)
@@ -405,10 +407,10 @@ class WebFrame(wx.Frame):
                 webstatus_label = get_val('dianxin_webstatus_label')
                 self.buttonpanel = ButtonPanel(self, webstatus_label, moni)  ##moni: True
             else:
-                webstatus_label = get_val('nodianxin_webstatus_label')
+                webstatus_label = get_val('nodianx in_webstatus_label')
                 self.buttonpanel = ButtonPanel(self, webstatus_label, moni)  ##moni: True
         self.operationpanel = OperationPanel(self, tablabel)
-
+        self.infopanel = InfoPanel(self)
         self.bottomstatusbarpanel = BottomeStatusbarPanel(self, moni)
 
         self.currentstatusframe = CurrentStatusFrame(self)
@@ -526,6 +528,7 @@ class WebFrame(wx.Frame):
                 set_val('auto_yanzhengma_on', True)
                 timer1 = threading.Timer(8, self.close_yanzhengma) ##8秒后关闭
                 timer1.start()
+                wx.CallAfter(pub.sendMessage, 'update info', action='触发验证码自动预览')
             elif a_time < auto_yanzhengma_time:
                 set_val('auto_yanzhengma_on', False)  ##设置成查看状态
 
@@ -641,6 +644,11 @@ class WebFrame(wx.Frame):
         if hotkey_on:
             print("失去焦点")
             Hotkey_close()
+
+
+    def init_frame(self):
+        self.operationpanel.init_ui()
+        self.infopanel.init_info()
 
 
     def OnClose(self, event):
