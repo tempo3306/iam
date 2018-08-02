@@ -12,6 +12,7 @@ import pickle, time
 import win32api
 import numpy as np
 import logging
+import wx
 from component.remote_control import get_unique_id
 
 logger = logging.getLogger()
@@ -23,6 +24,16 @@ keycode = {}
 for i in range(65, 91):
     keycode[chr(i)] = i
 
+# --------------------------------------------------
+##颜色
+class Colors():
+    BLUE = '#191970'
+
+colors = Colors()
+
+
+# --------------------------------------------------
+# --------------------------------------------------
 # --------------------------------------------------
 
 
@@ -256,10 +267,10 @@ def init_size():
     websize = get_val('websize')
     htmlpanel_size = get_val('htmlpanel_size')
     x0 = websize[0] - htmlpanel_size[0]
-    set_val('operationpanel_size', (x0, websize[1] - 225))
+    set_val('operationpanel_size', (x0, websize[1] - 245))
     set_val('operationpanel_pos', (htmlpanel_size[0], 0))
-    set_val('infopanel_size', (x0, 225))
-    set_val('infopanel_pos', (htmlpanel_size[0], websize[1] - 225))
+    set_val('infopanel_size', (x0 - 16, 204))
+    set_val('infopanel_pos', (htmlpanel_size[0], websize[1] - 245))
     infotext_pos = [(15, 55),
                     (15, 75),
                     (15, 95),
@@ -268,10 +279,13 @@ def init_size():
                     (15, 155)]
     set_val('infotext_pos', infotext_pos)
 
+    set_val('pageindex', 10)
+
     websize = get_val('websize')
     set_val('Pxy', (win32api.GetSystemMetrics(0), win32api.GetSystemMetrics(1)))  # 分辨率
     Pxy = get_val('Pxy')
     set_val('Px1', Pxy[0] / 2)  # 屏幕中心位置
+
     set_val('Py2', Pxy[1] / 2)
     ##Px, Py  webframe窗口左上角位置  getpos得到
     set_val('Px', int((Pxy[0] - websize[0]) / 2))

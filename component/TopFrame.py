@@ -14,6 +14,12 @@ from component.Pinger import pingerThread
 from component.app_thread import *
 from component.login import Keeplogin
 
+
+
+
+
+
+
 class TopFrame(wx.Frame):
     def __init__(self, name, rev):  ##########版本号
         wx.Frame.__init__(self, None, -1, name,

@@ -12,15 +12,21 @@ import logging
 logger = logging.getLogger()
 from component.variable import get_dick, set_dick, get_strategy_dick
 
-
+from component.variable import colors
+from component.infopanel import InfoPanel
 # -----------------------------------------------------------
 class StatusPanel(wx.Panel):
     def __init__(self, parent, tablabel):
         wx.Panel.__init__(self, parent=parent, id=20)
+        #------------
+        self.create_fonts()  ##创建字体
+
+
         self.control = wx.StaticBox(self, -1, "基本设置")
         self.controlbox = wx.StaticBoxSizer(self.control, wx.VERTICAL)
         self.controlgrid = wx.GridBagSizer(4, 2)  # 网格组件
-
+        self.control.SetFont(self.bigtitlefont)
+        self.control.SetForegroundColour(colors.BLUE)
         ##功能区
         self.webtabButton = wx.Button(self, label=tablabel, size=(95, 30))  # 未来扩展
         # self.priceviewButton = wx.Button(self, label='导出跳价', size=(105,30))  # 未来扩展
@@ -76,7 +82,11 @@ class StatusPanel(wx.Panel):
         # self.controlbox.Add(hbox2)
         ##----------------------------------------------------------------------
         ###策略设置区域
+
+
         self.strategy_area_label = wx.StaticBox(self, -1, "策略设置")
+        self.strategy_area_label.SetFont(self.bigtitlefont)
+        self.strategy_area_label.SetForegroundColour(colors.BLUE)
         self.strategy_area_sizer = wx.StaticBoxSizer(self.strategy_area_label, wx.VERTICAL)
         self.strategy_area_vbox = wx.BoxSizer(wx.VERTICAL)
         strategy_choices = get_val('strategy_choices')
@@ -85,9 +95,7 @@ class StatusPanel(wx.Panel):
         self.choice_strategy.SetSelection(0)
         self.choice_strategy.Bind(wx.EVT_COMBOBOX, self.Choice_strategy)
 
-        self.titlefont = wx.Font(12, wx.FONTFAMILY_MODERN, wx.FONTSTYLE_NORMAL, wx.FONTWEIGHT_NORMAL, False)
-        self.numberfont = wx.Font(12, wx.FONTFAMILY_ROMAN, wx.FONTSTYLE_NORMAL, wx.FONTWEIGHT_NORMAL, False)
-        self.wordfont = wx.Font(12, wx.FONTFAMILY_ROMAN, wx.FONTSTYLE_NORMAL, wx.FONTWEIGHT_NORMAL, False)
+
 
         ##构建不同策略的sizer
         self.strategy_sizer = wx.BoxSizer(wx.VERTICAL)
@@ -98,7 +106,7 @@ class StatusPanel(wx.Panel):
         self.second_chujia_label_sizer = wx.StaticBoxSizer(self.second_chujia_label, wx.VERTICAL)
         self.second_chujia_vbox = wx.BoxSizer(wx.VERTICAL)
         self.second_chujia_label.SetFont(self.titlefont)
-
+        self.second_chujia_label.SetForegroundColour(colors.BLUE)
         ##出价设置行
         self.second_jiajia_sizer = wx.BoxSizer(wx.HORIZONTAL)
         self.second_jiajia_time = wx.SpinCtrlDouble(self, -1, "", size=(52, 20),
@@ -171,6 +179,7 @@ class StatusPanel(wx.Panel):
         self.buqiang_label_sizer = wx.StaticBoxSizer(self.buqiang_label, wx.VERTICAL)
         self.buqiang_vbox = wx.BoxSizer(wx.VERTICAL)
         self.buqiang_label.SetFont(self.titlefont)
+        self.buqiang_label.SetForegroundColour(colors.BLUE)
 
         self.buqiang_checkbox = wx.CheckBox(self, -1, label="开启自动补枪", size=(135, 45))  # size=(190, 95)
         self.buqiang_tiplabel = wx.StaticText(self, -1, label="(出价提交完成后智能出价)",
@@ -188,6 +197,7 @@ class StatusPanel(wx.Panel):
         self.third_chujia_label_sizer = wx.StaticBoxSizer(self.third_chujia_label, wx.VERTICAL)
         self.third_chujia_vbox = wx.BoxSizer(wx.VERTICAL)
         self.third_chujia_label.SetFont(self.titlefont)
+        self.third_chujia_label.SetForegroundColour(colors.BLUE)
         ##出价设置行
         self.third_jiajia_sizer = wx.BoxSizer(wx.HORIZONTAL)
         self.third_jiajia_time = wx.SpinCtrlDouble(self, -1, "", size=(52, 20),
@@ -276,12 +286,14 @@ class StatusPanel(wx.Panel):
         self.smart_tijiao_label = wx.StaticBox(self, -1, "单枪动态提交")
         self.smart_tijiao_label_sizer = wx.StaticBoxSizer(self.smart_tijiao_label, wx.VERTICAL)
         self.smart_tijiao_label.SetFont(self.titlefont)
+        self.smart_tijiao_label.SetForegroundColour(colors.BLUE)
         self.smart_tijiao_vsizer = wx.BoxSizer(wx.VERTICAL)
 
         ##双枪动态提交
         self.smart_tijiao_label2 = wx.StaticBox(self, -1, "第三次出价动态提交")
         self.smart_tijiao_label_sizer2 = wx.StaticBoxSizer(self.smart_tijiao_label2, wx.VERTICAL)
         self.smart_tijiao_label2.SetFont(self.titlefont)
+        self.smart_tijiao_label2.SetForegroundColour(colors.BLUE)
         self.smart_tijiao_vsizer2 = wx.BoxSizer(wx.VERTICAL)
         ##复制出价部分
         ##第二次
@@ -339,6 +351,7 @@ class StatusPanel(wx.Panel):
         ##单枪智能提交组件
         self.smart_tijiao_hsizer = wx.BoxSizer(wx.HORIZONTAL)
         self.smart_tijiao_label = wx.StaticText(self, label='动态提交', style=wx.ALIGN_RIGHT, size=(76, 25))
+        self.smart_tijiao_label.SetFont(self.titlefont)
         self.smart_tijiao_button = wx.Button(self, label='设置', size=(50, 25))
         self.smart_tijiao_hsizer.Add(self.smart_tijiao_label, flag=wx.TOP, border=5)
         self.smart_tijiao_hsizer.Add(self.smart_tijiao_button, flag=wx.LEFT, border=20)
@@ -347,6 +360,7 @@ class StatusPanel(wx.Panel):
         ##双枪智能提交组件 
         self.smart2_tijiao_hsizer = wx.BoxSizer(wx.HORIZONTAL)
         self.smart2_tijiao_label = wx.StaticText(self, label='动态提交', style=wx.ALIGN_RIGHT, size=(76, 25))
+        self.smart2_tijiao_label.SetFont(self.titlefont)
         self.smart2_tijiao_button = wx.Button(self, label='设置', size=(50, 25))
         self.smart2_tijiao_hsizer.Add(self.smart2_tijiao_label, flag=wx.TOP, border=5)
         self.smart2_tijiao_hsizer.Add(self.smart2_tijiao_button, flag=wx.LEFT, border=20)
@@ -413,9 +427,10 @@ class StatusPanel(wx.Panel):
         ##将所有sizer组合
         # self.reminderbox.Add(self.remindergrid)
         self.vbox = wx.BoxSizer(wx.VERTICAL)
-        self.vbox.Add(self.controlbox, flag=wx.BOTTOM, border=10)
-        self.vbox.Add(self.strategy_area_sizer, flag=wx.BOTTOM, border=10)
+        self.vbox.Add(self.controlbox, flag=wx.BOTTOM | wx.TOP, border=6)
+        self.vbox.Add(self.strategy_area_sizer)
         # self.vbox.Add(self.reminderbox, flag=wx.BOTTOM, border=10)
+        # self.vbox.Add(self.infovbox, flag=wx.BOTTOM, border=10)
         # self.vbox.Add(self.infovbox, flag=wx.BOTTOM, border=10)
         self.SetSizer(self.vbox)
 
@@ -427,6 +442,12 @@ class StatusPanel(wx.Panel):
 
         #更新日志
         # pub.subscribe(self.update_info, 'update info')
+
+    def create_fonts(self):
+        self.titlefont = wx.Font(11, wx.FONTFAMILY_MODERN, wx.FONTSTYLE_NORMAL, wx.FONTWEIGHT_NORMAL, False)
+        self.bigtitlefont = wx.Font(12, wx.FONTFAMILY_DEFAULT, wx.FONTSTYLE_NORMAL, wx.FONTWEIGHT_NORMAL, False)
+        self.numberfont = wx.Font(12, wx.FONTFAMILY_ROMAN, wx.FONTSTYLE_NORMAL, wx.FONTWEIGHT_NORMAL, False)
+        self.wordfont = wx.Font(12, wx.FONTFAMILY_ROMAN, wx.FONTSTYLE_NORMAL, wx.FONTWEIGHT_NORMAL, False)
 
 
     ## 验证码放大
@@ -450,7 +471,7 @@ class StatusPanel(wx.Panel):
     def webtab(self, event):
         moni_on = get_val('moni_on')
         if moni_on:
-            StatusPanel.addto_infos('切换国拍')
+            InfoPanel.addto_infos('切换国拍')
             set_val('guopai_on', True)
             set_val('moni_on', False)
             from component.app_thread import GetremotetimeThread
@@ -474,8 +495,7 @@ class StatusPanel(wx.Panel):
                 moni.tipframe.Show(False)
                 wx.CallAfter(pub.sendMessage, "open dianxin")
         else:
-            StatusPanel.addto_infos('切换模拟')
-
+            InfoPanel.addto_infos('切换模拟')
             set_val('moni_on', True)
             set_val('guopai_on', False)
             moni_webframe = get_val('moni_webframe')
@@ -571,72 +591,7 @@ class StatusPanel(wx.Panel):
         self.update_ui(strategy_type)
 
 
-    #--------------------------------------------
-    #日志管理
-    '''
-    1.切换国拍与模拟
-    2.用户修改策略
-    '''
 
-
-    def init_info(self):
-        action_infos = get_val('action_infos')
-        len_info = len(action_infos)
-        if  len_info >= 5:
-            self.infos = [action for action in action_infos[-len_info:]]
-            self.update_info()
-        else:
-            new_actions = get_val('new_actions')
-            self.infos = [self.create_info(action) for action in new_actions]
-            self.update_info()
-            print("fdssfsd", self.infos)
-            set_val('action_infos', self.infos)
-
-
-    def draw_text(self, dc, text, pos):
-        x1, y1 = pos
-        print(x1, y1)
-        dc.DrawText(text, x1, y1)
-
-    def update_info(self, action=None):
-        if action:
-            info = self.create_info(action)
-            self.addto_infos(action)
-            self.infos.append(info)
-            if len(self.infos) >= 7:
-                self.infos.pop(0) ##维持6个元素
-                ##修改info
-            print(self.infos)
-        len_info = len(self.infos)
-        infotext_pos = get_val('infotext_pos')
-        print(infotext_pos)
-        print(self.infos)
-        dc = wx.BufferedDC(wx.ClientDC(self))  # ClientDC客户区  ，BufferedDC双缓冲绘图设备
-        dc.Clear()
-        dc.SetFont(self.infofont)
-
-        for i in range(len_info):
-            self.draw_text(dc, self.infos[i], infotext_pos[i])
-
-
-    @staticmethod
-    def create_info(action):
-        true_time_str = get_val('true_time_str')
-        if not true_time_str:
-            true_time = get_val('true_time')
-            temp = int((true_time - int(true_time)) * 10)
-            time_local = time.localtime(true_time)
-            true_time_str = time.strftime("%H:%M:%S", time_local)  # + '.' + str(b_time)
-        info = f'{true_time_str}: {action}'
-        return info
-
-    @staticmethod
-    def addto_infos(action):
-        info = StatusPanel.create_info(action)
-        action_infos = get_val('action_infos')
-        action_infos.append(info)
-        set_val('action_infos', action_infos)
-        print(action_infos)
     #--------------------------------------------
     #策略调整
     def update_ui(self, strategy_type):  ##根据不同的出价策略调整界面
@@ -886,9 +841,7 @@ class StatusPanel(wx.Panel):
     ###需要进一步扩展 调整策略设置后需要 修正templist
     def update_strategy(self):
         #生成日志
-        self.update_info('修改策略')
-
-
+        wx.CallAfter(pub.sendMessage, 'update info', action='修改策略')
         strategy_type = str(self.choice_strategy.GetSelection())
         advance_list = [100, 200, 300, 0]
         print(strategy_type)
@@ -964,12 +917,6 @@ class StatusPanel(wx.Panel):
     def posautoajust(self, event):
         findpos()
 
-    def Confirmchoice(self, event):
-        con = self.confirm_choice.GetSelection()
-        if con == 0:
-            set_dick('enter_on', False)
-        elif con == 1:
-            set_dick('enter_on', True)
 
     #######
     def change_strategy(self):
