@@ -260,12 +260,12 @@ def init_size():
     set_val('operationpanel_pos', (htmlpanel_size[0], 0))
     set_val('infopanel_size', (x0, 225))
     set_val('infopanel_pos', (htmlpanel_size[0], websize[1] - 225))
-    infotext_pos = [(15, 60),
-                    (15, 80),
-                    (15, 100),
-                    (15, 120),
-                    (15, 140),
-                    (15, 160)]
+    infotext_pos = [(15, 55),
+                    (15, 75),
+                    (15, 95),
+                    (15, 115),
+                    (15, 135),
+                    (15, 155)]
     set_val('infotext_pos', infotext_pos)
 
     websize = get_val('websize')
@@ -427,6 +427,9 @@ def init_strategy():
     set_val('moni_minute', 29)
     set_val('chujia_time', 0)  # 出价时间
     set_val('a_time_str', '')  # 当前时间的显示状态
+
+    set_val('true_time', time.time())  # 真实时间
+    set_val('true_time_str', '')  # 真实时间
 
 
     set_val('moni_on', False)  # 判断开启的是哪个窗口 ，限制同时只能开启一个

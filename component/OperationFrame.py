@@ -621,13 +621,13 @@ class StatusPanel(wx.Panel):
 
     @staticmethod
     def create_info(action):
-        a_time_str = get_val('a_time_str')
-        if not a_time_str:
-            a_time = get_val('a_time')
-            temp = int((a_time - int(a_time)) * 10)
-            time_local = time.localtime(a_time)
-            a_time_str = time.strftime("%H:%M:%S", time_local)  # + '.' + str(b_time)
-        info = f'{a_time_str}: {action}'
+        true_time_str = get_val('true_time_str')
+        if not true_time_str:
+            true_time = get_val('true_time')
+            temp = int((true_time - int(true_time)) * 10)
+            time_local = time.localtime(true_time)
+            true_time_str = time.strftime("%H:%M:%S", time_local)  # + '.' + str(b_time)
+        info = f'{true_time_str}: {action}'
         return info
 
     @staticmethod

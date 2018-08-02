@@ -10,7 +10,7 @@ from component.OperationFrame import OperationPanel
 import wx.html2 as webview
 from wx.lib.buttons import GenButton as wxButton
 from component.imgcut import  timeset
-from component.YanzhengmaFrame import YanzhengmaFrame, TipFrame, EnterFrame
+from component.YanzhengmaFrame import YanzhengmaFrame, TipFrame
 from component.imgcut import cut_pic, find_yan_confirm
 
 from component.variable import init_pos, get_val, set_val, get_dick
@@ -84,10 +84,11 @@ class ButtonPanel(wx.Panel):
     def Modify(self):  # 更新
         dc = wx.BufferedDC(wx.ClientDC(self))  # ClientDC客户区  ，BufferedDC双缓冲绘图设备
         moni_on = get_val('moni_on')
-        a_time = get_val('a_time')
-        time_local = time.localtime(a_time)
+        true_time = get_val('true_time')
+        time_local = time.localtime(true_time)
         st = time.strftime("%H:%M:%S", time_local)  # + '.' + str(b_time)
         # st="%s:%s:%s"%(b_time[0],b_time[1],b_time[2])
+        set_val('true_time_str', st)
         st = '国拍时间：%s' % st
         w, h = self.GetClientSize()
         dc.SetBackground(wx.Brush(self.GetBackgroundColour()))
@@ -418,7 +419,6 @@ class WebFrame(wx.Frame):
         Yanzhengmasize = get_val('Yanzhengmasize')
         self.yanzhengmaframe = YanzhengmaFrame(self, Yanzhengmasize)
         self.tipframe = TipFrame(self)
-        self.enterframe = EnterFrame(self, Yanzhengmasize)
 
         self.Bind(wx.EVT_MOVE, self.childmove)
 

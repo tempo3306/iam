@@ -4,7 +4,7 @@ import wx
 from wx.lib.pubsub import pub
 
 from component.variable import get_val, set_val
-
+import copy
 
 class InfoPanel(wx.Panel):
     def __init__(self, parent):
@@ -19,7 +19,7 @@ class InfoPanel(wx.Panel):
 
         self.hbox = wx.BoxSizer(wx.HORIZONTAL)
         self.infomation = wx.StaticText(self, label='沪牌一号模拟拍牌会', pos=(30, 5))
-        self.infoarea = wx.StaticText(self, label='操作日志:', pos=(15, 40))
+        self.infoarea = wx.StaticText(self, label='操作日志:', pos=(15, 35))
         self.infomation.SetFont(self.infomationfont)
         self.infoarea.SetFont(self.areafont)
         self.SetBackgroundColour('white')
@@ -42,30 +42,32 @@ class InfoPanel(wx.Panel):
     def init_info(self):
         action_infos = get_val('action_infos')
         len_info = len(action_infos)
-        if  len_info >= 5:
-            self.infos = [action for action in action_infos[-len_info:]]
+        if  len_info > 5:
+            self.infos = [action for action in action_infos[-6:]]
             self.update_info()
         else:
             new_actions = get_val('new_actions')
             self.infos = [self.create_info(action) for action in new_actions]
             self.update_info()
             print("fdssfsd", self.infos)
-            set_val('action_infos', self.infos)
+            set_val('action_infos', copy.deepcopy(self.infos))
 
 
     def update_info(self, action=None):
+        print('action', action)
+        print(len(self.infos))
         if action:
             info = self.create_info(action)
             self.addto_infos(action)
             self.infos.append(info)
             if len(self.infos) >= 7:
                 self.infos.pop(0) ##维持6个元素
+
                 ##修改info
-            print(self.infos)
         len_info = len(self.infos)
         infotext_pos = get_val('infotext_pos')
         print(infotext_pos)
-        print(self.infos)
+        print(len_info)
         dc = wx.BufferedDC(wx.ClientDC(self))  # ClientDC客户区  ，BufferedDC双缓冲绘图设备
         dc.SetBackground(wx.Brush(self.GetBackgroundColour()))
         dc.Clear()
@@ -77,13 +79,13 @@ class InfoPanel(wx.Panel):
 
     @staticmethod
     def create_info(action):
-        a_time_str = get_val('a_time_str')
-        if not a_time_str:
-            a_time = get_val('a_time')
-            temp = int((a_time - int(a_time)) * 10)
-            time_local = time.localtime(a_time)
-            a_time_str = time.strftime("%H:%M:%S", time_local)  # + '.' + str(b_time)
-        info = f'{a_time_str}: {action}'
+        true_time_str = get_val('true_time_str')
+        if not true_time_str:
+            true_time = get_val('true_time')
+            time_local = time.localtime(true_time)
+            true_time_str = time.strftime("%H:%M:%S", time_local)  # + '.' + str(b_time)
+            print(true_time_str)
+        info = f'{true_time_str}: {action}'
         return info
 
     @staticmethod
@@ -92,4 +94,3 @@ class InfoPanel(wx.Panel):
         action_infos = get_val('action_infos')
         action_infos.append(info)
         set_val('action_infos', action_infos)
-        print(action_infos)

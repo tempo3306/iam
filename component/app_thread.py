@@ -739,15 +739,17 @@ class TimeThread(Thread):
             time.sleep(0.05)
             b = time.clock()
             a_time = get_val('a_time')
+            true_time = get_val('true_time')
             a_time += b - a  # 实际运行时间作为真实间隔f
+            true_time += b-a
             set_val('a_time', a_time)
+            set_val('true_time', true_time)
             one_real_time1 = get_val('one_real_time1')
             try:
                 if one_real_time1 > a_time + 0.5:  ##只要出现时间小于第一次出价就触发还原
                     init_strategy()
                 start_time = get_val('start_time')
                 target_time = get_val('target_time')
-
                 if start_time < a_time < target_time:  ##11点到11点半之间
                     set_val("final_stage", True)
                 else:
@@ -863,7 +865,8 @@ class GetremotetimeThread(Thread):
             result = web_request(remotetime_url)
             remotetime = result['currenttime']
             print("获取成功")
-            set_val('a_time', remotetime + 0.1)  # 补网络延迟
+            set_val('true_time', remotetime + 0.06)  # 补网络延迟
+            set_val('a_time', remotetime + 0.06)  # 补网络延迟
         except:
             print("获取成功")
             logger.exception('this is an exception message')
