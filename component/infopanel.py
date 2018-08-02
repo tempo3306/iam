@@ -40,10 +40,7 @@ class InfoPanel(wx.ScrolledWindow):
         self.infos = []
         self.init_info()
         self.hbox = wx.BoxSizer(wx.HORIZONTAL)
-        self.infomation = wx.StaticText(self, label='沪牌一号模拟拍牌会', pos=(30, 5))
-        self.infoarea = wx.StaticText(self, label='操作日志:', pos=(15, 35))
-        self.infomation.SetFont(self.infomationfont)
-        self.infoarea.SetFont(self.areafont)
+
         self.SetBackgroundColour('white')
         self.pageindex = 10
 
@@ -60,10 +57,16 @@ class InfoPanel(wx.ScrolledWindow):
         set_val('pageindex', pageindex + 1)
         vars = [0, 20, 0, pageindex + 1]
         self.SetScrollbars(*vars)
-        self.SetScrollPos(0, 26)
-        self.Scroll(0, 50)
+        range = self.GetScrollRange(0)
+        self.SetScrollPos(0, range)
         x1, y1 = pos
         print(x1, y1)
+
+        dc.SetFont(self.infomationfont)
+        dc.DrawText('沪牌一号模拟拍牌会', 30, 5)
+        dc.SetFont(self.areafont)
+        dc.DrawText('操作日志：', 15, 35)
+        dc.SetFont(self.infofont)
         dc.DrawText(text, x1, y1)
 
     # fontsz = wx.SystemSettings.GetFont(wx.SYS_SYSTEM_FONT).GetPixelSize()
@@ -75,8 +78,6 @@ class InfoPanel(wx.ScrolledWindow):
     2.用户修改策略
     '''
     def init_info(self):
-
-
         action_infos = get_val('action_infos')
         len_info = len(action_infos)
         if len_info > 5:
@@ -107,7 +108,6 @@ class InfoPanel(wx.ScrolledWindow):
         dc = wx.BufferedDC(wx.ClientDC(self))  # ClientDC客户区  ，BufferedDC双缓冲绘图设备
         dc.SetBackground(wx.Brush(self.GetBackgroundColour()))
         dc.Clear()
-        dc.SetFont(self.infofont)
 
         for i in range(len_info):
             self.draw_text(dc, self.infos[i], infotext_pos[i])
