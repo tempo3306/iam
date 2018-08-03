@@ -277,7 +277,7 @@ def init_size():
     #                 (15, 115),
     #                 (15, 135),
     #                 (15, 155)]
-    infotext_pos = (15, 45)
+    infotext_pos = (6, 45)
 
 
     set_val('infotext_pos', infotext_pos)

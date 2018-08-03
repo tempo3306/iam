@@ -42,8 +42,9 @@ class InfoPanel(wx.ScrolledWindow):
         self.SetBackgroundColour('white')
         # self.Bind(wx.EVT_PAINT, self.on_paint)
         self.Bind(wx.EVT_PAINT, self.refreshtext)
-
-        # self.Bind(wx.EVT_SCROLLWIN_THUMBRELEASE, self.refreshtext)
+        self.Bind(wx.EVT_SCROLLWIN, self.refreshtext)
+        self.Bind(wx.EVT_SCROLLWIN_THUMBRELEASE, self.refreshtext)
+        self.Bind(wx.EVT_SCROLLWIN_THUMBTRACK, self.refreshtext)
 
         # 更新日志
         pub.subscribe(self.update_info, 'update info')
@@ -111,7 +112,7 @@ class InfoPanel(wx.ScrolledWindow):
         dc.SetFont(self.infomationfont)
         # dc.DrawText('沪牌一号模拟拍牌会', 30, 15)
         dc.SetFont(self.areafont)
-        dc.DrawText('操作日志：', 15, 20)
+        dc.DrawText('操作日志：', 6, 20)
 
     def draw_text(self, dc, text, pos):
         pageindex = get_val('pageindex')
@@ -171,7 +172,7 @@ class InfoPanel(wx.ScrolledWindow):
             true_time = get_val('true_time')
             time_local = time.localtime(true_time)
             true_time_str = time.strftime("%H:%M:%S", time_local)  # + '.' + str(b_time)
-        info = f'{true_time_str}: {action}'
+        info = f'[{true_time_str}]:{action}'
         return info
 
     @staticmethod
