@@ -10,6 +10,10 @@ import win32con
 import win32api
 import numpy as np
 import time
+
+import wx
+from wx.lib.pubsub import pub
+
 from component.staticmethod import OnClick_Shuaxin, OnClick_confirm, Smart_chujia, calculate_usetime
 from component.variable import set_val, get_val
 import logging
@@ -338,13 +342,17 @@ def findconfirm():
     min_val, max_val, min_loc, max_loc = cv2.minMaxLoc(res)
     if max_val >= 0.7:
         if not smartprice_chujia:
-            print("寻找结果")
-            get_result() ##确认结果
             OnClick_confirm()  #点击确认
         else:
-            print("寻找结果2")
-            get_result() ##确认结果
             Smart_chujia()
+
+        ##结果查找
+        need_findresult = get_val('need_findresult')
+        if need_findresult:
+            print("查找结果")
+            get_result()  ##确认结果
+    else:
+        set_val('need_findresult', True)
 
 def get_result():
     result_dick =  get_val('result_dick')
@@ -359,6 +367,8 @@ def get_result():
         min_val, max_val, min_loc, max_loc = cv2.minMaxLoc(res)
         print('max_val', max_val)
         if max_val >= 0.9:
+            set_val('need_findresult', False)  ##关闭
+            wx.CallAfter(pub.sendMessage, 'update info', action=result)
             return result
     print('未知')
     return '未知结果'

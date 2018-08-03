@@ -41,14 +41,47 @@ class InfoPanel(wx.ScrolledWindow):
 
         self.SetBackgroundColour('white')
         # self.Bind(wx.EVT_PAINT, self.on_paint)
-        self.Bind(wx.EVT_PAINT, self.refreshtext)
-        self.Bind(wx.EVT_SCROLLWIN, self.refreshtext)
+        self.Bind(wx.EVT_SCROLLWIN_TOP, self.up)
+        self.Bind(wx.EVT_SCROLLWIN_BOTTOM, self.down)
+        self.Bind(wx.EVT_SCROLLWIN_LINEUP, self.refreshtext)
+        self.Bind(wx.EVT_SCROLLWIN_LINEDOWN, self.refreshtext)
+        self.Bind(wx.EVT_SCROLLWIN_PAGEUP, self.pageup)
+        self.Bind(wx.EVT_SCROLLWIN_PAGEDOWN, self.pagedown)
         self.Bind(wx.EVT_SCROLLWIN_THUMBRELEASE, self.refreshtext)
         self.Bind(wx.EVT_SCROLLWIN_THUMBTRACK, self.refreshtext)
+        self.Bind(wx.EVT_PAINT, self.refreshtext)
+
+
+        # self.ShowScrollbars(wx.SHOW_SB_NEVER, wx.SHOW_SB_NEVER)
+        # self.EnableScrolling(False, False)
 
         # 更新日志
         pub.subscribe(self.update_info, 'update info')
 
+    def up(self, event):
+        print("up")
+
+    def down(self, event):
+        print("down")
+
+    def lineup(self, event):
+        print("lineup")
+
+    def linedown(self, event):
+        print("linedown")
+
+
+    def pageup(self, event):
+        print("pageup")
+
+    def pagedown(self, event):
+        print("pagedown")
+
+    def lease(self, event):
+        print('lease')
+
+    def rack(self, event):
+        print('rack')
 
     def on_paint(self, event):
         dc = wx.PaintDC(self)
@@ -60,7 +93,6 @@ class InfoPanel(wx.ScrolledWindow):
 
 
     def refreshtext(self, event):
-        print(event)
         xx = self.GetViewStart()
         pos = xx[1]
         print(pos)
@@ -86,11 +118,10 @@ class InfoPanel(wx.ScrolledWindow):
             print(self.infos)
             print('index=', index)
             print(len(self.infos))
-            print("fdsf")
+            print("eeeeeeeeeeeeeeeeeee")
             for i in range(7):
                 self.draw(dc, self.infos[index + i], (x, y + 20*i))
         event.Skip()
-
 
     def do_draw(self, dc):
         len_info = len(self.infos)
@@ -118,7 +149,8 @@ class InfoPanel(wx.ScrolledWindow):
         pageindex = get_val('pageindex')
         set_val('pageindex', pageindex + 1)
         vars = [0, 20, 0, pageindex + 1]
-        self.SetScrollbars(*vars)
+        print('vars', pageindex)
+        self.SetScrollbars(*vars, noRefresh=True)
         range = self.GetScrollRange(0)
         self.SetScrollPos(0, range)
         # self.Scroll(0, pageindex*7)

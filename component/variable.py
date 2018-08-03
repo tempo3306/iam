@@ -284,6 +284,7 @@ def init_size():
 
     set_val('pageindex', 6)
     set_val('pageindex', 6)
+    set_val('pageindex', 6)
 
     websize = get_val('websize')
     set_val('Pxy', (win32api.GetSystemMetrics(0), win32api.GetSystemMetrics(1)))  # 分辨率
@@ -538,6 +539,8 @@ def init_strategy():
     set_val('query_on', False)  # 是否处于查询状态
 
     set_val('autotime_on', False)  # 是否处理自动时间同步状态
+
+    set_val('need_findresult', True)  ## 是否需要查找结果
 
     ##调整策略范围
     timelist = [100 + i * 1 for i in range(491)]
