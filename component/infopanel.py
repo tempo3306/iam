@@ -32,7 +32,7 @@ class InfoPanel(wx.ScrolledWindow):
         infopanel_pos = get_val('infopanel_pos')
         super(InfoPanel, self).__init__(parent, size=infopanel_size, pos=infopanel_pos)
         super(InfoPanel, self).SetScrollbars(0, 20, 0, 5)
-        self.SetScrollRate(0,10)
+        self.SetScrollRate(0,20)
         self.infomationfont = wx.Font(14, wx.FONTFAMILY_DEFAULT, wx.FONTSTYLE_NORMAL, wx.FONTWEIGHT_NORMAL, False)
         self.infofont = wx.Font(10, wx.FONTFAMILY_DEFAULT, wx.FONTSTYLE_NORMAL, wx.FONTWEIGHT_NORMAL, False)
         self.areafont = wx.Font(12, wx.FONTFAMILY_DEFAULT, wx.FONTSTYLE_NORMAL, wx.FONTWEIGHT_NORMAL, False)
@@ -42,6 +42,8 @@ class InfoPanel(wx.ScrolledWindow):
         self.SetBackgroundColour('white')
         # self.Bind(wx.EVT_PAINT, self.on_paint)
         self.Bind(wx.EVT_PAINT, self.refreshtext)
+
+        # self.Bind(wx.EVT_SCROLLWIN_THUMBRELEASE, self.refreshtext)
 
         # 更新日志
         pub.subscribe(self.update_info, 'update info')
@@ -57,6 +59,7 @@ class InfoPanel(wx.ScrolledWindow):
 
 
     def refreshtext(self, event):
+        print(event)
         xx = self.GetViewStart()
         pos = xx[1]
         print(pos)
@@ -68,8 +71,9 @@ class InfoPanel(wx.ScrolledWindow):
             self.draw_infomation(dc)
             print(self.infos)
             print(len(self.infos))
-            leninfo = len(self.infos)
-            for i in range(leninfo):
+            len_info = len(self.infos)
+            len_info = len_info if len_info <= 7 else 7
+            for i in range(len_info):
                 self.draw(dc, self.infos[i], (x, y + 20*i))
         else:
             x, y = get_val('infotext_pos')
@@ -81,6 +85,7 @@ class InfoPanel(wx.ScrolledWindow):
             print(self.infos)
             print('index=', index)
             print(len(self.infos))
+            print("fdsf")
             for i in range(7):
                 self.draw(dc, self.infos[index + i], (x, y + 20*i))
         event.Skip()
@@ -104,9 +109,9 @@ class InfoPanel(wx.ScrolledWindow):
 
     def draw_infomation(self, dc):
         dc.SetFont(self.infomationfont)
-        dc.DrawText('沪牌一号模拟拍牌会', 30, 5)
+        # dc.DrawText('沪牌一号模拟拍牌会', 30, 15)
         dc.SetFont(self.areafont)
-        dc.DrawText('操作日志：', 15, 30)
+        dc.DrawText('操作日志：', 15, 20)
 
     def draw_text(self, dc, text, pos):
         pageindex = get_val('pageindex')

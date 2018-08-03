@@ -269,7 +269,7 @@ def init_size():
     x0 = websize[0] - htmlpanel_size[0]
     set_val('operationpanel_size', (x0, websize[1] - 245))
     set_val('operationpanel_pos', (htmlpanel_size[0], 0))
-    set_val('infopanel_size', (x0 - 16, 215))
+    set_val('infopanel_size', (x0 - 16, 210))
     set_val('infopanel_pos', (htmlpanel_size[0], websize[1] - 245))
     # infotext_pos = [(15, 55),
     #                 (15, 75),
@@ -277,7 +277,7 @@ def init_size():
     #                 (15, 115),
     #                 (15, 135),
     #                 (15, 155)]
-    infotext_pos = (15, 55)
+    infotext_pos = (15, 45)
 
 
     set_val('infotext_pos', infotext_pos)
