@@ -11,6 +11,8 @@
 # before the "import pythoncom" line. That worked for me, although I don't know why.
 
 import os, sys
+import win32api
+
 sys.coinit_flags = 0
 import time
 import wmi
@@ -18,6 +20,9 @@ import logging
 from urllib import request
 logger = logging.getLogger()  #返回根目录的logger
 import requests
+
+
+
 
 
 def web_request(url):
@@ -108,6 +113,13 @@ def get_mac_address():
 
 import ctypes
 import os
+
+
+
+def setSystemTime(remotetime):
+    tm_year, tm_mon, tm_mday, tm_hour, tm_min, tm_sec, tm_wday, tm_yday, tm_isdst = time.gmtime(remotetime)
+    win32api.SetSystemTime(tm_year, tm_mon, tm_wday, tm_mday, tm_hour, tm_min, tm_sec, 0)
+
 
 
 # 获取计算机名e
@@ -220,6 +232,7 @@ def getip_dianxin(ip):
 #
 if __name__ == "__main__":
     #     a = get_cpu_info()
-    mac = get_mac_address()
-    cname = getname()
-    print ( mac + cname)
+    # mac = get_mac_address()
+    # cname = getname()
+    # print ( mac + cname)
+    setSystemTime(1111111111)

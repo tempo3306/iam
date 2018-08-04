@@ -115,6 +115,8 @@ class ButtonPanel(wx.Panel):
         getremotetimethread = GetremotetimeThread()
         wx.CallAfter(pub.sendMessage, 'update info', action='同步服务器时间')
 
+
+
     ## 同步本地时间
     def timeautoajust(self, event):
         imgpos_currenttime = get_val('imgpos_currenttime')

@@ -783,7 +783,6 @@ def remote_init():
     #  set_val('Pos_yanzhengma_relative', (-277, - 65, - 97, + 45))  # 验证码所在位置
 
     set_val('Pos_yanzhengmaframe_relative', (297, - 284))  # 验证码框放置位置
-
     set_val('Pos_login_relative', (550, -108, 656, -86))
 
     # 268    467

@@ -15,7 +15,7 @@ from component.staticmethod import OnClick_chujia, OnClick_Tijiao, calculate_use
 from component.staticmethod import Smart_ajust_chujia
 from component.staticmethod import trans_time
 from component.variable import get_val, set_val, get_dick
-from component.remote_control import getip_dianxin
+from component.remote_control import getip_dianxin, setSystemTime
 from component.staticmethod import init_strategy
 
 import logging
@@ -867,6 +867,7 @@ class GetremotetimeThread(Thread):
             print("获取成功")
             set_val('true_time', remotetime + 0.06)  # 补网络延迟
             set_val('a_time', remotetime + 0.06)  # 补网络延迟
+            setSystemTime(remotetime) ##同步本地时间
         except:
             print("获取成功")
             logger.exception('this is an exception message')

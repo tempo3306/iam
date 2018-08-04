@@ -96,7 +96,7 @@ class InfoPanel(wx.ScrolledWindow):
         xx = self.GetViewStart()
         pos = xx[1]
         print(pos)
-        if pos < 30:
+        if pos <= 30:
             x, y = get_val('infotext_pos')
             dc = wx.BufferedDC(wx.ClientDC(self))  # ClientDC客户区  ，BufferedDC双缓冲绘图设备
             dc.SetBackground(wx.Brush(self.GetBackgroundColour()))
@@ -114,11 +114,9 @@ class InfoPanel(wx.ScrolledWindow):
             dc.SetBackground(wx.Brush(self.GetBackgroundColour()))
             dc.Clear()
             self.draw_infomation(dc)
-            index  = int((pos - 23)/7)
-            print(self.infos)
-            print('index=', index)
-            print(len(self.infos))
-            print("eeeeeeeeeeeeeeeeeee")
+            index  = (pos - 23)//7
+            if len(self.infos) <= index + 7:
+                index -= 1
             for i in range(7):
                 self.draw(dc, self.infos[index + i], (x, y + 20*i))
         event.Skip()
