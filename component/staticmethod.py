@@ -153,11 +153,12 @@ def Tijiao():
 
     elif tijiao_num == 3:
         print("tijiao_fsdfs")
-        set_val('smartprice_chujia', True)  ##开启智能出价， 打开确认查找
         set_val('current_pricestatus_label', '智能补枪')
         set_val('current_pricestatus', '智能出价')
         print("开启智能出价")
 
+        set_val('smartprice_chujia', True)  ##开启智能出价， 打开确认查找
+        wx.CallAfter(pub.sendMessage, 'update info', action=f'触发自动补枪')
 
 def SmartTijiao():
     tijiao_on = get_val('tijiao_on')
@@ -287,7 +288,6 @@ def Smart_chujia():
         print("国拍智能出价")
         guopai_chujia(price)
     userprice = get_val('userprice')
-    wx.CallAfter(pub.sendMessage, 'update info', action=f'触发自动补枪出价{userprice}')
 
 
 def esc_chujia():
@@ -303,7 +303,11 @@ def esc_chujia():
         # wx.FutureCall(5000, self.call, ‘call after 100ms’, name=”test”)
     else:
         guopai_chujia(price)
-    wx.CallAfter(pub.sendMessage, 'update info', action='智能出价')
+    userprice = get_val('userprice')
+    wx.CallAfter(pub.sendMessage, 'update info', action=f'智能出价出价{userprice}')
+    set_val('smartprice_chujia', True)  #启动自动补枪 转化为智能出价模式
+
+
 
 
 ##智能出价
