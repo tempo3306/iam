@@ -167,10 +167,8 @@ def Create_hash():
     with open("target.tkl", 'rb')  as tar:
         global dick_target
         dick_target = pickle.load(tar)  # 要寻找对象的对象
-        print(len(dick_target))
         set_val('dick_target', dick_target)
         set_val('result_dick', dick_target[-1])
-        print(dick_target[-1])
 
 ##price_list 价格对应时间的表
 price_list = [80000 for i in range(60)]  # 0-59

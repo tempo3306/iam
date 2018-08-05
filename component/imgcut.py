@@ -341,16 +341,18 @@ def findconfirm():
     res = cv2.matchTemplate(img, template, cv2.TM_CCOEFF_NORMED)
     min_val, max_val, min_loc, max_loc = cv2.minMaxLoc(res)
     if max_val >= 0.7:
+        print(max_val, smartprice_chujia)
         if not smartprice_chujia:
             OnClick_confirm()  #点击确认
         else:
+            print("找到确认")
             Smart_chujia()
 
-        ##结果查找
-        need_findresult = get_val('need_findresult')
-        if need_findresult:
-            print("查找结果")
-            get_result()  ##确认结果
+        # ##结果查找
+        # need_findresult = get_val('need_findresult')
+        # if need_findresult:
+        #     print("查找结果")
+        #     get_result()  ##确认结果
     else:
         set_val('need_findresult', True)
 
@@ -406,6 +408,7 @@ def find_yan_confirm():
         yanzhengma_control = get_val('yanzhengma_control')
         if max_val > 0.9 and yanzhengma_control:
             set_val('yanzhengma_view', True)
+            set_val('smartprice_chujia', False)  ##这代表出价成功
         elif max_val <= 0.9:
             yanzhengma_view = get_val('yanzhengma_view')
             set_val('yanzhengma_close', True)

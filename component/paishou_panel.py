@@ -5,15 +5,18 @@ import logging
 
 logger = logging.getLogger()
 from component.variable import get_dick, set_dick, get_strategy_dick
+from component.variable import colors
 
 
 class PaishouPanel(wx.Panel):
     def __init__(self, parent, tablabel):
         wx.Panel.__init__(self, parent=parent, id=20)
+        self.create_fonts()  ##创建字体
         self.control = wx.StaticBox(self, -1, "基本设置")
         self.controlbox = wx.StaticBoxSizer(self.control, wx.VERTICAL)
         self.controlgrid = wx.GridBagSizer(4, 2)  # 网格组件
-
+        self.control.SetFont(self.bigtitlefont)
+        self.control.SetForegroundColour(colors.BLUE)
         ##功能区
         self.webtabButton = wx.Button(self, label=tablabel, size=(95, 30))  # 未来扩展
         # self.priceviewButton = wx.Button(self, label='导出跳价', size=(105,30))  # 未来扩展
@@ -40,7 +43,12 @@ class PaishouPanel(wx.Panel):
         self.yanzhengma_scale = wx.CheckBox(self, -1, label=u'验证码放大')  # 开启时间显示
         self.Bind(wx.EVT_CHECKBOX, self.Yanzhengma_scale, self.yanzhengma_scale)
         hbox1 = wx.BoxSizer(wx.HORIZONTAL)
+        # # 验证码自动预览
+        self.yanzhengma_autoview = wx.CheckBox(self, -1, label=u'验证码自动预览')  # 开启时间显示
+        self.Bind(wx.EVT_CHECKBOX, self.Yanzhengma_autoview, self.yanzhengma_autoview)
         hbox1.Add(self.yanzhengma_scale)
+        hbox1.Add(self.yanzhengma_autoview)
+
 
         # # 时间区
         # self.autotime = wx.CheckBox(self, -1, label=u'自动时间同步')  # 开启时间显示
@@ -48,20 +56,20 @@ class PaishouPanel(wx.Panel):
         # hbox1 = wx.BoxSizer(wx.HORIZONTAL)
         # hbox1.Add(self.autotime)
 
-        ##确认方式
-        confirm_choice = ["E键", "回车"]
-        self.confirm_choice = wx.Choice(self, -1, choices=confirm_choice)
-        self.confirm_choice.SetSelection(0)
-        self.Bind(wx.EVT_CHOICE, self.Confirmchoice, self.confirm_choice)
-
-        self.confirm_label = wx.StaticText(self, label=u"确认提交方式")
-        hbox2 = wx.BoxSizer(wx.HORIZONTAL)
-        hbox2.Add(self.confirm_label, flag=wx.TOP, border=4)
-        hbox2.Add(self.confirm_choice)
+        # ##确认方式
+        # confirm_choice = ["E键", "回车"]
+        # self.confirm_choice = wx.Choice(self, -1, choices=confirm_choice)
+        # self.confirm_choice.SetSelection(0)
+        # self.Bind(wx.EVT_CHOICE, self.Confirmchoice, self.confirm_choice)
+        #
+        # self.confirm_label = wx.StaticText(self, label=u"确认提交方式")
+        # hbox2 = wx.BoxSizer(wx.HORIZONTAL)
+        # hbox2.Add(self.confirm_label, flag=wx.TOP, border=4)
+        # hbox2.Add(self.confirm_choice)
 
         self.controlbox.Add(self.controlgrid)  # 把网格组加到 功能框内
-        self.controlbox.Add(hbox1)
-        self.controlbox.Add(hbox2)
+        self.controlbox.Add(hbox1,flag=wx.ALL, border=6)
+        # self.controlbox.Add(hbox2)
         ##----------------------------------------------------------------------
 
         ##----------------------------------------------------------------------------------
@@ -77,84 +85,84 @@ class PaishouPanel(wx.Panel):
         ##-------------------------------------------------------------------------------------
         ##拍手功能框
         # 工作
-        self.paishoubox = wx.BoxSizer(wx.VERTICAL)
-
-        self.firstprice_box = wx.BoxSizer(wx.HORIZONTAL)
-        self.timefont = wx.Font(14, wx.FONTFAMILY_ROMAN, wx.FONTSTYLE_NORMAL, wx.FONTWEIGHT_NORMAL, False)
-        self.textfont = wx.Font(12, wx.FONTFAMILY_MODERN, wx.FONTSTYLE_NORMAL, wx.FONTWEIGHT_NORMAL, False)
-
-        self.time1box = wx.BoxSizer(wx.HORIZONTAL)
-        self.timelabel1 = wx.StaticText(self, -1, "10：30 ~ 10：45")
-        self.timelabel1.SetFont(self.timefont)
-        self.time1box.Add(self.timelabel1, flag=wx.LEFT, border=30)
-
-
-        self.firstprice_label = wx.StaticText(self, -1, "第一次出价: ")
-        self.firstprice_status = wx.StaticText(self, -1, "未完成")
-        self.firstprice_label.SetFont(self.textfont)
-        self.firstprice_status.SetFont(self.textfont)
-        self.confirmfirstprice_button = wx.Button(self, -1, "确认完成", size=(60, 25))
-        self.confirmfirstprice_button.Bind(wx.EVT_BUTTON, self.confirm_firstprice)
-        self.firstprice_box.Add(self.firstprice_label, flag=wx.TOP | wx.LEFT, border=5)
-        self.firstprice_box.Add(self.firstprice_status, flag=wx.TOP, border=5)
-        self.firstprice_box.Add(self.confirmfirstprice_button)
-
-        self.time2box = wx.BoxSizer(wx.HORIZONTAL)
-        self.timelabel2 = wx.StaticText(self, -1, "10：45 ~ 11：25")
-        self.timelabel2.SetFont(self.timefont)
-        self.time2box.Add(self.timelabel2, flag=wx.LEFT, border=30)
-
-        self.practice_box = wx.BoxSizer(wx.HORIZONTAL)
-        self.practice_label = wx.StaticText(self, -1, "模拟练习，验证码练习")
-        self.practice_label.SetFont(self.textfont)
-        self.practice_box.Add(self.practice_label, flag=wx.LEFT, border=15)
-
-        self.time3box = wx.BoxSizer(wx.HORIZONTAL)
-        self.timelabel3 = wx.StaticText(self, -1, "11：27 ~ 11：30")
-        self.timelabel3.SetFont(self.timefont)
-        self.time3box.Add(self.timelabel3, flag=wx.LEFT, border=30)
-
-        self.wait_box = wx.BoxSizer(wx.HORIZONTAL)
-        self.wait_label = wx.StaticText(self, -1, "开始录像，等待29分后的出价")
-        self.wait_label.SetFont(self.textfont)
-        self.wait_box.Add(self.wait_label, flag=wx.LEFT, border=6)
-
-        self.time4box = wx.BoxSizer(wx.HORIZONTAL)
-        self.timelabel4 = wx.StaticText(self, -1, "11：25 ~ 11：30")
-        self.timelabel4.SetFont(self.timefont)
-        self.time4box.Add(self.timelabel4, flag=wx.LEFT, border=30)
-
-        self.result_box = wx.BoxSizer(wx.VERTICAL)
-        self.waitresult_label = wx.StaticText(self, -1, "等待拍牌结果，继续录像")
-        self.waitresult_label.SetFont(self.textfont)
-        self.record_label = wx.StaticText(self, -1, "结果拍照，保存录像")
-        self.record_label.SetFont(self.textfont)
-        self.complete_label = wx.StaticText(self, -1, "将录像、照片发送邮箱")
-        self.complete_label.SetFont(self.textfont)
-        self.mail_label = wx.StaticText(self, -1, "810909753@qq.com")
-        self.mail_label.SetFont(self.textfont)
-
-        self.result_box.Add(self.waitresult_label, flag=wx.LEFT, border=15)
-        self.result_box.Add(self.record_label, flag=wx.LEFT, border=15)
-        self.result_box.Add(self.complete_label, flag=wx.LEFT, border=15)
-        self.result_box.Add(self.mail_label, flag=wx.LEFT, border=15)
-
-        self.paishoubox.Add(self.time1box, flag=wx.TOP, border=20)
-        self.paishoubox.Add(self.firstprice_box, flag=wx.TOP, border=5)
-        self.paishoubox.Add(self.time2box, flag=wx.TOP, border=20)
-        self.paishoubox.Add(self.practice_box, flag=wx.TOP, border=5)
-        self.paishoubox.Add(self.time3box, flag=wx.TOP, border=20)
-        self.paishoubox.Add(self.wait_box, flag=wx.TOP, border=5)
-        self.paishoubox.Add(self.time4box, flag=wx.TOP, border=20)
-        self.paishoubox.Add(self.result_box, flag=wx.TOP, border=5)
+        # self.paishoubox = wx.BoxSizer(wx.VERTICAL)
+        #
+        # self.firstprice_box = wx.BoxSizer(wx.HORIZONTAL)
+        # self.timefont = wx.Font(14, wx.FONTFAMILY_ROMAN, wx.FONTSTYLE_NORMAL, wx.FONTWEIGHT_NORMAL, False)
+        # self.textfont = wx.Font(12, wx.FONTFAMILY_MODERN, wx.FONTSTYLE_NORMAL, wx.FONTWEIGHT_NORMAL, False)
+        #
+        # self.time1box = wx.BoxSizer(wx.HORIZONTAL)
+        # self.timelabel1 = wx.StaticText(self, -1, "10：30 ~ 10：45")
+        # self.timelabel1.SetFont(self.timefont)
+        # self.time1box.Add(self.timelabel1, flag=wx.LEFT, border=30)
+        #
+        #
+        # self.firstprice_label = wx.StaticText(self, -1, "第一次出价: ")
+        # self.firstprice_status = wx.StaticText(self, -1, "未完成")
+        # self.firstprice_label.SetFont(self.textfont)
+        # self.firstprice_status.SetFont(self.textfont)
+        # self.confirmfirstprice_button = wx.Button(self, -1, "确认完成", size=(60, 25))
+        # self.confirmfirstprice_button.Bind(wx.EVT_BUTTON, self.confirm_firstprice)
+        # self.firstprice_box.Add(self.firstprice_label, flag=wx.TOP | wx.LEFT, border=5)
+        # self.firstprice_box.Add(self.firstprice_status, flag=wx.TOP, border=5)
+        # self.firstprice_box.Add(self.confirmfirstprice_button)
+        #
+        # self.time2box = wx.BoxSizer(wx.HORIZONTAL)
+        # self.timelabel2 = wx.StaticText(self, -1, "10：45 ~ 11：25")
+        # self.timelabel2.SetFont(self.timefont)
+        # self.time2box.Add(self.timelabel2, flag=wx.LEFT, border=30)
+        #
+        # self.practice_box = wx.BoxSizer(wx.HORIZONTAL)
+        # self.practice_label = wx.StaticText(self, -1, "模拟练习，验证码练习")
+        # self.practice_label.SetFont(self.textfont)
+        # self.practice_box.Add(self.practice_label, flag=wx.LEFT, border=15)
+        #
+        # self.time3box = wx.BoxSizer(wx.HORIZONTAL)
+        # self.timelabel3 = wx.StaticText(self, -1, "11：27 ~ 11：30")
+        # self.timelabel3.SetFont(self.timefont)
+        # self.time3box.Add(self.timelabel3, flag=wx.LEFT, border=30)
+        #
+        # self.wait_box = wx.BoxSizer(wx.HORIZONTAL)
+        # self.wait_label = wx.StaticText(self, -1, "开始录像，等待29分后的出价")
+        # self.wait_label.SetFont(self.textfont)
+        # self.wait_box.Add(self.wait_label, flag=wx.LEFT, border=6)
+        #
+        # self.time4box = wx.BoxSizer(wx.HORIZONTAL)
+        # self.timelabel4 = wx.StaticText(self, -1, "11：25 ~ 11：30")
+        # self.timelabel4.SetFont(self.timefont)
+        # self.time4box.Add(self.timelabel4, flag=wx.LEFT, border=30)
+        #
+        # self.result_box = wx.BoxSizer(wx.VERTICAL)
+        # self.waitresult_label = wx.StaticText(self, -1, "等待拍牌结果，继续录像")
+        # self.waitresult_label.SetFont(self.textfont)
+        # self.record_label = wx.StaticText(self, -1, "结果拍照，保存录像")
+        # self.record_label.SetFont(self.textfont)
+        # self.complete_label = wx.StaticText(self, -1, "将录像、照片发送邮箱")
+        # self.complete_label.SetFont(self.textfont)
+        # self.mail_label = wx.StaticText(self, -1, "810909753@qq.com")
+        # self.mail_label.SetFont(self.textfont)
+        #
+        # self.result_box.Add(self.waitresult_label, flag=wx.LEFT, border=15)
+        # self.result_box.Add(self.record_label, flag=wx.LEFT, border=15)
+        # self.result_box.Add(self.complete_label, flag=wx.LEFT, border=15)
+        # self.result_box.Add(self.mail_label, flag=wx.LEFT, border=15)
+        #
+        # self.paishoubox.Add(self.time1box, flag=wx.TOP, border=20)
+        # self.paishoubox.Add(self.firstprice_box, flag=wx.TOP, border=5)
+        # self.paishoubox.Add(self.time2box, flag=wx.TOP, border=20)
+        # self.paishoubox.Add(self.practice_box, flag=wx.TOP, border=5)
+        # self.paishoubox.Add(self.time3box, flag=wx.TOP, border=20)
+        # self.paishoubox.Add(self.wait_box, flag=wx.TOP, border=5)
+        # self.paishoubox.Add(self.time4box, flag=wx.TOP, border=20)
+        # self.paishoubox.Add(self.result_box, flag=wx.TOP, border=5)
 
         ##-------------------------------------------------------------------------------------
         ##将所有sizer组合
         # self.reminderbox.Add(self.remindergrid)
         self.vbox = wx.BoxSizer(wx.VERTICAL)
-        self.vbox.Add(self.controlbox, flag=wx.BOTTOM, border=10)
+        self.vbox.Add(self.controlbox, flag=wx.BOTTOM | wx.TOP, border=10)
         self.vbox.Add(self.reminderbox, flag=wx.BOTTOM, border=10)
-        self.vbox.Add(self.paishoubox, flag=wx.BOTTOM, border=10)
+        # self.vbox.Add(self.paishoubox, flag=wx.BOTTOM, border=10)
         self.hbox = wx.BoxSizer(wx.HORIZONTAL)
         self.hbox.Add(self.vbox, flag=wx.LEFT, border=10)
         self.SetSizer(self.hbox)
@@ -164,14 +172,31 @@ class PaishouPanel(wx.Panel):
         #############消息区域
         pub.subscribe(self.change_strategy, 'change strategy')
         pub.subscribe(self.change_userprice, 'change userprice')  # 修改当前用户出价
-        pub.subscribe(self.firstprice_OK, 'firstprice')  # 第一次出价成功
+        # pub.subscribe(self.firstprice_OK, 'firstprice')  # 第一次出价成功
+
+    def create_fonts(self):
+        self.titlefont = wx.Font(11, wx.FONTFAMILY_MODERN, wx.FONTSTYLE_NORMAL, wx.FONTWEIGHT_NORMAL, False)
+        self.bigtitlefont = wx.Font(12, wx.FONTFAMILY_DEFAULT, wx.FONTSTYLE_NORMAL, wx.FONTWEIGHT_NORMAL, False)
+        self.numberfont = wx.Font(12, wx.FONTFAMILY_ROMAN, wx.FONTSTYLE_NORMAL, wx.FONTWEIGHT_NORMAL, False)
+        self.wordfont = wx.Font(12, wx.FONTFAMILY_ROMAN, wx.FONTSTYLE_NORMAL, wx.FONTWEIGHT_NORMAL, False)
 
     ## 验证码放大
     def Yanzhengma_scale(self, event):
         if self.yanzhengma_scale.IsChecked():
             set_dick("yanzhengma_scale", True)
+            wx.CallAfter(pub.sendMessage, 'update info', action='开启验证码放大')
         else:
             set_dick("yanzhengma_scale", False)
+            wx.CallAfter(pub.sendMessage, 'update info', action='关闭验证码放大')
+
+    ## 验证码自动预览
+    def Yanzhengma_autoview(self, event):
+        if self.yanzhengma_autoview.IsChecked():
+            set_dick("auto_query_on", True) #控制开关
+            wx.CallAfter(pub.sendMessage, 'update info', action='开启验证码自动预览')
+        else:
+            set_dick("auto_query_on", False)
+            wx.CallAfter(pub.sendMessage, 'update info', action='关闭验证码自动预览')
 
     ## 国拍与模拟切换
     def webtab(self, event):
@@ -246,15 +271,13 @@ class PaishouPanel(wx.Panel):
             wx.CallAfter(pub.sendMessage, "onekey_login")
 
 
-
-
     ##初始化
     def init_ui(self):
-        enter_on = get_dick('enter_on')
-        if enter_on:
-            self.confirm_choice.SetSelection(1)
+        auto_query_on = get_dick('auto_query_on')
+        if auto_query_on:
+            self.yanzhengma_autoview.SetValue(True)
         else:
-            self.confirm_choice.SetSelection(0)
+            self.yanzhengma_autoview.SetValue(False)
 
         yanzhengma_scale = get_dick('yanzhengma_scale')
         if yanzhengma_scale:
@@ -262,24 +285,12 @@ class PaishouPanel(wx.Panel):
         else:
             self.yanzhengma_scale.SetValue(False)
 
+        self.init_strategy()
+
+    ##策略初始化
+    def  init_strategy(self):
         strategy_type = get_dick('strategy_type')
         self.update_ui(strategy_type)
-
-        moni_on = get_val('moni_on')
-        guopai_on = get_val('guopai_on')
-        if moni_on:
-            print("fqqqqqqqqqqq")
-            self.confirmfirstprice_button.Disable()
-        elif guopai_on:
-            print("yyyyyyyyyyyy")
-            self.confirmfirstprice_button.Enable()
-
-        firstprice_done = get_val('firstprice_done')
-        if firstprice_done:
-            self.firstprice_status.SetLabel("已完成")
-        else:
-            self.firstprice_status.SetLabel("未完成")
-
 
     def update_ui(self, strategy_type):  ##根据不同的出价策略调整界面
         strategy_list = get_dick(strategy_type)
@@ -389,24 +400,24 @@ class PaishouPanel(wx.Panel):
 
             self.Layout()
 
-    def confirm_firstprice(self, event):
-        from component.imgcut import findfirstprice
-        self.confirmfirstprice_button.Disable()
+    # def confirm_firstprice(self, event):
+    #     from component.imgcut import findfirstprice
+    #     self.confirmfirstprice_button.Disable()
+    #
+    #     res = findfirstprice()
+    #     print(res)
+    #     if not res:
+    #         self.confirmfirstprice_button.Enable()
+    #     else:
+    #         from component.login import Confirm_firstprice
+    #         Confirmfirstprice_thread()
 
-        res = findfirstprice()
-        print(res)
-        if not res:
-            self.confirmfirstprice_button.Enable()
-        else:
-            from component.login import Confirm_firstprice
-            Confirmfirstprice_thread()
-
-    def firstprice_OK(self, result):
-        set_val("firstprice_done", True)
-        if result['result'] == 'firstprice success':
-            self.firstprice_status.SetLabel("已完成")
-        else:
-            self.confirmfirstprice_button.Enable()
+    # def firstprice_OK(self, result):
+    #     set_val("firstprice_done", True)
+    #     if result['result'] == 'firstprice success':
+    #         self.firstprice_status.SetLabel("已完成")
+    #     else:
+    #         self.confirmfirstprice_button.Enable()
 
 
 
@@ -423,12 +434,7 @@ class PaishouPanel(wx.Panel):
     def posautoajust(self, event):
         findpos()
 
-    def Confirmchoice(self, event):
-        con = self.confirm_choice.GetSelection()
-        if con == 0:
-            set_dick('enter_on', False)
-        elif con == 1:
-            set_dick('enter_on', True)
+
 
     #######
     def change_strategy(self):

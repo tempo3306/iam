@@ -20,8 +20,6 @@ class StatusPanel(wx.Panel):
         wx.Panel.__init__(self, parent=parent, id=20)
         #------------
         self.create_fonts()  ##创建字体
-
-
         self.control = wx.StaticBox(self, -1, "基本设置")
         self.controlbox = wx.StaticBoxSizer(self.control, wx.VERTICAL)
         self.controlgrid = wx.GridBagSizer(4, 2)  # 网格组件
@@ -472,8 +470,10 @@ class StatusPanel(wx.Panel):
     def Yanzhengma_autoview(self, event):
         if self.yanzhengma_autoview.IsChecked():
             set_dick("auto_query_on", True) #控制开关
+            wx.CallAfter(pub.sendMessage, 'update info', action='开启验证码自动预览')
         else:
             set_dick("auto_query_on", False)
+            wx.CallAfter(pub.sendMessage, 'update info', action='关闭验证码自动预览')
 
 
     ## 国拍与模拟切换

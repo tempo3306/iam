@@ -24,7 +24,7 @@ class ButtonPanel(wx.Panel):
         wx.Panel.__init__(self, parent, size=size, pos=pos)
         self.parent = parent
         self.timefont = wx.Font(18, wx.FONTFAMILY_ROMAN, wx.FONTSTYLE_NORMAL, wx.FONTWEIGHT_NORMAL, False)
-        self.statusfont = wx.Font(18, wx.FONTFAMILY_ROMAN, wx.FONTSTYLE_NORMAL, wx.FONTWEIGHT_BOLD, False)
+        self.statusfont = wx.Font(18, wx.FONTFAMILY_MODERN, wx.FONTSTYLE_NORMAL, wx.FONTWEIGHT_BOLD, False)
         ##时间同步功能
         if not moni:
             self.remotetime_button = wxButton(self, label='同步服务器时间', size=(90, 25), pos=(693, 2))
@@ -57,7 +57,7 @@ class ButtonPanel(wx.Panel):
         self.webstatus = wx.StaticText(self, label=webstatus_label, pos=(10, 2), size=(120, 30),)
         self.webstatus.SetFont(self.statusfont)
         # self.webstatus.SetBackgroundColour((0, 0, 150))
-        self.webstatus.SetForegroundColour((255, 255, 255))
+        self.webstatus.SetForegroundColour((255, 240, 240))
 
         # self.refresh_web = wxButton(self, label='刷新界面', size=(80, 25), pos=(25, 2), style=wx.BORDER_NONE)
         # self.refresh_web.SetBackgroundColour("#ACD6ff")
@@ -103,9 +103,9 @@ class ButtonPanel(wx.Panel):
         moni_on = get_val('moni_on')
         test = get_val('test')
         if not test and moni_on:
-            self.timeautoajust(event)
+            self.timeautoajust()
         elif test and autotime_on:
-            self.timeautoajust(event)
+            self.timeautoajust()
 
 
 
@@ -118,10 +118,11 @@ class ButtonPanel(wx.Panel):
 
 
     ## 同步本地时间
-    def timeautoajust(self, event):
+    def timeautoajust(self, event=None):
         imgpos_currenttime = get_val('imgpos_currenttime')
         timeset(imgpos_currenttime)  # 调用时间同步
-        wx.CallAfter(pub.sendMessage, 'update info', action='同步网页时间')
+        if event:
+            wx.CallAfter(pub.sendMessage, 'update info', action='同步网页时间')
 
     def urlchange(self, event):
         guopai_dianxin = get_val('guopai_dianxin')

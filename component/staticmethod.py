@@ -304,8 +304,10 @@ def esc_chujia():
     else:
         guopai_chujia(price)
     userprice = get_val('userprice')
-    wx.CallAfter(pub.sendMessage, 'update info', action=f'智能出价出价{userprice}')
     set_val('smartprice_chujia', True)  #启动自动补枪 转化为智能出价模式
+    smartprice_chujia = get_val('smartprice_chujia')
+    print('smartprice_chujia', smartprice_chujia)
+    wx.CallAfter(pub.sendMessage, 'update info', action=f'智能出价出价{userprice}')
 
 
 
@@ -527,18 +529,17 @@ def OnClick_Backspace():
 
 def tijiao_ok():
     try:
-        enter_on = get_dick('enter_on')
-        tijiao_on = get_val('tijiao_on')
         smartprice_chujia = get_val('smartprice_chujia')
-        if enter_on :
+        if smartprice_chujia :
             set_val('tijiao_OK', True)
-            set_val('yanzhengma_close', True)
             set_val('yanzhengma_view', False)
+            set_val('yanzhengma_close', True)
             set_val('yanzhengma_control', False)
-        elif enter_on and smartprice_chujia:
+            set_val('smartprice_chujia', False)
+        else:
             set_val('tijiao_OK', True)
-            set_val('yanzhengma_view', False)
             set_val('yanzhengma_close', True)
+            set_val('yanzhengma_view', False)
             set_val('yanzhengma_control', False)
         wx.CallAfter(pub.sendMessage, 'update info', action='按下回车【enter】确认')
     except:
@@ -747,7 +748,6 @@ def init_strategy0():
     set_val('tijiao_num', 1)  # 初始化
     set_val('tijiao_OK', False)
     set_val('tijiao_one', False)  # 单枪未开
-    set_val('smartprice_chujia', False)
     init_label()
 
 
@@ -759,7 +759,6 @@ def init_strategy1():
     set_val('tijiao_num', 1)  # 初始化
     set_val('tijiao_OK', False)
     set_val('tijiao_one', False)  # 单枪未开
-    set_val('smartprice_chujia', False)
     init_label()
 
 def init_strategy2():
@@ -770,7 +769,6 @@ def init_strategy2():
     set_val('tijiao_num', 1)  # 初始化
     set_val('tijiao_OK', False)
     set_val('tijiao_one', False)  # 单枪未开
-    set_val('smartprice_chujia', False)
     init_label()
 
 def init_strategy3():
@@ -781,7 +779,6 @@ def init_strategy3():
     set_val('tijiao_num', 1)  # 初始化
     set_val('tijiao_OK', False)
     set_val('tijiao_one', False)  # 单枪未开
-    set_val('smartprice_chujia', False)
     init_label()
 
 

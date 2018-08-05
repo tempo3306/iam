@@ -116,7 +116,7 @@ class Identify_codePanel(wx.Panel):
     def code_veritify(self, event):
         keycode = event.GetKeyCode()
         print(keycode)
-        if 48 <= keycode <= 57 or 324 <= keycode <=333 or keycode  == 13:
+        if 48 <= keycode <= 57 or 65 <= keycode <= 90 or 324 <= keycode <=333 or keycode  == 13 or keycode == 370:
             event.Skip()
         else:
             return False
@@ -172,6 +172,7 @@ class LoginFrame(wx.Frame):
         login_result = get_val('login_result')
         version = get_val('version')
         Identify_code = get_val('Identify_code')
+        print('identify_code', Identify_code)
 
         if login_result['result'] == 'login success':
             set_val('activate_status', True)  ##激活成功
@@ -192,7 +193,6 @@ class LoginFrame(wx.Frame):
             Getip_dianxinThread(ip_address) ##判定是否电信网址的功能
 
             ##初始化结果
-            print(login_result)
             data = login_result['data']
 
             remote_variables(**data)
@@ -212,16 +212,15 @@ class LoginFrame(wx.Frame):
                 if strategy_dick != 'none':
                     set_strategy_dick(strategy_dick) ##初始化策略数据
 
-            elif Identify_code[0]== 'h':
+            if Identify_code[0] == 'h':
                 # set_val('test', True)
                 manage = get_val("manage")
+                print("manage", manage)
                 if not manage:
+                    print("fdsfsfds")
                     set_val('paishou', True)
                 set_val('url_dianxin', login_result['url_dianxin'])
                 set_val('url_nodianxin', login_result['url_nodianxin'])
-            elif Identify_code == 'daxinwen':
-                set_val('url_dianxin', "http://moni.51hupai.org/")
-                set_val('url_nodianxin', "http://moni.51hupai.org/")
             else:
                 set_val('url_dianxin', login_result['url_dianxin'])
                 set_val('url_nodianxin', login_result['url_nodianxin'])
