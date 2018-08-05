@@ -32,7 +32,7 @@ class InfoPanel(wx.ScrolledWindow):
         infopanel_pos = get_val('infopanel_pos')
         super(InfoPanel, self).__init__(parent, size=infopanel_size, pos=infopanel_pos)
         super(InfoPanel, self).SetScrollbars(0, 20, 0, 5)
-        self.SetScrollRate(0,20)
+        self.SetScrollRate(0, 20)
         self.infomationfont = wx.Font(14, wx.FONTFAMILY_DEFAULT, wx.FONTSTYLE_NORMAL, wx.FONTWEIGHT_NORMAL, False)
         self.infofont = wx.Font(10, wx.FONTFAMILY_DEFAULT, wx.FONTSTYLE_NORMAL, wx.FONTWEIGHT_NORMAL, False)
         self.areafont = wx.Font(12, wx.FONTFAMILY_DEFAULT, wx.FONTSTYLE_NORMAL, wx.FONTWEIGHT_NORMAL, False)
@@ -50,7 +50,6 @@ class InfoPanel(wx.ScrolledWindow):
         self.Bind(wx.EVT_SCROLLWIN_THUMBRELEASE, self.refreshtext)
         self.Bind(wx.EVT_SCROLLWIN_THUMBTRACK, self.refreshtext)
         self.Bind(wx.EVT_PAINT, self.refreshtext)
-
 
         # self.ShowScrollbars(wx.SHOW_SB_NEVER, wx.SHOW_SB_NEVER)
         # self.EnableScrolling(False, False)
@@ -70,7 +69,6 @@ class InfoPanel(wx.ScrolledWindow):
     def linedown(self, event):
         print("linedown")
 
-
     def pageup(self, event):
         print("pageup")
 
@@ -89,9 +87,6 @@ class InfoPanel(wx.ScrolledWindow):
         self.draw_infomation(dc)
         # self.do_draw(dc)
 
-
-
-
     def refreshtext(self, event):
         xx = self.GetViewStart()
         pos = xx[1]
@@ -107,18 +102,18 @@ class InfoPanel(wx.ScrolledWindow):
             len_info = len(self.infos)
             len_info = len_info if len_info <= 7 else 7
             for i in range(len_info):
-                self.draw(dc, self.infos[i], (x, y + 20*i))
+                self.draw(dc, self.infos[i], (x, y + 20 * i))
         else:
             x, y = get_val('infotext_pos')
             dc = wx.BufferedDC(wx.ClientDC(self))  # ClientDC客户区  ，BufferedDC双缓冲绘图设备
             dc.SetBackground(wx.Brush(self.GetBackgroundColour()))
             dc.Clear()
             self.draw_infomation(dc)
-            index  = (pos - 23)//7
+            index = (pos - 23) // 7
             if len(self.infos) <= index + 7:
                 index -= 1
             for i in range(7):
-                self.draw(dc, self.infos[index + i], (x, y + 20*i))
+                self.draw(dc, self.infos[index + i], (x, y + 20 * i))
         event.Skip()
 
     def do_draw(self, dc):
@@ -128,14 +123,12 @@ class InfoPanel(wx.ScrolledWindow):
         pos = xx[1]
         print("pos", pos)
         for i in range(len_info):
-            self.draw(dc, self.infos[i], (x, y + 20*i))
+            self.draw(dc, self.infos[i], (x, y + 20 * i))
 
     def draw(self, dc, text, pos):
         x1, y1 = pos
         dc.SetFont(self.infofont)
         dc.DrawText(text, x1, y1)
-
-
 
     def draw_infomation(self, dc):
         dc.SetFont(self.infomationfont)
@@ -156,7 +149,6 @@ class InfoPanel(wx.ScrolledWindow):
         dc.SetFont(self.infofont)
         dc.DrawText(text, x1, y1)
 
-
     # fontsz = wx.SystemSettings.GetFont(wx.SYS_SYSTEM_FONT).GetPixelSize()
     # self.SetScrollRate(fontsz.x, fontsz.y)
     # --------------------------------------------
@@ -165,6 +157,7 @@ class InfoPanel(wx.ScrolledWindow):
     1.切换国拍与模拟
     2.用户修改策略
     '''
+
     def init_info(self):
         action_infos = get_val('action_infos')
         len_info = len(action_infos)
@@ -183,17 +176,21 @@ class InfoPanel(wx.ScrolledWindow):
             info = self.create_info(action)
             self.addto_infos(action)
             self.infos.append(info)
-         ##修改info
+        ##修改info
         len_info = len(self.infos)
         x, y = get_val('infotext_pos')
         dc = wx.BufferedDC(wx.ClientDC(self))  # ClientDC客户区  ，BufferedDC双缓冲绘图设备
         dc.SetBackground(wx.Brush(self.GetBackgroundColour()))
         dc.Clear()
         self.draw_infomation(dc)
-        index  = len_info - 7
-        len_info = len_info if len_info <= 7 else 7
-        for i in range(len_info):
-            self.draw_text(dc, self.infos[index + i], (x, y + 20*i))
+        LABEL_NUM = get_val('LABEL_NUM')
+        if len_info <= LABEL_NUM:
+            for i in range(len_info):
+                self.draw_text(dc, self.infos[i], (x, y + 20 * i))
+        if len_info > LABEL_NUM:
+            index = len_info - LABEL_NUM
+            for i in range(LABEL_NUM):
+                self.draw_text(dc, self.infos[i + index], (x, y + 20 * i))
 
     @staticmethod
     def create_info(action):
@@ -211,4 +208,3 @@ class InfoPanel(wx.ScrolledWindow):
         action_infos = get_val('action_infos')
         action_infos.append(info)
         set_val('action_infos', action_infos)
-

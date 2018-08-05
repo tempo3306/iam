@@ -198,7 +198,7 @@ class LoginFrame(wx.Frame):
             remote_variables(**data)
             if Identify_code == '12345678':  ##这里作为测试用
                 set_val('test', True)
-                remote_init()
+                # remote_init()
             target_time = get_val('target_time')
             start_time = target_time - 30 * 60
             set_val('start_time', start_time)

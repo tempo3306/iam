@@ -197,7 +197,7 @@ class Hotkey_label():
 def init_val():
     ##test
     test_init()
-
+    init_const()  ##常量存放
     ##封装
     init_id()
     init_size()
@@ -219,6 +219,10 @@ def init_val():
     set_val('num', 0)
     set_val('avt', 0)
     set_val('test', False)
+
+
+def init_const():
+    set_val('LABEL_NUM', 7)
 
 
 def init_url():
@@ -608,9 +612,9 @@ def init_status():
     ##状态框三行
     set_val('status_time', (3, 15))
     set_val('lowestprice_text', (3, 45))
-    set_val('pricelabeltext', (192, 15))
+    set_val('pricelabeltext', (189, 15))
     set_val('pricetext', (345, 15))
-    set_val('timestatustext', (192, 45))
+    set_val('timestatustext', (189, 45))
     set_val('pricestatustext', (345, 45))
 
 
