@@ -181,13 +181,15 @@ class StatusPanel(wx.Panel):
         self.buqiang_label.SetFont(self.titlefont)
         self.buqiang_label.SetForegroundColour(colors.BLUE)
 
-        self.buqiang_checkbox = wx.CheckBox(self, -1, label="开启自动补枪", size=(135, 45))  # size=(190, 95)
+        self.buqiang_checkbox = wx.CheckBox(self, -1, label="开启自动补枪", size=(120, 45))  # size=(190, 95)
         self.buqiang_tiplabel = wx.StaticText(self, -1, label="(出价提交完成后智能出价)",
                                               size=(205, 45), style=wx.ALIGN_CENTER)
+        self.buqiang_checkbox.SetFont(self.titlefont)
+        self.buqiang_tiplabel.SetFont(self.titlefont)
         self.buqiang_tiplabel_hbox = wx.BoxSizer(wx.HORIZONTAL)
         self.buqiang_tiplabel_hbox.Add(self.buqiang_tiplabel)
 
-        self.buqiang_vbox.Add(self.buqiang_checkbox, flag=wx.LEFT, border=60)
+        self.buqiang_vbox.Add(self.buqiang_checkbox, flag=wx.LEFT, border=52)
         self.buqiang_vbox.Add(self.buqiang_tiplabel_hbox, flag=wx.TOP, border=6)
         self.buqiang_label_sizer.Add(self.buqiang_vbox)
 
@@ -305,12 +307,12 @@ class StatusPanel(wx.Panel):
         self.secondsmart_jiajia_time.SetValue(48)
         self.secondsmart_jiajia_time.SetIncrement(0.1)
         # self.secondsmart_jiajia_time.SetFont(self.numberfont)
-        self.secondsmart_jiajia_price = wx.SpinCtrlDouble(self, -1, "", size=(55, 20))
+        self.secondsmart_jiajia_price = wx.SpinCtrlDouble(self, -1, "", size=(57, 20))
         self.secondsmart_jiajia_price.SetRange(300, 1500)
         self.secondsmart_jiajia_price.SetValue(700)
         self.secondsmart_jiajia_price.SetIncrement(100)
         self.secondsmart_time_label = wx.StaticText(self, label="11 : 29 : ",
-                                                    style=wx.ALIGN_RIGHT)
+                                                    style=wx.ALIGN_RIGHT, size=(64, 20))
         self.secondsmart_time_label.SetFont(self.numberfont)
         self.secondsmart_jiahao = wx.StaticText(self, label=' + ', style=wx.ALIGN_CENTER)
         self.secondsmart_jiahao.SetFont(self.wordfont)
@@ -322,7 +324,6 @@ class StatusPanel(wx.Panel):
         self.Bind(wx.EVT_TEXT, self.Smart_Jiajia_time, self.secondsmart_jiajia_time)
         self.Bind(wx.EVT_TEXT, self.Smart_Jiajia_price, self.secondsmart_jiajia_price)
 
-
         ##第三次
         ##出价设置行
         self.thirdsmart_jiajia_sizer = wx.BoxSizer(wx.HORIZONTAL)
@@ -331,12 +332,12 @@ class StatusPanel(wx.Panel):
         self.thirdsmart_jiajia_time.SetRange(0, 55)
         self.thirdsmart_jiajia_time.SetValue(48)
         self.thirdsmart_jiajia_time.SetIncrement(0.1)
-        self.thirdsmart_jiajia_price = wx.SpinCtrlDouble(self, -1, "", size=(55, 20))
+        self.thirdsmart_jiajia_price = wx.SpinCtrlDouble(self, -1, "", size=(57, 20))
         self.thirdsmart_jiajia_price.SetRange(300, 1500)
         self.thirdsmart_jiajia_price.SetValue(700)
         self.thirdsmart_jiajia_price.SetIncrement(100)
         self.thirdsmart_time_label = wx.StaticText(self, label="11 : 29 : ",
-                                                   style=wx.ALIGN_RIGHT)
+                                                   style=wx.ALIGN_RIGHT, size=(64, 20))
         self.thirdsmart_time_label.SetFont(self.numberfont)
         self.thirdsmart_jiahao = wx.StaticText(self, label=' + ', style=wx.ALIGN_CENTER)
         self.thirdsmart_jiahao.SetFont(self.wordfont)
@@ -349,31 +350,39 @@ class StatusPanel(wx.Panel):
         self.Bind(wx.EVT_TEXT, self.Smart_Jiajia_price2, self.thirdsmart_jiajia_price)
 
         ##单枪智能提交组件
+        self.smart_tijiao_hsizer_lb = wx.BoxSizer(wx.HORIZONTAL)
+        self.smart_tijiao_hsizer_label = wx.BoxSizer(wx.HORIZONTAL)
         self.smart_tijiao_hsizer = wx.BoxSizer(wx.HORIZONTAL)
-        self.smart_tijiao_label = wx.StaticText(self, label='动态提交', style=wx.ALIGN_RIGHT, size=(76, 25))
+        self.smart_tijiao_label = wx.StaticText(self, label='动态提交', style=wx.ALIGN_RIGHT, size=(72, 25))
         self.smart_tijiao_label.SetFont(self.titlefont)
         self.smart_tijiao_button = wx.Button(self, label='设置', size=(50, 25))
-        self.smart_tijiao_hsizer.Add(self.smart_tijiao_label, flag=wx.TOP, border=5)
-        self.smart_tijiao_hsizer.Add(self.smart_tijiao_button, flag=wx.LEFT, border=20)
+        self.smart_tijiao_hsizer_label.Add(self.smart_tijiao_label, flag=wx.TOP, border=5)  ##调整LABEL上下与BUTTON对齐
+        self.smart_tijiao_hsizer_lb.Add(self.smart_tijiao_hsizer_label,  flag=wx.LEFT, border=25)
+        self.smart_tijiao_hsizer_lb.Add(self.smart_tijiao_button, flag=wx.LEFT, border=18)
+        self.smart_tijiao_hsizer.Add(self.smart_tijiao_hsizer_lb, flag=wx.TOP, border=5)
         self.smart_tijiao_button.Bind(wx.EVT_BUTTON, self.Smart_tijiao_button)
 
         ##双枪智能提交组件 
+        self.smart2_tijiao_hsizer_lb = wx.BoxSizer(wx.HORIZONTAL)
+        self.smart2_tijiao_hsizer_label = wx.BoxSizer(wx.HORIZONTAL)
         self.smart2_tijiao_hsizer = wx.BoxSizer(wx.HORIZONTAL)
-        self.smart2_tijiao_label = wx.StaticText(self, label='动态提交', style=wx.ALIGN_RIGHT, size=(76, 25))
+        self.smart2_tijiao_label = wx.StaticText(self, label='动态提交', style=wx.ALIGN_RIGHT, size=(72, 25))
         self.smart2_tijiao_label.SetFont(self.titlefont)
         self.smart2_tijiao_button = wx.Button(self, label='设置', size=(50, 25))
-        self.smart2_tijiao_hsizer.Add(self.smart2_tijiao_label, flag=wx.TOP, border=5)
-        self.smart2_tijiao_hsizer.Add(self.smart2_tijiao_button, flag=wx.LEFT, border=20)
+        self.smart2_tijiao_hsizer_label.Add(self.smart2_tijiao_label, flag=wx.TOP, border=5)  ##调整LABEL上下与BUTTON对齐
+        self.smart2_tijiao_hsizer_lb.Add(self.smart2_tijiao_hsizer_label,  flag=wx.LEFT, border=25)
+        self.smart2_tijiao_hsizer_lb.Add(self.smart2_tijiao_button, flag=wx.LEFT, border=18)
+        self.smart2_tijiao_hsizer.Add(self.smart2_tijiao_hsizer_lb, flag=wx.BOTTOM | wx.TOP, border=5)
         self.smart2_tijiao_button.Bind(wx.EVT_BUTTON, self.Smart_tijiao_button)
 
         ##单枪组装
-        self.smart_tijiao_vsizer.Add(self.smart_tijiao_hsizer, flag=wx.RIGHT, border=60)
-        self.smart_tijiao_vsizer.Add(self.secondsmart_jiajia_sizer, flag=wx.BOTTOM, border=12)
-        self.smart_tijiao_label_sizer.Add(self.smart_tijiao_vsizer, flag=wx.BOTTOM, border=2)
+        self.smart_tijiao_vsizer.Add(self.secondsmart_jiajia_sizer, flag=wx.BOTTOM | wx.TOP, border=15)
+        self.smart_tijiao_vsizer.Add(self.smart_tijiao_hsizer, flag=wx.RIGHT, border=39)
+        self.smart_tijiao_label_sizer.Add(self.smart_tijiao_vsizer, flag=wx.BOTTOM, border=12)
         ##双枪组装
-        self.smart_tijiao_vsizer2.Add(self.smart2_tijiao_hsizer, flag=wx.RIGHT, border=60)
-        self.smart_tijiao_vsizer2.Add(self.thirdsmart_jiajia_sizer, flag=wx.BOTTOM, border=12)
-        self.smart_tijiao_label_sizer2.Add(self.smart_tijiao_vsizer2, flag=wx.BOTTOM, border=2)
+        self.smart_tijiao_vsizer2.Add(self.thirdsmart_jiajia_sizer, flag=wx.BOTTOM | wx.TOP, border=15)
+        self.smart_tijiao_vsizer2.Add(self.smart2_tijiao_hsizer, flag=wx.RIGHT, border=39)
+        self.smart_tijiao_label_sizer2.Add(self.smart_tijiao_vsizer2, flag=wx.BOTTOM, border=12)
 
         ##构建组件
         self.strategy_sizer.Add(self.second_chujia_label_sizer, flag=wx.ALL, border=3)
