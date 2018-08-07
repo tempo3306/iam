@@ -361,43 +361,6 @@ class ManagePanel(wx.Panel):
         self.strategy_area_vbox.Add(self.choice_strategy, flag=wx.LEFT, border=3)
         self.strategy_area_vbox.Add(self.strategy_sizer)
         self.strategy_area_sizer.Add(self.strategy_area_vbox)
-        ##----------------------------------------------------------------------------------
-        # ##提示框
-        # self.reminder = wx.StaticBox(self, -1, "操作提示")
-        # self.reminderbox = wx.StaticBoxSizer(self.reminder, wx.VERTICAL)
-        # self.reminderhbox = wx.BoxSizer(wx.HORIZONTAL)
-        # self.hotkey_bmp = wx.StaticBitmap(self, -1)
-        # self.hotkey_bmp.SetBitmap(wx.Bitmap('hotkey.png'))
-        # self.reminderhbox.Add(self.hotkey_bmp, flag=wx.RIGHT, border=40)
-        #
-        # self.reminderbox.Add(self.reminderhbox, flag=wx.ALL, border=10)
-        ##-------------------------------------------------------------------------------------
-        # 日志框
-        # self.infomationfont = wx.Font(12, wx.FONTFAMILY_DEFAULT, wx.FONTSTYLE_NORMAL, wx.FONTWEIGHT_NORMAL, False)
-        # self.infofont = wx.Font(11, wx.FONTFAMILY_DEFAULT, wx.FONTSTYLE_NORMAL, wx.FONTWEIGHT_NORMAL, False)
-        # self.infomation = wx.StaticText(self, label='沪牌一号7月31号模拟拍牌会', pos=(15, 450))
-        # self.infomation.SetFont(self.infomationfont)
-        #
-        # self.infoarea = wx.StaticText(self, label='操作日志：', pos=(10, 475))
-        # self.infoarea.SetFont(self.infomationfont)
-        #
-        # self.infos = []
-        # self.infomationfont = wx.Font(12, wx.FONTFAMILY_DEFAULT, wx.FONTSTYLE_NORMAL, wx.FONTWEIGHT_NORMAL, False)
-        # self.infofont = wx.Font(10, wx.FONTFAMILY_DEFAULT, wx.FONTSTYLE_NORMAL, wx.FONTWEIGHT_NORMAL, False)
-        # self.infohbox1 = wx.BoxSizer(wx.HORIZONTAL)
-        # self.infohbox2 = wx.BoxSizer(wx.HORIZONTAL)
-        # self.infomation = wx.StaticText(self, label='沪牌一号7月31号模拟拍牌会')
-        # self.infomation.SetFont(self.infomationfont)
-        # self.infohbox1.Add(self.infomation)
-        #
-        # self.infoarea = wx.StaticText(self, label='操作日志：')
-        # self.infoarea.SetFont(self.infomationfont)
-        # self.infohbox2.Add(self.infoarea)
-        #
-        # self.infovbox = wx.BoxSizer(wx.VERTICAL)
-        # self.infovbox.Add(self.infohbox1, flag=wx.RIGHT, border=30)
-        # self.infovbox.Add(self.infohbox2, flag=wx.RIGHT, border=30)
-        # self.infos = []
 
         ##-------------------------------------------------------------------------------------
         ##将所有sizer组合
@@ -445,8 +408,9 @@ class ManagePanel(wx.Panel):
 
     ##切换账号
     def choose_identify(self, event):
-        s = self.identify_code_select.GetStringSelection()
-        print(s)
+        identify = self.identify_code_select.GetStringSelection()
+        set_val('identify', identify)
+        self.init_ui()
 
     ## 国拍与模拟切换
     def webtab(self, event):
@@ -514,6 +478,7 @@ class ManagePanel(wx.Panel):
         #     wx.CallAfter(pub.sendMessage, "onekey_login")
         from component.account_dialog import Account_dialog
         self.dlg = Account_dialog(self, "登录设置")
+        self.dlg.init_account()
         print("fdsfs")
         # dlg = Smart_tijiaoDialog()
         self.dlg.Show()
@@ -563,6 +528,8 @@ class ManagePanel(wx.Panel):
     def init_account(self):
         identify = self.identify_code_select.GetStringSelection()
         strategy_data = get_val('strategy_data')
+        print(strategy_data)
+        print(strategy_data[identify])
         bid_number = strategy_data[identify]['Bid_number']
         bid_password = strategy_data[identify]['Bid_password']
         idcard = strategy_data[identify]['ID_number']

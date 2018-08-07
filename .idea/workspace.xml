@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="BookmarkManager">
-    <bookmark url="file://$PROJECT_DIR$/component/TopFrame.py" line="227" mnemonic="1" />
     <bookmark url="file://$PROJECT_DIR$/component" />
     <bookmark url="file://$PROJECT_DIR$/component/account_dialog.py" line="70" />
     <bookmark url="file://$PROJECT_DIR$/component/imgcut.py" line="207" />
@@ -10,27 +9,19 @@
     <bookmark url="file://$PROJECT_DIR$/component/OperationFrame.py" line="453" mnemonic="2" />
     <bookmark url="file://$PROJECT_DIR$/component/OperationFrame.py" line="394" mnemonic="4" />
     <bookmark url="file://$PROJECT_DIR$/component/remote_control.py" line="119" />
-    <bookmark url="file://$PROJECT_DIR$/component/manage_panel.py" line="486" mnemonic="7" />
-    <bookmark url="file://$PROJECT_DIR$/component/manage_panel.py" line="584" mnemonic="6" />
-    <bookmark url="file://$PROJECT_DIR$/component/manage_panel.py" line="868" mnemonic="8" />
+    <bookmark url="file://$PROJECT_DIR$/component/manage_panel.py" line="439" mnemonic="7" />
+    <bookmark url="file://$PROJECT_DIR$/component/manage_panel.py" line="560" mnemonic="6" />
+    <bookmark url="file://$PROJECT_DIR$/component/manage_panel.py" line="535" mnemonic="8" />
+    <bookmark url="file://$PROJECT_DIR$/component/manage_panel.py" line="506" mnemonic="0" />
+    <bookmark url="file://$PROJECT_DIR$/component/manage_panel.py" line="410" mnemonic="1" />
   </component>
   <component name="ChangeListManager">
     <list default="true" id="8cc8c298-bf99-4eca-8018-53239952b6ea" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/component/manage_panel.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/component/new_panel.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/1.png" beforeDir="false" afterPath="$PROJECT_DIR$/1.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/component/LoginFrame.py" beforeDir="false" afterPath="$PROJECT_DIR$/component/LoginFrame.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/component/OperationFrame.py" beforeDir="false" afterPath="$PROJECT_DIR$/component/OperationFrame.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/component/imgcut.py" beforeDir="false" afterPath="$PROJECT_DIR$/component/imgcut.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/component/login.py" beforeDir="false" afterPath="$PROJECT_DIR$/component/login.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/component/smartprice_dialog.py" beforeDir="false" afterPath="$PROJECT_DIR$/component/smartprice_dialog.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/component/variable.py" beforeDir="false" afterPath="$PROJECT_DIR$/component/variable.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/login_100.png" beforeDir="false" afterPath="$PROJECT_DIR$/login_100.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/component/manage_panel.py" beforeDir="false" afterPath="$PROJECT_DIR$/component/manage_panel.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/mylog.l-og" beforeDir="false" afterPath="$PROJECT_DIR$/mylog.l-og" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/time.png" beforeDir="false" afterPath="$PROJECT_DIR$/time.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/yanzhengma.png" beforeDir="false" afterPath="$PROJECT_DIR$/yanzhengma.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/your.name" beforeDir="false" afterPath="$PROJECT_DIR$/your.name" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -58,7 +49,7 @@
     <SUITE FILE_PATH="coverage/BestAssistant$Newlife1_1.coverage" NAME="Newlife1.1 Coverage Results" MODIFIED="1520845107285" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/hupai$Newlife4_3__1_.coverage" NAME="Newlife4.3 (1) Coverage Results" MODIFIED="1527492076270" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="E:/OUTPUT" />
     <SUITE FILE_PATH="coverage/hupai$Newlife4_0__1_.coverage" NAME="Newlife4.0 (1) Coverage Results" MODIFIED="1527489581308" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="E:/OUTPUT" />
-    <SUITE FILE_PATH="coverage/hupai$Newlife6_0.coverage" NAME="Newlife6.0 Coverage Results" MODIFIED="1533624854135" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/hupai$Newlife6_0.coverage" NAME="Newlife6.0 Coverage Results" MODIFIED="1533625655398" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/hupai$Newlife4_0.coverage" NAME="Newlife4.0 Coverage Results" MODIFIED="1527490308932" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/hupai$resize_pic.coverage" NAME="resize_pic Coverage Results" MODIFIED="1530971127676" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/BestAssistant$test1.coverage" NAME="test1 Coverage Results" MODIFIED="1520296491838" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/component" />
@@ -110,47 +101,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="375">
-      <file leaf-file-name="smartprice_dialog.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/component/smartprice_dialog.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="43">
-              <caret line="359" column="26" selection-start-line="359" selection-start-column="26" selection-end-line="359" selection-end-column="26" />
-              <folding>
-                <element signature="e#0#11#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="OperationFrame.py" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/component/OperationFrame.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="393">
-              <caret line="1305" column="13" lean-forward="true" selection-start-line="1305" selection-start-column="13" selection-end-line="1305" selection-end-column="13" />
-              <folding>
-                <element signature="e#75#111#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="variable.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/component/variable.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="128">
-              <caret line="149" selection-start-line="149" selection-end-line="149" />
-              <folding>
-                <element signature="e#133#152#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="manage_panel.py" pinned="false" current-in-tab="false">
+      <file leaf-file-name="manage_panel.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/component/manage_panel.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="54">
-              <caret line="14" column="9" lean-forward="true" selection-start-line="14" selection-start-column="9" selection-end-line="14" selection-end-column="9" />
+            <state relative-caret-position="378">
+              <caret line="418" column="41" lean-forward="true" selection-start-line="418" selection-start-column="41" selection-end-line="418" selection-end-column="41" />
               <folding>
                 <element signature="e#0#11#0" expanded="true" />
               </folding>
@@ -158,13 +113,13 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="LoginFrame.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/component/LoginFrame.py">
+      <file leaf-file-name="account_dialog.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/component/account_dialog.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-923">
-              <caret line="249" column="38" selection-start-line="249" selection-start-column="25" selection-end-line="249" selection-end-column="38" />
+            <state relative-caret-position="243">
+              <caret line="98" column="20" selection-start-line="98" selection-start-column="8" selection-end-line="98" selection-end-column="20" />
               <folding>
-                <element signature="e#92#108#0" expanded="true" />
+                <element signature="e#0#9#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -181,13 +136,9 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find />
-      <find>yanzhengma_control</find>
-      <find>yanzhengma</find>
       <find>self.currentstatusframe.Show(False)</find>
       <find>yanzhengma_close</find>
       <find>code_veritify</find>
-      <find>strategy</find>
       <find>策略设置</find>
       <find>ComboBox</find>
       <find>choice_strategy</find>
@@ -199,7 +150,7 @@
       <find>print('max_</find>
       <find>max_val,</find>
       <find>strategy_data</find>
-      <find />
+      <find>strategy_data[identify]['strategy_dick'] = json.dumps(strategy_dick)</find>
       <find>init</find>
       <find>select</find>
       <find>strategy_dick</find>
@@ -211,6 +162,10 @@
       <find>webtab</find>
       <find>controlgrid</find>
       <find>webtabButton</find>
+      <find>one_key</find>
+      <find>onekey_login</find>
+      <find>dlg</find>
+      <find>strategy</find>
     </findStrings>
     <replaceStrings>
       <replace>url_moni</replace>
@@ -307,8 +262,8 @@
         <option value="$PROJECT_DIR$/component/LoginFrame.py" />
         <option value="$PROJECT_DIR$/component/smartprice_dialog.py" />
         <option value="$PROJECT_DIR$/component/new_panel.py" />
-        <option value="$PROJECT_DIR$/component/manage_panel.py" />
         <option value="$PROJECT_DIR$/component/OperationFrame.py" />
+        <option value="$PROJECT_DIR$/component/manage_panel.py" />
       </list>
     </option>
   </component>
@@ -588,7 +543,7 @@
       <window_info anchor="right" id="Python Console" order="7" sideWeight="0.4969743" weight="0.3903177" />
       <window_info anchor="bottom" id="Run" order="2" weight="0.38209984" />
       <window_info anchor="right" x="532" y="271" width="780" height="388" id="Terminal" order="6" sideWeight="0.65733737" weight="0.4614221" />
-      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.49342105" visible="true" weight="0.23146747" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.49342105" visible="true" weight="0.23146747" />
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info anchor="right" id="Database" order="5" weight="0.32980332" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32702237" />
@@ -727,16 +682,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="185">
           <caret line="170" column="6" selection-start-line="170" selection-start-column="6" selection-end-line="170" selection-end-column="6" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/component/account_dialog.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1287">
-          <caret line="72" column="41" selection-start-line="72" selection-start-column="41" selection-end-line="72" selection-end-column="41" />
-          <folding>
-            <element signature="e#0#9#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1011,18 +956,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/component/new_panel.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="19962">
-          <caret line="1109" selection-start-line="1109" selection-end-line="1109" />
-          <folding>
-            <element signature="e#0#11#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/component/manage_panel.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="54">
-          <caret line="14" column="9" lean-forward="true" selection-start-line="14" selection-start-column="9" selection-end-line="14" selection-end-column="9" />
+        <state relative-caret-position="225">
+          <caret line="1094" column="10" lean-forward="true" selection-end-line="1109" />
           <folding>
             <element signature="e#0#11#0" expanded="true" />
           </folding>
@@ -1031,10 +966,30 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/component/OperationFrame.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="393">
-          <caret line="1305" column="13" lean-forward="true" selection-start-line="1305" selection-start-column="13" selection-end-line="1305" selection-end-column="13" />
+        <state relative-caret-position="177">
+          <caret line="394" selection-start-line="394" selection-end-line="394" />
           <folding>
             <element signature="e#75#111#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/component/account_dialog.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="243">
+          <caret line="98" column="20" selection-start-line="98" selection-start-column="8" selection-end-line="98" selection-end-column="20" />
+          <folding>
+            <element signature="e#0#9#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/component/manage_panel.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="378">
+          <caret line="418" column="41" lean-forward="true" selection-start-line="418" selection-start-column="41" selection-end-line="418" selection-end-column="41" />
+          <folding>
+            <element signature="e#0#11#0" expanded="true" />
           </folding>
         </state>
       </provider>
