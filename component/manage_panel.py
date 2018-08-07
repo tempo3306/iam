@@ -1,53 +1,42 @@
-'''
-@author: zhushen
-@contact: 810909753@q.com
-@time: 2018/1/22 14:34
-'''
+import json
 
 from component.imgcut import findpos
-from component.manage_panel import ManagePanel
 from component.paishou_panel import PaishouPanel
 from component.staticmethod import *
 import logging
 
 logger = logging.getLogger()
-from component.variable import get_dick, set_dick, get_strategy_dick
+from component.variable import get_dick, set_dick, get_strategy_dick, set_strategy_dick
 
 from component.variable import colors
 from component.infopanel import InfoPanel
-# -----------------------------------------------------------
-class StatusPanel(wx.Panel):
+
+
+class ManagePanel(wx.Panel):
     def __init__(self, parent, tablabel):
-        wx.Panel.__init__(self, parent=parent, id=20)
-        #------------
+        wx.Panel.__init__(self, parent=parent)
+        # ------------
         self.create_fonts()  ##创建字体
         self.control = wx.StaticBox(self, -1, "基本设置")
         self.controlbox = wx.StaticBoxSizer(self.control, wx.VERTICAL)
-        self.controlgrid = wx.GridBagSizer(4, 2)  # 网格组件
+        self.controlhbox = wx.BoxSizer(wx.HORIZONTAL)
         self.control.SetFont(self.bigtitlefont)
         self.control.SetForegroundColour(colors.BLUE)
         ##功能区
         self.webtabButton = wx.Button(self, label=tablabel, size=(95, 30))  # 未来扩展
-        # self.priceviewButton = wx.Button(self, label='导出跳价', size=(105,30))  # 未来扩展
-
         self.onkeyloginButton = wx.Button(self, label='一键登录', size=(95, 30))  # 时间
-        self.posajustButton = wx.Button(self, label='刷新定位', size=(95, 30))  # 位置调整
-        self.refreshwebButton = wx.Button(self, label='刷新页面', size=(95, 30))  # 时间同步
-
+        ##登录后初始化激活码列表
+        identify_code_choices = get_val('identify_code_choices')
+        self.identify_code_select = wx.ComboBox(self, choices=identify_code_choices, size=(216, 25),
+                                           style=wx.CB_READONLY)
+        self.identify_code_select.SetSelection(0)
+        self.identify_code_select.Bind(wx.EVT_COMBOBOX, self.choose_identify)
         ##绑定
         self.webtabButton.Bind(wx.EVT_BUTTON, self.webtab)
-        self.refreshwebButton.Bind(wx.EVT_BUTTON, self.refreshweb)
-        # self.priceviewButton.Bind(wx.EVT_BUTTON, self.priceview)
-
-        # self.remotetimeButton.Bind(wx.EVT_BUTTON, self.getremotetime)
-        self.posajustButton.Bind(wx.EVT_BUTTON, self.posautoajust)
         self.onkeyloginButton.Bind(wx.EVT_BUTTON, self.onkeylogin)
 
-        self.controlgrid.Add(self.webtabButton, pos=(0, 0))  # 布局
-        self.controlgrid.Add(self.onkeyloginButton, pos=(0, 1))
-        self.controlgrid.Add(self.posajustButton, pos=(1, 0))
-        self.controlgrid.Add(self.refreshwebButton, pos=(1, 1))
-
+        self.controlhbox.Add(self.webtabButton)  # 布局
+        self.controlhbox.Add(self.onkeyloginButton)
         # # 验证码放大
         self.yanzhengma_scale = wx.CheckBox(self, -1, label=u'验证码放大')  # 开启时间显示
         self.Bind(wx.EVT_CHECKBOX, self.Yanzhengma_scale, self.yanzhengma_scale)
@@ -58,31 +47,12 @@ class StatusPanel(wx.Panel):
         hbox1.Add(self.yanzhengma_scale)
         hbox1.Add(self.yanzhengma_autoview)
 
-
-        # # 时间区
-        # self.autotime = wx.CheckBox(self, -1, label=u'自动时间同步')  # 开启时间显示
-        # self.Bind(wx.EVT_CHECKBOX, self.autotime_set, self.autotime)
-        # hbox1 = wx.BoxSizer(wx.HORIZONTAL)
-        # hbox1.Add(self.autotime)
-
-        # ##确认方式
-        # confirm_choice = ["E键", "回车"]
-        # self.confirm_choice = wx.Choice(self, -1, choices=confirm_choice)
-        # self.confirm_choice.SetSelection(0)
-        # self.Bind(wx.EVT_CHOICE, self.Confirmchoice, self.confirm_choice)
-        #
-        # self.confirm_label = wx.StaticText(self, label=u"确认提交方式")
-        # hbox2 = wx.BoxSizer(wx.HORIZONTAL)
-        # hbox2.Add(self.confirm_label, flag=wx.TOP, border=4)
-        # hbox2.Add(self.confirm_choice)
-
-        self.controlbox.Add(self.controlgrid)  # 把网格组加到 功能框内
-        self.controlbox.Add(hbox1,flag=wx.ALL, border=6)
+        self.controlbox.Add(self.controlhbox)  # 把网格组加到 功能框内
+        self.controlbox.Add(self.identify_code_select)  # 把网格组加到 功能框内
+        self.controlbox.Add(hbox1 ,flag=wx.ALL, border=6)
         # self.controlbox.Add(hbox2)
         ##----------------------------------------------------------------------
         ###策略设置区域
-
-
         self.strategy_area_label = wx.StaticBox(self, -1, "策略设置")
         self.strategy_area_label.SetFont(self.bigtitlefont)
         self.strategy_area_label.SetForegroundColour(colors.BLUE)
@@ -93,8 +63,6 @@ class StatusPanel(wx.Panel):
                                            style=wx.CB_READONLY)
         self.choice_strategy.SetSelection(0)
         self.choice_strategy.Bind(wx.EVT_COMBOBOX, self.Choice_strategy)
-
-
 
         ##构建不同策略的sizer
         self.strategy_sizer = wx.BoxSizer(wx.VERTICAL)
@@ -361,7 +329,7 @@ class StatusPanel(wx.Panel):
         self.smart_tijiao_hsizer.Add(self.smart_tijiao_hsizer_lb, flag=wx.TOP, border=5)
         self.smart_tijiao_button.Bind(wx.EVT_BUTTON, self.Smart_tijiao_button)
 
-        ##双枪智能提交组件 
+        ##双枪智能提交组件
         self.smart2_tijiao_hsizer_lb = wx.BoxSizer(wx.HORIZONTAL)
         self.smart2_tijiao_hsizer_label = wx.BoxSizer(wx.HORIZONTAL)
         self.smart2_tijiao_hsizer = wx.BoxSizer(wx.HORIZONTAL)
@@ -404,7 +372,7 @@ class StatusPanel(wx.Panel):
         #
         # self.reminderbox.Add(self.reminderhbox, flag=wx.ALL, border=10)
         ##-------------------------------------------------------------------------------------
-        #日志框
+        # 日志框
         # self.infomationfont = wx.Font(12, wx.FONTFAMILY_DEFAULT, wx.FONTSTYLE_NORMAL, wx.FONTWEIGHT_NORMAL, False)
         # self.infofont = wx.Font(11, wx.FONTFAMILY_DEFAULT, wx.FONTSTYLE_NORMAL, wx.FONTWEIGHT_NORMAL, False)
         # self.infomation = wx.StaticText(self, label='沪牌一号7月31号模拟拍牌会', pos=(15, 450))
@@ -447,8 +415,7 @@ class StatusPanel(wx.Panel):
         pub.subscribe(self.change_strategy, 'change strategy')
         pub.subscribe(self.change_userprice, 'change userprice')  # 修改当前用户出价
 
-
-        #更新日志
+        # 更新日志
         # pub.subscribe(self.update_info, 'update info')
 
     def create_fonts(self):
@@ -470,12 +437,16 @@ class StatusPanel(wx.Panel):
     ## 验证码自动预览
     def Yanzhengma_autoview(self, event):
         if self.yanzhengma_autoview.IsChecked():
-            set_dick("auto_query_on", True) #控制开关
+            set_dick("auto_query_on", True)  # 控制开关
             wx.CallAfter(pub.sendMessage, 'update info', action='开启验证码自动预览')
         else:
             set_dick("auto_query_on", False)
             wx.CallAfter(pub.sendMessage, 'update info', action='关闭验证码自动预览')
 
+    ##切换账号
+    def choose_identify(self, event):
+        s = self.identify_code_select.GetStringSelection()
+        print(s)
 
     ## 国拍与模拟切换
     def webtab(self, event):
@@ -547,7 +518,7 @@ class StatusPanel(wx.Panel):
         # dlg = Smart_tijiaoDialog()
         self.dlg.Show()
         # dlg.ShowModal()
-    
+
         guopai_on = get_val('guopai_on')
         if guopai_on:
             wx.CallAfter(pub.sendMessage, "onekey_login")
@@ -559,7 +530,7 @@ class StatusPanel(wx.Panel):
         img = grab_screen2(region=login_yanzhengma)
         num = get_val('num')
         num = 100
-        set_val('num', num+1)
+        set_val('num', num +1)
         cv2.imwrite('login_%d.png' %num, img)
         print("fdsfsdfsfsfdsf")
 
@@ -584,30 +555,44 @@ class StatusPanel(wx.Panel):
             self.yanzhengma_scale.SetValue(True)
         else:
             self.yanzhengma_scale.SetValue(False)
-        
-        if  not get_val('activate_status'):
-            self.webtabButton.Disable()
-            self.onkeyloginButton.Disable()
-        else:
-            self.webtabButton.Enable()
-            self.onkeyloginButton.Enable()
 
+        self.init_account()
         self.init_strategy()
         # self.init_info()
 
+    def init_account(self):
+        identify = self.identify_code_select.GetStringSelection()
+        strategy_data = get_val('strategy_data')
+        bid_number = strategy_data[identify]['Bid_number']
+        bid_password = strategy_data[identify]['Bid_password']
+        idcard = strategy_data[identify]['ID_number']
 
-    def  init_strategy(self):
+        set_val('bid_number', bid_number)
+        set_val('bid_password', bid_password)
+        set_val('idcard', idcard)
+        bidnumber_js = "document.getElementById('bidnumber').value = '{0}';".format(bid_number)
+        bidpassword_js = "document.getElementById('bidpassword').value = '{0}';".format(bid_password)
+        idcard_js = "document.getElementById('idcard').value = '{0}';".format(idcard)
+        print(idcard_js)
+        set_val('bidnumber_js', bidnumber_js)
+        set_val('bidpassword_js', bidpassword_js)
+        set_val('idcard_js', idcard_js)
+
+    def init_strategy(self):
+        identify = self.identify_code_select.GetStringSelection()
+        set_val('identify', identify)
+        strategy_data = get_val('strategy_data')
+        strategy_dick = strategy_data[identify]['strategy_dick']
+        strategy_dick = json.loads(strategy_dick)
+        set_strategy_dick(strategy_dick)
         strategy_type = get_dick('strategy_type')
         self.update_ui(strategy_type)
 
-
-
-    #--------------------------------------------
-    #策略调整
+    # --------------------------------------------
+    # 策略调整
     def update_ui(self, strategy_type):  ##根据不同的出价策略调整界面
         strategy_list = get_dick(strategy_type)
         print('strategy_list', strategy_list)
-
         if strategy_type == '0':  # 单次
             init_strategy()
             self.choice_strategy.SetSelection(int(strategy_type))
@@ -733,14 +718,6 @@ class StatusPanel(wx.Panel):
             self.secondsmart_jiajia_price.SetValue(strategy_list[2])
             self.buqiang_checkbox.SetValue(strategy_list[7])
 
-            # '''
-            #     (3)单枪动态提交  依次为 0: strategy_type 1: one_time1  2: one_diff
-            #                                            3: one_advance_smart1  4: one_delay_smart1   5: one_time2_smart1
-            #                                            6: one_advance_smart2  7: one_delay_smart2   8: one_time2_smart2
-            #                                            9: one_advance_smart3  10: one_delay_smart3  11: one_time2_smart3
-            #                                            12: one_time2_smart
-            # '''
-
             set_val('one_time1', strategy_list[1])  # 第一次出价加价
             set_val('one_diff', strategy_list[2])  # 第一次加价幅度
             set_val('smart_autoprice', strategy_list[7])  # 强制提交
@@ -761,7 +738,6 @@ class StatusPanel(wx.Panel):
             set_val('one_realtime2_smart2', gettime(strategy_list[19]))
             set_val('one_realtime2_smart3', gettime(strategy_list[22]))
             set_val('one_realtime2_smart', gettime(strategy_list[23]))
-
 
             ####刷新界面排版
             self.strategy_sizer.Hide(self.second_chujia_label_sizer)
@@ -797,16 +773,6 @@ class StatusPanel(wx.Panel):
             self.thirdsmart_jiajia_time.SetValue(strategy_list[8])
             self.thirdsmart_jiajia_price.SetValue(strategy_list[9])
 
-            # '''
-            # (4)双枪动态提交  依次为 0: strategy_type 1: one_time1  2: one_diff  3: one_advance 4: one_delay 5: one_time2
-            #                                        6: one_forcetijiao_on   7: second_time1  8: second_diff
-            #                                        9: one_advance_smart1  10: one_delay_smart1   11: one_time2_smart1
-            #                                        12: one_advance_smart2  13: one_delay_smart2   14: one_time2_smart2
-            #                                        15: one_advance_smart3  16: one_delay_smart3  17: one_time2_smart3
-            #                                        18: one_time2_smart
-            #
-            #
-            # '''
             set_val('one_time1', strategy_list[1])  # 第一次出价加价
             set_val('one_diff', strategy_list[2])  # 第一次加价幅度
             set_val('one_advance', strategy_list[3])  # 第一次提交提前量
@@ -850,13 +816,18 @@ class StatusPanel(wx.Panel):
 
     ###需要进一步扩展 调整策略设置后需要 修正templist
     def update_strategy(self):
-        #生成日志
+        # 生成日志
         wx.CallAfter(pub.sendMessage, 'update info', action='修改策略')
+        strategy_data = get_val('strategy_data')
+        identify = self.identify_code_select.GetStringSelection()
+        print(type(strategy_data))
+        print(strategy_data)
+        strategy_dick = strategy_data[identify]['strategy_dick']
+        strategy_dick = json.loads(strategy_dick)
         strategy_type = str(self.choice_strategy.GetSelection())
         advance_list = [100, 200, 300, 0]
-        print(strategy_type)
+        templist = strategy_dick[strategy_type]
         if strategy_type == '0':
-            templist = get_dick(strategy_type)
             templist[0] = strategy_type
             templist[1] = self.second_jiajia_time.GetValue()
             templist[2] = int(self.second_jiajia_price.GetValue())
@@ -864,14 +835,8 @@ class StatusPanel(wx.Panel):
             templist[4] = self.second_tijiaoyanchi_time.GetValue()
             templist[5] = self.second_tijiao_time.GetValue()
             templist[6] = self.second_forcetijiao_check.IsChecked()
-            templist[7] = self.buqiang_checkbox.IsChecked()  #补枪
-            print(templist)
-            set_dick(strategy_type, templist)
-            strategy_choices = get_val('strategy_choices')
-            init_description()
-            # '{0}秒加{1} 提前{2}延迟{3}秒 强制{4}秒'.format(templist[1], templist[2], templist[3], templist[4], templist[5]))
+            templist[7] = self.buqiang_checkbox.IsChecked()  # 补枪
         elif strategy_type == '1':
-            templist = get_dick(strategy_type)
             templist[0] = strategy_type
             templist[1] = self.second_jiajia_time.GetValue()
             templist[2] = int(self.second_jiajia_price.GetValue())
@@ -885,20 +850,12 @@ class StatusPanel(wx.Panel):
             templist[11] = self.third_tijiaoyanchi_time.GetValue()
             templist[12] = self.third_tijiao_time.GetValue()
             templist[13] = self.third_forcetijiao_check.IsChecked()
-            strategy_choices = get_val('strategy_choices')
-            init_description()
-            set_dick(strategy_type, templist)
         elif strategy_type == '2':
-            templist = get_dick(strategy_type)
             templist[0] = strategy_type
             templist[1] = self.second_jiajia_time.GetValue()
             templist[2] = int(self.second_jiajia_price.GetValue())
-            templist[7] = self.buqiang_checkbox.IsChecked()  #补枪
-            strategy_choices = get_val('strategy_choices')
-            init_description()
-            set_dick(strategy_type, templist)
+            templist[7] = self.buqiang_checkbox.IsChecked()  # 补枪
         elif strategy_type == '3':
-            templist = get_dick(strategy_type)
             templist[0] = strategy_type
             templist[1] = self.second_jiajia_time.GetValue()
             templist[2] = int(self.second_jiajia_price.GetValue())
@@ -908,11 +865,10 @@ class StatusPanel(wx.Panel):
             templist[6] = self.second_forcetijiao_check.IsChecked()
             templist[8] = self.thirdsmart_jiajia_time.GetValue()  ##智能出价部分
             templist[9] = int(self.thirdsmart_jiajia_price.GetValue())  ##智能出价部分
-            strategy_choices = get_val('strategy_choices')
-            init_description()
-            set_dick(strategy_type, templist)
-            a = get_strategy_dick()
-            print(a)
+        strategy_dick[strategy_type] = templist
+        strategy_data[identify]['strategy_dick'] = json.dumps(strategy_dick)
+        set_val('strategy_data', strategy_data)
+
 
     ##导出跳价
     def priceview(self, event):
@@ -926,7 +882,6 @@ class StatusPanel(wx.Panel):
     ##刷新定位
     def posautoajust(self, event):
         findpos()
-
 
     #######
     def change_strategy(self):
@@ -958,14 +913,13 @@ class StatusPanel(wx.Panel):
         one_time2 = get_val('one_time2')
         tem = self.third_jiajia_time.GetValue()
         timelist = get_val('timelist')
-        if int(tem * 10) in timelist and tem >= one_time2 + 1 and tem <= second_time2 - 1: #只有策略2存在
+        if int(tem * 10) in timelist and tem >= one_time2 + 1 and tem <= second_time2 - 1:  # 只有策略2存在
             second_time1 = tem
             set_val('second_time1', float(tem))
             set_val('second_real_time1', gettime(second_time1))  # 计算得到的时间戳
             self.update_strategy()
         else:
             self.third_jiajia_time.SetValue(second_time1)
-
 
     def Jiajia_price(self, event):
         one_diff = get_val('one_diff')
@@ -1153,171 +1107,3 @@ class StatusPanel(wx.Panel):
         # dlg = Smart_tijiaoDialog()
         self.dlg.Show()
         # dlg.ShowModal()
-
-
-##-------------------------------------------------------------------------
-class TestPanel(wx.Panel):
-    def __init__(self, parent):
-        super(TestPanel, self).__init__(parent=parent)
-        self.vbox = wx.BoxSizer(wx.VERTICAL)
-        self.timelabel = wx.StaticText(self, label='时间设置')
-        self.hbox1 = wx.BoxSizer(wx.HORIZONTAL)
-        self.button1 = wx.Button(self, label='+1s', size=(35, 25))
-        self.Bind(wx.EVT_BUTTON, self.Add_second, self.button1)
-        self.button2 = wx.Button(self, label='-1s', size=(35, 25))
-        self.Bind(wx.EVT_BUTTON, self.Minus_second, self.button2)
-        self.button3 = wx.Button(self, label='+0.1s', size=(35, 25))
-        self.Bind(wx.EVT_BUTTON, self.Add_time, self.button3)
-        self.button4 = wx.Button(self, label='-0.1s', size=(35, 25))
-        self.Bind(wx.EVT_BUTTON, self.Minus_time, self.button4)
-
-        self.hbox1.Add(self.timelabel, flag=wx.TOP | wx.LEFT, border=4)
-        self.hbox1.Add(self.button1, flag=wx.LEFT, border=4)
-        self.hbox1.Add(self.button2)
-        self.hbox1.Add(self.button3)
-        self.hbox1.Add(self.button4)
-
-        self.fasttimesetlabel = wx.StaticText(self, label='快捷时间设置')
-        self.fast_timeset = wx.SpinCtrl(self, -1, "", size=(62, 25))
-        self.fast_timeset.SetRange(0, 59)
-        self.fast_timeset.SetValue(0)
-        self.hbox2 = wx.BoxSizer(wx.HORIZONTAL)
-        self.hbox2.Add(self.fasttimesetlabel)
-        self.hbox2.Add(self.fast_timeset)
-        self.fast_timeset.Bind(wx.EVT_TEXT, self.Fast_timeset)
-
-        # 时间区
-        self.autotime = wx.CheckBox(self, -1, label=u'自动时间同步')  # 开启时间显示
-        self.Bind(wx.EVT_CHECKBOX, self.autotime_set, self.autotime)
-        self.hbox3 = wx.BoxSizer(wx.HORIZONTAL)
-        self.hbox3.Add(self.autotime)
-
-        self.vbox.Add(self.hbox1, flag=wx.TOP, border=300)
-        self.vbox.Add(self.hbox2, flag=wx.TOP, border=5)
-        self.vbox.Add(self.hbox3, flag=wx.TOP, border=5)
-        self.SetSizer(self.vbox)
-
-    def autotime_set(self, event):
-        timeSelected = event.GetEventObject()
-        if timeSelected.IsChecked():
-            set_val('autotime_on', True)
-        else:
-            set_val('autotime_on', False)
-
-    ##时间调整
-    def Add_time(self, event):
-        a_time = get_val('a_time')
-        set_val('a_time', a_time + 0.1)
-
-    def Minus_time(self, event):
-        a_time = get_val('a_time')
-        set_val('a_time', a_time + 0.1)
-
-    def Add_second(self, event):
-        a_time = get_val('a_time')
-        set_val('a_time', a_time + 1)
-
-    def Minus_second(self, event):
-        a_time = get_val('a_time')
-        set_val('a_time', a_time - 1)
-
-    def Fast_timeset(self, event):
-        second = self.fast_timeset.GetValue()
-        print(second)
-        set_val('a_time', gettime(second))  # 计算得到的时间戳
-
-    ##初始化
-    def init_ui(self):
-        autotime_on = get_val('autotime_on')
-        if autotime_on:
-            self.autotime.SetValue(True)
-        else:
-            self.autotime.SetValue(False)
-
-
-class AdvancePanel(wx.Panel):
-    def __init__(self, parent):
-        wx.Panel.__init__(self, parent=parent)
-        self.titlefont = wx.Font(13, wx.FONTFAMILY_MODERN, wx.FONTSTYLE_NORMAL, wx.FONTWEIGHT_NORMAL, False)
-
-        self.confirm_label = wx.StaticText(self, label=u"登录界面按F7可以一键登录", pos=(25, 50))
-
-        self.account = wx.StaticText(self, label=u"标书号", pos=(25, 100), size=(25,50))
-        self.password = wx.StaticText(self, label=u"标书密码", pos=(25, 150), size=(25,50))
-        self.idnumber = wx.StaticText(self, label=u"身份证号", pos=(25, 200), size=(25,50))
-
-        self.accountText = wx.TextCtrl(self, -1, size=(150, 25), pos = (60, 100),
-                                    style=wx.TE_CENTER | wx.TE_PROCESS_ENTER)
-
-        self.passwordText = wx.TextCtrl(self, -1, size=(150, 25), pos = (60, 150),
-                                    style=wx.TE_CENTER | wx.TE_PROCESS_ENTER)
-
-        self.idnumberText = wx.TextCtrl(self, -1, size=(150, 25), pos = (60, 200),
-                                    style=wx.TE_CENTER | wx.TE_PROCESS_ENTER)
-
-        self.savebtn = wx.Button(self, label='保存', pos=(150, 240), size=(62, 25))
-
-        self.savebtn.Bind(wx.EVT_BUTTON, self.Save)
-
-
-    def Save(self, event):
-        bidnumber = self.accountText.GetValue()
-        bidpassword = self.passwordText.GetValue()
-        idcard = self.idnumberText.GetValue()
-
-        bidnumber_js = "document.getElementById('bidnumber').value = '{0}';".format(bidnumber)
-        bidpassword_js = "document.getElementById('bidpassword').value = '{0}';".format(bidpassword)
-        idcard_js = "document.getElementById('idcard').value = '{0}';".format(idcard)
-        set_val('bidnumber_js', bidnumber_js)
-        set_val('bidpassword_js', bidpassword_js)
-        set_val('idcard_js', idcard_js)
-
-
-class OperationPanel(wx.Panel):
-    def __init__(self, parent, tablabel):  # name:窗口显示名称
-        operationpanel_pos = get_val('operationpanel_pos')
-        operationpanel_size = get_val('operationpanel_size')
-        wx.Panel.__init__(self, parent=parent, size=operationpanel_size, pos=operationpanel_pos)
-
-        paishou = get_val('paishou')  #拍手模式
-        test = get_val('test')  #测试模式
-        sizer = wx.BoxSizer(wx.VERTICAL)
-        manage = get_val('manage')
-        self.SetBackgroundColour('white')
-
-        if manage:
-            self.notebook = wx.Notebook(self)
-            self.manage_tab = ManagePanel(self.notebook, tablabel)
-            self.notebook.AddPage(self.manage_tab, "管理功能")
-            sizer.Add(self.notebook, 1)
-        elif not paishou:
-            self.notebook = wx.Notebook(self)
-            self.status_tab = StatusPanel(self.notebook, tablabel)  # notebook作为父类
-            # self.advance_tab = AdvancePanel(self.notebook)
-            if not test:
-                self.notebook.AddPage(self.status_tab, "常规功能")
-                # self.notebook.AddPage(self.advance_tab, "高级功能")
-            else:
-                self.notebook.AddPage(self.status_tab, "常规功能")
-                # self.notebook.AddPage(self.advance_tab, "高级功能")
-                self.test_tab = TestPanel(self.notebook)
-                self.notebook.AddPage(self.test_tab, "测试功能")
-            sizer.Add(self.notebook, 1)
-        else:
-            self.paishou_panel = PaishouPanel(self, tablabel)
-            sizer.Add(self.paishou_panel, 1)
-
-
-        self.SetSizer(sizer)
-        self.Layout()
-        self.init_ui()  ## 读取配置文件后初始化
-
-    def init_ui(self):
-        if get_val('manage'):
-            self.manage_tab.init_ui()
-        elif  get_val('paishou'):
-            self.paishou_panel.init_ui()
-        else:
-            self.status_tab.init_ui()
-        if get_val('test'):
-            self.test_tab.init_ui()

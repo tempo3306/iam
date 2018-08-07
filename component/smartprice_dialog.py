@@ -1,7 +1,9 @@
+import json
+
 import wx
 from wx.lib.pubsub import pub
 
-from component.variable import get_val, set_val, get_dick, set_dick
+from component.variable import get_val, set_val, get_dick, set_dick, set_strategy_dick
 from component.staticmethod import gettime
 
 
@@ -315,10 +317,13 @@ class Smart_tijiaoDialog(wx.Dialog):
 
     ###需要进一步扩展 调整策略设置后需要 修正templist
     def update_strategy(self):
+        strategy_data = get_val('strategy_data')
+        identify = get_val("identify")
+        strategy_dick = strategy_data[identify]['strategy_dick']
         strategy_type = get_dick('strategy_type')
+        advance_list = [100, 200, 300, 0]
+        templist = strategy_dick[strategy_type]
         if strategy_type == '2':
-            advance_list = [100, 200, 300, 0]
-            templist = get_dick(str(strategy_type))
             templist[14] = advance_list[self.second_tijiao_pricediff_smart1.GetSelection()]
             templist[15] = self.second_tijiaoyanchi_time_smart1.GetValue()
             templist[16] = self.second_tijiao_time_smart1.GetValue()
@@ -329,13 +334,8 @@ class Smart_tijiaoDialog(wx.Dialog):
             templist[21] = self.second_tijiaoyanchi_time_smart3.GetValue()
             templist[22] = self.second_tijiao_time_smart3.GetValue()
             templist[23] = self.second_tijiao_time_smart.GetValue()
-            strategy_choices = get_val('strategy_choices')
-            set_dick('strategy_description', strategy_choices[int(strategy_type)])
-            print(templist)
-            set_dick(strategy_type, templist)
+
         elif strategy_type == '3':
-            advance_list = [100, 200, 300, 0]
-            templist = get_dick(str(strategy_type))
             templist[14] = advance_list[self.second_tijiao_pricediff_smart1.GetSelection()]
             templist[15] = self.second_tijiaoyanchi_time_smart1.GetValue()
             templist[16] = self.second_tijiao_time_smart1.GetValue()
@@ -346,14 +346,19 @@ class Smart_tijiaoDialog(wx.Dialog):
             templist[21] = self.second_tijiaoyanchi_time_smart3.GetValue()
             templist[22] = self.second_tijiao_time_smart3.GetValue()
             templist[23] = self.second_tijiao_time_smart.GetValue()
-            strategy_choices = get_val('strategy_choices')
-            set_dick('strategy_description', strategy_choices[int(strategy_type)])
-            set_dick(strategy_type, templist)
-            print(templist)
+        strategy_dick[strategy_type] = templist
+        strategy_data[identify]['strategy_dick'] = json.dumps(strategy_dick)
+        set_val('strategy_data', strategy_data)
 
 
 
     def init_dlg(self):
+        identify = get_val('identify')
+        set_val('identify', identify)
+        strategy_data = get_val('strategy_data')
+        strategy_dick = strategy_data[identify]['strategy_dick']
+        strategy_dick = json.loads(strategy_dick)
+        set_strategy_dick(strategy_dick)
         strategy_type = get_dick('strategy_type')
         strategy_list = get_dick(str(strategy_type))
         advance_list = [100, 200, 300, 0]

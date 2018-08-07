@@ -49,12 +49,18 @@ def ConfirmCode(identify_code, version):  # 修改为参数传递
         from component.remote_control import get_unique_id  ##获取硬盘ID
         host_ali = get_val('host_ali')
         debug = get_val('debug')
-        # debug 模式
 
+        manage = get_val('manage')
+        if manage:
+            type = 'manage'  ##管理模式
+        else:
+            type = 'identify_code'
+
+        # debug 模式
         diskid = get_val('diskid')
-        target_url = '{0}/api/bid/get_guopaiurl/?format=json&type=identify_code&debug={1}&version={2}&identify_code={3}&diskid={4}'.format(
-            host_ali, debug, version, identify_code, diskid
-        )
+        target_url = f'{host_ali}/api/bid/get_guopaiurl/?format=json&type={type}&debug={debug}&version={version}\
+        &identify_code={identify_code}&diskid={diskid}'
+
         # target_url = host_ali + r'/main_api/userconfirm/info?' + 'username=%s' % Username + '&' + 'passwd=%s' % Password
         print(target_url)
 

@@ -112,7 +112,7 @@ def timeset( imgpos_currenttime):
         currenttime = cv2.cvtColor(imgpos_currenttime, cv2.COLOR_BGR2GRAY)
         cv2.imwrite('time.png', currenttime)
         currenttime = readpic(currenttime)  # 识别出来的时间
-        print(currenttime)
+        # print(currenttime)
         a_time = get_val('a_time')
         tem1 = time.time()
         a = time.strftime('%Y-%m-%d', time.localtime(tem1))
@@ -341,7 +341,7 @@ def findconfirm():
     res = cv2.matchTemplate(img, template, cv2.TM_CCOEFF_NORMED)
     min_val, max_val, min_loc, max_loc = cv2.minMaxLoc(res)
     if max_val >= 0.7:
-        print(max_val, smartprice_chujia)
+        # print(max_val, smartprice_chujia)
         if not smartprice_chujia:
             OnClick_confirm()  #点击确认
         else:
@@ -367,7 +367,6 @@ def get_result():
         print(imgpos_result.shape)
         res = cv2.matchTemplate(img, imgpos_result, cv2.TM_CCOEFF_NORMED)
         min_val, max_val, min_loc, max_loc = cv2.minMaxLoc(res)
-        print('max_val', max_val)
         if max_val >= 0.9:
             set_val('need_findresult', False)  ##关闭
             wx.CallAfter(pub.sendMessage, 'update info', action=result)
@@ -406,11 +405,13 @@ def find_yan_confirm():
         res = cv2.matchTemplate(img, template, cv2.TM_CCOEFF_NORMED)
         min_val, max_val, min_loc, max_loc = cv2.minMaxLoc(res)
         yanzhengma_control = get_val('yanzhengma_control')
+
+
         if max_val > 0.9 and yanzhengma_control:
             set_val('yanzhengma_view', True)
             set_val('smartprice_chujia', False)  ##这代表出价成功
         elif max_val <= 0.9:
-            yanzhengma_view = get_val('yanzhengma_view')
+            set_val('yanzhengma_view', False)
             set_val('yanzhengma_close', True)
             set_val('yanzhengma_control', True)
     except:

@@ -226,7 +226,7 @@ def init_const():
 def init_url():
     set_val('remotetime_url', "https://hupai.pro/api/bid/get_remotetime")
     set_val('host_ali', "https://hupai.pro")
-    # set_val('host_ali', "http://192.168.3.20:3000")
+    set_val('host_ali', "http://192.168.3.20:3000")
     set_val('url_51', "http://moni.51hupai.org/")
     set_val('url_dianxin', "http://test.alltobid.com/moni/gerenlogin.html")  # 电信
     # set_val('url_dianxin', "https://www.baidu.com")  # 电信

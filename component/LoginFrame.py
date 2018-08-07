@@ -11,7 +11,8 @@ from wx.lib.pubsub import pub
 import wx
 from component.app_thread import Login_codeThread, Getip_dianxinThread, MoniThread, OpenwebThread
 from component.remote_control import get_unique_id
-from component.variable import get_val, set_val, remote_variables, get_id_hash, get_dick, get_strategy_dick, remote_init
+from component.variable import get_val, set_val, remote_variables, get_id_hash, get_dick, get_strategy_dick, \
+    remote_init, set_dick
 from component.TopFrame import TopFrame
 import sys, pickle, json
 from wx.lib.buttons import GenButton as wxButton
@@ -21,6 +22,7 @@ from component.input_validator import TextObjectValidator
 
 
 from component.webframe import WebFrame
+import collections
 
 logger = logging.getLogger()
 
@@ -42,7 +44,7 @@ class Identify_codePanel(wx.Panel):
         self.code_userlabel = wx.StaticText(self, -1, label="激活码")
         self.code_userText = wx.TextCtrl(self, -1, size=(139, -1),
                                          style=wx.TE_CENTER | wx.TE_PROCESS_ENTER)
-        self.code_userText.Bind(wx.EVT_KEY_DOWN , self.code_veritify)
+        # self.code_userText.Bind(wx.EVT_KEY_DOWN , self.code_veritify)
         # self.userbox.Add(self.bmp_account)
         self.code_userbox.Add(self.code_userlabel, flag=wx.ALIGN_CENTER | wx.ALL, border=5)
         self.code_userbox.Add(self.code_userText, flag=wx.ALIGN_CENTER_HORIZONTAL | wx.ALL, border=5)
@@ -93,17 +95,20 @@ class Identify_codePanel(wx.Panel):
         print("登录")
         diskid = get_unique_id()
         set_val('diskid', get_id_hash(diskid))  ##sha1 hash化
-        Identify_code = self.code_userText.GetValue()
-        if Identify_code == "":
+        Identify = self.code_userText.GetValue()
+        if Identify == "":
             wx.MessageBox('请输入激活码！')
             self.code_userText.SetFocus()
         else:
-            if Identify_code[0:3] == 'dxw':
-                Identify_code = Identify_code[3: ]
+            if Identify[0:5] == 'admin':   ##进入管理模式
+                Identify_code = Identify[5: ]
                 set_val('manage', True)
-            set_val('Identify_code', Identify_code)  # 保存用户输入的账号密码
+                set_val('Identify_code', Identify_code)
+            else:
+                set_val('manage', False)  ##非管理模式
+                set_val('Identify_code', Identify)             # 保存用户输入的账号密码
             self.loginthread = Login_codeThread()
-            namepsd = [Identify_code]
+            namepsd = [Identify]
             with open('your.name', 'wb') as userfile:
                 pickle.dump(namepsd, userfile)
 
@@ -113,13 +118,13 @@ class Identify_codePanel(wx.Panel):
             # self.loginBtn.setlabel(u"登录中")
         event.GetEventObject().Disable()
 
-    def code_veritify(self, event):
-        keycode = event.GetKeyCode()
-        print(keycode)
-        if 48 <= keycode <= 57 or 65 <= keycode <= 90 or 324 <= keycode <=333 or keycode  == 13 or keycode == 370:
-            event.Skip()
-        else:
-            return False
+    # def code_veritify(self, event):
+    #     keycode = event.GetKeyCode()
+    #     print(keycode)
+    #     if 48 <= keycode <= 57 or 65 <= keycode <= 90 or 324 <= keycode <=333 or keycode  == 13 or keycode == 370:
+    #         event.Skip()
+    #     else:
+    #         return False
 
 
     def OnPurchase(self, event):
@@ -178,6 +183,7 @@ class LoginFrame(wx.Frame):
             set_val('activate_status', True)  ##激活成功
             set_val('register_label', '已激活')
 
+            manage = get_val('manage')
             topframeid = get_val('topframe')
             if topframeid == -1:
                 self.topframe = TopFrame('沪牌一号', version)
@@ -198,53 +204,57 @@ class LoginFrame(wx.Frame):
             remote_variables(**data)
             if Identify_code == '12345678':  ##这里作为测试用
                 set_val('test', True)
+            else:
+                set_val('url_dianxin', login_result['url_dianxin'])
+                set_val('url_nodianxin', login_result['url_nodianxin'])
                 # remote_init()
             target_time = get_val('target_time')
             start_time = target_time - 30 * 60
             set_val('start_time', start_time)
-            strategy_dick =login_result['strategy_dick']
 
-            if strategy_dick:
-                try:
-                    strategy_dick = json.loads(strategy_dick)
-                except:
-                    logger.exception("error message")
-                if strategy_dick != 'none':
-                    set_strategy_dick(strategy_dick) ##初始化策略数据
+            ##判断是否为拍手
+            set_val('paishou', login_result['paishou'])
 
-            if Identify_code[0] == 'h':
-                # set_val('test', True)
-                manage = get_val("manage")
-                print("manage", manage)
-                if not manage:
-                    print("fdsfsfds")
-                    set_val('paishou', True)
-                set_val('url_dianxin', login_result['url_dianxin'])
-                set_val('url_nodianxin', login_result['url_nodianxin'])
-            else:
-                set_val('url_dianxin', login_result['url_dianxin'])
-                set_val('url_nodianxin', login_result['url_nodianxin'])
+            ##判断是否是管理模式
+            if not manage:
+                strategy_dick =login_result['strategy_dick']
 
-            ##初始化账号
-            account = login_result['account']
-            if account:
-                bid_number = account['account']
-                bid_password = account['password']
-                idcard = account['idcard']
-                set_val('bid_number', bid_number)
-                set_val('bid_password', bid_password)
-                set_val('idcard', idcard)
-                bidnumber_js = "document.getElementById('bidnumber').value = '{0}';".format(bid_number)
-                bidpassword_js = "document.getElementById('bidpassword').value = '{0}';".format(bid_password)
-                idcard_js = "document.getElementById('idcard').value = '{0}';".format(idcard)
-                print(idcard_js)
+                if strategy_dick:
+                    try:
+                        strategy_dick = json.loads(strategy_dick)
+                    except:
+                        logger.exception("error message")
+                    if strategy_dick != 'none':
+                        set_strategy_dick(strategy_dick) ##初始化策略数据
+                ##初始化账号
+                account = login_result['account']
+                if account:
+                    bid_number = account['account']
+                    bid_password = account['password']
+                    idcard = account['idcard']
+                    set_val('bid_number', bid_number)
+                    set_val('bid_password', bid_password)
+                    set_val('idcard', idcard)
+                    bidnumber_js = "document.getElementById('bidnumber').value = '{0}';".format(bid_number)
+                    bidpassword_js = "document.getElementById('bidpassword').value = '{0}';".format(bid_password)
+                    idcard_js = "document.getElementById('idcard').value = '{0}';".format(idcard)
+                    print(idcard_js)
+                    set_val('bidnumber_js', bidnumber_js)
+                    set_val('bidpassword_js', bidpassword_js)
+                    set_val('idcard_js', idcard_js)
 
+                    print('bidnumber_js', bidnumber_js)
+            else:  ##管理模式
+                strategy_data = login_result['strategy_data']
+                strategy_data = json.loads(strategy_data)  ##转化为ORDER字典
+                set_val('strategy_data', strategy_data)
+                identify_code_choices = []
+                print(strategy_data['hupai1'])
+                print(strategy_data)
+                for key, item in strategy_data.items():
+                    identify_code_choices.append(key)
 
-                set_val('bidnumber_js', bidnumber_js)
-                set_val('bidpassword_js', bidpassword_js)
-                set_val('idcard_js', idcard_js)
-
-                print('bidnumber_js', bidnumber_js)
+                set_val('identify_code_choices', identify_code_choices)
 
             from component.staticmethod import Hotkey_listen
             from component.variable import init_pos
