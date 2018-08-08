@@ -103,9 +103,11 @@ class Identify_codePanel(wx.Panel):
             if Identify[0:5] == 'admin':   ##进入管理模式
                 Identify_code = Identify[5: ]
                 set_val('manage', True)
+                set_val('type', 'manage')
                 set_val('Identify_code', Identify_code)
             else:
                 set_val('manage', False)  ##非管理模式
+                set_val('type', 'identify_code')
                 set_val('Identify_code', Identify)             # 保存用户输入的账号密码
             self.loginthread = Login_codeThread()
             namepsd = [Identify]

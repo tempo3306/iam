@@ -82,6 +82,14 @@ class Account_dialog(wx.Dialog):
         set_val('bidnumber_js', bidnumber_js)
         set_val('bidpassword_js', bidpassword_js)
         set_val('idcard_js', idcard_js)
+
+        ##同步到strategy_data
+        strategy_data = get_val('strategy_data')
+        identify = get_val('identify')
+        strategy_data[identify]['Bid_number'] = bid_number
+        strategy_data[identify]['Bid_password'] = bid_password
+        strategy_data[identify]['ID_number'] = idcard
+        set_val('strategy_data', strategy_data)
         self.Destroy()
 
     def move(self, event):

@@ -50,11 +50,7 @@ def ConfirmCode(identify_code, version):  # 修改为参数传递
         host_ali = get_val('host_ali')
         debug = get_val('debug')
 
-        manage = get_val('manage')
-        if manage:
-            type = 'manage'  ##管理模式
-        else:
-            type = 'identify_code'
+        type = get_val('type')
 
         # debug 模式
         diskid = get_val('diskid')
@@ -65,7 +61,6 @@ def ConfirmCode(identify_code, version):  # 修改为参数传递
         print(target_url)
 
         result = web_request(target_url)
-        set_val('type', 'identify_code')
         print(result)
         return result
     except:
@@ -109,19 +104,28 @@ def Logout():  # 修改为参数传递        host_ali = get_val('host_ali')
                        'idcard': idcard}
         else:
             account = None
+        strategy_data = get_val('strategy_data')
+        strategy_data = json.dumps(strategy_data)
+        if type == 'manage':
+            target_url = f'{host_ali}/api/bid/bid_logout/'
+            data = {'type': type, 'identify_code': Identify_code,
+                    'strategy_data': strategy_data}
 
-        account = json.dumps(account)
-        target_url = '{0}/api/bid/bid_logout/?type={1}&identify_code={2}&diskid={3}&strategy_dick={4}' \
-                     '&account={5}'.format(
-            host_ali, type, Identify_code, diskid, strategy_dick, account
-        )
+            print(data)
+            result = web_request(target_url, data)
 
+        else:
+            account = json.dumps(account)
+            target_url = '{0}/api/bid/bid_logout/?type={1}&identify_code={2}&diskid={3}&strategy_dick={4}' \
+                         '&account={5}'.format(
+                host_ali, type, Identify_code, diskid, strategy_dick, account
+            )
+            result = web_request(target_url)
         # target_url = host_ali + r'/main_api/userconfirm/info?' + 'username=%s' % Username + '&' + 'passwd=%s' % Password
         print(target_url)
-        result = web_request(target_url)
         print(result)
     except:
-        logger.error("登录出现异常")
+        logger.error("登出出现异常")
         logger.exception('this is an exception message')
         return {'result': 'net error'}
     return result

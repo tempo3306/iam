@@ -23,12 +23,10 @@ import requests
 
 
 
-
-
-def web_request(url):
+def web_request(url, data=None):
     import ssl, json
     ssl._create_default_https_context = ssl._create_unverified_context  # 关闭证书验证
-    response = requests.get(url, timeout=5)
+    response = requests.get(url, timeout=5, params=data)
     print(response.text)
     if response.status_code == 404:
         result = {'result': 'wrong account'}

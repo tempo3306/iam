@@ -27,7 +27,7 @@ class ManagePanel(wx.Panel):
         self.onkeyloginButton = wx.Button(self, label='一键登录', size=(95, 30))  # 时间
         ##登录后初始化激活码列表
         identify_code_choices = get_val('identify_code_choices')
-        self.identify_code_select = wx.ComboBox(self, choices=identify_code_choices, size=(216, 25),
+        self.identify_code_select = wx.ComboBox(self, choices=identify_code_choices, size=(189, 25),
                                            style=wx.CB_READONLY)
         self.identify_code_select.SetSelection(0)
         self.identify_code_select.Bind(wx.EVT_COMBOBOX, self.choose_identify)
@@ -47,8 +47,8 @@ class ManagePanel(wx.Panel):
         hbox1.Add(self.yanzhengma_scale)
         hbox1.Add(self.yanzhengma_autoview)
 
-        self.controlbox.Add(self.controlhbox)  # 把网格组加到 功能框内
-        self.controlbox.Add(self.identify_code_select)  # 把网格组加到 功能框内
+        self.controlbox.Add(self.controlhbox,flag=wx.LEFT | wx.RIGHT, border=6)  # 把网格组加到 功能框内
+        self.controlbox.Add(self.identify_code_select,flag=wx.LEFT | wx.RIGHT, border=6)  # 把网格组加到 功能框内
         self.controlbox.Add(hbox1 ,flag=wx.ALL, border=6)
         # self.controlbox.Add(hbox2)
         ##----------------------------------------------------------------------
