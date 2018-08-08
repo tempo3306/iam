@@ -484,20 +484,20 @@ class ManagePanel(wx.Panel):
         self.dlg.Show()
         # dlg.ShowModal()
 
-        guopai_on = get_val('guopai_on')
-        if guopai_on:
-            wx.CallAfter(pub.sendMessage, "onekey_login")
-        ##截图
-        login_yanzhengma = get_val('login_yanzhengma_relative')
-
-        print("fdsfsdfsfsfdsf")
-
-        img = grab_screen2(region=login_yanzhengma)
-        num = get_val('num')
-        num = 100
-        set_val('num', num +1)
-        cv2.imwrite('login_%d.png' %num, img)
-        print("fdsfsdfsfsfdsf")
+        # guopai_on = get_val('guopai_on')
+        # if guopai_on:
+        #     wx.CallAfter(pub.sendMessage, "onekey_login")
+        # ##截图
+        # login_yanzhengma = get_val('login_yanzhengma_relative')
+        #
+        # print("fdsfsdfsfsfdsf")
+        #
+        # img = grab_screen2(region=login_yanzhengma)
+        # num = get_val('num')
+        # num = 100
+        # set_val('num', num +1)
+        # cv2.imwrite('login_%d.png' %num, img)
+        # print("fdsfsdfsfsfdsf")
 
     ###策略设置
     def Choice_strategy(self, event):
@@ -1067,9 +1067,10 @@ class ManagePanel(wx.Panel):
             set_val('smart_autoprice', False)
         self.update_strategy()
 
+
     ##单枪动态提交
     def Smart_tijiao_button(self, event):
-        from component.smartprice_dialog import Smart_tijiaoDialog
+        from component.smartprice_manage_dialog import Smart_tijiaoDialog
         self.dlg = Smart_tijiaoDialog(self, "动态提交设置")
         # dlg = Smart_tijiaoDialog()
         self.dlg.Show()

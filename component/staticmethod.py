@@ -265,12 +265,13 @@ def Onekey_login():
     Pos_login = get_val('Pos_login')
     wx.CallAfter(pub.sendMessage, 'update info', action='一键登录')
 
-    img = grab_screen2(region=Pos_login)
-    num = get_val('num')
-    num = 100
-    set_val('num', num+1)
-    cv2.imwrite('login_%d.png' %num, img)
-    print("fdsfsdfsfsfdsf")
+    ##截图 将来自动登录用
+    # img = grab_screen2(region=Pos_login)
+    # num = get_val('num')
+    # num = 100
+    # set_val('num', num+1)
+    # cv2.imwrite('login_%d.png' %num, img)
+    # print("fdsfsdfsfsfdsf")
 
 ##-------------------------------------------------------------------------------------
 ##智能出价
@@ -535,7 +536,6 @@ def tijiao_ok():
             set_val('yanzhengma_view', False)
             set_val('yanzhengma_close', True)
             set_val('yanzhengma_control', False)
-            set_val('smartprice_chujia', False)
         else:
             set_val('tijiao_OK', True)
             set_val('yanzhengma_close', True)

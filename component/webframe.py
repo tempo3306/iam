@@ -382,11 +382,11 @@ class CurrentStatusPanel(wx.Panel):
                         timestatustext = "出价倒计时{0:.1f}秒".format(timediff)
 
                 # pricestatustext = "差价{0}".format('-')
-                pricestatustext = "请勿操作"
-                dc.DrawText(pricelabeltext, x3, y3)
-                dc.DrawText(pricetext, x4, y4)
-                dc.DrawText(timestatustext, x5, y5)
-                dc.DrawText(pricestatustext, x6, y6)
+                    pricestatustext = "请勿操作"
+                    dc.DrawText(pricelabeltext, x3, y3)
+                    dc.DrawText(pricetext, x4, y4)
+                    dc.DrawText(timestatustext, x5, y5)
+                    dc.DrawText(pricestatustext, x6, y6)
 
 
 

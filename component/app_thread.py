@@ -747,8 +747,11 @@ class TimeThread(Thread):
             set_val('true_time', true_time)
             one_real_time1 = get_val('one_real_time1')
             try:
+                smartprice_tijiao = get_val('smartprice_tijiao')
+                smartprice_chujia = get_val('smartprice_chujia')
                 if one_real_time1 > a_time + 0.5:  ##只要出现时间小于第一次出价就触发还原
-                    init_strategy()
+                    if not smartprice_chujia and not smartprice_tijiao:
+                        init_strategy()
                 start_time = get_val('start_time')
                 target_time = get_val('target_time')
                 if start_time < a_time < target_time:  ##11点到11点半之间
