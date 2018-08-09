@@ -225,8 +225,8 @@ def init_const():
 
 def init_url():
     set_val('remotetime_url', "https://hupai.pro/api/bid/get_remotetime")
-    set_val('host_ali', "https://hupai.pro")
-    # set_val('host_ali', "http://192.168.3.20:3000")
+    # set_val('host_ali', "https://hupai.pro")
+    set_val('host_ali', "http://192.168.3.20:3000")
     set_val('url_51', "http://moni.51hupai.org/")
     set_val('url_dianxin', "http://test.alltobid.com/moni/gerenlogin.html")  # 电信
     # set_val('url_dianxin', "https://www.baidu.com")  # 电信
@@ -271,7 +271,7 @@ def init_size():
     x0 = websize[0] - htmlpanel_size[0]
     set_val('operationpanel_size', (x0, websize[1] - 245))
     set_val('operationpanel_pos', (htmlpanel_size[0], 0))
-    set_val('infopanel_size', (x0 - 16, 210))
+    set_val('infopanel_size', (x0, 213))
     set_val('infopanel_pos', (htmlpanel_size[0], websize[1] - 245))
     # infotext_pos = [(15, 55),
     #                 (15, 75),
@@ -584,7 +584,7 @@ def init_status():
     set_val('CurrentStatusFrameSize', (464, 77))
 
     ##验证码放大框
-    set_val('YanzhengmaFramePos', (438, 228))  ###相对WEBFRAME位置
+    set_val('YanzhengmaFramePos', (438, 223))  ###相对WEBFRAME位置
     set_val('Yanzhengmasize', (430, 171))
 
     ##验证码查看提示框

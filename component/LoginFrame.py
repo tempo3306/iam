@@ -251,7 +251,6 @@ class LoginFrame(wx.Frame):
                 strategy_data = json.loads(strategy_data)  ##转化为ORDER字典
                 set_val('strategy_data', strategy_data)
                 identify_code_choices = []
-                print(strategy_data['hupai1'])
                 print(strategy_data)
                 for key, item in strategy_data.items():
                     identify_code_choices.append(key)

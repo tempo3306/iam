@@ -502,12 +502,14 @@ class WebFrame(wx.Frame):
 
             self.Yanzhengma_scale() #判定验证码放大
             self.hotkey_control()  #热键激活与否
+
+            ##自动验证码查看
+            self.auto_yanzhengma()
         else:
             self.currentstatusframe.Show(False)
             self.yanzhengmaframe.Show(False)
             self.tipframe.Show(False)
-        ##自动验证码查看
-        self.auto_yanzhengma()
+
 
     #打开验证码查看
     def auto_yanzhengma(self):
@@ -519,7 +521,9 @@ class WebFrame(wx.Frame):
         auto_yanzhengma_on = get_val('auto_yanzhengma_on')
 
         yanzhengma_view = get_val('yanzhengma_view')
-        if  not yanzhengma_view:
+        smartprice_chujia = get_val('smartprice_chujia')
+        smartprice_tijiao = get_val('smartprice_tijiao')
+        if  not yanzhengma_view and not smartprice_chujia and not smartprice_tijiao:
             if auto_query_on and not auto_yanzhengma_on and  auto_yanzhengma_time < a_time < auto_yanzhengma_time + 0.5:
                 moni_on = get_val('moni_on')
                 if not moni_on:

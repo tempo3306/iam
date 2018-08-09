@@ -111,8 +111,9 @@ class InfoPanel(wx.ScrolledWindow):
             self.draw_infomation(dc)
             index = (pos - 23) // 7
             if len(self.infos) <= index + 7:
-                index -= 1
+                index = len(self.infos) - 7
             for i in range(7):
+                print(f'index={index}')
                 self.draw(dc, self.infos[index + i], (x, y + 20 * i))
         event.Skip()
 

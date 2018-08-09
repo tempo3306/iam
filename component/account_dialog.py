@@ -76,6 +76,8 @@ class Account_dialog(wx.Dialog):
         set_val('bid_password', bid_password)
         set_val('idcard', idcard)
 
+        print(bid_number, bid_password, idcard)
+
         bidnumber_js = "document.getElementById('bidnumber').value = '{0}';".format(bid_number)
         bidpassword_js = "document.getElementById('bidpassword').value = '{0}';".format(bid_password)
         idcard_js = "document.getElementById('idcard').value = '{0}';".format(idcard)
