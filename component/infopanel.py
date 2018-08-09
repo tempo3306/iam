@@ -89,6 +89,7 @@ class InfoPanel(wx.ScrolledWindow):
 
     def refreshtext(self, event):
         xx = self.GetViewStart()
+        LABEL_NUM = get_val('LABEL_NUM')
         pos = xx[1]
         print(pos)
         if pos <= 30:
@@ -100,7 +101,7 @@ class InfoPanel(wx.ScrolledWindow):
             print(self.infos)
             print(len(self.infos))
             len_info = len(self.infos)
-            len_info = len_info if len_info <= 7 else 7
+            len_info = len_info if len_info <= LABEL_NUM else LABEL_NUM
             for i in range(len_info):
                 self.draw(dc, self.infos[i], (x, y + 20 * i))
         else:
@@ -110,9 +111,9 @@ class InfoPanel(wx.ScrolledWindow):
             dc.Clear()
             self.draw_infomation(dc)
             index = (pos - 23) // 7
-            if len(self.infos) <= index + 7:
-                index = len(self.infos) - 7
-            for i in range(7):
+            if len(self.infos) <= index + LABEL_NUM:
+                index = len(self.infos) - LABEL_NUM
+            for i in range(8):
                 print(f'index={index}')
                 self.draw(dc, self.infos[index + i], (x, y + 20 * i))
         event.Skip()
