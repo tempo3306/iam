@@ -342,17 +342,17 @@ def findconfirm():
     min_val, max_val, min_loc, max_loc = cv2.minMaxLoc(res)
     if max_val >= 0.7:
         # print(max_val, smartprice_chujia)
+        ##结果查找
+        need_findresult = get_val('need_findresult')
+        if need_findresult:
+            print("查找结果")
+            get_result()  ##确认结果
+        ##再判定是否需要点击确认
         if not smartprice_chujia:
             OnClick_confirm()  #点击确认
         else:
             print("找到确认")
             Smart_chujia()
-
-        # ##结果查找
-        # need_findresult = get_val('need_findresult')
-        # if need_findresult:
-        #     print("查找结果")
-        #     get_result()  ##确认结果
     else:
         set_val('need_findresult', True)
 
@@ -363,11 +363,10 @@ def get_result():
     imgpos_result = cv2.cvtColor(imgpos_result, cv2.COLOR_BGR2GRAY)
     for result, img in result_dick.items():
         print(result)
-        print(img.shape)
-        print(imgpos_result.shape)
         res = cv2.matchTemplate(img, imgpos_result, cv2.TM_CCOEFF_NORMED)
         min_val, max_val, min_loc, max_loc = cv2.minMaxLoc(res)
-        if max_val >= 0.9:
+        print('max_val=', max_val)
+        if max_val >= 0.7:
             set_val('need_findresult', False)  ##关闭
             wx.CallAfter(pub.sendMessage, 'update info', action=result)
             return result

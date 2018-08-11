@@ -270,7 +270,7 @@ def init_size():
     x0 = websize[0] - htmlpanel_size[0]
     set_val('operationpanel_size', (x0, websize[1] - 245))
     set_val('operationpanel_pos', (htmlpanel_size[0], 0))
-    set_val('infopanel_size', (x0 - 5, 215))
+    set_val('infopanel_size', (x0 - 5, 217))
     set_val('infopanel_pos', (htmlpanel_size[0], websize[1] - 245))
     # infotext_pos = [(15, 55),
     #                 (15, 75),
@@ -587,7 +587,7 @@ def init_status():
     set_val('Yanzhengmasize', (430, 171))
 
     ##验证码查看提示框
-    set_val('TipFramePos', (432, 575))
+    set_val('TipFramePos', (428, 575))
     set_val('TipFrameSize', (452, 80))
 
     ##验证码提交确认提示

@@ -220,7 +220,6 @@ class LoginFrame(wx.Frame):
             ##判断是否是管理模式
             if not manage:
                 strategy_dick =login_result['strategy_dick']
-
                 if strategy_dick:
                     try:
                         strategy_dick = json.loads(strategy_dick)
@@ -273,7 +272,11 @@ class LoginFrame(wx.Frame):
             elif login_result['result'] == 'repeat':
                 wx.MessageBox('重复登录，稍后再试', '用户登录', wx.OK | wx.ICON_ERROR)
             elif login_result['result'] == 'wrong version':
-                wx.MessageBox('软件版本过低', '用户登录', wx.OK | wx.ICON_ERROR)
+                url = login_result['url_update']
+                wx.MessageBox('请更新最新版本软件', '用户登录', wx.OK | wx.ICON_ERROR)
+                self.Close()
+                OpenwebThread(url)  # 打开下载地址
+
             elif login_result['result'] == 'expired date':
                 wx.MessageBox('激活码过期', '用户登录', wx.OK | wx.ICON_ERROR)
             else:
@@ -321,4 +324,3 @@ class LoginFrame(wx.Frame):
 
     def OnClose(self, event):
         event.Skip()
-        sys.exit(0)

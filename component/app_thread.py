@@ -403,8 +403,9 @@ class TijiaoThread(Thread):
         one_delay_smart3 = get_val('one_delay_smart3')
         one_realtime2_smart3 = get_val('one_realtime2_smart3')
         one_realtime2_smart = get_val('one_realtime2_smart')
+        smartprice_tijiao = get_val('smartprice_tijiao')
         ##提交
-        if not smartprice_chujia:  ##智能出价触发之后出价无效
+        if not smartprice_tijiao:  ##智能出价触发之后出价无效
             if strategy_type == '2':  ##单枪动态提交
                 if tijiao_on and strategy_on and tijiao_OK:  # 判断是否需要提交,国拍开启状态方可触发
                     if lowest_price >= own_price1 - 300 - one_advance_smart1 and a_time <= one_realtime2_smart1 + 0.1:  # 判断是否满足条件
@@ -475,9 +476,10 @@ class TijiaoThread(Thread):
         final_time = get_val('final_time')
         # print('smartprice_chujia', smartprice_chujia)
         # print('tijiao_OK', tijiao_OK)
-        if smartprice_chujia and tijiao_OK:
+        smartprice_tijiao = get_val('smartprice_tijiao')
+        if smartprice_tijiao and tijiao_OK:
             if lowest_price >= userprice - 300 or a_time >= final_time:
-                set_val('smartprice_chujia', False)  ##关闭确认查找，停止智能出价
+                set_val('smartprice_tijiao', False)  ##关闭确认查找，停止智能出价
                 print("智能提交ffffffffffffff")
                 OnClick_Tijiao()  # 调用方法
 
@@ -930,7 +932,7 @@ class Start_thread(Thread):
 
     def run(self):
         import logging, time
-        version = '6.0'
+        version = '6.1'
         timenow = time.time()
         # 转换成localtime
         time_local = time.localtime(timenow)

@@ -36,53 +36,15 @@ def web_request(url, data=None):
         result = str(result, encoding='utf-8')
         result = json.loads(result)
         return result
-    # ssl._create_default_https_context = ssl._create_unverified_context  # 关闭证书验证
-    # response = request.urlopen(url)
-    # print(url)
-    # if response.status == 404:
-    #     result = {'result': 'wrong account'}
-    #     return result
-    # else:
-    #     result = response.read()
-    #     result = str(result, encoding='utf-8')
-    #     result = json.loads(result)
-    #     return result
 
-    # ssl._create_default_https_context = ssl._create_unverified_context  # 关闭证书验证
-    # response = request.urlopen(url)
-    # if response.status == 404:
-    #     result = {'result': 'wrong account'}
-    #     return result
-    # else:
-    #     result = response.read()
-    #     result = str(result, encoding='utf-8')
-    #     result = json.loads(result)
-    #     return result
 
-    # try:
-    #     ssl._create_default_https_context = ssl._create_unverified_context  # 关闭证书验证
-    #     response = request.urlopen(url)
-    #     if response.status == 404:
-    #         result = {'result': 'wrong account'}
-    #         return result
-    #     else:
-    #         result = response.read()
-    #         result = str(result, encoding='utf-8')
-    #         result = json.loads(result)
-    #         return result
-    # except Exception as e:
-    #     print('fdfdfdsfdasf')
-    #     logger.exception('this is an exception message')
-    #     result = {'result': 'timeout'}
-    #     return result
+
 
 
 def get_unique_id():
     c = wmi.WMI()
     try:
         for physical_disk in c.Win32_DiskDrive():
-            encrypt_str = physical_disk.SerialNumber.strip()
-
             # 硬盘序列号
             diskid = physical_disk.SerialNumber.strip()
             print ('disk id:', physical_disk.SerialNumber.strip())
