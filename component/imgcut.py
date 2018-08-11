@@ -342,17 +342,19 @@ def findconfirm():
     min_val, max_val, min_loc, max_loc = cv2.minMaxLoc(res)
     if max_val >= 0.7:
         # print(max_val, smartprice_chujia)
-        ##结果查找
-        need_findresult = get_val('need_findresult')
-        if need_findresult:
-            print("查找结果")
-            get_result()  ##确认结果
-        ##再判定是否需要点击确认
         if not smartprice_chujia:
             OnClick_confirm()  #点击确认
         else:
             print("找到确认")
             Smart_chujia()
+        ##结果查找
+        need_findresult = get_val('need_findresult')
+        if need_findresult:
+            print("查找结果")
+            get_result()  ##确认结果
+        #再判定是否需要点击确认
+
+
     else:
         set_val('need_findresult', True)
 

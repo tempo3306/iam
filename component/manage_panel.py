@@ -526,25 +526,38 @@ class ManagePanel(wx.Panel):
         # self.init_info()
 
     def init_account(self):
-        identify = self.identify_code_select.GetStringSelection()
-        strategy_data = get_val('strategy_data')
-        if strategy_data:
-            print(strategy_data)
-            print(strategy_data[identify])
-            bid_number = strategy_data[identify]['Bid_number']
-            bid_password = strategy_data[identify]['Bid_password']
-            idcard = strategy_data[identify]['ID_number']
+        try:
+            identify = self.identify_code_select.GetStringSelection()
+            strategy_data = get_val('strategy_data')
+            if strategy_data:
+                print(strategy_data)
+                print('\n')
+                print('\n')
+                print('\n')
+                print('\n')
+                print('\n')
+                print('\n')
+                print('\n')
+                print('\n')
+                print('\n')
+                print(strategy_data[identify])
+                bid_number = strategy_data[identify]['Bid_number']
+                bid_password = strategy_data[identify]['Bid_password']
+                idcard = strategy_data[identify]['ID_number']
 
-            set_val('bid_number', bid_number)
-            set_val('bid_password', bid_password)
-            set_val('idcard', idcard)
-            bidnumber_js = "document.getElementById('bidnumber').value = '{0}';".format(bid_number)
-            bidpassword_js = "document.getElementById('bidpassword').value = '{0}';".format(bid_password)
-            idcard_js = "document.getElementById('idcard').value = '{0}';".format(idcard)
-            print(idcard_js)
-            set_val('bidnumber_js', bidnumber_js)
-            set_val('bidpassword_js', bidpassword_js)
-            set_val('idcard_js', idcard_js)
+                set_val('bid_number', bid_number)
+                set_val('bid_password', bid_password)
+                set_val('idcard', idcard)
+                bidnumber_js = "document.getElementById('bidnumber').value = '{0}';".format(bid_number)
+                bidpassword_js = "document.getElementById('bidpassword').value = '{0}';".format(bid_password)
+                idcard_js = "document.getElementById('idcard').value = '{0}';".format(idcard)
+                print(idcard_js)
+                set_val('bidnumber_js', bidnumber_js)
+                set_val('bidpassword_js', bidpassword_js)
+                set_val('idcard_js', idcard_js)
+        except:
+            logger.exception("ERROR")
+
 
     def init_strategy(self):
         identify = self.identify_code_select.GetStringSelection()

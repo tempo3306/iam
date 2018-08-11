@@ -451,39 +451,41 @@ class TopFrame(wx.Frame):
             set_val('hotkey_on', False)
 
     def keeplogin(self, event):
-        result = Keeplogin()
-        print(result)
-        res = result['result']
-        if res == 'keep failure':  ##在其它电脑上登录过，并且未注销
-            loginframe = get_val('loginframe')
-            loginframe = wx.FindWindowById(loginframe)
-            loginframe.Show(True)
-            moni_id = get_val('moni_webframe')
-            guopai_id = get_val('guopai_webframe')
-            moni = wx.FindWindowById(moni_id)
-            guopai = wx.FindWindowById(guopai_id)
-            self.Show(False)
-            try:
-                moni.Show(False)
-            except:
-                pass
-            try:
-                guopai.Show(False)
-            except:
-                pass
-        else:
-            pass
-
-        try:
+        manage = get_val('manage')
+        if not manage:  ##管理员不进行判定
+            result = Keeplogin()
+            print(result)
             res = result['result']
             if res == 'keep failure':  ##在其它电脑上登录过，并且未注销
-                self.Destroy()
-                from component.LoginFrame import LoginFrame
-                login = LoginFrame()
+                loginframe = get_val('loginframe')
+                loginframe = wx.FindWindowById(loginframe)
+                loginframe.Show(True)
+                moni_id = get_val('moni_webframe')
+                guopai_id = get_val('guopai_webframe')
+                moni = wx.FindWindowById(moni_id)
+                guopai = wx.FindWindowById(guopai_id)
+                self.Show(False)
+                try:
+                    moni.Show(False)
+                except:
+                    pass
+                try:
+                    guopai.Show(False)
+                except:
+                    pass
             else:
                 pass
-        except:
-            pass
+
+            try:
+                res = result['result']
+                if res == 'keep failure':  ##在其它电脑上登录过，并且未注销
+                    self.Destroy()
+                    from component.LoginFrame import LoginFrame
+                    login = LoginFrame()
+                else:
+                    pass
+            except:
+                pass
 
 
     def OnClose(self, event):

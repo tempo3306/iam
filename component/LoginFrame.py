@@ -275,8 +275,9 @@ class LoginFrame(wx.Frame):
                 url = login_result['url_update']
                 wx.MessageBox('请更新最新版本软件', '用户登录', wx.OK | wx.ICON_ERROR)
                 self.Close()
-                OpenwebThread(url)  # 打开下载地址
-
+                # OpenwebThread(url)  # 打开下载地址
+                from wx.tools.wxget import download_file
+                download_file('http://192.168.3.20:3000/software_download/1.py/')
             elif login_result['result'] == 'expired date':
                 wx.MessageBox('激活码过期', '用户登录', wx.OK | wx.ICON_ERROR)
             else:
