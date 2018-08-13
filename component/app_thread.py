@@ -842,7 +842,6 @@ class OpenwebThread(Thread):
         # This is the code executing in the new thread.
         openweb(self.url)
 
-
 class Getip_dianxinThread(Thread):
     def __init__(self, ip):
         """Init Worker Thread Class."""

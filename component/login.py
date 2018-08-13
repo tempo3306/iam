@@ -124,10 +124,7 @@ def Logout():  # 修改为参数传递        host_ali = get_val('host_ali')
                 )
                 result = web_request(target_url)
             # target_url = host_ali + r'/main_api/userconfirm/info?' + 'username=%s' % Username + '&' + 'passwd=%s' % Password
-            print(target_url)
-            print(result)
             return result
-
     except:
         logger.error("登出出现异常")
         logger.exception('this is an exception message')

@@ -489,30 +489,27 @@ class TopFrame(wx.Frame):
 
 
     def OnClose(self, event):
-        confirm_on = get_val('userconfirm_on')
-        if confirm_on:
-            event.Skip()
-        else:
-            ret = wx.MessageBox('真的要退出助手吗?', '确认', wx.OK | wx.CANCEL)
-            if ret == wx.OK:
-                try:
-                    # self.confirmthread.stop()
-                    # self.refreshthread.stop()
-                    self.finposthread.stop()
-                    self.cutimgthread.stop()
-                    self.tijiaoThread.stop()
-                    # self.lowestThread.stop()
-                    self.pinger.stop()
-                    Hotkey_close()  ##关闭热键
-                except:
-                    pass
 
-                self.Show(False)
-                event.Skip()
-                import sys
-                from component.login import Logout
-                Logout()
-                sys.exit()
+        ret = wx.MessageBox('真的要退出助手吗?', '确认', wx.OK | wx.CANCEL)
+        if ret == wx.OK:
+            try:
+                # self.confirmthread.stop()
+                # self.refreshthread.stop()
+                self.finposthread.stop()
+                self.cutimgthread.stop()
+                self.tijiaoThread.stop()
+                # self.lowestThread.stop()
+                self.pinger.stop()
+                Hotkey_close()  ##关闭热键
+            except:
+                pass
+
+            self.Show(False)
+            event.Skip()
+            import sys
+            from component.login import Logout
+            Logout()
+            sys.exit()
 
         ##关闭线程
         # self.confirmthread.stop()
