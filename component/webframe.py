@@ -9,7 +9,7 @@ from component.staticmethod import *
 from component.OperationFrame import OperationPanel
 import wx.html2 as webview
 from wx.lib.buttons import GenButton as wxButton
-from component.imgcut import  timeset
+from component.imgcut import timeset, findfirstprice
 from component.YanzhengmaFrame import YanzhengmaFrame, TipFrame
 from component.imgcut import cut_pic, find_yan_confirm
 
@@ -101,12 +101,18 @@ class ButtonPanel(wx.Panel):
     def autotime_set_timer(self, event):
         autotime_on = get_val('autotime_on')
         moni_on = get_val('moni_on')
+        guopai_on = get_val('guopai_on')
         test = get_val('test')
         if not test and moni_on:
             self.timeautoajust()
         elif test and autotime_on:
             self.timeautoajust()
-
+        ##判断是否完成第一次出价
+        firstprice_done = get_val('firstprice_done')
+        if not firstprice_done:
+            if guopai_on:
+                findfirstprice()
+                firstprice_done = get_val('firstprice_done')
 
 
     ## 获取服务器时间
@@ -425,9 +431,11 @@ class WebFrame(wx.Frame):
 
         self.Bind(wx.EVT_MOVE, self.childmove)
 
-        self.timer1 = wx.Timer(self)
-        self.Bind(wx.EVT_TIMER, self.Price_view, self.timer1)  # 绑定一个定时器事件，主判断
-        self.timer1.Start(35)  # 设定时间间隔
+        # self.timer1 = wx.Timer(self)
+        # self.Bind(wx.EVT_TIMER, self.Price_view, self.timer1)  # 绑定一个定时器事件，主判断
+        # self.timer1.Start(35)  # 设定时间间隔
+
+        pub.subscribe(self.Price_view, 'price_view')  ##替换为CALL触发
 
         self.hotkey_open2()
         # self.Bind(wx.EVT_ACTIVATE , self.hotkey_open)
@@ -488,7 +496,7 @@ class WebFrame(wx.Frame):
         except:
             logger.exception("error message")
 
-    def Price_view(self, event):
+    def Price_view(self, event=None):
         moni_on = get_val('moni_on')
         guopai_on = get_val('guopai_on')
         on1 = moni_on and self.moni
@@ -554,6 +562,10 @@ class WebFrame(wx.Frame):
         ##------------------------------
         ###判定验证码放大框
         final_stage = get_val('final_stage')
+        first_stage = get_val('first_stage')
+        firstprice_done = get_val('firstprice_done')
+        yanzhengma_view = get_val('yanzhengma_view')
+        Yanzhengmasize = get_val('Yanzhengmasize')
         if final_stage:
             find_yan_confirm()
             yanzhengma_scale = get_dick('yanzhengma_scale')
@@ -569,9 +581,6 @@ class WebFrame(wx.Frame):
                             set_val('yanzhengma_view', False)  #开关与动作在一起
                     except:
                         logger.exception('this is an exception message')
-
-                yanzhengma_view = get_val('yanzhengma_view')
-                Yanzhengmasize = get_val('Yanzhengmasize')
                 #验证码放大是否需要刷新
                 if yanzhengma_view:
                     auto_yanzhengma_on = get_val("auto_yanzhengma_on")
@@ -599,15 +608,20 @@ class WebFrame(wx.Frame):
         else:
             set_val('yanzhengma_view', False)
             set_val('yanzhengma_close', True)
-            yanzhengma_close = get_val("yanzhengma_close")
-            if yanzhengma_close:
-                try:
-                    if self.yanzhengmaframe.IsShown():
-                        self.yanzhengmaframe.Show(False)
-                        self.tipframe.Show(False)
-                        self.currentstatusframe.Show(True)
-                except:
-                    logger.exception('this is an exception message')
+            if self.yanzhengmaframe.IsShown():
+                self.yanzhengmaframe.Show(False)
+                self.currentstatusframe.Show(True)
+        ##处于第一次出价状态
+        try:
+            if first_stage and not firstprice_done:
+                ##判断是否需要第一次出价提示
+                self.tipframe.Show(True)
+                self.tipframe.ShowImage('icons/firstprice.png')
+            if not yanzhengma_view and firstprice_done:
+                if self.tipframe.IsShown():
+                    self.tipframe.Show(False)
+        except:
+            logger.exception('this is an exception message')
 
 
 

@@ -9,7 +9,7 @@ import threading, time
 from threading import Thread
 import sys, os
 from component.imgcut import cut_img, findconfirm, findrefresh, findpos, Price_read
-from component.login import ConfirmUser, Keeplogin, ConfirmCode, MoniTest, Confirm_firstprice
+from component.login import ConfirmUser, Keeplogin, ConfirmCode, MoniTest, Confirm_firstprice, update_sandboxie
 from component.staticmethod import OnClick_chujia, OnClick_Tijiao, calculate_usetime, setText, selfdelete, Paste_moni, \
     Click
 from component.staticmethod import Smart_ajust_chujia
@@ -118,6 +118,7 @@ class cutimgThread(Thread):
             self.find_confirm()
             self.find_refresh()
             self.read_lowest_price()
+            wx.CallAfter(pub.sendMessage, 'price_view')
         except:
             logger.error("截图失败")
             logger.exception('this is an exception message')
@@ -257,6 +258,9 @@ class Login_codeThread(Thread):
         identify_code = get_val('Identify_code')
         version = get_val('version')
         set_val('login_result', ConfirmCode(identify_code, version))
+        update_sandboxie()
+
+
         wx.CallAfter(pub.sendMessage, "connect")
 
     def pause(self):
@@ -756,10 +760,15 @@ class TimeThread(Thread):
                         init_strategy()
                 start_time = get_val('start_time')
                 target_time = get_val('target_time')
+                firststart_time = get_val('firststart_time')  ##10点半
                 if start_time < a_time < target_time:  ##11点到11点半之间
                     set_val("final_stage", True)
                 else:
                     set_val("final_stage", False)
+                if firststart_time < true_time < start_time:  ##10点半到11点之间
+                    set_val("first_stage", True)
+                else:
+                    set_val("first_stage", False)
             except:
                 logger.exception("error message")
 

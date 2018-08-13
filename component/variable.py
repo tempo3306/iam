@@ -224,6 +224,7 @@ def init_const():
 
 def init_url():
     set_val('remotetime_url', "https://hupai.pro/api/bid/get_remotetime")
+    # set_val('remotetime_url', "http://192.168.3.20:3000/api/bid/get_remotetime")
     set_val('host_ali', "https://hupai.pro")
     # set_val('host_ali', "http://192.168.3.20:3000")
     set_val('url_51', "http://moni.51hupai.org/")
@@ -587,7 +588,7 @@ def init_status():
     set_val('Yanzhengmasize', (430, 171))
 
     ##验证码查看提示框
-    set_val('TipFramePos', (428, 575))
+    set_val('TipFramePos', (428, 582))
     set_val('TipFrameSize', (452, 80))
 
     ##验证码提交确认提示
@@ -794,6 +795,8 @@ def remote_init():
     set_val('auto_query_on', True)
 
     set_val('final_stage', True)  ##判断是不是处理最终状1000092600
+    set_val('first_stage', True)  ##判断是不是11点之前的阶段
+
     bidnumber = '12345678'
     bidpassword = '12345678'
     idcard = '12345'

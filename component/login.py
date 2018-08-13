@@ -126,11 +126,12 @@ def Logout():  # 修改为参数传递        host_ali = get_val('host_ali')
             # target_url = host_ali + r'/main_api/userconfirm/info?' + 'username=%s' % Username + '&' + 'passwd=%s' % Password
             print(target_url)
             print(result)
+            return result
+
     except:
         logger.error("登出出现异常")
         logger.exception('this is an exception message')
         return {'result': 'net error'}
-    return result
 
     # 发送登出信息
     # data = ['logout',Username,Password]
@@ -225,3 +226,20 @@ def send_mail(subject, to_list, file_name):
 
 def Upload():
     pass  # 采集有用信息为将来分析准备
+
+
+##修改沙盘配置文件
+def update_sandboxie():
+    try:
+        with open(r'c:\windows\Sandboxie.ini', 'r' ,encoding='utf-8') as sand:
+            lines = sand.readlines()
+
+            for line in lines:
+                print(line)
+                # if line:
+                #     if line.split()[0] == '[GlobalSettings]':
+                #         print(line)
+                #     else:
+                #         print("ewfsdfsdsffffffffffffffff")
+    except:
+        logger.exception("ERROR")

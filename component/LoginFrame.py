@@ -210,10 +210,16 @@ class LoginFrame(wx.Frame):
                 set_val('url_dianxin', login_result['url_dianxin'])
                 set_val('url_nodianxin', login_result['url_nodianxin'])
                 # remote_init()
+            #------------------------------------------------------------------
+            ##初始化各类时间
+            from component.app_thread import GetremotetimeThread
+            getremotetimethread = GetremotetimeThread() #同步一下服务器时间
             target_time = get_val('target_time')
             start_time = target_time - 30 * 60
+            firststart_time = start_time - 1800
             set_val('start_time', start_time)
-
+            set_val('firststart_time', firststart_time)
+            #------------------------------------------------------------------
             ##判断是否为拍手
             set_val('paishou', login_result['paishou'])
 

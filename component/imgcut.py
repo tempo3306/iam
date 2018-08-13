@@ -377,23 +377,24 @@ def get_result():
 
 
 def findfirstprice():
-    dick_target = get_val('dick_target')
-    template = dick_target[4]
-    template2 = dick_target[5]
-    sc = grab_screen()
-    img = np.asarray(sc)
-    w, h = template.shape[::-1]
-    res = cv2.matchTemplate(img, template, cv2.TM_CCOEFF_NORMED)
-    min_val, max_val, min_loc, max_loc = cv2.minMaxLoc(res)
-    res2 = cv2.matchTemplate(img, template2, cv2.TM_CCOEFF_NORMED)
-    min_val, max_val2, min_loc, max_loc = cv2.minMaxLoc(res2)
-
-
-    if max_val >= 0.9 or max_val2 >= 0.9:
-        return True
-    else:
-        return False
-
+    try:
+        print('findfirstprice')
+        dick_target = get_val('dick_target')
+        template = dick_target[4]
+        template2 = dick_target[5]
+        sc = grab_screen()
+        img = np.asarray(sc)
+        w, h = template.shape[::-1]
+        res = cv2.matchTemplate(img, template, cv2.TM_CCOEFF_NORMED)
+        min_val, max_val, min_loc, max_loc = cv2.minMaxLoc(res)
+        res2 = cv2.matchTemplate(img, template2, cv2.TM_CCOEFF_NORMED)
+        min_val, max_val2, min_loc, max_loc = cv2.minMaxLoc(res2)
+        if max_val >= 0.9 or max_val2 >= 0.9:
+            set_val('firstprice_done', True)
+        else:
+            set_val('firstprice_done', False)
+    except:
+        pass
 
 def find_yan_confirm():
     try:
