@@ -941,7 +941,7 @@ class Start_thread(Thread):
 
     def run(self):
         import logging, time
-        version = '6.2'
+        version = '6.3'
         timenow = time.time()
         # 转换成localtime
         time_local = time.localtime(timenow)

@@ -417,7 +417,7 @@ class WebFrame(wx.Frame):
                 webstatus_label = get_val('dianxin_webstatus_label')
                 self.buttonpanel = ButtonPanel(self, webstatus_label, moni)  ##moni: True
             else:
-                webstatus_label = get_val('nodianx in_webstatus_label')
+                webstatus_label = get_val('nodianxin_webstatus_label')
                 self.buttonpanel = ButtonPanel(self, webstatus_label, moni)  ##moni: True
         self.operationpanel = OperationPanel(self, tablabel)
         self.infopanel = InfoPanel(self)
