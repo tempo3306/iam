@@ -117,8 +117,8 @@ class cutimgThread(Thread):
             cut_img()
             self.find_confirm()
             self.find_refresh()
-            self.read_lowest_price()
             wx.CallAfter(pub.sendMessage, 'price_view')
+            self.read_lowest_price()
         except:
             logger.error("截图失败")
             logger.exception('this is an exception message')

@@ -499,6 +499,8 @@ class WebFrame(wx.Frame):
     def Price_view(self, event=None):
         moni_on = get_val('moni_on')
         guopai_on = get_val('guopai_on')
+        paishou = get_val('paishou')
+        manage = get_val('manage')
         on1 = moni_on and self.moni
         on2 = guopai_on and not self.moni
         on = on1 or on2
@@ -510,6 +512,8 @@ class WebFrame(wx.Frame):
 
             self.Yanzhengma_scale() #判定验证码放大
             self.hotkey_control()  #热键激活与否
+            if not paishou and not manage:
+                self.firstpirce_tip()
 
             ##自动验证码查看
             self.auto_yanzhengma()
@@ -562,8 +566,6 @@ class WebFrame(wx.Frame):
         ##------------------------------
         ###判定验证码放大框
         final_stage = get_val('final_stage')
-        first_stage = get_val('first_stage')
-        firstprice_done = get_val('firstprice_done')
         yanzhengma_view = get_val('yanzhengma_view')
         Yanzhengmasize = get_val('Yanzhengmasize')
         if final_stage:
@@ -611,6 +613,11 @@ class WebFrame(wx.Frame):
             if self.yanzhengmaframe.IsShown():
                 self.yanzhengmaframe.Show(False)
                 self.currentstatusframe.Show(True)
+
+    def firstpirce_tip(self):
+        first_stage = get_val('first_stage')
+        firstprice_done = get_val('firstprice_done')
+        yanzhengma_view = get_val('yanzhengma_view')
         ##处于第一次出价状态
         try:
             if first_stage and not firstprice_done:
