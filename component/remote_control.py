@@ -111,7 +111,7 @@ def getip_dianxin(ip):
         print(result)
         if result['data']['city'] == '上海' and result['data']['isp'] == '电信':
             set_val('guopai_dianxin', True)  ##当前是否处于国拍电信
-            print(result)
+            # print(result)
         else:
             set_val('guopai_dianxin', False)  ##当前是否处于国拍电信
     except:

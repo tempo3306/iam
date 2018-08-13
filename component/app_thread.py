@@ -258,10 +258,8 @@ class Login_codeThread(Thread):
         identify_code = get_val('Identify_code')
         version = get_val('version')
         set_val('login_result', ConfirmCode(identify_code, version))
-        update_sandboxie()
-
-
         wx.CallAfter(pub.sendMessage, "connect")
+        update_sandboxie()  ##修改沙盘配置
 
     def pause(self):
         self.__flag.clear()  # 设置为False, 让线程阻塞

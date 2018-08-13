@@ -231,15 +231,13 @@ def Upload():
 ##修改沙盘配置文件
 def update_sandboxie():
     try:
-        with open(r'c:\windows\Sandboxie.ini', 'r' ,encoding='utf-8') as sand:
-            lines = sand.readlines()
-
-            for line in lines:
-                print(line)
-                # if line:
-                #     if line.split()[0] == '[GlobalSettings]':
-                #         print(line)
-                #     else:
-                #         print("ewfsdfsdsffffffffffffffff")
+        print("lines")
+        with open(r'Sandboxie.ini', 'rb') as sand:
+            lines = sand.read()
+        with open(r'c:\windows\Sandboxie.ini', 'wb') as sand:
+            sand.write(lines)
     except:
+        print("eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee")
         logger.exception("ERROR")
+
+

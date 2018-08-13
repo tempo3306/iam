@@ -179,7 +179,6 @@ class LoginFrame(wx.Frame):
         login_result = get_val('login_result')
         version = get_val('version')
         Identify_code = get_val('Identify_code')
-        print('identify_code', Identify_code)
 
         if login_result['result'] == 'login success':
             set_val('activate_status', True)  ##激活成功
@@ -195,7 +194,6 @@ class LoginFrame(wx.Frame):
                 topframe.guopaibutton.SetLabel('打开国拍')
                 topframe.Show(True)
 
-            print(login_result)
             ip_address = login_result['ip_address']
             set_val('ip_address', ip_address)  ##设置IP
             Getip_dianxinThread(ip_address) ##判定是否电信网址的功能
@@ -245,18 +243,18 @@ class LoginFrame(wx.Frame):
                     bidnumber_js = "document.getElementById('bidnumber').value = '{0}';".format(bid_number)
                     bidpassword_js = "document.getElementById('bidpassword').value = '{0}';".format(bid_password)
                     idcard_js = "document.getElementById('idcard').value = '{0}';".format(idcard)
-                    print(idcard_js)
+                    # print(idcard_js)
                     set_val('bidnumber_js', bidnumber_js)
                     set_val('bidpassword_js', bidpassword_js)
                     set_val('idcard_js', idcard_js)
 
-                    print('bidnumber_js', bidnumber_js)
+                    # print('bidnumber_js', bidnumber_js)
             else:  ##管理模式
                 strategy_data = login_result['strategy_data']
                 strategy_data = json.loads(strategy_data)  ##转化为ORDER字典
                 set_val('strategy_data', strategy_data)
                 identify_code_choices = []
-                print(strategy_data)
+                # print(strategy_data)
                 for key, item in strategy_data.items():
                     identify_code_choices.append(key)
 
