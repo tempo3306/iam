@@ -551,11 +551,11 @@ class WebFrame(wx.Frame):
         Position_frame = get_val('Position_frame')
         auto_yanzhengma_on = get_val('auto_yanzhengma_on')
         print(auto_yanzhengma_on)
-        if auto_yanzhengma_on:
-            Click(Position_frame[7][0], Position_frame[7][1])
-            print("fsdfsdsfs")
-            self.tipframe.Show(False)
-            set_val('auto_yanzhengma_on', False)  ##设置成查看状态
+        # if auto_yanzhengma_on:
+        Click(Position_frame[7][0], Position_frame[7][1])
+        print("fsdfsdsfs")
+        self.tipframe.Show(False)
+        set_val('auto_yanzhengma_on', False)  ##设置成查看状态
 
     def Yanzhengma_scale(self):
         ##------------------------------
