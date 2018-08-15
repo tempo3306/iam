@@ -509,12 +509,10 @@ class WebFrame(wx.Frame):
             self.buttonpanel.Modify()
             self.bottomstatusbarpanel.Modify()
             self.currentstatusframe.currentstatuspanel.Modify()
-
             self.Yanzhengma_scale() #判定验证码放大
             self.hotkey_control()  #热键激活与否
             if not paishou and not manage:
                 self.firstpirce_tip()
-
             ##自动验证码查看
             self.auto_yanzhengma()
         else:
@@ -529,13 +527,10 @@ class WebFrame(wx.Frame):
         a_time = get_val('a_time')
         Position_frame = get_val('Position_frame')
         auto_yanzhengma_time = get_val('auto_yanzhengma_time')
-        auto_query_on = get_val('auto_query_on')
+        auto_query_on = get_dick('auto_query_on')
         auto_yanzhengma_on = get_val('auto_yanzhengma_on')
-
         yanzhengma_view = get_val('yanzhengma_view')
-        smartprice_chujia = get_val('smartprice_chujia')
-        smartprice_tijiao = get_val('smartprice_tijiao')
-        if  not yanzhengma_view and not smartprice_chujia and not smartprice_tijiao:
+        if  not yanzhengma_view:
             if auto_query_on and not auto_yanzhengma_on and  auto_yanzhengma_time < a_time < auto_yanzhengma_time + 0.5:
                 moni_on = get_val('moni_on')
                 if not moni_on:

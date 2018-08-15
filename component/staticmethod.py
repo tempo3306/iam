@@ -156,9 +156,10 @@ def Tijiao():
         set_val('current_pricestatus_label', '智能补枪')
         set_val('current_pricestatus', '智能出价')
         print("开启智能出价")
-
         set_val('smartprice_chujia', True)  ##开启智能出价， 打开确认查找
         wx.CallAfter(pub.sendMessage, 'update info', action=f'触发自动补枪')
+
+
 
 def SmartTijiao():
     tijiao_on = get_val('tijiao_on')
@@ -305,9 +306,9 @@ def esc_chujia():
     else:
         guopai_chujia(price)
     userprice = get_val('userprice')
-    set_val('smartprice_chujia', True)  #启动自动补枪 转化为智能出价模式
-    smartprice_chujia = get_val('smartprice_chujia')
-    print('smartprice_chujia', smartprice_chujia)
+    # set_val('smartprice_chujia', True)  #启动自动补枪 转化为智能出价模式
+    # smartprice_chujia = get_val('smartprice_chujia')
+    # print('smartprice_chujia', smartprice_chujia)
     wx.CallAfter(pub.sendMessage, 'update info', action=f'智能出价出价{userprice}')
 
 
@@ -729,6 +730,7 @@ def gettime(choice):  # choice1:55, choice2:0.5
 
 ##初始化 还原
 def init_strategy():
+    set_val('smartprice_chujia', False)
     strategy_type = get_dick('strategy_type')
     init_description()
     if strategy_type == '0':

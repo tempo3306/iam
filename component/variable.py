@@ -222,6 +222,7 @@ def init_val():
 def init_const():
     set_val('LABEL_NUM', 8)
 
+
 def init_url():
     set_val('host_ali', "https://hupai.pro")
     # set_val('host_ali', "http://192.168.3.20:3000")
@@ -792,8 +793,6 @@ def remote_init():
 
 
     # set_val('auto_yanzhengma_on', False)  ## strategy 里替换 ENTER_ON
-    set_val('auto_query_on', True)
-
     set_val('final_stage', True)  ##判断是不是处理最终状1000092600
     set_val('first_stage', True)  ##判断是不是11点之前的阶段
 

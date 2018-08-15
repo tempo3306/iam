@@ -411,17 +411,17 @@ def find_yan_confirm():
 
         if max_val > 0.9 and yanzhengma_control:
             set_val('yanzhengma_view', True)
-            smartprice_chujia = get_val('smartprice_chujia')
-            if smartprice_chujia:
-                set_val('smartprice_tijiao', True)  ##这代表出价成功
+            # smartprice_chujia = get_val('smartprice_chujia')
+            # if smartprice_chujia:
+            #     set_val('smartprice_tijiao', True)  ##这代表出价成功
         elif max_val <= 0.9:
             set_val('yanzhengma_view', False)
             set_val('yanzhengma_close', True)
             set_val('yanzhengma_control', True)
             smartprice_tijiao = get_val('smartprice_tijiao')
-            if smartprice_tijiao:
-                set_val('smartprice_tijiao', False)  ##这代表出价成功
-                set_val('smartprice_chujia', False)
+            # if smartprice_tijiao:
+            #     set_val('smartprice_tijiao', False)  ##这代表出价成功
+            #     set_val('smartprice_chujia', False)
     except:
         logger.exception("error message")
 

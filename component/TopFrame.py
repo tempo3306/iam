@@ -187,7 +187,7 @@ class TopFrame(wx.Frame):
 
     def Openmoni(self, event):
         ##初始化日志信息
-        auto_query_on = get_val('auto_query_on')
+        auto_query_on = get_dick('auto_query_on')
         if auto_query_on:
             new_actions = ['打开模拟', '同步服务器策略', '同步网页时间', '策略初始化', '等待验证码预览']
         else:
@@ -227,7 +227,7 @@ class TopFrame(wx.Frame):
 
     def Open_call_moni(self):
         ##初始化日志信息
-        auto_query_on = get_val('auto_query_on')
+        auto_query_on = get_dick('auto_query_on')
         Px = get_val('Px_webframe')
         Py = get_val('Py_webframe')
 
@@ -261,7 +261,7 @@ class TopFrame(wx.Frame):
 
         if activate_status:
             ##初始化日志信息
-            auto_query_on = get_val('auto_query_on')
+            auto_query_on = get_dick('auto_query_on')
             if auto_query_on:
                 new_actions = ['打开国拍', '同步服务器策略', '同步服务器时间', '策略初始化', '等待验证码预览', '']
             else:
@@ -297,7 +297,7 @@ class TopFrame(wx.Frame):
                 self.webopen()
         else:
             ##初始化日志信息
-            auto_query_on = get_val('auto_query_on')
+            auto_query_on = get_dick('auto_query_on')
             if auto_query_on:
                 new_actions = ['打开国拍', '策略初始化', '等待验证码预览']
             else:
