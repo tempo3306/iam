@@ -106,7 +106,7 @@ class cutimgThread(Thread):
     def run(self):
         while self.__running.isSet():
             self.__flag.wait()  # 为True时立即返回, 为False时阻塞直到内部的标识位为True后返回
-            time.sleep(0.05)
+            time.sleep(0.04)
             self.run_func()
 
     # @calculate_usetime
@@ -115,9 +115,9 @@ class cutimgThread(Thread):
             ###################截图
             a = time.time()
             cut_img()
+            # wx.CallAfter(pub.sendMessage, 'price_view')
             self.find_confirm()
             self.find_refresh()
-            wx.CallAfter(pub.sendMessage, 'price_view')
             self.read_lowest_price()
         except:
             logger.error("截图失败")
@@ -938,7 +938,7 @@ class Start_thread(Thread):
 
     def run(self):
         import logging, time
-        version = '6.3'
+        version = '6.5'
         timenow = time.time()
         # 转换成localtime
         time_local = time.localtime(timenow)
